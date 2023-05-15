@@ -1,0 +1,15 @@
+{
+  "item.create_battles.mithril_ingot": "Mithril Ingot",
+  "item.create_battles.mithril_nugget": "Mithril Nugget",
+  "item.create_battles.mithril_sheet": "Mithril Sheet",
+
+  "item.create_battles.steel_ingot": "Steel Ingot",
+  "item.create_battles.steel_nugget": "Steel Nugget",
+  "item.create_battles.steel_sheet": "Steel Sheet",
+
+  "block.create_battles.mithril_block": "Block of Mithril",
+  "block.create_battles.mithril_casing": "Mithril Casing",
+  "block.create_battles.steel_block": "Block of Steel",
+
+  "itemGroup.create_battles_tab": "Create: Battles"
+}
