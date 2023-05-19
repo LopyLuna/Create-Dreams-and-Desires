@@ -2,6 +2,7 @@ package uwu.lopyluna.create_battles;
 
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,6 +27,7 @@ public class Battlescreate
     {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        REGISTRATE.registerEventListeners(eventBus);
         Pipebomb.register(eventBus);
         YIPPEE.register(eventBus);
 
@@ -36,9 +38,14 @@ public class Battlescreate
 
     }
 
+    public static ResourceLocation asResource(String path) {
+        return new ResourceLocation(MOD_ID, path);
+    }
+
     public static CreateRegistrate registrate() {
         return REGISTRATE;
     }
+
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code

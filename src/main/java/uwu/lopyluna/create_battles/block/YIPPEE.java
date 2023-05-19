@@ -30,11 +30,10 @@ public class YIPPEE {
     //YIPPEE BLOCK PIPEBOMB YUMMY
     public static final RegistryObject<Block> mithril_block = registerBlock("mithril_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(9f,9f).requiresCorrectToolForDrops()), PipebombTab.BattleCreate_TAB);
     public static final RegistryObject<Block> steel_block = registerBlock("steel_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(9f,9f).requiresCorrectToolForDrops()), PipebombTab.BattleCreate_TAB);
-    public static final BlockEntry<CasingBlock> MITHRIL_CASING = REGISTRATE.block("mithril_casing", CasingBlock::new)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
-            .transform(BuilderTransformers.casing(() -> AllSpriteShifts.BRASS_CASING))
-            .simpleItem()
-            .register();
+
+
+    //BLOKYENTRY
+    public static final BlockEntry<CasingBlock> MITHRIL_CASING = REGISTRATE.block("mithril_casing", CasingBlock::new).properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN).sound(SoundType.NETHERITE_BLOCK)).transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.MITHRIL_CASING)).simpleItem().register();
 
 
 
