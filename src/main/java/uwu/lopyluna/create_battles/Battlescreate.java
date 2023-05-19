@@ -20,7 +20,6 @@ public class Battlescreate
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
-
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(Battlescreate.MOD_ID);
 
     public Battlescreate()
@@ -36,6 +35,7 @@ public class Battlescreate
         MinecraftForge.EVENT_BUS.register(this);
 
     }
+
     public static CreateRegistrate registrate() {
         return REGISTRATE;
     }
