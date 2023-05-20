@@ -3,13 +3,28 @@
   "item.create_battles.mithril_nugget": "Mithril Nugget",
   "item.create_battles.mithril_sheet": "Mithril Sheet",
 
+  "item.create_battles.bronze_ingot": "Bronze Ingot",
+  "item.create_battles.bronze_nugget": "Bronze Nugget",
+  "item.create_battles.bronze_sheet": "Bronze Sheet",
+
   "item.create_battles.steel_ingot": "Steel Ingot",
   "item.create_battles.steel_nugget": "Steel Nugget",
   "item.create_battles.steel_sheet": "Steel Sheet",
 
+  "item.create_battles.tin_ingot": "Tin Ingot",
+  "item.create_battles.tin_nugget": "Tin Nugget",
+  "item.create_battles.raw_tin": "Raw Tin",
+
+  "block.create_battles.bronze_block": "Block of Bronze",
+  "block.create_battles.bronze_casing": "Bronze Casing",
   "block.create_battles.mithril_block": "Block of Mithril",
   "block.create_battles.mithril_casing": "Mithril Casing",
   "block.create_battles.steel_block": "Block of Steel",
+
+  "block.create_battles.tin_ore": "Tin Ore",
+  "block.create_battles.deepslate_tin_ore": "Deepslate Tin Ore",
+  "block.create_battles.tin_block": "Block of Tin",
+  "block.create_battles.raw_tin_block": "Block of Raw Tin",
 
   "itemGroup.create_battles_tab": "Create: Battles"
 }

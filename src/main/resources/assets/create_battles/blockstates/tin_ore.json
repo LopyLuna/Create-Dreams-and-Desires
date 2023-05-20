@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "create_battles:block/tin_ore"
+    }
+  }
+}

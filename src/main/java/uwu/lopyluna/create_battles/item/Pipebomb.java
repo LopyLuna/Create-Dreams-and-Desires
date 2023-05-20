@@ -17,10 +17,17 @@ public class Pipebomb {
     public static final RegistryObject<Item> mithril_nugget = ITEMS.register("mithril_nugget", () -> new Item(new Item.Properties().tab(PipebombTab.BattleCreate_TAB)));
     public static final RegistryObject<Item> mithril_sheet = ITEMS.register("mithril_sheet", () -> new Item(new Item.Properties().tab(PipebombTab.BattleCreate_TAB)));
 
+    public static final RegistryObject<Item> bronze_ingot = ITEMS.register("bronze_ingot", () -> new Item(new Item.Properties().tab(PipebombTab.BattleCreate_TAB)));
+    public static final RegistryObject<Item> bronze_nugget = ITEMS.register("bronze_nugget", () -> new Item(new Item.Properties().tab(PipebombTab.BattleCreate_TAB)));
+    public static final RegistryObject<Item> bronze_sheet = ITEMS.register("bronze_sheet", () -> new Item(new Item.Properties().tab(PipebombTab.BattleCreate_TAB)));
+
     public static final RegistryObject<Item> steel_ingot = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties().tab(PipebombTab.BattleCreate_TAB)));
     public static final RegistryObject<Item> steel_nugget = ITEMS.register("steel_nugget", () -> new Item(new Item.Properties().tab(PipebombTab.BattleCreate_TAB)));
     public static final RegistryObject<Item> steel_sheet = ITEMS.register("steel_sheet", () -> new Item(new Item.Properties().tab(PipebombTab.BattleCreate_TAB)));
 
+    public static final RegistryObject<Item> tin_ingot = ITEMS.register( "tin_ingot", () -> new Item(new Item.Properties().tab(PipebombTab.BattleCreate_TAB)));
+    public static final RegistryObject<Item> tin_nugget = ITEMS.register("tin_nugget", () -> new Item(new Item.Properties().tab(PipebombTab.BattleCreate_TAB)));
+    public static final RegistryObject<Item> tin_raw = ITEMS.register( "raw_tin", () -> new Item(new Item.Properties().tab(PipebombTab.BattleCreate_TAB)));
 
 
 
