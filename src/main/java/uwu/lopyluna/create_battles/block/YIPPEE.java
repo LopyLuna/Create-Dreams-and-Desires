@@ -34,6 +34,9 @@ import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 import static uwu.lopyluna.create_battles.Battlescreate.REGISTRATE;
 
 public class YIPPEE {
+    static {
+        Create.REGISTRATE.creativeModeTab(() -> Create.BASE_CREATIVE_TAB);
+    }
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, Battlescreate.MOD_ID);
 
@@ -51,17 +54,13 @@ public class YIPPEE {
             .requiresCorrectToolForDrops()
     ), PipebombTab.BattleCreate_TAB);
 
-
     //BLOKYENTRY
-    public static final BlockEntry<CasingBlock> mithril_casing = REGISTRATE.block("mithril_casing", CasingBlock::new)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
-            .properties(p -> p.strength(10f,25f))
-            .properties(p -> p.requiresCorrectToolForDrops())
-            .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+    public static final BlockEntry<CasingBlock> MITHRIL_CASING = REGISTRATE.block("mithril_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.MITHRIL_CASING))
-            .simpleItem()
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+            .lang("Mithril Casing")
             .register();
-
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn, tab);
@@ -77,4 +76,5 @@ public class YIPPEE {
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }
+    public static void register() {}
 }

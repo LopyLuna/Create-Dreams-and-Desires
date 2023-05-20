@@ -1,11 +1,14 @@
 package uwu.lopyluna.create_battles;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.content.CreateItemGroup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -25,11 +28,13 @@ public class Battlescreate
 
     public Battlescreate()
     {
+        ModLoadingContext modLoadingContext = ModLoadingContext.get();
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         REGISTRATE.registerEventListeners(eventBus);
         Pipebomb.register(eventBus);
         YIPPEE.register(eventBus);
+        YIPPEE.register();
 
         eventBus.addListener(this::setup);
 
