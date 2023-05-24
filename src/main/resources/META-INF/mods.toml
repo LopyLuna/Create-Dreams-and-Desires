@@ -15,13 +15,13 @@ license="All rights reserved"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="create_battles" #mandatory
+modId="create_flavored" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 # see the associated build.gradle script for how to populate this completely automatically during a build
 version="${file.jarVersion}" #mandatory
  # A display name for the mod
-displayName="Create Battles" #mandatory
+displayName="Create: Flavored" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
@@ -29,7 +29,7 @@ displayName="Create Battles" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="pack.png" #optional
 # A text field displayed in the mod UI
-credits="Thanks for this example mod goes to Java" #optional
+credits="" #optional
 # A text field displayed in the mod UI
 authors="LopyLuna" #optional
 # The description text for the mod (multi line!) (#mandatory)
@@ -37,7 +37,7 @@ description='''
 YIPPEE
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.create_battles]] #optional
+[[dependencies.create_flavored]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -49,7 +49,7 @@ YIPPEE
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
 # Here's another dependency
-[[dependencies.create_battles]]
+[[dependencies.create_flavored]]
     modId="minecraft"
     mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
@@ -57,9 +57,9 @@ YIPPEE
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.create_battles]]
+[[dependencies.create_flavored]]
 modId="create"
 mandatory=true
-versionRange="[0.5.0.i,)"
+versionRange="[0.5.1.a,)"
 ordering="NONE"
 side="BOTH"

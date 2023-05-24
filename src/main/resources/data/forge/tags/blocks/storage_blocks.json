@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "create_flavored:bronze_block",
+    "create_flavored:mithril_block",
+    "create_flavored:raw_tin_block",
+    "create_flavored:steel_block",
+    "create_flavored:tin_block"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "create_battles:tin_ore",
+    "create_battles:deepslate_tin_ore"
+  ]
+}

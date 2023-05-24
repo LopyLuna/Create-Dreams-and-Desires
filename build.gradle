@@ -21,8 +21,8 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 
 version = 'ALPHA-1.0-1.18.2'
-group = 'uwu.lopyluna.create_battles' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'create_battles'
+group = 'uwu.lopyluna.create_flavored' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'create_flavored'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -65,12 +65,12 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'create_battles'
+            property 'forge.enabledGameTestNamespaces', 'create_flavored'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
-                create_battles {
+                create_flavored {
                     source sourceSets.main
                 }
             }
@@ -84,10 +84,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'create_battles'
+            property 'forge.enabledGameTestNamespaces', 'create_flavored'
 
             mods {
-                create_battles {
+                create_flavored {
                     source sourceSets.main
                 }
             }
@@ -112,10 +112,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'create_battles'
+            property 'forge.enabledGameTestNamespaces', 'create_flavored'
 
             mods {
-                create_battles {
+                create_flavored {
                     source sourceSets.main
                 }
             }
@@ -129,10 +129,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'create_battles', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'create_flavored', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                create_battles {
+                create_flavored {
                     source sourceSets.main
                 }
             }
@@ -144,11 +144,6 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    maven {
-        // location of the maven that hosts JEI files
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
-    }
     maven {
         // location of a maven mirror for JEI files, as a fallback
         name = "ModMaven"
@@ -171,7 +166,7 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.18.2-40.2.2'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.2.4'
 
     implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
@@ -197,12 +192,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "create_battles",
-                "Specification-Vendor"    : "create_battlessareus",
+                "Specification-Title"     : "create_flavored",
+                "Specification-Vendor"    : "create_flavoredsareus",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "create_battlessareus",
+                "Implementation-Vendor"   : "create_flavoredsareus",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

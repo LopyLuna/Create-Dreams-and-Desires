@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "create_flavored:mithril_casing",
+    "create_flavored:bronze_casing"
+  ]
+}
