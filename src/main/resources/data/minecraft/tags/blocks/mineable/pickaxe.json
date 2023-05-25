@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:item"
+    "create_flavored:tin_ore",
+    "create_flavored:deepslate_tin_ore",
+    "create_flavored:bronze_block",
+    "create_flavored:mithril_block",
+    "create_flavored:raw_tin_block",
+    "create_flavored:steel_block",
+    "create_flavored:tin_block",
+    "create_flavored:mithril_casing",
+    "create_flavored:bronze_casing"
   ]
 }

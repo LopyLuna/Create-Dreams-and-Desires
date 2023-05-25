@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "create_battles:item"
+    "create_flavored:mithril_sheet",
+    "create_flavored:bronze_sheet",
+    "create_flavored:steel_sheet"
   ]
 }

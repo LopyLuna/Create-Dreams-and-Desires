@@ -29,18 +29,18 @@ public class YIPPEE {
     //YIPPEE BLOCK PIPEBOMB YUMMY
     public static final RegistryObject<Block> mithril_block = registerBlock("mithril_block", () -> new Block(BlockBehaviour.Properties
             .of(Material.METAL).sound(SoundType.NETHERITE_BLOCK)
-            .strength(10f,25f)
+            .strength(10f,24f)
             .requiresCorrectToolForDrops()
     ), PipebombTab.FlavoredCreate_TAB);
     public static final RegistryObject<Block> bronze_block = registerBlock("bronze_block", () -> new Block(BlockBehaviour.Properties
             .of(Material.METAL).sound(SoundType.NETHERITE_BLOCK)
-            .strength(5f,10f)
+            .strength(8f,10f)
             .requiresCorrectToolForDrops()
     ), PipebombTab.FlavoredCreate_TAB);
     public static final RegistryObject<Block> steel_block = registerBlock("steel_block", () -> new Block(BlockBehaviour.Properties
             .of(Material.METAL)
             .sound(SoundType.NETHERITE_BLOCK)
-            .strength(10f,25f)
+            .strength(6f,16f)
             .requiresCorrectToolForDrops()
     ), PipebombTab.FlavoredCreate_TAB);
 
