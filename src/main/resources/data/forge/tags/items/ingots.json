@@ -4,6 +4,7 @@
     "create_flavored:mithril_ingot",
     "create_flavored:bronze_ingot",
     "create_flavored:steel_ingot",
-    "create_flavored:tin_ingot"
+    "create_flavored:tin_ingot",
+    "create_flavored:industrial_iron_ingot"
   ]
 }

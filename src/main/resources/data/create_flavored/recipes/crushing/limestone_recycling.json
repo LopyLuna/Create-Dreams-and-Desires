@@ -1,0 +1,19 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "tag": "create:stone_types/limestone"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:crushed_raw_tin",
+      "chance": 0.5
+    },
+    {
+      "item": "create_flavored:tin_nugget",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

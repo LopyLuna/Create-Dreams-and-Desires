@@ -1,40 +1,66 @@
 package uwu.lopyluna.create_flavored.item;
 
+import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
+import com.simibubi.create.foundation.data.AssetLookup;
+import com.tterrag.registrate.util.entry.ItemEntry;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-import uwu.lopyluna.create_flavored.Flavoredcreate;
+import net.minecraft.world.item.Rarity;
+import uwu.lopyluna.create_flavored.item.ItemProperties.BlockZapperItem;
+import static com.simibubi.create.AllTags.AllItemTags.CREATE_INGOTS;
+import static com.simibubi.create.AllTags.forgeItemTag;
+import static uwu.lopyluna.create_flavored.Flavoredcreate.REGISTRATE;
 
 public class Pipebomb {
-    public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, Flavoredcreate.MOD_ID);
 
+    static {
+        REGISTRATE.creativeModeTab(() -> PipebombTab.BASE_CREATIVE_TAB);
+    }
 
     //YIPPEE ITEMS PIPEBOMB YUMMY
-    public static final RegistryObject<Item> mithril_ingot = ITEMS.register("mithril_ingot", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
-    public static final RegistryObject<Item> mithril_nugget = ITEMS.register("mithril_nugget", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
-    public static final RegistryObject<Item> mithril_sheet = ITEMS.register("mithril_sheet", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
+    public static final ItemEntry<Item>
+            mithril_ingot = taggedIngredient("mithril_ingot", forgeItemTag("ingots/mithril"), CREATE_INGOTS.tag),
+            bronze_ingot = taggedIngredient("bronze_ingot", forgeItemTag("ingots/bronze"), forgeItemTag("ingots/strong_bronze"), CREATE_INGOTS.tag),
+            steel_ingot = taggedIngredient("steel_ingot", forgeItemTag("ingots/steel"), CREATE_INGOTS.tag),
+            tin_ingot = taggedIngredient("tin_ingot", forgeItemTag("ingots/tin"), CREATE_INGOTS.tag),
+            industrial_iron_ingot = taggedIngredient("industrial_iron_ingot", forgeItemTag("ingots/industrial_iron"), CREATE_INGOTS.tag),
+            mithril_nugget = taggedIngredient("mithril_nugget", forgeItemTag("nuggets/mithril")),
+            bronze_nugget = taggedIngredient("bronze_nugget", forgeItemTag("nuggets/bronze"), forgeItemTag("ingots/strong_bronze")),
+            steel_nugget = taggedIngredient("steel_nugget", forgeItemTag("nuggets/steel")),
+            tin_nugget = taggedIngredient("tin_nugget", forgeItemTag("nuggets/tin")),
+            industrial_iron_nugget = taggedIngredient("industrial_iron_nugget", forgeItemTag("nuggets/industrial_iron")),
+            mithril_sheet = taggedIngredient("mithril_sheet", forgeItemTag("plates/mithril")),
+            bronze_sheet = taggedIngredient("bronze_sheet", forgeItemTag("plates/bronze"), forgeItemTag("ingots/strong_bronze")),
+            steel_sheet = taggedIngredient("steel_sheet", forgeItemTag("plates/steel")),
+            industrial_iron_sheet = taggedIngredient("industrial_iron_sheet", forgeItemTag("plates/industrial_iron")),
+            tin_raw = ingredient("raw_tin");
 
-    public static final RegistryObject<Item> bronze_ingot = ITEMS.register("bronze_ingot", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
-    public static final RegistryObject<Item> bronze_nugget = ITEMS.register("bronze_nugget", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
-    public static final RegistryObject<Item> bronze_sheet = ITEMS.register("bronze_sheet", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
-
-    public static final RegistryObject<Item> steel_ingot = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
-    public static final RegistryObject<Item> steel_nugget = ITEMS.register("steel_nugget", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
-    public static final RegistryObject<Item> steel_sheet = ITEMS.register("steel_sheet", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
-
-    public static final RegistryObject<Item> tin_ingot = ITEMS.register( "tin_ingot", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
-    public static final RegistryObject<Item> tin_nugget = ITEMS.register("tin_nugget", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
-    public static final RegistryObject<Item> tin_raw = ITEMS.register( "raw_tin", () -> new Item(new Item.Properties().tab(PipebombTab.FlavoredCreate_TAB)));
+    public static final ItemEntry<BlockZapperItem> BLOCKZAPPER =
+            REGISTRATE.item("handheld_blockzapper", BlockZapperItem::new)
+                    .properties(p -> p.stacksTo(1)
+                            .rarity(Rarity.UNCOMMON))
+                    .model(AssetLookup.itemModelWithPartials())
+                    .register();
 
 
 
 
 
-
-    public static void register(IEventBus eventBus) {
-        ITEMS.register(eventBus);
+    private static ItemEntry<Item> ingredient(String name) {
+        return REGISTRATE.item(name, Item::new)
+                .register();
     }
+    private static ItemEntry<SequencedAssemblyItem> sequencedIngredient(String name) {
+        return REGISTRATE.item(name, SequencedAssemblyItem::new)
+                .register();
+    }
+
+    @SafeVarargs
+    private static ItemEntry<Item> taggedIngredient(String name, TagKey<Item>... tags) {
+        return REGISTRATE.item(name, Item::new)
+                .tag(tags)
+                .register();
+    }
+
+    public static void register() {}
 }

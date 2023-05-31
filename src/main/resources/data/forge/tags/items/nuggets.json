@@ -4,6 +4,7 @@
     "create_flavored:mithril_nugget",
     "create_flavored:bronze_nugget",
     "create_flavored:steel_nugget",
-    "create_flavored:tin_nugget"
+    "create_flavored:tin_nugget",
+    "create_flavored:industrial_iron_nugget"
   ]
 }

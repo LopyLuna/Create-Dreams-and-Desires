@@ -2,6 +2,7 @@ package uwu.lopyluna.create_flavored;
 
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.infrastructure.worldgen.AllOreFeatureConfigEntries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -12,7 +13,10 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import uwu.lopyluna.create_flavored.block.YIPPEE;
+import uwu.lopyluna.create_flavored.block.YIPPEEentitytypes;
 import uwu.lopyluna.create_flavored.item.Pipebomb;
+import uwu.lopyluna.create_flavored.item.PipebombTab;
+import uwu.lopyluna.create_flavored.worldgen.YummyOreFeatures;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Flavoredcreate.MOD_ID)
@@ -28,13 +32,16 @@ public class Flavoredcreate
     {
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
         REGISTRATE.registerEventListeners(eventBus);
-        Pipebomb.register(eventBus);
-        YIPPEE.register(eventBus);
-        YIPPEE.register();
 
-        eventBus.addListener(this::setup);
+        PipebombTab.init();
+        YIPPEE.register();
+        Pipebomb.register();
+        YIPPEEentitytypes.register();
+        YummyOreFeatures.init();
+
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

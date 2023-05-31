@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "create_flavored:mithril_casing",
-    "create_flavored:bronze_casing"
+    "create_flavored:bronze_casing",
+    "create_flavored:zinc_casing",
+    "create_flavored:hydraulic_casing",
+    "create_flavored:industrial_casing",
+    "create_flavored:overburden_casing"
   ]
 }

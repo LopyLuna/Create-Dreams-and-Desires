@@ -1,0 +1,18 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "tag": "forge:plates/iron"
+    },
+    {
+      "tag": "forge:plates/iron"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_flavored:industrial_iron_ingot",
+      "count": 2
+    }
+  ],
+  "heatRequirement": "heated"
+}

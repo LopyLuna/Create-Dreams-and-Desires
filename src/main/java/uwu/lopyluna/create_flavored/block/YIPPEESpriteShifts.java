@@ -14,11 +14,11 @@ public class YIPPEESpriteShifts {
 
     public static final CTSpriteShiftEntry
             MITHRIL_CASING = omni("mithril_casing"),
-            MITHRIL_ENCASED_COGWHEEL_SIDE = vertical("mithril_encased_cogwheel_side"),
-            MITHRIL_ENCASED_COGWHEEL_OTHERSIDE = horizontal("mithril_encased_cogwheel_side"),
             BRONZE_CASING = omni("bronze_casing"),
-            BRONZE_ENCASED_COGWHEEL_SIDE = vertical("bronze_encased_cogwheel_side"),
-            BRONZE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("bronze_encased_cogwheel_side");
+            ZINC_CASING = omni("zinc_casing"),
+            HYDRAULIC_CASING = omni("hydraulic_casing"),
+            INDUSTRIAL_CASING = omni("industrial_casing"),
+            OVERBURDEN_CASING = omni("overburden_casing");
 
 
 

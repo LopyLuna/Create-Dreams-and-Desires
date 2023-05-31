@@ -11,6 +11,10 @@
   "item.create_flavored.steel_nugget": "Steel Nugget",
   "item.create_flavored.steel_sheet": "Steel Sheet",
 
+  "item.create_flavored.industrial_iron_ingot": "Industrial Iron Ingot",
+  "item.create_flavored.industrial_iron_nugget": "Industrial Iron Nugget",
+  "item.create_flavored.industrial_iron_sheet": "Industrial Iron Sheet",
+
   "item.create_flavored.tin_ingot": "Tin Ingot",
   "item.create_flavored.tin_nugget": "Tin Nugget",
   "item.create_flavored.raw_tin": "Raw Tin",
@@ -25,6 +29,11 @@
   "block.create_flavored.deepslate_tin_ore": "Deepslate Tin Ore",
   "block.create_flavored.tin_block": "Block of Tin",
   "block.create_flavored.raw_tin_block": "Block of Raw Tin",
+
+  "block.create_flavored.zinc_casing": "Zinc Casing",
+  "block.create_flavored.hydraulic_casing": "Hydraulic Casing",
+  "block.create_flavored.industrial_casing": "Industrial Casing",
+  "block.create_flavored.overburden_casing": "Overburden Casing",
 
   "itemGroup.create_flavored_tab": "Create: Battles"
 }

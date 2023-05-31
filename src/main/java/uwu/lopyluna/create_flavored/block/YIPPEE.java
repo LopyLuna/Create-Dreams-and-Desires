@@ -1,107 +1,173 @@
 package uwu.lopyluna.create_flavored.block;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
+import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.foundation.data.AssetLookup;
+import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.BuilderTransformers;
+import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-import uwu.lopyluna.create_flavored.Flavoredcreate;
-import uwu.lopyluna.create_flavored.item.Pipebomb;
+import net.minecraftforge.common.Tags;
+import uwu.lopyluna.create_flavored.block.MechanicalSmasher.SmashingBlock;
+import uwu.lopyluna.create_flavored.block.MechanicalSmasher.SmashingControllerBlock;
 import uwu.lopyluna.create_flavored.item.PipebombTab;
-import java.util.function.Supplier;
-
+import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
+import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
+import static com.simibubi.create.foundation.data.TagGen.tagBlockAndItem;
 import static uwu.lopyluna.create_flavored.Flavoredcreate.REGISTRATE;
 
 public class YIPPEE {
-    public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, Flavoredcreate.MOD_ID);
 
+    static {
+        REGISTRATE.creativeModeTab(() -> PipebombTab.BASE_CREATIVE_TAB);
+    }
 
-    //YIPPEE BLOCK PIPEBOMB YUMMY
-    public static final RegistryObject<Block> mithril_block = registerBlock("mithril_block", () -> new Block(BlockBehaviour.Properties
-            .of(Material.METAL).sound(SoundType.NETHERITE_BLOCK)
-            .strength(10f,24f)
-            .requiresCorrectToolForDrops()
-    ), PipebombTab.FlavoredCreate_TAB);
-    public static final RegistryObject<Block> bronze_block = registerBlock("bronze_block", () -> new Block(BlockBehaviour.Properties
-            .of(Material.METAL).sound(SoundType.NETHERITE_BLOCK)
-            .strength(8f,10f)
-            .requiresCorrectToolForDrops()
-    ), PipebombTab.FlavoredCreate_TAB);
-    public static final RegistryObject<Block> steel_block = registerBlock("steel_block", () -> new Block(BlockBehaviour.Properties
-            .of(Material.METAL)
-            .sound(SoundType.NETHERITE_BLOCK)
-            .strength(6f,16f)
-            .requiresCorrectToolForDrops()
-    ), PipebombTab.FlavoredCreate_TAB);
+    public static final BlockEntry<Block> mithril_block = REGISTRATE.block("mithril_block", Block::new)
+            .initialProperties(SharedProperties::netheriteMetal)
+            .properties(p -> p.color(MaterialColor.WARPED_NYLIUM))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .properties(p -> p.strength(10f,24f))
+            .lang("Block of Mithril")
+            .simpleItem()
+            .register();
 
-    public static final RegistryObject<Block> tin_ore = registerBlock("tin_ore", () -> new Block(BlockBehaviour.Properties
-            .of(Material.STONE)
-            .sound(SoundType.STONE)
-            .strength(3f,3f)
-            .requiresCorrectToolForDrops()
-    ), PipebombTab.FlavoredCreate_TAB);
+    public static final BlockEntry<Block> bronze_block = REGISTRATE.block("bronze_block", Block::new)
+            .initialProperties(SharedProperties::netheriteMetal)
+            .properties(p -> p.color(MaterialColor.COLOR_ORANGE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .properties(p -> p.strength(10f,10f))
+            .lang("Block of Bronze")
+            .simpleItem()
+            .register();
 
-    public static final RegistryObject<Block> deepslate_tin_ore = registerBlock("deepslate_tin_ore", () -> new Block(BlockBehaviour.Properties
-            .of(Material.STONE)
-            .sound(SoundType.DEEPSLATE)
-            .strength(4.5f,3f)
-            .requiresCorrectToolForDrops()
-    ), PipebombTab.FlavoredCreate_TAB);
+    public static final BlockEntry<Block> steel_block = REGISTRATE.block("steel_block", Block::new)
+            .initialProperties(SharedProperties::netheriteMetal)
+            .properties(p -> p.color(MaterialColor.COLOR_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .properties(p -> p.strength(6f,16f))
+            .lang("Block of Steel")
+            .simpleItem()
+            .register();
 
-    public static final RegistryObject<Block> tin_block = registerBlock("tin_block", () -> new Block(BlockBehaviour.Properties
-            .of(Material.METAL)
-            .sound(SoundType.METAL)
-            .strength(3f,6f)
-            .requiresCorrectToolForDrops()
-    ), PipebombTab.FlavoredCreate_TAB);
+    public static final BlockEntry<Block> tin_ore = REGISTRATE.block("tin_ore", Block::new)
+            .initialProperties(() -> Blocks.STONE)
+            .properties(p -> p.color(MaterialColor.STONE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .properties(p -> p.strength(3f,3f))
+            .lang("Tin Ore")
+            .simpleItem()
+            .register();
 
-    public static final RegistryObject<Block> raw_tin_block = registerBlock("raw_tin_block", () -> new Block(BlockBehaviour.Properties
-            .of(Material.STONE)
-            .sound(SoundType.STONE)
-            .strength(5f,6f)
-            .requiresCorrectToolForDrops()
-    ), PipebombTab.FlavoredCreate_TAB);
+    public static final BlockEntry<Block> deepslate_tin_ore = REGISTRATE.block("deepslate_tin_ore", Block::new)
+            .initialProperties(() -> Blocks.DEEPSLATE_GOLD_ORE)
+            .properties(p -> p.color(MaterialColor.DEEPSLATE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .properties(p -> p.strength(4.5f,3f))
+            .lang("Deepslate Tin Ore")
+            .simpleItem()
+            .register();
 
+    public static final BlockEntry<Block> tin_block = REGISTRATE.block("tin_block", Block::new)
+            .initialProperties(() -> Blocks.DEEPSLATE_GOLD_ORE)
+            .properties(p -> p.color(MaterialColor.QUARTZ))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.METAL))
+            .properties(p -> p.strength(3f,6f))
+            .lang("Block of Tin")
+            .simpleItem()
+            .register();
 
-    //BLOKYENTRY
-    public static final BlockEntry<CasingBlock> MITHRIL_CASING = REGISTRATE.block("mithril_casing", CasingBlock::new)
+    public static final BlockEntry<Block> raw_tin_block = REGISTRATE.block("raw_tin_block", Block::new)
+            .initialProperties(() -> Blocks.STONE)
+            .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .properties(p -> p.strength(1f,1.6f))
+            .lang("Block of Raw Tin")
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> leather_block = REGISTRATE.block("leather_block", Block::new)
+            .initialProperties(() -> Blocks.HAY_BLOCK)
+            .properties(p -> p.color(MaterialColor.COLOR_ORANGE))
+            .properties(p -> p.sound(SoundType.WOOL))
+            .properties(p -> p.strength(1f,1.6f))
+            .tag(Tags.Blocks.STORAGE_BLOCKS)
+            .transform(tagBlockAndItem("storage_blocks/leather"))
+            .tag(Tags.Items.STORAGE_BLOCKS)
+            .build()
+            .lang("Block of Leather")
+            .register();
+
+    public static final BlockEntry<CasingBlock> mithril_casing = REGISTRATE.block("mithril_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.MITHRIL_CASING))
             .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
-            .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
             .lang("Mithril Casing")
             .register();
 
-    public static final BlockEntry<CasingBlock> BRONZE_CASING = REGISTRATE.block("bronze_casing", CasingBlock::new)
+    public static final BlockEntry<CasingBlock> bronze_casing = REGISTRATE.block("bronze_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.BRONZE_CASING))
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .properties(p -> p.sound(SoundType.WOOD))
             .lang("Bronze Casing")
             .register();
 
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
-        RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn, tab);
-        return toReturn;
-    }
+    public static final BlockEntry<CasingBlock> zinc_casing = REGISTRATE.block("zinc_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.ZINC_CASING))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.sound(SoundType.WOOD))
+            .lang("Zinc Casing")
+            .register();
 
-    private static <T extends Block>RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block,
-                                                                           CreativeModeTab tab) {
-        return Pipebomb.ITEMS.register(name, () -> new BlockItem(block.get(),
-                new Item.Properties().tab(tab)));
-    }
+    public static final BlockEntry<CasingBlock> hydraulic_casing = REGISTRATE.block("hydraulic_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.HYDRAULIC_CASING))
+            .properties(p -> p.color(MaterialColor.COLOR_ORANGE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.COPPER))
+            .lang("Hydraulic Casing")
+            .register();
 
-    public static void register(IEventBus eventBus) {
-        BLOCKS.register(eventBus);
-    }
+    public static final BlockEntry<CasingBlock> industrial_casing = REGISTRATE.block("industrial_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.INDUSTRIAL_CASING))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .lang("Industrial Casing")
+            .register();
+
+    public static final BlockEntry<CasingBlock> overburden_casing = REGISTRATE.block("overburden_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.OVERBURDEN_CASING))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_LIGHT_BLUE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .lang("Overburden Casing")
+            .register();
+
+    //MECHANICAL BLOCKS
+
+    public static final BlockEntry<SmashingBlock> MECHANICAL_SMASHER = REGISTRATE.block("mechanical_smasher", SmashingBlock::new)
+                    .properties(p -> p.color(MaterialColor.METAL))
+                    .initialProperties(SharedProperties::stone)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .transform(pickaxeOnly())
+                    .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .transform(BlockStressDefaults.setImpact(8.0))
+                    .item()
+                    .transform(customItemModel())
+                    .lang("Mechanical Smasher")
+                    .register();
+
+    public static final BlockEntry<SmashingControllerBlock> MECHANICAL_SMASHER_CONTROLLER = REGISTRATE.block("mechanical_smasher_controller", SmashingControllerBlock::new)
+                    .initialProperties(SharedProperties.CRUSHING_WHEEL_CONTROLLER_MATERIAL)
+                    .properties(p -> p.color(MaterialColor.STONE))
+                    .properties(p -> p.noOcclusion()
+                            .noDrops()
+                            .air())
+                    .blockstate((c, p) -> p.getVariantBuilder(c.get())
+                            .forAllStatesExcept(BlockStateGen.mapToAir(p), SmashingControllerBlock.FACING))
+                    .register();
+
     public static void register() {}
 }

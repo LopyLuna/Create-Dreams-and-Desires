@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/steel"
+    },
+    {
+      "tag": "forge:plates/mithril"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_flavored:mithril_casing"
+    }
+  ]
+}
