@@ -1,6 +1,5 @@
 package uwu.lopyluna.create_flavored.block.MechanicalSmasher;
 
-import com.simibubi.create.AllShapes;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.item.ItemHelper;
@@ -101,7 +100,7 @@ public class SmashingControllerBlock extends DirectionalBlock implements IBE<Sma
 		if (isPlayer && entityIn.level.getDifficulty() == Difficulty.PEACEFUL)
 			return;
 
-		be.startCrushing(entityIn);
+		be.startSmashing(entityIn);
 	}
 
 	@Override

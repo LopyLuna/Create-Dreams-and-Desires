@@ -1,8 +1,8 @@
 package uwu.lopyluna.create_flavored;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.AllFluids;
 import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.simibubi.create.infrastructure.worldgen.AllOreFeatureConfigEntries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -14,6 +14,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import uwu.lopyluna.create_flavored.block.YIPPEE;
 import uwu.lopyluna.create_flavored.block.YIPPEEentitytypes;
+import uwu.lopyluna.create_flavored.fluid.cummies;
 import uwu.lopyluna.create_flavored.item.Pipebomb;
 import uwu.lopyluna.create_flavored.item.PipebombTab;
 import uwu.lopyluna.create_flavored.worldgen.YummyOreFeatures;
@@ -39,6 +40,7 @@ public class Flavoredcreate
         PipebombTab.init();
         YIPPEE.register();
         Pipebomb.register();
+        cummies.register();
         YIPPEEentitytypes.register();
         YummyOreFeatures.init();
 
@@ -55,6 +57,8 @@ public class Flavoredcreate
     public static CreateRegistrate registrate() {
         return REGISTRATE;
     }
+
+
 
     private void setup(final FMLCommonSetupEvent event)
     {

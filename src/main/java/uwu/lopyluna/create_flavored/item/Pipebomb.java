@@ -6,7 +6,8 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import uwu.lopyluna.create_flavored.item.ItemProperties.BlockZapperItem;
+import uwu.lopyluna.create_flavored.item.ItemProperties.ForestRavagerItem;
+
 import static com.simibubi.create.AllTags.AllItemTags.CREATE_INGOTS;
 import static com.simibubi.create.AllTags.forgeItemTag;
 import static uwu.lopyluna.create_flavored.Flavoredcreate.REGISTRATE;
@@ -33,17 +34,15 @@ public class Pipebomb {
             bronze_sheet = taggedIngredient("bronze_sheet", forgeItemTag("plates/bronze"), forgeItemTag("ingots/strong_bronze")),
             steel_sheet = taggedIngredient("steel_sheet", forgeItemTag("plates/steel")),
             industrial_iron_sheet = taggedIngredient("industrial_iron_sheet", forgeItemTag("plates/industrial_iron")),
-            tin_raw = ingredient("raw_tin");
+            tin_raw = ingredient("raw_tin"),
+            vanilla_orchid = ingredient("vanilla_orchid");
 
-    public static final ItemEntry<BlockZapperItem> BLOCKZAPPER =
-            REGISTRATE.item("handheld_blockzapper", BlockZapperItem::new)
+    public static final ItemEntry<ForestRavagerItem> forest_ravager =
+            REGISTRATE.item("forest_ravager", ForestRavagerItem::new)
                     .properties(p -> p.stacksTo(1)
                             .rarity(Rarity.UNCOMMON))
                     .model(AssetLookup.itemModelWithPartials())
                     .register();
-
-
-
 
 
     private static ItemEntry<Item> ingredient(String name) {

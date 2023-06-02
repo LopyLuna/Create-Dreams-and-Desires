@@ -38,6 +38,7 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
+import uwu.lopyluna.create_flavored.RecookingBOB;
 
 import java.util.*;
 
@@ -108,20 +109,17 @@ public class SmashingControllerBlockEntity extends SmartBlockEntity {
 		int offset = facing.getAxisDirection()
 			.getStep();
 		Vec3 outSpeed = new Vec3((facing.getAxis() == Axis.X ? 0.25D : 0.0D) * offset,
-			offset == 1 ? (facing.getAxis() == Axis.Y ? 0.5D : 0.0D) : 0.0D // Increased upwards speed so upwards
-																			// crushing wheels shoot out the item
-																			// properly.
-			, (facing.getAxis() == Axis.Z ? 0.25D : 0.0D) * offset); // No downwards speed, so downwards crushing wheels
-																		// drop the items as before.
+			offset == 1 ? (facing.getAxis() == Axis.Y ? 0.5D : 0.0D) : 0.0D
+			, (facing.getAxis() == Axis.Z ? 0.25D : 0.0D) * offset);
 		Vec3 outPos = centerPos.add((facing.getAxis() == Axis.X ? .55f * offset : 0f),
 			(facing.getAxis() == Axis.Y ? .55f * offset : 0f), (facing.getAxis() == Axis.Z ? .55f * offset : 0f));
 
 		if (!hasEntity()) {
 
-			float processingSpeed =
+			float smashingSpeed =
 				Mth.clamp((speed) / (!inventory.appliedRecipe ? Mth.log2(inventory.getStackInSlot(0)
 					.getCount()) : 1), .25f, 20);
-			inventory.remainingTime -= processingSpeed;
+			inventory.remainingTime -= smashingSpeed;
 			spawnParticles(inventory.getStackInSlot(0));
 
 			if (level.isClientSide)
@@ -310,10 +308,10 @@ public class SmashingControllerBlockEntity extends SmartBlockEntity {
 	}
 
 	public Optional<ProcessingRecipe<RecipeWrapper>> findRecipe() {
-		Optional<ProcessingRecipe<RecipeWrapper>> crushingRecipe = AllRecipeTypes.CRUSHING.find(wrapper, level);
-		if (!crushingRecipe.isPresent())
-			crushingRecipe = AllRecipeTypes.MILLING.find(wrapper, level);
-		return crushingRecipe;
+		Optional<ProcessingRecipe<RecipeWrapper>> smashingRecipe = RecookingBOB.SMASHING.find(wrapper, level);
+		if (!smashingRecipe.isPresent())
+			smashingRecipe = AllRecipeTypes.CRUSHING.find(wrapper, level);
+		return smashingRecipe;
 	}
 
 	@Override
@@ -336,7 +334,7 @@ public class SmashingControllerBlockEntity extends SmartBlockEntity {
 		inventory.deserializeNBT(compound.getCompound("Inventory"));
 	}
 
-	public void startCrushing(Entity entity) {
+	public void startSmashing(Entity entity) {
 		processingEntity = entity;
 		entityUUID = entity.getUUID();
 	}
@@ -344,7 +342,7 @@ public class SmashingControllerBlockEntity extends SmartBlockEntity {
 	private void itemInserted(ItemStack stack) {
 		Optional<ProcessingRecipe<RecipeWrapper>> recipe = findRecipe();
 		inventory.remainingTime = recipe.isPresent() ? recipe.get()
-			.getProcessingDuration() : 100;
+				.getProcessingDuration() : 100;
 		inventory.appliedRecipe = false;
 	}
 
