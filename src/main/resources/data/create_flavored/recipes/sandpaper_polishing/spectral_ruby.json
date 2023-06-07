@@ -1,0 +1,13 @@
+{
+  "type": "create:sandpaper_polishing",
+  "ingredients": [
+    {
+      "item": "create_flavored:spectral_ruby"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_flavored:polished_spectral_ruby"
+    }
+  ]
+}

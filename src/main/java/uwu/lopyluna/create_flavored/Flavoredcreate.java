@@ -1,7 +1,8 @@
 package uwu.lopyluna.create_flavored;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mojang.logging.LogUtils;
-import com.simibubi.create.AllFluids;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
@@ -13,8 +14,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import uwu.lopyluna.create_flavored.block.YIPPEE;
-import uwu.lopyluna.create_flavored.block.YIPPEEentitytypes;
-import uwu.lopyluna.create_flavored.fluid.cummies;
+import uwu.lopyluna.create_flavored.fluid.SussyWhiteStuff;
 import uwu.lopyluna.create_flavored.item.Pipebomb;
 import uwu.lopyluna.create_flavored.item.PipebombTab;
 import uwu.lopyluna.create_flavored.worldgen.YummyOreFeatures;
@@ -24,8 +24,8 @@ import uwu.lopyluna.create_flavored.worldgen.YummyOreFeatures;
 public class Flavoredcreate
 {
     public static final String MOD_ID = "create_flavored";
+    public static final Logger LOGGER = LogUtils.getLogger();
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(Flavoredcreate.MOD_ID);
 
@@ -40,8 +40,7 @@ public class Flavoredcreate
         PipebombTab.init();
         YIPPEE.register();
         Pipebomb.register();
-        cummies.register();
-        YIPPEEentitytypes.register();
+        SussyWhiteStuff.register();
         YummyOreFeatures.init();
 
 
@@ -58,7 +57,9 @@ public class Flavoredcreate
         return REGISTRATE;
     }
 
-
+    public static final Gson GSON = new GsonBuilder().setPrettyPrinting()
+            .disableHtmlEscaping()
+            .create();
 
     private void setup(final FMLCommonSetupEvent event)
     {

@@ -1,24 +1,26 @@
 package uwu.lopyluna.create_flavored.block;
+
+import com.simibubi.create.AllTags;
+import com.simibubi.create.Create;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
-import com.simibubi.create.foundation.data.AssetLookup;
+import com.simibubi.create.content.kinetics.drill.DrillBlock;
+import com.simibubi.create.content.kinetics.drill.DrillMovementBehaviour;
 import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.BuilderTransformers;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.Tags;
-import uwu.lopyluna.create_flavored.block.MechanicalSmasher.SmashingBlock;
-import uwu.lopyluna.create_flavored.block.MechanicalSmasher.SmashingControllerBlock;
+import uwu.lopyluna.create_flavored.block.YIPPEEProperties.LargeDrillBlock;
 import uwu.lopyluna.create_flavored.item.PipebombTab;
+
+import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
-import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
-import static com.simibubi.create.foundation.data.TagGen.tagBlockAndItem;
+import static com.simibubi.create.foundation.data.TagGen.*;
 import static uwu.lopyluna.create_flavored.Flavoredcreate.REGISTRATE;
 
 public class YIPPEE {
@@ -73,7 +75,7 @@ public class YIPPEE {
             .register();
 
     public static final BlockEntry<Block> tin_block = REGISTRATE.block("tin_block", Block::new)
-            .initialProperties(() -> Blocks.DEEPSLATE_GOLD_ORE)
+            .initialProperties(() -> Blocks.STONE)
             .properties(p -> p.color(MaterialColor.QUARTZ))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.METAL))
             .properties(p -> p.strength(3f,6f))
@@ -102,6 +104,19 @@ public class YIPPEE {
             .lang("Block of Leather")
             .register();
 
+    public static final BlockEntry<Block> lapis_alloy_block = REGISTRATE.block("lapis_alloy_block", Block::new)
+            .initialProperties(() -> Blocks.ANDESITE)
+            .properties(p -> p.color(MaterialColor.STONE))
+            .properties(p -> p.requiresCorrectToolForDrops())
+            .transform(pickaxeOnly())
+            .tag(Tags.Blocks.STORAGE_BLOCKS)
+            .transform(tagBlockAndItem("storage_blocks/lapis_alloy"))
+            .tag(Tags.Items.STORAGE_BLOCKS)
+            .build()
+            .lang("Block of Lapis Alloy")
+            .simpleItem()
+            .register();
+
     public static final BlockEntry<CasingBlock> mithril_casing = REGISTRATE.block("mithril_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.MITHRIL_CASING))
             .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
@@ -121,6 +136,22 @@ public class YIPPEE {
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .properties(p -> p.sound(SoundType.WOOD))
             .lang("Zinc Casing")
+            .register();
+
+    public static final BlockEntry<Block> mossy_andesite_alloy_block = REGISTRATE.block("mossy_andesite_alloy_block", Block::new)
+            .initialProperties(() -> Blocks.ANDESITE)
+            .properties(p -> p.color(MaterialColor.STONE))
+            .properties(p -> p.requiresCorrectToolForDrops())
+            .transform(pickaxeOnly())
+            .lang("Mossy Block of Andesite Alloy")
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<CasingBlock> mossy_andesite_casing = REGISTRATE.block("mossy_andesite_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.MOSSY_ANDESITE_CASING))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.sound(SoundType.WOOD))
+            .lang("Mossy Andesite Casing")
             .register();
 
     public static final BlockEntry<CasingBlock> hydraulic_casing = REGISTRATE.block("hydraulic_casing", CasingBlock::new)
@@ -146,28 +177,18 @@ public class YIPPEE {
 
     //MECHANICAL BLOCKS
 
-    public static final BlockEntry<SmashingBlock> MECHANICAL_SMASHER = REGISTRATE.block("mechanical_smasher", SmashingBlock::new)
-                    .properties(p -> p.color(MaterialColor.METAL))
-                    .initialProperties(SharedProperties::stone)
-                    .properties(BlockBehaviour.Properties::noOcclusion)
-                    .transform(pickaxeOnly())
-                    .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, s -> AssetLookup.partialBaseModel(c, p)))
-                    .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(BlockStressDefaults.setImpact(8.0))
-                    .item()
-                    .transform(customItemModel())
-                    .lang("Mechanical Smasher")
-                    .register();
-
-    public static final BlockEntry<SmashingControllerBlock> MECHANICAL_SMASHER_CONTROLLER = REGISTRATE.block("mechanical_smasher_controller", SmashingControllerBlock::new)
-                    .initialProperties(SharedProperties.CRUSHING_WHEEL_CONTROLLER_MATERIAL)
-                    .properties(p -> p.color(MaterialColor.STONE))
-                    .properties(p -> p.noOcclusion()
-                            .noDrops()
-                            .air())
-                    .blockstate((c, p) -> p.getVariantBuilder(c.get())
-                            .forAllStatesExcept(BlockStateGen.mapToAir(p), SmashingControllerBlock.FACING))
-                    .register();
+    public static final BlockEntry<LargeDrillBlock> LARGE_MECHANICAL_DRILL = REGISTRATE.block("large_mechanical_drill", LargeDrillBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .transform(axeOrPickaxe())
+            .blockstate(BlockStateGen.directionalBlockProvider(true))
+            .transform(BlockStressDefaults.setImpact(4.0))
+            .onRegister(movementBehaviour(new DrillMovementBehaviour()))
+            .item()
+            .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+            .transform(customItemModel())
+            .simpleItem()
+            .register();
 
     public static void register() {}
 }

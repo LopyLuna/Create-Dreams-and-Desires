@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CCC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:ingots/lapis_alloy"
+    }
+  },
+  "result": {
+    "item": "create_flavored:lapis_alloy_block"
+  }
+}

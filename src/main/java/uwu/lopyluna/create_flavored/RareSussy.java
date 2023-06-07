@@ -11,7 +11,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import uwu.lopyluna.create_flavored.fluid.cummies;
+import uwu.lopyluna.create_flavored.fluid.SussyWhiteStuff;
 
 @Mod.EventBusSubscriber
 public class RareSussy {
@@ -31,7 +31,7 @@ public class RareSussy {
                     fluidState.isSource() ? fluidState : world.getFluidState(pos.relative(direction));
             if (!metFluidState.is(FluidTags.WATER))
                 continue;
-            BlockState lavaInteraction = cummies.getLavaInteraction(metFluidState);
+            BlockState lavaInteraction = SussyWhiteStuff.getLavaInteraction(metFluidState);
             if (lavaInteraction == null)
                 continue;
             event.setNewState(lavaInteraction);

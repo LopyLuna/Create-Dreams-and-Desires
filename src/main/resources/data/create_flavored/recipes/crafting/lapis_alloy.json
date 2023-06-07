@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BA",
+    "AB"
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:gems/lapis"
+    },
+    "B": {
+      "tag": "forge:nuggets/tin"
+    }
+  },
+  "result": {
+    "item": "create_flavored:lapis_alloy"
+  }
+}

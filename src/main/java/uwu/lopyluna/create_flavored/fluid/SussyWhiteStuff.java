@@ -5,23 +5,30 @@ import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
 import com.simibubi.create.content.fluids.potion.PotionFluid;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
+import static com.simibubi.create.AllTags.optionalTag;
 import static uwu.lopyluna.create_flavored.Flavoredcreate.REGISTRATE;
 
-public class cummies {
+public class SussyWhiteStuff {
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> CONDENCE_MILK  =
-            REGISTRATE.standardFluid("condence_milk", cummies.NoColorFluidAttributes::new)
+            REGISTRATE.standardFluid("condence_milk", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Condence Milk")
                     .tag(AllTags.forgeFluidTag("condence_milk"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
                     .properties(p -> p.levelDecreasePerBlock(2)
@@ -31,9 +38,10 @@ public class cummies {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> VANILLA =
-            REGISTRATE.standardFluid("vanilla", cummies.NoColorFluidAttributes::new)
+            REGISTRATE.standardFluid("vanilla", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Vanilla")
                     .tag(AllTags.forgeFluidTag("vanilla"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
                     .properties(p -> p.levelDecreasePerBlock(2)
@@ -43,9 +51,10 @@ public class cummies {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> VANILLA_MILKSHAKE =
-            REGISTRATE.standardFluid("vanilla_milkshake", cummies.NoColorFluidAttributes::new)
+            REGISTRATE.standardFluid("vanilla_milkshake", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Vanilla Milkshake")
                     .tag(AllTags.forgeFluidTag("vanilla_milkshake"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
                     .properties(p -> p.levelDecreasePerBlock(2)
@@ -55,9 +64,10 @@ public class cummies {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> STRAWBERRY =
-            REGISTRATE.standardFluid("strawberry", cummies.NoColorFluidAttributes::new)
+            REGISTRATE.standardFluid("strawberry", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Strawberry")
                     .tag(AllTags.forgeFluidTag("strawberry"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
                     .properties(p -> p.levelDecreasePerBlock(2)
@@ -67,9 +77,10 @@ public class cummies {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> STRAWBERRY_MILKSHAKE =
-            REGISTRATE.standardFluid("strawberry_milkshake", cummies.NoColorFluidAttributes::new)
+            REGISTRATE.standardFluid("strawberry_milkshake", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Strawberry Milkshake")
                     .tag(AllTags.forgeFluidTag("strawberry_milkshake"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
                     .properties(p -> p.levelDecreasePerBlock(2)
@@ -79,9 +90,10 @@ public class cummies {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> CARAMEL =
-            REGISTRATE.standardFluid("caramel", cummies.NoColorFluidAttributes::new)
+            REGISTRATE.standardFluid("caramel", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Caramel")
                     .tag(AllTags.forgeFluidTag("caramel"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
                     .properties(p -> p.levelDecreasePerBlock(2)
@@ -91,9 +103,10 @@ public class cummies {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> CARAMEL_MILKSHAKE =
-            REGISTRATE.standardFluid("caramel_milkshake", cummies.NoColorFluidAttributes::new)
+            REGISTRATE.standardFluid("caramel_milkshake", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Caramel Milkshake")
                     .tag(AllTags.forgeFluidTag("caramel_milkshake"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
                     .properties(p -> p.levelDecreasePerBlock(2)
@@ -103,9 +116,10 @@ public class cummies {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> CREAM =
-            REGISTRATE.standardFluid("cream", cummies.NoColorFluidAttributes::new)
+            REGISTRATE.standardFluid("cream", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Cream")
                     .tag(AllTags.forgeFluidTag("cream"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
                     .properties(p -> p.levelDecreasePerBlock(2)
@@ -115,9 +129,10 @@ public class cummies {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> HOT_CHOCOLATE =
-            REGISTRATE.standardFluid("hot_chocolate", cummies.NoColorFluidAttributes::new)
+            REGISTRATE.standardFluid("hot_chocolate", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Hot Chocolate")
                     .tag(AllTags.forgeFluidTag("hot_chocolate"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
                     .properties(p -> p.levelDecreasePerBlock(2)
@@ -127,9 +142,10 @@ public class cummies {
                     .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> CHOCOLATE_MILKSHAKE =
-            REGISTRATE.standardFluid("chocolate_milkshake", cummies.NoColorFluidAttributes::new)
+            REGISTRATE.standardFluid("chocolate_milkshake", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Hot Chocolate Milkshake")
                     .tag(AllTags.forgeFluidTag("chocolate_milkshake"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
                     .properties(p -> p.levelDecreasePerBlock(2)
@@ -137,6 +153,8 @@ public class cummies {
                             .slopeFindDistance(3)
                             .explosionResistance(100f))
                     .register();
+
+
 
     public static final FluidEntry<PotionFluid> SODA =
             REGISTRATE.virtualFluid("soda", PotionFluid.PotionFluidAttributes::new, PotionFluid::new)
@@ -153,49 +171,62 @@ public class cummies {
     @Nullable
     public static BlockState getLavaInteraction(FluidState fluidState) {
         Fluid fluid = fluidState.getType();
-        if (fluid.isSame(VANILLA.get()))
+        if (fluid.isSame(SussyWhiteStuff.VANILLA.get()))
             return AllPaletteStoneTypes.OCHRUM.getBaseBlock()
                     .get()
                     .defaultBlockState();
-        if (fluid.isSame(VANILLA_MILKSHAKE.get()))
+        if (fluid.isSame(SussyWhiteStuff.VANILLA_MILKSHAKE.get()))
             return AllPaletteStoneTypes.OCHRUM.getBaseBlock()
                     .get()
                     .defaultBlockState();
-        if (fluid.isSame(STRAWBERRY.get()))
+        if (fluid.isSame(SussyWhiteStuff.STRAWBERRY.get()))
             return AllPaletteStoneTypes.CRIMSITE.getBaseBlock()
                     .get()
                     .defaultBlockState();
-        if (fluid.isSame(STRAWBERRY_MILKSHAKE.get()))
+        if (fluid.isSame(SussyWhiteStuff.STRAWBERRY_MILKSHAKE.get()))
             return AllPaletteStoneTypes.CRIMSITE.getBaseBlock()
                     .get()
                     .defaultBlockState();
-        if (fluid.isSame(CARAMEL.get()))
+        if (fluid.isSame(SussyWhiteStuff.CARAMEL.get()))
             return AllPaletteStoneTypes.VERIDIUM.getBaseBlock()
                     .get()
                     .defaultBlockState();
-        if (fluid.isSame(CARAMEL_MILKSHAKE.get()))
+        if (fluid.isSame(SussyWhiteStuff.CARAMEL_MILKSHAKE.get()))
             return AllPaletteStoneTypes.VERIDIUM.getBaseBlock()
                     .get()
                     .defaultBlockState();
-        if (fluid.isSame(CREAM.get()))
+        if (fluid.isSame(SussyWhiteStuff.CREAM.get()))
             return AllPaletteStoneTypes.ASURINE.getBaseBlock()
                     .get()
                     .defaultBlockState();
-        if (fluid.isSame(HOT_CHOCOLATE.get()))
+        if (fluid.isSame(SussyWhiteStuff.HOT_CHOCOLATE.get()))
             return AllPaletteStoneTypes.SCORCHIA.getBaseBlock()
                     .get()
                     .defaultBlockState();
-        if (fluid.isSame(CHOCOLATE_MILKSHAKE.get()))
+        if (fluid.isSame(SussyWhiteStuff.CHOCOLATE_MILKSHAKE.get()))
             return AllPaletteStoneTypes.SCORIA.getBaseBlock()
                     .get()
                     .defaultBlockState();
-        if (fluid.isSame(CONDENCE_MILK.get()))
+        if (fluid.isSame(SussyWhiteStuff.CONDENCE_MILK.get()))
             return AllPaletteStoneTypes.CALCITE.getBaseBlock()
                     .get()
                     .defaultBlockState();
         return null;
+
+    }
+    private static TagKey<Fluid> MinecraftFluidTag(String water) {
+        return MinecraftTag(ForgeRegistries.FLUIDS, water);
+    }
+    public static <T extends IForgeRegistryEntry<T>> TagKey<T> MinecraftTag(IForgeRegistry<T> registry, String path) {
+        return optionalTag(registry, new ResourceLocation("minecraft", path));
     }
     private static class NoColorFluidAttributes extends FluidAttributes {
+
+        public BlockState getBlock(BlockAndTintGetter reader, BlockPos pos, FluidState state)
+        {
+            return state.createLegacyBlock();
+        }
+
 
         protected NoColorFluidAttributes(Builder builder, Fluid fluid) {
             super(builder, fluid);

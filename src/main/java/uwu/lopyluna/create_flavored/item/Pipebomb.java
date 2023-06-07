@@ -35,7 +35,15 @@ public class Pipebomb {
             steel_sheet = taggedIngredient("steel_sheet", forgeItemTag("plates/steel")),
             industrial_iron_sheet = taggedIngredient("industrial_iron_sheet", forgeItemTag("plates/industrial_iron")),
             tin_raw = ingredient("raw_tin"),
+            lapis_alloy = taggedIngredient("lapis_alloy", forgeItemTag("ingots/lapis_alloy")),
+            lapis_sheet = taggedIngredient("lapis_sheet", forgeItemTag("plates/lapis_alloy")),
+            integrated_circuit = ingredient("integrated_circuit"),
+            integrated_mechanism = ingredient("integrated_mechanism"),
             vanilla_orchid = ingredient("vanilla_orchid");
+
+    public static final ItemEntry<SequencedAssemblyItem>
+            incomplete_integrated_circuit = sequencedIngredient("incomplete_integrated_circuit"),
+            incomplete_integrated_mechanism = sequencedIngredient("incomplete_integrated_mechanism");
 
     public static final ItemEntry<ForestRavagerItem> forest_ravager =
             REGISTRATE.item("forest_ravager", ForestRavagerItem::new)

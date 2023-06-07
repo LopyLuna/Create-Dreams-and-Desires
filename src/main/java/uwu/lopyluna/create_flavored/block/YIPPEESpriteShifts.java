@@ -16,6 +16,7 @@ public class YIPPEESpriteShifts {
             MITHRIL_CASING = omni("mithril_casing"),
             BRONZE_CASING = omni("bronze_casing"),
             ZINC_CASING = omni("zinc_casing"),
+            MOSSY_ANDESITE_CASING = omni("mossy_andesite_casing"),
             HYDRAULIC_CASING = omni("hydraulic_casing"),
             INDUSTRIAL_CASING = omni("industrial_casing"),
             OVERBURDEN_CASING = omni("overburden_casing");

@@ -5,6 +5,8 @@
     "create_flavored:mithril_block",
     "create_flavored:raw_tin_block",
     "create_flavored:steel_block",
-    "create_flavored:tin_block"
+    "create_flavored:tin_block",
+    "create_flavored:lapis_alloy_block",
+    "create_flavored:leather_block"
   ]
 }
