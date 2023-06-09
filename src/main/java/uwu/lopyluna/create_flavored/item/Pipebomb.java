@@ -1,11 +1,15 @@
 package uwu.lopyluna.create_flavored.item;
 
+import com.simibubi.create.Create;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraftforge.common.ForgeSpawnEggItem;
+import uwu.lopyluna.create_flavored.entity.bobert;
 import uwu.lopyluna.create_flavored.item.ItemProperties.ForestRavagerItem;
 
 import static com.simibubi.create.AllTags.AllItemTags.CREATE_INGOTS;
@@ -51,7 +55,6 @@ public class Pipebomb {
                             .rarity(Rarity.UNCOMMON))
                     .model(AssetLookup.itemModelWithPartials())
                     .register();
-
 
     private static ItemEntry<Item> ingredient(String name) {
         return REGISTRATE.item(name, Item::new)

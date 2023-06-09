@@ -177,7 +177,7 @@ public class YIPPEE {
 
     //MECHANICAL BLOCKS
 
-    public static final BlockEntry<LargeDrillBlock> LARGE_MECHANICAL_DRILL = REGISTRATE.block("large_mechanical_drill", LargeDrillBlock::new)
+    public static final BlockEntry<DrillBlock> LARGE_MECHANICAL_DRILL = REGISTRATE.block("large_mechanical_drill", DrillBlock::new)
             .initialProperties(SharedProperties::stone)
             .properties(p -> p.color(MaterialColor.PODZOL))
             .transform(axeOrPickaxe())
