@@ -7,15 +7,16 @@ package uwu.lopyluna.create_flavored.entity.Bobert;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import uwu.lopyluna.create_flavored.entity.LayerDefs;
 
+@OnlyIn(Dist.CLIENT)
 public class SmartBuilderModel<T extends SmartBuilderEntity> extends EntityModel<T> {
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "smart_builder"), "main");
 	private final ModelPart root;
 	private final ModelPart head;
 	private final ModelPart rightArm;
@@ -32,24 +33,17 @@ public class SmartBuilderModel<T extends SmartBuilderEntity> extends EntityModel
 		this.leftLeg = root.getChild("left_leg");
 	}
 
-	public static LayerDefinition createBodyLayer() {
+	public static LayerDefs createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
-
-		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(64, 0).addBox(-7.5F, 1.0F, -5.0F, 15.0F, 16.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -9.0F, 0.0F));
-
-		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 105).addBox(-8.5F, -16.0F, -8.5F, 17.0F, 6.0F, 17.0F, new CubeDeformation(0.0F))
+		partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(64, 0).addBox(-7.5F, 1.0F, -5.0F, 15.0F, 16.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -9.0F, 0.0F));
+		partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 105).addBox(-8.5F, -16.0F, -8.5F, 17.0F, 6.0F, 17.0F, new CubeDeformation(0.0F))
 				.texOffs(0, 0).addBox(-7.9F, -15.9F, -7.9F, 15.8F, 15.8F, 15.8F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F));
-
-		PartDefinition right_arm = partdefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(0, 58).addBox(-7.5F, -3.0F, -5.0F, 8.0F, 16.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(-8.0F, -5.0F, 0.0F));
-
-		PartDefinition left_arm = partdefinition.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(0, 32).addBox(0.0F, -3.0F, -5.0F, 8.0F, 16.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(7.5F, -5.0F, 0.0F));
-
-		PartDefinition right_leg = partdefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(36, 58).addBox(-4.0F, 0.0F, -5.0F, 8.0F, 16.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.0F, 8.0F, 0.0F));
-
-		PartDefinition left_leg = partdefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(36, 32).addBox(-4.0F, 0.0F, -5.0F, 8.0F, 16.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(4.0F, 8.0F, 0.0F));
-
-		return LayerDefinition.create(meshdefinition, 128, 128);
+		partdefinition.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(0, 58).addBox(-7.5F, -3.0F, -5.0F, 8.0F, 16.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(-8.0F, -5.0F, 0.0F));
+		partdefinition.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(0, 32).addBox(0.0F, -3.0F, -5.0F, 8.0F, 16.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(7.5F, -5.0F, 0.0F));
+		partdefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(36, 58).addBox(-4.0F, 0.0F, -5.0F, 8.0F, 16.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.0F, 8.0F, 0.0F));
+		partdefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(36, 32).addBox(-4.0F, 0.0F, -5.0F, 8.0F, 16.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(4.0F, 8.0F, 0.0F));
+		return LayerDefs.create(meshdefinition, 128, 128);
 	}
 
 	public ModelPart root() {
@@ -75,4 +69,5 @@ public class SmartBuilderModel<T extends SmartBuilderEntity> extends EntityModel
 		rightLeg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 		leftLeg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
+
 }

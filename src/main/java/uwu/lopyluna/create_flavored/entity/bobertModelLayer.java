@@ -5,6 +5,7 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import uwu.lopyluna.create_flavored.Flavoredcreate;
 
 import java.util.Set;
 import java.util.stream.Stream;
@@ -13,7 +14,7 @@ import java.util.stream.Stream;
 public class bobertModelLayer {
 
     private static final Set<ModelLayerLocation> ALL_MODELS = Sets.newHashSet();
-    public static final ModelLayerLocation SMART_BUILDER = register("smart_builder");
+    public static final ModelLayerLocation SMART_BUILDER = register(Flavoredcreate.MOD_ID,"smart_builder");
 
     private static ModelLayerLocation register(String pPath) {
         return register(pPath, "main");
@@ -27,7 +28,6 @@ public class bobertModelLayer {
             return modellayerlocation;
         }
     }
-
     private static ModelLayerLocation createLocation(String pPath, String pModel) { return new ModelLayerLocation(new ResourceLocation("create_flavored", pPath), pModel);
     }
     public static Stream<ModelLayerLocation> getKnownLocations() {

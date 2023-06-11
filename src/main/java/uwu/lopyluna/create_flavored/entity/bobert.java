@@ -1,6 +1,9 @@
 package uwu.lopyluna.create_flavored.entity;
 
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -27,7 +30,6 @@ public class bobert {
                             .setUpdateInterval(3)
                             .fireImmune()
                             .build(new ResourceLocation(Flavoredcreate.MOD_ID, "smart_builder").toString()));
-
 
 
     public static void register(IEventBus eventBus) {

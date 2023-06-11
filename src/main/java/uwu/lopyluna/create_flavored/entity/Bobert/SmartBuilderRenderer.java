@@ -2,16 +2,21 @@ package uwu.lopyluna.create_flavored.entity.Bobert;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
+import uwu.lopyluna.create_flavored.Flavoredcreate;
 import uwu.lopyluna.create_flavored.entity.bobertModelLayer;
 
 @OnlyIn(Dist.CLIENT)
 public class SmartBuilderRenderer extends MobRenderer<SmartBuilderEntity, SmartBuilderModel<SmartBuilderEntity>> {
-    private static final ResourceLocation GOLEM_LOCATION = new ResourceLocation("textures/entity/bobert/bobert.png");
+
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Flavoredcreate.MOD_ID, "smart_builder"), "main");
+    private static final ResourceLocation GOLEM_LOCATION = new ResourceLocation(Flavoredcreate.MOD_ID,"textures/entity/bobert/bobert.png");
 
     public SmartBuilderRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new SmartBuilderModel<>(renderManager.bakeLayer(bobertModelLayer.SMART_BUILDER)), 0.2F);
@@ -21,6 +26,7 @@ public class SmartBuilderRenderer extends MobRenderer<SmartBuilderEntity, SmartB
     /**
      * Returns the location of an entity's texture.
      */
+    @NotNull
     public ResourceLocation getTextureLocation(SmartBuilderEntity pEntity) {
         return GOLEM_LOCATION;
     }
