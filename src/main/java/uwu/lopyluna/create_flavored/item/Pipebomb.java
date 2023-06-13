@@ -5,11 +5,8 @@ import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraftforge.common.ForgeSpawnEggItem;
-import uwu.lopyluna.create_flavored.entity.bobert;
 import uwu.lopyluna.create_flavored.item.ItemProperties.ForestRavagerItem;
 
 import static com.simibubi.create.AllTags.AllItemTags.CREATE_INGOTS;
@@ -43,7 +40,9 @@ public class Pipebomb {
             lapis_sheet = taggedIngredient("lapis_sheet", forgeItemTag("plates/lapis_alloy")),
             integrated_circuit = ingredient("integrated_circuit"),
             integrated_mechanism = ingredient("integrated_mechanism"),
-            vanilla_orchid = ingredient("vanilla_orchid");
+            vanilla_orchid = ingredient("vanilla_orchid"),
+            spectral_ruby = ingredient("spectral_ruby"),
+            polished_spectral_ruby = ingredient("polished_spectral_ruby");
 
     public static final ItemEntry<SequencedAssemblyItem>
             incomplete_integrated_circuit = sequencedIngredient("incomplete_integrated_circuit"),

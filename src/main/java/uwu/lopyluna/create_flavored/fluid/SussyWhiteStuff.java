@@ -16,6 +16,7 @@ import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import uwu.lopyluna.create_flavored.block.YIPPEEPaletteStoneTypes;
 
 import javax.annotation.Nullable;
 
@@ -188,11 +189,11 @@ public class SussyWhiteStuff {
                     .get()
                     .defaultBlockState();
         if (fluid.isSame(SussyWhiteStuff.CARAMEL.get()))
-            return AllPaletteStoneTypes.VERIDIUM.getBaseBlock()
+            return YIPPEEPaletteStoneTypes.potassic.getBaseBlock()
                     .get()
                     .defaultBlockState();
         if (fluid.isSame(SussyWhiteStuff.CARAMEL_MILKSHAKE.get()))
-            return AllPaletteStoneTypes.VERIDIUM.getBaseBlock()
+            return YIPPEEPaletteStoneTypes.potassic.getBaseBlock()
                     .get()
                     .defaultBlockState();
         if (fluid.isSame(SussyWhiteStuff.CREAM.get()))
