@@ -1,7 +1,6 @@
 package uwu.lopyluna.create_flavored.block;
 
 import com.simibubi.create.AllTags;
-import com.simibubi.create.Create;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.kinetics.drill.DrillBlock;
@@ -15,7 +14,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.Tags;
-import uwu.lopyluna.create_flavored.block.YIPPEEProperties.LargeDrillBlock;
 import uwu.lopyluna.create_flavored.item.PipebombTab;
 
 import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;

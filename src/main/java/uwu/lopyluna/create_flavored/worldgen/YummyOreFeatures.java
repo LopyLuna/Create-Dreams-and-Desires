@@ -1,6 +1,5 @@
 package uwu.lopyluna.create_flavored.worldgen;
 
-import com.simibubi.create.Create;
 import com.simibubi.create.foundation.data.DynamicDataProvider;
 import com.simibubi.create.foundation.utility.Couple;
 import com.simibubi.create.infrastructure.worldgen.OreFeatureConfigEntry;
@@ -14,6 +13,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import uwu.lopyluna.create_flavored.Flavoredcreate;
 import uwu.lopyluna.create_flavored.block.YIPPEE;
 
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class YummyOreFeatures {
 
     private static OreFeatureConfigEntry create(String name, int clusterSize, float frequency,
                                                 int minHeight, int maxHeight) {
-        ResourceLocation id = Create.asResource(name);
+        ResourceLocation id = Flavoredcreate.asResource(name);
         OreFeatureConfigEntry configDrivenFeatureEntry = new OreFeatureConfigEntry(id, clusterSize, frequency, minHeight, maxHeight);
         return configDrivenFeatureEntry;
     }

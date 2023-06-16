@@ -2,6 +2,7 @@ package uwu.lopyluna.create_flavored.item.ItemProperties;
 
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_flavored.item.Pipebomb;
 
 public class BobTiers {
@@ -32,6 +33,7 @@ public class BobTiers {
             return 25;
         }
 
+        @NotNull
         @Override
         public Ingredient getRepairIngredient() {
             return Ingredient.of(Pipebomb.mithril_ingot.get());
