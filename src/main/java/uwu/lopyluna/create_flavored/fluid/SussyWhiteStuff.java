@@ -2,7 +2,6 @@ package uwu.lopyluna.create_flavored.fluid;
 
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
-import com.simibubi.create.content.fluids.potion.PotionFluid;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -24,10 +23,10 @@ import static uwu.lopyluna.create_flavored.Flavoredcreate.REGISTRATE;
 
 public class SussyWhiteStuff {
 
-    public static final FluidEntry<ForgeFlowingFluid.Flowing> CONDENCE_MILK  =
-            REGISTRATE.standardFluid("condence_milk", SussyWhiteStuff.NoColorFluidAttributes::new)
-                    .lang("Condence Milk")
-                    .tag(AllTags.forgeFluidTag("condence_milk"))
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> CONDENSE_MILK =
+            REGISTRATE.standardFluid("condense_milk", SussyWhiteStuff.NoColorFluidAttributes::new)
+                    .lang("Condense Milk")
+                    .tag(AllTags.forgeFluidTag("condense_milk"))
                     .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
@@ -156,16 +155,6 @@ public class SussyWhiteStuff {
 
 
 
-    public static final FluidEntry<PotionFluid> SODA =
-            REGISTRATE.virtualFluid("soda", PotionFluid.PotionFluidAttributes::new, PotionFluid::new)
-                    .lang("Soda")
-                    .register();
-
-    public static final FluidEntry<PotionFluid> CREAM_SODA =
-            REGISTRATE.virtualFluid("cream_soda", PotionFluid.PotionFluidAttributes::new, PotionFluid::new)
-                    .lang("Cream Soda")
-                    .register();
-
     public static void register() {}
 
     @Nullable
@@ -207,7 +196,7 @@ public class SussyWhiteStuff {
             return AllPaletteStoneTypes.SCORIA.getBaseBlock()
                     .get()
                     .defaultBlockState();
-        if (fluid.isSame(SussyWhiteStuff.CONDENCE_MILK.get()))
+        if (fluid.isSame(SussyWhiteStuff.CONDENSE_MILK.get()))
             return AllPaletteStoneTypes.CALCITE.getBaseBlock()
                     .get()
                     .defaultBlockState();

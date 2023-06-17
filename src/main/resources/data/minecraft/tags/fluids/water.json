@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:flowing_condence_milk",
-    "create_flavored:condence_milk",
+    "create_flavored:flowing_condense_milk",
+    "create_flavored:condense_milk",
     "create_flavored:flowing_vanilla",
     "create_flavored:vanilla",
     "create_flavored:flowing_vanilla_milkshake",
