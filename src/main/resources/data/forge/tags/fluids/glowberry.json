@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "create_flavored:flowing_glowberry",
+    "create_flavored:glowberry"
+  ]
+}

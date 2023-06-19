@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "create_flavored:smoked_logs"
+    }
+  ],
+  "result": {
+    "item": "create_flavored:smoked_planks",
+    "count": 4
+  }
+}

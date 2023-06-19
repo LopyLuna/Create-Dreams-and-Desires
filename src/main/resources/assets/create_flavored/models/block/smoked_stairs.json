@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "create_flavored:block/smoked_planks",
+    "side": "create_flavored:block/smoked_planks",
+    "top": "create_flavored:block/smoked_planks"
+  }
+}

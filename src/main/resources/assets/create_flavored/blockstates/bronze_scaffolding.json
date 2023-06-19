@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=false": {
+      "model": "create_flavored:block/bronze_scaffold"
+    },
+    "bottom=true": {
+      "model": "create_flavored:block/bronze_scaffold_horizontal"
+    }
+  }
+}

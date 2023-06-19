@@ -6,7 +6,10 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import uwu.lopyluna.create_flavored.item.ItemProperties.ChromaticCompound;
 import uwu.lopyluna.create_flavored.item.ItemProperties.ForestRavagerItem;
+import uwu.lopyluna.create_flavored.item.ItemProperties.RefinedRadiance;
+import uwu.lopyluna.create_flavored.item.ItemProperties.ShadowSteel;
 
 import static com.simibubi.create.AllTags.AllItemTags.CREATE_INGOTS;
 import static com.simibubi.create.AllTags.forgeItemTag;
@@ -47,12 +50,35 @@ public class Pipebomb {
             incomplete_integrated_circuit = sequencedIngredient("incomplete_integrated_circuit"),
             incomplete_integrated_mechanism = sequencedIngredient("incomplete_integrated_mechanism");
 
+    public static final ItemEntry<ChromaticCompound> CHROMATIC_COMPOUND =
+            REGISTRATE.item("chromatic_compound", ChromaticCompound::new)
+            .properties(p -> p.stacksTo(16)
+                    .rarity(Rarity.UNCOMMON)
+                    .fireResistant())
+            .register();
+
+    public static final ItemEntry<ShadowSteel> SHADOW_STEEL =
+            REGISTRATE.item("shadow_steel", ShadowSteel::new)
+            .properties(p -> p.stacksTo(16)
+                    .rarity(Rarity.UNCOMMON)
+                    .fireResistant())
+            .register();
+
+    public static final ItemEntry<RefinedRadiance> REFINED_RADIANCE =
+            REGISTRATE.item("refined_radiance", RefinedRadiance::new)
+            .properties(p -> p.stacksTo(16)
+                    .rarity(Rarity.UNCOMMON)
+                    .fireResistant())
+            .register();
+
+
     public static final ItemEntry<ForestRavagerItem> forest_ravager =
             REGISTRATE.item("forest_ravager", ForestRavagerItem::new)
-                    .properties(p -> p.stacksTo(1)
-                            .rarity(Rarity.UNCOMMON))
-                    .model(AssetLookup.itemModelWithPartials())
-                    .register();
+            .properties(p -> p.stacksTo(1)
+                    .rarity(Rarity.UNCOMMON)
+                    .fireResistant())
+            .model(AssetLookup.itemModelWithPartials())
+            .register();
 
     private static ItemEntry<Item> ingredient(String name) {
         return REGISTRATE.item(name, Item::new)

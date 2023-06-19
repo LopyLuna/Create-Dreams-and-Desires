@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/scaffold/block",
+  "textures": {
+    "top": "create_flavored:block/scaffold/industrial_scaffold_frame",
+    "inside": "create_flavored:block/scaffold/industrial_scaffold_inside",
+    "side": "create_flavored:block/scaffold/industrial_scaffold",
+    "casing": "create_flavored:block/industrial_casing",
+    "particle": "create_flavored:block/scaffold/industrial_scaffold"
+  }
+}

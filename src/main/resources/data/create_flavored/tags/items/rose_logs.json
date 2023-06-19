@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "create_flavored:rose_log",
+    "create_flavored:stripped_rose_log",
+    "create_flavored:rose_wood",
+    "create_flavored:stripped_rose_wood"
+  ]
+}

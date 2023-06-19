@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "tag": "create_flavored:glow_base"
+    },
+    {
+      "item": "create_flavored:refined_radiance"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_flavored:refined_radiance_casing"
+    }
+  ]
+}

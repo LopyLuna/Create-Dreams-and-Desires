@@ -15,6 +15,7 @@ import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import uwu.lopyluna.create_flavored.block.YIPPEEPaletteStoneTypes;
 
 import javax.annotation.Nullable;
 
@@ -79,6 +80,32 @@ public class SussyWhiteStuff {
             REGISTRATE.standardFluid("strawberry_milkshake", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Strawberry Milkshake")
                     .tag(AllTags.forgeFluidTag("strawberry_milkshake"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
+                    .attributes(b -> b.viscosity(1500)
+                            .density(1400))
+                    .properties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> GLOWBERRY =
+            REGISTRATE.standardFluid("glowberry", SussyWhiteStuff.NoColorFluidAttributes::new)
+                    .lang("Glowberry")
+                    .tag(AllTags.forgeFluidTag("glowberry"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
+                    .attributes(b -> b.viscosity(1500)
+                            .density(1400))
+                    .properties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> GLOWBERRY_MILKSHAKE =
+            REGISTRATE.standardFluid("glowberry_milkshake", SussyWhiteStuff.NoColorFluidAttributes::new)
+                    .lang("Glowberry Milkshake")
+                    .tag(AllTags.forgeFluidTag("glowberry_milkshake"))
                     .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
                             .density(1400))
@@ -161,11 +188,11 @@ public class SussyWhiteStuff {
     public static BlockState getLavaInteraction(FluidState fluidState) {
         Fluid fluid = fluidState.getType();
         if (fluid.isSame(SussyWhiteStuff.VANILLA.get()))
-            return AllPaletteStoneTypes.OCHRUM.getBaseBlock()
+            return YIPPEEPaletteStoneTypes.potassic.getBaseBlock()
                     .get()
                     .defaultBlockState();
         if (fluid.isSame(SussyWhiteStuff.VANILLA_MILKSHAKE.get()))
-            return AllPaletteStoneTypes.OCHRUM.getBaseBlock()
+            return YIPPEEPaletteStoneTypes.potassic.getBaseBlock()
                     .get()
                     .defaultBlockState();
         if (fluid.isSame(SussyWhiteStuff.STRAWBERRY.get()))
@@ -174,6 +201,14 @@ public class SussyWhiteStuff {
                     .defaultBlockState();
         if (fluid.isSame(SussyWhiteStuff.STRAWBERRY_MILKSHAKE.get()))
             return AllPaletteStoneTypes.CRIMSITE.getBaseBlock()
+                    .get()
+                    .defaultBlockState();
+        if (fluid.isSame(SussyWhiteStuff.GLOWBERRY.get()))
+            return AllPaletteStoneTypes.OCHRUM.getBaseBlock()
+                    .get()
+                    .defaultBlockState();
+        if (fluid.isSame(SussyWhiteStuff.GLOWBERRY_MILKSHAKE.get()))
+            return AllPaletteStoneTypes.OCHRUM.getBaseBlock()
                     .get()
                     .defaultBlockState();
         if (fluid.isSame(SussyWhiteStuff.CARAMEL.get()))

@@ -22,6 +22,13 @@
   "item.create_flavored.lapis_alloy": "Lapis Alloy",
   "item.create_flavored.lapis_sheet": "Lapis Sheet",
 
+  "item.create_flavored.spectral_ruby": "Spectral Ruby",
+  "item.create_flavored.polished_spectral_ruby": "Polished Spectral Ruby",
+
+  "item.create_flavored.chromatic_compound": "Chromatic Compound",
+  "item.create_flavored.shadow_steel": "Shadow Steel",
+  "item.create_flavored.refined_radiance": "Refined Radiance",
+
   "item.create_flavored.forest_ravager": "Mythical Forest Ravager",
   "item.create_flavored.vanilla_orchid": "Vanilla Orchid",
   "item.create_flavored.integrated_circuit": "Integrated Circuit",
@@ -35,6 +42,7 @@
   "block.create_flavored.mossy_andesite_casing": "Mossy Andesite Casing",
 
   "block.create_flavored.bronze_block": "Block of Bronze",
+  "block.create_flavored.bronze_casing": "Bronze Casing",
   "block.create_flavored.mithril_block": "Block of Mithril",
   "block.create_flavored.mithril_casing": "Mithril Casing",
   "block.create_flavored.steel_block": "Block of Steel",
@@ -49,5 +57,37 @@
   "block.create_flavored.industrial_casing": "Industrial Casing",
   "block.create_flavored.overburden_casing": "Overburden Casing",
 
-  "itemGroup.create_flavored_tab": "Create: Battles"
+  "block.create_flavored.potassic": "Potassic",
+  "block.create_flavored.weathered_limestone": "Weathered Limestone",
+  "block.create_flavored.gabbro": "Gabbro",
+
+  "block.create_flavored.chromatic_block": "Block of Chromatic Compound",
+  "block.create_flavored.refined_radiance_block": "Block of Refined Radiance",
+  "block.create_flavored.shadow_steel_block": "Block of Shadow Steel",
+
+  "block.create_flavored.shadow_steel_casing": "Shadow Casing",
+  "block.create_flavored.refined_radiance_casing": "Radiant Casing",
+
+  "block.create_flavored.rose_log": "Rose Log",
+  "block.create_flavored.smoked_log": "Smoked Log",
+  "block.create_flavored.stripped_rose_log": "Stripped Rose Log",
+  "block.create_flavored.stripped_smoked_log": "stripped_smoked_log",
+  "block.create_flavored.rose_wood": "Rose Wood",
+  "block.create_flavored.smoked_wood": "Smoked Wood",
+  "block.create_flavored.stripped_rose_wood": "Stripped Rose Wood",
+  "block.create_flavored.stripped_smoked_wood": "Stripped Smoked Wood",
+  "block.create_flavored.rose_planks": "Rose Planks",
+  "block.create_flavored.smoked_planks": "Smoked Planks",
+
+  "block.create_flavored.train_scaffolding": "Train Scaffolding",
+  "block.create_flavored.hydraulic_scaffolding": "Hydraulic Scaffolding",
+  "block.create_flavored.overburden_scaffolding": "Overburden Scaffolding",
+  "block.create_flavored.industrial_scaffolding": "Industrial Scaffolding",
+  "block.create_flavored.mithril_scaffolding": "Mithril Scaffolding",
+  "block.create_flavored.mossy_andesite_scaffolding": "Mossy Andesite Scaffolding",
+  "block.create_flavored.zinc_scaffolding": "Zinc Scaffolding",
+  "block.create_flavored.bronze_scaffolding": "Bronze Scaffolding",
+
+
+  "itemGroup.create_flavored.base": "Create: Flavored"
 }

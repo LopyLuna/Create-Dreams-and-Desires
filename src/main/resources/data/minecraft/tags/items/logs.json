@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#create_flavored:rose_logs",
+    "#create_flavored:smoked_logs"
+  ]
+}

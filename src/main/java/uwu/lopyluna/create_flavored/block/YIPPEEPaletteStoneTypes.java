@@ -22,13 +22,13 @@ public enum YIPPEEPaletteStoneTypes {
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BLUE))
             .register()),
 
-    weather_limestone(STANDARD_RANGE, r -> r.paletteStoneBlock("scorchia", () -> Blocks.SANDSTONE, true, false)
+    weathered_limestone(STANDARD_RANGE, r -> r.paletteStoneBlock("weathered_limestone", () -> Blocks.SANDSTONE, true, false)
             .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
             .register()),
 
-    VERIDIUM(STANDARD_RANGE, r -> r.paletteStoneBlock("veridium", () -> Blocks.TUFF, true, true)
+    gabbro(STANDARD_RANGE, r -> r.paletteStoneBlock("gabbro", () -> Blocks.TUFF, true, true)
             .properties(p -> p.destroyTime(1.25f)
-                    .color(MaterialColor.WARPED_NYLIUM))
+                    .color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
             .register())
 
     ;

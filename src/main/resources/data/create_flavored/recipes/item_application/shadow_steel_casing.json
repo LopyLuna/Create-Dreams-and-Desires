@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "minecraft:obsidian"
+    },
+    {
+      "item": "create_flavored:shadow_steel"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_flavored:shadow_steel_casing"
+    }
+  ]
+}

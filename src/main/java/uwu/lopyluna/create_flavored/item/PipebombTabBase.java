@@ -1,6 +1,7 @@
 package uwu.lopyluna.create_flavored.item;
 
 import net.minecraft.world.item.ItemStack;
+import uwu.lopyluna.create_flavored.block.YIPPEE;
 
 public class PipebombTabBase extends FlavoredPipebombTab {
     public PipebombTabBase() {
@@ -9,6 +10,6 @@ public class PipebombTabBase extends FlavoredPipebombTab {
 
     @Override
     public ItemStack makeIcon() {
-        return Pipebomb.mithril_ingot.asStack();
+        return YIPPEE.bronze_casing.asStack();
     }
 }
