@@ -5,37 +5,29 @@ import com.simibubi.create.foundation.utility.Couple;
 import com.simibubi.create.infrastructure.worldgen.OreFeatureConfigEntry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.biome.Biome;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.event.world.BiomeLoadingEvent;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.common.world.BiomeModifier;
+import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import uwu.lopyluna.create_flavored.Flavoredcreate;
 import uwu.lopyluna.create_flavored.block.YIPPEE;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Predicate;
 
 public class YummyOreFeatures {
 
-    private static final Predicate<BiomeLoadingEvent> OVERWORLD_BIOMES = event -> {
-        Biome.BiomeCategory category = event.getCategory();
-        return category != Biome.BiomeCategory.NETHER && category != Biome.BiomeCategory.THEEND && category != Biome.BiomeCategory.NONE;
-    };
-
-    public static final OreFeatureConfigEntry TIN_ORE =
+    public static final OreFeatureConfigEntry ZINC_ORE =
             create("tin_ore", 8, 10, -45, 85)
-                    .biomeExt()
-                    .predicate(OVERWORLD_BIOMES)
-                    .parent()
                     .standardDatagenExt()
                     .withBlocks(Couple.create(YIPPEE.tin_ore, YIPPEE.deepslate_tin_ore))
+                    .biomeTag(BiomeTags.IS_OVERWORLD)
                     .parent();
-
 
     private static OreFeatureConfigEntry create(String name, int clusterSize, float frequency,
                                                 int minHeight, int maxHeight) {
@@ -44,13 +36,17 @@ public class YummyOreFeatures {
         return configDrivenFeatureEntry;
     }
 
-    public static void init() {}
-
-    public static void modifyBiomes(BiomeLoadingEvent event) {
-        for (OreFeatureConfigEntry entry : OreFeatureConfigEntry.ALL.values()) {
-            entry.biomeExt().modifyBiomes(event, BuiltinRegistries.PLACED_FEATURE);
-        }
+    public static void fillConfig(ForgeConfigSpec.Builder builder, String namespace) {
+        OreFeatureConfigEntry.ALL
+                .forEach((id, entry) -> {
+                    if (id.getNamespace().equals(namespace)) {
+                        builder.push(entry.getName());
+                        entry.addToConfig(builder);
+                        builder.pop();
+                    }
+                });
     }
+    public static void init() {}
 
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
@@ -68,7 +64,7 @@ public class YummyOreFeatures {
 
         DynamicDataProvider<ConfiguredFeature<?, ?>> configuredFeatureProvider = DynamicDataProvider.create(generator, "Create's Configured Features", registryAccess, Registry.CONFIGURED_FEATURE_REGISTRY, configuredFeatures);
         if (configuredFeatureProvider != null) {
-            generator.addProvider(configuredFeatureProvider);
+            generator.addProvider(true, configuredFeatureProvider);
         }
 
         //
@@ -83,7 +79,22 @@ public class YummyOreFeatures {
 
         DynamicDataProvider<PlacedFeature> placedFeatureProvider = DynamicDataProvider.create(generator, "Create's Placed Features", registryAccess, Registry.PLACED_FEATURE_REGISTRY, placedFeatures);
         if (placedFeatureProvider != null) {
-            generator.addProvider(placedFeatureProvider);
+            generator.addProvider(true, placedFeatureProvider);
+        }
+
+        //
+
+        Map<ResourceLocation, BiomeModifier> biomeModifiers = new HashMap<>();
+        for (Map.Entry<ResourceLocation, OreFeatureConfigEntry> entry : OreFeatureConfigEntry.ALL.entrySet()) {
+            OreFeatureConfigEntry.DatagenExtension datagenExt = entry.getValue().datagenExt();
+            if (datagenExt != null) {
+                biomeModifiers.put(entry.getKey(), datagenExt.createBiomeModifier(registryAccess));
+            }
+        }
+
+        DynamicDataProvider<BiomeModifier> biomeModifierProvider = DynamicDataProvider.create(generator, "Create's Biome Modifiers", registryAccess, ForgeRegistries.Keys.BIOME_MODIFIERS, biomeModifiers);
+        if (biomeModifierProvider != null) {
+            generator.addProvider(true, biomeModifierProvider);
         }
     }
 }

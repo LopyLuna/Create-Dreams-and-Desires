@@ -7,15 +7,13 @@ import com.simibubi.create.foundation.data.LangMerger;
 import com.simibubi.create.foundation.data.TagGen;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.data.event.GatherDataEvent;
 import org.slf4j.Logger;
 import uwu.lopyluna.create_flavored.block.YIPPEE;
 import uwu.lopyluna.create_flavored.block.YIPPEEPalette;
@@ -62,20 +60,11 @@ public class Flavoredcreate
     private void clientSetup(final FMLClientSetupEvent event) {
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-    }
-
     public static void gatherData(GatherDataEvent event) {
         TagGen.datagen();
         DataGenerator gen = event.getGenerator();
         if (event.includeClient()) {
-            gen.addProvider(new LangMerger(gen, Flavoredcreate.MOD_ID, NAME, AllLangPartials.values()));
-        }
-        if (event.includeServer()) {
-            YummyOreFeatures.gatherData(event);
+            gen.addProvider(true, new LangMerger(gen, MOD_ID, NAME, AllLangPartials.values()));
         }
     }
 

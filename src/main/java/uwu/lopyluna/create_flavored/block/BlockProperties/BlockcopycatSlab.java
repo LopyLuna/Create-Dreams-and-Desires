@@ -86,11 +86,6 @@ public class BlockcopycatSlab extends WaterloggedCopycatBlock {
         return super.use(state, world, pos, player, hand, ray);
     }
 
-    @Override
-    public boolean isUnblockableConnectivitySide(BlockAndTintGetter reader, BlockState state, Direction face,
-                                                 BlockPos fromPos, BlockPos toPos) {
-        return true;
-    }
 
     @Override
     public boolean isIgnoredConnectivitySide(BlockAndTintGetter reader, BlockState state, Direction face,
@@ -122,25 +117,28 @@ public class BlockcopycatSlab extends WaterloggedCopycatBlock {
     }
 
     @Override
-    public BlockState getConnectiveMaterial(BlockAndTintGetter reader, BlockState otherState, Direction face,
-                                            BlockPos fromPos, BlockPos toPos) {
-        BlockState slabState = reader.getBlockState(toPos);
-        Direction facing = slabState.getValue(FACING);
+    public boolean canConnectTexturesToward(BlockAndTintGetter reader, BlockPos fromPos, BlockPos toPos,
+                                            BlockState state) {
+        Direction facing = state.getValue(FACING);
+        BlockState toState = reader.getBlockState(toPos);
 
-        if (!otherState.is(this))
-            return facing == face.getOpposite() ? getMaterial(reader, toPos) : null;
-
-        if (isOccluded(slabState, otherState, facing))
-            return getMaterial(reader, toPos);
+        if (toPos.equals(fromPos.relative(facing)))
+            return false;
 
         BlockPos diff = fromPos.subtract(toPos);
         int coord = facing.getAxis()
                 .choose(diff.getX(), diff.getY(), diff.getZ());
 
-        if (otherState.setValue(WATERLOGGED, false) == slabState.setValue(WATERLOGGED, false) && coord == 0)
-            return getMaterial(reader, toPos);
+        if (!toState.is(this))
+            return coord != -facing.getAxisDirection()
+                    .getStep();
 
-        return null;
+        if (isOccluded(state, toState, facing))
+            return true;
+        if (toState.setValue(WATERLOGGED, false) == state.setValue(WATERLOGGED, false) && coord == 0)
+            return true;
+
+        return false;
     }
 
     @Override

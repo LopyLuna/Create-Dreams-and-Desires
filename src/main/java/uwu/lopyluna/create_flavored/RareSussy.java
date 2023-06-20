@@ -1,41 +1,65 @@
 package uwu.lopyluna.create_flavored;
 
+import com.simibubi.create.foundation.advancement.AdvancementBehaviour;
+import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.fluid.FluidHelper;
-import com.simibubi.create.foundation.utility.Iterate;
+import com.simibubi.create.foundation.utility.BlockHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fluids.FluidStack;
 import uwu.lopyluna.create_flavored.fluid.SussyWhiteStuff;
 
-@Mod.EventBusSubscriber
 public class RareSussy {
+    public static void handlePipeFlowCollision(Level world, BlockPos pos, FluidStack fluid, FluidStack fluid2) {
+        Fluid f1 = fluid.getFluid();
+        Fluid f2 = fluid2.getFluid();
 
-    @SubscribeEvent
-    public static void whenFluidsMeet(BlockEvent.FluidPlaceBlockEvent event) {
-        BlockState blockState = event.getOriginalState();
-        FluidState fluidState = blockState.getFluidState();
-        BlockPos pos = event.getPos();
-        LevelAccessor world = event.getWorld();
+        AdvancementBehaviour.tryAward(world, pos, AllAdvancements.CROSS_STREAMS);
+        BlockHelper.destroyBlock(world, pos, 1);
 
-        if (fluidState.isSource() && FluidHelper.isLava(fluidState.getType()))
-            return;
-
-        for (Direction direction : Iterate.directions) {
-            FluidState metFluidState =
-                    fluidState.isSource() ? fluidState : world.getFluidState(pos.relative(direction));
-            if (!metFluidState.is(FluidTags.WATER))
-                continue;
-            BlockState lavaInteraction = SussyWhiteStuff.getLavaInteraction(metFluidState);
-            if (lavaInteraction == null)
-                continue;
-            event.setNewState(lavaInteraction);
-            break;
+        if (f1 == Fluids.WATER && f2 == Fluids.LAVA || f2 == Fluids.WATER && f1 == Fluids.LAVA)
+            world.setBlockAndUpdate(pos, Blocks.COBBLESTONE.defaultBlockState());
+        else if (f1 == Fluids.LAVA && FluidHelper.hasBlockState(f2)) {
+            BlockState lavaInteraction = SussyWhiteStuff.getLavaInteraction(FluidHelper.convertToFlowing(f2)
+                    .defaultFluidState());
+            if (lavaInteraction != null)
+                world.setBlockAndUpdate(pos, lavaInteraction);
+        } else if (f2 == Fluids.LAVA && FluidHelper.hasBlockState(f1)) {
+            BlockState lavaInteraction = SussyWhiteStuff.getLavaInteraction(FluidHelper.convertToFlowing(f1)
+                    .defaultFluidState());
+            if (lavaInteraction != null)
+                world.setBlockAndUpdate(pos, lavaInteraction);
         }
     }
+
+    public static void handlePipeSpillCollision(Level world, BlockPos pos, Fluid pipeFluid, FluidState worldFluid) {
+        Fluid pf = FluidHelper.convertToStill(pipeFluid);
+        Fluid wf = worldFluid.getType();
+        if (FluidHelper.isTag(pf, FluidTags.WATER) && wf == Fluids.LAVA)
+            world.setBlockAndUpdate(pos, Blocks.OBSIDIAN.defaultBlockState());
+        else if (pf == Fluids.WATER && wf == Fluids.FLOWING_LAVA)
+            world.setBlockAndUpdate(pos, Blocks.COBBLESTONE.defaultBlockState());
+        else if (pf == Fluids.LAVA && wf == Fluids.WATER)
+            world.setBlockAndUpdate(pos, Blocks.STONE.defaultBlockState());
+        else if (pf == Fluids.LAVA && wf == Fluids.FLOWING_WATER)
+            world.setBlockAndUpdate(pos, Blocks.COBBLESTONE.defaultBlockState());
+
+        if (pf == Fluids.LAVA) {
+            BlockState lavaInteraction = SussyWhiteStuff.getLavaInteraction(worldFluid);
+            if (lavaInteraction != null)
+                world.setBlockAndUpdate(pos, lavaInteraction);
+        } else if (wf == Fluids.FLOWING_LAVA && FluidHelper.hasBlockState(pf)) {
+            BlockState lavaInteraction = SussyWhiteStuff.getLavaInteraction(FluidHelper.convertToFlowing(pf)
+                    .defaultFluidState());
+            if (lavaInteraction != null)
+                world.setBlockAndUpdate(pos, lavaInteraction);
+        }
+    }
+
 }

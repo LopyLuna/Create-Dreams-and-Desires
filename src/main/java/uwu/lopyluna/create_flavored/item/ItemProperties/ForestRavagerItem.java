@@ -16,8 +16,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.IItemRenderProperties;
-import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import uwu.lopyluna.create_flavored.item.Pipebomb;
@@ -55,7 +55,7 @@ public class ForestRavagerItem extends AxeItem {
         ItemStack heldItemMainhand = event.getPlayer().getItemInHand(InteractionHand.MAIN_HAND);
         if (!Pipebomb.forest_ravager.isIn(heldItemMainhand))
             return;
-        destroyTree((Level) event.getWorld(), event.getState(), event.getPos(), event.getPlayer());
+        destroyTree((Level) event.getLevel(), event.getState(), event.getPos(), event.getPlayer());
     }
 
     public static void dropItemFromCutTree(Level world, BlockPos breakingPos, Vec3 fallDirection, BlockPos pos,
@@ -68,7 +68,7 @@ public class ForestRavagerItem extends AxeItem {
     }
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(SimpleCustomRenderer.create(this, new ForestRavagerRender()));
     }
 }

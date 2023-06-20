@@ -110,10 +110,10 @@ repositories {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
     }
-    /*maven {
+    maven {
         name = "ModMaven"
         url = "https://modmaven.dev"
-    }*/
+    }
 
     maven {
         url = 'https://www.cursemaven.com'
@@ -141,7 +141,7 @@ dependencies {
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
     implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
 
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
 
     //mods
 
@@ -149,7 +149,7 @@ dependencies {
    //  runtimeOnly fg.deobf("vazkii.quark:Quark:r2.0-212.984")
    //  runtimeOnly fg.deobf("slimeknights.mantle:Mantle:1.16.5-1.6.115")
    //  runtimeOnly fg.deobf("slimeknights.tconstruct:TConstruct:1.16.5-3.1.1.252")
-     runtimeOnly fg.deobf("maven.modrinth:rubidium:0.5.3")
+   //  runtimeOnly fg.deobf("maven.modrinth:rubidium:0.5.3")
 
 }
 

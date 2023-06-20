@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
@@ -22,8 +23,8 @@ public class MagicBlock extends Block {
     }
 
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random pRand) {
-        if (pRand.nextInt(6) != 0)
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRand) {
+        if (pRand.nextInt(5) != 0)
             return;
         Vec3 vec3 = VecHelper.clampComponentWise(VecHelper.offsetRandomly(Vec3.ZERO, pRand, 1f), 1f)
                 .add(VecHelper.getCenterOf(pPos));
