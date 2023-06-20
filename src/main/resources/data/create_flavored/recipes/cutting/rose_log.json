@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create_flavored:rose_log"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_flavored:stripped_rose_log"
+    }
+  ],
+  "processingTime": 50
+}

@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create_flavored:smoked_log"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_flavored:stripped_smoked_log"
+    }
+  ],
+  "processingTime": 50
+}
