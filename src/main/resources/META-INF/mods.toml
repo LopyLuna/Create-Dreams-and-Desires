@@ -29,12 +29,12 @@ displayName="Create: Flavored" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="pack.png" #optional
 # A text field displayed in the mod UI
-credits="" #optional
+#credits="" #optional
 # A text field displayed in the mod UI
 authors="LopyLuna" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-YIPPEE
+YIPPEE MY HEAD HURTS NOW LMAO
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.create_flavored]] #optional
