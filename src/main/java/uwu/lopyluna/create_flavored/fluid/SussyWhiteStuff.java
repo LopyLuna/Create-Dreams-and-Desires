@@ -37,6 +37,19 @@ public class SussyWhiteStuff {
                             .explosionResistance(100f))
                     .register();
 
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> CREAM =
+            REGISTRATE.standardFluid("cream", SussyWhiteStuff.NoColorFluidAttributes::new)
+                    .lang("Cream")
+                    .tag(AllTags.forgeFluidTag("cream"))
+                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
+                    .attributes(b -> b.viscosity(1500)
+                            .density(1400))
+                    .properties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .register();
+
     public static final FluidEntry<ForgeFlowingFluid.Flowing> VANILLA =
             REGISTRATE.standardFluid("vanilla", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Vanilla")
@@ -95,7 +108,7 @@ public class SussyWhiteStuff {
                     .tag(AllTags.forgeFluidTag("glowberry"))
                     .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
-                            .density(1400))
+                            .density(1400).luminosity(12))
                     .properties(p -> p.levelDecreasePerBlock(2)
                             .tickRate(25)
                             .slopeFindDistance(3)
@@ -108,7 +121,7 @@ public class SussyWhiteStuff {
                     .tag(AllTags.forgeFluidTag("glowberry_milkshake"))
                     .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)
-                            .density(1400))
+                            .density(1400).luminosity(12))
                     .properties(p -> p.levelDecreasePerBlock(2)
                             .tickRate(25)
                             .slopeFindDistance(3)
@@ -141,19 +154,6 @@ public class SussyWhiteStuff {
                             .explosionResistance(100f))
                     .register();
 
-    public static final FluidEntry<ForgeFlowingFluid.Flowing> CREAM =
-            REGISTRATE.standardFluid("cream", SussyWhiteStuff.NoColorFluidAttributes::new)
-                    .lang("Cream")
-                    .tag(AllTags.forgeFluidTag("cream"))
-                    .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
-                    .attributes(b -> b.viscosity(1500)
-                            .density(1400))
-                    .properties(p -> p.levelDecreasePerBlock(2)
-                            .tickRate(25)
-                            .slopeFindDistance(3)
-                            .explosionResistance(100f))
-                    .register();
-
     public static final FluidEntry<ForgeFlowingFluid.Flowing> HOT_CHOCOLATE =
             REGISTRATE.standardFluid("hot_chocolate", SussyWhiteStuff.NoColorFluidAttributes::new)
                     .lang("Hot Chocolate")
@@ -169,7 +169,7 @@ public class SussyWhiteStuff {
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> CHOCOLATE_MILKSHAKE =
             REGISTRATE.standardFluid("chocolate_milkshake", SussyWhiteStuff.NoColorFluidAttributes::new)
-                    .lang("Hot Chocolate Milkshake")
+                    .lang("Chocolate Milkshake")
                     .tag(AllTags.forgeFluidTag("chocolate_milkshake"))
                     .tag(SussyWhiteStuff.MinecraftFluidTag("water"))
                     .attributes(b -> b.viscosity(1500)

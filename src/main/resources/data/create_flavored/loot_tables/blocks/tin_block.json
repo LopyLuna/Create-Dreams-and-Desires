@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "create_flavored:mithril_block"
+          "name": "create_flavored:tin_block"
         }
       ],
       "conditions": [

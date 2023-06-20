@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "create_flavored:flowing_chocolate_milkshake",
+    "create_flavored:chocolate_milkshake"
+  ]
+}

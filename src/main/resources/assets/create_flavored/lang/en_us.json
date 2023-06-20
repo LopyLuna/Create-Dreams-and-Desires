@@ -36,7 +36,34 @@
   "item.create_flavored.incomplete_integrated_circuit": "Incomplete Integrated Circuit",
   "item.create_flavored.incomplete_integrated_mechanism": "Incomplete Integrated Mechanism",
 
+  "item.create_flavored.condense_milk_bucket": "Condense Milk Bucket",
+  "item.create_flavored.cream_bucket": "Cream Bucket",
+  "item.create_flavored.vanilla_bucket": "Vanilla Bucket",
+  "item.create_flavored.vanilla_milkshake_bucket": "Vanilla Milkshake Bucket",
+  "item.create_flavored.strawberry_bucket": "strawberry Bucket",
+  "item.create_flavored.strawberry_milkshake_bucket": "Strawberry Milkshake Bucket",
+  "item.create_flavored.glowberry_bucket": "Glowberry Bucket",
+  "item.create_flavored.glowberry_milkshake_bucket": "Glowberry Milkshake Bucket",
+  "item.create_flavored.caramel_bucket": "Caramel Bucket",
+  "item.create_flavored.caramel_milkshake_bucket": "Caramel Milkshake Bucket",
+  "item.create_flavored.hot_chocolate_bucket": "Hot Chocolate Bucket",
+  "item.create_flavored.chocolate_milkshake_bucket": "Chocolate Milkshake Bucket",
+
+  "block.create_flavored.condense_milk": "Condense Milk",
+  "block.create_flavored.cream": "Cream",
+  "block.create_flavored.vanilla": "Vanilla",
+  "block.create_flavored.vanilla_milkshake": "Vanilla Milkshake",
+  "block.create_flavored.strawberry": "strawberry",
+  "block.create_flavored.strawberry_milkshake": "Strawberry Milkshake",
+  "block.create_flavored.glowberry": "Glowberry",
+  "block.create_flavored.glowberry_milkshake": "Glowberry Milkshake",
+  "block.create_flavored.caramel": "Caramel",
+  "block.create_flavored.caramel_milkshake": "Caramel Milkshake",
+  "block.create_flavored.hot_chocolate": "Hot Chocolate",
+  "block.create_flavored.chocolate_milkshake": "Chocolate Milkshake",
+
   "block.create_flavored.lapis_alloy_block": "Block of Lapis Alloy",
+  "block.create_flavored.leather_block": "Block of Leather",
 
   "block.create_flavored.mossy_andesite_alloy_block": "Mossy Block of Andesite Alloy",
   "block.create_flavored.mossy_andesite_casing": "Mossy Andesite Casing",
@@ -88,6 +115,8 @@
   "block.create_flavored.zinc_scaffolding": "Zinc Scaffolding",
   "block.create_flavored.bronze_scaffolding": "Bronze Scaffolding",
 
+  "block.create_flavored.copycat_block": "Copycat Block",
+  "block.create_flavored.copycat_slab": "Copycat Slab",
 
   "itemGroup.create_flavored.base": "Create: Flavored"
 }

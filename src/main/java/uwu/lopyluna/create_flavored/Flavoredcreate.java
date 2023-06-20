@@ -72,7 +72,7 @@ public class Flavoredcreate
         TagGen.datagen();
         DataGenerator gen = event.getGenerator();
         if (event.includeClient()) {
-            gen.addProvider(new LangMerger(gen, MOD_ID, NAME, AllLangPartials.values()));
+            gen.addProvider(new LangMerger(gen, Flavoredcreate.MOD_ID, NAME, AllLangPartials.values()));
         }
         if (event.includeServer()) {
             YummyOreFeatures.gatherData(event);
@@ -80,7 +80,7 @@ public class Flavoredcreate
     }
 
     public static ResourceLocation asResource(String path) {
-        return new ResourceLocation(MOD_ID, path);
+        return new ResourceLocation(Flavoredcreate.MOD_ID, path);
     }
 
 }

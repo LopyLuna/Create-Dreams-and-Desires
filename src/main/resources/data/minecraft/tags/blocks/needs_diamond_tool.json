@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "create_flavored:chromatic_block",
+    "create_flavored:refined_radiance_block",
+    "create_flavored:shadow_steel_block"
+  ]
+}

@@ -3,12 +3,7 @@ package uwu.lopyluna.create_flavored.block;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllSpriteShifts;
 import com.simibubi.create.AllTags;
-import com.simibubi.create.Create;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
-import com.simibubi.create.content.decoration.copycat.CopycatPanelBlock;
-import com.simibubi.create.content.decoration.copycat.CopycatPanelModel;
-import com.simibubi.create.content.decoration.copycat.CopycatStepBlock;
-import com.simibubi.create.content.decoration.copycat.CopycatStepModel;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.foundation.data.BuilderTransformers;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -19,13 +14,16 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.util.ForgeSoundType;
 import uwu.lopyluna.create_flavored.block.BlockProperties.*;
+import uwu.lopyluna.create_flavored.item.Pipebomb;
 import uwu.lopyluna.create_flavored.item.PipebombTab;
 
+import static com.simibubi.create.foundation.data.BlockStateGen.simpleCubeAll;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.*;
 import static uwu.lopyluna.create_flavored.Flavoredcreate.REGISTRATE;
@@ -40,7 +38,7 @@ public class YIPPEE {
             .initialProperties(SharedProperties::netheriteMetal)
             .properties(p -> p.color(MaterialColor.WARPED_NYLIUM))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
-            .properties(p -> p.strength(10f,24f))
+            .properties(p -> p.strength(16f,48f))
             .lang("Block of Mithril")
             .simpleItem()
             .register();
@@ -49,7 +47,7 @@ public class YIPPEE {
             .initialProperties(SharedProperties::netheriteMetal)
             .properties(p -> p.color(MaterialColor.COLOR_ORANGE))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
-            .properties(p -> p.strength(10f,10f))
+            .properties(p -> p.strength(12f,10f))
             .lang("Block of Bronze")
             .simpleItem()
             .register();
@@ -103,7 +101,7 @@ public class YIPPEE {
             .initialProperties(() -> Blocks.HAY_BLOCK)
             .properties(p -> p.color(MaterialColor.COLOR_ORANGE))
             .properties(p -> p.sound(SoundType.WOOL))
-            .properties(p -> p.strength(1f,1.6f))
+            .properties(p -> p.strength(0.5f,1f))
             .tag(Tags.Blocks.STORAGE_BLOCKS)
             .transform(tagBlockAndItem("storage_blocks/leather"))
             .tag(Tags.Items.STORAGE_BLOCKS)
@@ -131,6 +129,7 @@ public class YIPPEE {
                     () -> SoundEvents.POLISHED_DEEPSLATE_STEP, () -> SoundEvents.POLISHED_DEEPSLATE_PLACE,
                     () -> SoundEvents.POLISHED_DEEPSLATE_HIT, () -> SoundEvents.POLISHED_DEEPSLATE_FALL)))
             .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(p -> p.strength(12f,25f))
             .transform(pickaxeOnly())
             .lang("Block of Chromatic Compound")
             .simpleItem()
@@ -147,6 +146,7 @@ public class YIPPEE {
                     () -> SoundEvents.AMETHYST_BLOCK_HIT, () -> SoundEvents.AMETHYST_BLOCK_FALL)))
             .properties(p -> p.lightLevel($ -> 12))
             .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(p -> p.strength(16f,48f))
             .transform(pickaxeOnly())
             .lang("Block of Refined Radiance")
             .simpleItem()
@@ -158,10 +158,11 @@ public class YIPPEE {
     public static final BlockEntry<MagicBlock> shadow_steel_block = REGISTRATE.block("shadow_steel_block", MagicBlock::new)
             .initialProperties(() -> Blocks.NETHERITE_BLOCK)
             .properties(p -> p.color(MaterialColor.COLOR_BLACK))
-            .properties(p -> p.requiresCorrectToolForDrops())
             .properties(p -> p.sound(new ForgeSoundType(1, .25f, () -> SoundEvents.AMETHYST_CLUSTER_BREAK,
                     () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_CLUSTER_PLACE,
                     () -> SoundEvents.AMETHYST_CLUSTER_HIT, () -> SoundEvents.AMETHYST_CLUSTER_FALL)))
+            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(p -> p.strength(16f,48f))
             .transform(pickaxeOnly())
             .lang("Block of Shadow Steel")
             .simpleItem()
@@ -234,6 +235,8 @@ public class YIPPEE {
             .properties(p -> p.sound(new ForgeSoundType(1, .25f, () -> SoundEvents.AMETHYST_CLUSTER_BREAK,
                     () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_CLUSTER_PLACE,
                     () -> SoundEvents.AMETHYST_CLUSTER_HIT, () -> SoundEvents.AMETHYST_CLUSTER_FALL)))
+            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(p -> p.strength(8f,24f))
             .lang("Shadow Casing")
             .item()
             .properties(p -> p.rarity(Rarity.UNCOMMON))
@@ -246,6 +249,8 @@ public class YIPPEE {
             .properties(p -> p.sound(new ForgeSoundType(1, 1.25f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
                     () -> SoundEvents.AMETHYST_BLOCK_STEP, () -> SoundEvents.AMETHYST_BLOCK_PLACE,
                     () -> SoundEvents.AMETHYST_BLOCK_HIT, () -> SoundEvents.AMETHYST_BLOCK_FALL)))
+            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(p -> p.strength(8f,24f))
             .properties(p -> p.lightLevel($ -> 12))
             .item()
             .properties(p -> p.rarity(Rarity.UNCOMMON))
@@ -397,6 +402,42 @@ public class YIPPEE {
                     .transform(customItemModel("copycat_base", "slab"))
                     .register();
 
+
+    public static final BlockEntry<RotatedPillarBlock> ROSE_QUARTZ_BLOCK =
+            REGISTRATE.block("spectral_ruby_block", RotatedPillarBlock::new)
+            .initialProperties(() -> Blocks.AMETHYST_BLOCK)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_MAGENTA)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.DEEPSLATE))
+            .transform(pickaxeOnly())
+            .blockstate((c, p) -> p.axisBlock(c.get(), p.modLoc("block/spectral_ruby_side"),
+                    p.modLoc("block/spectral_ruby_top")))
+            .recipe((c, p) -> p.stonecutting(DataIngredient.items(Pipebomb.spectral_ruby), c::get, 2))
+            .simpleItem()
+            .lang("Block of Spectral Ruby")
+            .register();
+
+    public static final BlockEntry<Block> ROSE_QUARTZ_TILES =
+            REGISTRATE.block("spectral_ruby_tiles", Block::new)
+            .initialProperties(() -> Blocks.DEEPSLATE)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_MAGENTA))
+            .properties(p -> p.requiresCorrectToolForDrops())
+            .transform(pickaxeOnly())
+            .blockstate(simpleCubeAll("spectral_ruby_tiles"))
+            .recipe((c, p) -> p.stonecutting(DataIngredient.items(Pipebomb.polished_spectral_ruby), c::get, 2))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> SMALL_ROSE_QUARTZ_TILES =
+            REGISTRATE.block("small_spectral_ruby_tiles", Block::new)
+            .initialProperties(() -> Blocks.DEEPSLATE)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_MAGENTA))
+            .properties(p -> p.requiresCorrectToolForDrops())
+            .transform(pickaxeOnly())
+            .blockstate(simpleCubeAll("small_spectral_ruby_tiles"))
+            .recipe((c, p) -> p.stonecutting(DataIngredient.items(Pipebomb.polished_spectral_ruby), c::get, 2))
+            .simpleItem()
+            .register();
 
 
 

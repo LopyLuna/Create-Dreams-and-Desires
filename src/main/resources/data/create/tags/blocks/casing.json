@@ -6,6 +6,8 @@
     "create_flavored:zinc_casing",
     "create_flavored:hydraulic_casing",
     "create_flavored:industrial_casing",
-    "create_flavored:overburden_casing"
+    "create_flavored:overburden_casing",
+    "create_flavored:shadow_steel_casing",
+    "create_flavored:refined_radiance_casing"
   ]
 }

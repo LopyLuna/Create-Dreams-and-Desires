@@ -7,6 +7,9 @@
     "create_flavored:steel_block",
     "create_flavored:tin_block",
     "create_flavored:lapis_alloy_block",
-    "create_flavored:leather_block"
+    "create_flavored:leather_block",
+    "create_flavored:chromatic_block",
+    "create_flavored:refined_radiance_block",
+    "create_flavored:shadow_steel_block"
   ]
 }

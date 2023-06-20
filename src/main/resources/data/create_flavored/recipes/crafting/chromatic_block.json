@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CCC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:ingots/chromatic"
+    }
+  },
+  "result": {
+    "item": "create_flavored:chromatic_block"
+  }
+}
