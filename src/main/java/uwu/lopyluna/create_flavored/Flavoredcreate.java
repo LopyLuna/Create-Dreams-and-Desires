@@ -22,7 +22,6 @@ import uwu.lopyluna.create_flavored.block.YIPPEEPalette;
 import uwu.lopyluna.create_flavored.fluid.SussyWhiteStuff;
 import uwu.lopyluna.create_flavored.item.Pipebomb;
 import uwu.lopyluna.create_flavored.item.PipebombTab;
-import uwu.lopyluna.create_flavored.worldgen.YummyOreFeatures;
 
 
 @Mod(Flavoredcreate.MOD_ID)
@@ -46,7 +45,6 @@ public class Flavoredcreate
         Pipebomb.register();
         SussyWhiteStuff.register();
         YIPPEEPalette.register();
-        YummyOreFeatures.init();
 
 
         eventBus.addListener(this::clientSetup);
@@ -73,9 +71,6 @@ public class Flavoredcreate
         DataGenerator gen = event.getGenerator();
         if (event.includeClient()) {
             gen.addProvider(new LangMerger(gen, Flavoredcreate.MOD_ID, NAME, AllLangPartials.values()));
-        }
-        if (event.includeServer()) {
-            YummyOreFeatures.gatherData(event);
         }
     }
 
