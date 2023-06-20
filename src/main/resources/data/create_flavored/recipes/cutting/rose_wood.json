@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create_flavored:rose_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_flavored:stripped_rose_wood"
+    }
+  ],
+  "processingTime": 50
+}
