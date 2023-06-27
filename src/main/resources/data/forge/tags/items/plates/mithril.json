@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:mithril_sheet"
+    "create_dd:mithril_sheet"
   ]
 }

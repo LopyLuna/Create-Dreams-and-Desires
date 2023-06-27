@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/zinc"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:zinc_sheet"
+    }
+  ]
+}

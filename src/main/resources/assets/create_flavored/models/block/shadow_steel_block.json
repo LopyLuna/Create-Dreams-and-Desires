@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "create_flavored:block/shadow_steel_block"
-  }
-}

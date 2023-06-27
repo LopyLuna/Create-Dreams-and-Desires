@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:steel_block"
+    "create_dd:steel_block"
   ]
 }

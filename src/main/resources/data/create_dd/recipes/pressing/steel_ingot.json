@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/steel"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:steel_sheet"
+    }
+  ]
+}

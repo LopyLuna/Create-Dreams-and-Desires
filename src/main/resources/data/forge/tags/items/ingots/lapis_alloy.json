@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:lapis_alloy"
+    "create_dd:lapis_alloy"
   ]
 }

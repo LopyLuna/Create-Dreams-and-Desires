@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:stripped_smoked_wood",
-    "create_flavored:stripped_rose_wood"
+    "create_dd:stripped_smoked_wood",
+    "create_dd:stripped_rose_wood"
   ]
 }

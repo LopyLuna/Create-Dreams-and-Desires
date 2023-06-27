@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:tin_nugget"
+    "create_dd:tin_nugget"
   ]
 }

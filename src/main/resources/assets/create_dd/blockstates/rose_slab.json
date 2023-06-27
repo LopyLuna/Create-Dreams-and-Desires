@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "create_dd:block/rose_slab"
+    },
+    "type=double": {
+      "model": "create_dd:block/rose_planks"
+    },
+    "type=top": {
+      "model": "create_dd:block/rose_slab_top"
+    }
+  }
+}

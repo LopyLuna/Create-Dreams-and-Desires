@@ -1,10 +1,10 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:mithril_nugget",
-    "create_flavored:bronze_nugget",
-    "create_flavored:steel_nugget",
-    "create_flavored:tin_nugget",
-    "create_flavored:industrial_iron_nugget"
+    "create_dd:mithril_nugget",
+    "create_dd:bronze_nugget",
+    "create_dd:steel_nugget",
+    "create_dd:tin_nugget",
+    "create_dd:industrial_iron_nugget"
   ]
 }

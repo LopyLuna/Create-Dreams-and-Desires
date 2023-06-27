@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:refined_radiance"
+    "create_dd:refined_radiance"
   ]
 }

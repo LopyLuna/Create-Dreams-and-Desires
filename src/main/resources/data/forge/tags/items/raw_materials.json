@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:raw_tin"
+    "create_dd:raw_tin"
   ]
 }

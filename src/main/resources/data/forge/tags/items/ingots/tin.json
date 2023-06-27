@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:tin_ingot"
+    "create_dd:tin_ingot"
   ]
 }
