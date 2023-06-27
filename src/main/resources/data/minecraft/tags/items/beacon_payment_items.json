@@ -1,12 +1,12 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:mithril_ingot",
-    "create_flavored:bronze_ingot",
-    "create_flavored:steel_ingot",
-    "create_flavored:industrial_iron_ingot",
-    "create_flavored:chromatic_compound",
-    "create_flavored:shadow_steel",
-    "create_flavored:refined_radiance"
+    "create_dd:mithril_ingot",
+    "create_dd:bronze_ingot",
+    "create_dd:steel_ingot",
+    "create_dd:industrial_iron_ingot",
+    "create_dd:chromatic_compound",
+    "create_dd:shadow_steel",
+    "create_dd:refined_radiance"
   ]
 }

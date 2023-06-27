@@ -1,10 +1,12 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:bronze_casing",
-    "create_flavored:zinc_casing",
-    "create_flavored:mossy_andesite_casing",
-    "create_flavored:copycat_block",
-    "create_flavored:copycat_slab"
+    "create_dd:bronze_casing",
+    "create_dd:zinc_casing",
+    "create_dd:mossy_andesite_casing",
+    "create_dd:copycat_block",
+    "create_dd:copycat_slab",
+    "create_dd:rose_door",
+    "create_dd:smoked_door"
   ]
 }

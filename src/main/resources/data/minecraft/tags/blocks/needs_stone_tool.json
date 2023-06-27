@@ -1,10 +1,10 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:tin_ore",
-    "create_flavored:deepslate_tin_ore",
-    "create_flavored:tin_block",
-    "create_flavored:raw_tin_block",
-    "create_flavored:lapis_alloy_block"
+    "create_dd:tin_ore",
+    "create_dd:deepslate_tin_ore",
+    "create_dd:tin_block",
+    "create_dd:raw_tin_block",
+    "create_dd:lapis_alloy_block"
   ]
 }

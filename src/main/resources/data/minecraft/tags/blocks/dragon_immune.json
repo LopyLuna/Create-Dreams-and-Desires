@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:shadow_steel_block"
+    "create_dd:shadow_steel_block",
+    "create_dd:shadow_steel_scaffolding",
+    "create_dd:shadow_steel_casing"
   ]
 }

@@ -1,15 +1,16 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:bronze_block",
-    "create_flavored:mithril_block",
-    "create_flavored:raw_tin_block",
-    "create_flavored:steel_block",
-    "create_flavored:tin_block",
-    "create_flavored:lapis_alloy_block",
-    "create_flavored:leather_block",
-    "create_flavored:chromatic_block",
-    "create_flavored:refined_radiance_block",
-    "create_flavored:shadow_steel_block"
+    "create_dd:bronze_block",
+    "create_dd:mithril_block",
+    "create_dd:raw_tin_block",
+    "create_dd:steel_block",
+    "create_dd:tin_block",
+    "create_dd:lapis_alloy_block",
+    "create_dd:leather_block",
+    "create_dd:chromatic_block",
+    "create_dd:refined_radiance_block",
+    "create_dd:shadow_steel_block",
+    "create_dd:industrial_iron_block"
   ]
 }

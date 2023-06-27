@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:chromatic_compound"
+    "create_dd:chromatic_compound"
   ]
 }

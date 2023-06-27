@@ -1,9 +1,10 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:bronze_block",
-    "create_flavored:mithril_block",
-    "create_flavored:steel_block",
-    "create_flavored:mithril_casing"
+    "create_dd:bronze_block",
+    "create_dd:mithril_block",
+    "create_dd:steel_block",
+    "create_dd:mithril_casing",
+    "create_dd:industrial_iron_block"
   ]
 }

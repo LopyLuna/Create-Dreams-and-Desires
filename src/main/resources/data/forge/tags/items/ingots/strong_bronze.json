@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "create_flavored:bronze_ingot"
+    "create_dd:bronze_ingot"
   ]
 }

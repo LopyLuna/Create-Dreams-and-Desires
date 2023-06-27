@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "create_dd:zinc_casing"
+    },
+    {
+      "tag": "forge:plates/industrial_iron"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:industrial_casing"
+    }
+  ]
+}

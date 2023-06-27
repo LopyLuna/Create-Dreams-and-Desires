@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "#create_flavored:rose_woodset",
-    "#create_flavored:smoked_woodset"
+    "#create_dd:rose_woodset",
+    "#create_dd:smoked_woodset",
+    "create_dd:industrial_iron_block"
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=false": {
+      "model": "create_dd:block/refined_radiance_scaffolding"
+    },
+    "bottom=true": {
+      "model": "create_dd:block/refined_radiance_scaffolding_horizontal"
+    }
+  }
+}

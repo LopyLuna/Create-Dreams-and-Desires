@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "create_dd:logs_that_burn"
+    },
+    {
+      "tag": "create_dd:logs_that_burn"
+    },
+    {
+      "tag": "create_dd:logs_that_burn"
+    },
+    {
+      "tag": "create_dd:logs_that_burn"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:smoked_log",
+      "count": 4
+    }
+  ],
+  "heatRequirement": "heated"
+}

@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/industrial_iron"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:industrial_iron_sheet"
+    }
+  ]
+}

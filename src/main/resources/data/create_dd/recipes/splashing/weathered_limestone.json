@@ -1,0 +1,14 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "create:limestone"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:weathered_limestone",
+      "count": 1
+    }
+  ]
+}
