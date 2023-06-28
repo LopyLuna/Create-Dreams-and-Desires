@@ -43,24 +43,6 @@ public class YIPPEESlidingDoorBlock extends DoorBlock implements IWrenchable, IB
     public static final BooleanProperty VISIBLE = BooleanProperty.create("visible");
     private boolean folds;
 
-    @Deprecated // Remove in 1.19 - Fixes incompatibility with Quarks double door module
-    public static void stopItQuark(PlayerInteractEvent.RightClickBlock event) {
-        Player player = event.getPlayer();
-        Level world = event.getWorld();
-
-        if (!world.isClientSide || player.isDiscrete() || event.isCanceled() || event.getResult() == Event.Result.DENY
-                || event.getUseBlock() == Event.Result.DENY)
-            return;
-
-        BlockPos pos = event.getPos();
-        BlockState blockState = world.getBlockState(pos);
-
-        if (blockState.getBlock() instanceof YIPPEESlidingDoorBlock sdb) {
-            event.setCanceled(true);
-            event.setCancellationResult(blockState.use(world, player, event.getHand(), event.getHitVec()));
-        }
-    }
-
     public YIPPEESlidingDoorBlock(Properties pProperties, boolean folds) {
         super(pProperties);
         this.folds = folds;
@@ -171,7 +153,7 @@ public class YIPPEESlidingDoorBlock extends DoorBlock implements IWrenchable, IB
 
         if (isPowered != pState.getValue(OPEN)) {
             this.playSound(pLevel, pPos, isPowered);
-            pLevel.gameEvent(isPowered ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pPos);
+            pLevel.gameEvent(null, isPowered ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pPos);
 
             DoorHingeSide hinge = changedState.getValue(HINGE);
             Direction facing = changedState.getValue(FACING);

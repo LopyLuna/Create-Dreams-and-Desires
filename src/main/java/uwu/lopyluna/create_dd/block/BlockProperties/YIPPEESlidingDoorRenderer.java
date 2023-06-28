@@ -3,6 +3,7 @@ package uwu.lopyluna.create_dd.block.BlockProperties;
 import com.jozufozu.flywheel.core.PartialModel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.foundation.blockEntity.renderer.SafeBlockEntityRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
@@ -18,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.ForgeRegistries;
 import uwu.lopyluna.create_dd.block.YIPPEEPartialModel;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Context;
 
@@ -48,8 +50,8 @@ public class YIPPEESlidingDoorRenderer extends SafeBlockEntityRenderer<YIPPEESli
                         .scale(value2 * 1 / 32f));
 
         if (((YIPPEESlidingDoorBlock) blockState.getBlock()).isFoldingDoor()) {
-            Couple<PartialModel> partials = YIPPEEPartialModel.FOLDING_DOORS.get(blockState.getBlock()
-                    .getRegistryName());
+            Couple<PartialModel> partials =
+                    YIPPEEPartialModel.FOLDING_DOORS.get(ForgeRegistries.BLOCKS.getKey(blockState.getBlock()));
 
             boolean flip = blockState.getValue(DoorBlock.HINGE) == DoorHingeSide.RIGHT;
             for (boolean left : Iterate.trueAndFalse) {

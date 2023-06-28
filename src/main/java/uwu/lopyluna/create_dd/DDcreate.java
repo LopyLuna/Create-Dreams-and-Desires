@@ -7,15 +7,14 @@ import com.simibubi.create.foundation.data.LangMerger;
 import com.simibubi.create.foundation.data.TagGen;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import org.slf4j.Logger;
 import uwu.lopyluna.create_dd.block.YIPPEE;
 import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
@@ -24,6 +23,8 @@ import uwu.lopyluna.create_dd.block.YIPPEEPartialModel;
 import uwu.lopyluna.create_dd.fluid.SussyWhiteStuff;
 import uwu.lopyluna.create_dd.item.Pipebomb;
 import uwu.lopyluna.create_dd.item.PipebombTab;
+import uwu.lopyluna.create_dd.worldgen.YummyOreFeatures;
+import uwu.lopyluna.create_dd.worldgen.YummyOrePlacedFeatures;
 
 
 @Mod(DDcreate.MOD_ID)
@@ -31,7 +32,7 @@ public class DDcreate
 {
     public static final String NAME = "Create: Flavored";
     public static final String MOD_ID = "create_dd";
-    public static final String VERSION = "ALPHA.0.0.1a";
+    public static final String VERSION = "ALPHA.0.0.2a";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(DDcreate.MOD_ID);
@@ -50,9 +51,12 @@ public class DDcreate
         SussyWhiteStuff.register();
         YIPPEEPalette.register();
 
+        YummyOreFeatures.register(eventBus);
+        YummyOrePlacedFeatures.register(eventBus);
 
         eventBus.addListener(this::clientSetup);
 
+        eventBus.addListener(DDcreate::init);
         eventBus.addListener(EventPriority.LOWEST, DDcreate::gatherData);
 
         // Register ourselves for server and other game events we are interested in
@@ -60,21 +64,19 @@ public class DDcreate
 
     }
 
-
-    private void clientSetup(final FMLClientSetupEvent event) {
+    public static void init(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            SussyWhiteStuff.registerFluidInteractions();
+        });
     }
-
-    private void setup(final FMLCommonSetupEvent event)
-    {
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+    private void clientSetup(final FMLClientSetupEvent event) {
     }
 
     public static void gatherData(GatherDataEvent event) {
         TagGen.datagen();
         DataGenerator gen = event.getGenerator();
         if (event.includeClient()) {
-            gen.addProvider(new LangMerger(gen, DDcreate.MOD_ID, NAME, AllLangPartials.values()));
+            gen.addProvider(true, new LangMerger(gen, MOD_ID, NAME, AllLangPartials.values()));
         }
     }
 

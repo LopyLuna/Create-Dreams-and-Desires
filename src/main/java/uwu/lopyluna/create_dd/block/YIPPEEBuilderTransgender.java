@@ -26,7 +26,7 @@ public class YIPPEEBuilderTransgender {
                 .blockstate((c, p) -> {
                     ModelFile bottom = AssetLookup.partialBaseModel(c, p, "bottom");
                     ModelFile top = AssetLookup.partialBaseModel(c, p, "top");
-                    p.doorBlock(c.get(), bottom, bottom, top, top);
+                    p.doorBlock(c.get(), bottom, bottom, bottom, bottom, top, top, top, top);
                 })
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(pickaxeOnly())

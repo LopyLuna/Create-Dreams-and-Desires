@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "create_flavored:item/lapis_alloy"
+    "layer0": "create_dd:item/hot_chocolate_bucket"
   }
 }

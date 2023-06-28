@@ -8,7 +8,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import uwu.lopyluna.create_dd.fluid.SussyWhiteStuff;
@@ -21,7 +21,7 @@ public class RareSussy {
         BlockState blockState = event.getOriginalState();
         FluidState fluidState = blockState.getFluidState();
         BlockPos pos = event.getPos();
-        LevelAccessor world = event.getWorld();
+        LevelAccessor world = event.getLevel();
 
         if (fluidState.isSource() && FluidHelper.isLava(fluidState.getType()))
             return;
