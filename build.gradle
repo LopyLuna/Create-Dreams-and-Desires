@@ -17,7 +17,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 
-version = '0.0.2a.ALPHA'
+version = '0.0.2b.ALPHA'
 group = 'uwu.lopyluna.create_dd'
 archivesBaseName = "create_dd-${artifact_minecraft_version}"
 
