@@ -236,6 +236,13 @@ public class YIPPEE {
             .lang("Overburden Casing")
             .register();
 
+    public static final BlockEntry<CasingBlock> steel_casing = REGISTRATE.block("steel_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.STEEL_CASING))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .lang("Steel Casing")
+            .register();
+
     public static final BlockEntry<MagicBlockcasing> shadow_steel_casing = REGISTRATE.block("shadow_steel_casing", MagicBlockcasing::new)
             .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.SHADOW_STEEL_CASING))
             .properties(p -> p.color(MaterialColor.COLOR_BLACK))
@@ -329,7 +336,10 @@ public class YIPPEE {
                             YIPPEESpriteShifts.REFINED_RADIANCE_SCAFFOLD, YIPPEESpriteShifts.REFINED_RADIANCE_SCAFFOLD_INSIDE, YIPPEESpriteShifts.REFINED_RADIANCE_CASING))
                     .register();
 
-
+    static {
+        REGISTRATE.creativeModeTab(() -> PipebombTab.BASE_CREATIVE_TAB);
+        Create.REGISTRATE.creativeModeTab(() -> AllCreativeModeTabs.PALETTES_CREATIVE_TAB);
+    }
 
     public static final BlockEntry<BlockcopycatBlock> COPYCAT_BlOCK =
             REGISTRATE.block("copycat_block", BlockcopycatBlock::new)
@@ -459,7 +469,6 @@ public class YIPPEE {
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN)
                     .noOcclusion())
             .lang("Rose Trapdoor")
-            .addLayer(() -> RenderType::cutoutMipped)
             .simpleItem()
             .register();
     public static final BlockEntry<WoodButtonBlock> rose_button = REGISTRATE.block("rose_button", WoodButtonBlock::new)
@@ -560,13 +569,64 @@ public class YIPPEE {
             .simpleItem()
             .register();
 
+    public static final BlockEntry<CasingBlock> hazard_block = REGISTRATE.block("hazard_block", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.HAZARD))
+            .properties(p -> p.destroyTime(1.25f).color(MaterialColor.TERRACOTTA_CYAN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .lang("Hazard Block")
+            .register();
 
+    public static final BlockEntry<CasingBlock> horizontal_hazard_block = REGISTRATE.block("horizontal_hazard_block", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.HORIZONTAL_HAZARD))
+            .properties(p -> p.destroyTime(1.25f).color(MaterialColor.TERRACOTTA_CYAN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .lang("Horizontal Hazard Block")
+            .register();
 
+    public static final BlockEntry<Block> potassic_cobble =
+            REGISTRATE.block("potassic_cobble", Block::new)
+                    .initialProperties(() -> Blocks.DEEPSLATE)
+                    .properties(p -> p.destroyTime(2.25f).color(MaterialColor.TERRACOTTA_BLUE))
+                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .transform(pickaxeOnly())
+                    .simpleItem()
+                    .register();
 
+    public static final BlockEntry<Block> asurine_cobble =
+            REGISTRATE.block("asurine_cobble", Block::new)
+                    .initialProperties(() -> Blocks.DEEPSLATE)
+                    .properties(p -> p.destroyTime(2.25f).color(MaterialColor.COLOR_BLUE))
+                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .transform(pickaxeOnly())
+                    .simpleItem()
+                    .register();
 
+    public static final BlockEntry<Block> crimsite_cobble =
+            REGISTRATE.block("crimsite_cobble", Block::new)
+                    .initialProperties(() -> Blocks.DEEPSLATE)
+                    .properties(p -> p.destroyTime(2.25f).color(MaterialColor.COLOR_RED))
+                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .transform(pickaxeOnly())
+                    .simpleItem()
+                    .register();
 
+    public static final BlockEntry<Block> ochrum_cobble =
+            REGISTRATE.block("ochrum_cobble", Block::new)
+                    .initialProperties(() -> Blocks.CALCITE)
+                    .properties(p -> p.destroyTime(2.25f).color(MaterialColor.TERRACOTTA_YELLOW))
+                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .transform(pickaxeOnly())
+                    .simpleItem()
+                    .register();
 
-
+    public static final BlockEntry<Block> veridium_cobble =
+            REGISTRATE.block("veridium_cobble", Block::new)
+                    .initialProperties(() -> Blocks.TUFF)
+                    .properties(p -> p.destroyTime(2.25f).color(MaterialColor.WARPED_NYLIUM))
+                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .transform(pickaxeOnly())
+                    .simpleItem()
+                    .register();
 
     public static void register() {}
 }

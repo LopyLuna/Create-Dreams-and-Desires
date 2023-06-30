@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "AIA",
+    " C "
+  ],
+  "key": {
+    "C": {
+      "item": "create:andesite_casing"
+    },
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "I": {
+      "tag": "forge:ingots/industrial_iron"
+    }
+  },
+  "result": {
+    "item": "create:mechanical_drill",
+    "count": 2
+  }
+}

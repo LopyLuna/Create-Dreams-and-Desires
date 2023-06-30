@@ -1,0 +1,19 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "create_dd:crimsite_cobble"
+    }
+  ],
+  "processingTime": 375,
+  "results": [
+    {
+      "chance": 0.16,
+      "item": "create:crushed_raw_iron"
+    },
+    {
+      "chance": 0.16,
+      "item": "minecraft:iron_nugget"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "create_dd:cobble_potassic"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:crushed_raw_tin",
+      "chance": 0.2
+    },
+    {
+      "item": "create_dd:tin_nugget",
+      "chance": 0.2
+    }
+  ],
+  "processingTime": 375
+}

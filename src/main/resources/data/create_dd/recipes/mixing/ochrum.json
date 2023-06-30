@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create_dd:ochrum_cobble"
+    },
+    {
+      "item": "create_dd:ochrum_cobble"
+    },
+    {
+      "item": "create:crushed_raw_gold"
+    },
+    {
+      "item": "minecraft:quartz"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:ochrum",
+      "count": 2
+    }
+  ],
+  "heatRequirement": "heated"
+}

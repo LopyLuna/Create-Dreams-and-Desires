@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dyes/black"
+    },
+    {
+      "tag": "forge:dyes/yellow"
+    },
+    {
+      "item": "create:cut_andesite"
+    },
+    {
+      "item": "create:cut_andesite"
+    },
+    {
+      "item": "create:cut_andesite"
+    },
+    {
+      "item": "create:cut_andesite"
+    },
+    {
+      "item": "create:cut_andesite"
+    },
+    {
+      "item": "create:cut_andesite"
+    }
+  ],
+  "result": {
+    "item": "create_dd:hazard_block",
+    "count": 6
+  }
+}

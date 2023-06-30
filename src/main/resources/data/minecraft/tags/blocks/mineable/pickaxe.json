@@ -40,6 +40,14 @@
     "create_dd:spectral_ruby_block",
     "create_dd:spectral_ruby_tiles",
     "create_dd:small_spectral_ruby_tiles",
-    "create_dd:industrial_iron_block"
+    "create_dd:industrial_iron_block",
+    "create_dd:potassic_cobble",
+    "create_dd:asurine_cobble",
+    "create_dd:crimsite_cobble",
+    "create_dd:ochrum_cobble",
+    "create_dd:veridium_cobble",
+    "create_dd:hazard_block",
+    "create_dd:horizontal_hazard_block",
+    "create_dd:steel_casing"
   ]
 }

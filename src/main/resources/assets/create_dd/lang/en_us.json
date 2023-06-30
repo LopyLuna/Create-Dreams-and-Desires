@@ -47,8 +47,8 @@
   "item.create_dd.incomplete_abstruse_mechanism": "Incomplete Abstruse Mechanism",
   "item.create_dd.calculation_mechanism": "Calculation Mechanism",
   "item.create_dd.incomplete_calculation_mechanism": "Incomplete Calculation Mechanism",
-  "item.create_dd.inductive_mechanism": "Inductive Mechanism",
-  "item.create_dd.incomplete_inductive_mechanism": "Incomplete Inductive Mechanism",
+  "item.create_dd.inductive_mechanism": "Logistics Mechanism",
+  "item.create_dd.incomplete_inductive_mechanism": "Incomplete Logistics Mechanism",
   "item.create_dd.infernal_mechanism": "Infernal Mechanism",
   "item.create_dd.incomplete_infernal_mechanism": "Incomplete Infernal Mechanism",
   "item.create_dd.sealed_mechanism": "Sealed Mechanism",
@@ -67,6 +67,8 @@
   "item.create_dd.hot_chocolate_bucket": "Hot Chocolate Bucket",
   "item.create_dd.chocolate_milkshake_bucket": "Chocolate Milkshake Bucket",
 
+  "block.create_dd.hazard_block": "Hazard Block",
+  "block.create_dd.horizontal_hazard_block": "Horizontal Hazard Block",
 
   "block.create_dd.condense_milk": "Condense Milk",
   "block.create_dd.cream": "Cream",
@@ -116,6 +118,8 @@
   "block.create_dd.industrial_casing": "Industrial Casing",
   "block.create_dd.overburden_casing": "Overburden Casing",
 
+  "block.create_dd.steel_casing": "Steel Casing",
+
   "block.create_dd.potassic": "Potassic",
   "block.create_dd.weathered_limestone": "Weathered Limestone",
   "block.create_dd.gabbro": "Gabbro",
@@ -136,7 +140,7 @@
   "block.create_dd.rose_log": "Rose Log",
   "block.create_dd.smoked_log": "Smoked Log",
   "block.create_dd.stripped_rose_log": "Stripped Rose Log",
-  "block.create_dd.stripped_smoked_log": "stripped_smoked_log",
+  "block.create_dd.stripped_smoked_log": "Stripped Smoked Log",
   "block.create_dd.rose_wood": "Rose Wood",
   "block.create_dd.smoked_wood": "Smoked Wood",
   "block.create_dd.stripped_rose_wood": "Stripped Rose Wood",
@@ -174,6 +178,12 @@
 
   "block.create_dd.copycat_block": "Copycat Block",
   "block.create_dd.copycat_slab": "Copycat Slab",
+
+  "block.create_dd.potassic_cobble": "Cobbled Potassic",
+  "block.create_dd.asurine_cobble": "Cobbled Asurine",
+  "block.create_dd.crimsite_cobble": "Cobbled Crimsite",
+  "block.create_dd.ochrum_cobble": "Cobbled Ochrum",
+  "block.create_dd.veridium_cobble": "Cobbled Veridium",
 
   "itemGroup.create_dd.base": "§f\uEFb8"
 }

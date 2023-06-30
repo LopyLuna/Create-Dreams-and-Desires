@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "key": {
+    "A": {
+      "item": "create:copper_casing"
+    },
+    "B": {
+      "item": "create_dd:sealed_mechanism"
+    }
+  },
+  "result": {
+    "item": "create:spout",
+    "count": 2
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    [
+      {
+        "tag": "forge:ore_bearing_ground/deepslate"
+      },
+      {
+        "item": "create:cut_deepslate"
+      },
+      {
+        "item": "create:polished_cut_deepslate"
+      },
+      {
+        "item": "create:cut_deepslate_bricks"
+      },
+      {
+        "item": "create:small_deepslate_bricks"
+      },
+      {
+        "item": "create:layered_deepslate"
+      },
+      {
+        "item": "create:deepslate_pillar"
+      },
+      {
+        "tag": "forge:stone"
+      }
+    ],
+    {
+      "tag": "forge:ingots/steel"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:steel_casing"
+    }
+  ]
+}

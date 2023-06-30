@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "B",
+    "D"
+  ],
+  "key": {
+    "A": {
+      "tag": "minecraft:buttons"
+    },
+    "B": {
+      "item": "create:andesite_casing"
+    },
+    "D": {
+      "item": "create_dd:inductive_mechanism"
+    }
+  },
+  "result": {
+    "item": "create:contraption_controls",
+    "count": 4
+  }
+}

@@ -19,10 +19,13 @@ public class YIPPEESpriteShifts {
             MOSSY_ANDESITE_CASING = omni("mossy_andesite_casing"),
             HYDRAULIC_CASING = omni("hydraulic_casing"),
             INDUSTRIAL_CASING = omni("industrial_casing"),
+            STEEL_CASING = omni("steel_casing"),
             OVERBURDEN_CASING = omni("overburden_casing"),
             SHADOW_STEEL_CASING = omni("shadow_steel_casing"),
-            REFINED_RADIANCE_CASING = omni("refined_radiance_casing");
+            REFINED_RADIANCE_CASING = omni("refined_radiance_casing"),
 
+            HAZARD = omni("hazard_block"),
+            HORIZONTAL_HAZARD = omni("horizontal_hazard_block");
 
     public static final CTSpriteShiftEntry
                TRAIN_SCAFFOLD = horizontal(           "train_scaffold"),

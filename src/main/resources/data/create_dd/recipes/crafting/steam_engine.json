@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "G",
+    "A",
+    "B"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:copper_block"
+    },
+    "A": {
+      "item": "create_dd:sealed_mechanism"
+    },
+    "G": {
+      "tag": "forge:plates/gold"
+    }
+  },
+  "result": {
+    "item": "create:steam_engine",
+    "count": 2
+  }
+}

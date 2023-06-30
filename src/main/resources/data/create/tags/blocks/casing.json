@@ -8,6 +8,7 @@
     "create_dd:industrial_casing",
     "create_dd:overburden_casing",
     "create_dd:shadow_steel_casing",
-    "create_dd:refined_radiance_casing"
+    "create_dd:refined_radiance_casing",
+    "create_dd:steel_casing"
   ]
 }

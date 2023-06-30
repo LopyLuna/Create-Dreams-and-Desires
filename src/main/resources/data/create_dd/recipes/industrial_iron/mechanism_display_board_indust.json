@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PAP"
+  ],
+  "key": {
+    "A": {
+      "item": "create_dd:calculation_mechanism"
+    },
+    "P": {
+      "tag": "forge:plates/industrial_iron"
+    }
+  },
+  "result": {
+    "item": "create:display_board",
+    "count": 12
+  }
+}

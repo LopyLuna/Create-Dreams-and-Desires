@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create_dd:crimsite_cobble"
+    },
+    {
+      "item": "create_dd:crimsite_cobble"
+    },
+    {
+      "item": "create:crushed_raw_iron"
+    },
+    {
+      "item": "minecraft:redstone"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:crimsite",
+      "count": 2
+    }
+  ],
+  "heatRequirement": "heated"
+}

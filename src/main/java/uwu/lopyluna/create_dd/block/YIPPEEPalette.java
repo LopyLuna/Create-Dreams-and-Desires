@@ -1,7 +1,7 @@
 package uwu.lopyluna.create_dd.block;
 
 import com.simibubi.create.AllCreativeModeTabs;
-import uwu.lopyluna.create_dd.DDcreate;
+import com.simibubi.create.Create;
 
 import static uwu.lopyluna.create_dd.DDcreate.REGISTRATE;
 
@@ -9,7 +9,7 @@ import static uwu.lopyluna.create_dd.DDcreate.REGISTRATE;
 public class YIPPEEPalette {
 
     static {
-        DDcreate.REGISTRATE.creativeModeTab(() -> AllCreativeModeTabs.PALETTES_CREATIVE_TAB);
+        Create.REGISTRATE.creativeModeTab(() -> AllCreativeModeTabs.PALETTES_CREATIVE_TAB);
     }
 
     static {

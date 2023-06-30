@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "NIN",
+    "III",
     "IXI",
     "###"
   ],
@@ -14,12 +14,10 @@
     },
     "I": {
       "tag": "forge:ingots/industrial_iron"
-    },
-    "N": {
-      "tag": "forge:nuggets/iron"
     }
   },
   "result": {
-    "item": "minecraft:blast_furnace"
+    "item": "minecraft:blast_furnace",
+    "count": 2
   }
 }

@@ -1,0 +1,19 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "create_dd:ochrum_cobble"
+    }
+  ],
+  "processingTime": 375,
+  "results": [
+    {
+      "chance": 0.05,
+      "item": "create:crushed_raw_gold"
+    },
+    {
+      "chance": 0.05,
+      "item": "minecraft:gold_nugget"
+    }
+  ]
+}
