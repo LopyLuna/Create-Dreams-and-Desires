@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:spirit_log",
+    "create_dd:stripped_spirit_log",
+    "create_dd:spirit_wood",
+    "create_dd:stripped_spirit_wood",
+    "create_dd:spirit_planks",
+
+
+    "create_dd:spirit_slab",
+    "create_dd:spirit_stairs",
+    "create_dd:spirit_fence",
+    "create_dd:spirit_fence_gate",
+    "create_dd:spirit_door",
+    "create_dd:spirit_trapdoor",
+    "create_dd:spirit_button",
+    "create_dd:spirit_pressure_plate"
+
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create_dd:stripped_spirit_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:spirit_planks",
+      "count": 6
+    }
+  ],
+  "processingTime": 50
+}

@@ -6,10 +6,8 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import uwu.lopyluna.create_dd.item.ItemProperties.ChromaticCompound;
-import uwu.lopyluna.create_dd.item.ItemProperties.ForestRavagerItem;
-import uwu.lopyluna.create_dd.item.ItemProperties.RefinedRadiance;
-import uwu.lopyluna.create_dd.item.ItemProperties.ShadowSteel;
+import net.minecraftforge.common.Tags;
+import uwu.lopyluna.create_dd.item.ItemProperties.*;
 
 import static com.simibubi.create.AllTags.AllItemTags.CREATE_INGOTS;
 import static com.simibubi.create.AllTags.forgeItemTag;
@@ -106,6 +104,26 @@ public class Pipebomb {
                     .fireResistant())
             .model(AssetLookup.itemModelWithPartials())
             .register();
+
+
+    public static final ItemEntry<ExperienceNuggetItemOne> ONE_EXP_NUGGET =
+            REGISTRATE.item("experience_ingot", ExperienceNuggetItemOne::new)
+                    .tag(Tags.Items.INGOTS)
+                    .properties(p -> p.stacksTo(48)
+                            .rarity(Rarity.UNCOMMON))
+                    .lang("Ingot of Experience")
+                    .register();
+
+    public static final ItemEntry<ExperienceNuggetItemTwo> TWO_EXP_NUGGET =
+            REGISTRATE.item("experience_mass", ExperienceNuggetItemTwo::new)
+                    .properties(p -> p.stacksTo(24)
+                            .rarity(Rarity.EPIC)
+                            .fireResistant())
+                    .lang("Mass of Experience")
+                    .register();
+
+
+
 
     private static ItemEntry<Item> ingredient(String name) {
         return REGISTRATE.item(name, Item::new)

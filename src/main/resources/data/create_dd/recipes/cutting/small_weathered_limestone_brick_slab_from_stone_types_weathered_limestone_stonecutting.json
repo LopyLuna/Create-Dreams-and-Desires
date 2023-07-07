@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "create_dd:stone_types/weathered_limestone"
+  },
+  "result": "create_dd:small_weathered_limestone_brick_slab",
+  "count": 2
+}

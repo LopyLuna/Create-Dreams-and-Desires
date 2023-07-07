@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "create_dd:block/bronze_encased_fan/block",
+      "x": 180
+    },
+    "facing=up": {
+      "model": "create_dd:block/bronze_encased_fan/block"
+    },
+    "facing=north": {
+      "model": "create_dd:block/bronze_encased_fan/block",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "create_dd:block/bronze_encased_fan/block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "create_dd:block/bronze_encased_fan/block",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east": {
+      "model": "create_dd:block/bronze_encased_fan/block",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

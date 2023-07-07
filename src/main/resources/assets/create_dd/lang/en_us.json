@@ -36,6 +36,9 @@
   "item.create_dd.shadow_steel_sheet": "Shadow Steel Sheet",
   "item.create_dd.refined_radiance_sheet": "Refined Radiance Sheet",
 
+  "item.create_dd.experience_ingot": "Ingot of Experience",
+  "item.create_dd.experience_mass": "Mass of Experience",
+
   "item.create_dd.forest_ravager": "Mythical Forest Ravager",
   "item.create_dd.vanilla_orchid": "Vanilla Orchid",
   "item.create_dd.integrated_circuit": "Integrated Circuit",
@@ -69,6 +72,8 @@
 
   "block.create_dd.hazard_block": "Hazard Block",
   "block.create_dd.horizontal_hazard_block": "Horizontal Hazard Block",
+  "block.create_dd.hazard_block_r": "Hazard Block",
+  "block.create_dd.horizontal_hazard_block_r": "Horizontal Hazard Block",
 
   "block.create_dd.condense_milk": "Condense Milk",
   "block.create_dd.cream": "Cream",
@@ -121,8 +126,8 @@
   "block.create_dd.steel_casing": "Steel Casing",
 
   "block.create_dd.potassic": "Potassic",
-  "block.create_dd.weathered_limestone": "Weathered Limestone",
-  "block.create_dd.gabbro": "Gabbro",
+
+  "block.create_dd.asphalt_block": "Asphalt Block",
 
   "block.create_dd.spectral_ruby_block": "Block of Spectral Ruby",
   "block.create_dd.spectral_ruby_tiles": "Spectral Ruby Tiles",
@@ -165,6 +170,20 @@
   "block.create_dd.rose_button": "Rose Button",
   "block.create_dd.smoked_button": "Smoked Button",
 
+  "block.create_dd.spirit_log": "Spirit Log",
+  "block.create_dd.stripped_spirit_log": "Stripped Spirit Log",
+  "block.create_dd.spirit_wood": "Spirit Wood",
+  "block.create_dd.stripped_spirit_wood": "Stripped Spirit Wood",
+  "block.create_dd.spirit_planks": "Spirit Planks",
+  "block.create_dd.spirit_stairs": "Spirit Stairs",
+  "block.create_dd.spirit_slab": "Spirit Slab",
+  "block.create_dd.spirit_fence": "Spirit Fence",
+  "block.create_dd.spirit_fence_gate": "Spirit Fence Gate",
+  "block.create_dd.spirit_door": "Spirit Door",
+  "block.create_dd.spirit_trapdoor": "Spirit Trapdoor",
+  "block.create_dd.spirit_pressure_plate": "Spirit Pressure Plate",
+  "block.create_dd.spirit_button": "Spirit Button",
+
   "block.create_dd.train_scaffolding": "Train Scaffolding",
   "block.create_dd.hydraulic_scaffolding": "Hydraulic Scaffolding",
   "block.create_dd.overburden_scaffolding": "Overburden Scaffolding",
@@ -184,6 +203,51 @@
   "block.create_dd.crimsite_cobble": "Cobbled Crimsite",
   "block.create_dd.ochrum_cobble": "Cobbled Ochrum",
   "block.create_dd.veridium_cobble": "Cobbled Veridium",
+
+
+  "block.create_dd.weathered_limestone": "Weathered Limestone",
+
+  "block.create_dd.cut_weathered_limestone": "Cut Weathered Limestone",
+  "block.create_dd.cut_weathered_limestone_brick_slab": "Cut Weathered Limestone Brick Slab",
+  "block.create_dd.cut_weathered_limestone_brick_stairs": "Cut Weathered Limestone Brick Stairs",
+  "block.create_dd.cut_weathered_limestone_brick_wall": "Cut Weathered Limestone Brick Wall",
+  "block.create_dd.cut_weathered_limestone_bricks": "Cut Weathered Limestone Bricks",
+  "block.create_dd.cut_weathered_limestone_slab": "Cut Weathered Limestone Slab",
+  "block.create_dd.cut_weathered_limestone_stairs": "Cut Weathered Limestone Stairs",
+  "block.create_dd.cut_weathered_limestone_wall": "Cut Weathered Limestone Wall",
+  "block.create_dd.layered_weathered_limestone": "Layered Weathered Limestone",
+  "block.create_dd.weathered_limestone_pillar": "Weathered Limestone Pillar",
+  "block.create_dd.polished_cut_weathered_limestone": "Polished Cut Weathered Limestone",
+  "block.create_dd.polished_cut_weathered_limestone_slab": "Polished Cut Weathered Limestone Slab",
+  "block.create_dd.polished_cut_weathered_limestone_stairs": "Polished Cut Weathered Limestone Stairs",
+  "block.create_dd.polished_cut_weathered_limestone_wall": "Polished Cut Weathered Limestone Wall",
+  "block.create_dd.small_weathered_limestone_brick_slab": "Small Weathered Limestone Brick Slab",
+  "block.create_dd.small_weathered_limestone_brick_stairs": "Small Weathered Limestone Brick Stairs",
+  "block.create_dd.small_weathered_limestone_brick_wall": "Small Weathered Limestone Brick Wall",
+  "block.create_dd.small_weathered_limestone_bricks": "Small Weathered Limestone Bricks",
+
+  "block.create_dd.gabbro": "Gabbro",
+
+  "block.create_dd.cut_gabbro": "Cut Gabbro",
+  "block.create_dd.cut_gabbro_brick_slab": "Cut Gabbro Brick Slab",
+  "block.create_dd.cut_gabbro_brick_stairs": "Cut Gabbro Brick Stairs",
+  "block.create_dd.cut_gabbro_brick_wall": "Cut Gabbro Brick Wall",
+  "block.create_dd.cut_gabbro_bricks": "Cut Gabbro Bricks",
+  "block.create_dd.cut_gabbro_slab": "Cut Gabbro Slab",
+  "block.create_dd.cut_gabbro_stairs": "Cut Gabbro Stairs",
+  "block.create_dd.cut_gabbro_wall": "Cut Gabbro Wall",
+  "block.create_dd.layered_gabbro": "Layered Gabbro",
+  "block.create_dd.gabbro_pillar": "Gabbro Pillar",
+  "block.create_dd.polished_cut_gabbro": "Polished Cut Gabbro",
+  "block.create_dd.polished_cut_gabbro_slab": "Polished Cut Gabbro Slab",
+  "block.create_dd.polished_cut_gabbro_stairs": "Polished Cut Gabbro Stairs",
+  "block.create_dd.polished_cut_gabbro_wall": "Polished Cut Gabbro Wall",
+  "block.create_dd.small_gabbro_brick_slab": "Small Gabbro Brick Slab",
+  "block.create_dd.small_gabbro_brick_stairs": "Small Gabbro Brick Stairs",
+  "block.create_dd.small_gabbro_brick_wall": "Small Gabbro Brick Wall",
+  "block.create_dd.small_gabbro_bricks": "Small Gabbro Bricks",
+
+
 
   "itemGroup.create_dd.base": "§f\uEFb8"
 }

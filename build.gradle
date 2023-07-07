@@ -17,7 +17,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 
-version = '0.0.2c.ALPHA'
+version = '0.0.3a.ALPHA'
 group = 'uwu.lopyluna.create_dd'
 archivesBaseName = "create_dd-${artifact_minecraft_version}"
 
@@ -111,6 +111,10 @@ repositories {
         url = "https://maven.blamejared.com/"
     }
     maven {
+        // location of the maven for Curios API
+        url = "https://maven.theillusivec4.top/"
+    }
+    maven {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
@@ -141,16 +145,30 @@ dependencies {
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
     implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
 
+    compileOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}-forge-api:${jei_version}")
     runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
 
     //mods
 
-    //  runtimeOnly fg.deobf("vazkii.arl:AutoRegLib:1.4-35.69")
-    //  runtimeOnly fg.deobf("vazkii.quark:Quark:r2.0-212.984")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}")
+    runtimeOnly fg.deobf("curse.maven:autoreglib-250363:4100299")
+    runtimeOnly fg.deobf("vazkii.quark:Quark:3.4-406.3030")
+    runtimeOnly fg.deobf("curse.maven:mouse-tweaks-60089:3871353")
+    runtimeOnly fg.deobf("curse.maven:rubidium-574856:4568727")
+    runtimeOnly fg.deobf("curse.maven:rubidium-extra-654373:4431017")
+    runtimeOnly fg.deobf("curse.maven:textrues-rubidium-options-663125:4507672")
+    runtimeOnly fg.deobf("curse.maven:memoryleakfix-627566:4465268")
+    runtimeOnly fg.deobf("curse.maven:entity-collision-fps-fix-628345:3829972")
+    runtimeOnly fg.deobf("curse.maven:smooth-boot-reloaded-633412:4162940")
+    runtimeOnly fg.deobf("curse.maven:krypton-reforged-549394:4606519")
     //  runtimeOnly fg.deobf("slimeknights.mantle:Mantle:1.16.5-1.6.115")
     //  runtimeOnly fg.deobf("slimeknights.tconstruct:TConstruct:1.16.5-3.1.1.252")
-    //  runtimeOnly fg.deobf("maven.modrinth:rubidium:0.5.3")
-
+    //  runtimeOnly fg.deobf("com.railwayteam.railways:railways-1.18.2-1.1.1:all") { transitive = false }
+    runtimeOnly fg.deobf("maven.modrinth:entityculling:1.6.1")
+    runtimeOnly fg.deobf("maven.modrinth:reskin:2.6.1")
+    runtimeOnly fg.deobf("maven.modrinth:sekclib:0.4.3")
+    runtimeOnly fg.deobf("curse.maven:female-gender-forge-481655:3920268")
 }
 
 sourceSets.main.resources {

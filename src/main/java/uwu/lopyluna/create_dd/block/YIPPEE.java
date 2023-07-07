@@ -3,6 +3,8 @@ package uwu.lopyluna.create_dd.block;
 import com.simibubi.create.*;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
+import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.BuilderTransformers;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
@@ -273,7 +275,17 @@ public class YIPPEE {
             .register();
 
     //MECHANICAL BLOCKS
-
+    public static final BlockEntry<BronzeEncasedFanBlock> BRONZE_ENCASED_FAN =
+            REGISTRATE.block("bronze_encased_fan", BronzeEncasedFanBlock::new)
+                    .initialProperties(SharedProperties::stone)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .blockstate(BlockStateGen.directionalBlockProvider(true))
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .transform(axeOrPickaxe())
+                    .transform(BlockStressDefaults.setImpact(4.0))
+                    .item()
+                    .transform(customItemModel())
+                    .register();
 
     public static final BlockEntry<MetalScaffoldingBlock> TRAIN_SCAFFOLD =
             REGISTRATE.block("train_scaffolding", MetalScaffoldingBlock::new)
@@ -404,55 +416,55 @@ public class YIPPEE {
 
     public static final BlockEntry<HotAssRotatedBlockPillar> rose_log = REGISTRATE.block("rose_log", HotAssRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.OAK_LOG)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Log")
             .simpleItem()
             .register();
     public static final BlockEntry<HotAssRotatedBlockPillar> stripped_rose_log = REGISTRATE.block("stripped_rose_log", HotAssRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.STRIPPED_OAK_LOG)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Stripped Rose Log")
             .simpleItem()
             .register();
     public static final BlockEntry<HotAssRotatedBlockPillar> rose_wood = REGISTRATE.block("rose_wood", HotAssRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.OAK_WOOD)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Wood")
             .simpleItem()
             .register();
     public static final BlockEntry<HotAssRotatedBlockPillar> stripped_rose_wood = REGISTRATE.block("stripped_rose_wood", HotAssRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.STRIPPED_OAK_WOOD)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Stripped Rose Wood")
             .simpleItem()
             .register();
     public static final BlockEntry<HotAssBlock> rose_planks = REGISTRATE.block("rose_planks", HotAssBlock::new)
             .initialProperties(() -> Blocks.OAK_PLANKS)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Planks")
             .simpleItem()
             .register();
     public static final BlockEntry<SlabBlock> rose_slab = REGISTRATE.block("rose_slab", SlabBlock::new)
             .initialProperties(() -> Blocks.OAK_SLAB)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Slab")
             .simpleItem()
             .register();
     public static final BlockEntry<StairBlock> rose_stairs = REGISTRATE.block("rose_stairs", p -> new StairBlock(YIPPEE.rose_planks::getDefaultState, p))
             .initialProperties(() -> Blocks.OAK_STAIRS)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Stairs")
             .simpleItem()
             .register();
     public static final BlockEntry<FenceBlock> rose_fence = REGISTRATE.block("rose_fence", FenceBlock::new)
             .initialProperties(() -> Blocks.OAK_FENCE)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Fence")
             .simpleItem()
             .register();
     public static final BlockEntry<FenceGateBlock> rose_fence_gate = REGISTRATE.block("rose_fence_gate", FenceGateBlock::new)
             .initialProperties(() -> Blocks.OAK_FENCE_GATE)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Fence Gate")
             .simpleItem()
             .register();
@@ -460,26 +472,26 @@ public class YIPPEE {
             REGISTRATE.block("rose_door", p -> new YIPPEESlidingDoorBlock(p, true))
                     .initialProperties(() -> Blocks.OAK_DOOR)
                     .transform(YIPPEEBuilderTransgender.slidingDoor("rose"))
-                    .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN)
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_RED)
                             .sound(SoundType.WOOD)
                             .noOcclusion())
                     .register();
     public static final BlockEntry<TrapDoorBlock> rose_trapdoor = REGISTRATE.block("rose_trapdoor", TrapDoorBlock::new)
             .initialProperties(() -> Blocks.OAK_TRAPDOOR)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED)
                     .noOcclusion())
             .lang("Rose Trapdoor")
             .simpleItem()
             .register();
     public static final BlockEntry<WoodButtonBlock> rose_button = REGISTRATE.block("rose_button", WoodButtonBlock::new)
             .initialProperties(() -> Blocks.OAK_BUTTON)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Button")
             .simpleItem()
             .register();
     public static final BlockEntry<PressurePlateBlock> rose_pressure_plate = REGISTRATE.block("rose_pressure_plate", p -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, p))
             .initialProperties(() -> Blocks.OAK_PRESSURE_PLATE)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Pressure Plate")
             .simpleItem()
             .register();
@@ -569,16 +581,175 @@ public class YIPPEE {
             .simpleItem()
             .register();
 
-    public static final BlockEntry<CasingBlock> hazard_block = REGISTRATE.block("hazard_block", CasingBlock::new)
-            .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.HAZARD))
-            .properties(p -> p.destroyTime(1.25f).color(MaterialColor.TERRACOTTA_CYAN))
+    //SPIRIT WOODSET
+
+    public static final BlockEntry<SpiritLogRotatedBlockPillar> spirit_log = REGISTRATE.block("spirit_log", SpiritLogRotatedBlockPillar::new)
+            .initialProperties(() -> Blocks.WARPED_STEM)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Spirit Log")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SpiritLogRotatedBlockPillar> stripped_spirit_log = REGISTRATE.block("stripped_spirit_log", SpiritLogRotatedBlockPillar::new)
+            .initialProperties(() -> Blocks.STRIPPED_WARPED_STEM)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Stripped Spirit Log")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SpiritLogRotatedBlockPillar> spirit_wood = REGISTRATE.block("spirit_wood", SpiritLogRotatedBlockPillar::new)
+            .initialProperties(() -> Blocks.WARPED_HYPHAE)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Spirit Wood")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SpiritLogRotatedBlockPillar> stripped_spirit_wood = REGISTRATE.block("stripped_spirit_wood", SpiritLogRotatedBlockPillar::new)
+            .initialProperties(() -> Blocks.STRIPPED_WARPED_HYPHAE)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Stripped Spirit Wood")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> spirit_planks = REGISTRATE.block("spirit_planks", Block::new)
+            .initialProperties(() -> Blocks.WARPED_PLANKS)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Spirit Planks")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<StairBlock> spirit_stairs = REGISTRATE.block("spirit_stairs", p -> new StairBlock(YIPPEE.spirit_planks::getDefaultState, p))
+            .initialProperties(() -> Blocks.WARPED_STAIRS)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Spirit Stairs")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SlabBlock> spirit_slab = REGISTRATE.block("spirit_slab", SlabBlock::new)
+            .initialProperties(() -> Blocks.WARPED_SLAB)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Spirit Slab")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<FenceBlock> spirit_fence = REGISTRATE.block("spirit_fence", FenceBlock::new)
+            .initialProperties(() -> Blocks.WARPED_FENCE)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Spirit Fence")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<FenceGateBlock> spirit_fence_gate = REGISTRATE.block("spirit_fence_gate", FenceGateBlock::new)
+            .initialProperties(() -> Blocks.WARPED_FENCE_GATE)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Spirit Fence Gate")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<YIPPEESlidingDoorBlock> spirit_door =
+            REGISTRATE.block("spirit_door", p -> new YIPPEESlidingDoorBlock(p, true))
+                    .initialProperties(() -> Blocks.WARPED_DOOR)
+                    .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                            () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                            () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+                    .transform(YIPPEEBuilderTransgender.slidingDoor("spirit"))
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE)
+                            .noOcclusion())
+                    .register();
+    public static final BlockEntry<TrapDoorBlock> spirit_trapdoor = REGISTRATE.block("spirit_trapdoor", TrapDoorBlock::new)
+            .initialProperties(() -> Blocks.WARPED_TRAPDOOR)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE)
+                    .noOcclusion())
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Spirit Trapdoor")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<WoodButtonBlock> spirit_button = REGISTRATE.block("spirit_button", WoodButtonBlock::new)
+            .initialProperties(() -> Blocks.WARPED_BUTTON)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Spirit Button")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<PressurePlateBlock> spirit_pressure_plate = REGISTRATE.block("spirit_pressure_plate", p -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, p))
+            .initialProperties(() -> Blocks.WARPED_PRESSURE_PLATE)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
+            .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
+                    () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
+                    () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .lang("Spirit Pressure Plate")
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> asphalt_block = REGISTRATE.block("asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_CYAN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .lang("Asphalt Block")
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<HazardBlock> hazard_block = REGISTRATE.block("hazard_block", HazardBlock::new)
+            .transform(BuilderTransgender.hazard(() -> YIPPEESpriteShifts.HAZARD))
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(0.8F)
+                    .jumpFactor(0.8F)
+                    .color(MaterialColor.TERRACOTTA_CYAN))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
             .lang("Hazard Block")
             .register();
 
-    public static final BlockEntry<CasingBlock> horizontal_hazard_block = REGISTRATE.block("horizontal_hazard_block", CasingBlock::new)
-            .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.HORIZONTAL_HAZARD))
-            .properties(p -> p.destroyTime(1.25f).color(MaterialColor.TERRACOTTA_CYAN))
+    public static final BlockEntry<HazardBlock> horizontal_hazard_block = REGISTRATE.block("horizontal_hazard_block", HazardBlock::new)
+            .transform(BuilderTransgender.hazard(() -> YIPPEESpriteShifts.HORIZONTAL_HAZARD))
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(0.8F)
+                    .jumpFactor(0.8F)
+                    .color(MaterialColor.TERRACOTTA_CYAN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .lang("Horizontal Hazard Block")
+            .register();
+
+    public static final BlockEntry<HazardBlock> hazard_block_r = REGISTRATE.block("hazard_block_r", HazardBlock::new)
+            .transform(BuilderTransgender.hazard(() -> YIPPEESpriteShifts.HAZARD_R))
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(0.8F)
+                    .jumpFactor(0.8F)
+                    .color(MaterialColor.TERRACOTTA_CYAN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .lang("Hazard Block")
+            .register();
+
+    public static final BlockEntry<HazardBlock> horizontal_hazard_block_r = REGISTRATE.block("horizontal_hazard_block_r", HazardBlock::new)
+            .transform(BuilderTransgender.hazard(() -> YIPPEESpriteShifts.HORIZONTAL_HAZARD_R))
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(0.8F)
+                    .jumpFactor(0.8F)
+                    .color(MaterialColor.TERRACOTTA_CYAN))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
             .lang("Horizontal Hazard Block")
             .register();

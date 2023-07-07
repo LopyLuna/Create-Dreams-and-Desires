@@ -3,6 +3,7 @@
   "values": [
     "#create_dd:rose_woodset",
     "#create_dd:smoked_woodset",
+    "#create_dd:spirit_woodset",
     "create_dd:industrial_iron_block"
   ]
 }

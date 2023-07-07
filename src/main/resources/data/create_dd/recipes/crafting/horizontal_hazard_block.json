@@ -1,15 +1,21 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "A"
-  ],
-  "key": {
-    "A": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "create_dd:hazard_block"
+    },
+    {
+      "item": "create_dd:hazard_block"
+    },
+    {
+      "item": "create_dd:hazard_block"
+    },
+    {
       "item": "create_dd:hazard_block"
     }
-  },
+  ],
   "result": {
     "item": "create_dd:horizontal_hazard_block",
-    "count": 1
+    "count": 4
   }
 }

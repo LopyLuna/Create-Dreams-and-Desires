@@ -2,32 +2,20 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "forge:dyes/black"
+      "item": "create_dd:horizontal_hazard_block"
     },
     {
-      "tag": "forge:dyes/yellow"
+      "item": "create_dd:horizontal_hazard_block"
     },
     {
-      "item": "create:cut_andesite"
+      "item": "create_dd:horizontal_hazard_block"
     },
     {
-      "item": "create:cut_andesite"
-    },
-    {
-      "item": "create:cut_andesite"
-    },
-    {
-      "item": "create:cut_andesite"
-    },
-    {
-      "item": "create:cut_andesite"
-    },
-    {
-      "item": "create:cut_andesite"
+      "item": "create_dd:horizontal_hazard_block"
     }
   ],
   "result": {
     "item": "create_dd:hazard_block",
-    "count": 6
+    "count": 4
   }
 }

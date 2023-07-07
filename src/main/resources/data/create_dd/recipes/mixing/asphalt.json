@@ -1,0 +1,21 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create:scorchia"
+    },
+    {
+      "item": "create:scorchia"
+    },
+    {
+      "tag": "forge:slimeballs"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:asphalt_block",
+      "count": 4
+    }
+  ],
+  "heatRequirement": "heated"
+}

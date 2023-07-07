@@ -25,7 +25,9 @@ public class YIPPEESpriteShifts {
             REFINED_RADIANCE_CASING = omni("refined_radiance_casing"),
 
             HAZARD = omni("hazard_block"),
-            HORIZONTAL_HAZARD = omni("horizontal_hazard_block");
+            HORIZONTAL_HAZARD = omni("horizontal_hazard_block"),
+            HAZARD_R = omni("hazard_block_r"),
+            HORIZONTAL_HAZARD_R = omni("horizontal_hazard_block_r");
 
     public static final CTSpriteShiftEntry
                TRAIN_SCAFFOLD = horizontal(           "train_scaffold"),

@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:cut_weathered_limestone",
+    "create_dd:cut_weathered_limestone_stairs",
+    "create_dd:cut_weathered_limestone_wall",
+    "create_dd:polished_cut_weathered_limestone",
+    "create_dd:polished_cut_weathered_limestone_stairs",
+    "create_dd:polished_cut_weathered_limestone_wall",
+    "create_dd:cut_weathered_limestone_bricks",
+    "create_dd:cut_weathered_limestone_brick_stairs",
+    "create_dd:cut_weathered_limestone_brick_wall",
+    "create_dd:small_weathered_limestone_bricks",
+    "create_dd:small_weathered_limestone_brick_stairs",
+    "create_dd:small_weathered_limestone_brick_wall",
+    "create_dd:layered_weathered_limestone",
+    "create_dd:weathered_limestone_pillar",
+    "create_dd:weathered_limestone"
+  ]
+}

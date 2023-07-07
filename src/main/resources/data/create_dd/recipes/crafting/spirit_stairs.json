@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "create_dd:spirit_planks"
+    }
+  },
+  "result": {
+    "item": "create_dd:spirit_stairs",
+    "count": 4
+  }
+}

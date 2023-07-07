@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "create_dd:asphalt_block"
+    },
+    "B": {
+      "tag": "forge:dyes/yellow"
+    }
+  },
+  "result": {
+    "item": "create_dd:hazard_block",
+    "count": 8
+  }
+}

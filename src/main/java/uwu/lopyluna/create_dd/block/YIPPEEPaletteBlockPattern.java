@@ -11,8 +11,6 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -53,8 +51,6 @@ public class YIPPEEPaletteBlockPattern {
 
             ;
 
-    public static final YIPPEEPaletteBlockPattern[] VANILLA_RANGE = { CUT, POLISHED, BRICKS, SMALL_BRICKS, LAYERED, PILLAR };
-
     public static final YIPPEEPaletteBlockPattern[] STANDARD_RANGE = { CUT, POLISHED, BRICKS, SMALL_BRICKS, LAYERED, PILLAR };
 
     static final String TEXTURE_LOCATION = "block/palettes/stone_types/%s/%s";
@@ -63,8 +59,6 @@ public class YIPPEEPaletteBlockPattern {
     private String[] textures;
     private String id;
     private boolean isTranslucent;
-    private TagKey<Block>[] blockTags;
-    private TagKey<Item>[] itemTags;
     private Optional<Function<String, ConnectedTextureBehaviour>> ctFactory;
 
     private YIPPEEPaletteBlockPattern.IPatternBlockStateGenerator blockStateGenerator;
@@ -94,18 +88,6 @@ public class YIPPEEPaletteBlockPattern {
         return blockStateGenerator;
     }
 
-    public boolean isTranslucent() {
-        return isTranslucent;
-    }
-
-    public TagKey<Block>[] getBlockTags() {
-        return blockTags;
-    }
-
-    public TagKey<Item>[] getItemTags() {
-        return itemTags;
-    }
-
     public NonNullFunction<BlockBehaviour.Properties, ? extends Block> getBlockFactory() {
         return blockFactory;
     }
@@ -118,11 +100,6 @@ public class YIPPEEPaletteBlockPattern {
         return textures[index];
     }
 
-    public void addRecipes(NonNullSupplier<Block> baseBlock, DataGenContext<Block, ? extends Block> c,
-                           RegistrateRecipeProvider p) {
-        additionalRecipes.apply(baseBlock)
-                .accept(c, p);
-    }
 
     public Optional<Supplier<ConnectedTextureBehaviour>> createCTBehaviour(String variant) {
         return ctFactory.map(d -> () -> d.apply(variant));

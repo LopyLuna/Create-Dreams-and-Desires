@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "create_dd:block/spirit_planks",
+    "side": "create_dd:block/spirit_planks",
+    "top": "create_dd:block/spirit_planks"
+  }
+}

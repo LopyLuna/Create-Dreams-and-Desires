@@ -5,6 +5,7 @@
     "create_dd:deepslate_tin_ore",
     "create_dd:tin_block",
     "create_dd:raw_tin_block",
-    "create_dd:lapis_alloy_block"
+    "create_dd:lapis_alloy_block",
+    "#create_dd:spirit_woodset"
   ]
 }
