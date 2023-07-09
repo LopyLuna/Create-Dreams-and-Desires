@@ -480,6 +480,7 @@ public class YIPPEE {
             .initialProperties(() -> Blocks.OAK_TRAPDOOR)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED)
                     .noOcclusion())
+            .addLayer(() -> RenderType::cutoutMipped)
             .lang("Rose Trapdoor")
             .simpleItem()
             .register();
@@ -565,6 +566,7 @@ public class YIPPEE {
             .initialProperties(() -> Blocks.OAK_TRAPDOOR)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN)
                     .noOcclusion())
+            .addLayer(() -> RenderType::cutoutMipped)
             .lang("Smoked Trapdoor")
             .simpleItem()
             .register();
@@ -681,6 +683,7 @@ public class YIPPEE {
             .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
                     () -> SoundEvents.STEM_STEP, () -> SoundEvents.WOOD_PLACE,
                     () -> SoundEvents.STEM_HIT, () -> SoundEvents.STEM_FALL)))
+            .addLayer(() -> RenderType::cutoutMipped)
             .lang("Spirit Trapdoor")
             .simpleItem()
             .register();
