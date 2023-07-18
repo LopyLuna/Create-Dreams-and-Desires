@@ -1,7 +1,6 @@
 package uwu.lopyluna.create_dd.item;
 
 import net.minecraft.world.item.ItemStack;
-import uwu.lopyluna.create_dd.block.YIPPEE;
 
 public class PipebombTabBase extends FlavoredPipebombTab {
     public PipebombTabBase() {

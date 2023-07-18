@@ -1,20 +1,14 @@
 package uwu.lopyluna.create_dd.block;
 
 import com.simibubi.create.*;
-import com.simibubi.create.content.contraptions.mounted.CartAssemblerBlock;
-import com.simibubi.create.content.contraptions.mounted.CartAssemblerBlockItem;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
-import com.simibubi.create.content.kinetics.drill.DrillBlock;
-import com.simibubi.create.content.kinetics.drill.DrillMovementBehaviour;
-import com.simibubi.create.content.kinetics.transmission.GearshiftBlock;
 import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
