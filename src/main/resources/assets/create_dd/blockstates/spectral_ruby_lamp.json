@@ -1,0 +1,100 @@
+{
+  "variants": {
+    "inverted=true,power=15": {
+      "model": "create_dd:block/ruby_day_lamp/12"
+    },
+    "inverted=true,power=14": {
+      "model": "create_dd:block/ruby_day_lamp/12"
+    },
+    "inverted=true,power=13": {
+      "model": "create_dd:block/ruby_day_lamp/12"
+    },
+    "inverted=true,power=12": {
+      "model": "create_dd:block/ruby_day_lamp/12"
+    },
+    "inverted=true,power=11": {
+      "model": "create_dd:block/ruby_day_lamp/10"
+    },
+    "inverted=true,power=10": {
+      "model": "create_dd:block/ruby_day_lamp/10"
+    },
+    "inverted=true,power=9": {
+      "model": "create_dd:block/ruby_day_lamp/8"
+    },
+    "inverted=true,power=8": {
+      "model": "create_dd:block/ruby_day_lamp/8"
+    },
+    "inverted=true,power=7": {
+      "model": "create_dd:block/ruby_day_lamp/6"
+    },
+    "inverted=true,power=6": {
+      "model": "create_dd:block/ruby_day_lamp/6"
+    },
+    "inverted=true,power=5": {
+      "model": "create_dd:block/ruby_day_lamp/4"
+    },
+    "inverted=true,power=4": {
+      "model": "create_dd:block/ruby_day_lamp/4"
+    },
+    "inverted=true,power=3": {
+      "model": "create_dd:block/ruby_day_lamp/2"
+    },
+    "inverted=true,power=2": {
+      "model": "create_dd:block/ruby_day_lamp/2"
+    },
+    "inverted=true,power=1": {
+      "model": "create_dd:block/ruby_day_lamp/0"
+    },
+    "inverted=true,power=0": {
+      "model": "create_dd:block/ruby_day_lamp/0"
+    },
+    "inverted=false,power=15": {
+      "model": "create_dd:block/ruby_night_lamp/12"
+    },
+    "inverted=false,power=14": {
+      "model": "create_dd:block/ruby_night_lamp/12"
+    },
+    "inverted=false,power=13": {
+      "model": "create_dd:block/ruby_night_lamp/12"
+    },
+    "inverted=false,power=12": {
+      "model": "create_dd:block/ruby_night_lamp/12"
+    },
+    "inverted=false,power=11": {
+      "model": "create_dd:block/ruby_night_lamp/10"
+    },
+    "inverted=false,power=10": {
+      "model": "create_dd:block/ruby_night_lamp/10"
+    },
+    "inverted=false,power=9": {
+      "model": "create_dd:block/ruby_night_lamp/8"
+    },
+    "inverted=false,power=8": {
+      "model": "create_dd:block/ruby_night_lamp/8"
+    },
+    "inverted=false,power=7": {
+      "model": "create_dd:block/ruby_night_lamp/6"
+    },
+    "inverted=false,power=6": {
+      "model": "create_dd:block/ruby_night_lamp/6"
+    },
+    "inverted=false,power=5": {
+      "model": "create_dd:block/ruby_night_lamp/4"
+    },
+    "inverted=false,power=4": {
+      "model": "create_dd:block/ruby_night_lamp/4"
+    },
+    "inverted=false,power=3": {
+      "model": "create_dd:block/ruby_night_lamp/2"
+    },
+    "inverted=false,power=2": {
+      "model": "create_dd:block/ruby_night_lamp/2"
+    },
+    "inverted=false,power=1": {
+      "model": "create_dd:block/ruby_night_lamp/0"
+    },
+    "inverted=false,power=0": {
+      "model": "create_dd:block/ruby_night_lamp/0"
+    }
+  }
+}

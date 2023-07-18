@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AB"
+  ],
+  "key": {
+    "A": {
+      "item": "create:vertical_gearbox"
+    },
+    "B": {
+      "item": "create_dd:inductive_mechanism"
+    }
+  },
+  "result": {
+    "item": "create:gearbox",
+    "count": 6
+  }
+}

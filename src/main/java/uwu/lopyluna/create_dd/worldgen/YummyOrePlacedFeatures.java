@@ -1,12 +1,12 @@
 package uwu.lopyluna.create_dd.worldgen;
 
+import uwu.lopyluna.create_dd.DDcreate;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import uwu.lopyluna.create_dd.DDcreate;
 
 import java.util.List;
 
@@ -20,7 +20,30 @@ public class YummyOrePlacedFeatures {
                     commonOrePlacement(10, // VeinsPerChunk
                             HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-45), VerticalAnchor.aboveBottom(128)))));
 
+    public static final RegistryObject<PlacedFeature> STONE_BLOBS_PLACED = PLACED_FEATURES.register("stone_blobs_placed",
+            () -> new PlacedFeature(YummyOreFeatures.stone_blobs.getHolder().get(),
+                    commonOrePlacement(16, // VeinsPerChunk
+                            HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(256)))));
 
+    public static final RegistryObject<PlacedFeature> LIMESTONE_BLOBS_PLACED = PLACED_FEATURES.register("limestone_blobs_placed",
+            () -> new PlacedFeature(YummyOreFeatures.limestone_blobs.getHolder().get(),
+                    commonOrePlacement(2, // VeinsPerChunk
+                            HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.absolute(24)))));
+
+    public static final RegistryObject<PlacedFeature> WEATHERED_LIMESTONE_BLOBS_PLACED = PLACED_FEATURES.register("weathered_limestone_blobs_placed",
+            () -> new PlacedFeature(YummyOreFeatures.weathered_limestone_blobs.getHolder().get(),
+                    commonOrePlacement(2, // VeinsPerChunk
+                            HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.absolute(0)))));
+
+    public static final RegistryObject<PlacedFeature> GABBRO_BLOBS_PLACED = PLACED_FEATURES.register("gabbro_blobs_placed",
+            () -> new PlacedFeature(YummyOreFeatures.gabbro_blobs.getHolder().get(),
+                    commonOrePlacement(1, // VeinsPerChunk
+                            HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.absolute(24)))));
+
+    public static final RegistryObject<PlacedFeature> ERODED_LIMESTONE_BLOBS_PLACED = PLACED_FEATURES.register("eroded_limestone_blobs_placed",
+            () -> new PlacedFeature(YummyOreFeatures.eroded_limestone_blobs.getHolder().get(),
+                    commonOrePlacement(4, // VeinsPerChunk
+                            HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.absolute(256)))));
 
     public static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier p_195348_) {
         return List.of(p_195347_, InSquarePlacement.spread(), p_195348_, BiomeFilter.biome());

@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create_dd:cut_weathered_limestone"
+    },
+    {
+      "item": "create_dd:cut_weathered_limestone"
+    },
+    {
+      "item": "create_dd:cut_weathered_limestone"
+    },
+    {
+      "item": "create_dd:cut_weathered_limestone"
+    },
+    {
+      "item": "create_dd:asphalt_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:weathered_limestone_asphalt_block",
+      "count": 4
+    }
+  ],
+  "heatRequirement": "heated"
+}

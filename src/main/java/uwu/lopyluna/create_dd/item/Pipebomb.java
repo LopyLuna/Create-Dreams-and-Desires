@@ -7,7 +7,13 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.Tags;
-import uwu.lopyluna.create_dd.item.ItemProperties.*;
+import uwu.lopyluna.create_dd.item.ItemProperties.ItemDisabled;
+import uwu.lopyluna.create_dd.item.ItemProperties.compound.ChromaticCompound;
+import uwu.lopyluna.create_dd.item.ItemProperties.compound.RefinedRadiance;
+import uwu.lopyluna.create_dd.item.ItemProperties.compound.ShadowSteel;
+import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemOne;
+import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemTwo;
+import uwu.lopyluna.create_dd.item.ItemProperties.sawtool.ForestRavagerItem;
 
 import static com.simibubi.create.AllTags.AllItemTags.CREATE_INGOTS;
 import static com.simibubi.create.AllTags.forgeItemTag;
@@ -48,9 +54,11 @@ public class Pipebomb {
             inductive_mechanism = ingredient("inductive_mechanism"),
             infernal_mechanism = ingredient("infernal_mechanism"),
             sealed_mechanism = ingredient("sealed_mechanism"),
-            vanilla_orchid = ingredient("vanilla_orchid"),
             spectral_ruby = ingredient("spectral_ruby"),
             polished_spectral_ruby = ingredient("polished_spectral_ruby");
+
+    public static final ItemEntry<ItemDisabled>
+            vanilla_orchid = i("vanilla_orchid");
 
     public static final ItemEntry<SequencedAssemblyItem>
             incomplete_integrated_circuit = sequencedIngredient("incomplete_integrated_circuit"),
@@ -129,6 +137,12 @@ public class Pipebomb {
         return REGISTRATE.item(name, Item::new)
                 .register();
     }
+
+    private static ItemEntry<ItemDisabled> i(String name) {
+        return REGISTRATE.item(name, ItemDisabled::new)
+                .register();
+    }
+
     private static ItemEntry<SequencedAssemblyItem> sequencedIngredient(String name) {
         return REGISTRATE.item(name, SequencedAssemblyItem::new)
                 .register();

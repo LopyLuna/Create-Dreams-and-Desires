@@ -1,26 +1,45 @@
 package uwu.lopyluna.create_dd.block;
 
 import com.simibubi.create.*;
+import com.simibubi.create.content.contraptions.mounted.CartAssemblerBlock;
+import com.simibubi.create.content.contraptions.mounted.CartAssemblerBlockItem;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
-import com.simibubi.create.foundation.data.BlockStateGen;
-import com.simibubi.create.foundation.data.BuilderTransformers;
-import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.simibubi.create.foundation.data.SharedProperties;
+import com.simibubi.create.content.kinetics.drill.DrillBlock;
+import com.simibubi.create.content.kinetics.drill.DrillMovementBehaviour;
+import com.simibubi.create.content.kinetics.transmission.GearshiftBlock;
+import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.util.ForgeSoundType;
 import uwu.lopyluna.create_dd.block.BlockProperties.*;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeEncasedFanBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.copycat.BlockcopycatBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.copycat.BlockcopycatBlockModel;
+import uwu.lopyluna.create_dd.block.BlockProperties.copycat.BlockcopycatSlab;
+import uwu.lopyluna.create_dd.block.BlockProperties.copycat.BlockcopycatSlabModel;
+import uwu.lopyluna.create_dd.block.BlockProperties.door.YIPPEESlidingDoorBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.drill.RadiantDrillBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.drill.RadiantDrillMovementBehaviour;
+import uwu.lopyluna.create_dd.block.BlockProperties.drill.ShadowDrillBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.drill.ShadowDrillMovementBehaviour;
+import uwu.lopyluna.create_dd.block.BlockProperties.wood.HazardBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssRotatedBlockPillar;
+import uwu.lopyluna.create_dd.block.BlockProperties.wood.SpiritLogRotatedBlockPillar;
 import uwu.lopyluna.create_dd.item.Pipebomb;
 import uwu.lopyluna.create_dd.item.PipebombTab;
 
+import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;
 import static com.simibubi.create.foundation.data.BlockStateGen.simpleCubeAll;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.*;
@@ -275,6 +294,20 @@ public class YIPPEE {
             .register();
 
     //MECHANICAL BLOCKS
+
+    public static final BlockEntry<ReversedGearboxBlock> REVERSED_GEARSHIFT =
+            REGISTRATE.block("reversed_gearshift", ReversedGearboxBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .addLayer(() -> RenderType::cutoutMipped)
+            .transform(BlockStressDefaults.setImpact(0.25))
+            .transform(axeOrPickaxe())
+            .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, AssetLookup.forPowered(c, p)))
+            .item()
+            .transform(customItemModel())
+            .register();
+
     public static final BlockEntry<BronzeEncasedFanBlock> BRONZE_ENCASED_FAN =
             REGISTRATE.block("bronze_encased_fan", BronzeEncasedFanBlock::new)
                     .initialProperties(SharedProperties::stone)
@@ -283,9 +316,29 @@ public class YIPPEE {
                     .addLayer(() -> RenderType::cutoutMipped)
                     .transform(axeOrPickaxe())
                     .transform(BlockStressDefaults.setImpact(4.0))
-                    .item()
-                    .transform(customItemModel())
                     .register();
+
+    public static final BlockEntry<RadiantDrillBlock> RADIANT_DRILL =
+            REGISTRATE.block("radiant_drill", RadiantDrillBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .transform(axeOrPickaxe())
+            .blockstate(BlockStateGen.directionalBlockProvider(true))
+            .transform(BlockStressDefaults.setImpact(8.0))
+            .onRegister(movementBehaviour(new RadiantDrillMovementBehaviour()))
+            .register();
+
+    public static final BlockEntry<ShadowDrillBlock> SHADOW_DRILL =
+            REGISTRATE.block("shadow_drill", ShadowDrillBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .transform(axeOrPickaxe())
+            .blockstate(BlockStateGen.directionalBlockProvider(true))
+            .transform(BlockStressDefaults.setImpact(8.0))
+            .onRegister(movementBehaviour(new ShadowDrillMovementBehaviour()))
+            .register();
+
+    //Decoratives
 
     public static final BlockEntry<MetalScaffoldingBlock> TRAIN_SCAFFOLD =
             REGISTRATE.block("train_scaffolding", MetalScaffoldingBlock::new)
@@ -348,14 +401,10 @@ public class YIPPEE {
                             YIPPEESpriteShifts.REFINED_RADIANCE_SCAFFOLD, YIPPEESpriteShifts.REFINED_RADIANCE_SCAFFOLD_INSIDE, YIPPEESpriteShifts.REFINED_RADIANCE_CASING))
                     .register();
 
-    static {
-        REGISTRATE.creativeModeTab(() -> PipebombTab.BASE_CREATIVE_TAB);
-        Create.REGISTRATE.creativeModeTab(() -> AllCreativeModeTabs.PALETTES_CREATIVE_TAB);
-    }
-
     public static final BlockEntry<BlockcopycatBlock> COPYCAT_BlOCK =
             REGISTRATE.block("copycat_block", BlockcopycatBlock::new)
                     .transform(BuilderTransformers.copycat())
+                    .properties(p -> p.noOcclusion())
                     .onRegister(CreateRegistrate.blockModel(() -> BlockcopycatBlockModel::new))
                     .item()
                     .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/zinc")), c::get, 1))
@@ -365,12 +414,22 @@ public class YIPPEE {
     public static final BlockEntry<BlockcopycatSlab> COPYCAT_SLAB =
             REGISTRATE.block("copycat_slab", BlockcopycatSlab::new)
                     .transform(BuilderTransformers.copycat())
+                    .properties(p -> p.noOcclusion())
                     .onRegister(CreateRegistrate.blockModel(() -> BlockcopycatSlabModel::new))
                     .item()
                     .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/zinc")), c::get, 2))
                     .transform(customItemModel("copycat_base", "slab"))
                     .register();
 
+    public static final BlockEntry<SpectralRubyLampBlock> SPECTRAL_RUBY_LAMP =
+            REGISTRATE.block("spectral_ruby_lamp", SpectralRubyLampBlock::new)
+                    .initialProperties(() -> Blocks.REDSTONE_LAMP)
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_PINK)
+                            .noOcclusion()
+                            .lightLevel(s -> s.getValue(SpectralRubyLampBlock.POWER)))
+                    .transform(pickaxeOnly())
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<RotatedPillarBlock> SPECTRAL_RUBY_BLOCK =
             REGISTRATE.block("spectral_ruby_block", RotatedPillarBlock::new)
@@ -755,6 +814,176 @@ public class YIPPEE {
                     .color(MaterialColor.TERRACOTTA_CYAN))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
             .lang("Horizontal Hazard Block")
+            .register();
+
+    public static final BlockEntry<Block> andesite_asphalt_block = REGISTRATE.block("andesite_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.STONE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> asurine_asphalt_block = REGISTRATE.block("asurine_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.COLOR_BLUE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> calcite_asphalt_block = REGISTRATE.block("calcite_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_WHITE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.CALCITE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> crimsite_asphalt_block = REGISTRATE.block("crimsite_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.COLOR_RED))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> deepslate_asphalt_block = REGISTRATE.block("deepslate_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.DEEPSLATE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> diorite_asphalt_block = REGISTRATE.block("diorite_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.QUARTZ))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> dripstone_asphalt_block = REGISTRATE.block("dripstone_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DRIPSTONE_BLOCK))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> gabbro_asphalt_block = REGISTRATE.block("gabbro_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> granite_asphalt_block = REGISTRATE.block("granite_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_CYAN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> limestone_asphalt_block = REGISTRATE.block("limestone_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.SAND))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> ochrum_asphalt_block = REGISTRATE.block("ochrum_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_YELLOW))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.CALCITE))
+            .simpleItem()
+            .register();
+
+        public static final BlockEntry<Block> potassic_asphalt_block = REGISTRATE.block("potassic_asphalt_block", Block::new)
+                .properties(p -> p.destroyTime(1.25f)
+                        .speedFactor(1.2F)
+                        .jumpFactor(1.2F)
+                        .friction(0.6F)
+                        .color(MaterialColor.TERRACOTTA_BLUE))
+                .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+                .simpleItem()
+                .register();
+
+    public static final BlockEntry<Block> scorchia_asphalt_block = REGISTRATE.block("scorchia_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> scoria_asphalt_block = REGISTRATE.block("scoria_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.COLOR_BROWN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> tuff_asphalt_block = REGISTRATE.block("tuff_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> veridium_asphalt_block = REGISTRATE.block("veridium_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.WARPED_NYLIUM))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> weathered_limestone_asphalt_block = REGISTRATE.block("weathered_limestone_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.COLOR_LIGHT_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
             .register();
 
     public static final BlockEntry<Block> potassic_cobble =

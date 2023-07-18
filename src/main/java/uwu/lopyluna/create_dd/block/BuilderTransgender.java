@@ -1,16 +1,14 @@
 package uwu.lopyluna.create_dd.block;
 
 import com.simibubi.create.AllTags;
-import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
-import com.simibubi.create.foundation.block.connected.HorizontalCTBehaviour;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import net.minecraft.world.level.block.SoundType;
-import uwu.lopyluna.create_dd.block.BlockProperties.HazardBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.wood.HazardBlock;
 
 import java.util.function.Supplier;
 

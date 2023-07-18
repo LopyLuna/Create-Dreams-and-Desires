@@ -15,7 +15,7 @@ import uwu.lopyluna.create_dd.fluid.SussyWhiteStuff;
 
 @Mod.EventBusSubscriber
 public class RareSussy {
-
+//common events
     @SubscribeEvent
     public static void whenFluidsMeet(BlockEvent.FluidPlaceBlockEvent event) {
         BlockState blockState = event.getOriginalState();

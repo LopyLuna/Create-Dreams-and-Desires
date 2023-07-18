@@ -2,7 +2,7 @@
   "type": "create:item_application",
   "ingredients": [
     {
-      "item": "create_dd:zinc_casing"
+      "tag": "create:casing/zinc"
     },
     {
       "tag": "forge:plates/industrial_iron"

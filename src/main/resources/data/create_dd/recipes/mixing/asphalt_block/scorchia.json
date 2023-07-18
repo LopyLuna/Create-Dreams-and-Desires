@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create:cut_scorchia"
+    },
+    {
+      "item": "create:cut_scorchia"
+    },
+    {
+      "item": "create:cut_scorchia"
+    },
+    {
+      "item": "create:cut_scorchia"
+    },
+    {
+      "item": "create_dd:asphalt_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:scorchia_asphalt_block",
+      "count": 4
+    }
+  ],
+  "heatRequirement": "heated"
+}

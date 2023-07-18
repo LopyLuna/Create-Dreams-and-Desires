@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "quark:limestone",
+      "required": false
+    },
+    "#minecraft:deepslate_ore_replaceables",
+    "minecraft:diorite",
+    "minecraft:andesite"
+  ]
+}

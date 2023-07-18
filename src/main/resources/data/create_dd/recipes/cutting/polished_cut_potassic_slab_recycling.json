@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "create_dd:polished_cut_potassic_slab"
+    },
+    {
+      "item": "create_dd:polished_cut_potassic_slab"
+    }
+  ],
+  "result": {
+    "item": "create_dd:polished_cut_potassic"
+  }
+}

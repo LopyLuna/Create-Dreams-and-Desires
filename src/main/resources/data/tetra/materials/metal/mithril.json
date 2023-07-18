@@ -1,0 +1,36 @@
+{
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "tetra"
+        }
+    ],
+    "key": "mithril",
+    "category": "metal",
+    "primary": 7.5,
+    "secondary": 5,
+    "tertiary": 4.5,
+    "durability": 3064,
+    "integrityCost": 3,
+    "integrityGain": 8,
+    "magicCapacity": 120,
+    "toolLevel": "minecraft:netherite",
+    "toolEfficiency": 12,
+    "tints": {
+        "glyph": "6DD69B",
+        "texture": "61E2AD"
+    },
+    "textures": [
+        "shiny",
+        "metal",
+        "heavy"
+    ],
+    "material": {
+        "items": [
+                "create_dd:mithril_ingot"
+        ]
+    },
+    "requiredTools": {
+        "hammer_dig": "minecraft:diamond"
+    }
+}

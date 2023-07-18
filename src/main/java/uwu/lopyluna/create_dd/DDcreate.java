@@ -1,8 +1,6 @@
 package uwu.lopyluna.create_dd;
 
 import com.mojang.logging.LogUtils;
-import com.simibubi.create.AllParticleTypes;
-import com.simibubi.create.CreateClient;
 import com.simibubi.create.foundation.data.AllLangPartials;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.LangMerger;
@@ -31,6 +29,7 @@ import uwu.lopyluna.create_dd.rando.DDParticleTypes;
 import uwu.lopyluna.create_dd.recipes.BakingRecipesTypes;
 import uwu.lopyluna.create_dd.worldgen.YummyOreFeatures;
 import uwu.lopyluna.create_dd.worldgen.YummyOrePlacedFeatures;
+import uwu.lopyluna.create_dd.worldgen.YummyTags;
 
 
 @Mod(DDcreate.MOD_ID)
@@ -60,6 +59,7 @@ public class DDcreate
         DDParticleTypes.register(eventBus);
         BakingRecipesTypes.register(eventBus);
 
+        YummyTags.init();
         YummyOreFeatures.register(eventBus);
         YummyOrePlacedFeatures.register(eventBus);
 

@@ -17,7 +17,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
-import uwu.lopyluna.create_dd.block.BlockProperties.BronzeIAirCurrentSource;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeIAirCurrentSource;
 import uwu.lopyluna.create_dd.recipes.BakingFanProcessing;
 
 public class BronzeAirFlowParticle extends SimpleAnimatedParticle {

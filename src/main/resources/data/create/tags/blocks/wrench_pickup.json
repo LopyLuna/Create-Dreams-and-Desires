@@ -1,9 +1,33 @@
 {
   "replace": false,
   "values": [
+    {"id": "everycomp:q/create_dd/spirit_chest", "required": false},
+    {"id": "everycomp:q/create_dd/spirit_ladder", "required": false},
+    {"id": "everycomp:q/create_dd/spirit_bookshelf", "required": false},
+    {"id": "everycomp:q/create_dd/vertical_spirit_planks", "required": false},
+    {"id": "everycomp:q/create_dd/hollow_spirit_log", "required": false},
+    {"id": "everycomp:c/create_dd/spirit_window", "required": false},
+    {"id": "everycomp:c/create_dd/spirit_window_pane", "required": false},
+    {"id": "everycomp:q/create_dd/smoked_chest", "required": false},
+    {"id": "everycomp:q/create_dd/smoked_ladder", "required": false},
+    {"id": "everycomp:q/create_dd/smoked_bookshelf", "required": false},
+    {"id": "everycomp:q/create_dd/vertical_smoked_planks", "required": false},
+    {"id": "everycomp:q/create_dd/hollow_smoked_log", "required": false},
+    {"id": "everycomp:c/create_dd/smoked_window", "required": false},
+    {"id": "everycomp:c/create_dd/smoked_window_pane", "required": false},
+    {"id": "everycomp:q/create_dd/rose_chest", "required": false},
+    {"id": "everycomp:q/create_dd/rose_ladder", "required": false},
+    {"id": "everycomp:q/create_dd/rose_bookshelf", "required": false},
+    {"id": "everycomp:q/create_dd/vertical_rose_planks", "required": false},
+    {"id": "everycomp:q/create_dd/hollow_rose_log", "required": false},
+    {"id": "everycomp:c/create_dd/rose_window", "required": false},
+    {"id": "everycomp:c/create_dd/rose_window_pane", "required": false},
     "#create_dd:rose_woodset",
     "#create_dd:smoked_woodset",
     "#create_dd:spirit_woodset",
-    "create_dd:industrial_iron_block"
+    "create_dd:industrial_iron_block",
+    "#create_dd:rose_woodset",
+    "#create_dd:smoked_woodset",
+    "#create_dd:spirit_woodset"
   ]
 }

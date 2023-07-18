@@ -125,8 +125,6 @@
 
   "block.create_dd.steel_casing": "Steel Casing",
 
-  "block.create_dd.potassic": "Potassic",
-
   "block.create_dd.asphalt_block": "Asphalt Block",
 
   "block.create_dd.spectral_ruby_block": "Block of Spectral Ruby",
@@ -198,12 +196,32 @@
   "block.create_dd.copycat_block": "Copycat Block",
   "block.create_dd.copycat_slab": "Copycat Slab",
 
+  "block.create_dd.spectral_ruby_lamp": "Spectral Ruby Lamp",
+  "block.create_dd.reversed_gearshift": "Reverse Gearshift",
+
   "block.create_dd.potassic_cobble": "Cobbled Potassic",
   "block.create_dd.asurine_cobble": "Cobbled Asurine",
   "block.create_dd.crimsite_cobble": "Cobbled Crimsite",
   "block.create_dd.ochrum_cobble": "Cobbled Ochrum",
   "block.create_dd.veridium_cobble": "Cobbled Veridium",
 
+  "block.create_dd.andesite_asphalt_block": "Andesite Asphalt Block",
+  "block.create_dd.asurine_asphalt_block": "Asurine Asphalt Block",
+  "block.create_dd.calcite_asphalt_block": "Calcite Asphalt Block",
+  "block.create_dd.crimsite_asphalt_block": "Crimsite Asphalt Block",
+  "block.create_dd.deepslate_asphalt_block": "Deepslate Asphalt Block",
+  "block.create_dd.diorite_asphalt_block": "Diorite Asphalt Block",
+  "block.create_dd.dripstone_asphalt_block": "Dripstone Asphalt Block",
+  "block.create_dd.gabbro_asphalt_block": "Gabbro Asphalt Block",
+  "block.create_dd.granite_asphalt_block": "Granite Asphalt Block",
+  "block.create_dd.limestone_asphalt_block": "Limestone Asphalt Block",
+  "block.create_dd.ochrum_asphalt_block": "Ochrum Asphalt Block",
+  "block.create_dd.potassic_asphalt_block": "Potassic Asphalt Block",
+  "block.create_dd.scorchia_asphalt_block": "Scorchia Asphalt Block",
+  "block.create_dd.scoria_asphalt_block": "Scoria Asphalt Block",
+  "block.create_dd.tuff_asphalt_block": "Tuff Asphalt Block",
+  "block.create_dd.veridium_asphalt_block": "Veridium Asphalt Block",
+  "block.create_dd.weathered_limestone_asphalt_block": "Weathered Limestone Asphalt Block",
 
   "block.create_dd.weathered_limestone": "Weathered Limestone",
 
@@ -247,7 +265,31 @@
   "block.create_dd.small_gabbro_brick_wall": "Small Gabbro Brick Wall",
   "block.create_dd.small_gabbro_bricks": "Small Gabbro Bricks",
 
+  "block.create_dd.potassic": "Potassic",
 
+  "block.create_dd.cut_potassic": "Cut Potassic",
+  "block.create_dd.cut_potassic_brick_slab": "Cut Potassic Brick Slab",
+  "block.create_dd.cut_potassic_brick_stairs": "Cut Potassic Brick Stairs",
+  "block.create_dd.cut_potassic_brick_wall": "Cut Potassic Brick Wall",
+  "block.create_dd.cut_potassic_bricks": "Cut Potassic Bricks",
+  "block.create_dd.cut_potassic_slab": "Cut Potassic Slab",
+  "block.create_dd.cut_potassic_stairs": "Cut Potassic Stairs",
+  "block.create_dd.cut_potassic_wall": "Cut Potassic Wall",
+  "block.create_dd.layered_potassic": "Layered Potassic",
+  "block.create_dd.potassic_pillar": "Potassic Pillar",
+  "block.create_dd.polished_cut_potassic": "Polished Cut Potassic",
+  "block.create_dd.polished_cut_potassic_slab": "Polished Cut Potassic Slab",
+  "block.create_dd.polished_cut_potassic_stairs": "Polished Cut Potassic Stairs",
+  "block.create_dd.polished_cut_potassic_wall": "Polished Cut Potassic Wall",
+  "block.create_dd.small_potassic_brick_slab": "Small Potassic Brick Slab",
+  "block.create_dd.small_potassic_brick_stairs": "Small Potassic Brick Stairs",
+  "block.create_dd.small_potassic_brick_wall": "Small Potassic Brick Wall",
+  "block.create_dd.small_potassic_bricks": "Small Potassic Bricks",
+
+  "tetra.material.industrial_iron": "Industrial Iron",
+  "tetra.material.industrial_iron.prefix": "Industrial Iron",
+  "tetra.material.mithril": "Mithril",
+  "tetra.material.mithril.prefix": "Mithril",
 
   "itemGroup.create_dd.base": "§f\uEFb8"
 }

@@ -12,7 +12,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.client.model.generators.ModelFile;
-import uwu.lopyluna.create_dd.block.BlockProperties.YIPPEESlidingDoorBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.door.YIPPEESlidingDoorBlock;
 
 import static com.simibubi.create.AllInteractionBehaviours.interactionBehaviour;
 import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;
