@@ -58,6 +58,11 @@
     "create_dd:bronze_encased_fan",
     "create_dd:spectral_ruby_lamp",
 
+    "create_dd:hydraulic_press",
+    "create_dd:2_blade_fan",
+    "create_dd:4_blade_fan",
+    "create_dd:8_blade_fan",
+
     "create_dd:cut_weathered_limestone",
     "create_dd:cut_weathered_limestone_stairs",
     "create_dd:cut_weathered_limestone_slab",

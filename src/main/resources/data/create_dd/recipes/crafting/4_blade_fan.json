@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:plates/andesite_alloy"
+    },
+    "B": {
+      "item": "create_dd:ember_alloy"
+    }
+  },
+  "result": {
+    "item": "create_dd:4_blade_fan",
+    "count": 2
+  }
+}

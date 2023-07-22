@@ -1,19 +1,20 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press;
 
 import com.jozufozu.flywheel.api.MaterialManager;
+import com.jozufozu.flywheel.api.instance.DynamicInstance;
 import com.jozufozu.flywheel.core.Materials;
 import com.jozufozu.flywheel.core.materials.oriented.OrientedData;
 import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
+import com.simibubi.create.content.kinetics.base.ShaftInstance;
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlock;
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
-import com.simibubi.create.content.kinetics.press.PressInstance;
 import com.simibubi.create.content.kinetics.press.PressingBehaviour;
 import com.simibubi.create.foundation.utility.AngleHelper;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import uwu.lopyluna.create_dd.block.YIPPEEPartialModel;
 
-public class HYPressInstance extends PressInstance {
+public class HYPressInstance extends ShaftInstance<MechanicalPressBlockEntity> implements DynamicInstance {
 
     private final OrientedData pressHead;
 

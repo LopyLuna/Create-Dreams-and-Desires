@@ -29,7 +29,6 @@
   "item.create_dd.spectral_ruby": "Spectral Ruby",
   "item.create_dd.polished_spectral_ruby": "Polished Spectral Ruby",
 
-  "item.create_dd.chromatic_compound": "Chromatic Compound",
   "item.create_dd.shadow_steel": "Shadow Steel",
   "item.create_dd.refined_radiance": "Refined Radiance",
 
@@ -38,6 +37,8 @@
 
   "item.create_dd.experience_ingot": "Ingot of Experience",
   "item.create_dd.experience_mass": "Mass of Experience",
+
+  "item.create_dd.ember_alloy": "Ember Alloy",
 
   "item.create_dd.forest_ravager": "Mythical Forest Ravager",
   "item.create_dd.deforester_saw": "Deforesting Saw",
@@ -202,6 +203,10 @@
 
   "block.create_dd.spectral_ruby_lamp": "Spectral Ruby Lamp",
   "block.create_dd.reversed_gearshift": "Reverse Gearshift",
+  "block.create_dd.hydraulic_press": "Hydraulic Press",
+  "block.create_dd.2_blade_fan": "Large Fan (2)",
+  "block.create_dd.4_blade_fan": "Large Fan (4)",
+  "block.create_dd.8_blade_fan": "Large Fan (8)",
 
   "block.create_dd.potassic_cobble": "Cobbled Potassic",
   "block.create_dd.asurine_cobble": "Cobbled Asurine",

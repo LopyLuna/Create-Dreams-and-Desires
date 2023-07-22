@@ -9,9 +9,6 @@ public class HydraulicPressBlock extends MechanicalPressBlock {
         super(properties);
     }
 
-
-
-
     @Override
     public BlockEntityType<? extends HydraulicPressBlockEntity> getBlockEntityType() {
         return YIPPEEEntityTypes.hydraulic_press.get();

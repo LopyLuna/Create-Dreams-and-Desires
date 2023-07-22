@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AB",
+    "BD"
+  ],
+  "key": {
+    "A": {
+      "item": "create:cinder_flour"
+    },
+    "B": {
+      "item": "create_dd:smoked_planks"
+    },
+    "D": {
+      "item": "minecraft:blaze_powder"
+    }
+  },
+  "result": {
+    "item": "create_dd:ember_alloy",
+    "count": 2
+  }
+}
