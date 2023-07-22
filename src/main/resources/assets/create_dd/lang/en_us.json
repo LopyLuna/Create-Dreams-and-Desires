@@ -40,6 +40,7 @@
   "item.create_dd.experience_mass": "Mass of Experience",
 
   "item.create_dd.forest_ravager": "Mythical Forest Ravager",
+  "item.create_dd.deforester_saw": "Deforesting Saw",
   "item.create_dd.vanilla_orchid": "Vanilla Orchid",
   "item.create_dd.integrated_circuit": "Integrated Circuit",
   "item.create_dd.integrated_mechanism": "Integrated Mechanism",
@@ -56,6 +57,9 @@
   "item.create_dd.incomplete_infernal_mechanism": "Incomplete Infernal Mechanism",
   "item.create_dd.sealed_mechanism": "Sealed Mechanism",
   "item.create_dd.incomplete_sealed_mechanism": "Incomplete Sealed Mechanism",
+
+  "item.create_dd.crafting_inductive_mechanism1": "Incomplete Crafting Logistics Mechanism",
+  "item.create_dd.crafting_inductive_mechanism2": "Incomplete Crafting Logistics Mechanism",
 
   "item.create_dd.condense_milk_bucket": "Condense Milk Bucket",
   "item.create_dd.cream_bucket": "Cream Bucket",

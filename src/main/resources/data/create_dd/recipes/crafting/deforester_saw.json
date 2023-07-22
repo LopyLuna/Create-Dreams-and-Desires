@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PI ",
+    "PDA",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "create:cogwheel"
+    },
+    "P": {
+      "tag": "forge:plates/iron"
+    },
+    "I": {
+      "tag": "forge:plates/andesite_alloy"
+    },
+    "D": {
+      "item": "create_dd:inductive_mechanism"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "create_dd:deforester_saw",
+    "count": 1
+  }
+}

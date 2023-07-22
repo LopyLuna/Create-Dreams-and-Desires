@@ -1,0 +1,38 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create_dd:item/deforester/item",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "create_dd:item/handheld_saw/base",
+		"particle": "create_dd:item/handheld_saw/base"
+	},
+	"elements": [
+		{
+			"from": [7, 12.5, 6.5],
+			"to": [9, 14.5, 9.5],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [8, 13.5, 8]},
+			"faces": {
+				"north": {"uv": [0, 11, 2, 13], "rotation": 90, "texture": "#0"},
+				"east": {"uv": [3, 12, 5, 15], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [0, 11, 2, 13], "rotation": 270, "texture": "#0"},
+				"west": {"uv": [3, 9.5, 5, 12.5], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [3, 8, 5, 11], "texture": "#0"},
+				"down": {"uv": [3, 13, 5, 16], "rotation": 180, "texture": "#0"}
+			}
+		},
+		{
+			"name": "handle",
+			"from": [6.5, 12, 7.25],
+			"to": [9.5, 15, 8.75],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [8, 13.5, 8]},
+			"faces": {
+				"north": {"uv": [3, 16, 0, 13], "rotation": 180, "texture": "#0"},
+				"east": {"uv": [2, 13, 3, 16], "rotation": 180, "texture": "#0"},
+				"south": {"uv": [3, 16, 0, 13], "texture": "#0"},
+				"west": {"uv": [0, 13, 1, 16], "rotation": 180, "texture": "#0"},
+				"up": {"uv": [0, 15, 3, 16], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 13, 3, 14], "rotation": 180, "texture": "#0"}
+			}
+		}
+	]
+}

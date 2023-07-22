@@ -1,6 +1,7 @@
 package uwu.lopyluna.create_dd.item.ItemProperties.sawtool;
 
 import com.simibubi.create.AllTags;
+import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import com.simibubi.create.foundation.item.render.SimpleCustomRenderer;
 import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -9,7 +10,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,6 +20,7 @@ import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.item.ItemProperties.BobTiers;
 import uwu.lopyluna.create_dd.item.Pipebomb;
 
@@ -31,10 +32,11 @@ import static uwu.lopyluna.create_dd.item.ItemProperties.sawtool.TreeCutter.*;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class ForestRavagerItem extends AxeItem {
+public class ForestRavagerItem extends RavagerAxeItem {
+    public static int maxUses;
     private static boolean deforesting = false; // required as to not run into "recursions" over forge events on tree cutting
     public ForestRavagerItem(Properties builder) {
-        super(BobTiers.MITHRIL, 5.5F, -3.1F, builder);
+        super(BobTiers.Ravager, 5.5F, -3.1F, builder);
     }
 
     // Moved away from Item#onBlockDestroyed as it does not get called in Creative
@@ -72,4 +74,25 @@ public class ForestRavagerItem extends AxeItem {
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(SimpleCustomRenderer.create(this, new ForestRavagerRender()));
     }
+
+    @Override
+    public boolean isBarVisible(@NotNull ItemStack stack) {
+        return BacktankUtil.isBarVisible(stack, maxUses());
+    }
+
+    @Override
+    public int getBarWidth(@NotNull ItemStack stack) {
+        return BacktankUtil.getBarWidth(stack, maxUses());
+    }
+
+    @Override
+    public int getBarColor(@NotNull ItemStack stack) {
+        return BacktankUtil.getBarColor(stack, maxUses());
+    }
+
+
+    public static int maxUses() {
+        return BobTiers.Ravager.getUses();
+    }
+
 }

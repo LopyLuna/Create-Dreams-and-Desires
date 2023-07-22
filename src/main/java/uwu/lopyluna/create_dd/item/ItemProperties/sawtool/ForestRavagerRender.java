@@ -29,6 +29,6 @@ public class ForestRavagerRender extends CustomRenderedItemModelRenderer {
 
         float angle = worldTime * -.5f % 360;
         ms.mulPose(Vector3f.YP.rotationDegrees(angle));
-        renderer.renderSolid(GEAR.get(), light);
+        renderer.renderSolidGlowing(GEAR.get(), light);
     }
 }

@@ -1,16 +1,17 @@
 package uwu.lopyluna.create_dd.item.ItemProperties;
 
+import com.simibubi.create.AllItems;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.item.Pipebomb;
 
 public class BobTiers {
-    public static final Tier MITHRIL = new Tier()
+    public static final Tier Ravager = new Tier()
     {
         @Override
         public int getUses() {
-            return 16384;
+            return 4096;
         }
 
         @Override
@@ -20,7 +21,7 @@ public class BobTiers {
 
         @Override
         public float getAttackDamageBonus() {
-            return 4.5F;
+            return 5.5F;
         }
 
         @Override
@@ -37,6 +38,40 @@ public class BobTiers {
         @Override
         public Ingredient getRepairIngredient() {
             return Ingredient.of(Pipebomb.mithril_ingot.get());
+        }
+    };
+
+    public static final Tier Deforester = new Tier()
+    {
+        @Override
+        public int getUses() {
+            return 1024;
+        }
+
+        @Override
+        public float getSpeed() {
+            return 2F;
+        }
+
+        @Override
+        public float getAttackDamageBonus() {
+            return 4F;
+        }
+
+        @Override
+        public int getLevel() {
+            return 3;
+        }
+
+        @Override
+        public int getEnchantmentValue() {
+            return 20;
+        }
+
+        @NotNull
+        @Override
+        public Ingredient getRepairIngredient() {
+            return Ingredient.of(AllItems.ANDESITE_ALLOY.get());
         }
     };
 }

@@ -8,11 +8,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.Tags;
 import uwu.lopyluna.create_dd.item.ItemProperties.ItemDisabled;
+import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem1;
+import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem2;
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.ChromaticCompound;
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.RefinedRadiance;
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.ShadowSteel;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemOne;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemTwo;
+import uwu.lopyluna.create_dd.item.ItemProperties.sawtool.DeforesterItem;
 import uwu.lopyluna.create_dd.item.ItemProperties.sawtool.ForestRavagerItem;
 
 import static com.simibubi.create.AllTags.AllItemTags.CREATE_INGOTS;
@@ -25,7 +28,7 @@ public class Pipebomb {
         REGISTRATE.creativeModeTab(() -> PipebombTab.BASE_CREATIVE_TAB);
     }
 
-    //YIPPEE ITEMS PIPEBOMB YUMMY
+    //YIPPEE ITEMS PIPEBOMB YUMMY ac
     public static final ItemEntry<Item>
             mithril_ingot = taggedIngredient("mithril_ingot", forgeItemTag("ingots/mithril"), CREATE_INGOTS.tag),
             bronze_ingot = taggedIngredient("bronze_ingot", forgeItemTag("ingots/bronze"), forgeItemTag("ingots/strong_bronze"), CREATE_INGOTS.tag),
@@ -113,6 +116,11 @@ public class Pipebomb {
             .model(AssetLookup.itemModelWithPartials())
             .register();
 
+    public static final ItemEntry<DeforesterItem> deforester_saw =
+            REGISTRATE.item("deforester_saw", DeforesterItem::new)
+                    .properties(p -> p.stacksTo(1))
+                    .model(AssetLookup.itemModelWithPartials())
+                    .register();
 
     public static final ItemEntry<ExperienceNuggetItemOne> ONE_EXP_NUGGET =
             REGISTRATE.item("experience_ingot", ExperienceNuggetItemOne::new)
@@ -133,6 +141,13 @@ public class Pipebomb {
 
 
 
+
+    public static final ItemEntry<SequencedCraftingItem1>
+            incomplete_crafted_inductive_mechanism1 = craftingIngredient1("crafting_inductive_mechanism1");
+
+    public static final ItemEntry<SequencedCraftingItem2>
+            incomplete_crafted_inductive_mechanism2 = craftingIngredient2("crafting_inductive_mechanism2");
+
     private static ItemEntry<Item> ingredient(String name) {
         return REGISTRATE.item(name, Item::new)
                 .register();
@@ -145,6 +160,15 @@ public class Pipebomb {
 
     private static ItemEntry<SequencedAssemblyItem> sequencedIngredient(String name) {
         return REGISTRATE.item(name, SequencedAssemblyItem::new)
+                .register();
+    }
+
+    private static ItemEntry<SequencedCraftingItem1> craftingIngredient1(String name) {
+        return REGISTRATE.item(name, SequencedCraftingItem1::new)
+                .register();
+    }
+    private static ItemEntry<SequencedCraftingItem2> craftingIngredient2(String name) {
+        return REGISTRATE.item(name, SequencedCraftingItem2::new)
                 .register();
     }
 

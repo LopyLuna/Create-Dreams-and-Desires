@@ -26,6 +26,9 @@ import uwu.lopyluna.create_dd.block.BlockProperties.drill.RadiantDrillBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.RadiantDrillMovementBehaviour;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.ShadowDrillBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.ShadowDrillMovementBehaviour;
+import uwu.lopyluna.create_dd.block.BlockProperties.fan.EightBladeFanBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.fan.FourBladeFanBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.fan.TwoBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HazardBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssRotatedBlockPillar;
@@ -1024,6 +1027,43 @@ public class YIPPEE {
                     .transform(pickaxeOnly())
                     .simpleItem()
                     .register();
+
+    public static final BlockEntry<TwoBladeFanBlock> two_blade_fan =
+            REGISTRATE.block("2_blade_fan", TwoBladeFanBlock::new)
+            .initialProperties(SharedProperties::softMetal)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_YELLOW))
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .transform(axeOrPickaxe())
+            .transform(BlockStressDefaults.setNoImpact())
+            .blockstate(BlockStateGen.axisBlockProvider(true))
+            .item()
+            .transform(customItemModel())
+            .register();
+
+    public static final BlockEntry<FourBladeFanBlock> four_blade_fan =
+            REGISTRATE.block("4_blade_fan", FourBladeFanBlock::new)
+            .initialProperties(SharedProperties::softMetal)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_YELLOW))
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .transform(axeOrPickaxe())
+            .transform(BlockStressDefaults.setNoImpact())
+            .blockstate(BlockStateGen.axisBlockProvider(true))
+            .item()
+            .transform(customItemModel())
+            .register();
+
+    public static final BlockEntry<EightBladeFanBlock> eight_blade_fan =
+            REGISTRATE.block("8_blade_fan", EightBladeFanBlock::new)
+            .initialProperties(SharedProperties::softMetal)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_YELLOW))
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .transform(axeOrPickaxe())
+            .transform(BlockStressDefaults.setNoImpact())
+            .blockstate(BlockStateGen.axisBlockProvider(true))
+            .item()
+            .transform(customItemModel())
+            .register();
+
 
     public static void register() {}
 }

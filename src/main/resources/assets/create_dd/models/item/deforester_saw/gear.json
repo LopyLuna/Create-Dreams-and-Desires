@@ -1,0 +1,66 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create_dd:item/deforester/item",
+	"textures": {
+		"5": "create_dd:item/handheld_saw/base",
+		"particle": "create_dd:item/handheld_saw/base"
+	},
+	"elements": [
+		{
+			"name": "Cog",
+			"from": [2.75, 6, 7.5],
+			"to": [6.75, 7, 8.5],
+			"rotation": {"angle": -45, "axis": "z", "origin": [4.75, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [11, 15, 15, 16], "rotation": 180, "texture": "#5"},
+				"east": {"uv": [15, 15, 16, 16], "rotation": 90, "texture": "#5"},
+				"south": {"uv": [11, 15, 15, 16], "rotation": 180, "texture": "#5"},
+				"west": {"uv": [15, 15, 16, 16], "rotation": 270, "texture": "#5"},
+				"up": {"uv": [11, 15, 15, 16], "rotation": 180, "texture": "#5"},
+				"down": {"uv": [11, 15, 15, 16], "texture": "#5"}
+			}
+		},
+		{
+			"name": "Cog",
+			"from": [4.25, 4.5, 7.5],
+			"to": [5.25, 8.5, 8.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4.75, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [11, 15, 15, 16], "rotation": 270, "texture": "#5"},
+				"east": {"uv": [11, 15, 15, 16], "rotation": 270, "texture": "#5"},
+				"south": {"uv": [11, 15, 15, 16], "rotation": 90, "texture": "#5"},
+				"west": {"uv": [11, 15, 15, 16], "rotation": 90, "texture": "#5"},
+				"up": {"uv": [15, 15, 16, 16], "texture": "#5"},
+				"down": {"uv": [15, 15, 16, 16], "rotation": 180, "texture": "#5"}
+			}
+		},
+		{
+			"name": "Cog",
+			"from": [4.25, 4.5, 7.5],
+			"to": [5.25, 8.5, 8.5],
+			"rotation": {"angle": -45, "axis": "z", "origin": [4.75, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [11, 15, 15, 16], "rotation": 270, "texture": "#5"},
+				"east": {"uv": [11, 15, 15, 16], "rotation": 270, "texture": "#5"},
+				"south": {"uv": [11, 15, 15, 16], "rotation": 90, "texture": "#5"},
+				"west": {"uv": [11, 15, 15, 16], "rotation": 90, "texture": "#5"},
+				"up": {"uv": [15, 15, 16, 16], "texture": "#5"},
+				"down": {"uv": [15, 15, 16, 16], "rotation": 180, "texture": "#5"}
+			}
+		},
+		{
+			"name": "Cog",
+			"from": [2.75, 6, 7.5],
+			"to": [6.75, 7, 8.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4.75, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [11, 15, 15, 16], "rotation": 180, "texture": "#5"},
+				"east": {"uv": [15, 15, 16, 16], "rotation": 90, "texture": "#5"},
+				"south": {"uv": [11, 15, 15, 16], "rotation": 180, "texture": "#5"},
+				"west": {"uv": [15, 15, 16, 16], "rotation": 270, "texture": "#5"},
+				"up": {"uv": [11, 15, 15, 16], "rotation": 180, "texture": "#5"},
+				"down": {"uv": [11, 15, 15, 16], "texture": "#5"}
+			}
+		}
+	]
+}

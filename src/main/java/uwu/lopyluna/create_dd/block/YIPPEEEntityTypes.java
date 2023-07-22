@@ -2,6 +2,9 @@ package uwu.lopyluna.create_dd.block;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.Create;
+import com.simibubi.create.content.kinetics.flywheel.FlywheelBlockEntity;
+import com.simibubi.create.content.kinetics.flywheel.FlywheelInstance;
+import com.simibubi.create.content.kinetics.flywheel.FlywheelRenderer;
 import com.simibubi.create.content.kinetics.transmission.GearshiftBlockEntity;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftInstance;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
@@ -13,6 +16,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeFan
 import uwu.lopyluna.create_dd.block.BlockProperties.door.YIPPEESlidingDoorBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.door.YIPPEESlidingDoorRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.*;
+import uwu.lopyluna.create_dd.block.BlockProperties.fan.*;
 
 import static uwu.lopyluna.create_dd.DDcreate.REGISTRATE;
 
@@ -51,6 +55,27 @@ public class YIPPEEEntityTypes {
             .instance(() -> SplitShaftInstance::new, false)
             .validBlocks(YIPPEE.REVERSED_GEARSHIFT)
             .renderer(() -> SplitShaftRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<TwoBladeFanBlockEntity> two_blade_fan = REGISTRATE
+            .blockEntity("2_blade_fan", TwoBladeFanBlockEntity::new)
+            .instance(() -> TwoBladeFanBlockInstance::new, false)
+            .validBlocks(YIPPEE.two_blade_fan)
+            .renderer(() -> TwoBladeFanBlockRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<FourBladeFanBlockEntity> four_blade_fan = REGISTRATE
+            .blockEntity("4_blade_fan", FourBladeFanBlockEntity::new)
+            .instance(() -> FourBladeFanBlockInstance::new, false)
+            .validBlocks(YIPPEE.four_blade_fan)
+            .renderer(() -> FourBladeFanBlockRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<EightBladeFanBlockEntity> eight_blade_fan = REGISTRATE
+            .blockEntity("8_blade_fan", EightBladeFanBlockEntity::new)
+            .instance(() -> EightBladeFanBlockInstance::new, false)
+            .validBlocks(YIPPEE.eight_blade_fan)
+            .renderer(() -> EightBladeFanBlockRenderer::new)
             .register();
 
     public static void register() {}
