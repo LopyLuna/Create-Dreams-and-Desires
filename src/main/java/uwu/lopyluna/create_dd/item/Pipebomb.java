@@ -45,6 +45,7 @@ public class Pipebomb {
             steel_sheet = taggedIngredient("steel_sheet", forgeItemTag("plates/steel")),
             industrial_iron_sheet = taggedIngredient("industrial_iron_sheet", forgeItemTag("plates/industrial_iron")),
             tin_raw = ingredient("raw_tin"),
+            ember_alloy = taggedIngredient("ember_alloy", forgeItemTag("ingots/ember_alloy")),
             lapis_alloy = taggedIngredient("lapis_alloy", forgeItemTag("ingots/lapis_alloy")),
             lapis_sheet = taggedIngredient("lapis_sheet", forgeItemTag("plates/lapis_alloy")),
             andesite_sheet = taggedIngredient("andesite_sheet", forgeItemTag("plates/andesite_alloy")),

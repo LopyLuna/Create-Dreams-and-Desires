@@ -14,6 +14,7 @@ public class YIPPEEPartialModel {
     public static final PartialModel
             RADIANT_DRILL_HEAD = block("radiant_drill/head"),
             SHADOW_DRILL_HEAD = block("shadow_drill/head"),
+            HYDRAULIC_PRESS_HEAD = block("hydraulic_press/head"),
             BRONZE_ENCASED_FAN_INNER = block("bronze_encased_fan/propeller")
             ;
 

@@ -1,11 +1,5 @@
 package uwu.lopyluna.create_dd.block;
 
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.Create;
-import com.simibubi.create.content.kinetics.flywheel.FlywheelBlockEntity;
-import com.simibubi.create.content.kinetics.flywheel.FlywheelInstance;
-import com.simibubi.create.content.kinetics.flywheel.FlywheelRenderer;
-import com.simibubi.create.content.kinetics.transmission.GearshiftBlockEntity;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftInstance;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
@@ -17,6 +11,9 @@ import uwu.lopyluna.create_dd.block.BlockProperties.door.YIPPEESlidingDoorBlockE
 import uwu.lopyluna.create_dd.block.BlockProperties.door.YIPPEESlidingDoorRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.*;
+import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HYPressInstance;
+import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressRenderer;
 
 import static uwu.lopyluna.create_dd.DDcreate.REGISTRATE;
 
@@ -55,6 +52,13 @@ public class YIPPEEEntityTypes {
             .instance(() -> SplitShaftInstance::new, false)
             .validBlocks(YIPPEE.REVERSED_GEARSHIFT)
             .renderer(() -> SplitShaftRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<HydraulicPressBlockEntity> hydraulic_press = REGISTRATE
+            .blockEntity("hydraulic_press", HydraulicPressBlockEntity::new)
+            .instance(() -> HYPressInstance::new)
+            .validBlocks(YIPPEE.hydraulic_press)
+            .renderer(() -> HydraulicPressRenderer::new)
             .register();
 
     public static final BlockEntityEntry<TwoBladeFanBlockEntity> two_blade_fan = REGISTRATE

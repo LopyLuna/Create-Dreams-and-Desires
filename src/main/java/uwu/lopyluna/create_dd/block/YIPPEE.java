@@ -4,6 +4,7 @@ import com.simibubi.create.*;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -29,6 +30,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.drill.ShadowDrillMovementBeh
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.EightBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.FourBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.TwoBladeFanBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HazardBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssRotatedBlockPillar;
@@ -307,13 +309,13 @@ public class YIPPEE {
 
     public static final BlockEntry<BronzeEncasedFanBlock> BRONZE_ENCASED_FAN =
             REGISTRATE.block("bronze_encased_fan", BronzeEncasedFanBlock::new)
-                    .initialProperties(SharedProperties::stone)
-                    .properties(p -> p.color(MaterialColor.PODZOL))
-                    .blockstate(BlockStateGen.directionalBlockProvider(true))
-                    .addLayer(() -> RenderType::cutoutMipped)
-                    .transform(axeOrPickaxe())
-                    .transform(BlockStressDefaults.setImpact(4.0))
-                    .register();
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .blockstate(BlockStateGen.directionalBlockProvider(true))
+            .addLayer(() -> RenderType::cutoutMipped)
+            .transform(axeOrPickaxe())
+            .transform(BlockStressDefaults.setImpact(4.0))
+            .register();
 
     public static final BlockEntry<RadiantDrillBlock> RADIANT_DRILL =
             REGISTRATE.block("radiant_drill", RadiantDrillBlock::new)
@@ -333,6 +335,20 @@ public class YIPPEE {
             .blockstate(BlockStateGen.directionalBlockProvider(true))
             .transform(BlockStressDefaults.setImpact(8.0))
             .onRegister(movementBehaviour(new ShadowDrillMovementBehaviour()))
+            .register();
+
+    public static final BlockEntry<HydraulicPressBlock> hydraulic_press =
+            REGISTRATE.block("hydraulic_press", HydraulicPressBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.color(MaterialColor.PODZOL)
+                    .sound(SoundType.COPPER))
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .transform(axeOrPickaxe())
+            .blockstate(BlockStateGen.horizontalBlockProvider(true))
+            .addLayer(() -> RenderType::cutoutMipped)
+            .transform(BlockStressDefaults.setImpact(24.0))
+            .item(AssemblyOperatorBlockItem::new)
+            .transform(customItemModel())
             .register();
 
     //Decoratives
