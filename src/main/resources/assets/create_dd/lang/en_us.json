@@ -211,6 +211,8 @@
   "block.create_dd.secondary_encased_chain_drive": "Secondary Encased Chain Drive",
   "block.create_dd.secondary_adjustable_chain_gearshift": "Secondary Adjustable Chain Gearshift",
 
+  "block.create_dd.reinforcement_plating": "Reinforcement Plating",
+
   "block.create_dd.potassic_cobble": "Cobbled Potassic",
   "block.create_dd.asurine_cobble": "Cobbled Asurine",
   "block.create_dd.crimsite_cobble": "Cobbled Crimsite",

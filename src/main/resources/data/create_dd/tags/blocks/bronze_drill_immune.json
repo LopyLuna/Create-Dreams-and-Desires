@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:reinforced_deepslate"
+    "minecraft:reinforced_deepslate",
+    "create_dd:reinforcement_plating"
   ]
 }

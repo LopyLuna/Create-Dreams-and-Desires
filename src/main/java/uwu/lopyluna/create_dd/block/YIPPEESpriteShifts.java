@@ -24,6 +24,8 @@ public class YIPPEESpriteShifts {
             SHADOW_STEEL_CASING = omni("shadow_steel_casing"),
             REFINED_RADIANCE_CASING = omni("refined_radiance_casing"),
 
+            reinforcement_plating = omni("reinforcement_plating"),
+
             HAZARD = omni("hazard_block"),
             HORIZONTAL_HAZARD = omni("horizontal_hazard_block"),
             HAZARD_R = omni("hazard_block_r"),

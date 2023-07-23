@@ -300,6 +300,15 @@ public class YIPPEE {
             .lang("Radiant Casing")
             .register();
 
+    public static final BlockEntry<CasingBlock> reinforcement_plating = REGISTRATE.block("reinforcement_plating", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.reinforcement_plating))
+            .initialProperties(SharedProperties::netheriteMetal)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .properties(p -> p.strength(24f,32f))
+            .simpleItem()
+            .register();
+
     //MECHANICAL BLOCKS
 
     public static final BlockEntry<ReversedGearboxBlock> REVERSED_GEARSHIFT =

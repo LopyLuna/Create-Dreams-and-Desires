@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BA",
+    "AB"
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:storage_blocks/strong_bronze"
+    },
+    "B": {
+      "tag": "forge:storage_blocks/steel"
+    }
+  },
+  "result": {
+    "item": "create_dd:reinforcement_plating",
+    "count": 2
+  }
+}

@@ -5,8 +5,10 @@
     "create_dd:bronze_ingot",
     "create_dd:steel_ingot",
     "create_dd:industrial_iron_ingot",
+    "create_dd:lapis_alloy",
     "create_dd:chromatic_compound",
     "create_dd:shadow_steel",
-    "create_dd:refined_radiance"
+    "create_dd:refined_radiance",
+    "create:bar_of_chocolate"
   ]
 }

@@ -64,6 +64,8 @@
     "create_dd:4_blade_fan",
     "create_dd:8_blade_fan",
 
+    "create_dd:reinforcement_plating",
+
     "create_dd:cut_weathered_limestone",
     "create_dd:cut_weathered_limestone_stairs",
     "create_dd:cut_weathered_limestone_slab",
