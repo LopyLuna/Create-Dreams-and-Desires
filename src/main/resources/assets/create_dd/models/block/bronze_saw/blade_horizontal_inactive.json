@@ -1,0 +1,7 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create_dd:block/bronze_saw/blade_horizontal_active",
+	"textures": {
+		"stonecutter_saw_reversed": "create_dd:block/bronze_saw_still"
+	}
+}

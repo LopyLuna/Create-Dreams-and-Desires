@@ -8,6 +8,9 @@ import com.simibubi.create.content.kinetics.base.ShaftRenderer;
 import com.simibubi.create.content.kinetics.drill.DrillBlockEntity;
 import com.simibubi.create.content.kinetics.drill.DrillInstance;
 import com.simibubi.create.content.kinetics.drill.DrillRenderer;
+import com.simibubi.create.content.kinetics.saw.SawBlockEntity;
+import com.simibubi.create.content.kinetics.saw.SawInstance;
+import com.simibubi.create.content.kinetics.saw.SawRenderer;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftInstance;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
@@ -18,6 +21,9 @@ import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillRend
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeEncasedFanBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeEncasedFanRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeFanInstance;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawInstance;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.door.YIPPEESlidingDoorBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.door.YIPPEESlidingDoorRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.*;
@@ -31,6 +37,13 @@ import static uwu.lopyluna.create_dd.DDcreate.REGISTRATE;
 
 
 public class YIPPEEEntityTypes {
+
+    public static final BlockEntityEntry<BronzeSawBlockEntity> BRONZE_SAW = REGISTRATE
+            .blockEntity("bronze_saw", BronzeSawBlockEntity::new)
+            .instance(() -> BronzeSawInstance::new)
+            .validBlocks(YIPPEE.BRONZE_SAW)
+            .renderer(() -> BronzeSawRenderer::new)
+            .register();
 
     public static final BlockEntityEntry<BronzeDrillBlockEntity> BRONZE_DRILL = REGISTRATE
             .blockEntity("bronze_drill", BronzeDrillBlockEntity::new)

@@ -136,7 +136,7 @@
   "block.create_dd.spectral_ruby_tiles": "Spectral Ruby Tiles",
   "block.create_dd.small_spectral_ruby_tiles": "Small Spectral Ruby Tiles",
 
-  "block.create_dd.industrial_iron_block": "Soild Block of Industrial Iron",
+  "block.create_dd.industrial_iron_block": "Solid Block of Industrial Iron",
 
   "block.create_dd.chromatic_block": "Block of Chromatic Compound",
   "block.create_dd.refined_radiance_block": "Block of Refined Radiance",
@@ -205,11 +205,14 @@
   "block.create_dd.reversed_gearshift": "Reverse Gearshift",
   "block.create_dd.hydraulic_press": "Hydraulic Press",
   "block.create_dd.bronze_drill": "Bronze Drill",
+  "block.create_dd.bronze_saw": "Bronze Saw",
   "block.create_dd.2_blade_fan": "Large Fan (2)",
   "block.create_dd.4_blade_fan": "Large Fan (4)",
   "block.create_dd.8_blade_fan": "Large Fan (8)",
   "block.create_dd.secondary_encased_chain_drive": "Secondary Encased Chain Drive",
   "block.create_dd.secondary_adjustable_chain_gearshift": "Secondary Adjustable Chain Gearshift",
+
+  "block.create_dd.vertical_item_vault": "Vertical Item Vault",
 
   "block.create_dd.reinforcement_plating": "Reinforcement Plating",
 

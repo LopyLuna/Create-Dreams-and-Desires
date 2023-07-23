@@ -70,7 +70,7 @@ public class BronzeDrillMovementBehaviour extends BlockBreakingMovementBehaviour
             lowerLimit = 1f;
         if (context.contraption instanceof CarriageContraption)
             lowerLimit = 2f;
-        return Mth.clamp(Math.abs(context.getAnimationSpeed()) / 250f, lowerLimit, 16f);
+        return Mth.clamp(Math.abs(context.getAnimationSpeed()) / 175f, lowerLimit, 16f);
     }
 
     @Override

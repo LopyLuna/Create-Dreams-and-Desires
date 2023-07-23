@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:bronze_drill",
+    "create_dd:bronze_saw"
+  ]
+}

@@ -7,6 +7,9 @@ import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.kinetics.chainDrive.ChainDriveBlock;
 import com.simibubi.create.content.kinetics.chainDrive.ChainDriveGenerator;
 import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlock;
+import com.simibubi.create.content.kinetics.saw.SawBlock;
+import com.simibubi.create.content.kinetics.saw.SawGenerator;
+import com.simibubi.create.content.kinetics.saw.SawMovementBehaviour;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.util.DataIngredient;
@@ -23,6 +26,8 @@ import uwu.lopyluna.create_dd.block.BlockProperties.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillMovementBehaviour;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeEncasedFanBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawMovementBehaviour;
 import uwu.lopyluna.create_dd.block.BlockProperties.copycat.BlockcopycatBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.copycat.BlockcopycatBlockModel;
 import uwu.lopyluna.create_dd.block.BlockProperties.copycat.BlockcopycatSlab;
@@ -322,6 +327,18 @@ public class YIPPEE {
             .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, AssetLookup.forPowered(c, p)))
             .item()
             .transform(customItemModel())
+            .register();
+
+    public static final BlockEntry<BronzeSawBlock> BRONZE_SAW =
+            REGISTRATE.block("bronze_saw", BronzeSawBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .addLayer(() -> RenderType::cutoutMipped)
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .transform(axeOrPickaxe())
+            .transform(BlockStressDefaults.setImpact(12.0))
+            .onRegister(movementBehaviour(new BronzeSawMovementBehaviour()))
+            .addLayer(() -> RenderType::cutoutMipped)
+            .simpleItem()
             .register();
 
     public static final BlockEntry<BronzeDrillBlock> BRONZE_DRILL =

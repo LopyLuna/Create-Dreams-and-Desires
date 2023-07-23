@@ -10,14 +10,14 @@
       "tag": "forge:ingots/steel"
     },
     "B": {
-      "tag": "forge:ingots/strong_bronze"
+      "tag": "forge:plates/strong_bronze"
     },
     "D": {
       "item": "create_dd:bronze_casing"
     }
   },
   "result": {
-    "item": "create_dd:bronze_drill",
+    "item": "create_dd:bronze_saw",
     "count": 1
   }
 }
