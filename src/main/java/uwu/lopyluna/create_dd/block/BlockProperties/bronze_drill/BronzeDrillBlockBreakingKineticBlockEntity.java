@@ -13,21 +13,19 @@ public class BronzeDrillBlockBreakingKineticBlockEntity extends BlockBreakingKin
     }
 
     @Override
-    protected BlockPos getBreakingPos() {
-        return getBlockPos().relative(getBlockState().getValue(BronzeDrillBlock.FACING));
-    }
+    protected BlockPos getBreakingPos() {return getBlockPos().relative(getBlockState().getValue(BronzeDrillBlock.FACING));}
 
     @Override
-    protected float getBreakSpeed() {
-        return Math.abs(getSpeed() / 35f);
-    }
+    protected float getBreakSpeed() {return Math.abs(getSpeed() / 35f);}
 
     @Override
-    public boolean canBreak(BlockState stateToBreak, float blockHardness) {
-        return isBreakable(stateToBreak, blockHardness);
-    }
+    public boolean canBreak(BlockState stateToBreak, float blockHardness) {return isBreakable(stateToBreak, blockHardness);}
 
     public static boolean isBreakable(BlockState stateToBreak, float blockHardness) {
-        return !(stateToBreak.getMaterial().isLiquid() || stateToBreak.getBlock() instanceof AirBlock || blockHardness == -1 || WOWitsTags.AllBlockTags.bronze_drill_immune.matches(stateToBreak) );
+        return !(stateToBreak.getMaterial().isLiquid() ||
+                stateToBreak.getBlock() instanceof AirBlock ||
+                blockHardness == -1 ||
+                WOWitsTags.AllBlockTags.bronze_drill_immune.matches(stateToBreak)
+        );
     }
 }
