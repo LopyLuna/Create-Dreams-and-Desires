@@ -29,7 +29,6 @@ import uwu.lopyluna.create_dd.rando.DDParticleTypes;
 import uwu.lopyluna.create_dd.recipes.BakingRecipesTypes;
 import uwu.lopyluna.create_dd.worldgen.YummyOreFeatures;
 import uwu.lopyluna.create_dd.worldgen.YummyOrePlacedFeatures;
-import uwu.lopyluna.create_dd.worldgen.YummyTags;
 
 
 @Mod(DDcreate.MOD_ID)
@@ -59,7 +58,7 @@ public class DDcreate
         DDParticleTypes.register(eventBus);
         BakingRecipesTypes.register(eventBus);
 
-        YummyTags.init();
+        WOWitsTags.init();
         YummyOreFeatures.register(eventBus);
         YummyOrePlacedFeatures.register(eventBus);
 

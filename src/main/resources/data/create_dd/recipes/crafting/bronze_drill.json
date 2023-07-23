@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B",
+    "BAB",
+    " D"
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:ingots/lapis_alloy"
+    },
+    "B": {
+      "tag": "forge:ingots/strong_bronze"
+    },
+    "D": {
+      "item": "create_dd:bronze_casing"
+    }
+  },
+  "result": {
+    "item": "create_dd:bronze_drill",
+    "count": 1
+  }
+}

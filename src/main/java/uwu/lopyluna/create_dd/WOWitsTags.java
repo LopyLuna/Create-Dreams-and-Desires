@@ -1,4 +1,4 @@
-package uwu.lopyluna.create_dd.worldgen;
+package uwu.lopyluna.create_dd;
 
 import com.simibubi.create.foundation.utility.Lang;
 import net.minecraft.resources.ResourceLocation;
@@ -10,11 +10,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
-import uwu.lopyluna.create_dd.DDcreate;
 
 import java.util.Collections;
 
-public class YummyTags {
+public class WOWitsTags {
 
 
 
@@ -54,6 +53,7 @@ public static TagKey<Block> forgeBlockTag(String path) {
         weathered_limestone_replaceable,
         limestone_replaceable,
         gabbro_replaceable,
+        bronze_drill_immune,
 
         ;
 

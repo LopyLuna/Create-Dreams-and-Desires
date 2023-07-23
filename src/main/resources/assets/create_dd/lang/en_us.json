@@ -204,9 +204,12 @@
   "block.create_dd.spectral_ruby_lamp": "Spectral Ruby Lamp",
   "block.create_dd.reversed_gearshift": "Reverse Gearshift",
   "block.create_dd.hydraulic_press": "Hydraulic Press",
+  "block.create_dd.bronze_drill": "Bronze Drill",
   "block.create_dd.2_blade_fan": "Large Fan (2)",
   "block.create_dd.4_blade_fan": "Large Fan (4)",
   "block.create_dd.8_blade_fan": "Large Fan (8)",
+  "block.create_dd.secondary_encased_chain_drive": "Secondary Encased Chain Drive",
+  "block.create_dd.secondary_adjustable_chain_gearshift": "Secondary Adjustable Chain Gearshift",
 
   "block.create_dd.potassic_cobble": "Cobbled Potassic",
   "block.create_dd.asurine_cobble": "Cobbled Asurine",

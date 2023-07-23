@@ -1,0 +1,6 @@
+{
+  "parent": "create_dd:block/secondary_encased_chain_drive/middle_horizontal",
+  "textures": {
+    "side": "create_dd:block/adjustable_chain_gearshift_powered"
+  }
+}

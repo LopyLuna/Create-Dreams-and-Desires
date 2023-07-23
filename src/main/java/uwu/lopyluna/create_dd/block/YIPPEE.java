@@ -4,6 +4,9 @@ import com.simibubi.create.*;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.content.kinetics.chainDrive.ChainDriveBlock;
+import com.simibubi.create.content.kinetics.chainDrive.ChainDriveGenerator;
+import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.util.DataIngredient;
@@ -17,6 +20,8 @@ import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.util.ForgeSoundType;
 import uwu.lopyluna.create_dd.block.BlockProperties.*;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillMovementBehaviour;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeEncasedFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.copycat.BlockcopycatBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.copycat.BlockcopycatBlockModel;
@@ -31,6 +36,9 @@ import uwu.lopyluna.create_dd.block.BlockProperties.fan.EightBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.FourBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.TwoBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlock2;
+import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlockGen;
+import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainGearshiftBlock2;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HazardBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssRotatedBlockPillar;
@@ -307,6 +315,17 @@ public class YIPPEE {
             .transform(customItemModel())
             .register();
 
+    public static final BlockEntry<BronzeDrillBlock> BRONZE_DRILL =
+            REGISTRATE.block("bronze_drill", BronzeDrillBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .transform(axeOrPickaxe())
+            .blockstate(BlockStateGen.directionalBlockProvider(true))
+            .transform(BlockStressDefaults.setImpact(12.0))
+            .onRegister(movementBehaviour(new BronzeDrillMovementBehaviour()))
+            .simpleItem()
+            .register();
+
     public static final BlockEntry<BronzeEncasedFanBlock> BRONZE_ENCASED_FAN =
             REGISTRATE.block("bronze_encased_fan", BronzeEncasedFanBlock::new)
             .initialProperties(SharedProperties::stone)
@@ -315,6 +334,7 @@ public class YIPPEE {
             .addLayer(() -> RenderType::cutoutMipped)
             .transform(axeOrPickaxe())
             .transform(BlockStressDefaults.setImpact(4.0))
+            .simpleItem()
             .register();
 
     public static final BlockEntry<RadiantDrillBlock> RADIANT_DRILL =
@@ -323,8 +343,9 @@ public class YIPPEE {
             .properties(p -> p.color(MaterialColor.PODZOL))
             .transform(axeOrPickaxe())
             .blockstate(BlockStateGen.directionalBlockProvider(true))
-            .transform(BlockStressDefaults.setImpact(8.0))
+            .transform(BlockStressDefaults.setImpact(16.0))
             .onRegister(movementBehaviour(new RadiantDrillMovementBehaviour()))
+            .simpleItem()
             .register();
 
     public static final BlockEntry<ShadowDrillBlock> SHADOW_DRILL =
@@ -333,8 +354,9 @@ public class YIPPEE {
             .properties(p -> p.color(MaterialColor.PODZOL))
             .transform(axeOrPickaxe())
             .blockstate(BlockStateGen.directionalBlockProvider(true))
-            .transform(BlockStressDefaults.setImpact(8.0))
+            .transform(BlockStressDefaults.setImpact(16.0))
             .onRegister(movementBehaviour(new ShadowDrillMovementBehaviour()))
+            .simpleItem()
             .register();
 
     public static final BlockEntry<HydraulicPressBlock> hydraulic_press =
@@ -350,6 +372,39 @@ public class YIPPEE {
             .item(AssemblyOperatorBlockItem::new)
             .transform(customItemModel())
             .register();
+
+    public static final BlockEntry<ChainDriveBlock2> secondary_encased_chain_drive =
+            REGISTRATE.block("secondary_encased_chain_drive", ChainDriveBlock2::new)
+                    .initialProperties(SharedProperties::stone)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .transform(BlockStressDefaults.setNoImpact())
+                    .transform(axeOrPickaxe())
+                    .blockstate((c, p) -> new ChainDriveBlockGen((state, suffix) -> p.models()
+                            .getExistingFile(p.modLoc("block/" + c.getName() + "/" + suffix))).generate(c, p))
+                    .item()
+                    .transform(customItemModel())
+                    .register();
+
+    public static final BlockEntry<ChainGearshiftBlock2> secondary_adjustable_chain_gearshift =
+            REGISTRATE.block("secondary_adjustable_chain_gearshift", ChainGearshiftBlock2::new)
+                    .initialProperties(SharedProperties::stone)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .properties(p -> p.color(MaterialColor.NETHER))
+                    .transform(BlockStressDefaults.setNoImpact())
+                    .transform(axeOrPickaxe())
+                    .blockstate((c, p) -> new ChainDriveBlockGen((state, suffix) -> {
+                        String powered = state.getValue(ChainGearshiftBlock2.POWERED) ? "_powered" : "";
+                        return p.models()
+                                .withExistingParent(c.getName() + "_" + suffix + powered,
+                                        p.modLoc("block/secondary_encased_chain_drive/" + suffix))
+                                .texture("side", p.modLoc("block/" + c.getName() + powered));
+                    }).generate(c, p))
+                    .item()
+                    .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/secondary_encased_chain_drive/item"))
+                            .texture("side", p.modLoc("block/" + c.getName())))
+                    .build()
+                    .register();
 
     //Decoratives
 

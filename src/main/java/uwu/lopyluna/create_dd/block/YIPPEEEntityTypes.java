@@ -1,9 +1,20 @@
 package uwu.lopyluna.create_dd.block;
 
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.Create;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
+import com.simibubi.create.content.kinetics.base.ShaftInstance;
+import com.simibubi.create.content.kinetics.base.ShaftRenderer;
+import com.simibubi.create.content.kinetics.drill.DrillBlockEntity;
+import com.simibubi.create.content.kinetics.drill.DrillInstance;
+import com.simibubi.create.content.kinetics.drill.DrillRenderer;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftInstance;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import uwu.lopyluna.create_dd.block.BlockProperties.ReversedGearboxBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillInstance;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeEncasedFanBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeEncasedFanRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeFanInstance;
@@ -14,11 +25,26 @@ import uwu.lopyluna.create_dd.block.BlockProperties.fan.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HYPressInstance;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainGearshiftBlock2Entity;
 
 import static uwu.lopyluna.create_dd.DDcreate.REGISTRATE;
 
 
 public class YIPPEEEntityTypes {
+
+    public static final BlockEntityEntry<BronzeDrillBlockEntity> BRONZE_DRILL = REGISTRATE
+            .blockEntity("bronze_drill", BronzeDrillBlockEntity::new)
+            .instance(() -> BronzeDrillInstance::new, false)
+            .validBlocks(YIPPEE.BRONZE_DRILL)
+            .renderer(() -> BronzeDrillRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<KineticBlockEntity> ENCASED_SHAFT = REGISTRATE
+            .blockEntity("encased_shaft", KineticBlockEntity::new)
+            .instance(() -> ShaftInstance::new, false)
+            .validBlocks(YIPPEE.secondary_encased_chain_drive)
+            .renderer(() -> ShaftRenderer::new)
+            .register();
 
     public static final BlockEntityEntry<YIPPEESlidingDoorBlockEntity> SLIDING_DOOR =
             REGISTRATE.blockEntity("sliding_door", YIPPEESlidingDoorBlockEntity::new)
@@ -80,6 +106,13 @@ public class YIPPEEEntityTypes {
             .instance(() -> EightBladeFanBlockInstance::new, false)
             .validBlocks(YIPPEE.eight_blade_fan)
             .renderer(() -> EightBladeFanBlockRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<ChainGearshiftBlock2Entity> secondary_adjustable_chain_gearshift = REGISTRATE
+            .blockEntity("secondary_adjustable_chain_gearshift", ChainGearshiftBlock2Entity::new)
+            .instance(() -> ShaftInstance::new, false)
+            .validBlocks(YIPPEE.secondary_adjustable_chain_gearshift)
+            .renderer(() -> ShaftRenderer::new)
             .register();
 
     public static void register() {}

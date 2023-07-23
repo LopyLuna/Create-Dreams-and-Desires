@@ -14,6 +14,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import uwu.lopyluna.create_dd.DDcreate;
+import uwu.lopyluna.create_dd.WOWitsTags;
 import uwu.lopyluna.create_dd.block.YIPPEE;
 import uwu.lopyluna.create_dd.block.YIPPEEPaletteStoneTypes;
 
@@ -25,10 +26,10 @@ public class YummyOreFeatures {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES =
             DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, DDcreate.MOD_ID);
 
-    public static final RuleTest weathered_limestone_replaceable = new TagMatchTest(YummyTags.AllBlockTags.weathered_limestone_replaceable.tag);
-    public static final RuleTest limestone_replaceable = new TagMatchTest(YummyTags.AllBlockTags.limestone_replaceable.tag);
-    public static final RuleTest potassic_replaceable = new TagMatchTest(YummyTags.AllBlockTags.potassic_replaceable.tag);
-    public static final RuleTest gabbro_replaceable = new TagMatchTest(YummyTags.AllBlockTags.gabbro_replaceable.tag);
+    public static final RuleTest weathered_limestone_replaceable = new TagMatchTest(WOWitsTags.AllBlockTags.weathered_limestone_replaceable.tag);
+    public static final RuleTest limestone_replaceable = new TagMatchTest(WOWitsTags.AllBlockTags.limestone_replaceable.tag);
+    public static final RuleTest potassic_replaceable = new TagMatchTest(WOWitsTags.AllBlockTags.potassic_replaceable.tag);
+    public static final RuleTest gabbro_replaceable = new TagMatchTest(WOWitsTags.AllBlockTags.gabbro_replaceable.tag);
 
     public static final Supplier<List<OreConfiguration.TargetBlockState>> OVERWORLD_STONE_BLOBS = Suppliers.memoize(() -> List.of(
             OreConfiguration.target(YummyOreFeatures.gabbro_replaceable, YIPPEEPaletteStoneTypes.gabbro.getBaseBlock().get().defaultBlockState()),
