@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "forge:ingots/shadow_steel"
-  },
-  "result": "create_dd:shadow_steel_scaffolding",
-  "count": 2
-}

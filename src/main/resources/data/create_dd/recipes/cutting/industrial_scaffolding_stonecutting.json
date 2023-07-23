@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "forge:ingots/industrial_iron"
-  },
-  "result": "create_dd:industrial_scaffolding",
-  "count": 2
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "forge:ingots/lapis_alloy"
-  },
-  "result": "create_dd:overburden_scaffolding",
-  "count": 2
-}

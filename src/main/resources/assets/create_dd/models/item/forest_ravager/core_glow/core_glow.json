@@ -1,8 +1,0 @@
-{
-	"ambientocclusion": false,
-	"textures": {
-		"0": "create_dd:block/mithril_transparent",
-		"1": "create_dd:block/mithril_transparent",
-		"particle": "create_dd:block/mithril_transparent"
-	}
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "create_dd:block/spectral_ruby_side",
-    "end": "create_dd:block/spectral_ruby_top"
-  }
-}

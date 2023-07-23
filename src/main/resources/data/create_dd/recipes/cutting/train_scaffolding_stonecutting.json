@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "forge:plates/obsidian"
-  },
-  "result": "create_dd:train_scaffolding",
-  "count": 2
-}

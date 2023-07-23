@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "forge:ingots/refined_radiance"
-  },
-  "result": "create_dd:refined_radiance_scaffolding",
-  "count": 2
-}

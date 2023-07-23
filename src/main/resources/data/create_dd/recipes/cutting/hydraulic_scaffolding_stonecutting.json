@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "forge:ingots/copper"
-  },
-  "result": "create_dd:hydraulic_scaffolding",
-  "count": 2
-}

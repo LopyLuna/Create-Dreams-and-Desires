@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "create_dd",
+  "version": "${version}",
+  "name": "Create: Dreams & Desires",
+  "description": "YIPPEE WASSUP THIS HURTS MY HEAD LMAO",
+  "authors": [
+    "LopyLuna, PouffyDev"
+  ],
+  "contact": {
+    "sources": "https://github.com/pouffy/Create-Dreams-and-Desires-Fabric"
+  },
+  "license": "MIT",
+  "icon": "assets/create_dd/logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "uwu.lopyluna.create_dd.DDcreate"
+    ]
+  },
+  "mixins": [
+    "create_dd.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": ">=${fabric_api_version}",
+    "create": "${create_version}",
+    "minecraft": "${minecraft_version}"
+  }
+}

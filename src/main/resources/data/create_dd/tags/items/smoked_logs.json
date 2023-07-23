@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "create_dd:smoked_log",
-    "create_dd:stripped_smoked_log",
-    "create_dd:smoked_wood",
-    "create_dd:stripped_smoked_wood"
-  ]
-}

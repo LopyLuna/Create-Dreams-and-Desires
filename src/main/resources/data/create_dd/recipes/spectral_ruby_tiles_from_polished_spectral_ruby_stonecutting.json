@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "create_dd:polished_spectral_ruby"
-  },
-  "result": "create_dd:spectral_ruby_tiles",
-  "count": 2
-}
