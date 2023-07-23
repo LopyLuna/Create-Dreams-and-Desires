@@ -16,6 +16,9 @@
   "entrypoints": {
     "main": [
       "uwu.lopyluna.create_dd.DDcreate"
+    ],
+    "client": [
+      "uwu.lopyluna.create_dd.DDclient"
     ]
   },
   "mixins": [

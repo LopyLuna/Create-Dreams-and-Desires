@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "create_dd:block/reversed_gearshift/block",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "create_dd:block/reversed_gearshift/block"
+    },
+    "axis=z": {
+      "model": "create_dd:block/reversed_gearshift/block",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

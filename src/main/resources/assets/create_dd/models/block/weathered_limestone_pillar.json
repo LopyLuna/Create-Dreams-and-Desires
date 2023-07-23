@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "create_dd:block/palettes/stone_types/pillar/weathered_limestone_cut_pillar",
+    "end": "create_dd:block/palettes/stone_types/cap/weathered_limestone_cut_cap"
+  }
+}

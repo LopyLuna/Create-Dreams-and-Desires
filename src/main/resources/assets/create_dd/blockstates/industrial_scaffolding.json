@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=false": {
+      "model": "create_dd:block/industrial_scaffold"
+    },
+    "bottom=true": {
+      "model": "create_dd:block/industrial_scaffold_horizontal"
+    }
+  }
+}
