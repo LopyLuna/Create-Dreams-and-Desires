@@ -1,0 +1,7 @@
+{
+  "providers": [{
+    "type": "bitmap","file": "create_dd:font/logo.png",
+    "ascent": 9.5,"height": 96,"chars": ["\uEFb8"]
+  }
+  ]
+}

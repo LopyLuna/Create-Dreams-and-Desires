@@ -13,9 +13,13 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.ResourceLocation;
 import uwu.lopyluna.create_dd.foundation.DDCommonEvents;
 import uwu.lopyluna.create_dd.foundation.DDItemTabs;
+import uwu.lopyluna.create_dd.init.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.init.DDBlocks;
 import uwu.lopyluna.create_dd.init.DDFluids;
 import uwu.lopyluna.create_dd.init.DDItems;
+import uwu.lopyluna.create_dd.init.DDParticleTypes;
+import uwu.lopyluna.create_dd.init.DDRecipeTypes;
+import uwu.lopyluna.create_dd.init.DDSpriteShifts;
 
 public class DDcreate implements ModInitializer {
 	public static final String ID = "create_dd";
@@ -40,6 +44,9 @@ public class DDcreate implements ModInitializer {
 		DDItems.register();
 		DDFluids.register();
 		DDBlocks.register();
+		DDBlockEntityTypes.register();
+		DDParticleTypes.register();
+		DDRecipeTypes.register();
 		REGISTRATE.register();
 	}
 	public static ResourceLocation id(String path) {
