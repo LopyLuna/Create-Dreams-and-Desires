@@ -1,7 +1,7 @@
 package uwu.lopyluna.create_dd.init;
 
-import com.simibubi.create.AllParticleTypes;
-import com.simibubi.create.Create;
+import java.util.function.Supplier;
+
 import com.simibubi.create.foundation.particle.ICustomParticleData;
 import com.simibubi.create.foundation.utility.Lang;
 
@@ -13,8 +13,8 @@ import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
-
-import java.util.function.Supplier;
+import uwu.lopyluna.create_dd.DDcreate;
+import uwu.lopyluna.create_dd.content.block.bronze_encased_fan.*;
 
 public enum DDParticleTypes {
 	AIR_FLOW(DDAirFlowParticleData::new),
@@ -47,7 +47,7 @@ public enum DDParticleTypes {
 	}
 
 	private static class ParticleEntry<D extends ParticleOptions> {
-		private static final LazyRegistrar<ParticleType<?>> REGISTER = LazyRegistrar.create(Registry.PARTICLE_TYPE, Create.ID);
+		private static final LazyRegistrar<ParticleType<?>> REGISTER = LazyRegistrar.create(Registry.PARTICLE_TYPE, DDcreate.ID);
 
 		private final String name;
 		private final Supplier<? extends ICustomParticleData<D>> typeFactory;
