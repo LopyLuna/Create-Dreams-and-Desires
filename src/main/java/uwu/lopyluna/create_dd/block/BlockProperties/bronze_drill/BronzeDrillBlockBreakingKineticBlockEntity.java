@@ -28,6 +28,6 @@ public class BronzeDrillBlockBreakingKineticBlockEntity extends BlockBreakingKin
     }
 
     public static boolean isBreakable(BlockState stateToBreak, float blockHardness) {
-        return !(stateToBreak.getMaterial().isLiquid() || stateToBreak.getBlock() instanceof AirBlock || blockHardness == -1 || !WOWitsTags.AllBlockTags.bronze_drill_immune.matches(stateToBreak) );
+        return !(stateToBreak.getMaterial().isLiquid() || stateToBreak.getBlock() instanceof AirBlock || blockHardness == -1 || WOWitsTags.AllBlockTags.bronze_drill_immune.matches(stateToBreak) );
     }
 }
