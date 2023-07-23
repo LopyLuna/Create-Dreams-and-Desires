@@ -53,7 +53,6 @@ public class Pipebomb {
             tin_sheet = taggedIngredient("tin_sheet", forgeItemTag("plates/tin")),
             integrated_circuit = ingredient("integrated_circuit"),
             integrated_mechanism = ingredient("integrated_mechanism"),
-            abstruse_mechanism = ingredient("abstruse_mechanism"),
             calculation_mechanism = ingredient("calculation_mechanism"),
             inductive_mechanism = ingredient("inductive_mechanism"),
             infernal_mechanism = ingredient("infernal_mechanism"),
@@ -63,6 +62,7 @@ public class Pipebomb {
 
     //ac
     public static final ItemEntry<ItemDisabled>
+            abstruse_mechanism = i("abstruse_mechanism"),
             vanilla_orchid = i("vanilla_orchid");
 
     public static final ItemEntry<SequencedAssemblyItem>
