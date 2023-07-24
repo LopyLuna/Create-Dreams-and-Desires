@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:refined_radiance_blocks"
+    }
+  ],
+  "result": {
+    "item": "create_dd:refined_radiance",
+    "count": 9
+  }
+}

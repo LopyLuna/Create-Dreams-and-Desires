@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:shadow_steel_blocks"
+    }
+  ],
+  "result": {
+    "item": "create_dd:shadow_steel",
+    "count": 9
+  }
+}

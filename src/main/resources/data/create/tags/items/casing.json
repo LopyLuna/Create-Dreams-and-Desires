@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:mithril_casing",
+    "create_dd:bronze_casing",
+    "create_dd:zinc_casing",
+    "create_dd:hydraulic_casing",
+    "create_dd:industrial_casing",
+    "create_dd:overburden_casing",
+    "create_dd:shadow_steel_casing",
+    "create_dd:refined_radiance_casing",
+    "create_dd:steel_casing"
+  ]
+}

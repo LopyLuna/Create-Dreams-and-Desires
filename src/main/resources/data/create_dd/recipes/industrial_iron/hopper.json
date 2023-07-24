@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "ICI",
+    " S "
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:chests"
+    },
+    "I": {
+      "tag": "c:industrial_iron_ingots"
+    },
+    "S": {
+      "tag": "c:industrial_iron_plates"
+    }
+  },
+  "result": {
+    "item": "minecraft:hopper",
+    "count": 2
+  }
+}

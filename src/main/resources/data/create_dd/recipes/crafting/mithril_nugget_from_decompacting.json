@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:mithril_ingots"
+    }
+  ],
+  "result": {
+    "item": "create_dd:mithril_nugget",
+    "count": 9
+  }
+}

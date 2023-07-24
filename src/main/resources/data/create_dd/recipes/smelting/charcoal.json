@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "create_dd:smoked_log"
+  },
+  "result": "minecraft:charcoal",
+  "experience": 10.0,
+  "cookingtime": 200
+}

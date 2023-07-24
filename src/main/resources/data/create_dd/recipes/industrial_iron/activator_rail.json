@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XSX",
+    "X#X",
+    "XSX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone_torch"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "tag": "c:industrial_iron_plates"
+    }
+  },
+  "result": {
+    "item": "minecraft:activator_rail",
+    "count": 12
+  }
+}

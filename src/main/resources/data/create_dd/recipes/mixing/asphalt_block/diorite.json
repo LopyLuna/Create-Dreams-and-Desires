@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create:cut_diorite"
+    },
+    {
+      "item": "create:cut_diorite"
+    },
+    {
+      "item": "create:cut_diorite"
+    },
+    {
+      "item": "create:cut_diorite"
+    },
+    {
+      "item": "create_dd:asphalt_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:diorite_asphalt_block",
+      "count": 4
+    }
+  ],
+  "heatRequirement": "heated"
+}

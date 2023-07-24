@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:lapis_alloy_blocks"
+    }
+  ],
+  "result": {
+    "item": "create_dd:lapis_alloy",
+    "count": 9
+  }
+}

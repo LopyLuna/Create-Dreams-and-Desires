@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AB"
+  ],
+  "key": {
+    "A": {
+      "item": "create:encased_chain_drive"
+    },
+    "B": {
+      "item": "create_dd:inductive_mechanism"
+    }
+  },
+  "result": {
+    "item": "create:adjustable_chain_gearshift",
+    "count": 4
+  }
+}

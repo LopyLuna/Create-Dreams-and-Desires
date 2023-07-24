@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:spirit_log",
+    "create_dd:stripped_spirit_log",
+    "create_dd:spirit_wood",
+    "create_dd:stripped_spirit_wood"
+  ]
+}

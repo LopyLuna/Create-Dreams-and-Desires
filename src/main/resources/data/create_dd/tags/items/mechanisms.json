@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:integrated_mechanism",
+    "create_dd:abstruse_mechanism",
+    "create_dd:calculation_mechanism",
+    "create_dd:inductive_mechanism",
+    "create_dd:infernal_mechanism",
+    "create_dd:sealed_mechanism",
+    "create:precision_mechanism"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:bronze_casing",
+    "create_dd:zinc_casing",
+    "create_dd:mossy_andesite_casing",
+    "create_dd:copycat_block",
+    "create_dd:copycat_slab",
+    "create_dd:rose_door",
+    "create_dd:smoked_door",
+    "create_dd:spirit_door",
+    "create_dd:bronze_drill",
+    "create_dd:bronze_saw",
+    "create_dd:2_blade_fan",
+    "create_dd:4_blade_fan",
+    "create_dd:8_blade_fan"
+  ]
+}

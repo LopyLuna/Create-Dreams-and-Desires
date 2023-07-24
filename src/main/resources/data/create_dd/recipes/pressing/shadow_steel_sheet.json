@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "tag": "c:shadow_steel_ingots"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:shadow_steel_sheet"
+    }
+  ]
+}

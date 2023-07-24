@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "B",
+    "A"
+  ],
+  "key": {
+    "A": {
+      "item": "create_dd:4_blade_fan"
+    },
+    "B": {
+      "item": "create_dd:ember_alloy"
+    }
+  },
+  "result": {
+    "item": "create_dd:8_blade_fan",
+    "count": 2
+  }
+}

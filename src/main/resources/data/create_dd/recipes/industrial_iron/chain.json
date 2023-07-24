@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "N",
+    "I",
+    "N"
+  ],
+  "key": {
+    "I": {
+      "tag": "c:industrial_iron_ingots"
+    },
+    "N": {
+      "tag": "c:industrial_iron_nuggets"
+    }
+  },
+  "result": {
+    "item": "minecraft:chain",
+    "count": 8
+  }
+}

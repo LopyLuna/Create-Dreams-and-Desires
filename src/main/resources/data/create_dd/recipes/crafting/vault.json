@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B",
+    "D",
+    "B"
+  ],
+  "key": {
+    "D": {
+      "tag": "create:overburden_casing"
+    },
+    "B": {
+      "tag": "c:iron_plates"
+    }
+  },
+  "result": {
+    "item": "create:item_vault",
+    "count": 2
+  }
+}

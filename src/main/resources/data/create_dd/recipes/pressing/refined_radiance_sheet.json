@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "tag": "c:refined_radiance_ingots"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:refined_radiance_sheet"
+    }
+  ]
+}

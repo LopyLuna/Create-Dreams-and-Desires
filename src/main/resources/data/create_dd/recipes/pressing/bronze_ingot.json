@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "tag": "c:bronze_ingots"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:bronze_sheet"
+    }
+  ]
+}

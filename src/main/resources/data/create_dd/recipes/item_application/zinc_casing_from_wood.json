@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "tag": "c:stripped_wood"
+    },
+    {
+      "tag": "c:zinc_ingots"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:zinc_casing"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "MM  ",
+    "MSMB",
+    "MSIB",
+    "M S ",
+    "  R ",
+    "  S "
+  ],
+  "key": {
+    "M": {
+      "tag": "c:mithril_ingots"
+    },
+    "S": {
+      "tag": "c:steel_ingots"
+    },
+    "R": {
+      "item": "create_dd:chromatic_compound"
+    },
+    "I": {
+      "item": "create_dd:integrated_mechanism"
+    },
+    "B": {
+      "tag": "c:steel_blocks"
+    }
+  },
+  "result": {
+    "item": "create_dd:forest_ravager"
+  },
+  "acceptMirrored": true
+}

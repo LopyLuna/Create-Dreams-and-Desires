@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:train_scaffolding",
+    "create_dd:hydraulic_scaffolding",
+    "create_dd:overburden_scaffolding",
+    "create_dd:industrial_scaffolding",
+    "create_dd:mithril_scaffolding",
+    "create_dd:zinc_scaffolding",
+    "create_dd:bronze_scaffolding",
+    "create_dd:shadow_steel_scaffolding",
+    "create_dd:refined_radiance_scaffolding"
+  ]
+}

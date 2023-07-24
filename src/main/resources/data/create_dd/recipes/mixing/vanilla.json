@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    [
+      {
+        "item": "minecraft:blue_orchid"
+      },
+      {
+        "item": "minecraft:dandelion"
+      }
+    ],
+    {
+      "fluidTag": "c:milk",
+      "amount": 250
+    }
+  ],
+  "results": [
+    {
+      "fluid": "create_dd:vanilla",
+      "amount": 250
+    }
+  ],
+  "heatRequirement": "heated"
+}

@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:cut_potassic",
+    "create_dd:cut_potassic_stairs",
+    "create_dd:cut_potassic_wall",
+    "create_dd:polished_cut_potassic",
+    "create_dd:polished_cut_potassic_stairs",
+    "create_dd:polished_cut_potassic_wall",
+    "create_dd:cut_potassic_bricks",
+    "create_dd:cut_potassic_brick_stairs",
+    "create_dd:cut_potassic_brick_wall",
+    "create_dd:small_potassic_bricks",
+    "create_dd:small_potassic_brick_stairs",
+    "create_dd:small_potassic_brick_wall",
+    "create_dd:layered_potassic",
+    "create_dd:potassic_pillar",
+    "create_dd:potassic"
+  ]
+}

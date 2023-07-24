@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:leather_blocks"
+    }
+  ],
+  "result": {
+    "item": "minecraft:leather",
+    "count": 9
+  }
+}

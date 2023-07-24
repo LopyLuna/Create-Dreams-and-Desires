@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "D",
+    "B",
+    "A"
+  ],
+  "key": {
+    "A": {
+      "item": "create:crushing_wheel"
+    },
+    "B": {
+      "item": "create:andesite_casing"
+    },
+    "D": {
+      "item": "create_dd:inductive_mechanism"
+    }
+  },
+  "result": {
+    "item": "create:mechanical_roller",
+    "count": 2
+  }
+}

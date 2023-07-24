@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A A",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "tag": "c:industrial_iron_ingots"
+    }
+  },
+  "result": {
+    "item": "create:basin",
+    "count": 2
+  }
+}

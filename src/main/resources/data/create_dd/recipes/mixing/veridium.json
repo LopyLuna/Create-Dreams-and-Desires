@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create_dd:veridium_cobble"
+    },
+    {
+      "item": "create_dd:veridium_cobble"
+    },
+    {
+      "item": "create:crushed_raw_copper"
+    },
+    {
+      "item": "minecraft:clay_ball"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:veridium",
+      "count": 2
+    }
+  ],
+  "heatRequirement": "heated"
+}

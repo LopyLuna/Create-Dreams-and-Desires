@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create_dd:potassic_cobble"
+    },
+    {
+      "item": "create_dd:potassic_cobble"
+    },
+    {
+      "item": "create:crushed_raw_tin"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:potassic",
+      "count": 2
+    }
+  ],
+  "heatRequirement": "heated"
+}

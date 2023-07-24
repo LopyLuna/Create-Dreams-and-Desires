@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:refined_radiance_block",
+    "create_dd:refined_radiance_scaffolding",
+    "create_dd:refined_radiance_casing"
+  ]
+}

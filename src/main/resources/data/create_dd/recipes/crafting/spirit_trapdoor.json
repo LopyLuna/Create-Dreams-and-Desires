@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "create_dd:spirit_planks"
+    }
+  },
+  "result": {
+    "item": "create_dd:spirit_trapdoor",
+    "count": 2
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create_dd:spirit_log"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:stripped_spirit_log"
+    }
+  ],
+  "processingTime": 50
+}

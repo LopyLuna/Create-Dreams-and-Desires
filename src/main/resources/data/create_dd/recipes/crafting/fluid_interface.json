@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AB"
+  ],
+  "key": {
+    "A": {
+      "item": "create:copper_casing"
+    },
+    "B": {
+      "item": "create_dd:sealed_mechanism"
+    }
+  },
+  "result": {
+    "item": "create:portable_fluid_interface",
+    "count": 4
+  }
+}

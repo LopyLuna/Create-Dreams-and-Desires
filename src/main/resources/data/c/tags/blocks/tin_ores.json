@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:tin_ore",
+    "create_dd:deepslate_tin_ore"
+  ]
+}

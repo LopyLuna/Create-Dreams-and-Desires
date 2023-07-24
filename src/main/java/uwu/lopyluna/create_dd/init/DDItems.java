@@ -46,6 +46,7 @@ public class DDItems {
 			steel_sheet = taggedIngredient("steel_sheet", forgeItemTag("plates/steel")),
 			industrial_iron_sheet = taggedIngredient("industrial_iron_sheet", forgeItemTag("plates/industrial_iron")),
 			tin_raw = ingredient("raw_tin"),
+			ember_alloy = taggedIngredient("ember_alloy", forgeItemTag("ingots/ember_alloy")),
 			lapis_alloy = taggedIngredient("lapis_alloy", forgeItemTag("ingots/lapis_alloy")),
 			lapis_sheet = taggedIngredient("lapis_sheet", forgeItemTag("plates/lapis_alloy")),
 			andesite_sheet = taggedIngredient("andesite_sheet", forgeItemTag("plates/andesite_alloy")),
@@ -53,7 +54,6 @@ public class DDItems {
 			tin_sheet = taggedIngredient("tin_sheet", forgeItemTag("plates/tin")),
 			integrated_circuit = ingredient("integrated_circuit"),
 			integrated_mechanism = ingredient("integrated_mechanism"),
-			abstruse_mechanism = ingredient("abstruse_mechanism"),
 			calculation_mechanism = ingredient("calculation_mechanism"),
 			inductive_mechanism = ingredient("inductive_mechanism"),
 			infernal_mechanism = ingredient("infernal_mechanism"),
@@ -61,6 +61,7 @@ public class DDItems {
 			spectral_ruby = ingredient("spectral_ruby"),
 			polished_spectral_ruby = ingredient("polished_spectral_ruby");
 	public static final ItemEntry<ItemDisabled>
+			abstruse_mechanism = i("abstruse_mechanism"),
 			vanilla_orchid = i("vanilla_orchid");
 
 	public static final ItemEntry<SequencedAssemblyItem>
@@ -74,42 +75,37 @@ public class DDItems {
 
 	public static final ItemEntry<ChromaticCompound> CHROMATIC_COMPOUND =
 			REGISTRATE.item("chromatic_compound", ChromaticCompound::new)
-					.properties(p -> p
+					.properties(p -> p.stacksTo(16)
 							.rarity(Rarity.UNCOMMON)
-							.fireResistant()
-					)
+							.fireResistant())
 					.register();
 
 	public static final ItemEntry<ShadowSteel> SHADOW_STEEL =
 			REGISTRATE.item("shadow_steel", ShadowSteel::new)
-					.properties(p -> p
+					.properties(p -> p.stacksTo(16)
 							.rarity(Rarity.UNCOMMON)
-							.fireResistant()
-					)
+							.fireResistant())
 					.register();
 
 	public static final ItemEntry<RefinedRadiance> REFINED_RADIANCE =
 			REGISTRATE.item("refined_radiance", RefinedRadiance::new)
-					.properties(p -> p
+					.properties(p -> p.stacksTo(16)
 							.rarity(Rarity.UNCOMMON)
-							.fireResistant()
-					)
+							.fireResistant())
 					.register();
 
 	public static final ItemEntry<ShadowSteel> SHADOW_STEEL_SHEET =
 			REGISTRATE.item("shadow_steel_sheet", ShadowSteel::new)
-					.properties(p -> p
+					.properties(p -> p.stacksTo(16)
 							.rarity(Rarity.UNCOMMON)
-							.fireResistant()
-					)
+							.fireResistant())
 					.register();
 
 	public static final ItemEntry<RefinedRadiance> REFINED_RADIANCE_SHEET =
 			REGISTRATE.item("refined_radiance_sheet", RefinedRadiance::new)
-					.properties(p -> p
+					.properties(p -> p.stacksTo(16)
 							.rarity(Rarity.UNCOMMON)
-							.fireResistant()
-					)
+							.fireResistant())
 					.register();
 
 
@@ -119,13 +115,12 @@ public class DDItems {
 							.rarity(Rarity.UNCOMMON)
 							.fireResistant())
 					.model(AssetLookup.itemModelWithPartials())
-					.transform(CreateRegistrate.customRenderedItem(() -> ForestRavagerRender::new))
 					.register();
+
 	public static final ItemEntry<DeforesterItem> deforester_saw =
 			REGISTRATE.item("deforester_saw", DeforesterItem::new)
 					.properties(p -> p.stacksTo(1))
 					.model(AssetLookup.itemModelWithPartials())
-					.transform(CreateRegistrate.customRenderedItem(() -> DeforesterRender::new))
 					.register();
 
 	public static final ItemEntry<ExperienceNuggetItemOne> ONE_EXP_NUGGET =

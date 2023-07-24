@@ -43,9 +43,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import uwu.lopyluna.create_dd.init.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.init.DDBlocks;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import java.util.List;
 import java.util.function.Predicate;
-
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class BronzeDrillBlock extends DirectionalKineticBlock implements IBE<BronzeDrillBlockEntity>, SimpleWaterloggedBlock {
 	public static DamageSource damageSourceDrill = new DamageSource("create.mechanical_drill").bypassArmor();
 

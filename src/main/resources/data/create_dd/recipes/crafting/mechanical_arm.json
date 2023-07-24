@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLA",
+    "L  ",
+    "IC "
+  ],
+  "key": {
+    "L": {
+      "tag": "c:brass_plates"
+    },
+    "I": {
+      "item": "create_dd:integrated_mechanism"
+    },
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "C": {
+      "item": "create:brass_casing"
+    }
+  },
+  "result": {
+    "item": "create:mechanical_arm",
+    "count": 3
+  }
+}

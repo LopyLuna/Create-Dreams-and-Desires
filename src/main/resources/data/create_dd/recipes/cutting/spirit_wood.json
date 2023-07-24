@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create_dd:spirit_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:stripped_spirit_wood"
+    }
+  ],
+  "processingTime": 50
+}

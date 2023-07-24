@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:chromatic_block",
+    "create_dd:refined_radiance_block",
+    "create_dd:shadow_steel_block"
+  ]
+}

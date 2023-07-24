@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create_dd:asurine_cobble"
+    },
+    {
+      "item": "create_dd:asurine_cobble"
+    },
+    {
+      "item": "create:crushed_raw_zinc"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:asurine",
+      "count": 2
+    }
+  ],
+  "heatRequirement": "heated"
+}

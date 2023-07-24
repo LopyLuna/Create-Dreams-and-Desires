@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:industrial_iron_ingots"
+    }
+  ],
+  "result": {
+    "item": "create_dd:industrial_iron_nugget",
+    "count": 9
+  }
+}

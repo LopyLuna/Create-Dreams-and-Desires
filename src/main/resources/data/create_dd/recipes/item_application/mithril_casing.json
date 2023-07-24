@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "tag": "c:steel_blocks"
+    },
+    {
+      "tag": "c:mithril_plates"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:mithril_casing"
+    }
+  ]
+}

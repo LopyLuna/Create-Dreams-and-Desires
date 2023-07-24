@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:flowing_condense_milk",
+    "create_dd:condense_milk",
+    "create_dd:flowing_vanilla",
+    "create_dd:vanilla",
+    "create_dd:flowing_vanilla_milkshake",
+    "create_dd:vanilla_milkshake",
+    "create_dd:flowing_strawberry",
+    "create_dd:strawberry",
+    "create_dd:flowing_strawberry_milkshake",
+    "create_dd:strawberry_milkshake",
+    "create_dd:flowing_glowberry",
+    "create_dd:glowberry",
+    "create_dd:flowing_glowberry_milkshake",
+    "create_dd:glowberry_milkshake",
+    "create_dd:flowing_caramel",
+    "create_dd:caramel",
+    "create_dd:flowing_caramel_milkshake",
+    "create_dd:caramel_milkshake",
+    "create_dd:flowing_cream",
+    "create_dd:cream",
+    "create_dd:flowing_hot_chocolate",
+    "create_dd:hot_chocolate",
+    "create_dd:flowing_chocolate_milkshake",
+    "create_dd:chocolate_milkshake"
+  ]
+}

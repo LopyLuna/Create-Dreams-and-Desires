@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "c:copper_ingots"
+  },
+  "result": "create_dd:hydraulic_scaffolding",
+  "count": 2
+}

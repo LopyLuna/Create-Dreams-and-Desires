@@ -1,0 +1,51 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "create_dd:crafting_inductive_mechanism2"
+  },
+  "transitionalItem": {
+    "item": "create_dd:incomplete_inductive_mechanism"
+  },
+  "sequence": [
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "create_dd:incomplete_inductive_mechanism"
+        }
+      ],
+      "results": [
+        {
+          "item": "create_dd:incomplete_inductive_mechanism"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:inductive_mechanism",
+      "chance": 60.0
+    },
+    {
+      "item": "create_dd:zinc_sheet",
+      "chance": 16.0
+    },
+    {
+      "item": "minecraft:slime_ball",
+      "chance": 15.0
+    },
+    {
+      "item": "create:cogwheel",
+      "chance": 10.0
+    },
+    {
+      "item": "create:zinc_nugget",
+      "chance": 5.0
+    },
+    {
+      "item": "create:shaft",
+      "chance": 5.0
+    }
+  ],
+  "loops": 2
+}

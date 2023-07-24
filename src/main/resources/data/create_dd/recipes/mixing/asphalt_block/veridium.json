@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create:cut_veridium"
+    },
+    {
+      "item": "create:cut_veridium"
+    },
+    {
+      "item": "create:cut_veridium"
+    },
+    {
+      "item": "create:cut_veridium"
+    },
+    {
+      "item": "create_dd:asphalt_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:veridium_asphalt_block",
+      "count": 4
+    }
+  ],
+  "heatRequirement": "heated"
+}

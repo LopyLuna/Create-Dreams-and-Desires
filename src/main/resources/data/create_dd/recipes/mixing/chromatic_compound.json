@@ -1,0 +1,30 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "c:dusts/obsidian"
+    },
+    {
+      "tag": "c:dusts/obsidian"
+    },
+    {
+      "tag": "c:dusts/obsidian"
+    },
+    {
+      "tag": "c:dusts/obsidian"
+    },
+    {
+      "item": "create:polished_rose_quartz"
+    },
+    {
+      "item": "create_dd:polished_spectral_ruby"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:chromatic_compound",
+      "count": 2
+    }
+  ],
+  "heatRequirement": "superheated"
+}

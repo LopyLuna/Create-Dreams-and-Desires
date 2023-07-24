@@ -25,6 +25,7 @@ public class DDcreate implements ModInitializer {
 	public static final String ID = "create_dd";
 	public static final String NAME = "Create: Dreams & Desires";
 	public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
+	public static final String VERSION = "ALPHA.0.0.5a";
 	public static final Gson GSON = new GsonBuilder().setPrettyPrinting()
 			.disableHtmlEscaping()
 			.create();

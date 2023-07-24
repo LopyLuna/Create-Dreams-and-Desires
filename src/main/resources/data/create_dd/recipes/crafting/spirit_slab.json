@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "create_dd:spirit_planks"
+    }
+  },
+  "result": {
+    "item": "create_dd:spirit_slab",
+    "count": 6
+  }
+}

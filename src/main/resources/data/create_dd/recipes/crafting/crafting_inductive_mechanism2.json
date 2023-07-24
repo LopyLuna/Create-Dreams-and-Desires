@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "ADA",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "create:cogwheel"
+    },
+    "I": {
+      "tag": "c:zinc_nuggets"
+    },
+    "D": {
+      "item": "create_dd:crafting_inductive_mechanism1"
+    },
+    "S": {
+      "tag": "c:slimeballs"
+    }
+  },
+  "result": {
+    "item": "create_dd:crafting_inductive_mechanism2",
+    "count": 1
+  }
+}

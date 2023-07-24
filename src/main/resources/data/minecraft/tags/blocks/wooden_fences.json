@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:rose_fence",
+    "create_dd:smoked_fence",
+    "create_dd:spirit_fence"
+  ]
+}

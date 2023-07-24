@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CCC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "tag": "c:chromatic_ingots"
+    }
+  },
+  "result": {
+    "item": "create_dd:chromatic_block"
+  }
+}

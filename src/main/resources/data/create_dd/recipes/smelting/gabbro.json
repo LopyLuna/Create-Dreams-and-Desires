@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:granite"
+  },
+  "result": "create_dd:gabbro",
+  "experience": 1.0,
+  "cookingtime": 200
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "c:mithril_ingots"
+  },
+  "result": "create_dd:mithril_scaffolding",
+  "count": 2
+}

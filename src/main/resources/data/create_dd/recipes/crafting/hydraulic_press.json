@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "C",
+    "I"
+  ],
+  "key": {
+    "S": {
+      "item": "create_dd:sealed_mechanism"
+    },
+    "C": {
+      "tag": "create:hydraulic_casing"
+    },
+    "I": {
+      "tag": "c:strong_bronze_blocks"
+    }
+  },
+  "result": {
+    "item": "create_dd:hydraulic_press"
+  }
+}
