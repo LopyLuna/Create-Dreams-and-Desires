@@ -12,13 +12,13 @@
     },
     {
       "fluidTag": "c:milk",
-      "amount": 250
+      "amount": 20250
     }
   ],
   "results": [
     {
       "fluid": "create_dd:glowberry",
-      "amount": 250
+      "amount": 20250
     }
   ],
   "heatRequirement": "heated"

@@ -9,17 +9,17 @@
     },
     {
       "fluidTag": "create_dd:cream",
-      "amount": 250
+      "amount": 20250
     },
     {
       "fluidTag": "create_dd:caramel",
-      "amount": 250
+      "amount": 20250
     }
   ],
   "results": [
     {
       "fluid": "create_dd:caramel_milkshake",
-      "amount": 500
+      "amount": 40500
     }
   ]
 }

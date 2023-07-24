@@ -1,9 +1,12 @@
 package uwu.lopyluna.create_dd.content.block.bronze_encased_fan;
 
+import com.mojang.datafixers.optics.profunctors.ProfunctorFunctorWrapper;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.copycat.CopycatBlock;
 import com.simibubi.create.content.kinetics.belt.behaviour.TransportedItemStackHandlerBehaviour;
 
+import com.simibubi.create.content.kinetics.fan.AirCurrent;
+import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.utility.Iterate;
@@ -39,6 +42,8 @@ import uwu.lopyluna.create_dd.foundation.access.DDTransportedItemStack;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import static com.simibubi.create.content.processing.burner.BlazeBurnerBlock.getHeatLevelOf;
 
 public class BronzeAirCurrent {
 	public final BronzeIAirCurrentSource source;
@@ -262,13 +267,13 @@ public class BronzeAirCurrent {
 			BakingFanProcessing.Type type = getSegmentAt(i);
 			if (type == null)
 				continue;
-
 			for (int offset : Iterate.zeroAndOne) {
 				BlockPos pos = start.relative(direction, i)
 						.below(offset);
 				TransportedItemStackHandlerBehaviour behaviour =
 						BlockEntityBehaviour.get(world, pos, TransportedItemStackHandlerBehaviour.TYPE);
 				BakingFanProcessing.Type typeAtHandler = type;
+
 				if (world.getBlockState(pos)
 						.is(Blocks.POWDER_SNOW))
 					typeAtHandler = BakingFanProcessing.Type.FREEZING;

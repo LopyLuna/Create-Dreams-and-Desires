@@ -44,6 +44,10 @@ import uwu.lopyluna.create_dd.content.block.bronze_drill.BronzeDrillMovementBeha
 import uwu.lopyluna.create_dd.content.block.bronze_encased_fan.BronzeEncasedFanBlock;
 import uwu.lopyluna.create_dd.content.block.bronze_saw.BronzeSawBlock;
 import uwu.lopyluna.create_dd.content.block.bronze_saw.BronzeSawMovementBehaviour;
+import uwu.lopyluna.create_dd.content.block.copycat.CopycatBlock;
+import uwu.lopyluna.create_dd.content.block.copycat.CopycatBlockModel;
+import uwu.lopyluna.create_dd.content.block.copycat.CopycatSlab;
+import uwu.lopyluna.create_dd.content.block.copycat.CopycatSlabModel;
 import uwu.lopyluna.create_dd.content.block.door.DDSlidingDoorBlock;
 import uwu.lopyluna.create_dd.content.block.drill.RadiantDrillBlock;
 import uwu.lopyluna.create_dd.content.block.drill.RadiantDrillMovementBehaviour;
@@ -726,7 +730,7 @@ public class DDBlocks {
 					.transform(pickaxeOnly())
 					.blockstate((c, p) -> p.axisBlock(c.get(), p.modLoc("block/spectral_ruby_side"),
 							p.modLoc("block/spectral_ruby_top")))
-					.recipe((c, p) -> p.stonecutting(DataIngredient.items(DDItems.spectral_ruby), c::get, 2))
+					.recipe((c, p) -> p.stonecutting(DataIngredient.items(DDItems.spectral_ruby), c, 2))
 					.simpleItem()
 					.lang("Block of Spectral Ruby")
 					.register();
@@ -735,10 +739,10 @@ public class DDBlocks {
 			REGISTRATE.block("spectral_ruby_tiles", Block::new)
 					.initialProperties(() -> Blocks.DEEPSLATE)
 					.properties(p -> p.color(MaterialColor.TERRACOTTA_MAGENTA))
-					.properties(p -> p.requiresCorrectToolForDrops())
+					.properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
 					.transform(pickaxeOnly())
 					.blockstate(simpleCubeAll("spectral_ruby_tiles"))
-					.recipe((c, p) -> p.stonecutting(DataIngredient.items(DDItems.polished_spectral_ruby), c::get, 2))
+					.recipe((c, p) -> p.stonecutting(DataIngredient.items(DDItems.polished_spectral_ruby), c, 2))
 					.simpleItem()
 					.register();
 
@@ -746,10 +750,10 @@ public class DDBlocks {
 			REGISTRATE.block("small_spectral_ruby_tiles", Block::new)
 					.initialProperties(() -> Blocks.DEEPSLATE)
 					.properties(p -> p.color(MaterialColor.TERRACOTTA_MAGENTA))
-					.properties(p -> p.requiresCorrectToolForDrops())
+					.properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
 					.transform(pickaxeOnly())
 					.blockstate(simpleCubeAll("small_spectral_ruby_tiles"))
-					.recipe((c, p) -> p.stonecutting(DataIngredient.items(DDItems.polished_spectral_ruby), c::get, 2))
+					.recipe((c, p) -> p.stonecutting(DataIngredient.items(DDItems.polished_spectral_ruby), c, 2))
 					.simpleItem()
 					.register();
 
@@ -1102,6 +1106,25 @@ public class DDBlocks {
 					.blockstate(BlockStateGen.axisBlockProvider(true))
 					.item()
 					.transform(customItemModel())
+					.register();
+	public static final BlockEntry<CopycatBlock> COPYCAT_BlOCK =
+			REGISTRATE.block("copycat_block", CopycatBlock::new)
+					.transform(BuilderTransformers.copycat())
+					.properties(BlockBehaviour.Properties::noOcclusion)
+					.onRegister(CreateRegistrate.blockModel(() -> CopycatBlockModel::new))
+					.item()
+					.recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("zinc_ingots")), c, 1))
+					.transform(customItemModel("copycat_base", "block"))
+					.register();
+
+	public static final BlockEntry<CopycatSlab> COPYCAT_SLAB =
+			REGISTRATE.block("copycat_slab", CopycatSlab::new)
+					.transform(BuilderTransformers.copycat())
+					.properties(BlockBehaviour.Properties::noOcclusion)
+					.onRegister(CreateRegistrate.blockModel(() -> CopycatSlabModel::new))
+					.item()
+					.recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("zinc_ingots")), c, 2))
+					.transform(customItemModel("copycat_base", "slab"))
 					.register();
 
 	public static void register() {}

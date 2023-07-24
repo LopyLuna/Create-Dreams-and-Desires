@@ -120,3 +120,30 @@ publishing {
 		// retrieving dependencies.
 	}
 }
+loom {
+	//accessWidenerPath = file("src/main/resources/create.accesswidener")
+	sourceSets {
+		main {
+			resources {
+				srcDir("src/generated/resources")
+				exclude("src/generated/resources/.cache")
+			}
+		}
+	}
+
+	runs {
+		datagen {
+			client()
+
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/generated/resources")}"
+			vmArg "-Dfabric-api.datagen.modid=create_astra"
+			vmArg "-Dporting_lib.datagen.existing_resources=${file("src/main/resources")}"
+		}
+
+		server {
+			runDir "run/server"
+		}
+	}
+}

@@ -41,19 +41,13 @@ import static uwu.lopyluna.create_dd.content.decoration.DDPaletteBlockPattern.Pa
 public class DDPaletteBlockPattern {
 	public static final DDPaletteBlockPattern
 
-			CUT =
-			create("cut", PREFIX, DDPaletteBlockPartials.ALL_PARTIALS),
-
+	CUT = create("cut", PREFIX, DDPaletteBlockPartials.ALL_PARTIALS),
 	BRICKS = create("cut_bricks", WRAP, DDPaletteBlockPartials.ALL_PARTIALS).textures("brick"),
-
 	SMALL_BRICKS = create("small_bricks", WRAP, DDPaletteBlockPartials.ALL_PARTIALS).textures("small_brick"),
-
 	POLISHED = create("polished_cut", PREFIX, DDPaletteBlockPartials.FOR_POLISHED).textures("polished", "slab"),
-
 	LAYERED = create("layered", PREFIX).blockStateFactory(p -> p::cubeColumn)
 			.textures("layered", "cap")
 			.connectedTextures(v -> new HorizontalCTBehaviour(ct(v, CTs.LAYERED), ct(v, CTs.CAP))),
-
 	PILLAR = create("pillar", SUFFIX).blockStateFactory(p -> p::pillar)
 			.block(ConnectedPillarBlock::new)
 			.textures("pillar", "cap")

@@ -14,13 +14,13 @@
     ],
     {
       "fluidTag": "c:milk",
-      "amount": 250
+      "amount": 20250
     }
   ],
   "results": [
     {
       "fluid": "create_dd:vanilla",
-      "amount": 250
+      "amount": 20250
     }
   ],
   "heatRequirement": "heated"

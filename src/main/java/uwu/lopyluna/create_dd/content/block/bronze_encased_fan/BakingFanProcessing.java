@@ -1,16 +1,21 @@
 package uwu.lopyluna.create_dd.content.block.bronze_encased_fan;
 
 import com.mojang.math.Vector3f;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllParticleTypes;
 import com.simibubi.create.content.kinetics.belt.behaviour.TransportedItemStackHandlerBehaviour;
 
 import com.simibubi.create.content.kinetics.belt.transport.TransportedItemStack;
+import com.simibubi.create.content.kinetics.fan.FanProcessing;
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
+import com.simibubi.create.content.trains.CubeParticleData;
 import com.simibubi.create.foundation.recipe.RecipeApplier;
 import com.simibubi.create.foundation.utility.Color;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 
 import io.github.fabricators_of_create.porting_lib.transfer.item.ItemStackHandler;
 import io.github.fabricators_of_create.porting_lib.transfer.item.RecipeWrapper;
+import io.github.fabricators_of_create.porting_lib.util.DamageSourceHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -25,6 +30,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.SnowGolem;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.monster.Stray;
@@ -34,6 +40,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.Vec3;
 import uwu.lopyluna.create_dd.foundation.access.DDTransportedItemStack;
 import uwu.lopyluna.create_dd.init.DDRecipeTypes;
@@ -48,7 +55,7 @@ import static com.simibubi.create.content.processing.burner.BlazeBurnerBlock.get
 public class BakingFanProcessing {
 	public static final FreezingWrapper FREEZING_WRAPPER = new FreezingWrapper();
 	public static final SuperHeatingWrapper SUPERHEATING_WRAPPER = new SuperHeatingWrapper();
-
+	private static final DamageSource FIRE_DAMAGE_SOURCE = DamageSourceHelper.port_lib$createFireDamageSource("create_dd.fan_superheat").setScalesWithDifficulty();
 	public static boolean canProcess(ItemEntity entity, Type type) {
 		if (entity.getExtraCustomData()
 				.contains("CreateData")) {
@@ -252,11 +259,9 @@ public class BakingFanProcessing {
 			public void spawnParticlesForProcessing(Level level, Vec3 pos) {
 				if (level.random.nextInt(8) != 0)
 					return;
-				Vector3f color = new Color(0xDDE8FF).asVectorF();
+				Vector3f color = new Color(0x5B52Bf).asVectorF();
 				level.addParticle(new DustParticleOptions(color, 1), pos.x + (level.random.nextFloat() - .5f) * .5f,
 						pos.y + .5f, pos.z + (level.random.nextFloat() - .5f) * .5f, 0, 1 / 8f, 0);
-				level.addParticle(ParticleTypes.SNOWFLAKE, pos.x + (level.random.nextFloat() - .5f) * .5f, pos.y + .5f,
-						pos.z + (level.random.nextFloat() - .5f) * .5f, 0, 1 / 8f, 0);
 			}
 
 			@Override
@@ -264,24 +269,16 @@ public class BakingFanProcessing {
 				if (level.isClientSide)
 					return;
 
-				if (entity instanceof EnderMan || entity.getType() == EntityType.BLAZE) {
-					entity.hurt(DamageSource.FREEZE, 5);
+				if (entity instanceof Blaze blaze) {
+					blaze.heal(3);
 				}
 
-				if (entity instanceof SnowGolem snowgolem) {
-					snowgolem.heal(2);
+				if (!entity.fireImmune()) {
+					entity.setSecondsOnFire(8);
+					entity.hurt(FIRE_DAMAGE_SOURCE, 2);
+					level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, entity.getX(), entity.getY(), entity.getZ(), 0, 0, 0);
+					level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, entity.getX(), entity.getY() + 1, entity.getZ(), 0, 0, 0);
 				}
-
-				if (entity instanceof Stray stray) {
-					stray.heal(2);
-				}
-
-				if (entity.isOnFire()) {
-					entity.clearFire();
-					level.playSound(null, entity.blockPosition(), SoundEvents.GENERIC_EXTINGUISH_FIRE,
-							SoundSource.NEUTRAL, 0.7F, 1.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.4F);
-				}
-
 			}
 
 
@@ -314,9 +311,8 @@ public class BakingFanProcessing {
 			Block block = blockState.getBlock();
 			if (block == Blocks.POWDER_SNOW)
 				return Type.FREEZING;
-			if (getHeatLevelOf(blockState).isAtLeast(BlazeBurnerBlock.HeatLevel.SEETHING))
+			if (getHeatLevelOf(blockState) == BlazeBurnerBlock.HeatLevel.SEETHING)
 				return Type.SUPERHEATING;
-
 			return Type.NONE;
 		}
 	}

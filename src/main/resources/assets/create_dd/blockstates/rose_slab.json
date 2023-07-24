@@ -4,7 +4,7 @@
       "model": "create_dd:block/rose_slab"
     },
     "type=double": {
-      "model": "create_dd:block/rose_planks"
+      "model": "create_dd:block/flavored_planks"
     },
     "type=top": {
       "model": "create_dd:block/rose_slab_top"

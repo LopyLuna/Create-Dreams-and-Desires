@@ -3,7 +3,7 @@
   "ingredients": [
     {
       "fluidTag": "create_dd:condense_milk",
-      "amount": 250
+      "amount": 20250
     },
     {
       "item": "minecraft:snowball"
@@ -33,7 +33,7 @@
   "results": [
     {
       "fluid": "create_dd:cream",
-      "amount": 250
+      "amount": 20250
     }
   ]
 }
