@@ -13,8 +13,10 @@ import net.minecraft.client.particle.SimpleAnimatedParticle;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeIAirCurrentSource;
@@ -97,6 +99,56 @@ public class BronzeAirFlowParticle extends SimpleAnimatedParticle {
         if (source.getAirCurrent() == null)
             return;
         BakingFanProcessing.Type type = source.getAirCurrent().getSegmentAt((float) distance);
+
+
+
+        if (type == BakingFanProcessing.Type.SPLASHING) {
+            setColor(Color.mixColors(0x4499FF, 0x2277FF, level.random.nextFloat()));
+            setAlpha(1f);
+            selectSprite(level.random.nextInt(3));
+            if (level.random.nextFloat() < 1 / 32f)
+                level.addParticle(ParticleTypes.BUBBLE, x, y, z, xd * .125f, yd * .125f,
+                        zd * .125f);
+            if (level.random.nextFloat() < 1 / 32f)
+                level.addParticle(ParticleTypes.BUBBLE_POP, x, y, z, xd * .125f, yd * .125f,
+                        zd * .125f);
+        }
+
+        if (type == BakingFanProcessing.Type.SMOKING) {
+            setColor(Color.mixColors(0x0, 0x555555, level.random.nextFloat()));
+            setAlpha(1f);
+            selectSprite(level.random.nextInt(3));
+            if (level.random.nextFloat() < 1 / 32f)
+                level.addParticle(ParticleTypes.SMOKE, x, y, z, xd * .125f, yd * .125f,
+                        zd * .125f);
+            if (level.random.nextFloat() < 1 / 32f)
+                level.addParticle(ParticleTypes.LARGE_SMOKE, x, y, z, xd * .125f, yd * .125f,
+                        zd * .125f);
+        }
+
+        if (type == BakingFanProcessing.Type.HAUNTING) {
+            setColor(Color.mixColors(0x0, 0x126568, level.random.nextFloat()));
+            setAlpha(1f);
+            selectSprite(level.random.nextInt(3));
+            if (level.random.nextFloat() < 1 / 128f)
+                level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, x, y, z, xd * .125f, yd * .125f,
+                        zd * .125f);
+            if (level.random.nextFloat() < 1 / 32f)
+                level.addParticle(ParticleTypes.SMOKE, x, y, z, xd * .125f, yd * .125f,
+                        zd * .125f);
+        }
+
+        if (type == BakingFanProcessing.Type.BLASTING) {
+            setColor(Color.mixColors(0xFF4400, 0xFF8855, level.random.nextFloat()));
+            setAlpha(.5f);
+            selectSprite(level.random.nextInt(3));
+            if (level.random.nextFloat() < 1 / 32f)
+                level.addParticle(ParticleTypes.FLAME, x, y, z, xd * .25f, yd * .25f,
+                        zd * .25f);
+            if (level.random.nextFloat() < 1 / 16f)
+                level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.LAVA.defaultBlockState()), x, y,
+                        z, xd * .25f, yd * .25f, zd * .25f);
+        }
 
         if (type == BakingFanProcessing.Type.FREEZING) {
             setColor(Color.mixColors(0xEEEEFF, 0xDDE8FF, level.random.nextFloat()));

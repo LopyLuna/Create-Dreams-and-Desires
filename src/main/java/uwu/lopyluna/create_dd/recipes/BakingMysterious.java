@@ -10,9 +10,11 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import uwu.lopyluna.create_dd.item.Pipebomb;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 
+@ParametersAreNonnullByDefault
 public class BakingMysterious extends MysteriousItemConversionCategory {
 
     public static final List<ConversionRecipe> RECIPES = new ArrayList<>();

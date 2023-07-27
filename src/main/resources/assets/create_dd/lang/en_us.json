@@ -304,6 +304,16 @@
   "block.create_dd.small_potassic_brick_wall": "Small Potassic Brick Wall",
   "block.create_dd.small_potassic_bricks": "Small Potassic Bricks",
 
+  "advancement.create_dd.chromatic_compound": "Spiritual Minerals",
+  "advancement.create_dd.chromatic_compound.desc": "Create a Compound of Chromatic by alloying Polished Rose Quartz & Spectral Ruby in the Seething Blaze-heated Mixer.",
+  "advancement.create_dd.shadow_steel": "Void Consumer",
+  "advancement.create_dd.shadow_steel.desc": "Create Shadow Steel, a Ingot of the Abyss.",
+  "advancement.create_dd.refined_radiance": "Bright and Inspiring",
+  "advancement.create_dd.refined_radiance.desc": "Create Refined Radiance, a powerful blinding Ingot that shall ward of evil!",
+
+
+
+
   "tetra.material.industrial_iron": "Industrial Iron",
   "tetra.material.industrial_iron.prefix": "Industrial Iron",
   "tetra.material.mithril": "Mithril",

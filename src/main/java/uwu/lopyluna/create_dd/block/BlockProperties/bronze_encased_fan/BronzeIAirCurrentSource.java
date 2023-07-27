@@ -1,5 +1,6 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan;
 
+import com.simibubi.create.content.kinetics.fan.IAirCurrentSource;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import com.simibubi.create.infrastructure.config.CKinetics;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -11,7 +12,7 @@ import net.minecraft.world.level.Level;
 import javax.annotation.Nullable;
 
 @MethodsReturnNonnullByDefault
-public interface BronzeIAirCurrentSource {
+public interface BronzeIAirCurrentSource extends IAirCurrentSource {
     @Nullable
     BronzeAirCurrent getAirCurrent();
 
