@@ -8,14 +8,19 @@ import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.util.ForgeSoundType;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import uwu.lopyluna.create_dd.DDcreate;
 import uwu.lopyluna.create_dd.block.BlockProperties.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillMovementBehaviour;
@@ -35,6 +40,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.fan.EightBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.FourBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.TwoBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlock2;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlockGen;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainGearshiftBlock2;
@@ -42,17 +48,22 @@ import uwu.lopyluna.create_dd.block.BlockProperties.wood.HazardBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssRotatedBlockPillar;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.SpiritLogRotatedBlockPillar;
-import uwu.lopyluna.create_dd.item.Pipebomb;
 import uwu.lopyluna.create_dd.item.PipebombTab;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;
-import static com.simibubi.create.foundation.data.BlockStateGen.simpleCubeAll;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.*;
 import static uwu.lopyluna.create_dd.DDcreate.REGISTRATE;
 
+@SuppressWarnings({"unused", "removal"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class YIPPEE {
-
+    
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, DDcreate.MOD_ID);
+    
     static {
         REGISTRATE.creativeModeTab(() -> PipebombTab.BASE_CREATIVE_TAB);
     }
@@ -88,7 +99,7 @@ public class YIPPEE {
             .initialProperties(SharedProperties::softMetal)
             .properties(p -> p.color(MaterialColor.COLOR_GRAY))
             .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
-            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .transform(pickaxeOnly())
             .tag(AllTags.AllBlockTags.WRENCH_PICKUP.tag)
             .lang("Solid Block of Industrial Iron")
@@ -146,7 +157,7 @@ public class YIPPEE {
     public static final BlockEntry<Block> lapis_alloy_block = REGISTRATE.block("lapis_alloy_block", Block::new)
             .initialProperties(() -> Blocks.ANDESITE)
             .properties(p -> p.color(MaterialColor.STONE))
-            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .transform(pickaxeOnly())
             .tag(Tags.Blocks.STORAGE_BLOCKS)
             .transform(tagBlockAndItem("storage_blocks/lapis_alloy"))
@@ -162,7 +173,7 @@ public class YIPPEE {
             .properties(p -> p.sound(new ForgeSoundType(1, 1.2f, () -> SoundEvents.POLISHED_DEEPSLATE_BREAK,
                     () -> SoundEvents.POLISHED_DEEPSLATE_STEP, () -> SoundEvents.POLISHED_DEEPSLATE_PLACE,
                     () -> SoundEvents.POLISHED_DEEPSLATE_HIT, () -> SoundEvents.POLISHED_DEEPSLATE_FALL)))
-            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(12f,25f))
             .transform(pickaxeOnly())
             .lang("Block of Chromatic Compound")
@@ -179,7 +190,7 @@ public class YIPPEE {
                     () -> SoundEvents.AMETHYST_BLOCK_STEP, () -> SoundEvents.AMETHYST_BLOCK_PLACE,
                     () -> SoundEvents.AMETHYST_BLOCK_HIT, () -> SoundEvents.AMETHYST_BLOCK_FALL)))
             .properties(p -> p.lightLevel($ -> 12))
-            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(16f,48f))
             .transform(pickaxeOnly())
             .lang("Block of Refined Radiance")
@@ -195,7 +206,7 @@ public class YIPPEE {
             .properties(p -> p.sound(new ForgeSoundType(1, .25f, () -> SoundEvents.AMETHYST_CLUSTER_BREAK,
                     () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_CLUSTER_PLACE,
                     () -> SoundEvents.AMETHYST_CLUSTER_HIT, () -> SoundEvents.AMETHYST_CLUSTER_FALL)))
-            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(16f,48f))
             .transform(pickaxeOnly())
             .lang("Block of Shadow Steel")
@@ -229,7 +240,7 @@ public class YIPPEE {
     public static final BlockEntry<Block> mossy_andesite_alloy_block = REGISTRATE.block("mossy_andesite_alloy_block", Block::new)
             .initialProperties(() -> Blocks.ANDESITE)
             .properties(p -> p.color(MaterialColor.STONE))
-            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .transform(pickaxeOnly())
             .lang("Mossy Block of Andesite Alloy")
             .simpleItem()
@@ -276,7 +287,7 @@ public class YIPPEE {
             .properties(p -> p.sound(new ForgeSoundType(1, .25f, () -> SoundEvents.AMETHYST_CLUSTER_BREAK,
                     () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_CLUSTER_PLACE,
                     () -> SoundEvents.AMETHYST_CLUSTER_HIT, () -> SoundEvents.AMETHYST_CLUSTER_FALL)))
-            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(8f,24f))
             .lang("Shadow Casing")
             .item()
@@ -290,7 +301,7 @@ public class YIPPEE {
             .properties(p -> p.sound(new ForgeSoundType(1, 1.25f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
                     () -> SoundEvents.AMETHYST_BLOCK_STEP, () -> SoundEvents.AMETHYST_BLOCK_PLACE,
                     () -> SoundEvents.AMETHYST_BLOCK_HIT, () -> SoundEvents.AMETHYST_BLOCK_FALL)))
-            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(8f,24f))
             .properties(p -> p.lightLevel($ -> 12))
             .item()
@@ -308,7 +319,39 @@ public class YIPPEE {
             .simpleItem()
             .register();
 
+    public static final BlockEntry<Block> pondering_block_light = REGISTRATE.block("pondering_block_light", Block::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
+            .properties(p -> p.sound(new ForgeSoundType(1, 2f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
+                    () -> SoundEvents.SNOW_STEP, () -> SoundEvents.DEEPSLATE_BRICKS_PLACE,
+                    () -> SoundEvents.NETHERITE_BLOCK_HIT, () -> SoundEvents.NETHERITE_BLOCK_FALL)))
+            .properties(p -> p.strength(1f,5000f))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> pondering_block_dark = REGISTRATE.block("pondering_block_dark", Block::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
+            .properties(p -> p.sound(new ForgeSoundType(1, 2f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
+                    () -> SoundEvents.SNOW_STEP, () -> SoundEvents.DEEPSLATE_BRICKS_PLACE,
+                    () -> SoundEvents.NETHERITE_BLOCK_HIT, () -> SoundEvents.NETHERITE_BLOCK_FALL)))
+            .properties(p -> p.strength(1f,5000f))
+            .simpleItem()
+            .register();
+//ac
     //MECHANICAL BLOCKS
+
+    public static final BlockEntry<PonderBoxBlock> ponder_in_a_box = REGISTRATE.block("ponder_in_a_box", PonderBoxBlock::new)
+            .initialProperties(SharedProperties::netheriteMetal)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
+            .properties(p -> p.noOcclusion()
+            .noCollission())
+            .properties(p -> p.sound(new ForgeSoundType(1, 1.5f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
+                    () -> SoundEvents.AMETHYST_BLOCK_CHIME, () -> SoundEvents.SMALL_AMETHYST_BUD_PLACE,
+                    () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_BLOCK_CHIME)))
+            .properties(p -> p.strength(50f,5000f))
+            .simpleItem()
+            .register();
 
     public static final BlockEntry<ReversedGearboxBlock> REVERSED_GEARSHIFT =
             REGISTRATE.block("reversed_gearshift", ReversedGearboxBlock::new)
@@ -492,20 +535,18 @@ public class YIPPEE {
     public static final BlockEntry<BlockcopycatBlock> COPYCAT_BlOCK =
             REGISTRATE.block("copycat_block", BlockcopycatBlock::new)
                     .transform(BuilderTransformers.copycat())
-                    .properties(p -> p.noOcclusion())
+                    .properties(BlockBehaviour.Properties::noOcclusion)
                     .onRegister(CreateRegistrate.blockModel(() -> BlockcopycatBlockModel::new))
                     .item()
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/zinc")), c::get, 1))
                     .transform(customItemModel("copycat_base", "block"))
                     .register();
 
     public static final BlockEntry<BlockcopycatSlab> COPYCAT_SLAB =
             REGISTRATE.block("copycat_slab", BlockcopycatSlab::new)
                     .transform(BuilderTransformers.copycat())
-                    .properties(p -> p.noOcclusion())
+                    .properties(BlockBehaviour.Properties::noOcclusion)
                     .onRegister(CreateRegistrate.blockModel(() -> BlockcopycatSlabModel::new))
                     .item()
-                    .recipe((c, p) -> p.stonecutting(DataIngredient.tag(AllTags.forgeItemTag("ingots/zinc")), c::get, 2))
                     .transform(customItemModel("copycat_base", "slab"))
                     .register();
 
@@ -526,21 +567,15 @@ public class YIPPEE {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.DEEPSLATE))
             .transform(pickaxeOnly())
-            .blockstate((c, p) -> p.axisBlock(c.get(), p.modLoc("block/spectral_ruby_side"),
-                    p.modLoc("block/spectral_ruby_top")))
-            .recipe((c, p) -> p.stonecutting(DataIngredient.items(Pipebomb.spectral_ruby), c::get, 2))
             .simpleItem()
-            .lang("Block of Spectral Ruby")
             .register();
 
     public static final BlockEntry<Block> SPECTRAL_RUBY_TILES =
             REGISTRATE.block("spectral_ruby_tiles", Block::new)
             .initialProperties(() -> Blocks.DEEPSLATE)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_MAGENTA))
-            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .transform(pickaxeOnly())
-            .blockstate(simpleCubeAll("spectral_ruby_tiles"))
-            .recipe((c, p) -> p.stonecutting(DataIngredient.items(Pipebomb.polished_spectral_ruby), c::get, 2))
             .simpleItem()
             .register();
 
@@ -548,10 +583,8 @@ public class YIPPEE {
             REGISTRATE.block("small_spectral_ruby_tiles", Block::new)
             .initialProperties(() -> Blocks.DEEPSLATE)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_MAGENTA))
-            .properties(p -> p.requiresCorrectToolForDrops())
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .transform(pickaxeOnly())
-            .blockstate(simpleCubeAll("small_spectral_ruby_tiles"))
-            .recipe((c, p) -> p.stonecutting(DataIngredient.items(Pipebomb.polished_spectral_ruby), c::get, 2))
             .simpleItem()
             .register();
 
@@ -1074,11 +1107,311 @@ public class YIPPEE {
             .simpleItem()
             .register();
 
+    public static final BlockEntry<Block> andesite_mossy_bricks = REGISTRATE.block("andesite_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.STONE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> asurine_mossy_bricks = REGISTRATE.block("asurine_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.COLOR_BLUE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> calcite_mossy_bricks = REGISTRATE.block("calcite_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_WHITE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.CALCITE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> crimsite_mossy_bricks = REGISTRATE.block("crimsite_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.COLOR_RED))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> deepslate_mossy_bricks = REGISTRATE.block("deepslate_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.DEEPSLATE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> diorite_mossy_bricks = REGISTRATE.block("diorite_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.QUARTZ))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> dripstone_mossy_bricks = REGISTRATE.block("dripstone_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DRIPSTONE_BLOCK))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> gabbro_mossy_bricks = REGISTRATE.block("gabbro_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> granite_mossy_bricks = REGISTRATE.block("granite_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_CYAN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> limestone_mossy_bricks = REGISTRATE.block("limestone_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.SAND))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> ochrum_mossy_bricks = REGISTRATE.block("ochrum_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_YELLOW))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.CALCITE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> potassic_mossy_bricks = REGISTRATE.block("potassic_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_BLUE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> scorchia_mossy_bricks = REGISTRATE.block("scorchia_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> scoria_mossy_bricks = REGISTRATE.block("scoria_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.COLOR_BROWN))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> tuff_mossy_bricks = REGISTRATE.block("tuff_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> veridium_mossy_bricks = REGISTRATE.block("veridium_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.WARPED_NYLIUM))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> weathered_limestone_mossy_bricks = REGISTRATE.block("weathered_limestone_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.COLOR_LIGHT_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> polished_bronze_block =
+            REGISTRATE.block("bronze_polished_block", Block::new)
+            .initialProperties(SharedProperties::netheriteMetal)
+            .properties(p -> p.color(MaterialColor.COLOR_ORANGE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .properties(p -> p.strength(6f,5f))
+            .simpleItem()
+            .register();
+    public static final BlockEntry<StairBlock> polished_bronze_stairs =
+            REGISTRATE.block("bronze_polished_stairs", p -> new StairBlock(YIPPEE.polished_bronze_block::getDefaultState, p))
+            .initialProperties(YIPPEE.polished_bronze_block)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SlabBlock> polished_bronze_slab =
+            REGISTRATE.block("bronze_polished_slab", SlabBlock::new)
+            .initialProperties(YIPPEE.polished_bronze_block)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> tiled_bronze_block =
+            REGISTRATE.block("bronze_tiled_block", Block::new)
+            .initialProperties(YIPPEE.polished_bronze_block)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<StairBlock> tiled_bronze_stairs =
+            REGISTRATE.block("bronze_tiled_stairs", p -> new StairBlock(YIPPEE.tiled_bronze_block::getDefaultState, p))
+            .initialProperties(YIPPEE.polished_bronze_block)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SlabBlock> tiled_bronze_slab =
+            REGISTRATE.block("bronze_tiled_slab", SlabBlock::new)
+            .initialProperties(YIPPEE.polished_bronze_block)
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> polished_steel_block =
+            REGISTRATE.block("steel_polished_block", Block::new)
+            .initialProperties(SharedProperties::netheriteMetal)
+            .properties(p -> p.color(MaterialColor.COLOR_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .properties(p -> p.strength(3f,8f))
+            .simpleItem()
+            .register();
+    public static final BlockEntry<StairBlock> polished_steel_stairs =
+            REGISTRATE.block("steel_polished_stairs", p -> new StairBlock(YIPPEE.polished_steel_block::getDefaultState, p))
+            .initialProperties(YIPPEE.polished_steel_block)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SlabBlock> polished_steel_slab =
+            REGISTRATE.block("steel_polished_slab", SlabBlock::new)
+            .initialProperties(YIPPEE.polished_steel_block)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> tiled_steel_block =
+            REGISTRATE.block("steel_tiled_block", Block::new)
+            .initialProperties(YIPPEE.polished_steel_block)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<StairBlock> tiled_steel_stairs =
+            REGISTRATE.block("steel_tiled_stairs", p -> new StairBlock(YIPPEE.tiled_steel_block::getDefaultState, p))
+            .initialProperties(YIPPEE.polished_steel_block)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SlabBlock> tiled_steel_slab =
+            REGISTRATE.block("steel_tiled_slab", SlabBlock::new)
+            .initialProperties(YIPPEE.polished_steel_block)
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> polished_zinc_block =
+            REGISTRATE.block("zinc_polished_block", Block::new)
+            .initialProperties(() -> Blocks.IRON_BLOCK)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<StairBlock> polished_zinc_stairs =
+            REGISTRATE.block("zinc_polished_stairs", p -> new StairBlock(YIPPEE.polished_zinc_block::getDefaultState, p))
+            .initialProperties(() -> Blocks.IRON_BLOCK)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SlabBlock> polished_zinc_slab =
+            REGISTRATE.block("zinc_polished_slab", SlabBlock::new)
+                    .initialProperties(() -> Blocks.IRON_BLOCK)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> tiled_zinc_block =
+            REGISTRATE.block("zinc_tiled_block", Block::new)
+                    .initialProperties(() -> Blocks.IRON_BLOCK)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<StairBlock> tiled_zinc_stairs =
+            REGISTRATE.block("zinc_tiled_stairs", p -> new StairBlock(YIPPEE.tiled_zinc_block::getDefaultState, p))
+                    .initialProperties(() -> Blocks.IRON_BLOCK)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SlabBlock> tiled_zinc_slab =
+            REGISTRATE.block("zinc_tiled_slab", SlabBlock::new)
+                    .initialProperties(() -> Blocks.IRON_BLOCK)
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> polished_andesite_alloy_block =
+            REGISTRATE.block("andesite_alloy_polished_block", Block::new)
+                    .initialProperties(() -> Blocks.ANDESITE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<StairBlock> polished_andesite_alloy_stairs =
+            REGISTRATE.block("andesite_alloy_polished_stairs", p -> new StairBlock(YIPPEE.polished_andesite_alloy_block::getDefaultState, p))
+                    .initialProperties(() -> Blocks.ANDESITE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SlabBlock> polished_andesite_alloy_slab =
+            REGISTRATE.block("andesite_alloy_polished_slab", SlabBlock::new)
+                    .initialProperties(() -> Blocks.ANDESITE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> tiled_andesite_alloy_block =
+            REGISTRATE.block("andesite_alloy_tiled_block", Block::new)
+                    .initialProperties(() -> Blocks.ANDESITE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<StairBlock> tiled_andesite_alloy_stairs =
+            REGISTRATE.block("andesite_alloy_tiled_stairs", p -> new StairBlock(YIPPEE.tiled_andesite_alloy_block::getDefaultState, p))
+                    .initialProperties(() -> Blocks.ANDESITE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SlabBlock> tiled_andesite_alloy_slab =
+            REGISTRATE.block("andesite_alloy_tiled_slab", SlabBlock::new)
+                    .initialProperties(() -> Blocks.ANDESITE)
+            .simpleItem()
+            .register();
+
     public static final BlockEntry<Block> potassic_cobble =
             REGISTRATE.block("potassic_cobble", Block::new)
                     .initialProperties(() -> Blocks.DEEPSLATE)
                     .properties(p -> p.destroyTime(2.25f).color(MaterialColor.TERRACOTTA_BLUE))
-                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
                     .simpleItem()
                     .register();
@@ -1087,7 +1420,7 @@ public class YIPPEE {
             REGISTRATE.block("asurine_cobble", Block::new)
                     .initialProperties(() -> Blocks.DEEPSLATE)
                     .properties(p -> p.destroyTime(2.25f).color(MaterialColor.COLOR_BLUE))
-                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
                     .simpleItem()
                     .register();
@@ -1096,7 +1429,7 @@ public class YIPPEE {
             REGISTRATE.block("crimsite_cobble", Block::new)
                     .initialProperties(() -> Blocks.DEEPSLATE)
                     .properties(p -> p.destroyTime(2.25f).color(MaterialColor.COLOR_RED))
-                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
                     .simpleItem()
                     .register();
@@ -1105,7 +1438,7 @@ public class YIPPEE {
             REGISTRATE.block("ochrum_cobble", Block::new)
                     .initialProperties(() -> Blocks.CALCITE)
                     .properties(p -> p.destroyTime(2.25f).color(MaterialColor.TERRACOTTA_YELLOW))
-                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
                     .simpleItem()
                     .register();
@@ -1114,7 +1447,7 @@ public class YIPPEE {
             REGISTRATE.block("veridium_cobble", Block::new)
                     .initialProperties(() -> Blocks.TUFF)
                     .properties(p -> p.destroyTime(2.25f).color(MaterialColor.WARPED_NYLIUM))
-                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
                     .simpleItem()
                     .register();
@@ -1156,5 +1489,6 @@ public class YIPPEE {
             .register();
 
 
-    public static void register() {}
+    public static void register() {
+    }
 }

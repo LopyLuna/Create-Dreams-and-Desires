@@ -1,0 +1,24 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create_mechanical_extruder"
+    }
+  ],
+  "type": "create_mechanical_extruder:extruding",
+  "ingredients": [
+
+    {
+      "fluid": "create_dd:strawberry_milkshake",
+      "amount": 1000
+    },
+    {
+      "fluid": "minecraft:lava",
+      "amount": 1000
+    }
+  ],
+  "result": {
+    "item": "create_dd:crimsite_cobble"
+  },
+  "requiredBonks": 2
+}

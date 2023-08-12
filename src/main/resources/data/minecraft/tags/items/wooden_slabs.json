@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:rose_slab",
+    "create_dd:smoked_slab",
+    "create_dd:spirit_slab"
+  ]
+}

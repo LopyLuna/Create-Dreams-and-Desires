@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/outer_stairs",
   "textures": {
-    "bottom": "create_dd:block/flavored_planks",
-    "side": "create_dd:block/flavored_planks",
-    "top": "create_dd:block/flavored_planks"
+    "bottom": "create_dd:block/rose_planks",
+    "side": "create_dd:block/rose_planks",
+    "top": "create_dd:block/rose_planks"
   }
 }

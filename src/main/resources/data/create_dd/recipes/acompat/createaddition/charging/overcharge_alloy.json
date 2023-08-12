@@ -1,0 +1,16 @@
+{
+  "type":"createaddition:charging",
+  "input": {
+    "item": "create_dd:chromatic_compound",
+    "count": 1
+  },
+  "result": {
+    "item": "create_dd:overcharge_alloy",
+    "count": 1
+  },
+  "energy": 10000000,
+  "conditions": [{
+    "type": "forge:mod_loaded",
+    "modid": "createaddition"
+  }]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "create_dd:block/outer_stairs",
+  "textures": {
+    "side": "create_dd:block/zinc_tiled_block",
+    "bottom": "create_dd:block/zinc_polished_block",
+    "top": "create_dd:block/zinc_polished_slab"
+  }
+}

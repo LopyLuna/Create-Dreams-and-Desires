@@ -1,15 +1,15 @@
 {
   "variants": {
     "axis=x": {
-      "model": "create_dd:block/stripped_flavored_wood",
+      "model": "create_dd:block/stripped_rose_wood",
       "x": 90,
       "y": 90
     },
     "axis=y": {
-      "model": "create_dd:block/stripped_flavored_wood"
+      "model": "create_dd:block/stripped_rose_wood"
     },
     "axis=z": {
-      "model": "create_dd:block/stripped_flavored_wood",
+      "model": "create_dd:block/stripped_rose_wood",
       "x": 90
     }
   }

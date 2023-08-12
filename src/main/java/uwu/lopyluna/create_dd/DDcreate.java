@@ -27,6 +27,8 @@ import uwu.lopyluna.create_dd.item.Pipebomb;
 import uwu.lopyluna.create_dd.item.PipebombTab;
 import uwu.lopyluna.create_dd.rando.DDParticleTypes;
 import uwu.lopyluna.create_dd.recipes.BakingRecipesTypes;
+import uwu.lopyluna.create_dd.worldgen.PonderPOI;
+import uwu.lopyluna.create_dd.worldgen.Pondering;
 import uwu.lopyluna.create_dd.worldgen.YummyOreFeatures;
 import uwu.lopyluna.create_dd.worldgen.YummyOrePlacedFeatures;
 
@@ -54,6 +56,8 @@ public class DDcreate
         Pipebomb.register();
         SussyWhiteStuff.register();
         YIPPEEPalette.register();
+        Pondering.register();
+        PonderPOI.register(eventBus);
 
         DDParticleTypes.register(eventBus);
         BakingRecipesTypes.register(eventBus);

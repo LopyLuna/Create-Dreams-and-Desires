@@ -6,6 +6,10 @@ import com.simibubi.create.content.kinetics.base.ShaftRenderer;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftInstance;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.ReversedGearboxBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillInstance;
@@ -23,6 +27,8 @@ import uwu.lopyluna.create_dd.block.BlockProperties.fan.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HYPressInstance;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainGearshiftBlock2Entity;
 
 import static uwu.lopyluna.create_dd.DDcreate.REGISTRATE;
@@ -55,6 +61,12 @@ public class YIPPEEEntityTypes {
             REGISTRATE.blockEntity("sliding_door", YIPPEESlidingDoorBlockEntity::new)
                     .renderer(() -> YIPPEESlidingDoorRenderer::new)
                     .validBlocks(YIPPEE.rose_door, YIPPEE.smoked_door, YIPPEE.spirit_door)
+                    .register();
+
+    public static final BlockEntityEntry<PonderBoxBlockEntity> ponder_in_a_box =
+            REGISTRATE.blockEntity("ponder_in_a_box", PonderBoxBlockEntity::new)
+                    .renderer(() -> PonderBoxRenderer::new)
+                    .validBlocks(YIPPEE.ponder_in_a_box)
                     .register();
 
     public static final BlockEntityEntry<BronzeEncasedFanBlockEntity> BRONZE_ENCASED_FAN =

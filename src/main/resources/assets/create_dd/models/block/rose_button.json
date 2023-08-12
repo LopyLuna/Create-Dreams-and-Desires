@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/button",
   "textures": {
-    "texture": "create_dd:block/flavored_planks"
+    "texture": "create_dd:block/rose_planks"
   }
 }

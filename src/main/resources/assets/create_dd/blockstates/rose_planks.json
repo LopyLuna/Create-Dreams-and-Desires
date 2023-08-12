@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "create_dd:block/flavored_planks"
+      "model": "create_dd:block/rose_planks"
     }
   }
 }

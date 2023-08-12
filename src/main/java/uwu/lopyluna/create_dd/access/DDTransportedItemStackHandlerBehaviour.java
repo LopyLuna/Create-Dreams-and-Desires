@@ -15,7 +15,7 @@ import java.util.function.Function;
 
 public class DDTransportedItemStackHandlerBehaviour extends TransportedItemStackHandlerBehaviour {
 
-    public static final BehaviourType<TransportedItemStackHandlerBehaviour> TYPE = new BehaviourType<>();
+    public static final BehaviourType<DDTransportedItemStackHandlerBehaviour> TYPE = new BehaviourType<>();
 
     public ProcessingCallback processingCallback;
     public PositionGetter positionGetter;
@@ -24,23 +24,23 @@ public class DDTransportedItemStackHandlerBehaviour extends TransportedItemStack
         super(be, processingCallback);
     }
 
-    public static class TransportedResult {
+    public static class DDTransportedResult {
         List<DDTransportedItemStack> outputs;
         DDTransportedItemStack heldOutput;
 
-        public static final TransportedResult DO_NOTHING = new TransportedResult(null, null);
-        public static final TransportedResult REMOVE_ITEM = new TransportedResult(ImmutableList.of(), null);
+        public static final DDTransportedResult DO_NOTHING = new DDTransportedResult(null, null);
+        public static final DDTransportedResult REMOVE_ITEM = new DDTransportedResult(ImmutableList.of(), null);
 
-        public static TransportedResult doNothing() {return DO_NOTHING;}
+        public static DDTransportedResult doNothing() {return DO_NOTHING;}
 
-        public static TransportedResult removeItem() {return REMOVE_ITEM;}
+        public static DDTransportedResult removeItem() {return REMOVE_ITEM;}
 
-        public static TransportedResult convertTo(DDTransportedItemStack output) {return new TransportedResult(ImmutableList.of(output), null);}
+        public static DDTransportedResult convertTo(DDTransportedItemStack output) {return new DDTransportedResult(ImmutableList.of(output), null);}
 
-        public static TransportedResult convertTo(List<DDTransportedItemStack> outputs) {return new TransportedResult(outputs, null);}
-        public static TransportedResult convertToAndLeaveHeld(List<DDTransportedItemStack> outputs, DDTransportedItemStack heldOutput) {return new TransportedResult(outputs, heldOutput);}
+        public static DDTransportedResult convertTo(List<DDTransportedItemStack> outputs) {return new DDTransportedResult(outputs, null);}
+        public static DDTransportedResult convertToAndLeaveHeld(List<DDTransportedItemStack> outputs, DDTransportedItemStack heldOutput) {return new DDTransportedResult(outputs, heldOutput);}
 
-        public TransportedResult(List<DDTransportedItemStack> outputs, DDTransportedItemStack heldOutput) {this.outputs = outputs;this.heldOutput = heldOutput;}
+        public DDTransportedResult(List<DDTransportedItemStack> outputs, DDTransportedItemStack heldOutput) {this.outputs = outputs;this.heldOutput = heldOutput;}
 
         public boolean doesNothing() {return outputs == null;}
 
@@ -66,7 +66,7 @@ public class DDTransportedItemStackHandlerBehaviour extends TransportedItemStack
         return this;
     }
 
-    public void handleProcessingOnAllItems(Function<TransportedItemStack, TransportedItemStackHandlerBehaviour.TransportedResult> processFunction) {
+    public void handleProcessingOnAllItems(Function<TransportedItemStack, TransportedResult> processFunction) {
         handleCenteredProcessingOnAllItems(.51f, processFunction);
     }
 
@@ -78,7 +78,7 @@ public class DDTransportedItemStackHandlerBehaviour extends TransportedItemStack
         });
     }
 
-    public void handleCenteredProcessingOnAllItems(float maxDistanceFromCenter, Function<TransportedItemStack, TransportedItemStackHandlerBehaviour.TransportedResult> processFunction) {
+    public void handleCenteredProcessingOnAllItems(float maxDistanceFromCenter, Function<TransportedItemStack, TransportedResult> processFunction) {
         this.processingCallback.applyToAllItems(maxDistanceFromCenter, processFunction);
     }
 
@@ -94,7 +94,7 @@ public class DDTransportedItemStackHandlerBehaviour extends TransportedItemStack
     @FunctionalInterface
     public interface ProcessingCallback {
         public void applyToAllItems(float maxDistanceFromCenter,
-                                    Function<DDTransportedItemStack, TransportedResult> processFunction);
+                                    Function<TransportedItemStack, TransportedResult> processFunction);
     }
 
     @FunctionalInterface

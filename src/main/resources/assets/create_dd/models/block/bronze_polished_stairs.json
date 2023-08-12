@@ -1,0 +1,8 @@
+{
+  "parent": "create_dd:block/stairs",
+  "textures": {
+    "side": "create_dd:block/bronze_tiled_block",
+    "bottom": "create_dd:block/bronze_polished_block",
+    "top": "create_dd:block/bronze_polished_slab"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_fence_gate_wall",
   "textures": {
-    "texture": "create_dd:block/flavored_planks"
+    "texture": "create_dd:block/rose_planks"
   }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "create_dd:block/andesite_alloy_tiled_block",
+    "side": "create_dd:block/andesite_alloy_tiled_block"
+  }
+}

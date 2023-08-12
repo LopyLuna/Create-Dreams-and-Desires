@@ -50,7 +50,7 @@ public class BronzeEncasedFanBlockEntity extends EncasedFanBlockEntity implement
 
     @Nullable
     @Override
-    public BronzeAirCurrent getAirCurrent() {
+    public BronzeAirCurrent getBAirCurrent() {
         return airCurrent;
     }
 

@@ -1,8 +1,13 @@
 package uwu.lopyluna.create_dd.item;
 
+import com.simibubi.create.AllTags;
+import com.simibubi.create.Create;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.simibubi.create.foundation.data.AssetLookup;
+import com.simibubi.create.foundation.data.recipe.CompatMetals;
+import com.simibubi.create.foundation.item.TagDependentIngredientItem;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -11,6 +16,7 @@ import uwu.lopyluna.create_dd.item.ItemProperties.ItemDisabled;
 import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem1;
 import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem2;
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.ChromaticCompound;
+import uwu.lopyluna.create_dd.item.ItemProperties.compound.OverchargeAlloy;
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.RefinedRadiance;
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.ShadowSteel;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemOne;
@@ -18,10 +24,16 @@ import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemTwo;
 import uwu.lopyluna.create_dd.item.ItemProperties.sawtool.DeforesterItem;
 import uwu.lopyluna.create_dd.item.ItemProperties.sawtool.ForestRavagerItem;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import static com.simibubi.create.AllTags.AllItemTags.CREATE_INGOTS;
+import static com.simibubi.create.AllTags.AllItemTags.CRUSHED_RAW_MATERIALS;
 import static com.simibubi.create.AllTags.forgeItemTag;
 import static uwu.lopyluna.create_dd.DDcreate.REGISTRATE;
 
+@SuppressWarnings({"unused", "inline"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class Pipebomb {
 
     static {
@@ -95,6 +107,13 @@ public class Pipebomb {
                     .fireResistant())
             .register();
 
+    public static final ItemEntry<OverchargeAlloy> OVERCHARGE_ALLOY =
+            REGISTRATE.item("overcharge_alloy", OverchargeAlloy::new)
+                    .properties(p -> p.stacksTo(16)
+                            .rarity(Rarity.UNCOMMON)
+                            .fireResistant())
+                    .register();
+
     public static final ItemEntry<ShadowSteel> SHADOW_STEEL_SHEET =
             REGISTRATE.item("shadow_steel_sheet", ShadowSteel::new)
                     .properties(p -> p.stacksTo(16)
@@ -145,10 +164,14 @@ public class Pipebomb {
 
 
     public static final ItemEntry<SequencedCraftingItem1>
-            incomplete_crafted_inductive_mechanism1 = craftingIngredient1("crafting_inductive_mechanism1");
+            incomplete_crafted_inductive_mechanism1 = craftingIngredient1("crafting_inductive_mechanism1"),
+            incomplete_crafted_kinetic_mechanism1 = craftingIngredient1("crafting_kinetic_mechanism1")
+
+            ;
 
     public static final ItemEntry<SequencedCraftingItem2>
-            incomplete_crafted_inductive_mechanism2 = craftingIngredient2("crafting_inductive_mechanism2");
+            incomplete_crafted_inductive_mechanism2 = craftingIngredient2("crafting_inductive_mechanism2"),
+            incomplete_crafted_kinetic_mechanism2 = craftingIngredient2("crafting_kinetic_mechanism2");
 
     private static ItemEntry<Item> ingredient(String name) {
         return REGISTRATE.item(name, Item::new)

@@ -1,13 +1,13 @@
 {
   "variants": {
     "axis=x": {
-      "model": "create_dd:block/stripped_flavored_log_x"
+      "model": "create_dd:block/stripped_rose_log_x"
     },
     "axis=y": {
-      "model": "create_dd:block/stripped_flavored_log_y"
+      "model": "create_dd:block/stripped_rose_log_y"
     },
     "axis=z": {
-      "model": "create_dd:block/stripped_flavored_log_z"
+      "model": "create_dd:block/stripped_rose_log_z"
     }
   }
 }

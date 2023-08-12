@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "create_dd:block/steel_tiled_slab"
+    },
+    "type=double": {
+      "model": "create_dd:block/steel_tiled_slab_double"
+    },
+    "type=top": {
+      "model": "create_dd:block/steel_tiled_slab_top"
+    }
+  }
+}

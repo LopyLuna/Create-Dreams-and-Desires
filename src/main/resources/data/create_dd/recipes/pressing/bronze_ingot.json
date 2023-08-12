@@ -2,7 +2,7 @@
   "type": "create:pressing",
   "ingredients": [
     {
-      "tag": "forge:ingots/bronze"
+      "tag": "forge:ingots/strong_bronze"
     }
   ],
   "results": [

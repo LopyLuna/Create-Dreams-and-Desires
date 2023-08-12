@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @MethodsReturnNonnullByDefault
 public interface BronzeIAirCurrentSource extends IAirCurrentSource {
     @Nullable
-    BronzeAirCurrent getAirCurrent();
+    BronzeAirCurrent getBAirCurrent();
 
     @Nullable
     Level getAirCurrentWorld();

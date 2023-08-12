@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "quark:limestone",
+      "required": false
+    },
     "create:limestone"
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:polished_cut_potassic_wall",
+    "create_dd:small_potassic_brick_wall",
+    "create_dd:cut_potassic_brick_wall",
+    "create_dd:cut_gabbro_brick_wall",
+    "create_dd:cut_potassic_wall",
+    "create_dd:small_gabbro_brick_wall",
+    "create_dd:polished_cut_gabbro_wall",
+    "create_dd:cut_gabbro_wall",
+    "create_dd:small_weathered_limestone_brick_wall",
+    "create_dd:cut_weathered_limestone_brick_wall",
+    "create_dd:polished_cut_weathered_limestone_wall",
+    "create_dd:cut_weathered_limestone_wall"
+  ]
+}

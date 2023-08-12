@@ -59,24 +59,24 @@ public class BronzeAirFlowParticle extends SimpleAnimatedParticle {
         if (this.age++ >= this.lifetime) {
             this.remove();
         } else {
-            if (source.getAirCurrent() == null || !source.getAirCurrent().bounds.inflate(.25f).contains(x, y, z)) {
+            if (source.getBAirCurrent() == null || !source.getBAirCurrent().bounds.inflate(.25f).contains(x, y, z)) {
                 dissipate();
                 return;
             }
 
-            Vec3 directionVec = Vec3.atLowerCornerOf(source.getAirCurrent().direction.getNormal());
+            Vec3 directionVec = Vec3.atLowerCornerOf(source.getBAirCurrent().direction.getNormal());
             Vec3 motion = directionVec.scale(1 / 8f);
-            if (!source.getAirCurrent().pushing)
+            if (!source.getBAirCurrent().pushing)
                 motion = motion.scale(-1);
 
             double distance = new Vec3(x, y, z).subtract(VecHelper.getCenterOf(source.getAirCurrentPos()))
                     .multiply(directionVec).length() - .5f;
-            if (distance > source.getAirCurrent().maxDistance + 1 || distance < -.25f) {
+            if (distance > source.getBAirCurrent().maxDistance + 1 || distance < -.25f) {
                 dissipate();
                 return;
             }
-            motion = motion.scale(source.getAirCurrent().maxDistance - (distance - 1f)).scale(.5f);
-            selectSprite((int) Mth.clamp((distance / source.getAirCurrent().maxDistance) * 8 + level.random.nextInt(4),
+            motion = motion.scale(source.getBAirCurrent().maxDistance - (distance - 1f)).scale(.5f);
+            selectSprite((int) Mth.clamp((distance / source.getBAirCurrent().maxDistance) * 8 + level.random.nextInt(4),
                     0, 7));
 
             morphType(distance);
@@ -96,9 +96,9 @@ public class BronzeAirFlowParticle extends SimpleAnimatedParticle {
     }
 
     public void morphType(double distance) {
-        if (source.getAirCurrent() == null)
+        if (source.getBAirCurrent() == null)
             return;
-        BakingFanProcessing.Type type = source.getAirCurrent().getSegmentAt((float) distance);
+        BakingFanProcessing.Type type = source.getBAirCurrent().getSegmentAt((float) distance);
 
 
 

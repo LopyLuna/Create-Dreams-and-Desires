@@ -2,7 +2,7 @@ package uwu.lopyluna.create_dd.item;
 
 import net.minecraft.world.item.ItemStack;
 
-public class PipebombTabBase extends FlavoredPipebombTab {
+public class PipebombTabBase extends DDPipebombTab {
     public PipebombTabBase() {
         super("base");
     }

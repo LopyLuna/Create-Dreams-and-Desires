@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "create_dd:block/flavored_log",
-    "side": "create_dd:block/flavored_log"
-  }
-}

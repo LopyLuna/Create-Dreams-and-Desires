@@ -14,7 +14,7 @@
           "item": "create_dd:incomplete_integrated_mechanism"
         },
         {
-          "item": "create:cogwheel"
+          "item": "create_dd:integrated_circuit"
         }
       ],
       "results": [
@@ -30,7 +30,7 @@
           "item": "create_dd:incomplete_integrated_mechanism"
         },
         {
-          "item": "create_dd:integrated_circuit"
+          "item": "create:cogwheel"
         }
       ],
       "results": [
