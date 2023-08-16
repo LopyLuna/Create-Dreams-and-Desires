@@ -2,7 +2,6 @@ package uwu.lopyluna.create_dd.access;
 
 import com.simibubi.create.content.kinetics.belt.BeltHelper;
 import com.simibubi.create.content.kinetics.belt.transport.TransportedItemStack;
-import com.simibubi.create.content.kinetics.fan.FanProcessing;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
@@ -12,9 +11,9 @@ import java.util.Random;
 
 public class DDTransportedItemStack extends TransportedItemStack {
 
-    public FanProcessing.Type processedBy;
+    public BakingFanProcessing.FanType processedBy;
 
-    private static Random R = new Random();
+    private static final Random R = new Random();
 
     public ItemStack stack;
     public float beltPosition;
@@ -44,7 +43,7 @@ public class DDTransportedItemStack extends TransportedItemStack {
     }
 
     public int compareTo(DDTransportedItemStack o) {
-        return beltPosition < o.beltPosition ? 1 : beltPosition > o.beltPosition ? -1 : 0;
+        return Float.compare(o.beltPosition, beltPosition);
     }
 
     public DDTransportedItemStack getSimilar() {
@@ -77,9 +76,9 @@ public class DDTransportedItemStack extends TransportedItemStack {
         nbt.putInt("Angle", angle);
         nbt.putInt("InDirection", insertedFrom.get3DDataValue());
         if (locked)
-            nbt.putBoolean("Locked", locked);
+            nbt.putBoolean("Locked", true);
         if (lockedExternally)
-            nbt.putBoolean("LockedExternally", lockedExternally);
+            nbt.putBoolean("LockedExternally", true);
         return nbt;
     }
 

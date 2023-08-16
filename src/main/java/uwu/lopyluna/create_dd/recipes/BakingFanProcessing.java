@@ -68,14 +68,14 @@ public class BakingFanProcessing extends FanProcessing {
     private static final HauntingWrapper HAUNTING_WRAPPER = new HauntingWrapper();
     public static final FreezingWrapper FREEZING_WRAPPER = new FreezingWrapper();
     public static final SuperHeatingWrapper SUPERHEATING_WRAPPER = new SuperHeatingWrapper();
-
-    public static boolean isWashable(ItemStack stack, Level world) {
+    
+    public static boolean isWashableBronze(ItemStack stack, Level world) {
         SPLASHING_WRAPPER.setItem(0, stack);
         Optional<SplashingRecipe> recipe = AllRecipeTypes.SPLASHING.find(SPLASHING_WRAPPER, world);
         return recipe.isPresent();
     }
 
-    public static boolean isHauntable(ItemStack stack, Level world) {
+    public static boolean isHauntableBronze(ItemStack stack, Level world) {
         HAUNTING_WRAPPER.setItem(0, stack);
         Optional<HauntingRecipe> recipe = AllRecipeTypes.HAUNTING.find(HAUNTING_WRAPPER, world);
         return recipe.isPresent();
@@ -92,7 +92,7 @@ public class BakingFanProcessing extends FanProcessing {
         return recipe.isPresent();
     }
 
-    public static boolean canProcess(ItemEntity entity, BakingFanProcessing.Type type) {
+    public static boolean canProcessBronze(ItemEntity entity, BakingFanProcessing.FanType type) {
         if (entity.getPersistentData()
                 .contains("CreateData")) {
             CompoundTag compound = entity.getPersistentData()
@@ -100,21 +100,21 @@ public class BakingFanProcessing extends FanProcessing {
             if (compound.contains("Processing")) {
                 CompoundTag processing = compound.getCompound("Processing");
 
-                if (BakingFanProcessing.Type.valueOf(processing.getString("Type")) != type)
-                    return type.canProcess(entity.getItem(), entity.level);
+                if (BakingFanProcessing.FanType.valueOf(processing.getString("FanType")) != type)
+                    return type.canProcessBronze(entity.getItem(), entity.level);
                 else if (processing.getInt("Time") >= 0)
                     return true;
                 else if (processing.getInt("Time") == -1)
                     return false;
             }
         }
-        return type.canProcess(entity.getItem(), entity.level);
+        return type.canProcessBronze(entity.getItem(), entity.level);
     }
 
-    public static boolean applyProcessing(ItemEntity entity, BakingFanProcessing.Type type) {
-        if (decrementProcessingTime(entity, type) != 0)
+    public static boolean applyProcessingBronze(ItemEntity entity, BakingFanProcessing.FanType type) {
+        if (decrementProcessingTimeBronze(entity, type) != 0)
             return false;
-        List<ItemStack> stacks = process(entity.getItem(), type, entity.level);
+        List<ItemStack> stacks = processBronze(entity.getItem(), type, entity.level);
         if (stacks == null)
             return false;
         if (stacks.isEmpty()) {
@@ -130,27 +130,23 @@ public class BakingFanProcessing extends FanProcessing {
         return true;
     }
 
-    private static List<ItemStack> process(ItemStack stack, Type type, Level world) {
-        if (type == Type.SPLASHING) {
+    private static List<ItemStack> processBronze(ItemStack stack, BakingFanProcessing.FanType type, Level world) {
+        if (type == BakingFanProcessing.FanType.SPLASHING) {
             SPLASHING_WRAPPER.setItem(0, stack);
             Optional<SplashingRecipe> recipe = AllRecipeTypes.SPLASHING.find(SPLASHING_WRAPPER, world);
-            if (recipe.isPresent())
-                return RecipeApplier.applyRecipeOn(stack, recipe.get());
-            return null;
+            return recipe.map(splashingRecipe -> RecipeApplier.applyRecipeOn(stack, splashingRecipe)).orElse(null);
         }
-        if (type == Type.HAUNTING) {
+        if (type == BakingFanProcessing.FanType.HAUNTING) {
             HAUNTING_WRAPPER.setItem(0, stack);
             Optional<HauntingRecipe> recipe = AllRecipeTypes.HAUNTING.find(HAUNTING_WRAPPER, world);
-            if (recipe.isPresent())
-                return RecipeApplier.applyRecipeOn(stack, recipe.get());
-            return null;
+            return recipe.map(hauntingRecipe -> RecipeApplier.applyRecipeOn(stack, hauntingRecipe)).orElse(null);
         }
 
         RECIPE_WRAPPER.setItem(0, stack);
         Optional<SmokingRecipe> smokingRecipe = world.getRecipeManager()
                 .getRecipeFor(RecipeType.SMOKING, RECIPE_WRAPPER, world);
 
-        if (type == Type.BLASTING) {
+        if (type == BakingFanProcessing.FanType.BLASTING) {
             RECIPE_WRAPPER.setItem(0, stack);
             Optional<? extends AbstractCookingRecipe> smeltingRecipe = world.getRecipeManager()
                     .getRecipeFor(RecipeType.SMELTING, RECIPE_WRAPPER, world);
@@ -172,24 +168,24 @@ public class BakingFanProcessing extends FanProcessing {
             return Collections.emptyList();
         }
 
-        if (type == Type.FREEZING) {
+        if (type == BakingFanProcessing.FanType.FREEZING) {
             FREEZING_WRAPPER.setItem(0, stack);
             Optional<FreezingRecipe> recipe = BakingRecipesTypes.FREEZING.find(FREEZING_WRAPPER, world);
             return recipe.map(freezingRecipe -> RecipeApplier.applyRecipeOn(stack, freezingRecipe)).orElse(null);
         }
-        if (type == Type.SUPERHEATING) {
+        if (type == BakingFanProcessing.FanType.SUPERHEATING) {
             SUPERHEATING_WRAPPER.setItem(0, stack);
             Optional<SuperHeatingRecipe> recipe = BakingRecipesTypes.SUPERHEATING.find(SUPERHEATING_WRAPPER, world);
             return recipe.map(superHeatingRecipe -> RecipeApplier.applyRecipeOn(stack, superHeatingRecipe)).orElse(null);
         }
 
-        if (type == Type.SMOKING && smokingRecipe.isPresent())
+        if (type == BakingFanProcessing.FanType.SMOKING && smokingRecipe.isPresent())
             return RecipeApplier.applyRecipeOn(stack, smokingRecipe.get());
 
         return null;
     }
 
-    private static int decrementProcessingTime(ItemEntity entity, Type type) {
+    private static int decrementProcessingTimeBronze(ItemEntity entity, BakingFanProcessing.FanType type) {
         CompoundTag nbt = entity.getPersistentData();
 
         if (!nbt.contains("CreateData"))
@@ -200,8 +196,8 @@ public class BakingFanProcessing extends FanProcessing {
             createData.put("Processing", new CompoundTag());
         CompoundTag processing = createData.getCompound("Processing");
 
-        if (!processing.contains("Type") || Type.valueOf(processing.getString("Type")) != type) {
-            processing.putString("Type", type.name());
+        if (!processing.contains("FanType") || FanType.valueOf(processing.getString("FanType")) != type) {
+            processing.putString("FanType", type.name());
             int timeModifierForStackSize = ((entity.getItem()
                     .getCount() - 1) / 16) + 1;
             int processingTime =
@@ -214,15 +210,13 @@ public class BakingFanProcessing extends FanProcessing {
         return value;
     }
 
-    public static TransportedResult applyProcessing(DDTransportedItemStack transported, Level world, FanProcessing.Type type) {
+    public static TransportedResult applyProcessingBronze(DDTransportedItemStack transported, Level world, BakingFanProcessing.FanType type) {
         TransportedResult ignore = TransportedResult.doNothing();
         if (transported.processedBy != type) {
             transported.processedBy = type;
             int timeModifierForStackSize = ((transported.stack.getCount() - 1) / 16) + 1;
-            int processingTime =
-                    (int) (AllConfigs.server().kinetics.fanProcessingTime.get() * timeModifierForStackSize) + 1;
-            transported.processingTime = processingTime;
-            if (!type.canProcess(transported.stack, world))
+            transported.processingTime = (int) (AllConfigs.server().kinetics.fanProcessingTime.get() * timeModifierForStackSize) + 1;
+            if (!type.canProcessBronze(transported.stack, world))
                 transported.processingTime = -1;
             return ignore;
         }
@@ -231,25 +225,21 @@ public class BakingFanProcessing extends FanProcessing {
         if (transported.processingTime-- > 0)
             return ignore;
 
-        List<ItemStack> stacks = process(transported.stack, null, world);
+        List<ItemStack> stacks = processBronze(transported.stack, type, world);
         if (stacks == null)
             return ignore;
 
         List<DDTransportedItemStack> transportedStacks = new ArrayList<>();
         for (ItemStack additional : stacks) {
-            DDTransportedItemStack newTransported = (DDTransportedItemStack) transported.getSimilar();
+            DDTransportedItemStack newTransported = transported.getSimilar();
             newTransported.stack = additional.copy();
             transportedStacks.add(newTransported);
         }
         return TransportedResult.convertTo((DDTransportedItemStack) transportedStacks);
     }
 
-    public static TransportedResult applyProcessing(DDTransportedItemStack transported, Level world, Type processingType) {
-        return null;
-    }
 
-
-    public enum Type {
+    public enum FanType {
         SPLASHING {
             @Override
             public void spawnParticlesForProcessing(Level level, Vec3 pos) {
@@ -279,8 +269,8 @@ public class BakingFanProcessing extends FanProcessing {
             }
 
             @Override
-            public boolean canProcess(ItemStack stack, Level level) {
-                return isWashable(stack, level);
+            public boolean canProcessBronze(ItemStack stack, Level level) {
+                return isWashableBronze(stack, level);
             }
         },
         SMOKING {
@@ -303,7 +293,7 @@ public class BakingFanProcessing extends FanProcessing {
             }
 
             @Override
-            public boolean canProcess(ItemStack stack, Level level) {
+            public boolean canProcessBronze(ItemStack stack, Level level) {
                 RECIPE_WRAPPER.setItem(0, stack);
                 Optional<SmokingRecipe> recipe = level.getRecipeManager()
                         .getRecipeFor(RecipeType.SMOKING, RECIPE_WRAPPER, level);
@@ -378,8 +368,8 @@ public class BakingFanProcessing extends FanProcessing {
             }
 
             @Override
-            public boolean canProcess(ItemStack stack, Level level) {
-                return isHauntable(stack, level);
+            public boolean canProcessBronze(ItemStack stack, Level level) {
+                return isHauntableBronze(stack, level);
             }
         },
         BLASTING {
@@ -402,7 +392,7 @@ public class BakingFanProcessing extends FanProcessing {
             }
 
             @Override
-            public boolean canProcess(ItemStack stack, Level level) {
+            public boolean canProcessBronze(ItemStack stack, Level level) {
                 RECIPE_WRAPPER.setItem(0, stack);
                 Optional<SmeltingRecipe> smeltingRecipe = level.getRecipeManager()
                         .getRecipeFor(RecipeType.SMELTING, RECIPE_WRAPPER, level);
@@ -493,7 +483,7 @@ public class BakingFanProcessing extends FanProcessing {
 
 
             @Override
-            public boolean canProcess(ItemStack stack, Level level) {
+            public boolean canProcessBronze(ItemStack stack, Level level) {
                 return isFreezable(stack, level);
             }
         },
@@ -528,7 +518,7 @@ public class BakingFanProcessing extends FanProcessing {
 
 
             @Override
-            public boolean canProcess(ItemStack stack, Level level) {
+            public boolean canProcessBronze(ItemStack stack, Level level) {
                 return isSuperHeatable(stack, level);
             }
         },
@@ -540,21 +530,21 @@ public class BakingFanProcessing extends FanProcessing {
             public void affectEntity(Entity entity, Level level) {}
 
             @Override
-            public boolean canProcess(ItemStack stack, Level level) {
+            public boolean canProcessBronze(ItemStack stack, Level level) {
                 return false;
             }
         };
 
-        public abstract boolean canProcess(ItemStack stack, Level level);
+        public abstract boolean canProcessBronze(ItemStack stack, Level level);
 
         public abstract void spawnParticlesForProcessing(Level level, Vec3 pos);
 
         public abstract void affectEntity(Entity entity, Level level);
 
-        public static BakingFanProcessing.Type byBlock(BlockGetter reader, BlockPos pos) {
+        public static BakingFanProcessing.FanType byBlock(BlockGetter reader, BlockPos pos) {
             FluidState fluidState = reader.getFluidState(pos);
             if (fluidState.getType() == Fluids.WATER || fluidState.getType() == Fluids.FLOWING_WATER)
-                return BakingFanProcessing.Type.SPLASHING;
+                return BakingFanProcessing.FanType.SPLASHING;
             BlockState blockState = reader.getBlockState(pos);
             Block block = blockState.getBlock();
             if (block == Blocks.SOUL_FIRE
@@ -564,7 +554,7 @@ public class BakingFanProcessing extends FanProcessing {
                     && blockState.getOptionalValue(LitBlazeBurnerBlock.FLAME_TYPE)
                     .map(flame -> flame == LitBlazeBurnerBlock.FlameType.SOUL)
                     .orElse(false))
-                return BakingFanProcessing.Type.HAUNTING;
+                return BakingFanProcessing.FanType.HAUNTING;
             if (block == Blocks.FIRE
                     || blockState.is(BlockTags.CAMPFIRES) && blockState.getOptionalValue(CampfireBlock.LIT)
                     .orElse(false)
@@ -573,16 +563,15 @@ public class BakingFanProcessing extends FanProcessing {
                     .map(flame -> flame == LitBlazeBurnerBlock.FlameType.REGULAR)
                     .orElse(false)
                     || getHeatLevelOf(blockState) == BlazeBurnerBlock.HeatLevel.SMOULDERING)
-                return BakingFanProcessing.Type.SMOKING;
+                return BakingFanProcessing.FanType.SMOKING;
             if (block == Blocks.LAVA || getHeatLevelOf(blockState).isAtLeast(BlazeBurnerBlock.HeatLevel.FADING))
-                return BakingFanProcessing.Type.BLASTING;
-
+                return BakingFanProcessing.FanType.BLASTING;
             if (block == Blocks.POWDER_SNOW)
-                return Type.FREEZING;
+                return BakingFanProcessing.FanType.FREEZING;
             if (getHeatLevelOf(blockState).isAtLeast(BlazeBurnerBlock.HeatLevel.SEETHING))
-                return Type.SUPERHEATING;
+                return BakingFanProcessing.FanType.SUPERHEATING;
 
-            return BakingFanProcessing.Type.NONE;
+            return BakingFanProcessing.FanType.NONE;
         }
     }
 

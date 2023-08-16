@@ -98,11 +98,11 @@ public class BronzeAirFlowParticle extends SimpleAnimatedParticle {
     public void morphType(double distance) {
         if (source.getBAirCurrent() == null)
             return;
-        BakingFanProcessing.Type type = source.getBAirCurrent().getSegmentAt((float) distance);
+        BakingFanProcessing.FanType type = source.getBAirCurrent().getSegmentAt((float) distance);
 
 
 
-        if (type == BakingFanProcessing.Type.SPLASHING) {
+        if (type == BakingFanProcessing.FanType.SPLASHING) {
             setColor(Color.mixColors(0x4499FF, 0x2277FF, level.random.nextFloat()));
             setAlpha(1f);
             selectSprite(level.random.nextInt(3));
@@ -114,7 +114,7 @@ public class BronzeAirFlowParticle extends SimpleAnimatedParticle {
                         zd * .125f);
         }
 
-        if (type == BakingFanProcessing.Type.SMOKING) {
+        if (type == BakingFanProcessing.FanType.SMOKING) {
             setColor(Color.mixColors(0x0, 0x555555, level.random.nextFloat()));
             setAlpha(1f);
             selectSprite(level.random.nextInt(3));
@@ -126,7 +126,7 @@ public class BronzeAirFlowParticle extends SimpleAnimatedParticle {
                         zd * .125f);
         }
 
-        if (type == BakingFanProcessing.Type.HAUNTING) {
+        if (type == BakingFanProcessing.FanType.HAUNTING) {
             setColor(Color.mixColors(0x0, 0x126568, level.random.nextFloat()));
             setAlpha(1f);
             selectSprite(level.random.nextInt(3));
@@ -138,7 +138,7 @@ public class BronzeAirFlowParticle extends SimpleAnimatedParticle {
                         zd * .125f);
         }
 
-        if (type == BakingFanProcessing.Type.BLASTING) {
+        if (type == BakingFanProcessing.FanType.BLASTING) {
             setColor(Color.mixColors(0xFF4400, 0xFF8855, level.random.nextFloat()));
             setAlpha(.5f);
             selectSprite(level.random.nextInt(3));
@@ -150,7 +150,7 @@ public class BronzeAirFlowParticle extends SimpleAnimatedParticle {
                         z, xd * .25f, yd * .25f, zd * .25f);
         }
 
-        if (type == BakingFanProcessing.Type.FREEZING) {
+        if (type == BakingFanProcessing.FanType.FREEZING) {
             setColor(Color.mixColors(0xEEEEFF, 0xDDE8FF, level.random.nextFloat()));
             setAlpha(1f);
             selectSprite(level.random.nextInt(3));

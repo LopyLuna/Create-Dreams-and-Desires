@@ -2,7 +2,6 @@ package uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan;
 
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.copycat.CopycatBlock;
-import com.simibubi.create.content.kinetics.belt.behaviour.TransportedItemStackHandlerBehaviour;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.utility.Iterate;
@@ -32,6 +31,7 @@ import net.minecraftforge.fml.DistExecutor;
 import org.apache.commons.lang3.tuple.Pair;
 import uwu.lopyluna.create_dd.access.DDServerPlayer;
 import uwu.lopyluna.create_dd.access.DDTransportedItemStack;
+import uwu.lopyluna.create_dd.access.DDTransportedItemStackHandlerBehaviour;
 import uwu.lopyluna.create_dd.rando.DDAirFlowParticleData;
 import uwu.lopyluna.create_dd.recipes.BakingFanProcessing;
 
@@ -48,7 +48,7 @@ public class BronzeAirCurrent {
     public boolean pushing;
     public float maxDistance;
 
-    protected List<Pair<TransportedItemStackHandlerBehaviour, BakingFanProcessing.Type>> affectedItemHandlers =
+    protected List<Pair<DDTransportedItemStackHandlerBehaviour, BakingFanProcessing.FanType>> affectedItemHandlers =
             new ArrayList<>();
     protected List<Entity> caughtEntities = new ArrayList<>();
 
@@ -109,9 +109,9 @@ public class BronzeAirCurrent {
                 ((DDServerPlayer) entity).connection.aboveGroundTickCount = 0;
 
             entityDistance -= .5f;
-            BakingFanProcessing.Type processingType = getSegmentAt((float) entityDistance);
+            BakingFanProcessing.FanType processingType = getSegmentAt((float) entityDistance);
 
-            if (processingType == null || processingType == BakingFanProcessing.Type.NONE)
+            if (processingType == null || processingType == BakingFanProcessing.FanType.NONE)
                 continue;
 
             if (entity instanceof ItemEntity itemEntity) {
@@ -119,8 +119,8 @@ public class BronzeAirCurrent {
                     processingType.spawnParticlesForProcessing(world, entity.position());
                     continue;
                 }
-                if (BakingFanProcessing.canProcess(itemEntity, processingType))
-                    if (BakingFanProcessing.applyProcessing(itemEntity, processingType)
+                if (BakingFanProcessing.canProcessBronze(itemEntity, processingType))
+                    if (BakingFanProcessing.applyProcessingBronze(itemEntity, processingType)
                             && source instanceof BronzeEncasedFanBlockEntity fan)
                         fan.award(AllAdvancements.FAN_PROCESSING);
                 continue;
@@ -154,7 +154,7 @@ public class BronzeAirCurrent {
         BronzeAirCurrent.AirCurrentSegment currentSegment = new BronzeAirCurrent.AirCurrentSegment();
         segments.clear();
         currentSegment.startOffset = 0;
-        BakingFanProcessing.Type type = BakingFanProcessing.Type.NONE;
+        BakingFanProcessing.FanType type = BakingFanProcessing.FanType.NONE;
 
         int limit = (int) (maxDistance + .5f);
         int searchStart = pushing ? 0 : limit;
@@ -163,8 +163,8 @@ public class BronzeAirCurrent {
 
         for (int i = searchStart; i * searchStep <= searchEnd * searchStep; i += searchStep) {
             BlockPos currentPos = start.relative(direction, i);
-            BakingFanProcessing.Type newType = BakingFanProcessing.Type.byBlock(world, currentPos);
-            if (newType != BakingFanProcessing.Type.NONE)
+            BakingFanProcessing.FanType newType = BakingFanProcessing.FanType.byBlock(world, currentPos);
+            if (newType != BakingFanProcessing.FanType.NONE)
                 type = newType;
             if (currentSegment.type != type || currentSegment.startOffset == 0) {
                 currentSegment.endOffset = i;
@@ -259,19 +259,19 @@ public class BronzeAirCurrent {
         BlockPos start = source.getAirCurrentPos();
         affectedItemHandlers.clear();
         for (int i = 0; i < maxDistance + 1; i++) {
-            BakingFanProcessing.Type type = getSegmentAt(i);
+            BakingFanProcessing.FanType type = getSegmentAt(i);
             if (type == null)
                 continue;
 
             for (int offset : Iterate.zeroAndOne) {
                 BlockPos pos = start.relative(direction, i)
                         .below(offset);
-                TransportedItemStackHandlerBehaviour behaviour =
-                        BlockEntityBehaviour.get(world, pos, TransportedItemStackHandlerBehaviour.TYPE);
-                BakingFanProcessing.Type typeAtHandler = type;
+                DDTransportedItemStackHandlerBehaviour behaviour =
+                        BlockEntityBehaviour.get(world, pos, DDTransportedItemStackHandlerBehaviour.TYPE);
+                BakingFanProcessing.FanType typeAtHandler = type;
                 if (world.getBlockState(pos)
                         .is(Blocks.POWDER_SNOW))
-                    typeAtHandler = BakingFanProcessing.Type.FREEZING;
+                    typeAtHandler = BakingFanProcessing.FanType.FREEZING;
                 if (behaviour != null)
                     affectedItemHandlers.add(Pair.of(behaviour, typeAtHandler));
                 if (direction.getAxis()
@@ -282,21 +282,21 @@ public class BronzeAirCurrent {
     }
 
     public void tickAffectedHandlers() {
-        for (Pair<TransportedItemStackHandlerBehaviour, BakingFanProcessing.Type> pair : affectedItemHandlers) {
-            TransportedItemStackHandlerBehaviour handler = pair.getKey();
+        for (Pair<DDTransportedItemStackHandlerBehaviour, BakingFanProcessing.FanType> pair : affectedItemHandlers) {
+            DDTransportedItemStackHandlerBehaviour handler = pair.getKey();
             Level world = handler.getWorld();
-            BakingFanProcessing.Type processingType = pair.getRight();
+            BakingFanProcessing.FanType processingType = pair.getRight();
 
             handler.handleProcessingOnAllItems((transported) -> {
                 if (world.isClientSide) {
                     if (world != null)
                         processingType.spawnParticlesForProcessing(world, handler.getWorldPositionOf(transported));
-                    return TransportedItemStackHandlerBehaviour.TransportedResult.doNothing();
+                    return DDTransportedItemStackHandlerBehaviour.TransportedResult.doNothing();
                 }
-                TransportedItemStackHandlerBehaviour.TransportedResult applyProcessing = BakingFanProcessing.applyProcessing((DDTransportedItemStack) transported, world, processingType);
-                if (!applyProcessing.doesNothing() && source instanceof BronzeEncasedFanBlockEntity fan)
+                DDTransportedItemStackHandlerBehaviour.TransportedResult applyProcessingBronze = BakingFanProcessing.applyProcessingBronze((DDTransportedItemStack) transported, world, processingType);
+                if (!applyProcessingBronze.doesNothing() && source instanceof BronzeEncasedFanBlockEntity fan)
                     fan.award(AllAdvancements.FAN_PROCESSING);
-                return applyProcessing;
+                return applyProcessingBronze;
             });
         }
     }
@@ -305,7 +305,7 @@ public class BronzeAirCurrent {
         return AllTags.AllBlockTags.FAN_TRANSPARENT.matches(state);
     }
 
-    public BakingFanProcessing.Type getSegmentAt(float offset) {
+    public BakingFanProcessing.FanType getSegmentAt(float offset) {
         for (BronzeAirCurrent.AirCurrentSegment airCurrentSegment : segments) {
             if (offset > airCurrentSegment.endOffset && pushing)
                 continue;
@@ -313,11 +313,11 @@ public class BronzeAirCurrent {
                 continue;
             return airCurrentSegment.type;
         }
-        return BakingFanProcessing.Type.NONE;
+        return BakingFanProcessing.FanType.NONE;
     }
 
     public static class AirCurrentSegment {
-        BakingFanProcessing.Type type;
+        BakingFanProcessing.FanType type;
         int startOffset;
         int endOffset;
     }
