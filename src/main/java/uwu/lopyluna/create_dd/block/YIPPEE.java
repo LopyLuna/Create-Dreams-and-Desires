@@ -4,8 +4,12 @@ import com.simibubi.create.*;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.content.kinetics.motor.CreativeMotorBlock;
+import com.simibubi.create.content.kinetics.motor.CreativeMotorGenerator;
+import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.data.*;
+import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -22,6 +26,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import uwu.lopyluna.create_dd.DDcreate;
 import uwu.lopyluna.create_dd.block.BlockProperties.*;
+import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillMovementBehaviour;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeEncasedFanBlock;
@@ -40,6 +45,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.fan.EightBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.FourBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.TwoBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlock2;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlockGen;
@@ -435,6 +441,27 @@ public class YIPPEE {
             .item(AssemblyOperatorBlockItem::new)
             .transform(customItemModel())
             .register();
+
+    public static final BlockEntry<KineticMotorBlock> KINETIC_MOTOR =
+            REGISTRATE.block("kinetic_motor", KineticMotorBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.color(MaterialColor.DIRT))
+            .transform(pickaxeOnly())
+            .transform(BlockStressDefaults.setCapacity(1.5))
+            .transform(BlockStressDefaults.setGeneratorSpeed(() -> Couple.create(0, 32)))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<AcceleratorMotorBlock> ACCELERATOR_MOTOR =
+            REGISTRATE.block("accelerator_motor", AcceleratorMotorBlock::new)
+                    .initialProperties(SharedProperties::stone)
+                    .properties(p -> p.color(MaterialColor.DIRT))
+                    .transform(pickaxeOnly())
+                    .transform(BlockStressDefaults.setCapacity(0))
+                    .transform(BlockStressDefaults.setGeneratorSpeed(() -> Couple.create(0, 256)))
+                    .simpleItem()
+                    .register();
+
 
     public static final BlockEntry<ChainDriveBlock2> secondary_encased_chain_drive =
             REGISTRATE.block("secondary_encased_chain_drive", ChainDriveBlock2::new)

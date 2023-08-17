@@ -492,10 +492,11 @@ public class BakingFanProcessing extends FanProcessing {
             public void spawnParticlesForProcessing(Level level, Vec3 pos) {
                 if (level.random.nextInt(8) != 0)
                     return;
-                Vector3f color = new Color(0xDDE8FF).asVectorF();
+                Vector3f color = new Color(0x1e0f3d).asVectorF();
                 level.addParticle(new DustParticleOptions(color, 1), pos.x + (level.random.nextFloat() - .5f) * .5f,
                         pos.y + .5f, pos.z + (level.random.nextFloat() - .5f) * .5f, 0, 1 / 8f, 0);
-                level.addParticle(ParticleTypes.SNOWFLAKE, pos.x + (level.random.nextFloat() - .5f) * .5f, pos.y + .5f,
+                level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.x, pos.y + .45f, pos.z, 0, 0, 0);
+                level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.x + (level.random.nextFloat() - .5f) * .5f, pos.y + .5f,
                         pos.z + (level.random.nextFloat() - .5f) * .5f, 0, 1 / 8f, 0);
             }
 
@@ -564,12 +565,12 @@ public class BakingFanProcessing extends FanProcessing {
                     .orElse(false)
                     || getHeatLevelOf(blockState) == BlazeBurnerBlock.HeatLevel.SMOULDERING)
                 return BakingFanProcessing.FanType.SMOKING;
+            if (getHeatLevelOf(blockState) == BlazeBurnerBlock.HeatLevel.SEETHING)
+                return BakingFanProcessing.FanType.SUPERHEATING;
             if (block == Blocks.LAVA || getHeatLevelOf(blockState).isAtLeast(BlazeBurnerBlock.HeatLevel.FADING))
                 return BakingFanProcessing.FanType.BLASTING;
             if (block == Blocks.POWDER_SNOW)
                 return BakingFanProcessing.FanType.FREEZING;
-            if (getHeatLevelOf(blockState).isAtLeast(BlazeBurnerBlock.HeatLevel.SEETHING))
-                return BakingFanProcessing.FanType.SUPERHEATING;
 
             return BakingFanProcessing.FanType.NONE;
         }

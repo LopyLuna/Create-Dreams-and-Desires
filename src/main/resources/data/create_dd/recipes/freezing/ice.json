@@ -2,13 +2,13 @@
   "type": "create_dd:freezing",
   "ingredients": [
     {
-      "item": "minecraft:packed_ice"
+      "item": "minecraft:ice"
     }
   ],
   "results": [
     {
-      "item": "minecraft:ice",
-      "count": 9
+      "item": "minecraft:packed_ice",
+      "count": 1
     }
   ]
 }

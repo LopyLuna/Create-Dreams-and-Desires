@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "create_dd:block/kinetic_motor/block_vertical",
+      "x": 180
+    },
+    "facing=up": {
+      "model": "create_dd:block/kinetic_motor/block_vertical"
+    },
+    "facing=north": {
+      "model": "create_dd:block/kinetic_motor/block",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "create_dd:block/kinetic_motor/block"
+    },
+    "facing=west": {
+      "model": "create_dd:block/kinetic_motor/block",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "create_dd:block/kinetic_motor/block",
+      "y": 270
+    }
+  }
+}

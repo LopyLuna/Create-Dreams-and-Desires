@@ -2,6 +2,8 @@ package uwu.lopyluna.create_dd.rando;
 
 import javax.annotation.Nonnull;
 
+import com.mojang.math.Vector3f;
+import com.simibubi.create.content.trains.CubeParticleData;
 import com.simibubi.create.foundation.utility.Color;
 import com.simibubi.create.foundation.utility.VecHelper;
 
@@ -14,6 +16,7 @@ import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.Blocks;
@@ -160,6 +163,36 @@ public class BronzeAirFlowParticle extends SimpleAnimatedParticle {
             if (level.random.nextFloat() < 1 / 32f)
                 level.addParticle(ParticleTypes.POOF, x, y, z, xd * .125f, yd * .125f,
                         zd * .125f);
+        }
+
+        if (type == BakingFanProcessing.FanType.SUPERHEATING) {
+            setColor(Color.mixColors(0x26204d, 0x1e0f3d, level.random.nextFloat()));
+            setAlpha(1f);
+            selectSprite(level.random.nextInt(3));
+            if (level.random.nextFloat() < 1 / 32f)
+                level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, x, y, z, xd * .125f, yd * .125f,
+                        zd * .125f);
+            Vector3f colorBright = new Color(0x64C9FD).asVectorF();
+            Vector3f colorDark = new Color(0x3f74e8).asVectorF();
+            if (level.random.nextFloat() < 1 / 32f)
+                level.addParticle(new DustParticleOptions(colorBright, 1), x, y, z, xd * .125f, yd * .125f,
+                        zd * .125f);
+            if (level.random.nextFloat() < 1 / 32f)
+                level.addParticle(new DustParticleOptions(colorDark, 1), x, y, z, xd * .125f, yd * .125f,
+                        zd * .125f);
+            if (level.random.nextFloat() < 1 / 48f)
+                level.addParticle(ParticleTypes.SMOKE, x, y, z, xd * .125f, yd * .125f,
+                        zd * .125f);
+            CubeParticleData DarkCube =
+                    new CubeParticleData(192, 122, 85, 0.075f, 10, true);
+            CubeParticleData LightCube =
+                    new CubeParticleData(191, 82, 91, 0.1f, 10, true);
+            if (level.random.nextFloat() < 1 / 32f)
+            	level.addParticle(DarkCube, x, y, z, xd * .1f, yd * .1f,
+            			zd * .1f);
+            if (level.random.nextFloat() < 1 / 32f)
+                level.addParticle(LightCube, x, y, z, xd * .1f, yd * .1f,
+                        zd * .1f);
         }
 
         if (type == null) {

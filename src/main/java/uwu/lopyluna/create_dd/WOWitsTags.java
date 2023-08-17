@@ -3,11 +3,14 @@ package uwu.lopyluna.create_dd;
 import com.simibubi.create.foundation.utility.Lang;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -101,11 +104,54 @@ public static TagKey<Block> forgeBlockTag(String path) {
         }
 
         private static void init() {}
+    }
 
+    public enum AllFluidTags {
+
+        ;
+
+        public final TagKey<Fluid> tag;
+        public final boolean alwaysDatagen;
+
+        AllFluidTags() {
+            this(NameSpace.MOD);
+        }
+
+        AllFluidTags(NameSpace namespace) {
+            this(namespace, namespace.optionalDefault, namespace.alwaysDatagenDefault);
+        }
+
+        AllFluidTags(NameSpace namespace, String path) {
+            this(namespace, path, namespace.optionalDefault, namespace.alwaysDatagenDefault);
+        }
+
+        AllFluidTags(NameSpace namespace, boolean optional, boolean alwaysDatagen) {
+            this(namespace, null, optional, alwaysDatagen);
+        }
+
+        AllFluidTags(NameSpace namespace, String path, boolean optional, boolean alwaysDatagen) {
+            ResourceLocation id = new ResourceLocation(namespace.id, path == null ? Lang.asId(name()) : path);
+            if (optional) {
+                tag = optionalTag(ForgeRegistries.FLUIDS, id);
+            } else {
+                tag = FluidTags.create(id);
+            }
+            this.alwaysDatagen = alwaysDatagen;
+        }
+
+
+        @SuppressWarnings("deprecation")
+        public boolean matches(Fluid fluid) {return fluid.is(tag);}
+
+        public Fluid matches(FluidState state) {
+            return state.getType();
+        }
+        private static void init() {}
 
     }
 
     public static void init() {
         AllBlockTags.init();
+        AllFluidTags.init();
     }
 }

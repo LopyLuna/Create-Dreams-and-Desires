@@ -1,8 +1,13 @@
 package uwu.lopyluna.create_dd.block;
 
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.Create;
+import com.simibubi.create.content.kinetics.base.HalfShaftInstance;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.ShaftInstance;
 import com.simibubi.create.content.kinetics.base.ShaftRenderer;
+import com.simibubi.create.content.kinetics.motor.CreativeMotorBlockEntity;
+import com.simibubi.create.content.kinetics.motor.CreativeMotorRenderer;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftInstance;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
@@ -11,6 +16,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.ReversedGearboxBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillInstance;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillRenderer;
@@ -27,6 +34,8 @@ import uwu.lopyluna.create_dd.block.BlockProperties.fan.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HYPressInstance;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainGearshiftBlock2Entity;
@@ -132,5 +141,18 @@ public class YIPPEEEntityTypes {
             .renderer(() -> ShaftRenderer::new)
             .register();
 
+    public static final BlockEntityEntry<KineticMotorBlockEntity> MOTOR = REGISTRATE
+            .blockEntity("motor", KineticMotorBlockEntity::new)
+            .instance(() -> HalfShaftInstance::new, false)
+            .validBlocks(YIPPEE.KINETIC_MOTOR)
+            .renderer(() -> KineticMotorRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<AcceleratorMotorBlockEntity> AC_MOTOR = REGISTRATE
+            .blockEntity("accelerator_motor", AcceleratorMotorBlockEntity::new)
+            .instance(() -> HalfShaftInstance::new, false)
+            .validBlocks(YIPPEE.ACCELERATOR_MOTOR)
+            .renderer(() -> AcceleratorMotorRenderer::new)
+            .register();
     public static void register() {}
 }
