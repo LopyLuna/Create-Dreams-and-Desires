@@ -3,7 +3,8 @@ package uwu.lopyluna.create_dd.recipes;
 import com.mojang.math.Vector3f;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllRecipeTypes;
-import com.simibubi.create.content.kinetics.fan.FanProcessing;
+import com.simibubi.create.content.kinetics.fan.FanProcessing.HauntingWrapper;
+import com.simibubi.create.content.kinetics.fan.FanProcessing.SplashingWrapper;
 import com.simibubi.create.content.kinetics.fan.HauntingRecipe;
 import com.simibubi.create.content.kinetics.fan.SplashingRecipe;
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
@@ -47,6 +48,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 import com.simibubi.create.content.kinetics.belt.behaviour.TransportedItemStackHandlerBehaviour.TransportedResult;
+import uwu.lopyluna.create_dd.WOWitsTags;
 import uwu.lopyluna.create_dd.access.DDTransportedItemStack;
 
 import java.util.ArrayList;
@@ -56,7 +58,7 @@ import java.util.Optional;
 
 import static com.simibubi.create.content.processing.burner.BlazeBurnerBlock.getHeatLevelOf;
 
-public class BakingFanProcessing extends FanProcessing {
+public class BakingFanProcessing {
 
     private static final DamageSource FIRE_DAMAGE_SOURCE = new DamageSource("create.fan_fire").setScalesWithDifficulty()
             .setIsFire();
@@ -372,45 +374,6 @@ public class BakingFanProcessing extends FanProcessing {
                 return isHauntableBronze(stack, level);
             }
         },
-        BLASTING {
-            @Override
-            public void spawnParticlesForProcessing(Level level, Vec3 pos) {
-                if (level.random.nextInt(8) != 0)
-                    return;
-                level.addParticle(ParticleTypes.LARGE_SMOKE, pos.x, pos.y + .25f, pos.z, 0, 1 / 16f, 0);
-            }
-
-            @Override
-            public void affectEntity(Entity entity, Level level) {
-                if (level.isClientSide)
-                    return;
-
-                if (!entity.fireImmune()) {
-                    entity.setSecondsOnFire(10);
-                    entity.hurt(LAVA_DAMAGE_SOURCE, 4);
-                }
-            }
-
-            @Override
-            public boolean canProcessBronze(ItemStack stack, Level level) {
-                RECIPE_WRAPPER.setItem(0, stack);
-                Optional<SmeltingRecipe> smeltingRecipe = level.getRecipeManager()
-                        .getRecipeFor(RecipeType.SMELTING, RECIPE_WRAPPER, level);
-
-                if (smeltingRecipe.isPresent())
-                    return true;
-
-                RECIPE_WRAPPER.setItem(0, stack);
-                Optional<BlastingRecipe> blastingRecipe = level.getRecipeManager()
-                        .getRecipeFor(RecipeType.BLASTING, RECIPE_WRAPPER, level);
-
-                if (blastingRecipe.isPresent())
-                    return true;
-
-                return !stack.getItem()
-                        .isFireResistant();
-            }
-        },
         FREEZING {
             @Override
             public void spawnParticlesForProcessing(Level level, Vec3 pos) {
@@ -499,7 +462,6 @@ public class BakingFanProcessing extends FanProcessing {
                 level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.x + (level.random.nextFloat() - .5f) * .5f, pos.y + .5f,
                         pos.z + (level.random.nextFloat() - .5f) * .5f, 0, 1 / 8f, 0);
             }
-
             @Override
             public void affectEntity(Entity entity, Level level) {
                 if (level.isClientSide)
@@ -517,10 +479,48 @@ public class BakingFanProcessing extends FanProcessing {
 
             }
 
-
             @Override
             public boolean canProcessBronze(ItemStack stack, Level level) {
                 return isSuperHeatable(stack, level);
+            }
+        },
+        BLASTING {
+            @Override
+            public void spawnParticlesForProcessing(Level level, Vec3 pos) {
+                if (level.random.nextInt(8) != 0)
+                    return;
+                level.addParticle(ParticleTypes.LARGE_SMOKE, pos.x, pos.y + .25f, pos.z, 0, 1 / 16f, 0);
+            }
+
+            @Override
+            public void affectEntity(Entity entity, Level level) {
+                if (level.isClientSide)
+                    return;
+
+                if (!entity.fireImmune()) {
+                    entity.setSecondsOnFire(10);
+                    entity.hurt(LAVA_DAMAGE_SOURCE, 4);
+                }
+            }
+
+            @Override
+            public boolean canProcessBronze(ItemStack stack, Level level) {
+                RECIPE_WRAPPER.setItem(0, stack);
+                Optional<SmeltingRecipe> smeltingRecipe = level.getRecipeManager()
+                        .getRecipeFor(RecipeType.SMELTING, RECIPE_WRAPPER, level);
+
+                if (smeltingRecipe.isPresent())
+                    return true;
+
+                RECIPE_WRAPPER.setItem(0, stack);
+                Optional<BlastingRecipe> blastingRecipe = level.getRecipeManager()
+                        .getRecipeFor(RecipeType.BLASTING, RECIPE_WRAPPER, level);
+
+                if (blastingRecipe.isPresent())
+                    return true;
+
+                return !stack.getItem()
+                        .isFireResistant();
             }
         },
         NONE {
@@ -544,32 +544,33 @@ public class BakingFanProcessing extends FanProcessing {
 
         public static BakingFanProcessing.FanType byBlock(BlockGetter reader, BlockPos pos) {
             FluidState fluidState = reader.getFluidState(pos);
-            if (fluidState.getType() == Fluids.WATER || fluidState.getType() == Fluids.FLOWING_WATER)
-                return BakingFanProcessing.FanType.SPLASHING;
             BlockState blockState = reader.getBlockState(pos);
+            if (fluidState.getType() == Fluids.WATER
+                    || fluidState.getType() == Fluids.FLOWING_WATER
+                    || blockState.is(WOWitsTags.AllBlockTags.splashing_type.tag))
+                return BakingFanProcessing.FanType.SPLASHING;
             Block block = blockState.getBlock();
             if (block == Blocks.SOUL_FIRE
-                    || block == Blocks.SOUL_CAMPFIRE && blockState.getOptionalValue(CampfireBlock.LIT)
-                    .orElse(false)
-                    || AllBlocks.LIT_BLAZE_BURNER.has(blockState)
-                    && blockState.getOptionalValue(LitBlazeBurnerBlock.FLAME_TYPE)
-                    .map(flame -> flame == LitBlazeBurnerBlock.FlameType.SOUL)
-                    .orElse(false))
+                    || block == Blocks.SOUL_CAMPFIRE && blockState.getOptionalValue(CampfireBlock.LIT).orElse(false)
+                    || AllBlocks.LIT_BLAZE_BURNER.has(blockState) && blockState.getOptionalValue(LitBlazeBurnerBlock.FLAME_TYPE).map(flame -> flame == LitBlazeBurnerBlock.FlameType.SOUL).orElse(false)
+                    || blockState.is(WOWitsTags.AllBlockTags.haunting_type.tag))
                 return BakingFanProcessing.FanType.HAUNTING;
             if (block == Blocks.FIRE
-                    || blockState.is(BlockTags.CAMPFIRES) && blockState.getOptionalValue(CampfireBlock.LIT)
-                    .orElse(false)
-                    || AllBlocks.LIT_BLAZE_BURNER.has(blockState)
-                    && blockState.getOptionalValue(LitBlazeBurnerBlock.FLAME_TYPE)
-                    .map(flame -> flame == LitBlazeBurnerBlock.FlameType.REGULAR)
-                    .orElse(false)
-                    || getHeatLevelOf(blockState) == BlazeBurnerBlock.HeatLevel.SMOULDERING)
+                    || blockState.is(BlockTags.CAMPFIRES) && blockState.getOptionalValue(CampfireBlock.LIT).orElse(false)
+                    || AllBlocks.LIT_BLAZE_BURNER.has(blockState) && blockState.getOptionalValue(LitBlazeBurnerBlock.FLAME_TYPE).map(flame -> flame == LitBlazeBurnerBlock.FlameType.REGULAR).orElse(false)
+                    || getHeatLevelOf(blockState) == BlazeBurnerBlock.HeatLevel.SMOULDERING
+                    || blockState.is(WOWitsTags.AllBlockTags.smoking_type.tag))
                 return BakingFanProcessing.FanType.SMOKING;
-            if (getHeatLevelOf(blockState) == BlazeBurnerBlock.HeatLevel.SEETHING)
-                return BakingFanProcessing.FanType.SUPERHEATING;
-            if (block == Blocks.LAVA || getHeatLevelOf(blockState).isAtLeast(BlazeBurnerBlock.HeatLevel.FADING))
+            if (block == Blocks.LAVA
+                    || getHeatLevelOf(blockState) == BlazeBurnerBlock.HeatLevel.FADING
+                    || getHeatLevelOf(blockState) == BlazeBurnerBlock.HeatLevel.KINDLED
+                    || blockState.is(WOWitsTags.AllBlockTags.blasting_type.tag))
                 return BakingFanProcessing.FanType.BLASTING;
-            if (block == Blocks.POWDER_SNOW)
+            if (getHeatLevelOf(blockState) == BlazeBurnerBlock.HeatLevel.SEETHING
+                    || blockState.is(WOWitsTags.AllBlockTags.superheating_type.tag))
+                return BakingFanProcessing.FanType.SUPERHEATING;
+            if (block == Blocks.POWDER_SNOW
+                    || blockState.is(WOWitsTags.AllBlockTags.freezing_type.tag))
                 return BakingFanProcessing.FanType.FREEZING;
 
             return BakingFanProcessing.FanType.NONE;

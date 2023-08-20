@@ -16,7 +16,7 @@ public class DDClientEvents extends ClientEvents {
 
         Level world = Minecraft.getInstance().level;
         if (event.phase == TickEvent.Phase.START) {
-            BronzeAirCurrent.tickClientPlayerSounds();
+            BronzeAirCurrent.BtickClientPlayerSounds();
         }
 
     }

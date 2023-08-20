@@ -1,8 +1,12 @@
 {
   "replace": false,
   "values": [
-    "create_dd:rose_fence",
-    "create_dd:smoked_fence",
+    "#create_dd:splashing_type",
+    "#create_dd:haunting_type",
+    "#create_dd:smoking_type",
+    "#create_dd:blasting_type",
+    "#create_dd:superheating_type",
+    "#create_dd:freezing_type",
     "minecraft:powder_snow"
   ]
 }

@@ -9,8 +9,8 @@ public class BronzeAirCurrentSound extends AirCurrentSound {
     protected BronzeAirCurrentSound(SoundEvent p_i46532_1_, float pitch) {
         super(p_i46532_1_, pitch);
         this.setPitch(pitch);
-        volume = 0.01f;
-        looping = true;
+        volume = 0.0f;
+        looping = false;
         delay = 0;
         relative = true;
     }

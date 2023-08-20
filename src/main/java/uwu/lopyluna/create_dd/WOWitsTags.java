@@ -58,6 +58,13 @@ public static TagKey<Block> forgeBlockTag(String path) {
         gabbro_replaceable,
         bronze_drill_immune,
 
+        splashing_type,
+        haunting_type,
+        smoking_type,
+        blasting_type,
+        superheating_type,
+        freezing_type,
+
         ;
 
         public final TagKey<Block> tag;

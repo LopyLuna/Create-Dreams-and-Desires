@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:splashing_sail",
+    "create_dd:haunting_sail",
+    "create_dd:smoking_sail",
+    "create_dd:blasting_sail",
+    "create_dd:superheating_sail",
+    "create_dd:freezing_sail"
+  ]
+}

@@ -101,7 +101,7 @@ public class BronzeAirFlowParticle extends SimpleAnimatedParticle {
     public void morphType(double distance) {
         if (source.getBAirCurrent() == null)
             return;
-        BakingFanProcessing.FanType type = source.getBAirCurrent().getSegmentAt((float) distance);
+        BakingFanProcessing.FanType type = source.getBAirCurrent().getBronzeSegmentAt((float) distance);
 
 
 

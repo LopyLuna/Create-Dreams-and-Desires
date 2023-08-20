@@ -4,9 +4,6 @@ import com.simibubi.create.*;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
-import com.simibubi.create.content.kinetics.motor.CreativeMotorBlock;
-import com.simibubi.create.content.kinetics.motor.CreativeMotorGenerator;
-import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.data.*;
 import com.simibubi.create.foundation.utility.Couple;
@@ -25,6 +22,7 @@ import net.minecraftforge.common.util.ForgeSoundType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import uwu.lopyluna.create_dd.DDcreate;
+import uwu.lopyluna.create_dd.WOWitsTags;
 import uwu.lopyluna.create_dd.block.BlockProperties.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillBlock;
@@ -462,6 +460,89 @@ public class YIPPEE {
                     .simpleItem()
                     .register();
 
+    public static final BlockEntry<FanSailBlock> splashing_sail =
+            REGISTRATE.block("splashing_sail", FanSailBlock::sail)
+                    .initialProperties(SharedProperties::wooden)
+                    .properties(p -> p.color(MaterialColor.DIRT))
+                    .properties(p -> p.sound(SoundType.SCAFFOLDING)
+                            .noOcclusion())
+                    .transform(axeOnly())
+                    .blockstate(BlockStateGen.directionalBlockProvider(false))
+                    .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+                    .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
+                    .tag(WOWitsTags.AllBlockTags.splashing_type.tag)
+                    .simpleItem()
+                    .register();
+
+    public static final BlockEntry<FanSailBlock> haunting_sail =
+            REGISTRATE.block("haunting_sail", FanSailBlock::sail)
+                    .initialProperties(SharedProperties::wooden)
+                    .properties(p -> p.color(MaterialColor.DIRT))
+                    .properties(p -> p.sound(SoundType.SCAFFOLDING)
+                            .noOcclusion())
+                    .transform(axeOnly())
+                    .blockstate(BlockStateGen.directionalBlockProvider(false))
+                    .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+                    .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
+                    .tag(WOWitsTags.AllBlockTags.haunting_type.tag)
+                    .simpleItem()
+                    .register();
+
+    public static final BlockEntry<FanSailBlock> smoking_sail =
+            REGISTRATE.block("smoking_sail", FanSailBlock::sail)
+                    .initialProperties(SharedProperties::wooden)
+                    .properties(p -> p.color(MaterialColor.DIRT))
+                    .properties(p -> p.sound(SoundType.SCAFFOLDING)
+                            .noOcclusion())
+                    .transform(axeOnly())
+                    .blockstate(BlockStateGen.directionalBlockProvider(false))
+                    .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+                    .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
+                    .tag(WOWitsTags.AllBlockTags.smoking_type.tag)
+                    .simpleItem()
+                    .register();
+
+    public static final BlockEntry<FanSailBlock> blasting_sail =
+            REGISTRATE.block("blasting_sail", FanSailBlock::sail)
+                    .initialProperties(SharedProperties::wooden)
+                    .properties(p -> p.color(MaterialColor.DIRT))
+                    .properties(p -> p.sound(SoundType.SCAFFOLDING)
+                            .noOcclusion())
+                    .transform(axeOnly())
+                    .blockstate(BlockStateGen.directionalBlockProvider(false))
+                    .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+                    .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
+                    .tag(WOWitsTags.AllBlockTags.blasting_type.tag)
+                    .simpleItem()
+                    .register();
+
+    public static final BlockEntry<FanSailBlock> superheating_sail =
+            REGISTRATE.block("superheating_sail", FanSailBlock::sail)
+                    .initialProperties(SharedProperties::wooden)
+                    .properties(p -> p.color(MaterialColor.DIRT))
+                    .properties(p -> p.sound(SoundType.SCAFFOLDING)
+                            .noOcclusion())
+                    .transform(axeOnly())
+                    .blockstate(BlockStateGen.directionalBlockProvider(false))
+                    .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+                    .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
+                    .tag(WOWitsTags.AllBlockTags.superheating_type.tag)
+                    .simpleItem()
+                    .register();
+
+    public static final BlockEntry<FanSailBlock> freezing_sail =
+            REGISTRATE.block("freezing_sail", FanSailBlock::sail)
+                    .initialProperties(SharedProperties::wooden)
+                    .properties(p -> p.color(MaterialColor.DIRT))
+                    .properties(p -> p.sound(SoundType.SCAFFOLDING)
+                            .noOcclusion())
+                    .transform(axeOnly())
+                    .blockstate(BlockStateGen.directionalBlockProvider(false))
+                    .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+                    .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
+                    .tag(WOWitsTags.AllBlockTags.freezing_type.tag)
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<ChainDriveBlock2> secondary_encased_chain_drive =
             REGISTRATE.block("secondary_encased_chain_drive", ChainDriveBlock2::new)

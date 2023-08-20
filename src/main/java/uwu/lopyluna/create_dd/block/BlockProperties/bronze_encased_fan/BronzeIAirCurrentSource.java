@@ -17,17 +17,18 @@ public interface BronzeIAirCurrentSource extends IAirCurrentSource {
     BronzeAirCurrent getBAirCurrent();
 
     @Nullable
+    @Override
     Level getAirCurrentWorld();
-
+    @Override
     BlockPos getAirCurrentPos();
-
+    @Override
     float getSpeed();
-
+    @Override
     Direction getAirflowOriginSide();
-
+    @Override
     @Nullable
     Direction getAirFlowDirection();
-
+    @Override
     default float getMaxDistance() {
         float speed = Math.abs(this.getSpeed());
         CKinetics config = AllConfigs.server().kinetics;
@@ -36,6 +37,6 @@ public interface BronzeIAirCurrentSource extends IAirCurrentSource {
         float pullDistance = Mth.lerp(distanceFactor, 3f, config.fanPullDistance.get());
         return this.getSpeed() > 0 ? pushDistance : pullDistance;
     }
-
+    @Override
     boolean isSourceRemoved();
 }

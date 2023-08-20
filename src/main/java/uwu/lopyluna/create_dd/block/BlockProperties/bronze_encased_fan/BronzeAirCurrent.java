@@ -2,6 +2,8 @@ package uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan;
 
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.copycat.CopycatBlock;
+import com.simibubi.create.content.kinetics.fan.AirCurrent;
+import com.simibubi.create.content.kinetics.fan.FanProcessing;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.utility.Iterate;
@@ -39,25 +41,26 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class BronzeAirCurrent {
+public class BronzeAirCurrent extends AirCurrent {
 
     public final BronzeIAirCurrentSource source;
     public AABB bounds = new AABB(0, 0, 0, 0, 0, 0);
-    public List<BronzeAirCurrent.AirCurrentSegment> segments = new ArrayList<>();
+    public List<BronzeAirCurrent.BAirCurrentSegment> segments = new ArrayList<>();
     public Direction direction;
     public boolean pushing;
     public float maxDistance;
 
-    protected List<Pair<DDTransportedItemStackHandlerBehaviour, BakingFanProcessing.FanType>> affectedItemHandlers =
+    protected List<Pair<DDTransportedItemStackHandlerBehaviour, BakingFanProcessing.FanType>> BaffectedItemHandlers =
             new ArrayList<>();
     protected List<Entity> caughtEntities = new ArrayList<>();
 
     static boolean isClientPlayerInAirCurrent;
-
+    
     public BronzeAirCurrent(BronzeIAirCurrentSource source) {
+        super(null);
         this.source = source;
     }
-
+    @Override
     public void tick() {
         if (direction == null)
             rebuild();
@@ -75,12 +78,12 @@ public class BronzeAirCurrent {
         tickAffectedEntities(world, facing);
         tickAffectedHandlers();
     }
-
+    @Override
     protected void tickAffectedEntities(Level world, Direction facing) {
         for (Iterator<Entity> iterator = caughtEntities.iterator(); iterator.hasNext();) {
             Entity entity = iterator.next();
             if (!entity.isAlive() || !entity.getBoundingBox()
-                    .intersects(bounds) || isPlayerCreativeFlying(entity)) {
+                    .intersects(bounds) || BisPlayerCreativeFlying(entity)) {
                 iterator.remove();
                 continue;
             }
@@ -103,13 +106,13 @@ public class BronzeAirCurrent {
             entity.setDeltaMovement(previousMotion.add(new Vec3(xIn, yIn, zIn).scale(1 / 8f)));
             entity.fallDistance = 0;
             DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
-                    () -> () -> enableClientPlayerSound(entity, Mth.clamp(speed / 128f * .4f, 0.01f, .4f)));
+                    () -> () -> BenableClientPlayerSound(entity, Mth.clamp(speed / 128f * .4f, 0.01f, .4f)));
 
             if (entity instanceof DDServerPlayer)
                 ((DDServerPlayer) entity).connection.aboveGroundTickCount = 0;
 
             entityDistance -= .5f;
-            BakingFanProcessing.FanType processingType = getSegmentAt((float) entityDistance);
+            BakingFanProcessing.FanType processingType = getBronzeSegmentAt((float) entityDistance);
 
             if (processingType == null || processingType == BakingFanProcessing.FanType.NONE)
                 continue;
@@ -130,7 +133,7 @@ public class BronzeAirCurrent {
         }
 
     }
-
+    @Override
     public void rebuild() {
         if (source.getSpeed() == 0) {
             maxDistance = 0;
@@ -148,10 +151,10 @@ public class BronzeAirCurrent {
         float max = this.maxDistance;
         Direction facing = direction;
         Vec3 directionVec = Vec3.atLowerCornerOf(facing.getNormal());
-        maxDistance = getFlowLimit(world, start, max, facing);
+        maxDistance = BgetFlowLimit(world, start, max, facing);
 
         // Determine segments with transported fluids/gases
-        BronzeAirCurrent.AirCurrentSegment currentSegment = new BronzeAirCurrent.AirCurrentSegment();
+        BronzeAirCurrent.BAirCurrentSegment currentSegment = new BronzeAirCurrent.BAirCurrentSegment();
         segments.clear();
         currentSegment.startOffset = 0;
         BakingFanProcessing.FanType type = BakingFanProcessing.FanType.NONE;
@@ -170,7 +173,7 @@ public class BronzeAirCurrent {
                 currentSegment.endOffset = i;
                 if (currentSegment.startOffset != 0)
                     segments.add(currentSegment);
-                currentSegment = new BronzeAirCurrent.AirCurrentSegment();
+                currentSegment = new BronzeAirCurrent.BAirCurrentSegment();
                 currentSegment.startOffset = i;
                 currentSegment.type = type;
             }
@@ -196,7 +199,7 @@ public class BronzeAirCurrent {
         findAffectedHandlers();
     }
 
-    public static float getFlowLimit(Level world, BlockPos start, float max, Direction facing) {
+    public static float BgetFlowLimit(Level world, BlockPos start, float max, Direction facing) {
         Vec3 directionVec = Vec3.atLowerCornerOf(facing.getNormal());
         Vec3 planeVec = VecHelper.axisAlingedPlaneOf(directionVec);
 
@@ -216,7 +219,7 @@ public class BronzeAirCurrent {
                 break;
             BlockState state = world.getBlockState(currentPos);
             BlockState copycatState = CopycatBlock.getMaterial(world, currentPos);
-            if (shouldAlwaysPass(copycatState.isAir() ? state : copycatState))
+            if (BshouldAlwaysPass(copycatState.isAir() ? state : copycatState))
                 continue;
             VoxelShape voxelshape = state.getCollisionShape(world, currentPos, CollisionContext.empty());
             if (voxelshape.isEmpty())
@@ -247,19 +250,19 @@ public class BronzeAirCurrent {
         }
         return max;
     }
-
+    @Override
     public void findEntities() {
         caughtEntities.clear();
         caughtEntities = source.getAirCurrentWorld()
                 .getEntities(null, bounds);
     }
-
+    @Override
     public void findAffectedHandlers() {
         Level world = source.getAirCurrentWorld();
         BlockPos start = source.getAirCurrentPos();
-        affectedItemHandlers.clear();
+        BaffectedItemHandlers.clear();
         for (int i = 0; i < maxDistance + 1; i++) {
-            BakingFanProcessing.FanType type = getSegmentAt(i);
+            BakingFanProcessing.FanType type = getBronzeSegmentAt(i);
             if (type == null)
                 continue;
 
@@ -273,16 +276,16 @@ public class BronzeAirCurrent {
                         .is(Blocks.POWDER_SNOW))
                     typeAtHandler = BakingFanProcessing.FanType.FREEZING;
                 if (behaviour != null)
-                    affectedItemHandlers.add(Pair.of(behaviour, typeAtHandler));
+                    BaffectedItemHandlers.add(Pair.of(behaviour, typeAtHandler));
                 if (direction.getAxis()
                         .isVertical())
                     break;
             }
         }
     }
-
+    @Override
     public void tickAffectedHandlers() {
-        for (Pair<DDTransportedItemStackHandlerBehaviour, BakingFanProcessing.FanType> pair : affectedItemHandlers) {
+        for (Pair<DDTransportedItemStackHandlerBehaviour, BakingFanProcessing.FanType> pair : BaffectedItemHandlers) {
             DDTransportedItemStackHandlerBehaviour handler = pair.getKey();
             Level world = handler.getWorld();
             BakingFanProcessing.FanType processingType = pair.getRight();
@@ -300,13 +303,24 @@ public class BronzeAirCurrent {
             });
         }
     }
-
-    private static boolean shouldAlwaysPass(BlockState state) {
+    
+    private static boolean BshouldAlwaysPass(BlockState state) {
         return AllTags.AllBlockTags.FAN_TRANSPARENT.matches(state);
     }
+    @Override
+    public FanProcessing.Type getSegmentAt(float offset) {
+        for (BronzeAirCurrent.BAirCurrentSegment airCurrentSegment : segments) {
+            if (offset > airCurrentSegment.endOffset && pushing)
+                continue;
+            if (offset < airCurrentSegment.endOffset && !pushing)
+                continue;
+            return null;
+        }
+        return FanProcessing.Type.NONE;
+    }
 
-    public BakingFanProcessing.FanType getSegmentAt(float offset) {
-        for (BronzeAirCurrent.AirCurrentSegment airCurrentSegment : segments) {
+    public BakingFanProcessing.FanType getBronzeSegmentAt(float offset) {
+        for (BronzeAirCurrent.BAirCurrentSegment airCurrentSegment : segments) {
             if (offset > airCurrentSegment.endOffset && pushing)
                 continue;
             if (offset < airCurrentSegment.endOffset && !pushing)
@@ -315,8 +329,8 @@ public class BronzeAirCurrent {
         }
         return BakingFanProcessing.FanType.NONE;
     }
-
-    public static class AirCurrentSegment {
+    
+    public static class BAirCurrentSegment {
         BakingFanProcessing.FanType type;
         int startOffset;
         int endOffset;
@@ -324,9 +338,9 @@ public class BronzeAirCurrent {
 
     @OnlyIn(Dist.CLIENT)
     static BronzeAirCurrentSound flyingSound;
-
+    
     @OnlyIn(Dist.CLIENT)
-    private static void enableClientPlayerSound(Entity e, float maxVolume) {
+    private static void BenableClientPlayerSound(Entity e, float maxVolume) {
         if (e != Minecraft.getInstance()
                 .getCameraEntity())
             return;
@@ -347,7 +361,7 @@ public class BronzeAirCurrent {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static void tickClientPlayerSounds() {
+    public static void BtickClientPlayerSounds() {
         if (!BronzeAirCurrent.isClientPlayerInAirCurrent && flyingSound != null)
             if (flyingSound.isFaded())
                 flyingSound.stopSound();
@@ -355,8 +369,8 @@ public class BronzeAirCurrent {
                 flyingSound.fadeOut();
         isClientPlayerInAirCurrent = false;
     }
-
-    public static boolean isPlayerCreativeFlying(Entity entity) {
+    
+    public static boolean BisPlayerCreativeFlying(Entity entity) {
         if (entity instanceof Player) {
             Player player = (Player) entity;
             return player.isCreative() && player.getAbilities().flying;

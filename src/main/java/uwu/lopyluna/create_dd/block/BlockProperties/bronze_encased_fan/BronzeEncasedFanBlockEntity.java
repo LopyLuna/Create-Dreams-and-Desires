@@ -1,7 +1,7 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan;
 
+import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.fan.AirCurrent;
-import com.simibubi.create.content.kinetics.fan.EncasedFanBlockEntity;
 import com.simibubi.create.content.logistics.chute.ChuteBlockEntity;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class BronzeEncasedFanBlockEntity extends EncasedFanBlockEntity implements BronzeIAirCurrentSource {
+public class BronzeEncasedFanBlockEntity extends KineticBlockEntity implements BronzeIAirCurrentSource {
 
     public BronzeAirCurrent airCurrentBronze;
     protected boolean BupdateAirFlow;
@@ -101,7 +101,7 @@ public class BronzeEncasedFanBlockEntity extends EncasedFanBlockEntity implement
     @Override
     public void onSpeedChanged(float prevSpeed) {
         super.onSpeedChanged(prevSpeed);
-        updateAirFlow = true;
+        BupdateAirFlow = true;
         updateChute();
     }
 
@@ -121,7 +121,7 @@ public class BronzeEncasedFanBlockEntity extends EncasedFanBlockEntity implement
     }
 
     public void blockInFrontChanged() {
-        updateAirFlow = true;
+        BupdateAirFlow = true;
     }
 
     @Override
@@ -132,11 +132,11 @@ public class BronzeEncasedFanBlockEntity extends EncasedFanBlockEntity implement
 
         if (server && airCurrentUpdateCooldown-- <= 0) {
             airCurrentUpdateCooldown = AllConfigs.server().kinetics.fanBlockCheckRate.get();
-            updateAirFlow = true;
+            BupdateAirFlow = true;
         }
 
-        if (updateAirFlow) {
-            updateAirFlow = false;
+        if (BupdateAirFlow) {
+            BupdateAirFlow = false;
             airCurrentBronze.rebuild();
             if (airCurrentBronze.maxDistance > 0)
                 award(AllAdvancements.ENCASED_FAN);
@@ -153,5 +153,11 @@ public class BronzeEncasedFanBlockEntity extends EncasedFanBlockEntity implement
 
         airCurrentBronze.tick();
     }
+
+
+
+
+
+
 
 }
