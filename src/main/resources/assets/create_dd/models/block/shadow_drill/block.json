@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"4": "create_dd:block/radiant_drill/drill_top",
-		"10": "create_dd:block/radiant_drill/drill_side",
+		"4": "create_dd:block/shadow_drill/drill_top",
+		"10": "create_dd:block/shadow_drill/drill_side",
 		"particle": "create_dd:block/steel_gearbox",
 		"gearbox": "create_dd:block/steel_gearbox"
 	},

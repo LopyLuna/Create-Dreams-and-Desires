@@ -11,25 +11,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Function;
 
 public class PonderTeleporting implements ITeleporter {
-
     BlockPos pos;
-
-    public PonderTeleporting(BlockPos teleportPos) {
-        this.pos = teleportPos;
-    }
-
+    public PonderTeleporting(BlockPos teleportPos) {this.pos = teleportPos;}
     @Override
-    public Entity placeEntity(Entity entity, ServerLevel currentWorld, ServerLevel destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
-        return repositionEntity.apply(false);
-    }
-
+    public Entity placeEntity(Entity entity, ServerLevel currentWorld, ServerLevel destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {return repositionEntity.apply(true);}
     @Override
-    public @Nullable PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
-        return new PortalInfo(new Vec3(pos.getX(), pos.getY(), pos.getZ()), Vec3.ZERO, entity.getYRot(), entity.getXRot());
-    }
-
+    public @Nullable PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {return new PortalInfo(new Vec3(pos.getX(), pos.getY(), pos.getZ()), Vec3.ZERO, entity.getYRot(), entity.getXRot());}
     @Override
-    public boolean isVanilla() {
-        return false;
-    }
+    public boolean isVanilla() {return this.getClass() == PonderTeleporting.class;}
 }

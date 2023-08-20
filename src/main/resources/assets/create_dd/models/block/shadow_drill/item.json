@@ -4,11 +4,11 @@
 	"textures": {
 		"0": "create:block/axis_top",
 		"1": "create:block/axis",
-		"2": "create_dd:block/radiant_drill/drill_head",
-		"6": "create_dd:block/radiant_drill/drill_head_glow",
-		"8": "create_dd:block/radiant_drill/drill_top",
-		"10": "create_dd:block/radiant_drill/drill_side",
-		"particle": "create_dd:block/radiant_drill/drill_head",
+		"2": "create_dd:block/shadow_drill/drill_head",
+		"6": "create_dd:block/shadow_drill/drill_head_glow",
+		"8": "create_dd:block/shadow_drill/drill_top",
+		"10": "create_dd:block/shadow_drill/drill_side",
+		"particle": "create_dd:block/shadow_drill/drill_head",
 		"gearbox": "create_dd:block/steel_gearbox"
 	},
 	"elements": [

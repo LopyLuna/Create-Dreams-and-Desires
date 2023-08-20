@@ -39,9 +39,10 @@ public class RadiantDrillActorInstance extends ActorInstance {
             eulerY = facing.toYRot() + ((axis == Direction.Axis.X) ? 180 : 0);
 
         drillHead = material.getModel(YIPPEEPartialModel.RADIANT_DRILL_HEAD, state).createInstance();
+        drillHead = material.getModel(YIPPEEPartialModel.RADIANT_DRILL_HEAD_GLOW, state).createInstance();
 
         drillHead.setPosition(context.localPos)
-                .setBlockLight(localBlockLight())
+                .setBlockLight(15)
                 .setRotationOffset(0)
                 .setRotationAxis(0, 0, 1)
                 .setLocalRotation(new Quaternion(eulerX, eulerY, 0, true))

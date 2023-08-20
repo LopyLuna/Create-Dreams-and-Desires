@@ -1,6 +1,8 @@
 package uwu.lopyluna.create_dd.block;
 
 import com.jozufozu.flywheel.core.PartialModel;
+import com.simibubi.create.foundation.render.CachedBufferer;
+import com.simibubi.create.foundation.render.SuperByteBuffer;
 import com.simibubi.create.foundation.utility.Couple;
 import net.minecraft.resources.ResourceLocation;
 import uwu.lopyluna.create_dd.DDcreate;
@@ -19,6 +21,7 @@ public class YIPPEEPartialModel {
             BRONZE_SAW_BLADE_VERTICAL_INACTIVE = block("bronze_saw/blade_vertical_inactive"),
             BRONZE_SAW_BLADE_VERTICAL_REVERSED = block("bronze_saw/blade_vertical_reversed"),
             RADIANT_DRILL_HEAD = block("radiant_drill/head"),
+            RADIANT_DRILL_HEAD_GLOW = block("radiant_drill/head_glow"),
             SHADOW_DRILL_HEAD = block("shadow_drill/head"),
             BRONZE_DRILL_HEAD = block("bronze_drill/head"),
             HYDRAULIC_PRESS_HEAD = block("hydraulic_press/head"),
