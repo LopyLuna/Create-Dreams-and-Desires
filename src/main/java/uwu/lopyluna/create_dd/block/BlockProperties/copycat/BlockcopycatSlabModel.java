@@ -33,7 +33,7 @@ public class BlockcopycatSlabModel extends com.simibubi.create.content.decoratio
     @Override
     protected List<BakedQuad> getCroppedQuads(BlockState state, Direction side, RandomSource rand, BlockState material,
                                               ModelData wrappedData, RenderType renderType) {
-        Direction facing = state.getOptionalValue(BlockcopycatBlock.FACING)
+        Direction facing = state.getOptionalValue(BlockcopycatSlab.FACING)
                 .orElse(Direction.UP);
         BlockRenderDispatcher blockRenderer = Minecraft.getInstance()
                 .getBlockRenderer();

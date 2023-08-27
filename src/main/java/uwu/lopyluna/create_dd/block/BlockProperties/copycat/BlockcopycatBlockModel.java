@@ -64,13 +64,12 @@ public class BlockcopycatBlockModel extends com.simibubi.create.content.decorati
         // 2 Pieces
         for (boolean front : Iterate.trueAndFalse) {
             Vec3 normalScaledN13 = normal.scale(front ? 0 : -0 / 16f);
-            float contract = 16 - (front ? 8 : 8);
+            float contract = 16 - (8);
             AABB bb = CUBE_AABB.contract(normal.x * contract / 16, normal.y * contract / 16, normal.z * contract / 16);
             if (!front)
                 bb = bb.move(normalScaled16);
 
-            for (int i = 0; i < size; i++) {
-                BakedQuad quad = templateQuads.get(i);
+            for (BakedQuad quad : templateQuads) {
                 Direction direction = quad.getDirection();
 
                 if (front && direction == facing)

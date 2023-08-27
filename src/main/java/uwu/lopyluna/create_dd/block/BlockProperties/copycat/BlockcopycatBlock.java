@@ -30,6 +30,7 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.block.YIPPEE;
 import uwu.lopyluna.create_dd.block.YIPPEEBOOBASHAPE;
 
@@ -137,15 +138,13 @@ public class BlockcopycatBlock extends WaterloggedCopycatBlock {
 
         if (isOccluded(state, toState, facing))
             return true;
-        if (toState.setValue(WATERLOGGED, false) == state.setValue(WATERLOGGED, false) && coord == 0)
-            return true;
-
-        return false;
+        return toState.setValue(WATERLOGGED, false) == state.setValue(WATERLOGGED, false) && coord == 0;
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         BlockState stateForPlacement = super.getStateForPlacement(pContext);
+        assert stateForPlacement != null;
         return stateForPlacement.setValue(FACING, pContext.getNearestLookingDirection()
                 .getOpposite());
     }
@@ -156,12 +155,14 @@ public class BlockcopycatBlock extends WaterloggedCopycatBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    @SuppressWarnings("deprecation")
+    public @NotNull VoxelShape getShape(BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         return YIPPEEBOOBASHAPE.CASING_16PX.get(pState.getValue(FACING));
     }
 
     @Override
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+    @SuppressWarnings("deprecation")
+    public boolean isPathfindable(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull PathComputationType pType) {
         return false;
     }
 
@@ -197,13 +198,14 @@ public class BlockcopycatBlock extends WaterloggedCopycatBlock {
     }
 
     @Override
-    public BlockState rotate(BlockState state, Rotation rot) {
+    @SuppressWarnings("deprecation")
+    public @NotNull BlockState rotate(BlockState state, Rotation rot) {
         return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override
     @SuppressWarnings("deprecation")
-    public BlockState mirror(BlockState state, Mirror mirrorIn) {
+    public @NotNull BlockState mirror(BlockState state, Mirror mirrorIn) {
         return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
     }
 
