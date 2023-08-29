@@ -25,7 +25,8 @@ public class YIPPEEPartialModel {
             SHADOW_DRILL_HEAD = block("shadow_drill/head"),
             BRONZE_DRILL_HEAD = block("bronze_drill/head"),
             HYDRAULIC_PRESS_HEAD = block("hydraulic_press/head"),
-            BRONZE_ENCASED_FAN_INNER = block("bronze_encased_fan/propeller")
+            INDUSTRIAL_FAN_COG = block("industrial_fan/cog"),
+            BRONZE_ENCASED_FAN_INNER = block("industrial_fan/propeller")
             ;
 
     public static final Map<ResourceLocation, Couple<PartialModel>> FOLDING_DOORS = new HashMap<>();

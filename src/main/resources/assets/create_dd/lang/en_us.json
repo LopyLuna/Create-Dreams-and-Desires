@@ -245,7 +245,21 @@
   "block.create_dd.secondary_encased_chain_drive": "Secondary Encased Chain Drive",
   "block.create_dd.secondary_adjustable_chain_gearshift": "Secondary Adjustable Chain Gearshift",
 
-  "block.create_dd.vertical_item_vault": "Vertical Item Vault",
+  "block.create_dd.kinetic_motor": "Kinetic Motor",
+  "block.create_dd.accelerator_motor": "Accelerator Motor",
+
+  "block.create_dd.splashing_sail": "Splashing Sail",
+  "block.create_dd.haunting_sail": "Haunting Sail",
+  "block.create_dd.smoking_sail": "Smoking Sail",
+  "block.create_dd.blasting_sail": "Blasting Sail",
+  "block.create_dd.superheating_sail": "Seething Sail",
+  "block.create_dd.freezing_sail": "Freezing Sail",
+  "block.create_dd.sculking_sail": "Sculking Sail",
+  "block.create_dd.energizing_sail": "Energizing Sail",
+  "block.create_dd.gluttony_sail": "Gluttony Sail",
+  "block.create_dd.slimy_sail": "Slimy Sail",
+
+  "block.create_dd.industrial_fan": "Industrial Fan",
 
   "block.create_dd.reinforcement_plating": "Reinforcement Plating",
 

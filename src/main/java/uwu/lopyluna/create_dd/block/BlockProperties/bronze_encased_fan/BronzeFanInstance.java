@@ -1,7 +1,6 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan;
 
 import com.jozufozu.flywheel.api.MaterialManager;
-import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityInstance;
 import com.simibubi.create.content.kinetics.base.flwdata.RotatingData;
 import com.simibubi.create.foundation.render.AllMaterialSpecs;
@@ -24,8 +23,14 @@ public class BronzeFanInstance extends KineticBlockEntityInstance<BronzeEncasedF
 
         direction = blockState.getValue(FACING);
 
+
+
         opposite = direction.getOpposite();
-        shaft = getRotatingMaterial().getModel(AllPartialModels.SHAFT_HALF, blockState, opposite).createInstance();
+        shaft = materialManager.defaultCutout()
+                .material(AllMaterialSpecs.ROTATING)
+                .getModel(YIPPEEPartialModel.INDUSTRIAL_FAN_COG, blockState, opposite)
+                .createInstance();
+
         fan = materialManager.defaultCutout()
                 .material(AllMaterialSpecs.ROTATING)
                 .getModel(YIPPEEPartialModel.BRONZE_ENCASED_FAN_INNER, blockState, opposite)
@@ -52,8 +57,7 @@ public class BronzeFanInstance extends KineticBlockEntityInstance<BronzeEncasedF
 
     @Override
     public void updateLight() {
-        BlockPos behind = pos.relative(opposite);
-        relight(behind, shaft);
+        relight(pos, shaft);
 
         BlockPos inFront = pos.relative(direction);
         relight(inFront, fan);

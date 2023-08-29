@@ -79,9 +79,9 @@ public class YIPPEEEntityTypes {
                     .register();
 
     public static final BlockEntityEntry<BronzeEncasedFanBlockEntity> BRONZE_ENCASED_FAN =
-            REGISTRATE.blockEntity("bronze_encased_fan", BronzeEncasedFanBlockEntity::new)
+            REGISTRATE.blockEntity("industrial_fan", BronzeEncasedFanBlockEntity::new)
                     .instance(() -> BronzeFanInstance::new, false)
-                    .validBlocks(YIPPEE.BRONZE_ENCASED_FAN)
+                    .validBlocks(YIPPEE.industrial_fan)
                     .renderer(() -> BronzeEncasedFanRenderer::new)
                     .register();
 

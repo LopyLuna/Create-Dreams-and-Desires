@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:smooth_quartz"
+    },
+    {
+      "item": "minecraft:white_concrete"
+    },
+    {
+      "item": "minecraft:snow_block"
+    },
+    {
+      "item": "create:polished_cut_calcite"
+    }
+  ],
+  "result": {
+    "item": "create_dd:pondering_block_light",
+    "count": 8
+  }
+}

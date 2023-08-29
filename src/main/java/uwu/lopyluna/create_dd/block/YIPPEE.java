@@ -393,10 +393,12 @@ public class YIPPEE {
             .simpleItem()
             .register();
 
-    public static final BlockEntry<BronzeEncasedFanBlock> BRONZE_ENCASED_FAN =
-            REGISTRATE.block("bronze_encased_fan", BronzeEncasedFanBlock::new)
+    public static final BlockEntry<BronzeEncasedFanBlock> industrial_fan =
+            REGISTRATE.block("industrial_fan", BronzeEncasedFanBlock::new)
             .initialProperties(SharedProperties::stone)
-            .properties(p -> p.color(MaterialColor.PODZOL))
+            .properties(p -> p.color(MaterialColor.PODZOL)
+                    .sound(SoundType.NETHERITE_BLOCK))
+            .properties(BlockBehaviour.Properties::noOcclusion)
             .blockstate(BlockStateGen.directionalBlockProvider(true))
             .addLayer(() -> RenderType::cutoutMipped)
             .transform(axeOrPickaxe())
@@ -480,6 +482,7 @@ public class YIPPEE {
                     .properties(p -> p.color(MaterialColor.DIRT))
                     .properties(p -> p.sound(SoundType.SCAFFOLDING)
                             .noOcclusion())
+                    .properties(p -> p.lightLevel(s -> 8))
                     .transform(axeOnly())
                     .blockstate(BlockStateGen.directionalBlockProvider(false))
                     .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
@@ -494,6 +497,7 @@ public class YIPPEE {
                     .properties(p -> p.color(MaterialColor.DIRT))
                     .properties(p -> p.sound(SoundType.SCAFFOLDING)
                             .noOcclusion())
+                    .properties(p -> p.lightLevel(s -> 8))
                     .transform(axeOnly())
                     .blockstate(BlockStateGen.directionalBlockProvider(false))
                     .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
@@ -508,6 +512,7 @@ public class YIPPEE {
                     .properties(p -> p.color(MaterialColor.DIRT))
                     .properties(p -> p.sound(SoundType.SCAFFOLDING)
                             .noOcclusion())
+                    .properties(p -> p.lightLevel(s -> 12))
                     .transform(axeOnly())
                     .blockstate(BlockStateGen.directionalBlockProvider(false))
                     .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
@@ -522,6 +527,7 @@ public class YIPPEE {
                     .properties(p -> p.color(MaterialColor.DIRT))
                     .properties(p -> p.sound(SoundType.SCAFFOLDING)
                             .noOcclusion())
+                    .properties(p -> p.lightLevel(s -> 15))
                     .transform(axeOnly())
                     .blockstate(BlockStateGen.directionalBlockProvider(false))
                     .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
@@ -694,6 +700,16 @@ public class YIPPEE {
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .transform(pickaxeOnly())
             .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> blueprint_block = REGISTRATE.block("blueprint_block", Block::new)
+            .initialProperties(() -> Blocks.HAY_BLOCK)
+            .properties(p -> p.color(MaterialColor.COLOR_LIGHT_BLUE))
+            .properties(p -> p.sound(new ForgeSoundType(1, 0.85f, () -> SoundEvents.PAINTING_BREAK,
+                    () -> SoundEvents.MOSS_STEP, () -> SoundEvents.PAINTING_PLACE,
+                    () -> SoundEvents.WOOL_HIT, () -> SoundEvents.MOSS_STEP)))
+            .properties(p -> p.strength(0.25f,1f))
+            .lang("Block of Blueprint")
             .register();
 
 
@@ -1217,9 +1233,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> andesite_mossy_bricks = REGISTRATE.block("andesite_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.STONE))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
             .simpleItem()
@@ -1227,9 +1240,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> asurine_mossy_bricks = REGISTRATE.block("asurine_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.COLOR_BLUE))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
             .simpleItem()
@@ -1237,9 +1247,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> calcite_mossy_bricks = REGISTRATE.block("calcite_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.TERRACOTTA_WHITE))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.CALCITE))
             .simpleItem()
@@ -1247,9 +1254,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> crimsite_mossy_bricks = REGISTRATE.block("crimsite_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.COLOR_RED))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
             .simpleItem()
@@ -1257,9 +1261,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> deepslate_mossy_bricks = REGISTRATE.block("deepslate_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.DEEPSLATE))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
             .simpleItem()
@@ -1267,9 +1268,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> diorite_mossy_bricks = REGISTRATE.block("diorite_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.QUARTZ))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
             .simpleItem()
@@ -1277,9 +1275,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> dripstone_mossy_bricks = REGISTRATE.block("dripstone_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.TERRACOTTA_BROWN))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DRIPSTONE_BLOCK))
             .simpleItem()
@@ -1287,9 +1282,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> gabbro_mossy_bricks = REGISTRATE.block("gabbro_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
             .simpleItem()
@@ -1297,9 +1289,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> granite_mossy_bricks = REGISTRATE.block("granite_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.TERRACOTTA_CYAN))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
             .simpleItem()
@@ -1307,9 +1296,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> limestone_mossy_bricks = REGISTRATE.block("limestone_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.SAND))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
             .simpleItem()
@@ -1317,9 +1303,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> ochrum_mossy_bricks = REGISTRATE.block("ochrum_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.TERRACOTTA_YELLOW))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.CALCITE))
             .simpleItem()
@@ -1327,9 +1310,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> potassic_mossy_bricks = REGISTRATE.block("potassic_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.TERRACOTTA_BLUE))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
             .simpleItem()
@@ -1337,9 +1317,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> scorchia_mossy_bricks = REGISTRATE.block("scorchia_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.TERRACOTTA_GRAY))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
             .simpleItem()
@@ -1347,9 +1324,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> scoria_mossy_bricks = REGISTRATE.block("scoria_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.COLOR_BROWN))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
             .simpleItem()
@@ -1357,9 +1331,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> tuff_mossy_bricks = REGISTRATE.block("tuff_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.TERRACOTTA_GRAY))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
             .simpleItem()
@@ -1367,9 +1338,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> veridium_mossy_bricks = REGISTRATE.block("veridium_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.WARPED_NYLIUM))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
             .simpleItem()
@@ -1377,9 +1345,6 @@ public class YIPPEE {
 
     public static final BlockEntry<Block> weathered_limestone_mossy_bricks = REGISTRATE.block("weathered_limestone_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
-                    .speedFactor(1.2F)
-                    .jumpFactor(1.2F)
-                    .friction(0.6F)
                     .color(MaterialColor.COLOR_LIGHT_GRAY))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.STONE))
             .simpleItem()

@@ -409,7 +409,6 @@ public class BakingFanProcessing {
                             SoundSource.NEUTRAL, 0.7F, 1.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.4F);
                 }
 
-                entity.canFreeze();
                 if (entity instanceof LivingEntity livingEntity) {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 15, 3, false, false));
                     livingEntity.hurt(DamageSource.FREEZE, 1f);

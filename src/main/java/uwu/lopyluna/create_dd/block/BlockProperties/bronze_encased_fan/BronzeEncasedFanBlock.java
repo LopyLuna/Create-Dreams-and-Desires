@@ -1,6 +1,7 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan;
 
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
+import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.content.logistics.chute.AbstractChuteBlock;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.utility.worldWrappers.WrappedWorld;
@@ -16,7 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
 
-public class BronzeEncasedFanBlock extends DirectionalKineticBlock implements IBE<BronzeEncasedFanBlockEntity> {
+public class BronzeEncasedFanBlock extends DirectionalKineticBlock implements ICogWheel, IBE<BronzeEncasedFanBlockEntity> {
     public BronzeEncasedFanBlock(Properties properties) {
         super(properties);
     }

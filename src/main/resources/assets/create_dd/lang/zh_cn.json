@@ -32,6 +32,7 @@
   "item.create_dd.chromatic_compound": "异彩化合物",
   "item.create_dd.shadow_steel": "暗影钢",
   "item.create_dd.refined_radiance": "光辉石",
+  "item.create_dd.overcharge_alloy": "Overcharge Alloy",
 
   "item.create_dd.shadow_steel_sheet": "暗影钢板",
   "item.create_dd.refined_radiance_sheet": "光辉石板",
@@ -118,6 +119,37 @@
   "block.create_dd.mithril_block": "秘银块",
   "block.create_dd.mithril_casing": "秘银机壳",
   "block.create_dd.steel_block": "钢块",
+
+  "block.create_dd.bronze_polished_block": "Polished Bronze",
+  "block.create_dd.bronze_polished_slab": "Polished Bronze Slab",
+  "block.create_dd.bronze_polished_stairs": "Polished Bronze Stairs",
+  "block.create_dd.bronze_tiled_block": "Tiled Bronze",
+  "block.create_dd.bronze_tiled_slab": "Tiled Bronze Slab",
+  "block.create_dd.bronze_tiled_stairs": "Tiled Bronze Stairs",
+
+  "block.create_dd.steel_polished_block": "Polished Steel",
+  "block.create_dd.steel_polished_slab": "Polished Steel Slab",
+  "block.create_dd.steel_polished_stairs": "Polished Steel Stairs",
+  "block.create_dd.steel_tiled_block": "Tiled Steel",
+  "block.create_dd.steel_tiled_slab": "Tiled Steel Slab",
+  "block.create_dd.steel_tiled_stairs": "Tiled Steel Stairs",
+
+  "block.create_dd.andesite_alloy_polished_block": "Polished Andesite Alloy",
+  "block.create_dd.andesite_alloy_polished_slab": "Polished Andesite Alloy Slab",
+  "block.create_dd.andesite_alloy_polished_stairs": "Polished Andesite Alloy Stairs",
+  "block.create_dd.andesite_alloy_tiled_block": "Tiled Andesite Alloy",
+  "block.create_dd.andesite_alloy_tiled_slab": "Tiled Andesite Alloy Slab",
+  "block.create_dd.andesite_alloy_tiled_stairs": "Tiled Andesite Alloy Stairs",
+
+  "block.create_dd.zinc_polished_block": "Polished Zinc",
+  "block.create_dd.zinc_polished_slab": "Polished Zinc Slab",
+  "block.create_dd.zinc_polished_stairs": "Polished Zinc Stairs",
+  "block.create_dd.zinc_tiled_block": "Tiled Zinc",
+  "block.create_dd.zinc_tiled_slab": "Tiled Zinc Slab",
+  "block.create_dd.zinc_tiled_stairs": "Tiled Zinc Stairs",
+
+  "block.create_dd.pondering_block_light": "Lighten Pondering Block",
+  "block.create_dd.pondering_block_dark": "Darken Pondering Block",
 
   "block.create_dd.tin_ore": "锡矿石",
   "block.create_dd.deepslate_tin_ore": "深层锡矿石",
@@ -213,7 +245,21 @@
   "block.create_dd.secondary_encased_chain_drive": "二级链式传动箱",
   "block.create_dd.secondary_adjustable_chain_gearshift": "二级可调节链式传动箱",
 
-  "block.create_dd.vertical_item_vault": "垂直物品保险库",
+  "block.create_dd.kinetic_motor": "Kinetic Motor",
+  "block.create_dd.accelerator_motor": "Accelerator Motor",
+
+  "block.create_dd.splashing_sail": "Splashing Sail",
+  "block.create_dd.haunting_sail": "Haunting Sail",
+  "block.create_dd.smoking_sail": "Smoking Sail",
+  "block.create_dd.blasting_sail": "Blasting Sail",
+  "block.create_dd.superheating_sail": "Seething Sail",
+  "block.create_dd.freezing_sail": "Freezing Sail",
+  "block.create_dd.sculking_sail": "Sculking Sail",
+  "block.create_dd.energizing_sail": "Energizing Sail",
+  "block.create_dd.gluttony_sail": "Gluttony Sail",
+  "block.create_dd.slimy_sail": "Slimy Sail",
+
+  "block.create_dd.industrial_fan": "Industrial Fan",
 
   "block.create_dd.reinforcement_plating": "强化镀层",
 
@@ -240,6 +286,24 @@
   "block.create_dd.tuff_asphalt_block": "凝灰岩沥青块",
   "block.create_dd.veridium_asphalt_block": "辉绿岩沥青块",
   "block.create_dd.weathered_limestone_asphalt_block": "风化石灰岩沥青块",
+
+  "block.create_dd.andesite_mossy_bricks": "Mossy Andesite Bricks",
+  "block.create_dd.asurine_mossy_bricks": "Mossy Asurine Bricks",
+  "block.create_dd.calcite_mossy_bricks": "Mossy Calcite Bricks",
+  "block.create_dd.crimsite_mossy_bricks": "Mossy Crimsite Bricks",
+  "block.create_dd.deepslate_mossy_bricks": "Mossy Deepslate Bricks",
+  "block.create_dd.diorite_mossy_bricks": "Mossy Diorite Bricks",
+  "block.create_dd.dripstone_mossy_bricks": "Mossy Dripstone Bricks",
+  "block.create_dd.gabbro_mossy_bricks": "Mossy Gabbro Bricks",
+  "block.create_dd.granite_mossy_bricks": "Mossy Granite Bricks",
+  "block.create_dd.limestone_mossy_bricks": "Mossy Limestone Bricks",
+  "block.create_dd.ochrum_mossy_bricks": "Mossy Ochrum Bricks",
+  "block.create_dd.potassic_mossy_bricks": "Mossy Potassic Bricks",
+  "block.create_dd.scorchia_mossy_bricks": "Mossy Scorchia Bricks",
+  "block.create_dd.scoria_mossy_bricks": "Mossy Scoria Bricks",
+  "block.create_dd.tuff_mossy_bricks": "Mossy Tuff Bricks",
+  "block.create_dd.veridium_mossy_bricks": "Mossy Veridium Bricks",
+  "block.create_dd.weathered_limestone_mossy_bricks": "Mossy Weathered Limestone Bricks",
 
   "block.create_dd.weathered_limestone": "风化石灰岩",
 
@@ -303,6 +367,16 @@
   "block.create_dd.small_potassic_brick_stairs": "钾质岩小砖块楼梯",
   "block.create_dd.small_potassic_brick_wall": "钾质岩小砖块墙",
   "block.create_dd.small_potassic_bricks": "钾质岩小砖块",
+
+  "advancement.create_dd.chromatic_compound": "Spiritual Minerals",
+  "advancement.create_dd.chromatic_compound.desc": "Create a Compound of Chromatic by alloying Polished Rose Quartz & Spectral Ruby in the Seething Blaze-heated Mixer.",
+  "advancement.create_dd.shadow_steel": "Void Consumer",
+  "advancement.create_dd.shadow_steel.desc": "Create Shadow Steel, a Ingot of the Abyss.",
+  "advancement.create_dd.refined_radiance": "Bright and Inspiring",
+  "advancement.create_dd.refined_radiance.desc": "Create Refined Radiance, a powerful blinding Ingot that shall ward of evil!",
+
+
+
 
   "tetra.material.industrial_iron": "工业铁",
   "tetra.material.industrial_iron.prefix": "工业铁",

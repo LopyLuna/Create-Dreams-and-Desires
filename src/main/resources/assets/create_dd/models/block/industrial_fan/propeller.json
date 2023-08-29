@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"axis_top": "create:block/axis_top",
-		"fan_blades": "create_dd:block/bronze_fan_blades",
+		"fan_blades": "create_dd:block/industrial_fan_blades",
 		"axis": "create:block/axis"
 	},
 	"elements": [

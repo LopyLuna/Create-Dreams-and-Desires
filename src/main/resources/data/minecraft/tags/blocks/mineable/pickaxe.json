@@ -140,6 +140,60 @@
     "create_dd:scoria_asphalt_block",
     "create_dd:tuff_asphalt_block",
     "create_dd:veridium_asphalt_block",
-    "create_dd:weathered_limestone_asphalt_block"
+    "create_dd:weathered_limestone_asphalt_block",
+//new
+
+    "create_dd:andesite_mossy_bricks",
+    "create_dd:asurine_mossy_bricks",
+    "create_dd:calcite_mossy_bricks",
+    "create_dd:crimsite_mossy_bricks",
+    "create_dd:deepslate_mossy_bricks",
+    "create_dd:diorite_mossy_bricks",
+    "create_dd:dripstone_mossy_bricks",
+    "create_dd:gabbro_mossy_bricks",
+    "create_dd:granite_mossy_bricks",
+    "create_dd:limestone_mossy_bricks",
+    "create_dd:ochrum_mossy_bricks",
+    "create_dd:potassic_mossy_bricks",
+    "create_dd:scorchia_mossy_bricks",
+    "create_dd:scoria_mossy_bricks",
+    "create_dd:tuff_mossy_bricks",
+    "create_dd:veridium_mossy_bricks",
+    "create_dd:weathered_limestone_mossy_bricks",
+
+    "create_dd:bronze_polished_block",
+    "create_dd:bronze_tiled_slab",
+    "create_dd:bronze_tiled_stairs",
+    "create_dd:bronze_tiled_block",
+    "create_dd:bronze_polished_slab",
+    "create_dd:bronze_polished_stairs",
+
+    "create_dd:steel_polished_block",
+    "create_dd:steel_tiled_slab",
+    "create_dd:steel_tiled_stairs",
+    "create_dd:steel_tiled_block",
+    "create_dd:steel_polished_slab",
+    "create_dd:steel_polished_stairs",
+
+    "create_dd:zinc_polished_block",
+    "create_dd:zinc_tiled_slab",
+    "create_dd:zinc_tiled_stairs",
+    "create_dd:zinc_tiled_block",
+    "create_dd:zinc_polished_slab",
+    "create_dd:zinc_polished_stairs",
+
+    "create_dd:andesite_alloy_polished_block",
+    "create_dd:andesite_alloy_tiled_slab",
+    "create_dd:andesite_alloy_tiled_stairs",
+    "create_dd:andesite_alloy_tiled_block",
+    "create_dd:andesite_alloy_polished_slab",
+    "create_dd:andesite_alloy_polished_stairs",
+
+    "create_dd:kinetic_motor",
+    "create_dd:accelerator_motor",
+
+    "create_dd:pondering_block_light",
+    "create_dd:pondering_block_dark",
+    "create_dd:industrial_fan"
   ]
 }

@@ -3,7 +3,6 @@ package uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan;
 import com.jozufozu.flywheel.backend.Backend;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
@@ -37,7 +36,7 @@ public class BronzeEncasedFanRenderer extends KineticBlockEntityRenderer<BronzeE
         int lightInFront = LevelRenderer.getLightColor(be.getLevel(), be.getBlockPos().relative(direction));
 
         SuperByteBuffer shaftHalf =
-                CachedBufferer.partialFacing(AllPartialModels.SHAFT_HALF, be.getBlockState(), direction.getOpposite());
+                CachedBufferer.partialFacing(YIPPEEPartialModel.INDUSTRIAL_FAN_COG, be.getBlockState(), direction.getOpposite());
         SuperByteBuffer fanInner =
                 CachedBufferer.partialFacing(YIPPEEPartialModel.BRONZE_ENCASED_FAN_INNER, be.getBlockState(), direction.getOpposite());
 
