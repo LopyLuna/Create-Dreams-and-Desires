@@ -248,6 +248,10 @@
   "block.create_dd.kinetic_motor": "Kinetic Motor",
   "block.create_dd.accelerator_motor": "Accelerator Motor",
 
+  "block.create_dd.blueprint_block": "Blueprint Block",
+  "block.create_dd.blueprint_carpet": "Blueprint Carpet",
+  "block.create_dd.mysterious_blueprint_carpet": "Blueprint Carpet",
+
   "block.create_dd.splashing_sail": "Splashing Sail",
   "block.create_dd.haunting_sail": "Haunting Sail",
   "block.create_dd.smoking_sail": "Smoking Sail",

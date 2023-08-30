@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "create:lit_blaze_burner",
+    "create_dd:blasting_sail",
+    "create_dd:superheating_sail",
+    "minecraft:lava",
+    "#minecraft:fire"
+  ]
+}

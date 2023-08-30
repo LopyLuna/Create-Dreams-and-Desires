@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BCB",
+    "CAC",
+    "BCB"
+  ],
+  "key": {
+    "A": {
+      "item": "create:crafting_blueprint"
+    },
+    "B": {
+      "tag": "forge:storage_blocks/leather"
+    },
+    "C": {
+      "item": "minecraft:light_blue_wool"
+    }
+  },
+  "result": {
+    "item": "create_dd:blueprint_block",
+    "count": 24
+  }
+}

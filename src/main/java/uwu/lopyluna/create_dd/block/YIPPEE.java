@@ -403,6 +403,7 @@ public class YIPPEE {
             .addLayer(() -> RenderType::cutoutMipped)
             .transform(axeOrPickaxe())
             .transform(BlockStressDefaults.setImpact(4.0))
+            .transform(BlockStressDefaults.setCapacity(16))
             .simpleItem()
             .register();
 
@@ -703,15 +704,40 @@ public class YIPPEE {
             .register();
 
     public static final BlockEntry<Block> blueprint_block = REGISTRATE.block("blueprint_block", Block::new)
+            .transform(BuilderTransgender.block(() -> YIPPEESpriteShifts.blueprint_block))
             .initialProperties(() -> Blocks.HAY_BLOCK)
             .properties(p -> p.color(MaterialColor.COLOR_LIGHT_BLUE))
             .properties(p -> p.sound(new ForgeSoundType(1, 0.85f, () -> SoundEvents.PAINTING_BREAK,
                     () -> SoundEvents.MOSS_STEP, () -> SoundEvents.PAINTING_PLACE,
-                    () -> SoundEvents.WOOL_HIT, () -> SoundEvents.MOSS_STEP)))
-            .properties(p -> p.strength(0.25f,1f))
+                    () -> SoundEvents.BAMBOO_HIT, () -> SoundEvents.MOSS_STEP)))
+            .properties(p -> p.strength(0.05f,0.5f))
             .lang("Block of Blueprint")
             .register();
 
+    public static final BlockEntry<CarpetBlock> blueprint_carpet = REGISTRATE.block("blueprint_carpet", CarpetBlock::new)
+            .transform(BuilderTransgender.block(() -> YIPPEESpriteShifts.blueprint_block))
+            .initialProperties(() -> Blocks.HAY_BLOCK)
+            .properties(p -> p.color(MaterialColor.COLOR_LIGHT_BLUE)
+                    .noOcclusion())
+            .properties(p -> p.sound(new ForgeSoundType(1, 0.85f, () -> SoundEvents.PAINTING_BREAK,
+                    () -> SoundEvents.MOSS_STEP, () -> SoundEvents.PAINTING_PLACE,
+                    () -> SoundEvents.BAMBOO_HIT, () -> SoundEvents.MOSS_STEP)))
+            .properties(p -> p.strength(0.05f,0.5f))
+            .lang("Block of Blueprint")
+            .register();
+
+    public static final BlockEntry<MysteriousCarpetBlock> mysterious_blueprint_carpet = REGISTRATE.block("mysterious_blueprint_carpet", MysteriousCarpetBlock::new)
+            .transform(BuilderTransgender.block(() -> YIPPEESpriteShifts.blueprint_block))
+            .initialProperties(() -> Blocks.HAY_BLOCK)
+            .properties(p -> p.color(MaterialColor.COLOR_LIGHT_BLUE)
+                    .noOcclusion()
+                    .noCollission())
+            .properties(p -> p.sound(new ForgeSoundType(1, 0.85f, () -> SoundEvents.PAINTING_BREAK,
+                    () -> SoundEvents.MOSS_STEP, () -> SoundEvents.PAINTING_PLACE,
+                    () -> SoundEvents.BAMBOO_HIT, () -> SoundEvents.MOSS_STEP)))
+            .properties(p -> p.strength(0.05f,0.5f))
+            .lang("Block of Blueprint")
+            .register();
 
     //WOODSET BLOCKS
 

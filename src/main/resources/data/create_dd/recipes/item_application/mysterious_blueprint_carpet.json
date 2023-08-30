@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "create_dd:blueprint_carpet"
+    },
+    {
+      "tag": "forge:string"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:mysterious_blueprint_carpet"
+    }
+  ]
+}

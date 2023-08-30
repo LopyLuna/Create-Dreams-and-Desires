@@ -26,6 +26,8 @@ public class YIPPEESpriteShifts {
 
             reinforcement_plating = omni("reinforcement_plating"),
 
+            blueprint_block = omni("blueprint_block"),
+
             HAZARD = omni("hazard_block"),
             HORIZONTAL_HAZARD = omni("horizontal_hazard_block"),
             HAZARD_R = omni("hazard_block_r"),

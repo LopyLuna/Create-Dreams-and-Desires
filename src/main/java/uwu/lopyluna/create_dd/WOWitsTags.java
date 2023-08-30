@@ -65,6 +65,8 @@ public static TagKey<Block> forgeBlockTag(String path) {
         superheating_type,
         freezing_type,
 
+        fan_heaters,
+
         ;
 
         public final TagKey<Block> tag;

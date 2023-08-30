@@ -7,6 +7,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HazardBlock;
 
@@ -32,5 +33,14 @@ public class BuilderTransgender {
                 .build();
     }
 
+    public static <B extends Block> NonNullUnaryOperator<BlockBuilder<B, CreateRegistrate>> block(
+            Supplier<CTSpriteShiftEntry> ct) {
+        return b -> b.initialProperties(SharedProperties::stone)
+                .blockstate((c, p) -> p.simpleBlock(c.get()))
+                .onRegister(connectedTextures(() -> new EncasedCTBehaviour(ct.get())))
+                .onRegister(casingConnectivity((block, cc) -> cc.makeCasing(block, ct.get())))
+                .item()
+                .build();
+    }
 
 }

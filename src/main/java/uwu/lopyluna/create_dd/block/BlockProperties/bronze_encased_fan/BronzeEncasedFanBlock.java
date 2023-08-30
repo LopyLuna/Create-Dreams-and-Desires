@@ -64,6 +64,9 @@ public class BronzeEncasedFanBlock extends DirectionalKineticBlock implements IC
         if (worldIn instanceof WrappedWorld)
             return;
         notifyFanBlockEntity(worldIn, pos);
+        if (worldIn.isClientSide())
+            return;
+        withBlockEntityDo(worldIn, pos, BronzeEncasedFanBlockEntity::queueGeneratorUpdate);
     }
 
     protected void notifyFanBlockEntity(LevelAccessor world, BlockPos pos) {
@@ -87,6 +90,12 @@ public class BronzeEncasedFanBlock extends DirectionalKineticBlock implements IC
         return face == state.getValue(FACING)
                 .getOpposite();
     }
+
+    @Override
+    public boolean showCapacityWithAnnotation() {
+        return true;
+    }
+
     
     @Override
     public Class<BronzeEncasedFanBlockEntity> getBlockEntityClass() {

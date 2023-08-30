@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AA"
+  ],
+  "key": {
+    "A": {
+      "item": "create_dd:blueprint_block"
+    }
+  },
+  "result": {
+    "item": "create_dd:blueprint_carpet",
+    "count": 4
+  }
+}
