@@ -1,0 +1,14 @@
+{
+  "type": "create_dd:superheating",
+  "ingredients": [
+    {
+      "item": "create_dd:spectral_ruby"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:polished_spectral_ruby",
+      "count": 1
+    }
+  ]
+}

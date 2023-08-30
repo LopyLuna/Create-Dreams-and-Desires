@@ -1,0 +1,14 @@
+{
+  "type": "create_dd:superheating",
+  "ingredients": [
+    {
+      "item": "create_dd:veridium_cobble"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:veridium",
+      "count": 1
+    }
+  ]
+}

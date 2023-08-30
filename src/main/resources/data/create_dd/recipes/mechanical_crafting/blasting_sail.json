@@ -1,0 +1,24 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "ABA",
+    "BDB",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "create_dd:smoking_sail"
+    },
+    "B": {
+      "item": "minecraft:lava_bucket"
+    },
+    "D": {
+      "item": "create:blaze_burner"
+    }
+  },
+  "result": {
+    "item": "create_dd:blasting_sail",
+    "count": 4
+  },
+  "acceptMirrored": false
+}

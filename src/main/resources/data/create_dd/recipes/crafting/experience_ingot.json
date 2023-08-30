@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABA",
+    "BAB",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "create:experience_nugget"
+    },
+    "B": {
+      "item": "create_dd:frozen_nugget"
+    }
+  },
+  "result": {
+    "item": "create_dd:experience_ingot",
+    "count": 1
+  }
+}

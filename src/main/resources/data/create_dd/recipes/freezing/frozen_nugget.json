@@ -1,0 +1,14 @@
+{
+  "type": "create_dd:freezing",
+  "ingredients": [
+    {
+      "item": "create:experience_nugget"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:frozen_nugget",
+      "count": 1
+    }
+  ]
+}

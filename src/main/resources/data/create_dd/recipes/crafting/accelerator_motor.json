@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABC"
+  ],
+  "key": {
+    "A": {
+      "item": "create:shaft"
+    },
+    "B": {
+      "item": "create:brass_casing"
+    },
+    "C": {
+      "item": "create_dd:integrated_mechanism"
+    }
+  },
+  "result": {
+    "item": "create_dd:accelerator_motor",
+    "count": 1
+  }
+}

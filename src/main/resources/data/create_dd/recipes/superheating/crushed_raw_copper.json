@@ -1,0 +1,17 @@
+{
+  "type": "create_dd:superheating",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_copper"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "chance": 0.5,
+      "item": "minecraft:copper_ingot"
+    }
+  ]
+}

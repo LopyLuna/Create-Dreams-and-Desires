@@ -22,9 +22,6 @@ public class ExperienceNuggetItemOne extends ExperienceNuggetItem {
     }
 
     @Override
-    public void fillItemCategory(CreativeModeTab p_150895_1_, NonNullList<ItemStack> p_150895_2_) {}
-
-    @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack itemInHand = pPlayer.getItemInHand(pUsedHand);
         if (pLevel.isClientSide) {

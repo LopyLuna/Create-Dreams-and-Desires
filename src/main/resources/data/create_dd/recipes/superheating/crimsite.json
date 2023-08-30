@@ -1,0 +1,14 @@
+{
+  "type": "create_dd:superheating",
+  "ingredients": [
+    {
+      "item": "create_dd:crimsite_cobble"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:crimsite",
+      "count": 1
+    }
+  ]
+}

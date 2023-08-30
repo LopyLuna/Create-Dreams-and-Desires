@@ -11,6 +11,7 @@ import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SimpleFoiledItem;
 import net.minecraftforge.common.Tags;
 import uwu.lopyluna.create_dd.item.ItemProperties.ItemDisabled;
 import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem1;
@@ -72,6 +73,9 @@ public class Pipebomb {
             spectral_ruby = ingredient("spectral_ruby"),
             polished_spectral_ruby = ingredient("polished_spectral_ruby");
 
+    public static final ItemEntry<SimpleFoiledItem>
+            frozen_nugget = foilIngredient("frozen_nugget")
+    ;
     //ac
     public static final ItemEntry<ItemDisabled>
             abstruse_mechanism = i("abstruse_mechanism"),
@@ -146,14 +150,14 @@ public class Pipebomb {
     public static final ItemEntry<ExperienceNuggetItemOne> ONE_EXP_NUGGET =
             REGISTRATE.item("experience_ingot", ExperienceNuggetItemOne::new)
                     .tag(Tags.Items.INGOTS)
-                    .properties(p -> p.stacksTo(48)
+                    .properties(p -> p.stacksTo(64)
                             .rarity(Rarity.UNCOMMON))
                     .lang("Ingot of Experience")
                     .register();
 
     public static final ItemEntry<ExperienceNuggetItemTwo> TWO_EXP_NUGGET =
             REGISTRATE.item("experience_mass", ExperienceNuggetItemTwo::new)
-                    .properties(p -> p.stacksTo(24)
+                    .properties(p -> p.stacksTo(64)
                             .rarity(Rarity.EPIC)
                             .fireResistant())
                     .lang("Mass of Experience")
@@ -175,6 +179,10 @@ public class Pipebomb {
 
     private static ItemEntry<Item> ingredient(String name) {
         return REGISTRATE.item(name, Item::new)
+                .register();
+    }
+    private static ItemEntry<SimpleFoiledItem> foilIngredient(String name) {
+        return REGISTRATE.item(name, SimpleFoiledItem::new)
                 .register();
     }
 

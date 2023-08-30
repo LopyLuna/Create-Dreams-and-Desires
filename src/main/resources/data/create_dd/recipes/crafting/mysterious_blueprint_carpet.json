@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "create_dd:mysterious_blueprint_carpet"
+    }
+  ],
+  "result": {
+    "item": "create_dd:blueprint_carpet",
+    "count": 1
+  }
+}

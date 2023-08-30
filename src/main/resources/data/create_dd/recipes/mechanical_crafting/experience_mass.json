@@ -1,0 +1,17 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "create_dd:experience_ingot"
+    }
+  },
+  "result": {
+    "item": "create_dd:experience_mass",
+    "count": 1
+  }
+}

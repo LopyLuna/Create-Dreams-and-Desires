@@ -1,0 +1,14 @@
+{
+  "type": "create_dd:superheating",
+  "ingredients": [
+    {
+      "item": "create_dd:asurine_cobble"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:asurine",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "type": "create_dd:freezing",
+  "ingredients": [
+    {
+      "item": "minecraft:experience_bottle"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:experience_nugget",
+      "count": 1
+    },
+    {
+      "item": "create:experience_nugget",
+      "count": 1,
+      "chance": 0.95
+    },
+    {
+      "item": "create:experience_nugget",
+      "count": 1,
+      "chance": 0.85
+    },
+    {
+      "item": "create:experience_nugget",
+      "count": 1,
+      "chance": 0.7
+    },
+    {
+      "item": "create:experience_nugget",
+      "count": 1,
+      "chance": 0.5
+    },
+    {
+      "item": "create:experience_nugget",
+      "count": 1,
+      "chance": 0.35
+    },
+    {
+      "item": "create:experience_nugget",
+      "count": 1,
+      "chance": 0.15
+    },
+    {
+      "item": "create:experience_nugget",
+      "count": 1,
+      "chance": 0.05
+    },
+    {
+      "item": "create:experience_nugget",
+      "count": 1,
+      "chance": 0.01
+    }
+  ]
+}

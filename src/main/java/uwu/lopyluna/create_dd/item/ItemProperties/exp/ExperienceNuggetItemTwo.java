@@ -22,9 +22,6 @@ public class ExperienceNuggetItemTwo extends ExperienceNuggetItem {
     }
 
     @Override
-    public void fillItemCategory(CreativeModeTab p_150895_1_, NonNullList<ItemStack> p_150895_2_) {}
-
-    @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack itemInHand = pPlayer.getItemInHand(pUsedHand);
         if (pLevel.isClientSide) {
@@ -36,7 +33,7 @@ public class ExperienceNuggetItemTwo extends ExperienceNuggetItem {
         }
 
         int amountUsed = pPlayer.isSteppingCarefully() ? 1 : itemInHand.getCount();
-        int total = Mth.ceil(54f * amountUsed);
+        int total = Mth.ceil(243f * amountUsed);
         int maxOrbs = amountUsed == 1 ? 1 : 5;
         int valuePer = Math.max(1, 1 + total / maxOrbs);
 

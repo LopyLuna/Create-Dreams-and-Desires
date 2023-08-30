@@ -1,0 +1,17 @@
+{
+  "type": "create_dd:superheating",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_zinc"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:zinc_ingot"
+    },
+    {
+      "chance": 0.25,
+      "item": "create:zinc_ingot"
+    }
+  ]
+}

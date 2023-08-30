@@ -1,0 +1,24 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "ABA",
+    "BDB",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "create:white_sail"
+    },
+    "B": {
+      "tag": "forge:plates/andesite_alloy"
+    },
+    "D": {
+      "item": "minecraft:campfire"
+    }
+  },
+  "result": {
+    "item": "create_dd:smoking_sail",
+    "count": 4
+  },
+  "acceptMirrored": false
+}

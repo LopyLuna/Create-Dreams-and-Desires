@@ -1,0 +1,14 @@
+{
+  "type": "create_dd:superheating",
+  "ingredients": [
+    {
+      "item": "create_dd:ochrum_cobble"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:ochrum",
+      "count": 1
+    }
+  ]
+}

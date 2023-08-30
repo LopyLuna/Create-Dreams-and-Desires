@@ -1,0 +1,27 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "ABA",
+    "CDC",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "create_dd:blasting_sail"
+    },
+    "B": {
+      "item": "minecraft:prismarine_crystals"
+    },
+    "C": {
+      "item": "create:blaze_cake"
+    },
+    "D": {
+      "item": "create_dd:infernal_mechanism"
+    }
+  },
+  "result": {
+    "item": "create_dd:superheating_sail",
+    "count": 1
+  },
+  "acceptMirrored": false
+}

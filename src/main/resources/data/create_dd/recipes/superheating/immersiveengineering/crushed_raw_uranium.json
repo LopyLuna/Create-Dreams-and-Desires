@@ -1,0 +1,23 @@
+{
+  "type": "create_dd:superheating",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_uranium"
+    }
+  ],
+  "results": [
+    {
+      "item": "immersiveengineering:ingot_uranium"
+    },
+    {
+      "chance": 0.4,
+      "item": "immersiveengineering:ingot_uranium"
+    }
+  ]
+}

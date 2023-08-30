@@ -2,13 +2,13 @@
   "type": "create_dd:superheating",
   "ingredients": [
     {
-      "item": "minecraft:packed_ice"
+      "item": "minecraft:ancient_debris"
     }
   ],
   "results": [
     {
-      "item": "minecraft:ice",
-      "count": 9
+      "item": "minecraft:netherite_scrap",
+      "count": 2
     }
   ]
 }

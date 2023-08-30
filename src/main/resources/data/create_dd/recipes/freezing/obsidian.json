@@ -1,0 +1,14 @@
+{
+  "type": "create_dd:freezing",
+  "ingredients": [
+    {
+      "item": "minecraft:crying_obsidian"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:obsidian",
+      "count": 1
+    }
+  ]
+}

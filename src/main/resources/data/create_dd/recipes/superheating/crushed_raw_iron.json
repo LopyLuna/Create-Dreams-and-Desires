@@ -1,0 +1,17 @@
+{
+  "type": "create_dd:superheating",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_iron"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "chance": 0.75,
+      "item": "minecraft:iron_ingot"
+    }
+  ]
+}

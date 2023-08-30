@@ -1,0 +1,14 @@
+{
+  "type": "create_dd:freezing",
+  "ingredients": [
+    {
+      "item": "minecraft:magma_cream"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:slime_ball",
+      "count": 1
+    }
+  ]
+}

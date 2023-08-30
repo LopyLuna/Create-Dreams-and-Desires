@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "B",
+    "C"
+  ],
+  "key": {
+    "A": {
+      "item": "create:propeller"
+    },
+    "B": {
+      "tag": "create:casing/industrial"
+    },
+    "C": {
+      "item": "create_dd:infernal_mechanism"
+    }
+  },
+  "result": {
+    "item": "create_dd:industrial_fan",
+    "count": 1
+  }
+}

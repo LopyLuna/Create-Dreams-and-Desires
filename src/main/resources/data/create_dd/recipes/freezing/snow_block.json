@@ -1,0 +1,14 @@
+{
+  "type": "create_dd:freezing",
+  "ingredients": [
+    {
+      "item": "minecraft:snow"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:snow_block",
+      "count": 1
+    }
+  ]
+}

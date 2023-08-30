@@ -1,0 +1,23 @@
+{
+  "type": "create_dd:superheating",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_lead"
+    }
+  ],
+  "results": [
+    {
+      "item": "mekanism:ingot_lead"
+    },
+    {
+      "chance": 0.4,
+      "item": "mekanism:ingot_lead"
+    }
+  ]
+}

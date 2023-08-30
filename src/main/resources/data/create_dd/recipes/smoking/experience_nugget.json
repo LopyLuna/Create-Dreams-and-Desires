@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "cookingtime": 50,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "create_dd:frozen_nugget"
+  },
+  "result": "create:experience_nugget"
+}

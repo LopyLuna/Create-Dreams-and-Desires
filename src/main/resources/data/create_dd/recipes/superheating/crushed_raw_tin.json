@@ -1,0 +1,17 @@
+{
+  "type": "create_dd:superheating",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_tin"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:tin_ingot"
+    },
+    {
+      "chance": 0.35,
+      "item": "create_dd:tin_ingot"
+    }
+  ]
+}
