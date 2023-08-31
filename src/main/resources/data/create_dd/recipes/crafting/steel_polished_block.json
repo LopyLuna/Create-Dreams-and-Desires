@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "create_dd:steel_block"
+    }
+  },
+  "result": {
+    "item": "create_dd:steel_polished_block",
+    "count": 16
+  }
+}

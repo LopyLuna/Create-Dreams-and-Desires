@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "create_dd:bronze_polished_block"
+    }
+  },
+  "result": {
+    "item": "create_dd:bronze_tiled_block",
+    "count": 4
+  }
+}

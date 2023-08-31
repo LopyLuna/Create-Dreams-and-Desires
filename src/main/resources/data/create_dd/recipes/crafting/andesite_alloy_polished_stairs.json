@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "create_dd:andesite_alloy_polished_block"
+    }
+  },
+  "result": {
+    "item": "create_dd:andesite_alloy_polished_stairs",
+    "count": 4
+  }
+}

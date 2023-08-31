@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "create:andesite_alloy_block"
+    }
+  },
+  "result": {
+    "item": "create_dd:andesite_alloy_polished_block",
+    "count": 16
+  }
+}
