@@ -55,7 +55,6 @@
     "create_dd:reversed_gearshift",
     "create_dd:radiant_drill",
     "create_dd:shadow_drill",
-    "create_dd:bronze_encased_fan",
     "create_dd:spectral_ruby_lamp",
 
     "create_dd:hydraulic_press",
@@ -141,7 +140,7 @@
     "create_dd:tuff_asphalt_block",
     "create_dd:veridium_asphalt_block",
     "create_dd:weathered_limestone_asphalt_block",
-//new
+
 
     "create_dd:andesite_mossy_bricks",
     "create_dd:asurine_mossy_bricks",

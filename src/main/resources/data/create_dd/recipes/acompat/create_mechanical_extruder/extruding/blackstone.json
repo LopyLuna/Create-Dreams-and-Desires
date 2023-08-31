@@ -9,7 +9,7 @@
   "ingredients": [
 
     {
-      "fluid": "create_dd:strawberry",
+      "fluid": "create_dd:caramel",
       "amount": 1000
     },
     {
@@ -18,6 +18,6 @@
     }
   ],
   "result": {
-    "item": "minecraft:netherrack"
+    "item": "minecraft:blackstone"
   }
 }

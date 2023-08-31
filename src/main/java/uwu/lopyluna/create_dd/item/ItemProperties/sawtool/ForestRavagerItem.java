@@ -43,7 +43,7 @@ public class ForestRavagerItem extends RavagerAxeItem {
     public static void destroyTree(Level iWorld, BlockState state, BlockPos pos,
                                    Player player) {
 
-        if (deforesting ||!(state.is(BlockTags.LOGS) || AllTags.AllBlockTags.SLIMY_LOGS.matches(state)) || player.isCrouching() || !(iWorld instanceof  Level))
+        if (deforesting ||!(state.is(BlockTags.LOGS) || AllTags.AllBlockTags.SLIMY_LOGS.matches(state)) || !player.isCrouching() || !(iWorld instanceof  Level))
             return;
         Level worldIn = (Level) iWorld;
         Vec3 vec = player.getLookAngle();
