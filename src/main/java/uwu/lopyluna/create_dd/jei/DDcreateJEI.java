@@ -3,14 +3,19 @@ package uwu.lopyluna.create_dd.jei;
 import com.simibubi.create.*;
 import com.simibubi.create.compat.jei.*;
 import com.simibubi.create.compat.jei.category.*;
+import com.simibubi.create.foundation.config.ConfigBase;
+import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
+import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import com.simibubi.create.infrastructure.config.CRecipes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.registration.*;
 import mezz.jei.api.runtime.IIngredientManager;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -21,20 +26,20 @@ import uwu.lopyluna.create_dd.DDcreate;
 import uwu.lopyluna.create_dd.block.YIPPEE;
 import uwu.lopyluna.create_dd.jei.fan.*;
 import uwu.lopyluna.create_dd.recipes.BakingRecipesTypes;
-import net.minecraft.network.chat.Component;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 @JeiPlugin
+@SuppressWarnings({"unused", "inline"})
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class DDcreateJEI implements IModPlugin {
-
     private static final ResourceLocation MOD_ID = new ResourceLocation(DDcreate.MOD_ID, "jei_plugin");
 
     @Override
@@ -45,37 +50,37 @@ public class DDcreateJEI implements IModPlugin {
 
 
     public IIngredientManager ingredientManager;
-    final List<CreateRecipeCategory<?>> ALL = new ArrayList<>();
+    private static final List<CreateRecipeCategory<?>> modCategories = new ArrayList<>();
 
-    @Override
-    public void registerCategories(IRecipeCategoryRegistration registration) {
-        ALL.clear();
+    private void loadCategories() {
+        modCategories.clear();
+        CreateRecipeCategory<?>
 
-        ALL.add(builder(FreezingRecipe.class)
+        freezing = builder(FreezingRecipe.class)
             .addTypedRecipes(BakingRecipesTypes.FREEZING::getType)
-            .catalyst(YIPPEE.industrial_fan::get)
-            .itemIcon(AllItems.PROPELLER.get(), Items.POWDER_SNOW_BUCKET)
+            .catalystStack(DDProcessingViaFanCategory.getFan("industrial_fan_freezing"))
+            .doubleItemIcon(AllItems.PROPELLER.get(), Items.POWDER_SNOW_BUCKET)
             .emptyBackground(178, 72)
-            .build("industrial_fan_freezing", FanFreezingCategory::new));
+            .build("industrial_fan_freezing", FanFreezingCategory::new),
 
-        ALL.add(builder(SuperheatingRecipe.class)
+        superheating = builder(SuperheatingRecipe.class)
             .addTypedRecipes(BakingRecipesTypes.SUPERHEATING::getType)
-            .catalyst(YIPPEE.industrial_fan::get)
-            .itemIcon(AllItems.PROPELLER.get(), AllItems.BLAZE_CAKE.get())
+            .catalystStack(DDProcessingViaFanCategory.getFan("industrial_fan_superheating"))
+            .doubleItemIcon(AllItems.PROPELLER.get(), AllItems.BLAZE_CAKE.get())
             .emptyBackground(178, 72)
-            .build("industrial_fan_superheating", FanSuperheatingCategory::new));
+            .build("industrial_fan_superheating", FanSuperheatingCategory::new);
 
-		ALL.forEach(registration::addRecipeCategories);
     }
+
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         ingredientManager = registration.getIngredientManager();
-        ALL.forEach(c -> c.registerRecipes(registration));
+        modCategories.forEach(c -> c.registerRecipes(registration));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        ALL.forEach(c -> c.registerCatalysts(registration));
+        modCategories.forEach(c -> c.registerCatalysts(registration));
 
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "pressing")).ifPresent(type ->
                 registration.addRecipeCatalyst(new ItemStack(YIPPEE.hydraulic_press.get()), type));
@@ -99,6 +104,11 @@ public class DDcreateJEI implements IModPlugin {
                 registration.addRecipeCatalyst(new ItemStack(YIPPEE.industrial_fan.get()), type));
     }
 
+    @Override
+    public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
+        registration.addRecipeTransferHandler(new BlueprintTransferHandler(), RecipeTypes.CRAFTING);
+    }
+
     private <T extends Recipe<?>> DDcreateJEI.CategoryBuilder<T> builder(Class<? extends T> recipeClass) {
         return new CategoryBuilder<>(recipeClass);
     }
@@ -117,13 +127,88 @@ public class DDcreateJEI implements IModPlugin {
             this.recipeClass = recipeClass;
         }
 
+        public CategoryBuilder<T> enableIf(Predicate<CRecipes> predicate) {
+            this.predicate = predicate;
+            return this;
+        }
+
+        public CategoryBuilder<T> enableWhen(Function<CRecipes, ConfigBase.ConfigBool> configValue) {
+            predicate = c -> configValue.apply(c).get();
+            return this;
+        }
+
         public CategoryBuilder<T> addRecipeListConsumer(Consumer<List<T>> consumer) {
             recipeListConsumers.add(consumer);
             return this;
         }
 
+        public CategoryBuilder<T> addRecipes(Supplier<Collection<? extends T>> collection) {
+            return addRecipeListConsumer(recipes -> recipes.addAll(collection.get()));
+        }
+
+        public CategoryBuilder<T> addAllRecipesIf(Predicate<Recipe<?>> pred) {
+            return addRecipeListConsumer(recipes -> consumeAllRecipes(recipe -> {
+                if (pred.test(recipe)) {
+                    recipes.add((T) recipe);
+                }
+            }));
+        }
+
+        public CategoryBuilder<T> addAllRecipesIf(Predicate<Recipe<?>> pred, Function<Recipe<?>, T> converter) {
+            return addRecipeListConsumer(recipes -> consumeAllRecipes(recipe -> {
+                if (pred.test(recipe)) {
+                    recipes.add(converter.apply(recipe));
+                }
+            }));
+        }
+
+        public CategoryBuilder<T> addTypedRecipes(IRecipeTypeInfo recipeTypeEntry) {
+            return addTypedRecipes(recipeTypeEntry::getType);
+        }
+
         public CategoryBuilder<T> addTypedRecipes(Supplier<RecipeType<? extends T>> recipeType) {
             return addRecipeListConsumer(recipes -> CreateJEI.<T>consumeTypedRecipes(recipes::add, recipeType.get()));
+        }
+
+        public CategoryBuilder<T> addTypedRecipes(Supplier<RecipeType<? extends T>> recipeType, Function<Recipe<?>, T> converter) {
+            return addRecipeListConsumer(recipes -> CreateJEI.<T>consumeTypedRecipes(recipe -> recipes.add(converter.apply(recipe)), recipeType.get()));
+        }
+
+        public CategoryBuilder<T> addTypedRecipesIf(Supplier<RecipeType<? extends T>> recipeType, Predicate<Recipe<?>> pred) {
+            return addRecipeListConsumer(recipes -> CreateJEI.<T>consumeTypedRecipes(recipe -> {
+                if (pred.test(recipe)) {
+                    recipes.add(recipe);
+                }
+            }, recipeType.get()));
+        }
+
+        public CategoryBuilder<T> addTypedRecipesExcluding(Supplier<RecipeType<? extends T>> recipeType,
+                                                           Supplier<RecipeType<? extends T>> excluded) {
+            return addRecipeListConsumer(recipes -> {
+                List<Recipe<?>> excludedRecipes = CreateJEI.getTypedRecipes(excluded.get());
+                CreateJEI.<T>consumeTypedRecipes(recipe -> {
+                    for (Recipe<?> excludedRecipe : excludedRecipes) {
+                        if (CreateJEI.doInputsMatch(recipe, excludedRecipe)) {
+                            return;
+                        }
+                    }
+                    recipes.add(recipe);
+                }, recipeType.get());
+            });
+        }
+
+        public CategoryBuilder<T> removeRecipes(Supplier<RecipeType<? extends T>> recipeType) {
+            return addRecipeListConsumer(recipes -> {
+                List<Recipe<?>> excludedRecipes = CreateJEI.getTypedRecipes(recipeType.get());
+                recipes.removeIf(recipe -> {
+                    for (Recipe<?> excludedRecipe : excludedRecipes) {
+                        if (CreateJEI.doInputsMatch(recipe, excludedRecipe)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+            });
         }
 
         public CategoryBuilder<T> catalystStack(Supplier<ItemStack> supplier) {
@@ -141,7 +226,12 @@ public class DDcreateJEI implements IModPlugin {
             return this;
         }
 
-        public CategoryBuilder<T> itemIcon(ItemLike item1, ItemLike item2) {
+        public CategoryBuilder<T> itemIcon(ItemLike item) {
+            icon(new ItemIcon(() -> new ItemStack(item)));
+            return this;
+        }
+
+        public CategoryBuilder<T> doubleItemIcon(ItemLike item1, ItemLike item2) {
             icon(new DoubleItemIcon(() -> new ItemStack(item1), () -> new ItemStack(item2)));
             return this;
         }
@@ -171,8 +261,19 @@ public class DDcreateJEI implements IModPlugin {
 
             CreateRecipeCategory.Info<T> info = new CreateRecipeCategory.Info<>(
                     new mezz.jei.api.recipe.RecipeType<>(DDcreate.asResource(name), recipeClass),
-                    Component.translatable(DDcreate.MOD_ID + ".recipe." + name), background, icon, recipesSupplier, catalysts);
-            return factory.create(info);
+                    Lang.translateDirect("recipe." + name), background, icon, recipesSupplier, catalysts);
+            CreateRecipeCategory<T> category = factory.create(info);
+            modCategories.add(category);
+            return category;
         }
     }
+
+    public static void consumeAllRecipes(Consumer<Recipe<?>> consumer) {
+        Objects.requireNonNull(Minecraft.getInstance()
+                        .getConnection())
+                .getRecipeManager()
+                .getRecipes()
+                .forEach(consumer);
+    }
+
 }

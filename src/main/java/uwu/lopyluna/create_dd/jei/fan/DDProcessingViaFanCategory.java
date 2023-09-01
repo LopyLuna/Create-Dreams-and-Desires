@@ -3,6 +3,7 @@ package uwu.lopyluna.create_dd.jei.fan;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import com.simibubi.create.compat.jei.category.CreateRecipeCategory;
+import com.simibubi.create.compat.jei.category.ProcessingViaFanCategory;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import com.simibubi.create.content.processing.recipe.ProcessingOutput;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
@@ -22,7 +23,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 @ParametersAreNonnullByDefault
-public abstract class DDProcessingViaFanCategory<T extends Recipe<?>> extends CreateRecipeCategory<T> {
+public abstract class DDProcessingViaFanCategory<T extends Recipe<?>> extends ProcessingViaFanCategory<T> {
 
     protected static final int SCALE = 24;
 
