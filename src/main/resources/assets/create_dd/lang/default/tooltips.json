@@ -1,0 +1,74 @@
+{
+  "item.create_dd.chromatic_compound.tooltip": "CHROMATIC COMPOUND",
+  "item.create_dd.chromatic_compound.tooltip.summary": "A Powerful Chromatic material that _Consumes Matter_.",
+
+  "item.create_dd.shadow_steel.tooltip": "SHADOW STEEL",
+  "item.create_dd.shadow_steel.tooltip.summary": "A Chromatic material forged _in the Abyss Darkness_.",
+
+  "item.create_dd.refined_radiance.tooltip": "REFINED RADIANCE",
+  "item.create_dd.refined_radiance.tooltip.summary": "A Chromatic material forged _in the Cleansed Luminosity_.",
+
+  "item.create_dd.overcharge_alloy.tooltip": "OVERCHARGED ALLOY",
+  "item.create_dd.overcharge_alloy.tooltip.summary": "A Chromatic material forged _in the Immense Energetic Force_.",
+
+  "item.create_dd.frozen_nugget.tooltip": "FROZEN NUGGET OF EXPERIENCE",
+  "item.create_dd.frozen_nugget.tooltip.summary": "A speck of _frozen inspiration_ from your fantastic inventions.",
+
+  "item.create_dd.experience_ingot.tooltip": "INGOT OF EXPERIENCE",
+  "item.create_dd.experience_ingot.tooltip.summary": "A unusual of _inspiration_ from your fantastic inventions.",
+  "item.create_dd.experience_ingot.tooltip.condition1": "When Used",
+  "item.create_dd.experience_ingot.tooltip.behaviour1": "_Redeems_ _Experience_ points contained within.",
+
+  "item.create_dd.experience_mass.tooltip": "MASS OF EXPERIENCE",
+  "item.create_dd.experience_mass.tooltip.summary": "A quantity of _inspiration_ from your fantastic inventions.",
+  "item.create_dd.experience_mass.tooltip.condition1": "When Used",
+  "item.create_dd.experience_mass.tooltip.behaviour1": "_Redeems_ _Experience_ points contained within.",
+
+  "block.create_dd.2_blade_fan.tooltip": "LARGE PROPELLER 2",
+  "block.create_dd.2_blade_fan.tooltip.summary": "_Embellish_ your _Machines_ with this imposing Spinning Blades of Death! (Doesn't hurt by the way.)",
+  "block.create_dd.2_blade_fan.tooltip.condition1": "When Powered by Kinetics",
+  "block.create_dd.2_blade_fan.tooltip.behaviour1": "Starts spinning.",
+
+  "block.create_dd.4_blade_fan.tooltip": "LARGE PROPELLER 4",
+  "block.create_dd.4_blade_fan.tooltip.summary": "_Embellish_ your _Machines_ with this imposing Spinning Blades of Death! (Doesn't hurt by the way.)",
+  "block.create_dd.4_blade_fan.tooltip.condition1": "When Powered by Kinetics",
+  "block.create_dd.4_blade_fan.tooltip.behaviour1": "Starts spinning.",
+
+  "block.create_dd.8_blade_fan.tooltip": "LARGE PROPELLER 8",
+  "block.create_dd.8_blade_fan.tooltip.summary": "_Embellish_ your _Machines_ with this imposing Spinning Blades of Death! (Doesn't hurt by the way.)",
+  "block.create_dd.8_blade_fan.tooltip.condition1": "When Powered by Kinetics",
+  "block.create_dd.8_blade_fan.tooltip.behaviour1": "Starts spinning.",
+
+  "block.create_dd.copycat_block.tooltip": "COPYCAT BLOCK",
+  "block.create_dd.copycat_block.tooltip.summary": "_Converts_ any _full block_ into a decorative block.",
+  "block.create_dd.copycat_block.tooltip.condition1": "When R-Clicked",
+  "block.create_dd.copycat_block.tooltip.behaviour1": "Applies _held item_ as its _material_ if possible. _Click again_ to cycle _orientation_ or _powered_ state. Use a _Wrench_ to _reset_ the material.",
+
+  "block.create_dd.copycat_slab.tooltip": "COPYCAT SlAB",
+  "block.create_dd.copycat_slab.tooltip.summary": "_Converts_ any _full block_ into a decorative slab.",
+  "block.create_dd.copycat_slab.tooltip.condition1": "When R-Clicked",
+  "block.create_dd.copycat_slab.tooltip.behaviour1": "Applies _held item_ as its _material_ if possible. _Click again_ to cycle _orientation_ or _powered_ state. Use a _Wrench_ to _reset_ the material.",
+
+  "block.create_dd.bronze_drill.tooltip": "BRONZE DRILL",
+  "block.create_dd.bronze_drill.tooltip.summary": "Acts like a _Mechanical Drill_ but _mines faster_!",
+
+  "block.create_dd.bronze_saw.tooltip": "BRONZE SAW",
+  "block.create_dd.bronze_saw.tooltip.summary": "Acts like a _Mechanical Saw_ but _mines faster_ and allows for _Bulk Sawing_!",
+
+  "block.create_dd.hydraulic_press.tooltip": "HYDRAULIC PRESS",
+  "block.create_dd.hydraulic_press.tooltip.summary": "Acts like a _Mechanical Press_ but allows for _Bulk Pressing_!",
+
+  "item.create_dd.forest_ravager.tooltip": "MYTHICAL FOREST RAVAGER",
+  "item.create_dd.forest_ravager.tooltip.summary": "A Powerful axe that can _Deforest the Entire Land_!",
+  "item.create_dd.forest_ravager.tooltip.condition1": "Breaking a Block while Sneaking",
+  "item.create_dd.forest_ravager.tooltip.behaviour1": "Act like the _Mechanical Saw_ that _cuts the Entire Tree down_",
+  "item.create_dd.forest_ravager.tooltip.condition2": "While wearing Backtank",
+  "item.create_dd.forest_ravager.tooltip.behaviour2": "_No_ _Durability_ will be used. Instead, _Air_ _pressure_ is drained from the Tank",
+
+  "item.create_dd.deforester_saw.tooltip": "DEFORESTING SAW",
+  "item.create_dd.deforester_saw.tooltip.summary": "A Powerful axe that can _Deforest the Entire Land_!",
+  "item.create_dd.deforester_saw.tooltip.condition1": "Breaking a Block while Sneaking",
+  "item.create_dd.deforester_saw.tooltip.behaviour1": "Act like the _Mechanical Saw_ that _cuts the Entire Tree down_",
+  "item.create_dd.deforester_saw.tooltip.condition2": "While wearing Backtank",
+  "item.create_dd.deforester_saw.tooltip.behaviour2": "_No_ _Durability_ will be used. Instead, _Air_ _pressure_ is drained from the Tank"
+}

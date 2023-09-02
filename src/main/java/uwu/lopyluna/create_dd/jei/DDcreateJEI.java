@@ -24,6 +24,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
 import uwu.lopyluna.create_dd.DDcreate;
 import uwu.lopyluna.create_dd.block.YIPPEE;
+import uwu.lopyluna.create_dd.item.Pipebomb;
 import uwu.lopyluna.create_dd.jei.fan.*;
 import uwu.lopyluna.create_dd.recipes.BakingRecipesTypes;
 
@@ -64,12 +65,17 @@ public class DDcreateJEI implements IModPlugin {
             .build("industrial_fan_freezing", FanFreezingCategory::new),
 
         superheating = builder(SuperheatingRecipe.class)
-            .addTypedRecipes(BakingRecipesTypes.SUPERHEATING::getType)
+            .addTypedRecipes(BakingRecipesTypes.SUPERHEATING)
             .catalystStack(DDProcessingViaFanCategory.getFan("industrial_fan_superheating"))
             .doubleItemIcon(AllItems.PROPELLER.get(), AllItems.BLAZE_CAKE.get())
             .emptyBackground(178, 72)
-            .build("industrial_fan_superheating", FanSuperheatingCategory::new);
+            .build("industrial_fan_superheating", FanSuperheatingCategory::new),
 
+        also_mysteryConversion = builder(ConversionRecipe.class)
+            .addRecipes(() -> BakingMysterious.RECIPES)
+            .itemIcon(Pipebomb.CHROMATIC_COMPOUND.get())
+            .emptyBackground(177, 50)
+            .build("also_mystery_conversion", BakingMysterious::new);
     }
 
     @Override
@@ -85,6 +91,8 @@ public class DDcreateJEI implements IModPlugin {
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "pressing")).ifPresent(type ->
                 registration.addRecipeCatalyst(new ItemStack(YIPPEE.hydraulic_press.get()), type));
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "automatic_packing")).ifPresent(type ->
+                registration.addRecipeCatalyst(new ItemStack(YIPPEE.hydraulic_press.get()), type));
+        registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "packing")).ifPresent(type ->
                 registration.addRecipeCatalyst(new ItemStack(YIPPEE.hydraulic_press.get()), type));
 
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "sawing")).ifPresent(type ->

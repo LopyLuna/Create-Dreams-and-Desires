@@ -2,7 +2,6 @@ package uwu.lopyluna.create_dd.jei.fan;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
-import com.simibubi.create.foundation.gui.AllGuiTextures;
 import com.simibubi.create.foundation.gui.element.GuiGameElement;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.block.YIPPEE;
@@ -11,11 +10,6 @@ public class FanFreezingCategory extends DDProcessingViaFanCategory.MultiOutput<
 
     public FanFreezingCategory(Info<FreezingRecipe> info) {
         super(info);
-    }
-
-    @Override
-    protected AllGuiTextures getBlockShadow() {
-        return AllGuiTextures.JEI_SHADOW;
     }
 
     @Override

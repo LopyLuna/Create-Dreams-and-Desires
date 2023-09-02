@@ -1,4 +1,4 @@
-package uwu.lopyluna.create_dd.recipes;
+package uwu.lopyluna.create_dd.jei;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.compat.jei.ConversionRecipe;
@@ -22,6 +22,7 @@ public class BakingMysterious extends MysteriousItemConversionCategory {
     static {
 		RECIPES.add(ConversionRecipe.create(Pipebomb.CHROMATIC_COMPOUND.asStack(), Pipebomb.SHADOW_STEEL.asStack()));
 		RECIPES.add(ConversionRecipe.create(Pipebomb.CHROMATIC_COMPOUND.asStack(), Pipebomb.REFINED_RADIANCE.asStack()));
+        RECIPES.add(ConversionRecipe.create(Pipebomb.CHROMATIC_COMPOUND.asStack(), Pipebomb.OVERCHARGE_ALLOY.asStack()));
     }
 
     public BakingMysterious(Info<ConversionRecipe> info) {

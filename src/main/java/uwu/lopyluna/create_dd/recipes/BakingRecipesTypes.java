@@ -1,6 +1,5 @@
 package uwu.lopyluna.create_dd.recipes;
 
-import com.simibubi.create.content.kinetics.fan.HauntingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
