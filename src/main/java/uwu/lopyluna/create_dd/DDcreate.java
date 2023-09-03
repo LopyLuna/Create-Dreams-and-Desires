@@ -1,13 +1,11 @@
 package uwu.lopyluna.create_dd;
 
 import com.mojang.logging.LogUtils;
-import com.simibubi.create.AllSoundEvents;
 import com.simibubi.create.foundation.data.AllLangPartials;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.LangMerger;
 import com.simibubi.create.foundation.data.TagGen;
 import com.simibubi.create.foundation.item.ItemDescription;
-import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import net.minecraft.data.DataGenerator;
@@ -42,9 +40,9 @@ import uwu.lopyluna.create_dd.worldgen.YummyOrePlacedFeatures;
 @Mod(DDcreate.MOD_ID)
 public class DDcreate
 {
-    public static final String NAME = "Create: Flavored";
+    public static final String NAME = "Create: Dreams n' Desires";
     public static final String MOD_ID = "create_dd";
-    public static final String VERSION = "BETA.1.0a";
+    public static final String VERSION = "PREBETA.0.1a";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(DDcreate.MOD_ID);
