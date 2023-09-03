@@ -44,7 +44,7 @@
   "block.create_dd.copycat_block.tooltip.condition1": "When R-Clicked",
   "block.create_dd.copycat_block.tooltip.behaviour1": "Applies _held item_ as its _material_ if possible. _Click again_ to cycle _orientation_ or _powered_ state. Use a _Wrench_ to _reset_ the material.",
 
-  "block.create_dd.copycat_slab.tooltip": "COPYCAT SlAB",
+  "block.create_dd.copycat_slab.tooltip": "COPYCAT SLAB",
   "block.create_dd.copycat_slab.tooltip.summary": "_Converts_ any _full block_ into a decorative slab.",
   "block.create_dd.copycat_slab.tooltip.condition1": "When R-Clicked",
   "block.create_dd.copycat_slab.tooltip.behaviour1": "Applies _held item_ as its _material_ if possible. _Click again_ to cycle _orientation_ or _powered_ state. Use a _Wrench_ to _reset_ the material.",

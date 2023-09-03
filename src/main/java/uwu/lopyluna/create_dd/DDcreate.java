@@ -1,6 +1,7 @@
 package uwu.lopyluna.create_dd;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.AllSoundEvents;
 import com.simibubi.create.foundation.data.AllLangPartials;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.LangMerger;
@@ -31,6 +32,7 @@ import uwu.lopyluna.create_dd.item.Pipebomb;
 import uwu.lopyluna.create_dd.item.PipebombTab;
 import uwu.lopyluna.create_dd.rando.DDParticleTypes;
 import uwu.lopyluna.create_dd.recipes.BakingRecipesTypes;
+import uwu.lopyluna.create_dd.sounds.LOUDISFUNNY;
 import uwu.lopyluna.create_dd.worldgen.PonderPOI;
 import uwu.lopyluna.create_dd.worldgen.Pondering;
 import uwu.lopyluna.create_dd.worldgen.YummyOreFeatures;
@@ -61,6 +63,7 @@ public class DDcreate
 
         REGISTRATE.registerEventListeners(eventBus);
 
+        LOUDISFUNNY.register(eventBus);
         PipebombTab.init();
         YIPPEEPartialModel.init();
         YIPPEEEntityTypes.register();

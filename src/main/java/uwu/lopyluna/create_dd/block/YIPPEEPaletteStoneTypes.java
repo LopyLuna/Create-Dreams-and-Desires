@@ -9,8 +9,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.common.util.ForgeSoundType;
 import net.minecraftforge.registries.ForgeRegistries;
 import uwu.lopyluna.create_dd.DDcreate;
+import uwu.lopyluna.create_dd.sounds.LOUDISFUNNY;
 
 import java.util.function.Function;
 
@@ -20,6 +22,9 @@ public enum YIPPEEPaletteStoneTypes {
 
     potassic(STANDARD_RANGE, r -> r.paletteStoneBlock("potassic", () -> Blocks.DEEPSLATE, true, false)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BLUE))
+            .properties(p -> p.sound(new ForgeSoundType(0.8f, 0.85f, () -> LOUDISFUNNY.ore_stone_break.get(),
+                    () -> LOUDISFUNNY.ore_stone_step.get(), () -> LOUDISFUNNY.ore_stone_place.get(),
+                    () -> LOUDISFUNNY.ore_stone_hit.get(), () -> LOUDISFUNNY.ore_stone_fall.get())))
             .register()),
 
     weathered_limestone(STANDARD_RANGE, r -> r.paletteStoneBlock("weathered_limestone", () -> Blocks.SANDSTONE, true, false)

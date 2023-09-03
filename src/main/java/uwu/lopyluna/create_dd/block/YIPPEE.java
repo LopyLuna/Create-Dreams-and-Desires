@@ -53,6 +53,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssRotatedBlockPillar;
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.SpiritLogRotatedBlockPillar;
 import uwu.lopyluna.create_dd.item.PipebombTab;
+import uwu.lopyluna.create_dd.sounds.LOUDISFUNNY;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -75,7 +76,10 @@ public class YIPPEE {
     public static final BlockEntry<Block> mithril_block = REGISTRATE.block("mithril_block", Block::new)
             .initialProperties(SharedProperties::netheriteMetal)
             .properties(p -> p.color(MaterialColor.WARPED_NYLIUM))
-            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .properties(p -> p.sound(new ForgeSoundType(0.75f, .7f, () -> LOUDISFUNNY.magical_metal_break.get(),
+                    () -> LOUDISFUNNY.magical_metal_step.get(), () -> LOUDISFUNNY.magical_metal_place.get(),
+                    () -> LOUDISFUNNY.magical_metal_hit.get(), () -> LOUDISFUNNY.magical_metal_fall.get())))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(16f,48f))
             .lang("Block of Mithril")
             .simpleItem()
@@ -223,7 +227,10 @@ public class YIPPEE {
     public static final BlockEntry<CasingBlock> mithril_casing = REGISTRATE.block("mithril_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> YIPPEESpriteShifts.MITHRIL_CASING))
             .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
-            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .properties(p -> p.sound(new ForgeSoundType(0.9f, .7f, () -> LOUDISFUNNY.magical_metal_break.get(),
+                    () -> LOUDISFUNNY.magical_metal_step.get(), () -> LOUDISFUNNY.magical_metal_place.get(),
+                    () -> LOUDISFUNNY.magical_metal_hit.get(), () -> LOUDISFUNNY.magical_metal_fall.get())))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .lang("Mithril Casing")
             .register();
 
@@ -1203,7 +1210,10 @@ public class YIPPEE {
                         .jumpFactor(1.2F)
                         .friction(0.6F)
                         .color(MaterialColor.TERRACOTTA_BLUE))
-                .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+                .properties(p -> p.sound(new ForgeSoundType(0.8f, 0.85f, () -> LOUDISFUNNY.ore_stone_break.get(),
+                        () -> LOUDISFUNNY.ore_stone_step.get(), () -> LOUDISFUNNY.ore_stone_place.get(),
+                        () -> LOUDISFUNNY.ore_stone_hit.get(), () -> LOUDISFUNNY.ore_stone_fall.get())))
+                .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                 .simpleItem()
                 .register();
 
@@ -1337,7 +1347,10 @@ public class YIPPEE {
     public static final BlockEntry<Block> potassic_mossy_bricks = REGISTRATE.block("potassic_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
                     .color(MaterialColor.TERRACOTTA_BLUE))
-            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+            .properties(p -> p.sound(new ForgeSoundType(0.8f, 0.85f, () -> LOUDISFUNNY.ore_stone_break.get(),
+                    () -> LOUDISFUNNY.ore_stone_step.get(), () -> LOUDISFUNNY.ore_stone_place.get(),
+                    () -> LOUDISFUNNY.ore_stone_hit.get(), () -> LOUDISFUNNY.ore_stone_fall.get())))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .simpleItem()
             .register();
 
@@ -1510,6 +1523,9 @@ public class YIPPEE {
             REGISTRATE.block("potassic_cobble", Block::new)
                     .initialProperties(() -> Blocks.DEEPSLATE)
                     .properties(p -> p.destroyTime(2.25f).color(MaterialColor.TERRACOTTA_BLUE))
+                    .properties(p -> p.sound(new ForgeSoundType(0.8f, 0.85f, () -> LOUDISFUNNY.ore_stone_break.get(),
+                            () -> LOUDISFUNNY.ore_stone_step.get(), () -> LOUDISFUNNY.ore_stone_place.get(),
+                            () -> LOUDISFUNNY.ore_stone_hit.get(), () -> LOUDISFUNNY.ore_stone_fall.get())))
                     .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .transform(pickaxeOnly())
                     .simpleItem()
