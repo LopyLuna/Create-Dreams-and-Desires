@@ -175,6 +175,19 @@ public class YIPPEE {
             .simpleItem()
             .register();
 
+    public static final BlockEntry<Block> ember_alloy_block = REGISTRATE.block("ember_alloy_block", Block::new)
+            .initialProperties(() -> Blocks.BROWN_TERRACOTTA)
+            .properties(p -> p.color(MaterialColor.STONE))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+            .transform(pickaxeOnly())
+            .tag(Tags.Blocks.STORAGE_BLOCKS)
+            .transform(tagBlockAndItem("storage_blocks/ember_alloy"))
+            .tag(Tags.Items.STORAGE_BLOCKS)
+            .build()
+            .lang("Block of Ember Alloy")
+            .simpleItem()
+            .register();
+
     public static final BlockEntry<Block> chromatic_block = REGISTRATE.block("chromatic_block", Block::new)
             .initialProperties(() -> Blocks.NETHERITE_BLOCK)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))

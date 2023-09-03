@@ -5,6 +5,7 @@ import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import com.simibubi.create.foundation.gui.element.GuiGameElement;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.block.YIPPEE;
+import uwu.lopyluna.create_dd.recipes.FreezingRecipe;
 
 public class FanFreezingCategory extends DDProcessingViaFanCategory.MultiOutput<FreezingRecipe> {
 

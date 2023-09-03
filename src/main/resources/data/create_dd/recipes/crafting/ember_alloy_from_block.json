@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/ember_alloy"
+    }
+  ],
+  "result": {
+    "item": "create_dd:ember_alloy",
+    "count": 9
+  }
+}

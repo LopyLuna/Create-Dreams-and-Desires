@@ -12,6 +12,7 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.registration.*;
 import mezz.jei.api.runtime.IIngredientManager;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -27,6 +28,8 @@ import uwu.lopyluna.create_dd.block.YIPPEE;
 import uwu.lopyluna.create_dd.item.Pipebomb;
 import uwu.lopyluna.create_dd.jei.fan.*;
 import uwu.lopyluna.create_dd.recipes.BakingRecipesTypes;
+import uwu.lopyluna.create_dd.recipes.FreezingRecipe;
+import uwu.lopyluna.create_dd.recipes.SuperHeatingRecipe;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -35,6 +38,8 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+
+import static com.simibubi.create.compat.jei.CreateJEI.consumeTypedRecipes;
 
 @JeiPlugin
 @SuppressWarnings({"unused", "inline"})
@@ -51,10 +56,10 @@ public class DDcreateJEI implements IModPlugin {
 
 
     public IIngredientManager ingredientManager;
-    private static final List<CreateRecipeCategory<?>> modCategories = new ArrayList<>();
+    private static final List<CreateRecipeCategory<?>> DDCategories = new ArrayList<>();
 
     private void loadCategories() {
-        modCategories.clear();
+        DDCategories.clear();
         CreateRecipeCategory<?>
 
         freezing = builder(FreezingRecipe.class)
@@ -64,7 +69,7 @@ public class DDcreateJEI implements IModPlugin {
             .emptyBackground(178, 72)
             .build("industrial_fan_freezing", FanFreezingCategory::new),
 
-        superheating = builder(SuperheatingRecipe.class)
+        superheating = builder(SuperHeatingRecipe.class)
             .addTypedRecipes(BakingRecipesTypes.SUPERHEATING)
             .catalystStack(DDProcessingViaFanCategory.getFan("industrial_fan_superheating"))
             .doubleItemIcon(AllItems.PROPELLER.get(), AllItems.BLAZE_CAKE.get())
@@ -81,12 +86,18 @@ public class DDcreateJEI implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         ingredientManager = registration.getIngredientManager();
-        modCategories.forEach(c -> c.registerRecipes(registration));
+        DDCategories.forEach(c -> c.registerRecipes(registration));
+    }
+
+    @Override
+    public void registerCategories(IRecipeCategoryRegistration registration) {
+        loadCategories();
+        registration.addRecipeCategories(DDCategories.toArray(IRecipeCategory[]::new));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        modCategories.forEach(c -> c.registerCatalysts(registration));
+        DDCategories.forEach(c -> c.registerCatalysts(registration));
 
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "pressing")).ifPresent(type ->
                 registration.addRecipeCatalyst(new ItemStack(YIPPEE.hydraulic_press.get()), type));
@@ -193,10 +204,10 @@ public class DDcreateJEI implements IModPlugin {
         public CategoryBuilder<T> addTypedRecipesExcluding(Supplier<RecipeType<? extends T>> recipeType,
                                                            Supplier<RecipeType<? extends T>> excluded) {
             return addRecipeListConsumer(recipes -> {
-                List<Recipe<?>> excludedRecipes = CreateJEI.getTypedRecipes(excluded.get());
+                List<Recipe<?>> excludedRecipes = DDgetTypedRecipes(excluded.get());
                 CreateJEI.<T>consumeTypedRecipes(recipe -> {
                     for (Recipe<?> excludedRecipe : excludedRecipes) {
-                        if (CreateJEI.doInputsMatch(recipe, excludedRecipe)) {
+                        if (DDdoInputsMatch(recipe, excludedRecipe)) {
                             return;
                         }
                     }
@@ -207,16 +218,47 @@ public class DDcreateJEI implements IModPlugin {
 
         public CategoryBuilder<T> removeRecipes(Supplier<RecipeType<? extends T>> recipeType) {
             return addRecipeListConsumer(recipes -> {
-                List<Recipe<?>> excludedRecipes = CreateJEI.getTypedRecipes(recipeType.get());
+                List<Recipe<?>> excludedRecipes = DDgetTypedRecipes(recipeType.get());
                 recipes.removeIf(recipe -> {
                     for (Recipe<?> excludedRecipe : excludedRecipes) {
-                        if (CreateJEI.doInputsMatch(recipe, excludedRecipe)) {
+                        if (DDdoInputsMatch(recipe, excludedRecipe)) {
                             return true;
                         }
                     }
                     return false;
                 });
             });
+        }
+
+
+        public static List<Recipe<?>> DDgetTypedRecipes(RecipeType<?> type) {
+            List<Recipe<?>> recipes = new ArrayList<>();
+            consumeTypedRecipes(recipes::add, type);
+            return recipes;
+        }
+
+        public static List<Recipe<?>> DDgetTypedRecipesExcluding(RecipeType<?> type, Predicate<Recipe<?>> exclusionPred) {
+            List<Recipe<?>> recipes = DDgetTypedRecipes(type);
+            recipes.removeIf(exclusionPred);
+            return recipes;
+        }
+
+        public static boolean DDdoInputsMatch(Recipe<?> recipe1, Recipe<?> recipe2) {
+            if (recipe1.getIngredients()
+                    .isEmpty()
+                    || recipe2.getIngredients()
+                    .isEmpty()) {
+                return false;
+            }
+            ItemStack[] matchingStacks = recipe1.getIngredients()
+                    .get(0)
+                    .getItems();
+            if (matchingStacks.length == 0) {
+                return false;
+            }
+            return recipe2.getIngredients()
+                    .get(0)
+                    .test(matchingStacks[0]);
         }
 
         public CategoryBuilder<T> catalystStack(Supplier<ItemStack> supplier) {
@@ -271,7 +313,7 @@ public class DDcreateJEI implements IModPlugin {
                     new mezz.jei.api.recipe.RecipeType<>(DDcreate.asResource(name), recipeClass),
                     Lang.translateDirect("recipe." + name), background, icon, recipesSupplier, catalysts);
             CreateRecipeCategory<T> category = factory.create(info);
-            modCategories.add(category);
+            DDCategories.add(category);
             return category;
         }
     }

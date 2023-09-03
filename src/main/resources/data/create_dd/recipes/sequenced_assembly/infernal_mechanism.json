@@ -30,7 +30,7 @@
           "item": "create_dd:incomplete_infernal_mechanism"
         },
         {
-          "item": "minecraft:polished_blackstone_slab"
+          "tag": "forge:ember_alloy"
         }
       ],
       "results": [

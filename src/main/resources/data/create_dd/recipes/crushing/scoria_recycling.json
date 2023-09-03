@@ -1,0 +1,30 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "tag": "create:stone_types/scoria"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:coal_piece"
+    },
+    {
+      "item": "create_dd:coal_piece",
+      "chance": 0.5
+    },
+    {
+      "item": "create_dd:coal_piece",
+      "chance": 0.25
+    },
+    {
+      "item": "create_dd:coal_piece",
+      "chance": 0.15
+    },
+    {
+      "item": "create:cinder_flour",
+      "chance": 0.04
+    }
+  ],
+  "processingTime": 350
+}

@@ -26,6 +26,9 @@
   "item.create_dd.zinc_sheet": "Zinc Sheet",
   "item.create_dd.tin_sheet": "Tin Sheet",
 
+  "item.create_dd.coal_piece": "Coal Piece",
+  "item.create_dd.diamond_shard": "Diamond Shard",
+
   "item.create_dd.spectral_ruby": "Spectral Ruby",
   "item.create_dd.polished_spectral_ruby": "Polished Spectral Ruby",
 
@@ -110,6 +113,7 @@
   "fluid.create_dd.chocolate_milkshake": "Chocolate Milkshake",
 
   "block.create_dd.lapis_alloy_block": "Block of Lapis Alloy",
+  "block.create_dd.ember_alloy_block": "Block of Ember Alloy",
   "block.create_dd.leather_block": "Block of Leather",
 
   "block.create_dd.mossy_andesite_alloy_block": "Mossy Block of Andesite Alloy",
@@ -379,6 +383,23 @@
   "advancement.create_dd.shadow_steel.desc": "Create Shadow Steel, a Ingot of the Abyss.",
   "advancement.create_dd.refined_radiance": "Bright and Inspiring",
   "advancement.create_dd.refined_radiance.desc": "Create Refined Radiance, a powerful blinding Ingot that shall ward of evil!",
+
+
+  "create.recipe.also_mystery_conversion": "Mysterious Conversion",
+
+  "create.recipe.industrial_fan_superheating": "Bulk Super-Heated",
+  "create.recipe.industrial_fan_superheating.fan": "Fan behind Super-Heated Blaze Burner",
+  "create.recipe.industrial_fan_freezing": "Bulk Freezing",
+  "create.recipe.industrial_fan_freezing.fan": "Fan behind Powder Snow",
+
+  "create.recipe.industrial_fan_sculking": "Bulk Sculking",
+  "create.recipe.industrial_fan_sculking.fan": "Fan behind Warden Sculk Shrieker",
+  "create.recipe.industrial_fan_energizing": "Bulk Energizing",
+  "create.recipe.industrial_fan_energizing.fan": "Fan behind Something Electric",
+  "create.recipe.industrial_fan_gluttony": "Bulk Gluttony",
+  "create.recipe.industrial_fan_gluttony.fan": "Fan behind Something Yummy",
+  "create.recipe.industrial_fan_slimy": "Bulk Slimy",
+  "create.recipe.industrial_fan_slimy.fan": "Fan behind Something Slimy",
 
 
   "item.create_dd.chromatic_compound.tooltip": "CHROMATIC COMPOUND",

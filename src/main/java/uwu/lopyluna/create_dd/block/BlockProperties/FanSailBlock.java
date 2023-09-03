@@ -22,13 +22,13 @@ import uwu.lopyluna.create_dd.block.YIPPEE;
 import java.util.List;
 import java.util.function.Predicate;
 
+import static com.simibubi.create.content.kinetics.base.IRotate.StressImpact.isEnabled;
+
 public class FanSailBlock extends SailBlock {
     public static @NotNull FanSailBlock sail(Properties properties) {
         return new FanSailBlock(properties, false, null);
     }
     private static final int placementHelperId = PlacementHelpers.register(new PlacementHelper());
-
-    protected boolean sail = false;
 
     protected FanSailBlock(Properties properties, boolean frame, DyeColor color) {
         super(properties, frame, color);
@@ -36,9 +36,8 @@ public class FanSailBlock extends SailBlock {
 
     @Override
     public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> items) {
-        if (sail) {
+        if(isEnabled() || tab == CreativeModeTab.TAB_SEARCH)
             super.fillItemCategory(tab, items);
-        }
     }
 
     @Override

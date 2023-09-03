@@ -1,0 +1,21 @@
+{
+  "type": "create:haunting",
+  "ingredients": [
+    {
+      "tag": "forge:nuggets/diamond"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:prismarine_crystals"
+    },
+    {
+      "chance": 0.25,
+      "item": "minecraft:prismarine_crystals"
+    },
+    {
+      "chance": 0.1,
+      "item": "minecraft:prismarine_crystals"
+    }
+  ]
+}

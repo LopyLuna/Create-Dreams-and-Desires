@@ -44,17 +44,17 @@ public class Pipebomb {
     //YIPPEE ITEMS PIPEBOMB YUMMY ac
     public static final ItemEntry<Item>
             mithril_ingot = taggedIngredient("mithril_ingot", forgeItemTag("ingots/mithril"), CREATE_INGOTS.tag),
-            bronze_ingot = taggedIngredient("bronze_ingot", forgeItemTag("ingots/bronze"), forgeItemTag("ingots/strong_bronze"), CREATE_INGOTS.tag),
+            bronze_ingot = taggedIngredient("bronze_ingot", forgeItemTag("ingots/strong_bronze"), CREATE_INGOTS.tag),
             steel_ingot = taggedIngredient("steel_ingot", forgeItemTag("ingots/steel"), CREATE_INGOTS.tag),
             tin_ingot = taggedIngredient("tin_ingot", forgeItemTag("ingots/tin"), CREATE_INGOTS.tag),
             industrial_iron_ingot = taggedIngredient("industrial_iron_ingot", forgeItemTag("ingots/industrial_iron"), CREATE_INGOTS.tag),
             mithril_nugget = taggedIngredient("mithril_nugget", forgeItemTag("nuggets/mithril")),
-            bronze_nugget = taggedIngredient("bronze_nugget", forgeItemTag("nuggets/bronze"), forgeItemTag("ingots/strong_bronze")),
+            bronze_nugget = taggedIngredient("bronze_nugget", forgeItemTag("ingots/strong_bronze")),
             steel_nugget = taggedIngredient("steel_nugget", forgeItemTag("nuggets/steel")),
             tin_nugget = taggedIngredient("tin_nugget", forgeItemTag("nuggets/tin")),
             industrial_iron_nugget = taggedIngredient("industrial_iron_nugget", forgeItemTag("nuggets/industrial_iron")),
             mithril_sheet = taggedIngredient("mithril_sheet", forgeItemTag("plates/mithril")),
-            bronze_sheet = taggedIngredient("bronze_sheet", forgeItemTag("plates/bronze"), forgeItemTag("ingots/strong_bronze")),
+            bronze_sheet = taggedIngredient("bronze_sheet", forgeItemTag("ingots/strong_bronze")),
             steel_sheet = taggedIngredient("steel_sheet", forgeItemTag("plates/steel")),
             industrial_iron_sheet = taggedIngredient("industrial_iron_sheet", forgeItemTag("plates/industrial_iron")),
             tin_raw = ingredient("raw_tin"),
@@ -71,7 +71,9 @@ public class Pipebomb {
             infernal_mechanism = ingredient("infernal_mechanism"),
             sealed_mechanism = ingredient("sealed_mechanism"),
             spectral_ruby = ingredient("spectral_ruby"),
-            polished_spectral_ruby = ingredient("polished_spectral_ruby");
+            polished_spectral_ruby = ingredient("polished_spectral_ruby"),
+            coal_piece = taggedIngredient("coal_piece", forgeItemTag("nuggets/coal")),
+            diamond_shard = taggedIngredient("diamond_shard", forgeItemTag("nuggets/diamond"));
 
     public static final ItemEntry<SimpleFoiledItem>
             frozen_nugget = foilIngredient("frozen_nugget")

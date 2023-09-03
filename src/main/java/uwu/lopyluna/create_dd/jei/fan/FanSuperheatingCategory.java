@@ -6,10 +6,11 @@ import com.simibubi.create.foundation.gui.AllGuiTextures;
 import com.simibubi.create.foundation.gui.element.GuiGameElement;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.block.YIPPEE;
+import uwu.lopyluna.create_dd.recipes.SuperHeatingRecipe;
 
-public class FanSuperheatingCategory extends DDProcessingViaFanCategory.MultiOutput<SuperheatingRecipe> {
+public class FanSuperheatingCategory extends DDProcessingViaFanCategory.MultiOutput<SuperHeatingRecipe> {
 
-    public FanSuperheatingCategory(Info<SuperheatingRecipe> info) {
+    public FanSuperheatingCategory(Info<SuperHeatingRecipe> info) {
         super(info);
     }
 

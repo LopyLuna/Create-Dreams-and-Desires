@@ -7,8 +7,15 @@
   ],
   "results": [
     {
-      "item": "minecraft:netherite_scrap",
-      "count": 2
+      "item": "minecraft:netherite_scrap"
+    },
+    {
+      "chance": 0.45,
+      "item": "minecraft:netherite_scrap"
+    },
+    {
+      "chance": 0.15,
+      "item": "minecraft:netherite_scrap"
     }
   ]
 }

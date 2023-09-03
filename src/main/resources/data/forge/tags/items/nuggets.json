@@ -5,6 +5,8 @@
     "create_dd:bronze_nugget",
     "create_dd:steel_nugget",
     "create_dd:tin_nugget",
-    "create_dd:industrial_iron_nugget"
+    "create_dd:industrial_iron_nugget",
+    "create_dd:coal_piece",
+    "create_dd:diamond_shard"
   ]
 }

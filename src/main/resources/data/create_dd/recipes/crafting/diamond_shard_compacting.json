@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:nuggets/diamond"
+    },
+    {
+      "tag": "forge:nuggets/diamond"
+    },
+    {
+      "tag": "forge:nuggets/diamond"
+    },
+    {
+      "tag": "forge:nuggets/diamond"
+    }
+  ],
+  "result": {
+    "item": "minecraft:diamond",
+    "count": 1
+  }
+}

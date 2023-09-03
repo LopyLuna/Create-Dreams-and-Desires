@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CCC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:ingots/ember_alloy"
+    }
+  },
+  "result": {
+    "item": "create_dd:ember_alloy_block"
+  }
+}

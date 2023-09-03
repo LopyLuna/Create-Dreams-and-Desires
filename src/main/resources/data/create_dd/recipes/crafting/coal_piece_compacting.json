@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:nuggets/coal"
+    },
+    {
+      "tag": "forge:nuggets/coal"
+    },
+    {
+      "tag": "forge:nuggets/coal"
+    },
+    {
+      "tag": "forge:nuggets/coal"
+    },
+    {
+      "tag": "forge:nuggets/coal"
+    },
+    {
+      "tag": "forge:nuggets/coal"
+    },
+    {
+      "tag": "forge:nuggets/coal"
+    },
+    {
+      "tag": "forge:nuggets/coal"
+    }
+  ],
+  "result": {
+    "item": "minecraft:coal",
+    "count": 1
+  }
+}

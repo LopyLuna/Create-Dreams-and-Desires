@@ -44,7 +44,7 @@ public class DDcreate
 {
     public static final String NAME = "Create: Flavored";
     public static final String MOD_ID = "create_dd";
-    public static final String VERSION = "ALPHA.0.0.5a";
+    public static final String VERSION = "BETA.1.0a";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(DDcreate.MOD_ID);

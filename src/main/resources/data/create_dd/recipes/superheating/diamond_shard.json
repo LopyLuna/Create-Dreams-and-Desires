@@ -1,0 +1,25 @@
+{
+  "type": "create_dd:superheating",
+  "ingredients": [
+    {
+      "item": "minecraft:coal_block"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.35,
+      "item": "create_dd:diamond_shard",
+      "count": 1
+    },
+    {
+      "chance": 0.15,
+      "item": "create_dd:diamond_shard",
+      "count": 2
+    },
+    {
+      "chance": 0.05,
+      "item": "create_dd:diamond_shard",
+      "count": 3
+    }
+  ]
+}
