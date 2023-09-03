@@ -2,18 +2,19 @@ package uwu.lopyluna.create_dd.block.BlockProperties.ponder_box;
 
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.BlockHitResult;
@@ -24,8 +25,20 @@ import uwu.lopyluna.create_dd.worldgen.Pondering;
 
 public class PonderBoxBlock extends Block implements IBE<PonderBoxBlockEntity>{
 
-    public PonderBoxBlock(BlockBehaviour.Properties pProperties) {
+    private boolean visible;
+
+    public PonderBoxBlock(Properties pProperties, boolean visible) {
         super(pProperties);
+        this.visible = visible;
+    }
+
+    public PonderBoxBlock(Properties pProperties) {
+        this(pProperties, false);
+    }
+    @Override
+    public void fillItemCategory(@NotNull CreativeModeTab pCategory, @NotNull NonNullList<ItemStack> pItems) {
+        if (visible)
+            super.fillItemCategory(pCategory, pItems);
     }
 
 
