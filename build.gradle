@@ -1,216 +1,125 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://maven.parchmentmc.org' }
-
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: "${forgegradle_version}", changing: false
-        classpath "org.parchmentmc:librarian:${librarian_version}"
-    }
+plugins {
+    id 'dev.architectury.loom' version "${loom_version}"
+    id 'io.github.juuxel.loom-vineflower' version "${vineflower_version}"
+    id 'io.github.p03w.machete' version '2.0.1'
+    id 'maven-publish'
 }
 
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
 
+group = project.maven_group
+archivesBaseName = project.archives_base_name
+String buildNumber = System.getenv("GITHUB_RUN_NUMBER")
+version = "${mod_version}${ buildNumber != null ? "-${buildNumber}" : "" }+mc${minecraft_version}"
 
-version = '0.1a.PREBETA'
-group = 'uwu.lopyluna.create_dd'
-archivesBaseName = "create_dd-${artifact_minecraft_version}"
+def generatedResources = file("src/generated/resources")
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+sourceSets.main.resources {
+    srcDir(generatedResources)
+    exclude ".cache/"
+}
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-minecraft {
-    mappings channel: 'parchment', version: "${parchment_version}-${minecraft_version}"
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+loom {
+    silentMojangMappingsLicense()
+
+    forge {
+        //mixinConfig "create_dd.mixins.json"
+    }
 
     runs {
-        client {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'create_dd'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
-            mods {
-                create_dd {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'create_dd'
-
-            mods {
-                create_dd {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        gameTestServer {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'create_dd'
-
-            mods {
-                create_dd {
-                    source sourceSets.main
-                }
-            }
-        }
-
         data {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES,REGISTRYDUMP'
-
-            property 'forge.logging.console.level', 'debug'
-
-            args '--mod', 'create_dd', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                create_dd {
-                    source sourceSets.main
-                }
-            }
+            data()
+            programArgs '--mod', 'create_dd'
+            programArg '--all'
+            programArgs '--output', file('src/generated/resources/').absolutePath
+            programArgs '--existing', file('src/main/resources/').absolutePath
         }
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
 repositories {
-    maven {
-        name = 'tterrag maven'
-        url = 'https://maven.tterrag.com/'
-    }
-    maven {
-        // location of the maven that hosts JEI files since January 2023
-        // location of the maven for Vazkii's mods
-        name = "Jared's maven"
-        url = "https://maven.blamejared.com/"
-    }
-    maven {
-        // location of the maven for Curios API
-        url = "https://maven.theillusivec4.top/"
-    }
-    maven {
-        name = "ModMaven"
-        url = "https://modmaven.dev"
-    }
+    mavenCentral()
+    mavenLocal()
+    maven { url 'https://maven.parchmentmc.org' }
+    maven { url 'https://maven.quiltmc.org/repository/release' }
+    maven { url 'https://maven.blamejared.com/' }
 
     maven {
-        url = 'https://www.cursemaven.com'
+        url 'https://maven.tterrag.com/'
         content {
-            includeGroup "curse.maven"
+            includeGroup 'com.jozufozu.flywheel'
+            includeGroup 'com.tterrag.registrate'
+            includeGroup 'com.simibubi.create'
         }
     }
     maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven"
-        content {
-            includeGroup "maven.modrinth"
-        }
+        url 'https://api.modrinth.com/maven'
+        content { includeGroup 'maven.modrinth' }
     }
+    maven {
+        url 'https://www.cursemaven.com'
+        content { includeGroup "curse.maven" }
+    }
+}
 
-    flatDir {
-        dirs 'libs'
-    }
+configurations {
+    jarJar // include a mod with yours
+
+    modImplementation.extendsFrom jarJar
+    include.extendsFrom jarJar
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    minecraft "com.mojang:minecraft:${minecraft_version}"
 
-    implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
-    implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
-    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+    mappings(loom.layered {
+        it.mappings("org.quiltmc:quilt-mappings:${minecraft_version}+build.${quilt_mappings}:intermediary-v2")
+        it.parchment("org.parchmentmc.data:parchment-${minecraft_version}:${parchment_version}@zip")
+        it.officialMojangMappings { nameSyntheticMembers = false }
+    })
 
-    compileOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}-forge-api:${jei_version}")
-    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
+    forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    //mods
+    // Create and Co.
+    modImplementation "com.tterrag.registrate:Registrate:${registrate_version}"
+    modImplementation("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
+    modImplementation "com.jozufozu.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version}"
 
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}")
-    runtimeOnly fg.deobf("curse.maven:autoreglib-250363:4100299")
-    runtimeOnly fg.deobf("vazkii.quark:Quark:3.4-406.3030")
-    runtimeOnly fg.deobf("curse.maven:mouse-tweaks-60089:3871353")
-    runtimeOnly fg.deobf("curse.maven:rubidium-574856:4568727")
-    runtimeOnly fg.deobf("curse.maven:rubidium-extra-654373:4431017")
-    runtimeOnly fg.deobf("curse.maven:textrues-rubidium-options-663125:4507672")
-    runtimeOnly fg.deobf("curse.maven:memoryleakfix-627566:4465268")
-    runtimeOnly fg.deobf("curse.maven:entity-collision-fps-fix-628345:3829972")
-    runtimeOnly fg.deobf("curse.maven:smooth-boot-reloaded-633412:4162940")
-    runtimeOnly fg.deobf("curse.maven:krypton-reforged-549394:4606519")
-    //  runtimeOnly fg.deobf("slimeknights.mantle:Mantle:1.16.5-1.6.115")
-    //  runtimeOnly fg.deobf("slimeknights.tconstruct:TConstruct:1.16.5-3.1.1.252")
-    //  runtimeOnly fg.deobf("com.railwayteam.railways:railways-1.18.2-1.1.1:all") { transitive = false }
-    runtimeOnly fg.deobf("maven.modrinth:entityculling:1.6.1")
-    runtimeOnly fg.deobf("maven.modrinth:reskin:2.6.1")
-    runtimeOnly fg.deobf("maven.modrinth:sekclib:0.4.3")
-    runtimeOnly fg.deobf("curse.maven:female-gender-forge-481655:3920268")
-    runtimeOnly fg.deobf("curse.maven:modernfix-790626:4635137")
-    runtimeOnly fg.deobf("maven.modrinth:every-compat:1.19.2-2.4.12")
-    runtimeOnly fg.deobf("maven.modrinth:tetra:5.3.1")
-    runtimeOnly fg.deobf("maven.modrinth:moonlight:1.19.2-2.2.43")
-    runtimeOnly fg.deobf("maven.modrinth:mutil:5.1.0")
-    runtimeOnly fg.deobf("curse.maven:createaddition-439890:4683731")
+    // JEI
+    modCompileOnly "mezz.jei:jei-1.19.2-common-api:${jei_version}"
+    modCompileOnly "mezz.jei:jei-1.19.2-forge-api:${jei_version}"
+    //modRuntimeOnly "mezz.jei:jei-1.19.2-forge:${jei_version}" broken because loom
+
+    // Dev QOL
+    modRuntimeOnly "curse.maven:better-mods-button-541584:3963202"
+    modRuntimeOnly "curse.maven:ferritecore-429235:4117906"
+    modRuntimeOnly "curse.maven:catalogue-459701:4171024"
 }
 
-sourceSets.main.resources {
-    srcDir 'src/generated/resources'
-    exclude '.cache/'
-}
+processResources {
+    def props = [
+            version: mod_version,
+            forge_version: forge_version.split("\\.")[0], // only specify major version of forge
+            minecraft_version: minecraft_version,
+            create_version: create_version.split("-")[0] // cut off build number
+    ]
+    inputs.properties props
 
-jar {
-    manifest {
-        attributes([
-                "Specification-Title"     : "create_dd",
-                "Specification-Vendor"    : "lopyluna",
-                "Specification-Version"   : "1",
-                'Implementation-Title'    : project.jar.baseName,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "lopyluna",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
+    filesMatching("META-INF/mods.toml") {
+        expand props
     }
 }
 
-jar.finalizedBy('reobfJar')
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
-    }
-}
+// disable machete locally for faster builds
+machete { enabled = buildNumber != null }
 
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+    it.options.encoding = "UTF-8"
+    it.options.release.set 17
+}
+
+java { withSourcesJar() }
+
+remapJar {
+    archiveClassifier = 'dev'
 }
