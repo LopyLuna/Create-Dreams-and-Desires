@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
+import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
 public class KineticMotorBlock extends DirectionalKineticBlock implements IBE<KineticMotorBlockEntity> {
     public KineticMotorBlock(Properties properties) {
@@ -63,7 +63,7 @@ public class KineticMotorBlock extends DirectionalKineticBlock implements IBE<Ki
 
     @Override
     public BlockEntityType<? extends KineticMotorBlockEntity> getBlockEntityType() {
-        return YIPPEEEntityTypes.MOTOR.get();
+        return DDBlockEntityTypes.MOTOR.get();
     }
 
 }

@@ -220,7 +220,7 @@ public class DDProcessingScenes extends ProcessingScenes {
         scene.overlay.showText(80)
                 .pointAt(basinSide.subtract(0, 1, 0))
                 .placeNearTarget()
-                .text("Some of those recipes may require the heat of a Blaze Burner");
+                .text("Some of those recipe may require the heat of a Blaze Burner");
         scene.idle(40);
 
         scene.rotateCameraY(30);
@@ -232,7 +232,7 @@ public class DDProcessingScenes extends ProcessingScenes {
                 .pointAt(filterPos)
                 .placeNearTarget()
                 .attachKeyFrame()
-                .text("The filter slot can be used in case two recipes are conflicting.");
+                .text("The filter slot can be used in case two recipe are conflicting.");
         scene.idle(80);
     }
     

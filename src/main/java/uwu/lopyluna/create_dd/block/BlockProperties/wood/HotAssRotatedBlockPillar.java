@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolAction;
 import org.jetbrains.annotations.Nullable;
-import uwu.lopyluna.create_dd.block.YIPPEE;
+import uwu.lopyluna.create_dd.block.DDBlocks;
 
 public class HotAssRotatedBlockPillar extends RotatedPillarBlock {
     public HotAssRotatedBlockPillar(Properties pProperties) {
@@ -35,17 +35,17 @@ public class HotAssRotatedBlockPillar extends RotatedPillarBlock {
     @Override
     public BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
         if(context.getItemInHand().getItem() instanceof AxeItem) {
-            if(state.is(YIPPEE.rose_log.get())) {
-                return YIPPEE.stripped_rose_log.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            if(state.is(DDBlocks.rose_log.get())) {
+                return DDBlocks.stripped_rose_log.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
-            if(state.is(YIPPEE.rose_wood.get())) {
-                return YIPPEE.stripped_rose_wood.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            if(state.is(DDBlocks.rose_wood.get())) {
+                return DDBlocks.stripped_rose_wood.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
-            if(state.is(YIPPEE.smoked_log.get())) {
-                return YIPPEE.stripped_smoked_log.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            if(state.is(DDBlocks.smoked_log.get())) {
+                return DDBlocks.stripped_smoked_log.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
-            if(state.is(YIPPEE.smoked_wood.get())) {
-                return YIPPEE.stripped_smoked_wood.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            if(state.is(DDBlocks.smoked_wood.get())) {
+                return DDBlocks.stripped_smoked_wood.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
         }
 

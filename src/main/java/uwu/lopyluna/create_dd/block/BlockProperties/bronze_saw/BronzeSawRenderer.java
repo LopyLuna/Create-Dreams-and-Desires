@@ -30,7 +30,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import uwu.lopyluna.create_dd.block.YIPPEEPartialModel;
+import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.FACING;
 
@@ -60,19 +60,19 @@ public class BronzeSawRenderer extends SafeBlockEntityRenderer<BronzeSawBlockEnt
 
         if (BronzeSawBlock.isHorizontal(blockState)) {
             if (speed > 0) {
-                partial = YIPPEEPartialModel.BRONZE_SAW_BLADE_HORIZONTAL_ACTIVE;
+                partial = DDBlockPartialModel.BRONZE_SAW_BLADE_HORIZONTAL_ACTIVE;
             } else if (speed < 0) {
-                partial = YIPPEEPartialModel.BRONZE_SAW_BLADE_HORIZONTAL_REVERSED;
+                partial = DDBlockPartialModel.BRONZE_SAW_BLADE_HORIZONTAL_REVERSED;
             } else {
-                partial = YIPPEEPartialModel.BRONZE_SAW_BLADE_HORIZONTAL_INACTIVE;
+                partial = DDBlockPartialModel.BRONZE_SAW_BLADE_HORIZONTAL_INACTIVE;
             }
         } else {
             if (be.getSpeed() > 0) {
-                partial = YIPPEEPartialModel.BRONZE_SAW_BLADE_VERTICAL_ACTIVE;
+                partial = DDBlockPartialModel.BRONZE_SAW_BLADE_VERTICAL_ACTIVE;
             } else if (speed < 0) {
-                partial = YIPPEEPartialModel.BRONZE_SAW_BLADE_VERTICAL_REVERSED;
+                partial = DDBlockPartialModel.BRONZE_SAW_BLADE_VERTICAL_REVERSED;
             } else {
-                partial = YIPPEEPartialModel.BRONZE_SAW_BLADE_VERTICAL_INACTIVE;
+                partial = DDBlockPartialModel.BRONZE_SAW_BLADE_VERTICAL_INACTIVE;
             }
 
             if (blockState.getValue(BronzeSawBlock.AXIS_ALONG_FIRST_COORDINATE))
@@ -178,14 +178,14 @@ public class BronzeSawRenderer extends SafeBlockEntityRenderer<BronzeSawBlockEnt
         SuperByteBuffer superBuffer;
         if (BronzeSawBlock.isHorizontal(state)) {
             if (shouldAnimate)
-                superBuffer = CachedBufferer.partial(YIPPEEPartialModel.BRONZE_SAW_BLADE_HORIZONTAL_ACTIVE, state);
+                superBuffer = CachedBufferer.partial(DDBlockPartialModel.BRONZE_SAW_BLADE_HORIZONTAL_ACTIVE, state);
             else
-                superBuffer = CachedBufferer.partial(YIPPEEPartialModel.BRONZE_SAW_BLADE_HORIZONTAL_INACTIVE, state);
+                superBuffer = CachedBufferer.partial(DDBlockPartialModel.BRONZE_SAW_BLADE_HORIZONTAL_INACTIVE, state);
         } else {
             if (shouldAnimate)
-                superBuffer = CachedBufferer.partial(YIPPEEPartialModel.BRONZE_SAW_BLADE_VERTICAL_ACTIVE, state);
+                superBuffer = CachedBufferer.partial(DDBlockPartialModel.BRONZE_SAW_BLADE_VERTICAL_ACTIVE, state);
             else
-                superBuffer = CachedBufferer.partial(YIPPEEPartialModel.BRONZE_SAW_BLADE_VERTICAL_INACTIVE, state);
+                superBuffer = CachedBufferer.partial(DDBlockPartialModel.BRONZE_SAW_BLADE_VERTICAL_INACTIVE, state);
         }
 
         superBuffer.transform(matrices.getModel())

@@ -1,6 +1,5 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.fan;
 
-import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.foundation.block.IBE;
@@ -13,7 +12,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
+import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
 public class TwoBladeFanBlock extends RotatedPillarKineticBlock implements IBE<TwoBladeFanBlockEntity> {
 
@@ -38,7 +37,7 @@ public class TwoBladeFanBlock extends RotatedPillarKineticBlock implements IBE<T
 
     @Override
     public BlockEntityType<? extends TwoBladeFanBlockEntity> getBlockEntityType() {
-        return YIPPEEEntityTypes.two_blade_fan.get();
+        return DDBlockEntityTypes.two_blade_fan.get();
     }
 
     @Override

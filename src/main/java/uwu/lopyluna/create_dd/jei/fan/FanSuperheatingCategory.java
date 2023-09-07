@@ -5,8 +5,8 @@ import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import com.simibubi.create.foundation.gui.AllGuiTextures;
 import com.simibubi.create.foundation.gui.element.GuiGameElement;
 import org.jetbrains.annotations.NotNull;
-import uwu.lopyluna.create_dd.block.YIPPEE;
-import uwu.lopyluna.create_dd.recipes.SuperHeatingRecipe;
+import uwu.lopyluna.create_dd.block.DDBlocks;
+import uwu.lopyluna.create_dd.recipe.Recipes.SuperHeatingRecipe;
 
 public class FanSuperheatingCategory extends DDProcessingViaFanCategory.MultiOutput<SuperHeatingRecipe> {
 
@@ -21,7 +21,7 @@ public class FanSuperheatingCategory extends DDProcessingViaFanCategory.MultiOut
 
     @Override
     protected void renderAttachedBlock(@NotNull PoseStack matrixStack) {
-        GuiGameElement.of(YIPPEE.superheating_sail.getDefaultState())
+        GuiGameElement.of(DDBlocks.superheating_sail.getDefaultState())
                 .rotateBlock(0, 180, 0)
                 .scale(SCALE)
                 .atLocal(0, 0, 2)

@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
+import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
 public class EightBladeFanBlock extends RotatedPillarKineticBlock implements IBE<EightBladeFanBlockEntity> {
 
@@ -37,7 +37,7 @@ public class EightBladeFanBlock extends RotatedPillarKineticBlock implements IBE
 
     @Override
     public BlockEntityType<? extends EightBladeFanBlockEntity> getBlockEntityType() {
-        return YIPPEEEntityTypes.eight_blade_fan.get();
+        return DDBlockEntityTypes.eight_blade_fan.get();
     }
 
     @Override

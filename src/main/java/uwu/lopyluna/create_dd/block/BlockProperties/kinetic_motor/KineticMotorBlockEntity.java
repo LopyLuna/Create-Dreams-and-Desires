@@ -14,7 +14,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import uwu.lopyluna.create_dd.block.YIPPEE;
+import uwu.lopyluna.create_dd.block.DDBlocks;
 
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class KineticMotorBlockEntity extends GeneratingKineticBlockEntity {
 
     @Override
     public float getGeneratedSpeed() {
-        if (!YIPPEE.KINETIC_MOTOR.has(getBlockState()))
+        if (!DDBlocks.KINETIC_MOTOR.has(getBlockState()))
             return 0;
         return convertToDirection(generatedSpeed.getValue(), getBlockState().getValue(KineticMotorBlock.FACING));
     }

@@ -23,13 +23,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
-import uwu.lopyluna.create_dd.DDcreate;
-import uwu.lopyluna.create_dd.block.YIPPEE;
-import uwu.lopyluna.create_dd.item.Pipebomb;
+import uwu.lopyluna.create_dd.DDCreate;
+import uwu.lopyluna.create_dd.block.DDBlocks;
+import uwu.lopyluna.create_dd.item.DDItems;
 import uwu.lopyluna.create_dd.jei.fan.*;
-import uwu.lopyluna.create_dd.recipes.BakingRecipesTypes;
-import uwu.lopyluna.create_dd.recipes.FreezingRecipe;
-import uwu.lopyluna.create_dd.recipes.SuperHeatingRecipe;
+import uwu.lopyluna.create_dd.recipe.DDRecipesTypes;
+import uwu.lopyluna.create_dd.recipe.Recipes.FreezingRecipe;
+import uwu.lopyluna.create_dd.recipe.Recipes.SuperHeatingRecipe;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -46,7 +46,7 @@ import static com.simibubi.create.compat.jei.CreateJEI.consumeTypedRecipes;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class DDcreateJEI implements IModPlugin {
-    private static final ResourceLocation MOD_ID = new ResourceLocation(DDcreate.MOD_ID, "jei_plugin");
+    private static final ResourceLocation MOD_ID = new ResourceLocation(DDCreate.MOD_ID, "jei_plugin");
 
     @Override
     @Nonnull
@@ -63,24 +63,24 @@ public class DDcreateJEI implements IModPlugin {
         CreateRecipeCategory<?>
 
         freezing = builder(FreezingRecipe.class)
-            .addTypedRecipes(BakingRecipesTypes.FREEZING::getType)
+            .addTypedRecipes(DDRecipesTypes.FREEZING::getType)
             .catalystStack(DDProcessingViaFanCategory.getFan("industrial_fan_freezing"))
             .doubleItemIcon(AllItems.PROPELLER.get(), Items.POWDER_SNOW_BUCKET)
             .emptyBackground(178, 72)
             .build("industrial_fan_freezing", FanFreezingCategory::new),
 
         superheating = builder(SuperHeatingRecipe.class)
-            .addTypedRecipes(BakingRecipesTypes.SUPERHEATING)
+            .addTypedRecipes(DDRecipesTypes.SUPERHEATING)
             .catalystStack(DDProcessingViaFanCategory.getFan("industrial_fan_superheating"))
             .doubleItemIcon(AllItems.PROPELLER.get(), AllItems.BLAZE_CAKE.get())
             .emptyBackground(178, 72)
             .build("industrial_fan_superheating", FanSuperheatingCategory::new),
 
         also_mysteryConversion = builder(ConversionRecipe.class)
-            .addRecipes(() -> BakingMysterious.RECIPES)
-            .itemIcon(Pipebomb.CHROMATIC_COMPOUND.get())
+            .addRecipes(() -> MysteriousConversion.RECIPES)
+            .itemIcon(DDItems.CHROMATIC_COMPOUND.get())
             .emptyBackground(177, 50)
-            .build("also_mystery_conversion", BakingMysterious::new);
+            .build("also_mystery_conversion", MysteriousConversion::new);
     }
 
     @Override
@@ -100,27 +100,27 @@ public class DDcreateJEI implements IModPlugin {
         DDCategories.forEach(c -> c.registerCatalysts(registration));
 
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "pressing")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(YIPPEE.hydraulic_press.get()), type));
+                registration.addRecipeCatalyst(new ItemStack(DDBlocks.hydraulic_press.get()), type));
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "automatic_packing")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(YIPPEE.hydraulic_press.get()), type));
+                registration.addRecipeCatalyst(new ItemStack(DDBlocks.hydraulic_press.get()), type));
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "packing")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(YIPPEE.hydraulic_press.get()), type));
+                registration.addRecipeCatalyst(new ItemStack(DDBlocks.hydraulic_press.get()), type));
 
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "sawing")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(YIPPEE.BRONZE_SAW.get()), type));
+                registration.addRecipeCatalyst(new ItemStack(DDBlocks.BRONZE_SAW.get()), type));
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "block_cutting")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(YIPPEE.BRONZE_SAW.get()), type));
+                registration.addRecipeCatalyst(new ItemStack(DDBlocks.BRONZE_SAW.get()), type));
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "wood_cutting")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(YIPPEE.BRONZE_SAW.get()), type));
+                registration.addRecipeCatalyst(new ItemStack(DDBlocks.BRONZE_SAW.get()), type));
 
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "fan_washing")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(YIPPEE.industrial_fan.get()), type));
+                registration.addRecipeCatalyst(new ItemStack(DDBlocks.industrial_fan.get()), type));
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "fan_smoking")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(YIPPEE.industrial_fan.get()), type));
+                registration.addRecipeCatalyst(new ItemStack(DDBlocks.industrial_fan.get()), type));
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "fan_blasting")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(YIPPEE.industrial_fan.get()), type));
+                registration.addRecipeCatalyst(new ItemStack(DDBlocks.industrial_fan.get()), type));
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "fan_haunting")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(YIPPEE.industrial_fan.get()), type));
+                registration.addRecipeCatalyst(new ItemStack(DDBlocks.industrial_fan.get()), type));
     }
 
     @Override
@@ -310,7 +310,7 @@ public class DDcreateJEI implements IModPlugin {
             }
 
             CreateRecipeCategory.Info<T> info = new CreateRecipeCategory.Info<>(
-                    new mezz.jei.api.recipe.RecipeType<>(DDcreate.asResource(name), recipeClass),
+                    new mezz.jei.api.recipe.RecipeType<>(DDCreate.asResource(name), recipeClass),
                     Lang.translateDirect("recipe." + name), background, icon, recipesSupplier, catalysts);
             CreateRecipeCategory<T> category = factory.create(info);
             DDCategories.add(category);

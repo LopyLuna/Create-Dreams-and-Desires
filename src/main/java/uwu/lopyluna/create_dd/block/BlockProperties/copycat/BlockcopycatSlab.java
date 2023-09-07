@@ -28,8 +28,8 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import uwu.lopyluna.create_dd.block.YIPPEE;
-import uwu.lopyluna.create_dd.block.YIPPEEBOOBASHAPE;
+import uwu.lopyluna.create_dd.block.DDBlocks;
+import uwu.lopyluna.create_dd.block.DDBlockShapes;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -155,7 +155,7 @@ public class BlockcopycatSlab extends WaterloggedCopycatBlock {
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return YIPPEEBOOBASHAPE.CASING_8PX.get(pState.getValue(FACING));
+        return DDBlockShapes.CASING_8PX.get(pState.getValue(FACING));
     }
 
     @Override
@@ -209,12 +209,12 @@ public class BlockcopycatSlab extends WaterloggedCopycatBlock {
     private static class PlacementHelper implements IPlacementHelper {
         @Override
         public Predicate<ItemStack> getItemPredicate() {
-            return YIPPEE.COPYCAT_SLAB::isIn;
+            return DDBlocks.COPYCAT_SLAB::isIn;
         }
 
         @Override
         public Predicate<BlockState> getStatePredicate() {
-            return YIPPEE.COPYCAT_SLAB::has;
+            return DDBlocks.COPYCAT_SLAB::has;
         }
 
         @Override

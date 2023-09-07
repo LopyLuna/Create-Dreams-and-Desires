@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
-import uwu.lopyluna.create_dd.block.YIPPEEPartialModel;
+import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Context;
 
 public class YIPPEESlidingDoorRenderer extends SafeBlockEntityRenderer<YIPPEESlidingDoorBlockEntity> {
@@ -50,7 +50,7 @@ public class YIPPEESlidingDoorRenderer extends SafeBlockEntityRenderer<YIPPEESli
 
         if (((YIPPEESlidingDoorBlock) blockState.getBlock()).isFoldingDoor()) {
             Couple<PartialModel> partials =
-                    YIPPEEPartialModel.FOLDING_DOORS.get(ForgeRegistries.BLOCKS.getKey(blockState.getBlock()));
+                    DDBlockPartialModel.FOLDING_DOORS.get(ForgeRegistries.BLOCKS.getKey(blockState.getBlock()));
 
             boolean flip = blockState.getValue(DoorBlock.HINGE) == DoorHingeSide.RIGHT;
             for (boolean left : Iterate.trueAndFalse) {

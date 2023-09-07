@@ -31,8 +31,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import uwu.lopyluna.create_dd.block.YIPPEE;
-import uwu.lopyluna.create_dd.block.YIPPEEBOOBASHAPE;
+import uwu.lopyluna.create_dd.block.DDBlocks;
+import uwu.lopyluna.create_dd.block.DDBlockShapes;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -157,7 +157,7 @@ public class BlockcopycatBlock extends WaterloggedCopycatBlock {
     @Override
     @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
-        return YIPPEEBOOBASHAPE.CASING_16PX.get(pState.getValue(FACING));
+        return DDBlockShapes.CASING_16PX.get(pState.getValue(FACING));
     }
 
     @Override
@@ -213,12 +213,12 @@ public class BlockcopycatBlock extends WaterloggedCopycatBlock {
     private static class PlacementHelper implements IPlacementHelper {
         @Override
         public Predicate<ItemStack> getItemPredicate() {
-            return YIPPEE.COPYCAT_BlOCK::isIn;
+            return DDBlocks.COPYCAT_BlOCK::isIn;
         }
 
         @Override
         public Predicate<BlockState> getStatePredicate() {
-            return YIPPEE.COPYCAT_BlOCK::has;
+            return DDBlocks.COPYCAT_BlOCK::has;
         }
 
         @Override

@@ -11,11 +11,11 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
-import uwu.lopyluna.create_dd.DDcreate;
+import uwu.lopyluna.create_dd.DDCreate;
 
 public class DeforesterRender extends CustomRenderedItemModelRenderer {
-    protected static final PartialModel ITEM = new PartialModel(DDcreate.asResource("item/deforester_saw/item"));
-    protected static final PartialModel GEAR = new PartialModel(DDcreate.asResource("item/deforester_saw/gear"));
+    protected static final PartialModel ITEM = new PartialModel(DDCreate.asResource("item/deforester_saw/item"));
+    protected static final PartialModel GEAR = new PartialModel(DDCreate.asResource("item/deforester_saw/gear"));
 
     private static final Vec3 GEAR_ROTATION_OFFSET = new Vec3(-3.25 / 16f, -1.5 / 16f, 0);
 

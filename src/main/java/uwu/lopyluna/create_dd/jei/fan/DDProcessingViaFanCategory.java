@@ -2,7 +2,6 @@ package uwu.lopyluna.create_dd.jei.fan;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.simibubi.create.compat.jei.category.CreateRecipeCategory;
 import com.simibubi.create.compat.jei.category.ProcessingViaFanCategory;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import com.simibubi.create.content.processing.recipe.ProcessingOutput;
@@ -15,8 +14,8 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
-import uwu.lopyluna.create_dd.block.YIPPEE;
-import uwu.lopyluna.create_dd.block.YIPPEEPartialModel;
+import uwu.lopyluna.create_dd.block.DDBlocks;
+import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -32,7 +31,7 @@ public abstract class DDProcessingViaFanCategory<T extends Recipe<?>> extends Pr
     }
 
     public static Supplier<ItemStack> getFan(String name) {
-        return () -> YIPPEE.industrial_fan.asStack()
+        return () -> DDBlocks.industrial_fan.asStack()
                 .setHoverName(Lang.translateDirect("recipe." + name + ".fan").withStyle(style -> style.withItalic(false)));
     }
 
@@ -57,17 +56,17 @@ public abstract class DDProcessingViaFanCategory<T extends Recipe<?>> extends Pr
         matrixStack.mulPose(Vector3f.XP.rotationDegrees(-12.5f));
         matrixStack.mulPose(Vector3f.YP.rotationDegrees(22.5f));
 
-        AnimatedKinetics.defaultBlockElement(YIPPEEPartialModel.BRONZE_ENCASED_FAN_INNER)
+        AnimatedKinetics.defaultBlockElement(DDBlockPartialModel.BRONZE_ENCASED_FAN_INNER)
                 .rotateBlock(180, 0, AnimatedKinetics.getCurrentAngle() * 16)
                 .scale(SCALE)
                 .render(matrixStack);
 
-        AnimatedKinetics.defaultBlockElement(YIPPEEPartialModel.INDUSTRIAL_FAN_COG)
+        AnimatedKinetics.defaultBlockElement(DDBlockPartialModel.INDUSTRIAL_FAN_COG)
                 .rotateBlock(180, 0, AnimatedKinetics.getCurrentAngle() * 16)
                 .scale(SCALE)
                 .render(matrixStack);
 
-        AnimatedKinetics.defaultBlockElement(YIPPEE.industrial_fan.getDefaultState())
+        AnimatedKinetics.defaultBlockElement(DDBlocks.industrial_fan.getDefaultState())
                 .rotateBlock(0, 180, 0)
                 .atLocal(0, 0, 0)
                 .scale(SCALE)

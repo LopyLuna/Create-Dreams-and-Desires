@@ -4,7 +4,7 @@ import com.simibubi.create.AllItems;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
-import uwu.lopyluna.create_dd.item.Pipebomb;
+import uwu.lopyluna.create_dd.item.DDItems;
 
 public class BobTiers {
     public static final Tier Ravager = new Tier()
@@ -37,7 +37,7 @@ public class BobTiers {
         @NotNull
         @Override
         public Ingredient getRepairIngredient() {
-            return Ingredient.of(Pipebomb.mithril_ingot.get());
+            return Ingredient.of(DDItems.mithril_ingot.get());
         }
     };
 

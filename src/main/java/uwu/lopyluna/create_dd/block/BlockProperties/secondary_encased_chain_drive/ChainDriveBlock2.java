@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
-import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
+import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
 public class ChainDriveBlock2 extends ChainDriveBlock
         implements IBE<KineticBlockEntity>, ITransformableBlock {
@@ -189,7 +189,7 @@ public class ChainDriveBlock2 extends ChainDriveBlock
 
     @Override
     public BlockEntityType<? extends KineticBlockEntity> getBlockEntityType() {
-        return YIPPEEEntityTypes.ENCASED_SHAFT.get();
+        return DDBlockEntityTypes.ENCASED_SHAFT.get();
     }
 
 

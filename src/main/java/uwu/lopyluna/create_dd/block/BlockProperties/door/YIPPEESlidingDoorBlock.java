@@ -32,7 +32,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
+import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
 import javax.annotation.Nullable;
 
@@ -249,7 +249,7 @@ public class YIPPEESlidingDoorBlock extends DoorBlock implements IWrenchable, IB
 
     @Override
     public BlockEntityType<? extends YIPPEESlidingDoorBlockEntity> getBlockEntityType() {
-        return YIPPEEEntityTypes.SLIDING_DOOR.get();
+        return DDBlockEntityTypes.SLIDING_DOOR.get();
     }
 
 }

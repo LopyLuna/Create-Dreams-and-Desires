@@ -9,9 +9,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
-import uwu.lopyluna.create_dd.worldgen.PonderTeleporting;
-import uwu.lopyluna.create_dd.worldgen.Pondering;
+import uwu.lopyluna.create_dd.worldgen.ponder_dim.PonderTeleporting;
+import uwu.lopyluna.create_dd.worldgen.ponder_dim.Pondering;
 
 import java.util.List;
 import java.util.Objects;

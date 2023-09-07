@@ -5,7 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import uwu.lopyluna.create_dd.block.BlockProperties.bronze_encased_fan.BronzeAirCurrent;
+import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialAirCurrent;
 
 public class DDClientEvents extends ClientEvents {
 
@@ -16,7 +16,7 @@ public class DDClientEvents extends ClientEvents {
 
         Level world = Minecraft.getInstance().level;
         if (event.phase == TickEvent.Phase.START) {
-            BronzeAirCurrent.BtickClientPlayerSounds();
+            IndustrialAirCurrent.BtickClientPlayerSounds();
         }
 
     }

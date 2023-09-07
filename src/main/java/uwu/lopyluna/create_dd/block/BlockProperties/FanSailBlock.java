@@ -25,7 +25,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import uwu.lopyluna.create_dd.block.YIPPEE;
+import uwu.lopyluna.create_dd.block.DDBlocks;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -102,12 +102,12 @@ public class FanSailBlock extends WrenchableDirectionalBlock {
     private static class PlacementHelper implements IPlacementHelper {
         @Override
         public Predicate<ItemStack> getItemPredicate() {
-            return i -> YIPPEE.splashing_sail.isIn(i)
-                    || YIPPEE.haunting_sail.isIn(i)
-                    || YIPPEE.smoking_sail.isIn(i)
-                    || YIPPEE.blasting_sail.isIn(i)
-                    || YIPPEE.superheating_sail.isIn(i)
-                    || YIPPEE.freezing_sail.isIn(i)
+            return i -> DDBlocks.splashing_sail.isIn(i)
+                    || DDBlocks.haunting_sail.isIn(i)
+                    || DDBlocks.smoking_sail.isIn(i)
+                    || DDBlocks.blasting_sail.isIn(i)
+                    || DDBlocks.superheating_sail.isIn(i)
+                    || DDBlocks.freezing_sail.isIn(i)
                     || AllBlocks.SAIL.isIn(i)
                     || AllBlocks.SAIL_FRAME.isIn(i);
         }

@@ -22,7 +22,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.item.ItemProperties.BobTiers;
-import uwu.lopyluna.create_dd.item.Pipebomb;
+import uwu.lopyluna.create_dd.item.DDItems;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Consumer;
@@ -57,7 +57,7 @@ public class DeforesterItem extends DeforesterAxeItem {
     public static void onBlockDestroyed(BlockEvent.BreakEvent event) {
         ItemStack heldItemMainhand = event.getPlayer().getItemInHand(InteractionHand.MAIN_HAND);
 
-        if (!Pipebomb.deforester_saw.isIn(heldItemMainhand))
+        if (!DDItems.deforester_saw.isIn(heldItemMainhand))
             return;
         destroyTree((Level) event.getLevel(), event.getState(), event.getPos(), event.getPlayer());
     }

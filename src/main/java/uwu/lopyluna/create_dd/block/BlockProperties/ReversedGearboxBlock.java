@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.ticks.TickPriority;
-import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
+import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
 
 public class ReversedGearboxBlock extends AbstractEncasedShaftBlock implements IBE<SplitShaftBlockEntity> {
@@ -42,7 +42,7 @@ public class ReversedGearboxBlock extends AbstractEncasedShaftBlock implements I
 
     @Override
     public BlockEntityType<? extends SplitShaftBlockEntity> getBlockEntityType() {
-        return YIPPEEEntityTypes.REVERSED_GEARSHIFT.get();
+        return DDBlockEntityTypes.REVERSED_GEARSHIFT.get();
     }
 
     public void detachKinetics(Level worldIn, BlockPos pos, boolean reAttachNextTick) {

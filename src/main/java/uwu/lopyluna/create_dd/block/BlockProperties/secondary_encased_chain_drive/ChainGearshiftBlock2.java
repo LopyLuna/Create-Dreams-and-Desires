@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
+import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
 public class ChainGearshiftBlock2 extends ChainDriveBlock2 {
 
@@ -77,7 +77,7 @@ public class ChainGearshiftBlock2 extends ChainDriveBlock2 {
 
     @Override
     public BlockEntityType<? extends KineticBlockEntity> getBlockEntityType() {
-        return YIPPEEEntityTypes.secondary_adjustable_chain_gearshift.get();
+        return DDBlockEntityTypes.secondary_adjustable_chain_gearshift.get();
     }
 
 }

@@ -7,7 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import uwu.lopyluna.create_dd.block.BlockProperties.bronze_drill.BronzeDrillBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlock;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 

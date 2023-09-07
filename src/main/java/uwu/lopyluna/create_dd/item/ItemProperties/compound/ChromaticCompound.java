@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.entity.BeaconBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
-import uwu.lopyluna.create_dd.item.Pipebomb;
+import uwu.lopyluna.create_dd.item.DDItems;
 
 
 public class ChromaticCompound extends Item {
@@ -35,7 +35,7 @@ public class ChromaticCompound extends Item {
 
         // Convert to Shadow steel if in void
         if (y < minHeight && y - yMotion < -10 + minHeight && config.enableShadowSteelRecipe.get()) {
-            ItemStack newStack = Pipebomb.SHADOW_STEEL.asStack();
+            ItemStack newStack = DDItems.SHADOW_STEEL.asStack();
             newStack.setCount(stack.getCount());
             data.putBoolean("JustCreated", true);
             entity.setItem(newStack);
@@ -74,7 +74,7 @@ public class ChromaticCompound extends Item {
         }
 
         if (isOverBeacon) {
-            ItemStack newStack = Pipebomb.REFINED_RADIANCE.asStack();
+            ItemStack newStack = DDItems.REFINED_RADIANCE.asStack();
             newStack.setCount(stack.getCount());
             data.putBoolean("JustCreated", true);
             entity.setItem(newStack);

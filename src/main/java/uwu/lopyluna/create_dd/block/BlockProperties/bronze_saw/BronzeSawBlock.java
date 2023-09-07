@@ -1,9 +1,6 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw;
 
-import com.simibubi.create.AllBlockEntityTypes;
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.saw.SawBlock;
-import com.simibubi.create.content.kinetics.saw.SawBlockEntity;
 import com.simibubi.create.foundation.placement.IPlacementHelper;
 import com.simibubi.create.foundation.placement.PlacementHelpers;
 import com.simibubi.create.foundation.placement.PlacementOffset;
@@ -19,8 +16,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import uwu.lopyluna.create_dd.block.YIPPEE;
-import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
+import uwu.lopyluna.create_dd.block.DDBlocks;
+import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -37,7 +34,7 @@ public class BronzeSawBlock extends SawBlock {
 
     @Override
     public BlockEntityType<? extends BronzeSawBlockEntity> getBlockEntityType() {
-        return YIPPEEEntityTypes.BRONZE_SAW.get();
+        return DDBlockEntityTypes.BRONZE_SAW.get();
     }
 
     @Override
@@ -77,12 +74,12 @@ public class BronzeSawBlock extends SawBlock {
 
         @Override
         public Predicate<ItemStack> getItemPredicate() {
-            return YIPPEE.BRONZE_SAW::isIn;
+            return DDBlocks.BRONZE_SAW::isIn;
         }
 
         @Override
         public Predicate<BlockState> getStatePredicate() {
-            return state -> YIPPEE.BRONZE_SAW.has(state);
+            return state -> DDBlocks.BRONZE_SAW.has(state);
         }
 
         @Override

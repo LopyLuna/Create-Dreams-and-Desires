@@ -19,8 +19,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
-import uwu.lopyluna.create_dd.block.YIPPEEEntityTypes;
-import uwu.lopyluna.create_dd.worldgen.Pondering;
+import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
+import uwu.lopyluna.create_dd.worldgen.ponder_dim.Pondering;
 
 
 public class PonderBoxBlock extends Block implements IBE<PonderBoxBlockEntity>{
@@ -82,7 +82,7 @@ public class PonderBoxBlock extends Block implements IBE<PonderBoxBlockEntity>{
 
     @Override
     public BlockEntityType<? extends PonderBoxBlockEntity> getBlockEntityType() {
-        return YIPPEEEntityTypes.ponder_in_a_box.get();
+        return DDBlockEntityTypes.ponder_in_a_box.get();
     }
 
 }
