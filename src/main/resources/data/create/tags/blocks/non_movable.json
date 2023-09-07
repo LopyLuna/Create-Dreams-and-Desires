@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:flywheel",
+    "create_dd:potato_turret",
+    "create_dd:furnace_engine"
+  ]
+}
