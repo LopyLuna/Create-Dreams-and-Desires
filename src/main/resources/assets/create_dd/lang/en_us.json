@@ -162,6 +162,7 @@
   "block.create_dd.raw_tin_block": "Block of Raw Tin",
 
   "block.create_dd.zinc_casing": "Zinc Casing",
+  "block.create_dd.tin_casing": "Tin Casing",
   "block.create_dd.hydraulic_casing": "Hydraulic Casing",
   "block.create_dd.industrial_casing": "Industrial Casing",
   "block.create_dd.overburden_casing": "Overburden Casing",

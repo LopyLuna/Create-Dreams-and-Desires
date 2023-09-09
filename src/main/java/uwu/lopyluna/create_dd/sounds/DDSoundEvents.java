@@ -18,6 +18,12 @@ public class DDSoundEvents {
     public static RegistryObject<SoundEvent> ore_stone_hit = registerSoundEvent("ore_stone_hit");
     public static RegistryObject<SoundEvent> ore_stone_fall = registerSoundEvent("ore_stone_fall");
 
+    public static RegistryObject<SoundEvent> magic_casing_break = registerSoundEvent("magic_casing_break");
+    public static RegistryObject<SoundEvent> magic_casing_step = registerSoundEvent("magic_casing_step");
+    public static RegistryObject<SoundEvent> magic_casing_place = registerSoundEvent("magic_casing_place");
+    public static RegistryObject<SoundEvent> magic_casing_hit = registerSoundEvent("magic_casing_hit");
+    public static RegistryObject<SoundEvent> magic_casing_fall = registerSoundEvent("magic_casing_fall");
+
     public static RegistryObject<SoundEvent> magical_metal_break = registerSoundEvent("magical_metal_break");
     public static RegistryObject<SoundEvent> magical_metal_step = registerSoundEvent("magical_metal_step");
     public static RegistryObject<SoundEvent> magical_metal_place = registerSoundEvent("magical_metal_place");

@@ -13,8 +13,9 @@ import net.minecraft.world.phys.Vec3;
 public class NoGravMagical extends Item {
     public NoGravMagical(Properties p_i48487_1_) {
         super(p_i48487_1_);
-    }	@Override
+    }
 
+    @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
         Level world = entity.level;
         Vec3 pos = entity.position();

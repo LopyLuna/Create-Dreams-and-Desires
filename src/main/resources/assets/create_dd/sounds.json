@@ -1,5 +1,6 @@
 {
-  
+
+
   "ore_stone_break": {"subtitle": "subtitles.block.generic.break","sounds": [
     {"name": "create_dd:ore_stone/break1","volume": 0.9},
     {"name": "create_dd:ore_stone/break2","volume": 0.9},
@@ -21,7 +22,7 @@
     {"name": "create_dd:ore_stone/place3","volume": 0.9},
     {"name": "create_dd:ore_stone/place4","volume": 0.9},
     {"name": "create_dd:ore_stone/place5","volume": 0.9}
-    ]},
+  ]},
   "ore_stone_hit": {"subtitle": "subtitles.block.generic.hit","sounds": [
     {"name": "create_dd:ore_stone/step1","volume": 0.9},
     {"name": "create_dd:ore_stone/step2","volume": 0.9},
@@ -29,7 +30,7 @@
     {"name": "create_dd:ore_stone/step4","volume": 0.9},
     {"name": "create_dd:ore_stone/step5","volume": 0.9},
     {"name": "create_dd:ore_stone/step6","volume": 0.9}
-    ]},
+  ]},
   "ore_stone_fall": {"subtitle": "subtitles.block.generic.footsteps","sounds": [
     {"name": "create_dd:ore_stone/step1","volume": 0.9},
     {"name": "create_dd:ore_stone/step2","volume": 0.9},
@@ -37,6 +38,43 @@
     {"name": "create_dd:ore_stone/step4","volume": 0.9},
     {"name": "create_dd:ore_stone/step5","volume": 0.9},
     {"name": "create_dd:ore_stone/step6","volume": 0.9}
+  ]},
+  
+  "magic_casing_break": {"subtitle": "subtitles.block.generic.break","sounds": [
+    {"name": "create_dd:magic_casing/break1","volume": 0.9},
+    {"name": "create_dd:magic_casing/break2","volume": 0.9},
+    {"name": "create_dd:magic_casing/break3","volume": 0.9},
+    {"name": "create_dd:magic_casing/break4","volume": 0.9}
+  ]},
+  "magic_casing_step": {"subtitle": "subtitles.block.generic.footsteps","sounds": [
+    {"name": "create_dd:magic_casing/step1","volume": 0.9},
+    {"name": "create_dd:magic_casing/step2","volume": 0.9},
+    {"name": "create_dd:magic_casing/step3","volume": 0.9},
+    {"name": "create_dd:magic_casing/step4","volume": 0.9},
+    {"name": "create_dd:magic_casing/step5","volume": 0.9},
+    {"name": "create_dd:magic_casing/step6","volume": 0.9}
+  ]},
+  "magic_casing_place": {"subtitle": "subtitles.block.generic.place","sounds": [
+    {"name": "create_dd:magic_casing/place1","volume": 0.9},
+    {"name": "create_dd:magic_casing/place2","volume": 0.9},
+    {"name": "create_dd:magic_casing/place3","volume": 0.9},
+    {"name": "create_dd:magic_casing/place4","volume": 0.9}
+    ]},
+  "magic_casing_hit": {"subtitle": "subtitles.block.generic.hit","sounds": [
+    {"name": "create_dd:magic_casing/step1","volume": 0.9},
+    {"name": "create_dd:magic_casing/step2","volume": 0.9},
+    {"name": "create_dd:magic_casing/step3","volume": 0.9},
+    {"name": "create_dd:magic_casing/step4","volume": 0.9},
+    {"name": "create_dd:magic_casing/step5","volume": 0.9},
+    {"name": "create_dd:magic_casing/step6","volume": 0.9}
+    ]},
+  "magic_casing_fall": {"subtitle": "subtitles.block.generic.footsteps","sounds": [
+    {"name": "create_dd:magic_casing/step1","volume": 0.9},
+    {"name": "create_dd:magic_casing/step2","volume": 0.9},
+    {"name": "create_dd:magic_casing/step3","volume": 0.9},
+    {"name": "create_dd:magic_casing/step4","volume": 0.9},
+    {"name": "create_dd:magic_casing/step5","volume": 0.9},
+    {"name": "create_dd:magic_casing/step6","volume": 0.9}
     ]},
 
 

@@ -1,4 +1,4 @@
-package uwu.lopyluna.create_dd.block.BlockProperties;
+package uwu.lopyluna.create_dd.block.BlockProperties.magic;
 
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.foundation.utility.VecHelper;
@@ -14,11 +14,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.Random;
+public class ShadowBlockcasing extends CasingBlock {
 
-public class MagicBlockcasing extends CasingBlock {
-
-    public MagicBlockcasing(Properties pProperties) {
+    public ShadowBlockcasing(Properties pProperties) {
         super(pProperties);
     }
 
@@ -26,10 +24,14 @@ public class MagicBlockcasing extends CasingBlock {
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRand) {
         if (pRand.nextInt(5) != 0)
             return;
-        Vec3 vec3 = VecHelper.clampComponentWise(VecHelper.offsetRandomly(Vec3.ZERO, pRand, 1f), 1f)
+        Vec3 vec3 = VecHelper.clampComponentWise(VecHelper.offsetRandomly(Vec3.ZERO, pRand, 1.25f), 1f)
                 .add(VecHelper.getCenterOf(pPos));
-        pLevel.addParticle(ParticleTypes.END_ROD, vec3.x, vec3.y, vec3.z, pRand.nextGaussian() * 0.05D,
-                pRand.nextGaussian() * 0.1D, pRand.nextGaussian() * 0.05D);
+        pLevel.addParticle(ParticleTypes.REVERSE_PORTAL, vec3.x, vec3.y, vec3.z, pRand.nextGaussian() * 0.05D,
+                pRand.nextGaussian() * 0.05D, pRand.nextGaussian() * 0.05D);
+        pLevel.addParticle(ParticleTypes.REVERSE_PORTAL, vec3.x, vec3.y, vec3.z, pRand.nextGaussian() * 0.05D,
+                pRand.nextGaussian() * 0.05D, pRand.nextGaussian() * 0.05D);
+        pLevel.addParticle(ParticleTypes.WITCH, vec3.x, vec3.y, vec3.z, pRand.nextGaussian() * 0.05D,
+                pRand.nextGaussian() * 0.05D, pRand.nextGaussian() * 0.05D);
     }
 
     @Override

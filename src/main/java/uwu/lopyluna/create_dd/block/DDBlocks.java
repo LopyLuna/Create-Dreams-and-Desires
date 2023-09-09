@@ -44,6 +44,10 @@ import uwu.lopyluna.create_dd.block.BlockProperties.fan.FourBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.TwoBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.magic.RadiantBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.magic.RadiantBlockcasing;
+import uwu.lopyluna.create_dd.block.BlockProperties.magic.ShadowBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.magic.ShadowBlockcasing;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlock2;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlockGen;
@@ -205,7 +209,7 @@ public class DDBlocks {
             .build()
             .register();
 
-    public static final BlockEntry<MagicBlock> refined_radiance_block = REGISTRATE.block("refined_radiance_block", MagicBlock::new)
+    public static final BlockEntry<RadiantBlock> refined_radiance_block = REGISTRATE.block("refined_radiance_block", RadiantBlock::new)
             .initialProperties(() -> Blocks.NETHERITE_BLOCK)
             .properties(p -> p.color(MaterialColor.SNOW))
             .properties(p -> p.sound(new ForgeSoundType(1, 1.25f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
@@ -222,7 +226,7 @@ public class DDBlocks {
             .build()
             .register();
 
-    public static final BlockEntry<MagicBlock> shadow_steel_block = REGISTRATE.block("shadow_steel_block", MagicBlock::new)
+    public static final BlockEntry<ShadowBlock> shadow_steel_block = REGISTRATE.block("shadow_steel_block", ShadowBlock::new)
             .initialProperties(() -> Blocks.NETHERITE_BLOCK)
             .properties(p -> p.color(MaterialColor.COLOR_BLACK))
             .properties(p -> p.sound(new ForgeSoundType(1, .25f, () -> SoundEvents.AMETHYST_CLUSTER_BREAK,
@@ -260,6 +264,13 @@ public class DDBlocks {
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .properties(p -> p.sound(SoundType.WOOD))
             .lang("Zinc Casing")
+            .register();
+
+    public static final BlockEntry<CasingBlock> tin_casing = REGISTRATE.block("tin_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.TIN_CASING))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.sound(SoundType.WOOD))
+            .lang("Tin Casing")
             .register();
 
     public static final BlockEntry<Block> mossy_andesite_alloy_block = REGISTRATE.block("mossy_andesite_alloy_block", Block::new)
@@ -306,12 +317,12 @@ public class DDBlocks {
             .lang("Steel Casing")
             .register();
 
-    public static final BlockEntry<MagicBlockcasing> shadow_steel_casing = REGISTRATE.block("shadow_steel_casing", MagicBlockcasing::new)
+    public static final BlockEntry<ShadowBlockcasing> shadow_steel_casing = REGISTRATE.block("shadow_steel_casing", ShadowBlockcasing::new)
             .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.SHADOW_STEEL_CASING))
             .properties(p -> p.color(MaterialColor.COLOR_BLACK))
-            .properties(p -> p.sound(new ForgeSoundType(1, .25f, () -> SoundEvents.AMETHYST_CLUSTER_BREAK,
-                    () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_CLUSTER_PLACE,
-                    () -> SoundEvents.AMETHYST_CLUSTER_HIT, () -> SoundEvents.AMETHYST_CLUSTER_FALL)))
+            .properties(p -> p.sound(new ForgeSoundType(1f, .4f, () -> DDSoundEvents.magic_casing_break.get(),
+                    () -> DDSoundEvents.magic_casing_step.get(), () -> DDSoundEvents.magic_casing_place.get(),
+                    () -> DDSoundEvents.magic_casing_hit.get(), () -> DDSoundEvents.magic_casing_fall.get())))
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(8f,24f))
             .lang("Shadow Casing")
@@ -320,12 +331,12 @@ public class DDBlocks {
             .build()
             .register();
 
-    public static final BlockEntry<MagicBlockcasing> refined_radiance_casing = REGISTRATE.block("refined_radiance_casing", MagicBlockcasing::new)
+    public static final BlockEntry<RadiantBlockcasing> refined_radiance_casing = REGISTRATE.block("refined_radiance_casing", RadiantBlockcasing::new)
             .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.REFINED_RADIANCE_CASING))
             .properties(p -> p.color(MaterialColor.SNOW))
-            .properties(p -> p.sound(new ForgeSoundType(1, 1.25f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
-                    () -> SoundEvents.AMETHYST_BLOCK_STEP, () -> SoundEvents.AMETHYST_BLOCK_PLACE,
-                    () -> SoundEvents.AMETHYST_BLOCK_HIT, () -> SoundEvents.AMETHYST_BLOCK_FALL)))
+            .properties(p -> p.sound(new ForgeSoundType(1f, 1.25f, () -> DDSoundEvents.magic_casing_break.get(),
+                    () -> DDSoundEvents.magic_casing_step.get(), () -> DDSoundEvents.magic_casing_place.get(),
+                    () -> DDSoundEvents.magic_casing_hit.get(), () -> DDSoundEvents.magic_casing_fall.get())))
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(8f,24f))
             .properties(p -> p.lightLevel($ -> 12))
@@ -432,10 +443,12 @@ public class DDBlocks {
             REGISTRATE.block("radiant_drill", RadiantDrillBlock::new)
             .initialProperties(SharedProperties::stone)
             .properties(p -> p.color(MaterialColor.PODZOL))
+                    .addLayer(() -> RenderType::translucent)
             .transform(axeOrPickaxe())
             .blockstate(BlockStateGen.directionalBlockProvider(true))
             .transform(BlockStressDefaults.setImpact(16.0))
             .onRegister(movementBehaviour(new RadiantDrillMovementBehaviour()))
+                    .addLayer(() -> RenderType::translucentMovingBlock)
             .simpleItem()
             .register();
 
