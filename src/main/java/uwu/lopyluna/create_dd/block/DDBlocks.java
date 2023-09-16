@@ -27,6 +27,8 @@ import uwu.lopyluna.create_dd.block.BlockProperties.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillMovementBehaviour;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FurnaceFlywheelBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine.FurnaceEngineBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawMovementBehaviour;
@@ -439,6 +441,27 @@ public class DDBlocks {
             .simpleItem()
             .register();
 
+    public static final BlockEntry<FurnaceFlywheelBlock> FURNACE_FLYWHEEL = REGISTRATE.block("furnace_flywheel", FurnaceFlywheelBlock::new)
+            .initialProperties(SharedProperties::softMetal)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_YELLOW))
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .transform(axeOrPickaxe())
+            .transform(BlockStressDefaults.setNoImpact())
+            .blockstate(BlockStateGen.axisBlockProvider(true))
+            .item()
+            .transform(customItemModel())
+            .register();
+
+    public static final BlockEntry<FurnaceEngineBlock> FURNACE_ENGINE =
+            REGISTRATE.block("furnace_engine", FurnaceEngineBlock::new)
+                    .initialProperties(SharedProperties::softMetal)
+                    .tag(AllTags.AllBlockTags.BRITTLE.tag)
+                    .blockstate(BlockStateGen.horizontalBlockProvider(true))
+                    .transform(BlockStressDefaults.setCapacity(1024.0))
+                    .item()
+                    .transform(customItemModel())
+                    .register();
+
     public static final BlockEntry<RadiantDrillBlock> RADIANT_DRILL =
             REGISTRATE.block("radiant_drill", RadiantDrillBlock::new)
             .initialProperties(SharedProperties::stone)
@@ -448,7 +471,6 @@ public class DDBlocks {
             .blockstate(BlockStateGen.directionalBlockProvider(true))
             .transform(BlockStressDefaults.setImpact(16.0))
             .onRegister(movementBehaviour(new RadiantDrillMovementBehaviour()))
-                    .addLayer(() -> RenderType::translucentMovingBlock)
             .simpleItem()
             .register();
 

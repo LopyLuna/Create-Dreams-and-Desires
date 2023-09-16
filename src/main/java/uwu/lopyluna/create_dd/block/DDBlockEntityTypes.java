@@ -1,5 +1,6 @@
 package uwu.lopyluna.create_dd.block;
 
+import com.simibubi.create.Create;
 import com.simibubi.create.content.kinetics.base.HalfShaftInstance;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.ShaftInstance;
@@ -13,6 +14,10 @@ import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.Accelerato
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillInstance;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FurnaceFlywheelBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FurnaceFlywheelInstance;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FurnaceFlywheelRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine.FurnaceEngineTileEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialFanBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialFanRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialFanInstance;
@@ -151,5 +156,19 @@ public class DDBlockEntityTypes {
             .validBlocks(DDBlocks.ACCELERATOR_MOTOR)
             .renderer(() -> AcceleratorMotorRenderer::new)
             .register();
+
+    public static final BlockEntityEntry<FurnaceFlywheelBlockEntity> FURNACE_FLYWHEEL = REGISTRATE
+            .blockEntity("furnace_flywheel", FurnaceFlywheelBlockEntity::new)
+            .instance(() -> FurnaceFlywheelInstance::new, false)
+            .validBlocks(DDBlocks.FURNACE_FLYWHEEL)
+            .renderer(() -> FurnaceFlywheelRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<FurnaceEngineTileEntity> FURNACE_ENGINE = Create.REGISTRATE
+            .blockEntity("furnace_engine", FurnaceEngineTileEntity::new)
+            .validBlocks(DDBlocks.FURNACE_ENGINE)
+            .register();
+
+
     public static void register() {}
 }

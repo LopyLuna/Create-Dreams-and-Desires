@@ -49,7 +49,7 @@ public class RadiantDrillRenderer extends KineticBlockEntityRenderer<RadiantDril
                 .rotateZ(angle)
                 .unCentre()
                 .light(LightTexture.FULL_BRIGHT)
-                .renderInto(matrices.getViewProjection(), buffer.getBuffer(RenderType.translucentMovingBlock()));
+                .renderInto(matrices.getViewProjection(), buffer.getBuffer(RenderType.translucent()));
     }
 
 }
