@@ -69,7 +69,11 @@ public class DDItems {
             spectral_ruby = ingredient("spectral_ruby"),
             polished_spectral_ruby = ingredient("polished_spectral_ruby"),
             coal_piece = taggedIngredient("coal_piece", forgeItemTag("nuggets/coal")),
-            diamond_shard = taggedIngredient("diamond_shard", forgeItemTag("nuggets/diamond"));
+            diamond_shard = taggedIngredient("diamond_shard", forgeItemTag("nuggets/diamond")),
+            compound_base = ingredient("compound_base"),
+            crystallized_sap = ingredient("crystallized_sap"),
+            raw_rubber = ingredient("raw_rubber"),
+            rubber = ingredient("rubber");
 
     public static final ItemEntry<SimpleFoiledItem>
             frozen_nugget = foilIngredient("frozen_nugget")
@@ -102,12 +106,26 @@ public class DDItems {
                     .fireResistant())
             .register();
 
+    public static final ItemEntry<ShadowSteel> SHADOW_STEEL_SHEET =
+            REGISTRATE.item("shadow_steel_sheet", ShadowSteel::new)
+                    .properties(p -> p.stacksTo(16)
+                            .rarity(Rarity.UNCOMMON)
+                            .fireResistant())
+                    .register();
+
     public static final ItemEntry<RefinedRadiance> REFINED_RADIANCE =
             REGISTRATE.item("refined_radiance", RefinedRadiance::new)
             .properties(p -> p.stacksTo(16)
                     .rarity(Rarity.UNCOMMON)
                     .fireResistant())
             .register();
+
+    public static final ItemEntry<RefinedRadiance> REFINED_RADIANCE_SHEET =
+            REGISTRATE.item("refined_radiance_sheet", RefinedRadiance::new)
+                    .properties(p -> p.stacksTo(16)
+                            .rarity(Rarity.UNCOMMON)
+                            .fireResistant())
+                    .register();
 
     public static final ItemEntry<OverchargeAlloy> OVERCHARGE_ALLOY =
             REGISTRATE.item("overcharge_alloy", OverchargeAlloy::new)
@@ -116,15 +134,8 @@ public class DDItems {
                             .fireResistant())
                     .register();
 
-    public static final ItemEntry<ShadowSteel> SHADOW_STEEL_SHEET =
-            REGISTRATE.item("shadow_steel_sheet", ShadowSteel::new)
-                    .properties(p -> p.stacksTo(16)
-                            .rarity(Rarity.UNCOMMON)
-                            .fireResistant())
-                    .register();
-
-    public static final ItemEntry<RefinedRadiance> REFINED_RADIANCE_SHEET =
-            REGISTRATE.item("refined_radiance_sheet", RefinedRadiance::new)
+    public static final ItemEntry<OverchargeAlloy> OVERCHARGE_ALLOY_SHEET =
+            REGISTRATE.item("overcharge_alloy_sheet", OverchargeAlloy::new)
                     .properties(p -> p.stacksTo(16)
                             .rarity(Rarity.UNCOMMON)
                             .fireResistant())

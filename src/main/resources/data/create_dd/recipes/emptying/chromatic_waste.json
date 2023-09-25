@@ -1,0 +1,17 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "create_dd:chromatic_compound"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:compound_base"
+    },
+    {
+      "amount": 250,
+      "fluid": "create_dd:chromatic_waste"
+    }
+  ]
+}

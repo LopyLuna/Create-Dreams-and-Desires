@@ -125,6 +125,8 @@
   "block.create_dd.mithril_casing": "Mithril Casing",
   "block.create_dd.steel_block": "Block of Steel",
 
+  "block.create_dd.netherite_casing": "Netherite Casing",
+
   "block.create_dd.bronze_polished_block": "Polished Bronze",
   "block.create_dd.bronze_polished_slab": "Polished Bronze Slab",
   "block.create_dd.bronze_polished_stairs": "Polished Bronze Stairs",

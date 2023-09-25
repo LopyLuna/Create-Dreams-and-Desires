@@ -1,21 +1,31 @@
 package uwu.lopyluna.create_dd.fluid;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllFluids;
+import com.simibubi.create.content.decoration.palettes.AllPaletteBlocks;
 import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
 import com.tterrag.registrate.util.entry.FluidEntry;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidInteractionRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.block.BlockPalette.DDPaletteStoneTypes;
+import uwu.lopyluna.create_dd.sounds.DDSoundEvents;
 
 import javax.annotation.Nullable;
 
@@ -112,7 +122,8 @@ public class DDFluids {
             REGISTRATE.standardFluid("glowberry", DDFluids.NoColorFluidAttributes::new)
                     .lang("Glowberry")
                     .properties(b -> b.viscosity(1500)
-                            .density(1400))
+                            .density(1400)
+                            .lightLevel(12))
                     .fluidProperties(p -> p.levelDecreasePerBlock(2)
                             .tickRate(25)
                             .slopeFindDistance(3)
@@ -126,7 +137,8 @@ public class DDFluids {
             REGISTRATE.standardFluid("glowberry_milkshake", DDFluids.NoColorFluidAttributes::new)
                     .lang("Glowberry Milkshake")
                     .properties(b -> b.viscosity(1500)
-                            .density(1400))
+                            .density(1400)
+                            .lightLevel(12))
                     .fluidProperties(p -> p.levelDecreasePerBlock(2)
                             .tickRate(25)
                             .slopeFindDistance(3)
@@ -192,9 +204,222 @@ public class DDFluids {
                     .build()
                     .register();
 
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> CHROMATIC_WASTE =
+            REGISTRATE.standardFluid("chromatic_waste", DDFluids.NoColorFluidAttributes::new)
+                    .lang("Chromatic Waste")
+                    .properties(b -> b.viscosity(6000)
+                            .density(3000)
+                            .lightLevel(8)
+                            .temperature(1300)
+                            .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
+                            .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA))
+                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket()
+                    .build()
+                    .register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> APPLE_CIDER =
+            REGISTRATE.standardFluid("apple_cider", DDFluids.NoColorFluidAttributes::new)
+                    .lang("Apple Cider")
+                    .properties(b -> b.viscosity(1500)
+                            .density(1400))
+                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket()
+                    .build()
+                    .register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> SAP =
+            REGISTRATE.standardFluid("sap", DDFluids.NoColorFluidAttributes::new)
+                    .lang("Tree Sap")
+                    .properties(b -> b.viscosity(1500)
+                            .density(1400))
+                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket()
+                    .build()
+                    .register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> SHIMMER =
+            REGISTRATE.standardFluid("shimmer", DDFluids.NoColorFluidAttributes::new)
+                    .lang("Shimmer")
+                    .renderType(RenderType::translucent)
+                    .properties(b -> b.viscosity(6000)
+                            .density(50)
+                            .canSwim(false)
+                            .canDrown(true)
+                            .canHydrate(false)
+                            .rarity(Rarity.EPIC)
+                            .lightLevel(15)
+                            .temperature(-1000)
+                            .motionScale(-1.25)
+                            .supportsBoating(false)
+                            .canExtinguish(false)
+                            .canConvertToSource(true)
+                            .pathType(BlockPathTypes.LAVA)
+                            .sound(SoundActions.BUCKET_FILL, DDSoundEvents.shimmer_fill.get())
+                            .sound(SoundActions.BUCKET_EMPTY, DDSoundEvents.shimmer_empty.get())
+                            .adjacentPathType(null))
+                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(20)
+                            .slopeFindDistance(0)
+                            .explosionResistance(10000f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket()
+                    .properties(p -> p.rarity(Rarity.EPIC))
+                    .build()
+                    .register();
+
     public static void register() {}
 
     public static void registerFluidInteractions() {
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                ForgeMod.WATER_TYPE.get(),
+                fluidState -> {
+                    return Blocks.OBSIDIAN.defaultBlockState();
+                }));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                ForgeMod.LAVA_TYPE.get(),
+                fluidState -> {
+                    return Blocks.CRYING_OBSIDIAN.defaultBlockState();
+                }));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                AllFluids.CHOCOLATE.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get().defaultBlockState();
+                    }}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                AllFluids.HONEY.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return DDPaletteStoneTypes.weathered_limestone.getBaseBlock().get().defaultBlockState();
+                    }}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                VANILLA.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return Blocks.BLACKSTONE.defaultBlockState();
+                    }}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                VANILLA_MILKSHAKE.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return Blocks.GLOWSTONE.defaultBlockState();
+                    }}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                STRAWBERRY.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return AllPaletteStoneTypes.GRANITE.getBaseBlock().get().defaultBlockState();
+                    }}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                STRAWBERRY_MILKSHAKE.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return AllBlocks.ROSE_QUARTZ_BLOCK.getDefaultState();}}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                GLOWBERRY.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return Blocks.CLAY.defaultBlockState();
+                    }}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                GLOWBERRY_MILKSHAKE.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return Blocks.RED_SAND.defaultBlockState();}}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                CARAMEL.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return Blocks.NETHERRACK.defaultBlockState();
+                    }}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                CARAMEL_MILKSHAKE.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return Blocks.TUFF.defaultBlockState();
+                    }}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                CONDENSE_MILK.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return AllPaletteStoneTypes.DIORITE.getBaseBlock().get().defaultBlockState();
+                    }}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                CREAM.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return Blocks.ANDESITE.defaultBlockState();
+                    }}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                HOT_CHOCOLATE.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return Blocks.BASALT.defaultBlockState();
+                    }}));
+
+        FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
+                CHOCOLATE_MILKSHAKE.get().getFluidType(),
+                fluidState -> {
+                    if (fluidState.isSource()) {
+                        return Blocks.OBSIDIAN.defaultBlockState();
+                    } else {
+                        return Blocks.SOUL_SAND.defaultBlockState();
+                    }}));
+
         FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
                 VANILLA.get().getFluidType(),
                 fluidState -> {
@@ -210,7 +435,8 @@ public class DDFluids {
                     if (fluidState.isSource()) {
                         return Blocks.OBSIDIAN.defaultBlockState();
                     } else {
-                        return DDBlocks.potassic_cobble.getDefaultState();}}));
+                        return DDBlocks.potassic_cobble.getDefaultState();
+                    }}));
 
         FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
                 STRAWBERRY.get().getFluidType(),
@@ -227,7 +453,8 @@ public class DDFluids {
                     if (fluidState.isSource()) {
                         return Blocks.OBSIDIAN.defaultBlockState();
                     } else {
-                        return DDBlocks.crimsite_cobble.getDefaultState();}}));
+                        return DDBlocks.crimsite_cobble.getDefaultState();
+                    }}));
 
         FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
                 GLOWBERRY.get().getFluidType(),
@@ -244,7 +471,8 @@ public class DDFluids {
                     if (fluidState.isSource()) {
                         return Blocks.OBSIDIAN.defaultBlockState();
                     } else {
-                        return DDBlocks.ochrum_cobble.getDefaultState();}}));
+                        return DDBlocks.ochrum_cobble.getDefaultState();
+                    }}));
 
         FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
                 CARAMEL.get().getFluidType(),
@@ -261,7 +489,8 @@ public class DDFluids {
                     if (fluidState.isSource()) {
                         return Blocks.OBSIDIAN.defaultBlockState();
                     } else {
-                        return DDBlocks.veridium_cobble.getDefaultState();}}));
+                        return DDBlocks.veridium_cobble.getDefaultState();
+                    }}));
 
         FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
                 CONDENSE_MILK.get().getFluidType(),
@@ -269,7 +498,8 @@ public class DDFluids {
                     if (fluidState.isSource()) {
                         return Blocks.OBSIDIAN.defaultBlockState();
                     } else {
-                        return AllPaletteStoneTypes.CALCITE.getBaseBlock().get().defaultBlockState();}}));
+                        return AllPaletteStoneTypes.CALCITE.getBaseBlock().get().defaultBlockState();
+                    }}));
 
         FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
                 CREAM.get().getFluidType(),
@@ -277,7 +507,8 @@ public class DDFluids {
                     if (fluidState.isSource()) {
                         return Blocks.OBSIDIAN.defaultBlockState();
                     } else {
-                        return DDBlocks.asurine_cobble.getDefaultState();}}));
+                        return DDBlocks.asurine_cobble.getDefaultState();
+                    }}));
 
         FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
                 HOT_CHOCOLATE.get().getFluidType(),
@@ -285,7 +516,8 @@ public class DDFluids {
                     if (fluidState.isSource()) {
                         return Blocks.OBSIDIAN.defaultBlockState();
                     } else {
-                        return AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get().defaultBlockState();}}));
+                        return AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get().defaultBlockState();
+                    }}));
 
         FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(
                 CHOCOLATE_MILKSHAKE.get().getFluidType(),
@@ -293,7 +525,8 @@ public class DDFluids {
                     if (fluidState.isSource()) {
                         return Blocks.OBSIDIAN.defaultBlockState();
                     } else {
-                        return AllPaletteStoneTypes.SCORIA.getBaseBlock().get().defaultBlockState();}}));
+                        return AllPaletteStoneTypes.SCORIA.getBaseBlock().get().defaultBlockState();
+                    }}));
     }
 
     @Nullable

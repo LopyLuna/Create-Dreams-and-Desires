@@ -27,8 +27,6 @@ import uwu.lopyluna.create_dd.block.BlockProperties.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillMovementBehaviour;
-import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FurnaceFlywheelBlock;
-import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine.FurnaceEngineBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawMovementBehaviour;
@@ -275,6 +273,13 @@ public class DDBlocks {
             .lang("Tin Casing")
             .register();
 
+    public static final BlockEntry<CasingBlock> netherite_casing = REGISTRATE.block("netherite_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.NETHERITE_CASING))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.sound(SoundType.WOOD))
+            .lang("Netherite Casing")
+            .register();
+
     public static final BlockEntry<Block> mossy_andesite_alloy_block = REGISTRATE.block("mossy_andesite_alloy_block", Block::new)
             .initialProperties(() -> Blocks.ANDESITE)
             .properties(p -> p.color(MaterialColor.STONE))
@@ -441,26 +446,6 @@ public class DDBlocks {
             .simpleItem()
             .register();
 
-    public static final BlockEntry<FurnaceFlywheelBlock> FURNACE_FLYWHEEL = REGISTRATE.block("furnace_flywheel", FurnaceFlywheelBlock::new)
-            .initialProperties(SharedProperties::softMetal)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_YELLOW))
-            .properties(BlockBehaviour.Properties::noOcclusion)
-            .transform(axeOrPickaxe())
-            .transform(BlockStressDefaults.setNoImpact())
-            .blockstate(BlockStateGen.axisBlockProvider(true))
-            .item()
-            .transform(customItemModel())
-            .register();
-
-    public static final BlockEntry<FurnaceEngineBlock> FURNACE_ENGINE =
-            REGISTRATE.block("furnace_engine", FurnaceEngineBlock::new)
-                    .initialProperties(SharedProperties::softMetal)
-                    .tag(AllTags.AllBlockTags.BRITTLE.tag)
-                    .blockstate(BlockStateGen.horizontalBlockProvider(true))
-                    .transform(BlockStressDefaults.setCapacity(1024.0))
-                    .item()
-                    .transform(customItemModel())
-                    .register();
 
     public static final BlockEntry<RadiantDrillBlock> RADIANT_DRILL =
             REGISTRATE.block("radiant_drill", RadiantDrillBlock::new)

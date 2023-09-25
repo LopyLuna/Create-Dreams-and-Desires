@@ -1,0 +1,22 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "minecraft:acacia_log"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.4,
+      "item": "minecraft:acacia_log"
+    },
+    {
+      "chance": 0.2,
+      "item": "create_dd:crystallized_sap"
+    },
+    {
+      "amount": 100,
+      "fluid": "create_dd:sap"
+    }
+  ]
+}

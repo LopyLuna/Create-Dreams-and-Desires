@@ -107,6 +107,14 @@
     {"name": "create_dd:magical_metal/step2","volume": 0.9},
     {"name": "create_dd:magical_metal/step3","volume": 0.9},
     {"name": "create_dd:magical_metal/step4","volume": 0.9}
+  ]},
+
+  "shimmer_empty": {"subtitle": "subtitles.item.bucket.fill","sounds": [
+    {"name": "create_dd:bucket/shimmer_empty1","volume": 0.9},
+    {"name": "create_dd:bucket/shimmer_empty2","volume": 0.9}
+  ]},
+  "shimmer_fill": {"subtitle": "subtitles.item.bucket.empty","sounds": [
+    {"name": "create_dd:bucket/shimmer_fill1","volume": 0.9},
+    {"name": "create_dd:bucket/shimmer_fill2","volume": 0.9}
   ]}
-    
 }

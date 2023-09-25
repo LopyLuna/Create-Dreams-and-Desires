@@ -30,6 +30,9 @@ public class DDSoundEvents {
     public static RegistryObject<SoundEvent> magical_metal_hit = registerSoundEvent("magical_metal_hit");
     public static RegistryObject<SoundEvent> magical_metal_fall = registerSoundEvent("magical_metal_fall");
 
+    public static RegistryObject<SoundEvent> shimmer_fill = registerSoundEvent("shimmer_fill");
+    public static RegistryObject<SoundEvent> shimmer_empty = registerSoundEvent("shimmer_empty");
+
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(DDCreate.MOD_ID, name)));
     }

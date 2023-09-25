@@ -2,7 +2,6 @@ package uwu.lopyluna.create_dd.access;
 
 import com.google.common.collect.ImmutableList;
 import com.simibubi.create.content.kinetics.belt.behaviour.TransportedItemStackHandlerBehaviour;
-import com.simibubi.create.content.kinetics.belt.transport.TransportedItemStack;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BehaviourType;
 import com.simibubi.create.foundation.utility.VecHelper;
@@ -17,12 +16,9 @@ public class DDTransportedItemStackHandlerBehaviour extends TransportedItemStack
 
     public static final BehaviourType<DDTransportedItemStackHandlerBehaviour> TYPE = new BehaviourType<>();
 
-    public ProcessingCallback processingCallback;
-    public PositionGetter positionGetter;
+    public DDProcessingCallback ddprocessingCallback;
+    public DDPositionGetter ddpositionGetter;
 
-    public DDTransportedItemStackHandlerBehaviour(SmartBlockEntity be, TransportedItemStackHandlerBehaviour.ProcessingCallback processingCallback) {
-        super(be, processingCallback);
-    }
 
     public static class DDTransportedResult {
         List<DDTransportedItemStack> outputs;
@@ -55,35 +51,35 @@ public class DDTransportedItemStackHandlerBehaviour extends TransportedItemStack
 
     }
 
-    public DDTransportedItemStackHandlerBehaviour(SmartBlockEntity be, ProcessingCallback processingCallback) {
-        super(be, (TransportedItemStackHandlerBehaviour.ProcessingCallback) processingCallback);
-        this.processingCallback = processingCallback;
-        positionGetter = t -> VecHelper.getCenterOf(be.getBlockPos());
+    public DDTransportedItemStackHandlerBehaviour(SmartBlockEntity be, DDProcessingCallback ddprocessingCallback) {
+        super(be, (ProcessingCallback) ddprocessingCallback);
+        this.ddprocessingCallback = ddprocessingCallback;
+        ddpositionGetter = t -> VecHelper.getCenterOf(be.getBlockPos());
     }
 
-    public TransportedItemStackHandlerBehaviour withStackPlacement(PositionGetter function) {
-        this.positionGetter = function;
+    public DDTransportedItemStackHandlerBehaviour withStackPlacement(DDPositionGetter function) {
+        this.ddpositionGetter = function;
         return this;
     }
 
-    public void handleProcessingOnAllItems(Function<TransportedItemStack, TransportedResult> processFunction) {
-        handleCenteredProcessingOnAllItems(.51f, processFunction);
+    public void ddhandleProcessingOnAllItems(Function<DDTransportedItemStack, DDTransportedResult> processFunction) {
+        ddhandleCenteredProcessingOnAllItems(.51f, processFunction);
     }
 
-    public void handleProcessingOnItem(DDTransportedItemStack item, TransportedResult processOutput) {
-        handleCenteredProcessingOnAllItems(.51f, t -> {
+    public void handleProcessingOnItem(DDTransportedItemStack item, DDTransportedResult processOutput) {
+        ddhandleCenteredProcessingOnAllItems(.51f, (Function<DDTransportedItemStack, DDTransportedResult>) t -> {
             if (t == item)
                 return processOutput;
             return null;
         });
     }
 
-    public void handleCenteredProcessingOnAllItems(float maxDistanceFromCenter, Function<TransportedItemStack, TransportedResult> processFunction) {
-        this.processingCallback.applyToAllItems(maxDistanceFromCenter, processFunction);
+    public void ddhandleCenteredProcessingOnAllItems(float maxDistanceFromCenter, Function<DDTransportedItemStack, DDTransportedResult> processFunction) {
+        this.ddprocessingCallback.applyToAllItems(maxDistanceFromCenter, processFunction);
     }
 
     public Vec3 getWorldPositionOf(DDTransportedItemStack transported) {
-        return positionGetter.getWorldPositionVector(transported);
+        return ddpositionGetter.getDDWorldPositionVector(transported);
     }
 
     @Override
@@ -92,14 +88,13 @@ public class DDTransportedItemStackHandlerBehaviour extends TransportedItemStack
     }
 
     @FunctionalInterface
-    public interface ProcessingCallback {
-        public void applyToAllItems(float maxDistanceFromCenter,
-                                    Function<TransportedItemStack, TransportedResult> processFunction);
+    public interface DDProcessingCallback {
+        void applyToAllItems(float maxDistanceFromCenter, Function<DDTransportedItemStack, DDTransportedResult> processFunction);
     }
 
     @FunctionalInterface
-    public interface PositionGetter {
-        public Vec3 getWorldPositionVector(DDTransportedItemStack transported);
+    public interface DDPositionGetter {
+        Vec3 getDDWorldPositionVector(DDTransportedItemStack transported);
     }
     
 

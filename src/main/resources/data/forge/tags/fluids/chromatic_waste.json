@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:flowing_chromatic_waste",
+    "create_dd:chromatic_waste"
+  ]
+}

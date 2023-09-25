@@ -1,0 +1,18 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "minecraft:spruce_log"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.4,
+      "item": "minecraft:spruce_log"
+    },
+    {
+      "amount": 5,
+      "fluid": "create_dd:sap"
+    }
+  ]
+}
