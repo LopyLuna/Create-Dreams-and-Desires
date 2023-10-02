@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:strawberry_milkshake",
+  "display": {
+    "icon": {
+      "item": "create_dd:glowberry_milkshake_bucket"
+    },
+    "title": {
+      "text": "Glowing with cream"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Obtain a glowberry milkshake bucket. An ochrum generator (replacing the water)."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:glowberry_milkshake_bucket"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

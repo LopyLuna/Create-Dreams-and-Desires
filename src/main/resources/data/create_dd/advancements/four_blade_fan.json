@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:two_blade_fan",
+  "display": {
+    "icon": {
+      "item": "create_dd:4_blade_fan"
+    },
+    "title": {
+      "text": "Like a record, baby, right round, round, round"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Decoration that can be spinned"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:4_blade_fan"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

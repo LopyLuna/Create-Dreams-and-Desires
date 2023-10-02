@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:spectral_ruby",
+  "display": {
+    "icon": {
+      "item": "create_dd:spectral_ruby_lamp"
+    },
+    "title": {
+      "text": "Lunar Lights"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Obtain the spectral ruby lamp and harness the power of the moon (or sun)"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:spectral_ruby_lamp"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

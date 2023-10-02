@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:strawberry_bucket",
+  "display": {
+    "icon": {
+      "item": "create_dd:glowberry_bucket"
+    },
+    "title": {
+      "text": "Quite drippy generator"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Obtain a glowberry milk bucket. A Dripstone generator (replacing the water)"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:glowberry_bucket"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

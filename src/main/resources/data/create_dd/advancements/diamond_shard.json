@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:superheating_sail",
+  "display": {
+    "icon": {
+      "item": "create_dd:diamond_shard"
+    },
+    "title": {
+      "text": "Carbon Neutral Diamonds"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Diamond shards can be obtained by superheatong"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:diamond_shard"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

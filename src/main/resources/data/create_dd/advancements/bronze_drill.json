@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:bronze_casing",
+  "display": {
+    "icon": {
+      "item": "create_dd:bronze_drill"
+    },
+    "title": {
+      "text": "This is not a drill."
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "The bronze drill is a faster and better version of the mechanical saw"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:bronze_drill"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:infernal_mechanism",
+  "display": {
+    "icon": {
+      "item": "create_dd:industrial_fan"
+    },
+    "title": {
+      "text": "A better encased Fan"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "The industrial fan is a  direct upgrade to the encased fan, capable of generating rpm (with a heat source on the bottom and a redstone signal), also being able do the normal recipes of the encased fan AND  use special sails"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:industrial_fan"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:refined_radiance",
+  "display": {
+    "icon": {
+      "item": "create_dd:refined_radiance_casing"
+    },
+    "title": {
+      "text": "The Bright Age"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Take any light like block (or crying obsidian) and combine it with refined radiance"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:refined_radiance_casing"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

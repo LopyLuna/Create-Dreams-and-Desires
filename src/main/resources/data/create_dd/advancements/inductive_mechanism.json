@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:root",
+  "display": {
+    "icon": {
+      "item": "create_dd:inductive_mechanism"
+    },
+    "title": {
+      "text": "Your first mechanism!"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "This is quite simple to craft, automating it is another thing"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:inductive_mechanism"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

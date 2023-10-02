@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:mithril_casing",
+  "display": {
+    "icon": {
+      "item": "create_dd:forest_ravager"
+    },
+    "title": {
+      "text": "The last axe you'll ever need"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Obtain a Mythical Forest Ravager"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:forest_ravager"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

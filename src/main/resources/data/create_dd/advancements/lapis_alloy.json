@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:tin_ingot",
+  "display": {
+    "icon": {
+      "item": "create_dd:lapis_alloy"
+    },
+    "title": {
+      "text": "A sturdier rock!"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "This is like the andesite alloy but it has different uses"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:lapis_alloy"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

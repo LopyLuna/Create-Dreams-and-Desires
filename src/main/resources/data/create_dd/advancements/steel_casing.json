@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:steel_ingot",
+  "display": {
+    "icon": {
+      "item": "create_dd:steel_casing"
+    },
+    "title": {
+      "text": "The Steel Age"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Use the steel ingot into any sort of stone"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:steel_casing"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

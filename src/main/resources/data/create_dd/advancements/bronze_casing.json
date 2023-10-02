@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:bronze",
+  "display": {
+    "icon": {
+      "item": "create_dd:bronze_casing"
+    },
+    "title": {
+      "text": "The bronze age!"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Apply bronze into any type of wood"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:bronze_casing"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

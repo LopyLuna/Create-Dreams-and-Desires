@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:root",
+  "display": {
+    "icon": {
+      "item": "create_dd:reversed_gearshift"
+    },
+    "title": {
+      "text": "Switch It Up"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Obtain the Reversed Gearshift, you can switch the rotation at the cost of some juicy rpm"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:reversed_gearshift"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

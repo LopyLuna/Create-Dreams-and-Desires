@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:chromatic_compound",
+  "display": {
+    "icon": {
+      "item": "create_dd:refined_radiance"
+    },
+    "title": {
+      "text": "It shines in the bright"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Throw a chromatic compound in a beacon beam"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:refined_radiance"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+
