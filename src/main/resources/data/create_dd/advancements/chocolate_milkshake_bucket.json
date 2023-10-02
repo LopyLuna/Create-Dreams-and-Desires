@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:caramel_milkshake_bucket",
+  "display": {
+    "icon": {
+      "item": "create_dd:chocolate_milkshake_bucket"
+    },
+    "title": {
+      "text": "World of pure imagination part 3"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Obtain a chocolate milkshake bucket. An scoria generator (replacing the water)."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:chocolate_milkshake_bucket"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

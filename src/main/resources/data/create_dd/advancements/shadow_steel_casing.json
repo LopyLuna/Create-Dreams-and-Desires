@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:shadow_steel",
+  "display": {
+    "icon": {
+      "item": "create_dd:shadow_steel_casing"
+    },
+    "title": {
+      "text": "The dark age"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Combine Obsidiaan and Shadow steel to make the shadow steel casing"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:shadow_steel_casing"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

@@ -1,0 +1,33 @@
+{
+  "parent": "create_dd:root",
+  "display": {
+    "icon": {
+      "item": "create_dd:pondering_block_light"
+    },
+    "title": {
+      "text": "A place to think"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Unobtainable for now (Go To Ponder Dim)"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "conditions": {
+        "to": "create_dd:ponder"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

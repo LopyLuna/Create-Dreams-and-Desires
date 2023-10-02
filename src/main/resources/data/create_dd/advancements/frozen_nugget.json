@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:freezing_sail",
+  "display": {
+    "icon": {
+      "item": "create_dd:frozen_nugget"
+    },
+    "title": {
+      "text": "Stalemate"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Freeze an ep nugget"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:frozen_nugget"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

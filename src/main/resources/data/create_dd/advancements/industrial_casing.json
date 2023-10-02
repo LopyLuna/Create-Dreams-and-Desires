@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:aindustrial_iron",
+  "display": {
+    "icon": {
+      "item": "create_dd:industrial_casing"
+    },
+    "title": {
+      "text": "The Industrial Age"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Use Industrial Iron into a zinc casing!"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:industrial_casing"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:smoking_sail",
+  "display": {
+    "icon": {
+      "item": "create_dd:blasting_sail"
+    },
+    "title": {
+      "text": "Blast it up"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "turns any air into blasting air"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:blasting_sail"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

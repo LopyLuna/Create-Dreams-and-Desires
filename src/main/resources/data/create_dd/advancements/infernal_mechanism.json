@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:ember_alloy",
+  "display": {
+    "icon": {
+      "item": "create_dd:infernal_mechanism"
+    },
+    "title": {
+      "text": "A hot mechanism!"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "makes me spin my gears"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:infernal_mechanism"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

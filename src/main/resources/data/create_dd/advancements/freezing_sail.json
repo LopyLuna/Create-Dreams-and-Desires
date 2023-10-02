@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:haunting_sail",
+  "display": {
+    "icon": {
+      "item": "create_dd:freezing_sail"
+    },
+    "title": {
+      "text": "Chill it up"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "turns any air into freezing air"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:freezing_sail"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:hot_chocolate_bucket",
+  "display": {
+    "icon": {
+      "item": "create_dd:cream_bucket"
+    },
+    "title": {
+      "text": "Your cream is done!"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Obtain a cream bucket. A azurine generator (replacing the water), can be used to turn other liquids into milkshakes"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:cream_bucket"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

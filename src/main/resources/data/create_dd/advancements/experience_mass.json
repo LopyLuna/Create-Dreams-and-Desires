@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:experience_ingot",
+  "display": {
+    "icon": {
+      "item": "create_dd:experience_mass"
+    },
+    "title": {
+      "text": "Stuffed Experience from Stuffed Experience"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Craft mechanically 9 experience ingots"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:experience_mass"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

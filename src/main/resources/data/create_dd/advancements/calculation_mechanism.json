@@ -1,0 +1,40 @@
+{
+  "parent": "create_dd:integrated_circuit",
+  "display": {
+    "icon": {
+      "item": "create_dd:calculation_mechanism"
+    },
+    "title": {
+      "text": "1+1=3"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "This can be used to make cheaper stuff from the create mod"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:calculation_mechanism"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+
+

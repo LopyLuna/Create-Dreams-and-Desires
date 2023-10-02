@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:reverse_gearshift",
+  "display": {
+    "icon": {
+      "item": "create_dd:mysterious_blueprint_carpet"
+    },
+    "title": {
+      "text": "Sus carpet ngl"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Obtain the sus blue carper (hidden advancement)"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:mysterious_blueprint_carpet"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

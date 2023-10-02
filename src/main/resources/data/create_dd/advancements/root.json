@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "create_dd:mithril_ingot"
+    },
+    "title": {
+      "text": "Create: D&D"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "where dreams become realities"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "create_dd:textures/block/palettes/stone_types/brick/potassic_cut_brick.png"
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

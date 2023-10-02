@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:root",
+  "display": {
+    "icon": {
+      "item": "create_dd:raw_tin"
+    },
+    "title": {
+      "text": "Tin in it's raw form!"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "In the caves, you will see a new resource, tin will be used for a lot of items and blocks"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:raw_tin"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

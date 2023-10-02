@@ -1,0 +1,40 @@
+{
+  "parent": "create_dd:calculation_mechanism",
+  "display": {
+    "icon": {
+      "item": "create_dd:integrated_mechanism"
+    },
+    "title": {
+      "text": "Yet another mechanism"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "This can be used to make cheaper stuff from the create mod"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:integrated_mechanism"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+
+

@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:glowberry_milkshake",
+  "display": {
+    "icon": {
+      "item": "create_dd:caramel_milkshake_bucket"
+    },
+    "title": {
+      "text": "Caramel mixed with cream and other stuff"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Obtain a caramel milkshake bucket. An veridium generator (replacing the water)."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:caramel_milkshake_bucket"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

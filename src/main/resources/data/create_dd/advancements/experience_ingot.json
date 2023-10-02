@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:frozen_nugget",
+  "display": {
+    "icon": {
+      "item": "create_dd:experience_ingot"
+    },
+    "title": {
+      "text": "Stuffed Experience"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Pair the frozen and normal exp nuggets!"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:experience_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

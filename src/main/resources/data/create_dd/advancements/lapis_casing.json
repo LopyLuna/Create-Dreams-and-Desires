@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:lapis_alloy",
+  "display": {
+    "icon": {
+      "item": "create_dd:overburden_casing"
+    },
+    "title": {
+      "text": "Time to encase a casing"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "A casing in a casing"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:overburden_casing"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

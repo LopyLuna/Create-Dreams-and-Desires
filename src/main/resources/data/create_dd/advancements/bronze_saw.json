@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:bronze_drill",
+  "display": {
+    "icon": {
+      "item": "create_dd:bronze_saw"
+    },
+    "title": {
+      "text": "You saw WHAT?"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "The bronze saw is a faster and better version of the mechanical saw"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:bronze_saw"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:chromatic_compound",
+  "display": {
+    "icon": {
+      "item": "create_dd:mithril_ingot"
+    },
+    "title": {
+      "text": "Isn't this a Terraria reference?"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Mix up a whole lotta things to make this endgame alloy"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:mithril_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

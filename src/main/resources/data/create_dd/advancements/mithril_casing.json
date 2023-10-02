@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:mithril_ingot",
+  "display": {
+    "icon": {
+      "item": "create_dd:mithril_casing"
+    },
+    "title": {
+      "text": "The Mithril Age"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "A block of steel and a mithrill sheet should do the job well"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:mithril_casing"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+

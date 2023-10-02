@@ -1,0 +1,39 @@
+{
+  "parent": "create_dd:spectral_ruby",
+  "display": {
+    "icon": {
+      "item": "create_dd:chromatic_compound"
+    },
+    "title": {
+      "text": "Chromatic Compounds ARE BACK BABY"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "Chromatic Compounds are used for a whole bunch of endgame like items"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:chromatic_compound"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+
