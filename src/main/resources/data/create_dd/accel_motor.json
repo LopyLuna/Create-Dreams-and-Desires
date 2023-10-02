@@ -1,0 +1,40 @@
+{
+  "parent": "create_dd:integrated_mechanism",
+  "display": {
+    "icon": {
+      "item": "create_dd:accelerator_motor"
+    },
+    "title": {
+      "text": "Speed it up!"
+    },
+    "description": {
+      "color": "#DBA213",
+      "text": "This is a motor, you can change it's speed"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:accelerator_motor"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}
+
+
