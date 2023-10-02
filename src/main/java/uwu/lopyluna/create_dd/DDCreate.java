@@ -25,6 +25,7 @@ import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.block.BlockPalette.DDPaletteBlocks;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
+import uwu.lopyluna.create_dd.fluid.ChromaticFluidInteraction;
 import uwu.lopyluna.create_dd.fluid.DDFluids;
 import uwu.lopyluna.create_dd.item.DDItems;
 import uwu.lopyluna.create_dd.creative.DDItemTab;
@@ -95,6 +96,7 @@ public class DDCreate
     public static void init(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             DDFluids.registerFluidInteractions();
+            ChromaticFluidInteraction.registerFluidInteractions();
         });
     }
     private void clientSetup(final FMLClientSetupEvent event) {

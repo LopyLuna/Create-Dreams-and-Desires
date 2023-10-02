@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "create_dd:block/nether_brick_casing"
+    }
+  }
+}

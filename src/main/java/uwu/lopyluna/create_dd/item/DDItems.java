@@ -13,10 +13,7 @@ import uwu.lopyluna.create_dd.creative.DDItemTab;
 import uwu.lopyluna.create_dd.item.ItemProperties.ItemDisabled;
 import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem1;
 import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem2;
-import uwu.lopyluna.create_dd.item.ItemProperties.compound.ChromaticCompound;
-import uwu.lopyluna.create_dd.item.ItemProperties.compound.OverchargeAlloy;
-import uwu.lopyluna.create_dd.item.ItemProperties.compound.RefinedRadiance;
-import uwu.lopyluna.create_dd.item.ItemProperties.compound.ShadowSteel;
+import uwu.lopyluna.create_dd.item.ItemProperties.compound.*;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemOne;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemTwo;
 import uwu.lopyluna.create_dd.item.ItemProperties.sawtool.DeforesterItem;
@@ -122,6 +119,34 @@ public class DDItems {
 
     public static final ItemEntry<RefinedRadiance> REFINED_RADIANCE_SHEET =
             REGISTRATE.item("refined_radiance_sheet", RefinedRadiance::new)
+                    .properties(p -> p.stacksTo(16)
+                            .rarity(Rarity.UNCOMMON)
+                            .fireResistant())
+                    .register();
+
+    public static final ItemEntry<StargazeSingularity> STARGAZE_SINGULARITY =
+            REGISTRATE.item("stargaze_singularity", StargazeSingularity::new)
+                    .properties(p -> p.stacksTo(16)
+                            .rarity(Rarity.EPIC)
+                            .fireResistant())
+                    .register();
+
+    public static final ItemEntry<StargazeSingularity> STARGAZE_SINGULARITY_SHEET =
+            REGISTRATE.item("stargaze_singularity_sheet", StargazeSingularity::new)
+                    .properties(p -> p.stacksTo(16)
+                            .rarity(Rarity.EPIC)
+                            .fireResistant())
+                    .register();
+
+    public static final ItemEntry<BlazeGold> BLAZE_GOLD =
+            REGISTRATE.item("blaze_gold", BlazeGold::new)
+                    .properties(p -> p.stacksTo(16)
+                            .rarity(Rarity.UNCOMMON)
+                            .fireResistant())
+                    .register();
+
+    public static final ItemEntry<BlazeGold> BLAZE_GOLD_SHEET =
+            REGISTRATE.item("blaze_gold_sheet", BlazeGold::new)
                     .properties(p -> p.stacksTo(16)
                             .rarity(Rarity.UNCOMMON)
                             .fireResistant())

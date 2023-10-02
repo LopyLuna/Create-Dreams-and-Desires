@@ -3,6 +3,8 @@ package uwu.lopyluna.create_dd.block;
 import com.simibubi.create.*;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
+import com.simibubi.create.content.decoration.palettes.AllPaletteBlocks;
+import com.simibubi.create.content.decoration.palettes.ConnectedGlassPaneBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.data.*;
@@ -242,6 +244,15 @@ public class DDBlocks {
             .build()
             .register();
 
+    public static final BlockEntry<Block> mossy_andesite_alloy_block = REGISTRATE.block("mossy_andesite_alloy_block", Block::new)
+            .initialProperties(() -> Blocks.ANDESITE)
+            .properties(p -> p.color(MaterialColor.STONE))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+            .transform(pickaxeOnly())
+            .lang("Mossy Block of Andesite Alloy")
+            .simpleItem()
+            .register();
+
     public static final BlockEntry<CasingBlock> mithril_casing = REGISTRATE.block("mithril_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.MITHRIL_CASING))
             .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
@@ -280,13 +291,16 @@ public class DDBlocks {
             .lang("Netherite Casing")
             .register();
 
-    public static final BlockEntry<Block> mossy_andesite_alloy_block = REGISTRATE.block("mossy_andesite_alloy_block", Block::new)
-            .initialProperties(() -> Blocks.ANDESITE)
-            .properties(p -> p.color(MaterialColor.STONE))
-            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
-            .transform(pickaxeOnly())
-            .lang("Mossy Block of Andesite Alloy")
-            .simpleItem()
+    public static final BlockEntry<CasingBlock> brick_casing = REGISTRATE.block("brick_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.BRICK_CASING))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.sound(SoundType.MUD_BRICKS))
+            .register();
+
+    public static final BlockEntry<CasingBlock> nether_brick_casing = REGISTRATE.block("nether_brick_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.NETHER_BRICK_CASING))
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+            .properties(p -> p.sound(SoundType.NETHER_BRICKS))
             .register();
 
     public static final BlockEntry<CasingBlock> mossy_andesite_casing = REGISTRATE.block("mossy_andesite_casing", CasingBlock::new)
@@ -324,6 +338,19 @@ public class DDBlocks {
             .lang("Steel Casing")
             .register();
 
+    public static final BlockEntry<ShadowBlockcasing> blaze_gold_casing = REGISTRATE.block("blaze_gold_casing", ShadowBlockcasing::new)
+            .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.BLAZE_GOLD_CASING))
+            .properties(p -> p.color(MaterialColor.COLOR_BLACK))
+            .properties(p -> p.sound(new ForgeSoundType(1f, .8f, () -> DDSoundEvents.magic_casing_break.get(),
+                    () -> DDSoundEvents.magic_casing_step.get(), () -> DDSoundEvents.magic_casing_place.get(),
+                    () -> DDSoundEvents.magic_casing_hit.get(), () -> DDSoundEvents.magic_casing_fall.get())))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+            .properties(p -> p.strength(5f,24f))
+            .item()
+            .properties(p -> p.rarity(Rarity.UNCOMMON))
+            .build()
+            .register();
+
     public static final BlockEntry<ShadowBlockcasing> shadow_steel_casing = REGISTRATE.block("shadow_steel_casing", ShadowBlockcasing::new)
             .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.SHADOW_STEEL_CASING))
             .properties(p -> p.color(MaterialColor.COLOR_BLACK))
@@ -351,6 +378,20 @@ public class DDBlocks {
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .build()
             .lang("Radiant Casing")
+            .register();
+
+    public static final BlockEntry<RadiantBlockcasing> stargaze_singularity_casing = REGISTRATE.block("stargaze_singularity_casing", RadiantBlockcasing::new)
+            .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.STARGAZE_SINGULARITY_CASING))
+            .properties(p -> p.color(MaterialColor.SNOW))
+            .properties(p -> p.sound(new ForgeSoundType(1f, 1f, () -> DDSoundEvents.magic_casing_break.get(),
+                    () -> DDSoundEvents.magic_casing_step.get(), () -> DDSoundEvents.magic_casing_place.get(),
+                    () -> DDSoundEvents.magic_casing_hit.get(), () -> DDSoundEvents.magic_casing_fall.get())))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+            .properties(p -> p.strength(12f,250f))
+            .properties(p -> p.lightLevel($ -> 8))
+            .item()
+            .properties(p -> p.rarity(Rarity.EPIC))
+            .build()
             .register();
 
     public static final BlockEntry<CasingBlock> reinforcement_plating = REGISTRATE.block("reinforcement_plating", CasingBlock::new)
@@ -669,11 +710,23 @@ public class DDBlocks {
                             () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/zinc")), MaterialColor.TERRACOTTA_YELLOW,
                             DDBlockSpriteShifts.ZINC_SCAFFOLD, DDBlockSpriteShifts.ZINC_SCAFFOLD_INSIDE, DDBlockSpriteShifts.ZINC_CASING))
                     .register();
+    public static final BlockEntry<MetalScaffoldingBlock> TIN_SCAFFOLD =
+            REGISTRATE.block("tin_scaffolding", MetalScaffoldingBlock::new)
+                    .transform(BuilderTransformers.scaffold("tin",
+                            () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/tin")), MaterialColor.TERRACOTTA_YELLOW,
+                            DDBlockSpriteShifts.TIN_SCAFFOLD, DDBlockSpriteShifts.TIN_SCAFFOLD_INSIDE, DDBlockSpriteShifts.TIN_CASING))
+                    .register();
     public static final BlockEntry<MetalScaffoldingBlock> BRONZE_SCAFFOLD =
             REGISTRATE.block("bronze_scaffolding", MetalScaffoldingBlock::new)
                     .transform(BuilderTransformers.scaffold("bronze",
                             () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/bronze")), MaterialColor.TERRACOTTA_YELLOW,
                             DDBlockSpriteShifts.BRONZE_SCAFFOLD, DDBlockSpriteShifts.BRONZE_SCAFFOLD_INSIDE, DDBlockSpriteShifts.BRONZE_CASING))
+                    .register();
+    public static final BlockEntry<MetalScaffoldingBlock> STEEL_SCAFFOLD =
+            REGISTRATE.block("steel_scaffolding", MetalScaffoldingBlock::new)
+                    .transform(BuilderTransformers.scaffold("steel",
+                            () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/steel")), MaterialColor.TERRACOTTA_YELLOW,
+                            DDBlockSpriteShifts.STEEL_SCAFFOLD, DDBlockSpriteShifts.STEEL_SCAFFOLD_INSIDE, DDBlockSpriteShifts.STEEL_CASING))
                     .register();
     public static final BlockEntry<MetalScaffoldingBlock> SHADOW_SCAFFOLD =
             REGISTRATE.block("shadow_steel_scaffolding", MetalScaffoldingBlock::new)
@@ -686,6 +739,18 @@ public class DDBlocks {
                     .transform(BuilderTransformers.scaffold("refined_radiance",
                             () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/refined_radiance")), MaterialColor.SNOW,
                             DDBlockSpriteShifts.REFINED_RADIANCE_SCAFFOLD, DDBlockSpriteShifts.REFINED_RADIANCE_SCAFFOLD_INSIDE, DDBlockSpriteShifts.REFINED_RADIANCE_CASING))
+                    .register();
+    public static final BlockEntry<MetalScaffoldingBlock> STARGAZE_SINGULARITY_SCAFFOLD =
+            REGISTRATE.block("stargaze_singularity_scaffolding", MetalScaffoldingBlock::new)
+                    .transform(BuilderTransformers.scaffold("stargaze_singularity",
+                            () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/stargaze_singularity")), MaterialColor.SNOW,
+                            DDBlockSpriteShifts.STARGAZE_SINGULARITY_SCAFFOLD, DDBlockSpriteShifts.STARGAZE_SINGULARITY_SCAFFOLD_INSIDE, DDBlockSpriteShifts.STARGAZE_SINGULARITY_CASING))
+                    .register();
+    public static final BlockEntry<MetalScaffoldingBlock> BLAZE_GOLD_SCAFFOLD =
+            REGISTRATE.block("blaze_gold_scaffolding", MetalScaffoldingBlock::new)
+                    .transform(BuilderTransformers.scaffold("blaze_gold",
+                            () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/blaze_gold")), MaterialColor.SNOW,
+                            DDBlockSpriteShifts.BLAZE_GOLD_SCAFFOLD, DDBlockSpriteShifts.BLAZE_GOLD_SCAFFOLD_INSIDE, DDBlockSpriteShifts.BLAZE_GOLD_CASING))
                     .register();
 
     public static final BlockEntry<BlockcopycatBlock> COPYCAT_BlOCK =
@@ -742,6 +807,40 @@ public class DDBlocks {
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .transform(pickaxeOnly())
             .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> vertical_framed_split_glass = REGISTRATE.block("vertical_framed_split_glass", Block::new)
+            .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.vertical_framed_split_glass))
+            .initialProperties(() -> Blocks.GLASS)
+            .register();
+    public static final BlockEntry<ConnectedGlassPaneBlock> vertical_framed_split_glass_pane = REGISTRATE.block("vertical_framed_split_glass_pane", ConnectedGlassPaneBlock::new)
+            .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.vertical_framed_split_glass))
+            .initialProperties(() -> Blocks.GLASS)
+            .register();
+    public static final BlockEntry<Block> horizontal_framed_split_glass = REGISTRATE.block("horizontal_framed_split_glass", Block::new)
+            .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.horizontal_framed_split_glass))
+            .initialProperties(() -> Blocks.GLASS)
+            .register();
+    public static final BlockEntry<ConnectedGlassPaneBlock> horizontal_framed_split_glass_pane = REGISTRATE.block("horizontal_framed_split_glass_pane", ConnectedGlassPaneBlock::new)
+            .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.horizontal_framed_split_glass))
+            .initialProperties(() -> Blocks.GLASS)
+            .register();
+    public static final BlockEntry<Block> framed_split_glass = REGISTRATE.block("framed_split_glass", Block::new)
+            .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.framed_split_glass))
+            .initialProperties(() -> Blocks.GLASS)
+            .register();
+    public static final BlockEntry<ConnectedGlassPaneBlock> framed_split_glass_pane = REGISTRATE.block("framed_split_glass_pane", ConnectedGlassPaneBlock::new)
+            .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.framed_split_glass))
+            .initialProperties(() -> Blocks.GLASS)
+            .register();
+
+    public static final BlockEntry<Block> ornate_iron_glass = REGISTRATE.block("ornate_iron_glass", Block::new)
+            .transform(BuilderTransgender.blockv2(() -> DDBlockSpriteShifts.ornate_iron_glass, () -> DDBlockSpriteShifts.ornate_iron_glass_top))
+            .initialProperties(() -> Blocks.GLASS)
+            .register();
+    public static final BlockEntry<ConnectedGlassPaneBlock> ornate_iron_glass_pane = REGISTRATE.block("ornate_iron_glass_pane", ConnectedGlassPaneBlock::new)
+            .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.ornate_iron_glass))
+            .initialProperties(() -> Blocks.GLASS)
             .register();
 
     public static final BlockEntry<Block> blueprint_block = REGISTRATE.block("blueprint_block", Block::new)

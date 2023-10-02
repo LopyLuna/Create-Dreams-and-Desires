@@ -5,6 +5,7 @@ import com.simibubi.create.content.contraptions.behaviour.DoorMovingInteraction;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.slidingDoor.SlidingDoorMovementBehaviour;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
+import com.simibubi.create.foundation.block.connected.HorizontalCTBehaviour;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
@@ -51,6 +52,20 @@ public class BuilderTransgender {
         return b -> b.initialProperties(SharedProperties::stone)
                 .blockstate((c, p) -> p.simpleBlock(c.get()))
                 .onRegister(connectedTextures(() -> new EncasedCTBehaviour(ct.get())))
+                .onRegister(casingConnectivity((block, cc) -> cc.makeCasing(block, ct.get())))
+                .item()
+                .build();
+    }
+
+    public static <B extends Block> NonNullUnaryOperator<BlockBuilder<B, CreateRegistrate>> blockv2(
+            Supplier<CTSpriteShiftEntry> ct, Supplier<CTSpriteShiftEntry> ct2) {
+        return b -> b.initialProperties(SharedProperties::stone)
+                .blockstate((c, p) -> p.simpleBlock(c.get(), p.models()
+                        .cubeColumn(c.getName(), ct.get()
+                                        .getOriginalResourceLocation(),
+                                ct2.get()
+                                        .getOriginalResourceLocation())))
+                .onRegister(connectedTextures(() -> new HorizontalCTBehaviour(ct.get(), ct2.get())))
                 .onRegister(casingConnectivity((block, cc) -> cc.makeCasing(block, ct.get())))
                 .item()
                 .build();
