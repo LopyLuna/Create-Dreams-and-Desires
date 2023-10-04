@@ -11,6 +11,9 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import uwu.lopyluna.create_dd.block.BlockProperties.ReversedGearboxBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankInstance;
+import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillInstance;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillRenderer;
@@ -152,8 +155,13 @@ public class DDBlockEntityTypes {
             .validBlocks(DDBlocks.ACCELERATOR_MOTOR)
             .renderer(() -> AcceleratorMotorRenderer::new)
             .register();
-
-
+    
+    public static final BlockEntityEntry<CogCrankBlockEntity> cogCrank = Create.REGISTRATE
+            .blockEntity("cog_crank", CogCrankBlockEntity::new)
+            .instance(() -> CogCrankInstance::new)
+            .validBlocks(DDBlocks.cogCrank)
+            .renderer(() -> CogCrankRenderer::new)
+            .register();
 
     public static void register() {}
 }

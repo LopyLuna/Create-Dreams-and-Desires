@@ -12,11 +12,13 @@ import java.util.function.BiFunction;
 import static net.minecraft.core.Direction.UP;
 
 public class DDBlockShapes {
-
+    private static final VoxelShape
+            smallGearShape = cuboid(2, 6, 2, 14, 10, 14)
+            ;
     public static final VoxelShaper
             CASING_8PX = shape(0, 0, 0, 16, 8, 16).forDirectional(),
-            CASING_16PX = shape(0, 0, 0, 16, 16, 16).forDirectional()
-            
+            CASING_16PX = shape(0, 0, 0, 16, 16, 16).forDirectional(),
+            cogCrank = shape(smallGearShape).forAxis()
             ;
 
 

@@ -252,6 +252,7 @@
   "block.create_dd.8_blade_fan": "Large Propeller (8)",
   "block.create_dd.secondary_encased_chain_drive": "Secondary Encased Chain Drive",
   "block.create_dd.secondary_adjustable_chain_gearshift": "Secondary Adjustable Chain Gearshift",
+  "block.create_dd.cog_crank": "Cog Crank",
 
   "block.create_dd.kinetic_motor": "Kinetic Motor",
   "block.create_dd.accelerator_motor": "Accelerator Motor",

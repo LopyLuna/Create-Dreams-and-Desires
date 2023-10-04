@@ -7,12 +7,15 @@ import com.simibubi.create.content.decoration.palettes.AllPaletteBlocks;
 import com.simibubi.create.content.decoration.palettes.ConnectedGlassPaneBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
+import com.simibubi.create.foundation.block.ItemUseOverrides;
 import com.simibubi.create.foundation.data.*;
 import com.simibubi.create.foundation.utility.Couple;
+import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
@@ -27,6 +30,7 @@ import uwu.lopyluna.create_dd.DDCreate;
 import uwu.lopyluna.create_dd.DDTags;
 import uwu.lopyluna.create_dd.block.BlockProperties.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillMovementBehaviour;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialFanBlock;
@@ -1735,8 +1739,24 @@ public class DDBlocks {
             .item()
             .transform(customItemModel())
             .register();
-
-
+    
+    public static final BlockEntry<CogCrankBlock> cogCrank = REGISTRATE.block("cog_crank", CogCrankBlock::new)
+            .initialProperties(SharedProperties::wooden)
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .transform(axeOrPickaxe())
+            .blockstate(BlockStateGen.axisBlockProvider(true))
+            .transform(BlockStressDefaults.setCapacity(8.0))
+            .transform(BlockStressDefaults.setGeneratorSpeed(CogCrankBlock::getSpeedRange))
+            .tag(AllTags.AllBlockTags.BRITTLE.tag)
+            .recipe((ctx, prov) -> ShapelessRecipeBuilder.shapeless(ctx.getEntry(), 1)
+                    .requires(AllBlocks.HAND_CRANK.get())
+                    .requires(AllBlocks.COGWHEEL.get())
+                    .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                    .save(prov))
+            .onRegister(ItemUseOverrides::addBlock)
+            .item()
+            .transform(customItemModel())
+            .register();
     public static void register() {
     }
 }

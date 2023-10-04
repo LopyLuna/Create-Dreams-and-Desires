@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "create_dd:block/cog_crank/block",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "create_dd:block/cog_crank/block"
+    },
+    "axis=z": {
+      "model": "create_dd:block/cog_crank/block",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

@@ -24,7 +24,8 @@ public class DDBlockPartialModel {
             HYDRAULIC_PRESS_HEAD = block("hydraulic_press/head"),
             INDUSTRIAL_FAN_COG = block("industrial_fan/cog"),
             BRONZE_ENCASED_FAN_INNER = block("industrial_fan/propeller"),
-            FURNACE_GENERATOR_FRAME = block("furnace_engine/frame")
+            FURNACE_GENERATOR_FRAME = block("furnace_engine/frame"),
+            HAND_CRANK_HANDLE = block("cog_crank/handle")
             ;
 
     public static final Map<ResourceLocation, Couple<PartialModel>> FOLDING_DOORS = new HashMap<>();
