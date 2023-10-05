@@ -1,5 +1,6 @@
 package uwu.lopyluna.create_dd.item;
 
+import com.simibubi.create.AllTags;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.util.entry.ItemEntry;
@@ -16,6 +17,7 @@ import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.Sequence
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.*;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemOne;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemTwo;
+import uwu.lopyluna.create_dd.item.ItemProperties.milkshakes.*;
 import uwu.lopyluna.create_dd.item.ItemProperties.sawtool.DeforesterItem;
 import uwu.lopyluna.create_dd.item.ItemProperties.sawtool.ForestRavagerItem;
 
@@ -197,7 +199,35 @@ public class DDItems {
                     .lang("Mass of Experience")
                     .register();
 
+    public static final ItemEntry<CaramelMilkshake> caramel_milkshake = REGISTRATE.item("caramel_milkshake", CaramelMilkshake::new)
+            .tag(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
+            .properties(p -> p.stacksTo(12))
+            .register();
 
+    public static final ItemEntry<ChocolateMilkshake> chocolate_milkshake = REGISTRATE.item("chocolate_milkshake", ChocolateMilkshake::new)
+            .tag(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
+            .properties(p -> p.stacksTo(12))
+            .register();
+
+    public static final ItemEntry<GlowberryMilkshake> glowberry_milkshake = REGISTRATE.item("glowberry_milkshake", GlowberryMilkshake::new)
+            .tag(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
+            .properties(p -> p.stacksTo(12))
+            .register();
+
+    public static final ItemEntry<StrawberryMilkshake> strawberry_milkshake = REGISTRATE.item("strawberry_milkshake", StrawberryMilkshake::new)
+            .tag(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
+            .properties(p -> p.stacksTo(12))
+            .register();
+
+    public static final ItemEntry<VanillaMilkshake> vanilla_milkshake = REGISTRATE.item("vanilla_milkshake", VanillaMilkshake::new)
+            .tag(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
+            .properties(p -> p.stacksTo(12))
+            .register();
+
+    public static final ItemEntry<HotChocolate> hot_chocolate = REGISTRATE.item("hot_chocolate", HotChocolate::new)
+            .tag(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
+            .properties(p -> p.stacksTo(12))
+            .register();
 
 
 
