@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/connected_glass_pane/side_alt",
+  "textures": {
+    "pane": "create_dd:block/palettes/horizontal_framed_split_glass",
+    "edge": "create_dd:block/palettes/horizontal_framed_split_glass_pane_top"
+  }
+}

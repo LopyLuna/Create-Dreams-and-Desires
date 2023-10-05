@@ -1,3 +1,7 @@
 {
-  "parent": "create_dd:block/framed_split_glass"
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "create_dd:block/palettes/framed_split_glass",
+    "end": "create_dd:block/palettes/framed_split_glass"
+  }
 }

@@ -34,11 +34,11 @@ public class DDBlockSpriteShifts {
 
     blueprint_block = omni("blueprint_block"),
 
-    vertical_framed_split_glass = omni("vertical_framed_split_glass"),
-    horizontal_framed_split_glass = omni("horizontal_framed_split_glass"),
-    framed_split_glass = omni("framed_split_glass"),
-    ornate_iron_glass = omni("ornate_iron_glass"),
-    ornate_iron_glass_top = omni("ornate_iron_glass_top"),
+    vertical_framed_split_glass = omni("palettes/vertical_framed_split_glass"),
+    horizontal_framed_split_glass = omni("palettes/horizontal_framed_split_glass"),
+    framed_split_glass = omni("palettes/framed_split_glass"),
+    ornate_iron_glass = omni("palettes/ornate_iron_glass"),
+    ornate_iron_glass_top = omni("palettes/ornate_iron_glass_top"),
 
     HAZARD = omni("hazard_block"),
     HORIZONTAL_HAZARD = omni("horizontal_hazard_block"),

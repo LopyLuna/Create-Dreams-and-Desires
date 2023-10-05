@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "create_dd:block/palettes/ornate_iron_glass",
+    "end": "create_dd:block/palettes/ornate_iron_glass_top"
+  }
+}

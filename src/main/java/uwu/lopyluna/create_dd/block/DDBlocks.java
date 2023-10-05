@@ -831,38 +831,52 @@ public class DDBlocks {
             .simpleItem()
             .register();
 
-    public static final BlockEntry<Block> vertical_framed_split_glass = REGISTRATE.block("vertical_framed_split_glass", Block::new)
+    public static final BlockEntry<GlassBlock> vertical_framed_split_glass = REGISTRATE.block("vertical_framed_split_glass", GlassBlock::new)
             .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.vertical_framed_split_glass))
             .initialProperties(() -> Blocks.GLASS)
+            .addLayer(() -> RenderType::cutoutMipped)
+            .properties(BlockBehaviour.Properties::noOcclusion)
             .register();
     public static final BlockEntry<ConnectedGlassPaneBlock> vertical_framed_split_glass_pane = REGISTRATE.block("vertical_framed_split_glass_pane", ConnectedGlassPaneBlock::new)
             .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.vertical_framed_split_glass))
             .initialProperties(() -> Blocks.GLASS)
+            .addLayer(() -> RenderType::cutoutMipped)
+            .properties(BlockBehaviour.Properties::noOcclusion)
             .register();
-    public static final BlockEntry<Block> horizontal_framed_split_glass = REGISTRATE.block("horizontal_framed_split_glass", Block::new)
+    public static final BlockEntry<GlassBlock> horizontal_framed_split_glass = REGISTRATE.block("horizontal_framed_split_glass", GlassBlock::new)
             .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.horizontal_framed_split_glass))
             .initialProperties(() -> Blocks.GLASS)
+            .addLayer(() -> RenderType::cutoutMipped)
+            .properties(BlockBehaviour.Properties::noOcclusion)
             .register();
     public static final BlockEntry<ConnectedGlassPaneBlock> horizontal_framed_split_glass_pane = REGISTRATE.block("horizontal_framed_split_glass_pane", ConnectedGlassPaneBlock::new)
             .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.horizontal_framed_split_glass))
             .initialProperties(() -> Blocks.GLASS)
+            .addLayer(() -> RenderType::cutoutMipped)
+            .properties(BlockBehaviour.Properties::noOcclusion)
             .register();
-    public static final BlockEntry<Block> framed_split_glass = REGISTRATE.block("framed_split_glass", Block::new)
+    public static final BlockEntry<GlassBlock> framed_split_glass = REGISTRATE.block("framed_split_glass", GlassBlock::new)
             .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.framed_split_glass))
             .initialProperties(() -> Blocks.GLASS)
+            .addLayer(() -> RenderType::cutoutMipped)
+            .properties(BlockBehaviour.Properties::noOcclusion)
             .register();
     public static final BlockEntry<ConnectedGlassPaneBlock> framed_split_glass_pane = REGISTRATE.block("framed_split_glass_pane", ConnectedGlassPaneBlock::new)
             .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.framed_split_glass))
             .initialProperties(() -> Blocks.GLASS)
+            .addLayer(() -> RenderType::cutoutMipped)
+            .properties(BlockBehaviour.Properties::noOcclusion)
             .register();
 
-    public static final BlockEntry<Block> ornate_iron_glass = REGISTRATE.block("ornate_iron_glass", Block::new)
+    public static final BlockEntry<GlassBlock> ornate_iron_glass = REGISTRATE.block("ornate_iron_glass", GlassBlock::new)
             .transform(BuilderTransgender.blockv2(() -> DDBlockSpriteShifts.ornate_iron_glass, () -> DDBlockSpriteShifts.ornate_iron_glass_top))
             .initialProperties(() -> Blocks.GLASS)
+            .addLayer(() -> RenderType::cutoutMipped)
             .register();
     public static final BlockEntry<ConnectedGlassPaneBlock> ornate_iron_glass_pane = REGISTRATE.block("ornate_iron_glass_pane", ConnectedGlassPaneBlock::new)
             .transform(BuilderTransgender.block(() -> DDBlockSpriteShifts.ornate_iron_glass))
             .initialProperties(() -> Blocks.GLASS)
+            .addLayer(() -> RenderType::cutoutMipped)
             .register();
 
     public static final BlockEntry<Block> blueprint_block = REGISTRATE.block("blueprint_block", Block::new)
