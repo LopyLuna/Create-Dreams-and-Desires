@@ -2,162 +2,48 @@ package uwu.lopyluna.create_dd.block.BlockProperties.copycat;
 
 import com.simibubi.create.content.decoration.copycat.CopycatSpecialCases;
 import com.simibubi.create.content.decoration.copycat.WaterloggedCopycatBlock;
-import com.simibubi.create.foundation.placement.IPlacementHelper;
-import com.simibubi.create.foundation.placement.PlacementHelpers;
-import com.simibubi.create.foundation.placement.PlacementOffset;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.TrapDoorBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.block.DDBlockShapes;
 
-import java.util.List;
-import java.util.function.Predicate;
 
+@SuppressWarnings("deprecation")
 public class BlockcopycatBlock extends WaterloggedCopycatBlock {
 
-    public static final DirectionProperty FACING = BlockStateProperties.FACING;
-
-    private static final int placementHelperId = PlacementHelpers.register(new BlockcopycatBlock.PlacementHelper());
 
     public BlockcopycatBlock(Properties pProperties) {
         super(pProperties);
-        registerDefaultState(defaultBlockState().setValue(FACING, Direction.UP));
     }
 
     @Override
     public boolean isAcceptedRegardless(BlockState material) {
-        return CopycatSpecialCases.isBarsMaterial(material) || CopycatSpecialCases.isTrapdoorMaterial(material);
-    }
-
-    @Override
-    public BlockState prepareMaterial(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer,
-                                      InteractionHand pHand, BlockHitResult pHit, BlockState material) {
-        if (!CopycatSpecialCases.isTrapdoorMaterial(material))
-            return super.prepareMaterial(pLevel, pPos, pState, pPlayer, pHand, pHit, material);
-
-        Direction blockFacing = pState.getValue(FACING);
-        if (blockFacing == Direction.DOWN)
-            material = material.setValue(TrapDoorBlock.HALF, Half.TOP);
-        if (blockFacing.getAxis() == Direction.Axis.Y)
-            return material.setValue(TrapDoorBlock.FACING, pPlayer.getDirection())
-                    .setValue(TrapDoorBlock.OPEN, false);
-
-        boolean clickedNearTop = pHit.getLocation().y - .5 > pPos.getY();
-        return material.setValue(TrapDoorBlock.OPEN, true)
-                .setValue(TrapDoorBlock.HALF, clickedNearTop ? Half.TOP : Half.BOTTOM)
-                .setValue(TrapDoorBlock.FACING, blockFacing);
-    }
-
-    @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand,
-                                 BlockHitResult ray) {
-
-        if (!player.isShiftKeyDown() && player.mayBuild()) {
-            ItemStack heldItem = player.getItemInHand(hand);
-            IPlacementHelper placementHelper = PlacementHelpers.get(placementHelperId);
-            if (placementHelper.matchesItem(heldItem)) {
-                placementHelper.getOffset(player, world, state, pos, ray)
-                        .placeInWorld(world, (BlockItem) heldItem.getItem(), player, hand, ray);
-                return InteractionResult.SUCCESS;
-            }
-        }
-
-        return super.use(state, world, pos, player, hand, ray);
+        return CopycatSpecialCases.isBarsMaterial(material);
     }
 
 
     @Override
-    public boolean isIgnoredConnectivitySide(BlockAndTintGetter reader, BlockState state, Direction face,
-                                             BlockPos fromPos, BlockPos toPos) {
-        Direction facing = state.getValue(FACING);
-        BlockState toState = reader.getBlockState(toPos);
-
-        if (!toState.is(this))
-            return facing != face.getOpposite();
-
-        BlockPos diff = fromPos.subtract(toPos);
-        int coord = facing.getAxis()
-                .choose(diff.getX(), diff.getY(), diff.getZ());
-        return facing == toState.getValue(FACING)
-                .getOpposite()
-                && !(coord != 0 && coord == facing.getAxisDirection()
-                .getStep());
-    }
-
-    @Override
-    public boolean canFaceBeOccluded(BlockState state, Direction face) {
-        return state.getValue(FACING)
-                .getOpposite() == face;
-    }
-
-    @Override
-    public boolean shouldFaceAlwaysRender(BlockState state, Direction face) {
-        return canFaceBeOccluded(state, face.getOpposite());
-    }
-
-    @Override
-    public boolean canConnectTexturesToward(BlockAndTintGetter reader, BlockPos fromPos, BlockPos toPos,
-                                            BlockState state) {
-        Direction facing = state.getValue(FACING);
-        BlockState toState = reader.getBlockState(toPos);
-
-        if (toPos.equals(fromPos.relative(facing)))
-            return false;
-
-        BlockPos diff = fromPos.subtract(toPos);
-        int coord = facing.getAxis()
-                .choose(diff.getX(), diff.getY(), diff.getZ());
-
-        if (!toState.is(this))
-            return coord != -facing.getAxisDirection()
-                    .getStep();
-
-        if (isOccluded(state, toState, facing))
-            return true;
-        return toState.setValue(WATERLOGGED, false) == state.setValue(WATERLOGGED, false) && coord == 0;
-    }
-
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        BlockState stateForPlacement = super.getStateForPlacement(pContext);
-        assert stateForPlacement != null;
-        return stateForPlacement.setValue(FACING, pContext.getNearestLookingDirection()
-                .getOpposite());
+    public boolean canConnectTexturesToward(BlockAndTintGetter reader, BlockPos fromPos, BlockPos toPos, BlockState state) {
+        return true;
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        super.createBlockStateDefinition(pBuilder.add(FACING));
+        super.createBlockStateDefinition(pBuilder.add());
     }
 
     @Override
     @SuppressWarnings("deprecation")
-    public @NotNull VoxelShape getShape(BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
-        return DDBlockShapes.CASING_16PX.get(pState.getValue(FACING));
+    public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
+        return DDBlockShapes.CASING_16PX;
     }
 
     @Override
@@ -172,71 +58,22 @@ public class BlockcopycatBlock extends WaterloggedCopycatBlock {
     }
 
     @Override
+    public boolean canFaceBeOccluded(BlockState state, Direction face) {
+        return true;
+    }
+
+    @Override
     public boolean hidesNeighborFace(BlockGetter level, BlockPos pos, BlockState state, BlockState neighborState,
                                      Direction dir) {
-        if (state.is(this) == neighborState.is(this)) {
-            if (CopycatSpecialCases.isBarsMaterial(getMaterial(level, pos))
-                    && CopycatSpecialCases.isBarsMaterial(getMaterial(level, pos.relative(dir))))
-                return state.getValue(FACING) == neighborState.getValue(FACING);
-            if (getMaterial(level, pos).skipRendering(getMaterial(level, pos.relative(dir)), dir.getOpposite()))
-                return isOccluded(state, neighborState, dir.getOpposite());
-        }
-
-        return state.getValue(FACING) == dir.getOpposite()
-                && getMaterial(level, pos).skipRendering(neighborState, dir.getOpposite());
-    }
-
-    public static boolean isOccluded(BlockState state, BlockState other, Direction pDirection) {
-        state = state.setValue(WATERLOGGED, false);
-        other = other.setValue(WATERLOGGED, false);
-        Direction facing = state.getValue(FACING);
-        if (facing.getOpposite() == other.getValue(FACING) && pDirection == facing)
-            return true;
-        if (other.getValue(FACING) != facing)
-            return false;
-        return pDirection.getAxis() != facing.getAxis();
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public @NotNull BlockState rotate(BlockState state, Rotation rot) {
-        return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public @NotNull BlockState mirror(BlockState state, Mirror mirrorIn) {
-        return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
-    }
-
-    @MethodsReturnNonnullByDefault
-    private static class PlacementHelper implements IPlacementHelper {
-        @Override
-        public Predicate<ItemStack> getItemPredicate() {
-            return DDBlocks.COPYCAT_BlOCK::isIn;
-        }
-
-        @Override
-        public Predicate<BlockState> getStatePredicate() {
-            return DDBlocks.COPYCAT_BlOCK::has;
-        }
-
-        @Override
-        public PlacementOffset getOffset(Player player, Level world, BlockState state, BlockPos pos,
-                                         BlockHitResult ray) {
-            List<Direction> directions = IPlacementHelper.orderedByDistanceExceptAxis(pos, ray.getLocation(),
-                    state.getValue(FACING)
-                            .getAxis(),
-                    dir -> world.getBlockState(pos.relative(dir))
-                            .getMaterial()
-                            .isReplaceable());
-
-            if (directions.isEmpty())
-                return PlacementOffset.fail();
-            else {
-                return PlacementOffset.success(pos.relative(directions.get(0)),
-                        s -> s.setValue(FACING, state.getValue(FACING)));
+            if (state.is(this) == neighborState.is(this)) {
+                if (getMaterial(level, pos).skipRendering(getMaterial(level, pos.relative(dir)), dir.getOpposite()))
+                    return true;
             }
+
+            return getMaterial(level, pos).skipRendering(neighborState, dir.getOpposite());
         }
+
+    public static BlockcopycatBlock create(Properties properties) {
+        return new BlockcopycatBlock(properties);
     }
 }

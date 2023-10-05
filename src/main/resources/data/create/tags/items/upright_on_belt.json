@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:caramel_milkshake",
+    "create_dd:chocolate_milkshake",
+    "create_dd:glowberry_milkshake",
+    "create_dd:strawberry_milkshake",
+    "create_dd:vanilla_milkshake",
+    "create_dd:hot_chocolate"
+  ]
+}
