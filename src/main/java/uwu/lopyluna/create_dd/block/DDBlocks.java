@@ -549,6 +549,24 @@ public class DDBlocks {
                     .simpleItem()
                     .register();
 
+    public static final BlockEntry<CogCrankBlock> cogCrank = REGISTRATE.block("cog_crank", CogCrankBlock::new)
+            .initialProperties(SharedProperties::wooden)
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .transform(axeOrPickaxe())
+            .blockstate(BlockStateGen.axisBlockProvider(true))
+            .transform(BlockStressDefaults.setCapacity(8.0))
+            .transform(BlockStressDefaults.setGeneratorSpeed(CogCrankBlock::getSpeedRange))
+            .tag(AllTags.AllBlockTags.BRITTLE.tag)
+            .recipe((ctx, prov) -> ShapelessRecipeBuilder.shapeless(ctx.getEntry(), 1)
+                    .requires(AllBlocks.HAND_CRANK.get())
+                    .requires(AllBlocks.COGWHEEL.get())
+                    .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                    .save(prov))
+            .onRegister(ItemUseOverrides::addBlock)
+            .item()
+            .transform(customItemModel())
+            .register();
+
     public static final BlockEntry<FanSailBlock> splashing_sail =
             REGISTRATE.block("splashing_sail", FanSailBlock::sail)
                     .initialProperties(SharedProperties::wooden)
@@ -1739,24 +1757,7 @@ public class DDBlocks {
             .item()
             .transform(customItemModel())
             .register();
-    
-    public static final BlockEntry<CogCrankBlock> cogCrank = REGISTRATE.block("cog_crank", CogCrankBlock::new)
-            .initialProperties(SharedProperties::wooden)
-            .properties(p -> p.color(MaterialColor.PODZOL))
-            .transform(axeOrPickaxe())
-            .blockstate(BlockStateGen.axisBlockProvider(true))
-            .transform(BlockStressDefaults.setCapacity(8.0))
-            .transform(BlockStressDefaults.setGeneratorSpeed(CogCrankBlock::getSpeedRange))
-            .tag(AllTags.AllBlockTags.BRITTLE.tag)
-            .recipe((ctx, prov) -> ShapelessRecipeBuilder.shapeless(ctx.getEntry(), 1)
-                    .requires(AllBlocks.HAND_CRANK.get())
-                    .requires(AllBlocks.COGWHEEL.get())
-                    .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
-                    .save(prov))
-            .onRegister(ItemUseOverrides::addBlock)
-            .item()
-            .transform(customItemModel())
-            .register();
+
     public static void register() {
     }
 }
