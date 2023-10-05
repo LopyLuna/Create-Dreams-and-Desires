@@ -1,16 +1,14 @@
 package uwu.lopyluna.create_dd.item.ItemProperties.compound;
 
+import com.simibubi.create.content.trains.CubeParticleData;
 import com.simibubi.create.foundation.utility.VecHelper;
-import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.fml.ModList;
 
 public class BlazeGold extends NoGravMagical {
 
@@ -39,7 +37,7 @@ public class BlazeGold extends NoGravMagical {
                 world.addParticle(ParticleTypes.FLASH, pos.x, pos.y, pos.z, 0, 0, 0);
                 for (int i = 0; i < 20; i++) {
                     Vec3 motion = VecHelper.offsetRandomly(basemotion, world.random, 1);
-                    world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
+                    world.addParticle(ParticleTypes.FLAME, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
                     world.addParticle(ParticleTypes.LAVA, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
                     world.addParticle(ParticleTypes.SMOKE, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
                     world.addParticle(ParticleTypes.SMOKE, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
@@ -69,6 +67,6 @@ public class BlazeGold extends NoGravMagical {
     @Override
     protected float getIdleParticleChance(ItemEntity entity) {
         return (float) (Mth.clamp(entity.getItem()
-                .getCount() - 30, Mth.clamp(entity.getDeltaMovement().y * 20, 2, 10), 100) / 64f);
+                .getCount() - 5, Mth.clamp(entity.getDeltaMovement().y * 20, 2, 5), 100) / 64f);
     }
 }

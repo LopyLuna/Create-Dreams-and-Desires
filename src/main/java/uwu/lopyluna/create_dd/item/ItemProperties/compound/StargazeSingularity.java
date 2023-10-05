@@ -29,6 +29,7 @@ public class StargazeSingularity extends NoGravMagical {
                 Vec3 ppos = VecHelper.offsetRandomly(pos, world.random, .6f);
                 world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, ppos.x, pos.y, ppos.z, 0, -.05f, 0);
                 world.addParticle(ParticleTypes.GLOW, ppos.x, pos.y, ppos.z, 0, -.05f, 0);
+                world.addParticle(ParticleTypes.SNEEZE, ppos.x, pos.y, ppos.z, 0, -.05f, 0);
                 world.addParticle(ParticleTypes.SMOKE, ppos.x, pos.y, ppos.z, 0, .05f, 0);
                 world.addParticle(ParticleTypes.SMOKE, ppos.x, pos.y, ppos.z, 0, .05f, 0);
                 world.addParticle(ParticleTypes.FALLING_OBSIDIAN_TEAR, ppos.x, pos.y, ppos.z, 0, .05f, 0);
@@ -41,6 +42,7 @@ public class StargazeSingularity extends NoGravMagical {
                     Vec3 motion = VecHelper.offsetRandomly(basemotion, world.random, 1);
                     world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
                     world.addParticle(ParticleTypes.GLOW, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
+                    world.addParticle(ParticleTypes.SNEEZE, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
                     world.addParticle(ParticleTypes.SMOKE, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
                     world.addParticle(ParticleTypes.SMOKE, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
                     world.addParticle(ParticleTypes.FALLING_OBSIDIAN_TEAR, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
@@ -69,6 +71,6 @@ public class StargazeSingularity extends NoGravMagical {
     @Override
     protected float getIdleParticleChance(ItemEntity entity) {
         return (float) (Mth.clamp(entity.getItem()
-                .getCount() - 50, Mth.clamp(entity.getDeltaMovement().y * 20, 2, 10), 100) / 64f);
+                .getCount() - 5, Mth.clamp(entity.getDeltaMovement().y * 20, 2, 5), 100) / 64f);
     }
 }

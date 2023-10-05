@@ -1,5 +1,6 @@
 package uwu.lopyluna.create_dd.item.ItemProperties.compound;
 
+import com.simibubi.create.content.trains.CubeParticleData;
 import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
@@ -26,11 +27,10 @@ public class OverchargeAlloy extends NoGravMagical {
 
         if (world.isClientSide) {
             if (world.random.nextFloat() < getIdleParticleChance(entity)) {
-                Vec3 ppos = VecHelper.offsetRandomly(pos, world.random, .4f);
-                world.addParticle(ParticleTypes.ELECTRIC_SPARK, ppos.x, pos.y, ppos.z, 0, -.05f, 0);
-                world.addParticle(ParticleTypes.WAX_OFF, ppos.x, pos.y, ppos.z, 0, -.05f, 0);
-                world.addParticle(ParticleTypes.ELECTRIC_SPARK, ppos.x, pos.y, ppos.z, 0, .05f, 0);
-                world.addParticle(ParticleTypes.WAX_OFF, ppos.x, pos.y, ppos.z, 0, .05f, 0);
+                Vec3 ppos = VecHelper.offsetRandomly(pos, world.random, .5f);
+                world.addParticle(ParticleTypes.WAX_OFF, ppos.x, pos.y + 0.5f, ppos.z, 0, -0.1f, 0);
+                world.addParticle(ParticleTypes.WAX_OFF, ppos.x, pos.y + -0.25f, ppos.z, 0, .1f, 0);
+                world.addParticle(ParticleTypes.WAX_OFF, ppos.x, pos.y + 0.25f, ppos.z, 0, -0.1f, 0);
             }
 
             if (entity.isSilent() && !persistentData.getBoolean("PlayEffects")) {
@@ -38,10 +38,7 @@ public class OverchargeAlloy extends NoGravMagical {
                 world.addParticle(ParticleTypes.FLASH, pos.x, pos.y, pos.z, 0, 0, 0);
                 for (int i = 0; i < 20; i++) {
                     Vec3 motion = VecHelper.offsetRandomly(basemotion, world.random, 1);
-                    world.addParticle(ParticleTypes.ELECTRIC_SPARK, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
                     world.addParticle(ParticleTypes.WAX_OFF, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
-                    world.addParticle(ParticleTypes.WAX_OFF, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
-                    world.addParticle(ParticleTypes.ELECTRIC_SPARK, pos.x, pos.y, pos.z, motion.x, motion.y, motion.z);
                 }
                 persistentData.putBoolean("PlayEffects", true);
             }
@@ -67,7 +64,7 @@ public class OverchargeAlloy extends NoGravMagical {
     @Override
     protected float getIdleParticleChance(ItemEntity entity) {
         return (float) (Mth.clamp(entity.getItem()
-                .getCount() - 10, Mth.clamp(entity.getDeltaMovement().y * 20, 5, 20), 100) / 64f);
+                .getCount() - 10, Mth.clamp(entity.getDeltaMovement().y * 20, 1, 5), 100) / 64f);
     }
 
     @Override

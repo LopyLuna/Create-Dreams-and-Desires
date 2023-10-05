@@ -8,6 +8,7 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraftforge.fml.ModList;
 import uwu.lopyluna.create_dd.item.DDItems;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -22,7 +23,12 @@ public class MysteriousConversion extends MysteriousItemConversionCategory {
     static {
 		RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.SHADOW_STEEL.asStack()));
 		RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.REFINED_RADIANCE.asStack()));
-        RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.OVERCHARGE_ALLOY.asStack()));
+        if (ModList.get().isLoaded("createaddition")) {
+            RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.OVERCHARGE_ALLOY.asStack()));}
+        RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.BLAZE_GOLD.asStack()));
+        RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.STARGAZE_SINGULARITY.asStack()));
+
+
     }
 
     public MysteriousConversion(Info<ConversionRecipe> info) {
