@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "create_dd:item/shimmer"
+    "layer0": "create_dd:item/shimmer_bucket"
   }
 }
