@@ -5,11 +5,11 @@
       "item": "create_dd:hydraulic_press"
     },
     "title": {
-      "text": "Heavy Duty Ahead!"
+      "translate": "advancement.create_dd.ayo Heavy Duty Ahead!"
     },
     "description": {
       "color": "#DBA213",
-      "text": "This is a mechanical press variant, it can be used to press in bulk"
+      "translate": "advancement.create_dd.ayo This is a mechanical press variant, it can be used to press in bulk"
     },
     "frame": "task",
     "show_toast": true,

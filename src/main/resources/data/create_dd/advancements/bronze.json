@@ -5,11 +5,10 @@
       "item": "create_dd:bronze_ingot"
     },
     "title": {
-      "text": "Please Alloy!"
+      "translate": "advancement.create_dd.bronze_ingot"
     },
     "description": {
-      "color": "#DBA213",
-      "text": "Mix copper, zinc and tin to make bronze"
+      "translate": "advancement.create_dd.bronze_ingot.desc"
     },
     "frame": "task",
     "show_toast": true,

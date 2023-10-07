@@ -5,11 +5,11 @@
       "item": "create_dd:4_blade_fan"
     },
     "title": {
-      "text": "Like a record, baby, right round, round, round"
+      "translate": "advancement.create_dd.ayo Like a record, baby, right round, round, round"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Decoration that can be spinned"
+      "translate": "advancement.create_dd.ayo Decoration that can be spinned"
     },
     "frame": "task",
     "show_toast": true,

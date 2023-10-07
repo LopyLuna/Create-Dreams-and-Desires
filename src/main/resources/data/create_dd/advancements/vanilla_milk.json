@@ -5,11 +5,11 @@
       "item": "create_dd:vanilla_bucket"
     },
     "title": {
-      "text": "Don't eat it without sugar"
+      "translate": "advancement.create_dd.ayo Don't eat it without sugar"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Obtain a vanilla milk bucket. Deepslate generator (replacing the water)"
+      "translate": "advancement.create_dd.ayo Obtain a vanilla milk bucket. Deepslate generator (replacing the water)"
     },
     "frame": "task",
     "show_toast": true,

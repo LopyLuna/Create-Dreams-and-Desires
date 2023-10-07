@@ -5,11 +5,11 @@
       "item": "create_dd:industrial_fan"
     },
     "title": {
-      "text": "A better encased Fan"
+      "translate": "advancement.create_dd.ayo A better encased Fan"
     },
     "description": {
       "color": "#DBA213",
-      "text": "The industrial fan is a  direct upgrade to the encased fan, capable of generating rpm (with a heat source on the bottom and a redstone signal), also being able do the normal recipes of the encased fan AND  use special sails"
+      "translate": "advancement.create_dd.ayo The industrial fan is a  direct upgrade to the encased fan, capable of generating rpm (with a heat source on the bottom and a redstone signal), also being able do the normal recipes of the encased fan AND  use special sails"
     },
     "frame": "task",
     "show_toast": true,

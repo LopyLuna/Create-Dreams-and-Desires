@@ -5,11 +5,11 @@
       "item": "create_dd:spectral_ruby_lamp"
     },
     "title": {
-      "text": "Lunar Lights"
+      "translate": "advancement.create_dd.ayo Lunar Lights"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Obtain the spectral ruby lamp and harness the power of the moon (or sun)"
+      "translate": "advancement.create_dd.ayo Obtain the spectral ruby lamp and harness the power of the moon (or sun)"
     },
     "frame": "task",
     "show_toast": true,

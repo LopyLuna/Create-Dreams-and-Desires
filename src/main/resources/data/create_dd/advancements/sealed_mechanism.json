@@ -5,11 +5,11 @@
       "item": "create_dd:sealed_mechanism"
     },
     "title": {
-      "text": "A kelping drive!"
+      "translate": "advancement.create_dd.ayo A kelping drive!"
     },
     "description": {
       "color": "#DBA213",
-      "text": "This is another quite simple mechanism, this time it can not be crafted by hand"
+      "translate": "advancement.create_dd.ayo This is another quite simple mechanism, this time it can not be crafted by hand"
     },
     "frame": "goal",
     "show_toast": true,

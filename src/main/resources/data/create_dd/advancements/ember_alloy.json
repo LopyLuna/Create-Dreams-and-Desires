@@ -5,11 +5,11 @@
       "item": "create_dd:ember_alloy"
     },
     "title": {
-      "text": "A less sturdy alloy"
+      "translate": "advancement.create_dd.ayo A less sturdy alloy"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Using your smoked logs, pair it up with cinder flower and blaze powder"
+      "translate": "advancement.create_dd.ayo Using your smoked logs, pair it up with cinder flower and blaze powder"
     },
     "frame": "task",
     "show_toast": true,

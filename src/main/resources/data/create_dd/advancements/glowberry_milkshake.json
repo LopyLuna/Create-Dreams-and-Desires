@@ -5,11 +5,11 @@
       "item": "create_dd:glowberry_milkshake_bucket"
     },
     "title": {
-      "text": "Glowing with cream"
+      "translate": "advancement.create_dd.ayo Glowing with cream"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Obtain a glowberry milkshake bucket. An ochrum generator (replacing the water)."
+      "translate": "advancement.create_dd.ayo Obtain a glowberry milkshake bucket. An ochrum generator (replacing the water)."
     },
     "frame": "task",
     "show_toast": true,

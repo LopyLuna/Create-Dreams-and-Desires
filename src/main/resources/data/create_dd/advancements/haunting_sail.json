@@ -5,11 +5,11 @@
       "item": "create_dd:haunting_sail"
     },
     "title": {
-      "text": "Boo!"
+      "translate": "advancement.create_dd.ayo Boo!"
     },
     "description": {
       "color": "#DBA213",
-      "text": "turns any air into haunting air"
+      "translate": "advancement.create_dd.ayo turns any air into haunting air"
     },
     "frame": "task",
     "show_toast": true,

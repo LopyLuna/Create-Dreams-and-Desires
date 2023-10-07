@@ -5,11 +5,11 @@
       "item": "create_dd:industrial_iron_ingot"
     },
     "title": {
-      "text": "The Cooler Iron"
+      "translate": "advancement.create_dd.ayo The Cooler Iron"
     },
     "description": {
       "color": "#DBA213",
-      "text": "This iron has the property of crafting more of an item using iron."
+      "translate": "advancement.create_dd.ayo This iron has the property of crafting more of an item using iron."
     },
     "frame": "task",
     "show_toast": true,

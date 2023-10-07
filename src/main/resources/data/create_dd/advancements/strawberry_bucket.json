@@ -5,11 +5,11 @@
       "item": "create_dd:strawberry_bucket"
     },
     "title": {
-      "text": "Healthy Drinking"
+      "translate": "advancement.create_dd.ayo Healthy Drinking"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Obtain a strawberry milk bucket. A Gabro generator (replacing the water)"
+      "translate": "advancement.create_dd.ayo Obtain a strawberry milk bucket. A Gabro generator (replacing the water)"
     },
     "frame": "task",
     "show_toast": true,

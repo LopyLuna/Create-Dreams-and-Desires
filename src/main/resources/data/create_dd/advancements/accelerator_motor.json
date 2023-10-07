@@ -1,20 +1,19 @@
 {
-  "parent": "create_dd:reverse_gearshift",
+  "parent": "create_dd:integrated_mechanism",
   "display": {
     "icon": {
-      "item": "create_dd:mysterious_blueprint_carpet"
+      "item": "create_dd:accelerator_motor"
     },
     "title": {
-      "text": "Sus carpet ngl"
+      "translate": "advancement.create_dd.accelerator_motor"
     },
     "description": {
-      "color": "#DBA213",
-      "text": "Obtain the sus blue carper (hidden advancement)"
+      "translate": "advancement.create_dd.accelerator_motor.desc"
     },
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": true
+    "announce_to_chat": false,
+    "hidden": false
   },
   "criteria": {
     "0": {
@@ -23,7 +22,7 @@
         "items": [
           {
             "items": [
-              "create_dd:mysterious_blueprint_carpet"
+              "create_dd:accelerator_motor"
             ]
           }
         ]
@@ -36,3 +35,5 @@
     ]
   ]
 }
+
+

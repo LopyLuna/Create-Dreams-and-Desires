@@ -5,11 +5,11 @@
       "item": "create_dd:splashing_sail"
     },
     "title": {
-      "text": "Splash it up"
+      "translate": "advancement.create_dd.ayo Splash it up"
     },
     "description": {
       "color": "#DBA213",
-      "text": "turns any air into splashing air"
+      "translate": "advancement.create_dd.ayo turns any air into splashing air"
     },
     "frame": "task",
     "show_toast": true,

@@ -5,11 +5,11 @@
       "item": "create_dd:glowberry_bucket"
     },
     "title": {
-      "text": "Quite drippy generator"
+      "translate": "advancement.create_dd.ayo Quite drippy generator"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Obtain a glowberry milk bucket. A Dripstone generator (replacing the water)"
+      "translate": "advancement.create_dd.ayo Obtain a glowberry milk bucket. A Dripstone generator (replacing the water)"
     },
     "frame": "task",
     "show_toast": true,

@@ -5,11 +5,11 @@
       "item": "create_dd:integrated_circuit"
     },
     "title": {
-      "text": "Please download more ram!"
+      "translate": "advancement.create_dd.ayo Please download more ram!"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Use the deployer to make aintegrated circuits"
+      "translate": "advancement.create_dd.ayo Use the deployer to make aintegrated circuits"
     },
     "frame": "task",
     "show_toast": true,

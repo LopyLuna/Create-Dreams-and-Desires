@@ -5,11 +5,10 @@
       "item": "create_dd:bronze_casing"
     },
     "title": {
-      "text": "The bronze age!"
+      "translate": "advancement.create_dd.bronze_casing"
     },
     "description": {
-      "color": "#DBA213",
-      "text": "Apply bronze into any type of wood"
+      "translate": "advancement.create_dd.bronze_casing.desc"
     },
     "frame": "task",
     "show_toast": true,

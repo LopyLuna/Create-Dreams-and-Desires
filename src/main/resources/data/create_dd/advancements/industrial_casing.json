@@ -1,15 +1,15 @@
 {
-  "parent": "create_dd:aindustrial_iron",
+  "parent": "create_dd:industrial_iron",
   "display": {
     "icon": {
       "item": "create_dd:industrial_casing"
     },
     "title": {
-      "text": "The Industrial Age"
+      "translate": "advancement.create_dd.ayo The Industrial Age"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Use Industrial Iron into a zinc casing!"
+      "translate": "advancement.create_dd.ayo Use Industrial Iron into a zinc casing!"
     },
     "frame": "task",
     "show_toast": true,

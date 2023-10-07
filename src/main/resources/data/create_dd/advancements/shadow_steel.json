@@ -5,13 +5,12 @@
       "item": "create_dd:shadow_steel"
     },
     "title": {
-      "text": "It creeps in the dark"
+      "translate": "advancement.create_dd.shadow_steel"
     },
     "description": {
-      "color": "#DBA213",
-      "text": "Throw a chromatic compound into the void"
+      "translate": "advancement.create_dd.shadow_steel.desc"
     },
-    "frame": "task",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": false,
     "hidden": false

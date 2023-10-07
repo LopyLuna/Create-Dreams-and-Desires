@@ -5,11 +5,11 @@
       "item": "create_dd:smoking_sail"
     },
     "title": {
-      "text": "Smoke it up"
+      "translate": "advancement.create_dd.ayo Smoke it up"
     },
     "description": {
       "color": "#DBA213",
-      "text": "turns any air into smoking air"
+      "translate": "advancement.create_dd.ayo turns any air into smoking air"
     },
     "frame": "task",
     "show_toast": true,

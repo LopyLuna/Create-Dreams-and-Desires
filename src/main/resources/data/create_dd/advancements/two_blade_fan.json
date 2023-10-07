@@ -5,11 +5,11 @@
       "item": "create_dd:2_blade_fan"
     },
     "title": {
-      "text": "You spin me right 'round, baby, right 'round"
+      "translate": "advancement.create_dd.ayo You spin me right 'round, baby, right 'round"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Decoration that can be spinned"
+      "translate": "advancement.create_dd.ayo Decoration that can be spinned"
     },
     "frame": "task",
     "show_toast": true,

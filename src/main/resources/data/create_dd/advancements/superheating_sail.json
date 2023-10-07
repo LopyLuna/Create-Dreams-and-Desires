@@ -5,11 +5,11 @@
       "item": "create_dd:superheating_sail"
     },
     "title": {
-      "text": "Incinerate it up"
+      "translate": "advancement.create_dd.ayo Incinerate it up"
     },
     "description": {
       "color": "#DBA213",
-      "text": "turns any air into superheated air"
+      "translate": "advancement.create_dd.ayo turns any air into superheated air"
     },
     "frame": "task",
     "show_toast": true,

@@ -5,13 +5,12 @@
       "item": "create_dd:refined_radiance"
     },
     "title": {
-      "text": "It shines in the bright"
+      "translate": "advancement.create_dd.refined_radiance"
     },
     "description": {
-      "color": "#DBA213",
-      "text": "Throw a chromatic compound in a beacon beam"
+      "translate": "advancement.create_dd.refined_radiance.desc"
     },
-    "frame": "task",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": false,
     "hidden": false

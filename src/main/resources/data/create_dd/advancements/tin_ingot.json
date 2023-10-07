@@ -5,11 +5,11 @@
       "item": "create_dd:tin_ingot"
     },
     "title": {
-      "text": "Tin in it's ingot form!"
+      "translate": "advancement.create_dd.ayo Tin in it's ingot form!"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Upon smelting raw tin, you will get tin ingots"
+      "translate": "advancement.create_dd.ayo Upon smelting raw tin, you will get tin ingots"
     },
     "frame": "task",
     "show_toast": true,

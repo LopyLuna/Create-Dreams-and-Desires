@@ -4,17 +4,17 @@
       "item": "create_dd:mithril_ingot"
     },
     "title": {
-      "text": "Create: D&D"
+      "translate": "advancement.create_dd.ayo Create: Dreams n' Desires!"
     },
     "description": {
       "color": "#DBA213",
-      "text": "where dreams become realities"
+      "translate": "advancement.create_dd.ayo where dreams become realities"
     },
     "frame": "task",
     "show_toast": false,
     "announce_to_chat": false,
     "hidden": false,
-    "background": "create_dd:textures/block/palettes/stone_types/brick/potassic_cut_brick.png"
+    "background": "create_dd:textures/block/palettes/stone_types/brick/weathered_limestone_cut_brick.png"
   },
   "criteria": {
     "0": {

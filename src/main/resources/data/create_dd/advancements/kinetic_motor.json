@@ -5,11 +5,11 @@
       "item": "create_dd:kinetic_motor"
     },
     "title": {
-      "text": "We do be spinning!"
+      "translate": "advancement.create_dd.ayo We do be spinning!"
     },
     "description": {
       "color": "#DBA213",
-      "text": "This is a motor, it generates not a lot of rpm but instead you can change the speed very precisely"
+      "translate": "advancement.create_dd.ayo This is a motor, it generates not a lot of rpm but instead you can change the speed very precisely"
     },
     "frame": "task",
     "show_toast": true,

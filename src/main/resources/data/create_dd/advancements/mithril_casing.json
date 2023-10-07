@@ -5,11 +5,11 @@
       "item": "create_dd:mithril_casing"
     },
     "title": {
-      "text": "The Mithril Age"
+      "translate": "advancement.create_dd.ayo The Mithril Age"
     },
     "description": {
       "color": "#DBA213",
-      "text": "A block of steel and a mithrill sheet should do the job well"
+      "translate": "advancement.create_dd.ayo A block of steel and a mithrill sheet should do the job well"
     },
     "frame": "task",
     "show_toast": true,

@@ -5,11 +5,11 @@
       "item": "create_dd:infernal_mechanism"
     },
     "title": {
-      "text": "A hot mechanism!"
+      "translate": "advancement.create_dd.ayo A hot mechanism!"
     },
     "description": {
       "color": "#DBA213",
-      "text": "makes me spin my gears"
+      "translate": "advancement.create_dd.ayo makes me spin my gears"
     },
     "frame": "goal",
     "show_toast": true,

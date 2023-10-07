@@ -5,11 +5,11 @@
       "item": "create_dd:overcharge_alloy"
     },
     "title": {
-      "text": "It sparks with electricity"
+      "translate": "advancement.create_dd.ayo It sparks with electricity"
     },
     "description": {
       "color": "#DBA213",
-      "text": "(Crafts & Additions Exclusive) Charge using the tesla coil a chromatic compound"
+      "translate": "advancement.create_dd.ayo (Crafts & Additions Exclusive) Charge using the tesla coil a chromatic compound"
     },
     "frame": "task",
     "show_toast": true,

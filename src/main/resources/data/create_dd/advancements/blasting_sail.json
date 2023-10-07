@@ -5,11 +5,10 @@
       "item": "create_dd:blasting_sail"
     },
     "title": {
-      "text": "Blast it up"
+      "translate": "advancement.create_dd.blasting_sail"
     },
     "description": {
-      "color": "#DBA213",
-      "text": "turns any air into blasting air"
+      "translate": "advancement.create_dd.blasting_sail.desc"
     },
     "frame": "task",
     "show_toast": true,

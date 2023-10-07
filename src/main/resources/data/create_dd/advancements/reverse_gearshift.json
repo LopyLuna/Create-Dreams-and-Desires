@@ -5,11 +5,11 @@
       "item": "create_dd:reversed_gearshift"
     },
     "title": {
-      "text": "Switch It Up"
+      "translate": "advancement.create_dd.ayo Switch It Up"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Obtain the Reversed Gearshift, you can switch the rotation at the cost of some juicy rpm"
+      "translate": "advancement.create_dd.ayo Obtain the Reversed Gearshift, you can switch the rotation at the cost of some juicy rpm"
     },
     "frame": "task",
     "show_toast": true,

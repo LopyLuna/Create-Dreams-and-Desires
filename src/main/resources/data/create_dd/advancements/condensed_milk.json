@@ -5,11 +5,11 @@
       "item": "create_dd:condense_milk_bucket"
     },
     "title": {
-      "text": "Soupy Milk?!"
+      "translate": "advancement.create_dd.ayo Soupy Milk?!"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Obtain a condense milk bucket. calcite generator (replacing the water)"
+      "translate": "advancement.create_dd.ayo Obtain a condense milk bucket. calcite generator (replacing the water)"
     },
     "frame": "task",
     "show_toast": true,

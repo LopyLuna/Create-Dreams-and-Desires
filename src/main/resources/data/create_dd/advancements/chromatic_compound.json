@@ -5,11 +5,10 @@
       "item": "create_dd:chromatic_compound"
     },
     "title": {
-      "text": "Chromatic Compounds ARE BACK BABY"
+      "translate": "advancement.create_dd.chromatic_compound"
     },
     "description": {
-      "color": "#DBA213",
-      "text": "Chromatic Compounds are used for a whole bunch of endgame like items"
+      "translate": "advancement.create_dd.chromatic_compound.desc"
     },
     "frame": "task",
     "show_toast": true,

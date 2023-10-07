@@ -5,11 +5,11 @@
       "item": "create_dd:forest_ravager"
     },
     "title": {
-      "text": "The last axe you'll ever need"
+      "translate": "advancement.create_dd.ayo The last axe you'll ever need"
     },
     "description": {
       "color": "#DBA213",
-      "text": "Obtain a Mythical Forest Ravager"
+      "translate": "advancement.create_dd.ayo Obtain a Mythical Forest Ravager"
     },
     "frame": "task",
     "show_toast": true,
