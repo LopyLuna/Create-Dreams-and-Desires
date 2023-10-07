@@ -49,10 +49,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.fan.FourBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.fan.TwoBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorBlock;
-import uwu.lopyluna.create_dd.block.BlockProperties.magic.RadiantBlock;
-import uwu.lopyluna.create_dd.block.BlockProperties.magic.RadiantBlockcasing;
-import uwu.lopyluna.create_dd.block.BlockProperties.magic.ShadowBlock;
-import uwu.lopyluna.create_dd.block.BlockProperties.magic.ShadowBlockcasing;
+import uwu.lopyluna.create_dd.block.BlockProperties.magic.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlock2;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlockGen;
@@ -247,6 +244,51 @@ public class DDBlocks {
             .build()
             .register();
 
+    public static final BlockEntry<OverchargedAlloyBlock> overcharged_alloy_block = REGISTRATE.block("overcharged_alloy_block", OverchargedAlloyBlock::new)
+            .initialProperties(() -> Blocks.NETHERITE_BLOCK)
+            .properties(p -> p.color(MaterialColor.COLOR_LIGHT_BLUE))
+            .properties(p -> p.sound(new ForgeSoundType(1, 1.25f, () -> SoundEvents.AMETHYST_CLUSTER_BREAK,
+                    () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_CLUSTER_PLACE,
+                    () -> SoundEvents.AMETHYST_CLUSTER_HIT, () -> SoundEvents.AMETHYST_CLUSTER_FALL)))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+            .properties(p -> p.strength(12f,32f))
+            .transform(pickaxeOnly())
+            .simpleItem()
+            .item()
+            .properties(p -> p.rarity(Rarity.UNCOMMON))
+            .build()
+            .register();
+
+    public static final BlockEntry<BlazeGoldBlock> blaze_gold_block = REGISTRATE.block("blaze_gold_block", BlazeGoldBlock::new)
+            .initialProperties(() -> Blocks.NETHERITE_BLOCK)
+            .properties(p -> p.color(MaterialColor.COLOR_YELLOW))
+            .properties(p -> p.sound(new ForgeSoundType(1, 1f, () -> SoundEvents.AMETHYST_CLUSTER_BREAK,
+                    () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_CLUSTER_PLACE,
+                    () -> SoundEvents.AMETHYST_CLUSTER_HIT, () -> SoundEvents.AMETHYST_CLUSTER_FALL)))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+            .properties(p -> p.strength(8f,24f))
+            .transform(pickaxeOnly())
+            .simpleItem()
+            .item()
+            .properties(p -> p.rarity(Rarity.UNCOMMON))
+            .build()
+            .register();
+
+    public static final BlockEntry<StargazeBlock> stargaze_singularity_block = REGISTRATE.block("stargaze_singularity_block", StargazeBlock::new)
+            .initialProperties(() -> Blocks.NETHERITE_BLOCK)
+            .properties(p -> p.color(MaterialColor.COLOR_BLACK))
+            .properties(p -> p.sound(new ForgeSoundType(1, .75f, () -> SoundEvents.AMETHYST_CLUSTER_BREAK,
+                    () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_CLUSTER_PLACE,
+                    () -> SoundEvents.AMETHYST_CLUSTER_HIT, () -> SoundEvents.AMETHYST_CLUSTER_FALL)))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+            .properties(p -> p.strength(32f,512f))
+            .transform(pickaxeOnly())
+            .simpleItem()
+            .item()
+            .properties(p -> p.rarity(Rarity.EPIC))
+            .build()
+            .register();
+
     public static final BlockEntry<Block> mossy_andesite_alloy_block = REGISTRATE.block("mossy_andesite_alloy_block", Block::new)
             .initialProperties(() -> Blocks.ANDESITE)
             .properties(p -> p.color(MaterialColor.STONE))
@@ -341,19 +383,6 @@ public class DDBlocks {
             .lang("Steel Casing")
             .register();
 
-    public static final BlockEntry<ShadowBlockcasing> blaze_gold_casing = REGISTRATE.block("blaze_gold_casing", ShadowBlockcasing::new)
-            .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.BLAZE_GOLD_CASING))
-            .properties(p -> p.color(MaterialColor.COLOR_BLACK))
-            .properties(p -> p.sound(new ForgeSoundType(1f, .8f, () -> DDSoundEvents.magic_casing_break.get(),
-                    () -> DDSoundEvents.magic_casing_step.get(), () -> DDSoundEvents.magic_casing_place.get(),
-                    () -> DDSoundEvents.magic_casing_hit.get(), () -> DDSoundEvents.magic_casing_fall.get())))
-            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
-            .properties(p -> p.strength(5f,24f))
-            .item()
-            .properties(p -> p.rarity(Rarity.UNCOMMON))
-            .build()
-            .register();
-
     public static final BlockEntry<ShadowBlockcasing> shadow_steel_casing = REGISTRATE.block("shadow_steel_casing", ShadowBlockcasing::new)
             .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.SHADOW_STEEL_CASING))
             .properties(p -> p.color(MaterialColor.COLOR_BLACK))
@@ -383,10 +412,36 @@ public class DDBlocks {
             .lang("Radiant Casing")
             .register();
 
-    public static final BlockEntry<RadiantBlockcasing> stargaze_singularity_casing = REGISTRATE.block("stargaze_singularity_casing", RadiantBlockcasing::new)
+    public static final BlockEntry<OverchargedBlockcasing> overcharged_casing = REGISTRATE.block("overcharged_casing", OverchargedBlockcasing::new)
+            .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.OVERCHARGED_CASING))
+            .properties(p -> p.color(MaterialColor.COLOR_BLACK))
+            .properties(p -> p.sound(new ForgeSoundType(1f, 1f, () -> DDSoundEvents.magic_casing_break.get(),
+                    () -> DDSoundEvents.magic_casing_step.get(), () -> DDSoundEvents.magic_casing_place.get(),
+                    () -> DDSoundEvents.magic_casing_hit.get(), () -> DDSoundEvents.magic_casing_fall.get())))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+            .properties(p -> p.strength(6f,32f))
+            .item()
+            .properties(p -> p.rarity(Rarity.UNCOMMON))
+            .build()
+            .register();
+
+    public static final BlockEntry<BlazeGoldBlockcasing> blaze_gold_casing = REGISTRATE.block("blaze_gold_casing", BlazeGoldBlockcasing::new)
+            .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.BLAZE_GOLD_CASING))
+            .properties(p -> p.color(MaterialColor.COLOR_BLACK))
+            .properties(p -> p.sound(new ForgeSoundType(1f, 1.2f, () -> SoundEvents.NETHERITE_BLOCK_BREAK,
+                    () -> SoundEvents.NETHERITE_BLOCK_STEP, () -> SoundEvents.NETHERITE_BLOCK_PLACE,
+                    () -> SoundEvents.NETHERITE_BLOCK_HIT, () -> SoundEvents.NETHERITE_BLOCK_FALL)))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+            .properties(p -> p.strength(5f,24f))
+            .item()
+            .properties(p -> p.rarity(Rarity.UNCOMMON))
+            .build()
+            .register();
+
+    public static final BlockEntry<StargazeBlockcasing> stargaze_singularity_casing = REGISTRATE.block("stargaze_singularity_casing", StargazeBlockcasing::new)
             .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.STARGAZE_SINGULARITY_CASING))
             .properties(p -> p.color(MaterialColor.SNOW))
-            .properties(p -> p.sound(new ForgeSoundType(1f, 1f, () -> DDSoundEvents.magic_casing_break.get(),
+            .properties(p -> p.sound(new ForgeSoundType(1f, 0.8f, () -> DDSoundEvents.magic_casing_break.get(),
                     () -> DDSoundEvents.magic_casing_step.get(), () -> DDSoundEvents.magic_casing_place.get(),
                     () -> DDSoundEvents.magic_casing_hit.get(), () -> DDSoundEvents.magic_casing_fall.get())))
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)

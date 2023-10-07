@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "create_dd:block/stargaze_singularity_block"
+    }
+  }
+}

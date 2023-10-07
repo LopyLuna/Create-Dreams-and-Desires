@@ -1,5 +1,6 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.magic;
 
+import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -9,14 +10,13 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
-public class ShadowBlock extends Block {
+public class OverchargedBlockcasing extends CasingBlock {
 
-    public ShadowBlock(Properties pProperties) {
+    public OverchargedBlockcasing(Properties pProperties) {
         super(pProperties);
     }
 
@@ -26,11 +26,11 @@ public class ShadowBlock extends Block {
             return;
         Vec3 vec3 = VecHelper.clampComponentWise(VecHelper.offsetRandomly(Vec3.ZERO, pRand, 1.25f), 1f)
                 .add(VecHelper.getCenterOf(pPos));
-        pLevel.addParticle(ParticleTypes.REVERSE_PORTAL, vec3.x, vec3.y, vec3.z, pRand.nextGaussian() * 0.05D,
+        pLevel.addParticle(ParticleTypes.WAX_OFF, vec3.x, vec3.y, vec3.z, pRand.nextGaussian() * 0.05D,
                 pRand.nextGaussian() * 0.05D, pRand.nextGaussian() * 0.05D);
-        pLevel.addParticle(ParticleTypes.REVERSE_PORTAL, vec3.x, vec3.y, vec3.z, pRand.nextGaussian() * 0.05D,
+        pLevel.addParticle(ParticleTypes.WAX_OFF, vec3.x, vec3.y, vec3.z, pRand.nextGaussian() * 0.05D,
                 pRand.nextGaussian() * 0.05D, pRand.nextGaussian() * 0.05D);
-        pLevel.addParticle(ParticleTypes.WITCH, vec3.x, vec3.y, vec3.z, pRand.nextGaussian() * 0.05D,
+        pLevel.addParticle(ParticleTypes.WAX_OFF, vec3.x, vec3.y, vec3.z, pRand.nextGaussian() * 0.05D,
                 pRand.nextGaussian() * 0.05D, pRand.nextGaussian() * 0.05D);
     }
 
@@ -38,18 +38,18 @@ public class ShadowBlock extends Block {
     public void onProjectileHit(Level pLevel, BlockState pState, BlockHitResult pPos, Projectile pProj) {
         if (!pLevel.isClientSide) {
             BlockPos blockpos = pPos.getBlockPos();
-            pLevel.playSound((Player)null, blockpos, SoundEvents.AMETHYST_BLOCK_HIT, SoundSource.BLOCKS, 1.0F, 1.5F + pLevel.random.nextFloat() * 1.2F);
-            pLevel.playSound((Player)null, blockpos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, 1.5F + pLevel.random.nextFloat() * 1.2F);
+            pLevel.playSound((Player)null, blockpos, SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.BLOCKS, 0.25F, 2.0F + pLevel.random.nextFloat() * 1.05F);
+            pLevel.playSound((Player)null, blockpos, SoundEvents.TRIDENT_THUNDER, SoundSource.BLOCKS, 0.01F, 0F + pLevel.random.nextFloat() * 1.05F);
         }
 
         BlockPos blockpos = pPos.getBlockPos();
         Vec3 vec3 = VecHelper.clampComponentWise(VecHelper.offsetRandomly(Vec3.ZERO, pLevel.random, 1.25f), 1f)
                 .add(VecHelper.getCenterOf(blockpos));
-        pLevel.addParticle(ParticleTypes.REVERSE_PORTAL, vec3.x, vec3.y, vec3.z, pLevel.random.nextGaussian() * 0.05D,
+        pLevel.addParticle(ParticleTypes.WAX_OFF, vec3.x, vec3.y, vec3.z, pLevel.random.nextGaussian() * 0.05D,
                 pLevel.random.nextGaussian() * 0.05D, pLevel.random.nextGaussian() * 0.05D);
-        pLevel.addParticle(ParticleTypes.REVERSE_PORTAL, vec3.x, vec3.y, vec3.z, pLevel.random.nextGaussian() * 0.05D,
+        pLevel.addParticle(ParticleTypes.WAX_OFF, vec3.x, vec3.y, vec3.z, pLevel.random.nextGaussian() * 0.05D,
                 pLevel.random.nextGaussian() * 0.05D, pLevel.random.nextGaussian() * 0.05D);
-        pLevel.addParticle(ParticleTypes.WITCH, vec3.x, vec3.y, vec3.z, pLevel.random.nextGaussian() * 0.05D,
+        pLevel.addParticle(ParticleTypes.WAX_OFF, vec3.x, vec3.y, vec3.z, pLevel.random.nextGaussian() * 0.05D,
                 pLevel.random.nextGaussian() * 0.05D, pLevel.random.nextGaussian() * 0.05D);
     }
 

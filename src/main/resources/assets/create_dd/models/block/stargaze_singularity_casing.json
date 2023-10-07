@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "create_dd:block/stargaze_singularity_casing"
+  }
+}

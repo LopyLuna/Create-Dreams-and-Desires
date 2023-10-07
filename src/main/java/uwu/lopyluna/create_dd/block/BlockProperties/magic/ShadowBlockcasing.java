@@ -38,9 +38,19 @@ public class ShadowBlockcasing extends CasingBlock {
     public void onProjectileHit(Level pLevel, BlockState pState, BlockHitResult pPos, Projectile pProj) {
         if (!pLevel.isClientSide) {
             BlockPos blockpos = pPos.getBlockPos();
-            pLevel.playSound((Player)null, blockpos, SoundEvents.AMETHYST_BLOCK_HIT, SoundSource.BLOCKS, 1.0F, 1.5F + pLevel.random.nextFloat() * 1.2F);
-            pLevel.playSound((Player)null, blockpos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, 1.5F + pLevel.random.nextFloat() * 1.2F);
+            pLevel.playSound((Player)null, blockpos, SoundEvents.AMETHYST_BLOCK_HIT, SoundSource.BLOCKS, 1.0F, 0.5F + pLevel.random.nextFloat() * 1.05F);
+            pLevel.playSound((Player)null, blockpos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, 0.5F + pLevel.random.nextFloat() * 1.05F);
         }
+
+        BlockPos blockpos = pPos.getBlockPos();
+        Vec3 vec3 = VecHelper.clampComponentWise(VecHelper.offsetRandomly(Vec3.ZERO, pLevel.random, 1.25f), 1f)
+                .add(VecHelper.getCenterOf(blockpos));
+        pLevel.addParticle(ParticleTypes.REVERSE_PORTAL, vec3.x, vec3.y, vec3.z, pLevel.random.nextGaussian() * 0.05D,
+                pLevel.random.nextGaussian() * 0.05D, pLevel.random.nextGaussian() * 0.05D);
+        pLevel.addParticle(ParticleTypes.REVERSE_PORTAL, vec3.x, vec3.y, vec3.z, pLevel.random.nextGaussian() * 0.05D,
+                pLevel.random.nextGaussian() * 0.05D, pLevel.random.nextGaussian() * 0.05D);
+        pLevel.addParticle(ParticleTypes.WITCH, vec3.x, vec3.y, vec3.z, pLevel.random.nextGaussian() * 0.05D,
+                pLevel.random.nextGaussian() * 0.05D, pLevel.random.nextGaussian() * 0.05D);
 
     }
 

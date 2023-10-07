@@ -28,7 +28,8 @@ public class DDBlockSpriteShifts {
     SHADOW_STEEL_CASING = omni("shadow_steel_casing"),
     REFINED_RADIANCE_CASING = omni("refined_radiance_casing"),
     STARGAZE_SINGULARITY_CASING = omni("stargaze_singularity_casing"),
-    BLAZE_GOLD_CASING = omni("stargaze_singularity_casing"),
+    BLAZE_GOLD_CASING = omni("blaze_gold_casing"),
+    OVERCHARGED_CASING = omni("overcharged_casing"),
 
     reinforcement_plating = omni("reinforcement_plating"),
 
