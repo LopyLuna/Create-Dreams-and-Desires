@@ -4,6 +4,7 @@ import com.simibubi.create.*;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.content.kinetics.mechanicalArm.ArmBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.data.*;
 import com.simibubi.create.foundation.utility.Couple;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.util.ForgeSoundType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -49,6 +51,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.magic.RadiantBlockcasing;
 import uwu.lopyluna.create_dd.block.BlockProperties.magic.ShadowBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.magic.ShadowBlockcasing;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlock2;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlockGen;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainGearshiftBlock2;
@@ -445,6 +448,23 @@ public class DDBlocks {
             .transform(BlockStressDefaults.setCapacity(16))
             .simpleItem()
             .register();
+
+    public static final BlockEntry<PotatoTurretBlock> POTATO_TURRET =
+            REGISTRATE.block("potato_turret", PotatoTurretBlock::new)
+                    .initialProperties(SharedProperties::softMetal)
+                    .properties(p -> p.color(MaterialColor.COLOR_BLUE)
+                            .sound(SoundType.NETHERITE_BLOCK))
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .blockstate((c, p) -> p.getVariantBuilder(c.get())
+                            .forAllStates(s -> ConfiguredModel.builder()
+                                    .modelFile(AssetLookup.partialBaseModel(c, p))
+                                    .build()))
+                    .transform(pickaxeOnly())
+                    .transform(BlockStressDefaults.setImpact(2.0))
+                    .simpleItem()
+                    .register();
+
+
 
 
     public static final BlockEntry<RadiantDrillBlock> RADIANT_DRILL =

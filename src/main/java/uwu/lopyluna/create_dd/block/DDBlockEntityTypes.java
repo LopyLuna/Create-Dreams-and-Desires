@@ -36,6 +36,9 @@ import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorBl
 import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretInstance;
+import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainGearshiftBlock2Entity;
 
 import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
@@ -81,6 +84,13 @@ public class DDBlockEntityTypes {
                     .instance(() -> IndustrialFanInstance::new, false)
                     .validBlocks(DDBlocks.industrial_fan)
                     .renderer(() -> IndustrialFanRenderer::new)
+                    .register();
+
+    public static final BlockEntityEntry<PotatoTurretBlockEntity> POTATO_TURRET =
+            REGISTRATE.blockEntity("potato_turret", PotatoTurretBlockEntity::new)
+                    .instance(() -> PotatoTurretInstance::new, false)
+                    .validBlocks(DDBlocks.POTATO_TURRET)
+                    .renderer(() -> PotatoTurretRenderer::new)
                     .register();
 
     public static final BlockEntityEntry<RadiantDrillBlockEntity> RADIANT_DRILL =
