@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.util.ForgeSoundType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -51,6 +52,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPre
 import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.magic.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlock2;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlockGen;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainGearshiftBlock2;
@@ -544,6 +546,20 @@ public class DDBlocks {
             .simpleItem()
             .register();
 
+    public static final BlockEntry<PotatoTurretBlock> POTATO_TURRET =
+            REGISTRATE.block("potato_turret", PotatoTurretBlock::new)
+                    .initialProperties(SharedProperties::softMetal)
+                    .properties(p -> p.color(MaterialColor.COLOR_BLUE)
+                            .sound(SoundType.NETHERITE_BLOCK))
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .blockstate((c, p) -> p.getVariantBuilder(c.get())
+                            .forAllStates(s -> ConfiguredModel.builder()
+                                    .modelFile(AssetLookup.partialBaseModel(c, p))
+                                    .build()))
+                    .transform(pickaxeOnly())
+                    .transform(BlockStressDefaults.setImpact(2.0))
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<RadiantDrillBlock> RADIANT_DRILL =
             REGISTRATE.block("radiant_drill", RadiantDrillBlock::new)

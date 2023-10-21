@@ -25,6 +25,9 @@ public class DDBlockPartialModel {
             INDUSTRIAL_FAN_COG = block("industrial_fan/cog"),
             BRONZE_ENCASED_FAN_INNER = block("industrial_fan/propeller"),
             FURNACE_GENERATOR_FRAME = block("furnace_engine/frame"),
+            POTATO_TURRET_COG = block("potato_turret/cog"),
+            POTATO_TURRET_CONNECTOR = block("potato_turret/connector"),
+            POTATO_TURRET_SINGLE_BARREL = block("potato_turret/single_barrel"),
             HAND_CRANK_HANDLE = block("cog_crank/handle")
             ;
 

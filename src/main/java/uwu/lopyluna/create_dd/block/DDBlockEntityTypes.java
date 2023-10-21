@@ -39,6 +39,9 @@ import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorBl
 import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretInstance;
+import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainGearshiftBlock2Entity;
 
 import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
@@ -155,6 +158,13 @@ public class DDBlockEntityTypes {
             .validBlocks(DDBlocks.ACCELERATOR_MOTOR)
             .renderer(() -> AcceleratorMotorRenderer::new)
             .register();
+
+    public static final BlockEntityEntry<PotatoTurretBlockEntity> POTATO_TURRET =
+            REGISTRATE.blockEntity("potato_turret", PotatoTurretBlockEntity::new)
+                    .instance(() -> PotatoTurretInstance::new, false)
+                    .validBlocks(DDBlocks.POTATO_TURRET)
+                    .renderer(() -> PotatoTurretRenderer::new)
+                    .register();
     
     public static final BlockEntityEntry<CogCrankBlockEntity> cogCrank = Create.REGISTRATE
             .blockEntity("cog_crank", CogCrankBlockEntity::new)
