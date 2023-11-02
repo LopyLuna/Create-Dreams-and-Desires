@@ -1,6 +1,5 @@
 package uwu.lopyluna.create_dd.item.ItemProperties.compound;
 
-import com.simibubi.create.content.trains.CubeParticleData;
 import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;

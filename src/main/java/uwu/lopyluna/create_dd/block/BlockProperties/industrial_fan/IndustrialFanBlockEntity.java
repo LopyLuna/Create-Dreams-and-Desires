@@ -1,7 +1,6 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan;
 
 import com.simibubi.create.content.kinetics.base.GeneratingKineticBlockEntity;
-import com.simibubi.create.content.kinetics.fan.AirCurrent;
 import com.simibubi.create.content.logistics.chute.ChuteBlockEntity;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
@@ -40,14 +39,9 @@ public class IndustrialFanBlockEntity extends GeneratingKineticBlockEntity imple
         BupdateAirFlow = true;
         updateGenerator = false;
     }
-    @Override
-    public AirCurrent getAirCurrent() {
-        return null;
-    }
     
     @Nullable
-    @Override
-    public IndustrialAirCurrent getBAirCurrent() {
+    public IndustrialAirCurrent getAirCurrent() {
         return airCurrentBronze;
     }
 

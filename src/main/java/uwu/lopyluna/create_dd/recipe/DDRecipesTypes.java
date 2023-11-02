@@ -19,14 +19,14 @@ import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 import uwu.lopyluna.create_dd.DDCreate;
 import uwu.lopyluna.create_dd.recipe.Recipes.FreezingRecipe;
-import uwu.lopyluna.create_dd.recipe.Recipes.SuperHeatingRecipe;
+import uwu.lopyluna.create_dd.recipe.Recipes.SuperheatingRecipe;
 
 import java.util.Optional;
 import java.util.function.Supplier;
 
 public enum DDRecipesTypes implements IRecipeTypeInfo {
 
-    SUPERHEATING(SuperHeatingRecipe::new),
+    SUPERHEATING(SuperheatingRecipe::new),
     FREEZING(FreezingRecipe::new);
 
     

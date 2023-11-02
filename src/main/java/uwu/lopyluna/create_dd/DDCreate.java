@@ -1,19 +1,13 @@
 package uwu.lopyluna.create_dd;
 
 import com.mojang.logging.LogUtils;
-import com.simibubi.create.foundation.data.AllLangPartials;
 import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.simibubi.create.foundation.data.LangMerger;
-import com.simibubi.create.foundation.data.TagGen;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -83,7 +77,6 @@ public class DDCreate
         eventBus.addListener(this::clientSetup);
 
         eventBus.addListener(DDCreate::init);
-        eventBus.addListener(EventPriority.LOWEST, DDCreate::gatherData);
 
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> DDCreateClient.onCtorClient(eventBus));
@@ -100,14 +93,6 @@ public class DDCreate
         });
     }
     private void clientSetup(final FMLClientSetupEvent event) {
-    }
-
-    public static void gatherData(GatherDataEvent event) {
-        TagGen.datagen();
-        DataGenerator gen = event.getGenerator();
-        if (event.includeClient()) {
-            gen.addProvider(true, new LangMerger(gen, MOD_ID, NAME, AllLangPartials.values()));
-        }
     }
 
     public static ResourceLocation asResource(String path) {

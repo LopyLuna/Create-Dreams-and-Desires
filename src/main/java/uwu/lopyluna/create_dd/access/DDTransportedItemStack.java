@@ -5,13 +5,13 @@ import com.simibubi.create.content.kinetics.belt.transport.TransportedItemStack;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
-import uwu.lopyluna.create_dd.recipe.IndustrialFanProcessing;
+import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing.InterfaceIndustrialProcessingType;
 
 import java.util.Random;
 
 public class DDTransportedItemStack extends TransportedItemStack {
 
-    public IndustrialFanProcessing.FanType processedBy;
+    public InterfaceIndustrialProcessingType processedBy;
 
     private static final Random R = new Random();
 

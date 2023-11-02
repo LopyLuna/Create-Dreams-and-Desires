@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 public enum DDParticleTypes {
 
     AIR_FLOW(DDAirFlowParticleData::new),
-    AIR(DDAirParticleData::new);
+    AIR(DDAirFlowParticleData::new);
     
     public final DDParticleTypes.ParticleEntry<?> entry;
 

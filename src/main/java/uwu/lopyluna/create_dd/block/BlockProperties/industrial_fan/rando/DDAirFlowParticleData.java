@@ -24,7 +24,7 @@ public class DDAirFlowParticleData implements ParticleOptions, ICustomParticleDa
                             Codec.INT.fieldOf("y").forGetter(p -> p.posY),
                             Codec.INT.fieldOf("z").forGetter(p -> p.posZ))
                     .apply(i, DDAirFlowParticleData::new));
-    @Deprecated
+
     public static final ParticleOptions.Deserializer<DDAirFlowParticleData> DESERIALIZER = new ParticleOptions.Deserializer<DDAirFlowParticleData>() {
         public DDAirFlowParticleData fromCommand(ParticleType<DDAirFlowParticleData> particleTypeIn, StringReader reader)
                 throws CommandSyntaxException {

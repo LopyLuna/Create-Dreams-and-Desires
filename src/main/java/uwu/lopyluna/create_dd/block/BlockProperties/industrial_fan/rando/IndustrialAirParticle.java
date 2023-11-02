@@ -1,6 +1,5 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.rando;
 
-import com.simibubi.create.Create;
 import com.simibubi.create.foundation.utility.VecHelper;
 
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -11,78 +10,102 @@ import net.minecraft.client.particle.SimpleAnimatedParticle;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction.Axis;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
+import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialAirCurrent;
+import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialAirCurrentSource;
+import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing.IndustrialTypeFanProcessing;
+import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing.InterfaceIndustrialProcessingType;
+
+import javax.annotation.Nonnull;
 
 public class IndustrialAirParticle extends SimpleAnimatedParticle {
 
-    private float originX, originY, originZ;
-    private float targetX, targetY, targetZ;
-    private float drag;
+    private final IndustrialAirCurrentSource source;
+    private final IndustrialAirParticle.Access access = new IndustrialAirParticle.Access();
 
-    private float twirlRadius, twirlAngleOffset;
-    private Axis twirlAxis;
-
-    protected IndustrialAirParticle(ClientLevel world, DDAirParticleData data, double x, double y, double z, double dx, double dy,
-                                    double dz, SpriteSet sprite) {
+    protected IndustrialAirParticle(ClientLevel world, IndustrialAirCurrentSource source, double x, double y, double z,
+                              SpriteSet sprite) {
         super(world, x, y, z, sprite, world.random.nextFloat() * .5f);
-        quadSize *= 0.75F;
+        this.source = source;
+        this.quadSize *= 0.75F;
+        this.lifetime = 40;
         hasPhysics = false;
-
-        setPos(x, y, z);
-        originX = (float) (xo = x);
-        originY = (float) (yo = y);
-        originZ = (float) (zo = z);
-        targetX = (float) (x + dx);
-        targetY = (float) (y + dy);
-        targetZ = (float) (z + dz);
-        drag = data.drag;
-
-        twirlRadius = Create.RANDOM.nextFloat() / 6;
-        twirlAngleOffset = Create.RANDOM.nextFloat() * 360;
-        twirlAxis = Create.RANDOM.nextBoolean() ? Axis.X : Axis.Z;
-
-        // speed in m/ticks
-        double length = new Vec3(dx, dy, dz).length();
-        lifetime = Math.min((int) (length / data.speed), 60);
         selectSprite(7);
+        Vec3 offset = VecHelper.offsetRandomly(Vec3.ZERO, random, .25f);
+        this.setPos(x + offset.x, y + offset.y, z + offset.z);
+        this.xo = this.x;
+        this.yo = this.y;
+        this.zo = this.z;
+        setColor(0xEEEEEE);
         setAlpha(.25f);
-
-        if (length == 0) {
-            remove();
-            setAlpha(0);
-        }
     }
 
+    @Nonnull
     public ParticleRenderType getRenderType() {
         return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
     @Override
     public void tick() {
+        if (source == null || source.isSourceRemoved()) {
+            remove();
+            return;
+        }
         this.xo = this.x;
         this.yo = this.y;
         this.zo = this.z;
         if (this.age++ >= this.lifetime) {
-            this.remove();
-            return;
+            remove();
+        } else {
+            IndustrialAirCurrent airCurrent = source.getAirCurrent();
+            if (airCurrent == null || !airCurrent.bounds.inflate(.25f).contains(x, y, z)) {
+                remove();
+                return;
+            }
+
+            Vec3 directionVec = Vec3.atLowerCornerOf(airCurrent.direction.getNormal());
+            Vec3 motion = directionVec.scale(1 / 8f);
+            if (!source.getAirCurrent().pushing)
+                motion = motion.scale(-1);
+
+            double distance = new Vec3(x, y, z).subtract(VecHelper.getCenterOf(source.getAirCurrentPos()))
+                    .multiply(directionVec).length() - .5f;
+            if (distance > airCurrent.maxDistance + 1 || distance < -.25f) {
+                remove();
+                return;
+            }
+            motion = motion.scale(airCurrent.maxDistance - (distance - 1f)).scale(.5f);
+
+            InterfaceIndustrialProcessingType type = getType(distance);
+            if (type == IndustrialTypeFanProcessing.NONE) {
+                setColor(0xEEEEEE);
+                setAlpha(.25f);
+                selectSprite((int) Mth.clamp((distance / airCurrent.maxDistance) * 8 + random.nextInt(4),
+                        0, 7));
+            } else {
+                type.morphAirFlow((InterfaceIndustrialProcessingType.DDAirFlowParticleAccess) access, random);
+                selectSprite(random.nextInt(3));
+            }
+
+            xd = motion.x;
+            yd = motion.y;
+            zd = motion.z;
+
+            if (this.onGround) {
+                this.xd *= 0.7;
+                this.zd *= 0.7;
+            }
+            this.move(this.xd, this.yd, this.zd);
         }
+    }
 
-        float progress = (float) Math.pow(((float) age) / lifetime, drag);
-        float angle = (progress * 2 * 360 + twirlAngleOffset) % 360;
-        Vec3 twirl = VecHelper.rotate(new Vec3(0, twirlRadius, 0), angle, twirlAxis);
-
-        float x = (float) (Mth.lerp(progress, originX, targetX) + twirl.x);
-        float y = (float) (Mth.lerp(progress, originY, targetY) + twirl.y);
-        float z = (float) (Mth.lerp(progress, originZ, targetZ) + twirl.z);
-
-        xd = x - this.x;
-        yd = y - this.y;
-        zd = z - this.z;
-
-        setSpriteFromAge(sprites);
-        this.move(this.xd, this.yd, this.zd);
+    private InterfaceIndustrialProcessingType getType(double distance) {
+        if (source.getAirCurrent() == null)
+            return IndustrialTypeFanProcessing.NONE;
+        return source.getAirCurrent().getTypeAt((float) distance);
     }
 
     public int getLightColor(float partialTick) {
@@ -94,16 +117,37 @@ public class IndustrialAirParticle extends SimpleAnimatedParticle {
         setSprite(sprites.get(index, 8));
     }
 
-    public static class Factory implements ParticleProvider<DDAirParticleData> {
+    public static class Factory implements ParticleProvider<DDAirFlowParticleData> {
         private final SpriteSet spriteSet;
 
         public Factory(SpriteSet animatedSprite) {
             this.spriteSet = animatedSprite;
         }
 
-        public Particle createParticle(DDAirParticleData data, ClientLevel worldIn, double x, double y, double z, double xSpeed,
-                                       double ySpeed, double zSpeed) {
-            return new IndustrialAirParticle(worldIn, data, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
+        @Override
+        public Particle createParticle(DDAirFlowParticleData data, ClientLevel worldIn, double x, double y, double z,
+                                       double xSpeed, double ySpeed, double zSpeed) {
+            BlockEntity be = worldIn.getBlockEntity(new BlockPos(data.posX, data.posY, data.posZ));
+            if (!(be instanceof IndustrialAirCurrentSource))
+                be = null;
+            return new IndustrialAirParticle(worldIn, (IndustrialAirCurrentSource) be, x, y, z, this.spriteSet);
+        }
+    }
+
+    private class Access implements InterfaceIndustrialProcessingType.DDAirFlowParticleAccess {
+        @Override
+        public void setColor(int color) {
+            IndustrialAirParticle.this.setColor(color);
+        }
+
+        @Override
+        public void setAlpha(float alpha) {
+            IndustrialAirParticle.this.setAlpha(alpha);
+        }
+
+        @Override
+        public void spawnExtraParticle(ParticleOptions options, float speedMultiplier) {
+            level.addParticle(options, x, y, z, xd * speedMultiplier, yd * speedMultiplier, zd * speedMultiplier);
         }
     }
 

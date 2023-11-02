@@ -1,6 +1,5 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan;
 
-import com.simibubi.create.content.kinetics.fan.IAirCurrentSource;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import com.simibubi.create.infrastructure.config.CKinetics;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -12,23 +11,22 @@ import net.minecraft.world.level.Level;
 import javax.annotation.Nullable;
 
 @MethodsReturnNonnullByDefault
-public interface IndustrialAirCurrentSource extends IAirCurrentSource {
+public interface IndustrialAirCurrentSource {
     @Nullable
-    IndustrialAirCurrent getBAirCurrent();
+    IndustrialAirCurrent getAirCurrent();
 
     @Nullable
-    @Override
     Level getAirCurrentWorld();
-    @Override
+
     BlockPos getAirCurrentPos();
-    @Override
+
     float getSpeed();
-    @Override
+
     Direction getAirflowOriginSide();
-    @Override
+
     @Nullable
     Direction getAirFlowDirection();
-    @Override
+
     default float getMaxDistance() {
         float speed = Math.abs(this.getSpeed());
         CKinetics config = AllConfigs.server().kinetics;
@@ -37,6 +35,6 @@ public interface IndustrialAirCurrentSource extends IAirCurrentSource {
         float pullDistance = Mth.lerp(distanceFactor, 3f, config.fanPullDistance.get());
         return this.getSpeed() > 0 ? pushDistance : pullDistance;
     }
-    @Override
+
     boolean isSourceRemoved();
 }
