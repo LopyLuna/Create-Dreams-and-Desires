@@ -18,11 +18,11 @@ public class DDFanProcessingTypeRegistry {
 
     public static void register(ResourceLocation id, InterfaceIndustrialProcessingType type) {
         if (TYPES.put(id, type) != null) {
-            throw new IllegalArgumentException("Tried to override InterfaceIndustrialProcessingType registration for id '" + id + "'. This is not supported!");
+            throw new IllegalArgumentException("Tried to override FanProcessingType registration for id '" + id + "'. This is not supported!");
         }
         ResourceLocation prevId = IDS.put(type, id);
         if (prevId != null) {
-            throw new IllegalArgumentException("Tried to register same InterfaceIndustrialProcessingType instance for multiple ids '" + prevId + "' and '" + id + "'. This is not supported!");
+            throw new IllegalArgumentException("Tried to register same FanProcessingType instance for multiple ids '" + prevId + "' and '" + id + "'. This is not supported!");
         }
         insertSortedType(type, id);
     }
@@ -43,7 +43,7 @@ public class DDFanProcessingTypeRegistry {
     public static InterfaceIndustrialProcessingType getTypeOrThrow(ResourceLocation id) {
         InterfaceIndustrialProcessingType type = getType(id);
         if (type == null) {
-            throw new IllegalArgumentException("Could not get InterfaceIndustrialProcessingType for id '" + id + "'!");
+            throw new IllegalArgumentException("Could not get FanProcessingType for id '" + id + "'!");
         }
         return type;
     }
@@ -56,7 +56,7 @@ public class DDFanProcessingTypeRegistry {
     public static ResourceLocation getIdOrThrow(InterfaceIndustrialProcessingType type) {
         ResourceLocation id = getId(type);
         if (id == null) {
-            throw new IllegalArgumentException("Could not get id for InterfaceIndustrialProcessingType " + type + "!");
+            throw new IllegalArgumentException("Could not get id for FanProcessingType " + type + "!");
         }
         return id;
     }

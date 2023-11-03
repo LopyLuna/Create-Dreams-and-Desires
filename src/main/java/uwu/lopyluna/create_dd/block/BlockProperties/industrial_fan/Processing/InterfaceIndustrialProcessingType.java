@@ -28,7 +28,7 @@ public interface InterfaceIndustrialProcessingType {
 
     void affectEntity(Entity entity, Level level);
 
-    static IndustrialTypeFanProcessing.NoneType parse(String str) {
+    static InterfaceIndustrialProcessingType parse(String str) {
         ResourceLocation id = ResourceLocation.tryParse(str);
         if (id == null) {
             return IndustrialTypeFanProcessing.NONE;
@@ -37,13 +37,13 @@ public interface InterfaceIndustrialProcessingType {
         if (type == null) {
             return IndustrialTypeFanProcessing.NONE;
         }
-        return (IndustrialTypeFanProcessing.NoneType) type;
+        return type;
     }
 
-    static IndustrialTypeFanProcessing.NoneType getAt(Level level, BlockPos pos) {
+    static InterfaceIndustrialProcessingType getAt(Level level, BlockPos pos) {
         for (InterfaceIndustrialProcessingType type : DDFanProcessingTypeRegistry.getSortedTypesView()) {
             if (type.isValidAt(level, pos)) {
-                return (IndustrialTypeFanProcessing.NoneType) type;
+                return type;
             }
         }
         return IndustrialTypeFanProcessing.NONE;

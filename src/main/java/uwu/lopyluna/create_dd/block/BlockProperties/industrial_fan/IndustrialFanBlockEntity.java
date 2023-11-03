@@ -5,6 +5,7 @@ import com.simibubi.create.content.logistics.chute.ChuteBlockEntity;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.infrastructure.config.AllConfigs;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -20,29 +21,28 @@ import uwu.lopyluna.create_dd.block.DDBlocks;
 
 import java.util.List;
 
+@MethodsReturnNonnullByDefault
 public class IndustrialFanBlockEntity extends GeneratingKineticBlockEntity implements IndustrialAirCurrentSource {
 
-    public IndustrialAirCurrent airCurrentBronze;
-    protected boolean BupdateAirFlow;
+    public IndustrialAirCurrent airCurrent;
     protected static int airCurrentUpdateCooldown;
     protected int entitySearchCooldown;
+    protected boolean updateAirFlow;
 
     protected boolean isGenerator;
     protected boolean updateGenerator;
 
-
-
     public IndustrialFanBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
         isGenerator = false;
-        airCurrentBronze = new IndustrialAirCurrent(this);
-        BupdateAirFlow = true;
+        airCurrent = new IndustrialAirCurrent(this);
+        updateAirFlow = true;
         updateGenerator = false;
     }
     
     @Nullable
     public IndustrialAirCurrent getAirCurrent() {
-        return airCurrentBronze;
+        return airCurrent;
     }
 
 
@@ -58,7 +58,7 @@ public class IndustrialFanBlockEntity extends GeneratingKineticBlockEntity imple
         if (!wasMoved)
             isGenerator = compound.getBoolean("Generating");
         if (clientPacket)
-            airCurrentBronze.rebuild();
+            airCurrent.rebuild();
     }
 
     @Override
@@ -154,7 +154,7 @@ public class IndustrialFanBlockEntity extends GeneratingKineticBlockEntity imple
     @Override
     public void onSpeedChanged(float prevSpeed) {
         super.onSpeedChanged(prevSpeed);
-        BupdateAirFlow = true;
+        updateAirFlow = true;
         updateChute();
     }
 
@@ -174,7 +174,7 @@ public class IndustrialFanBlockEntity extends GeneratingKineticBlockEntity imple
     }
 
     public void blockInFrontChanged() {
-        BupdateAirFlow = true;
+        updateAirFlow = true;
     }
 
     @Override
@@ -186,13 +186,13 @@ public class IndustrialFanBlockEntity extends GeneratingKineticBlockEntity imple
 
         if (server && airCurrentUpdateCooldown-- <= 0) {
             airCurrentUpdateCooldown = AllConfigs.server().kinetics.fanBlockCheckRate.get();
-            BupdateAirFlow = true;
+            updateAirFlow = true;
         }
 
-        if (BupdateAirFlow) {
-            BupdateAirFlow = false;
-            airCurrentBronze.rebuild();
-            if (airCurrentBronze.maxDistance > 0)
+        if (updateAirFlow) {
+            updateAirFlow = false;
+            airCurrent.rebuild();
+            if (airCurrent.maxDistance > 0)
                 award(AllAdvancements.ENCASED_FAN);
             sendData();
         }
@@ -207,10 +207,10 @@ public class IndustrialFanBlockEntity extends GeneratingKineticBlockEntity imple
 
         if (entitySearchCooldown-- <= 0) {
             entitySearchCooldown = 5;
-            airCurrentBronze.findEntities();
+            airCurrent.findEntities();
         }
 
-        airCurrentBronze.tick();
+        airCurrent.tick();
     }
 
 

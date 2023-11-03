@@ -7,8 +7,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.rando.DDParti
 
 public class DDCreateClient {
 
-
-    public static void onCtorClient(IEventBus eventBus) {
+    public static void onCtorClient(IEventBus eventBus, IEventBus forgeEventBus) {
 
         eventBus.addListener(DDCreateClient::clientInit);
         eventBus.addListener(DDParticleTypes::registerFactories);

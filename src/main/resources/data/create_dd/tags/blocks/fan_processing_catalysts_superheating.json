@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "create:blaze_burner",
+    "create_dd:superheating_sail"
+  ]
+}
