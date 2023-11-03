@@ -5,11 +5,11 @@
       "item": "create_dd:overburden_casing"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo Time to encase a casing"
+      "translate": "advancement.create_dd.overburden_casing"
     },
-    "description": {
+     "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo A casing in a casing"
+      "translate": "advancement.create_dd.overburden_casing.desc"
     },
     "frame": "task",
     "show_toast": true,

@@ -7,7 +7,8 @@
     "title": {
       "translate": "advancement.create_dd.accelerator_motor"
     },
-    "description": {
+     "description": {
+      "color": "#DBA213",
       "translate": "advancement.create_dd.accelerator_motor.desc"
     },
     "frame": "task",

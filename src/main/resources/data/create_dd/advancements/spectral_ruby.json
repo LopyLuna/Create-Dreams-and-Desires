@@ -5,11 +5,11 @@
       "item": "create_dd:polished_spectral_ruby"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo Purple Diamonds"
+      "translate": "advancement.create_dd.polished_spectral_ruby"
     },
-    "description": {
+     "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo Polish some Spectral Rubies"
+      "translate": "advancement.create_dd.polished_spectral_ruby.desc"
     },
     "frame": "task",
     "show_toast": true,

@@ -381,73 +381,79 @@
   "block.create_dd.small_potassic_brick_wall": "Small Potassic Brick Wall",
   "block.create_dd.small_potassic_bricks": "Small Potassic Bricks",
 
+  "advancement.create_dd.root": "Create: Dreams n' Desires!",
+  "advancement.create_dd.root.desc": "Where Dreams & Desires within the create mod become Realities!",
+
   "advancement.create_dd.chromatic_compound": "Spiritual Minerals",
   "advancement.create_dd.chromatic_compound.desc": "Create a Compound of Chromatic by alloying Polished Rose Quartz & Spectral Ruby in the Seething Blaze-heated Mixer.",
-
-
   "advancement.create_dd.shadow_steel": "Void Consumer",
   "advancement.create_dd.shadow_steel.desc": "Create Shadow Steel, a Ingot of the Abyss.",
-
   "advancement.create_dd.shadow_steel_casing": "The Dark Magic",
   "advancement.create_dd.shadow_steel_casing.desc": "Apply Shadow Steel to an Obsidian, creating a Casing of the Shadows!",
-
-
+  "advancement.create_dd.overcharge_alloy": "Spark of the Imagination!",
+  "advancement.create_dd.overcharge_alloy.desc": "(Crafts & Additions Exclusive) Immense power of the Tesla Coil!",
+  "advancement.create_dd.overcharged_casing": "The Hex Tech",
+  "advancement.create_dd.overcharged_casing.desc": "Apply Overcharge Alloy onto an Oxidized Copper Block creating a Casing of Pure Energy!",
   "advancement.create_dd.refined_radiance": "Bright and Inspiring",
   "advancement.create_dd.refined_radiance.desc": "Create Refined Radiance, a powerful blinding Ingot that shall ward of evil!",
-
   "advancement.create_dd.refined_radiance_casing": "The Spiritual Magic",
   "advancement.create_dd.refined_radiance_casing.desc": "Apply Refined Radiance to an Light Blessed Block, creating a blinding Bright Casing!",
-
-
-  "advancement.create_dd.accelerator_motor": "Speed it up!",
-  "advancement.create_dd.accelerator_motor.desc": "This is a motor, you can change it's speed",
-
-  "advancement.create_dd.blasting_sail": "Blast it up",
-  "advancement.create_dd.blasting_sail.desc": "turns any air into blasting air",
-
-  "advancement.create_dd.bronze_ingot": "Gunmetal PEW PEW PEW!",
-  "advancement.create_dd.bronze_ingot.desc": "Mix copper, zinc and tin to make bronze",
-
-  "advancement.create_dd.bronze_casing": "The bronze age!",
-  "advancement.create_dd.bronze_casing.desc": "Apply bronze into any type of wood",
-
-  "advancement.create_dd.ayo": "ayo",
-  "advancement.create_dd.ayo.desc": "ayo",
-
-  "advancement.create_dd.ayo": "ayo",
-  "advancement.create_dd.ayo.desc": "ayo",
-
-  "advancement.create_dd.ayo": "ayo",
-  "advancement.create_dd.ayo.desc": "ayo",
-
-  "advancement.create_dd.ayo": "ayo",
-  "advancement.create_dd.ayo.desc": "ayo",
-
-  "advancement.create_dd.ayo": "ayo",
-  "advancement.create_dd.ayo.desc": "ayo",
-
-  "advancement.create_dd.ayo": "ayo",
-  "advancement.create_dd.ayo.desc": "ayo",
-
-  "advancement.create_dd.ayo": "ayo",
-  "advancement.create_dd.ayo.desc": "ayo",
-
-  "advancement.create_dd.ayo": "ayo",
-  "advancement.create_dd.ayo.desc": "ayo",
-
-  "advancement.create_dd.ayo": "ayo",
-  "advancement.create_dd.ayo.desc": "ayo",
-
-  "advancement.create_dd.ayo": "ayo",
-  "advancement.create_dd.ayo.desc": "ayo",
-
-  "advancement.create_dd.ayo": "ayo",
-  "advancement.create_dd.ayo.desc": "ayo",
-
-
-
-
-
+  "advancement.create_dd.accelerator_motor": "Rotation Speed Controller Motor?",
+  "advancement.create_dd.accelerator_motor.desc": "A Motor that doesn't generate any stress & control the speed up to 256!",
+  "advancement.create_dd.bronze_ingot": "Gunmetal Bronze, PEW PEW PEW!",
+  "advancement.create_dd.bronze_ingot.desc": "Mix Copper, Zinc and Tin to make Bronze!",
+  "advancement.create_dd.bronze_casing": "The Bronze age!",
+  "advancement.create_dd.bronze_casing.desc": "Apply Bronze into any type of wood",
+  "advancement.create_dd.bronze_drill": "Better Drill!",
+  "advancement.create_dd.bronze_drill.desc": "The Bronze Drill is a faster and better version of the Mechanical Drill",
+  "advancement.create_dd.bronze_saw": "Better Saw!",
+  "advancement.create_dd.bronze_saw.desc": "The Bronze Saw is a faster and better version of the Mechanical Saw",
+  "advancement.create_dd.calculation_mechanism": "Whats 9 + 10?",
+  "advancement.create_dd.calculation_mechanism.desc": "Assemble a Calculation Mechanism",
+  "advancement.create_dd.integrated_mechanism": "Cooler Complex Curiosities",
+  "advancement.create_dd.integrated_mechanism.desc": "Assemble a Integrated Mechanism",
+  "advancement.create_dd.integrated_circuit": "Downloadable Ram!",
+  "advancement.create_dd.integrated_circuit.desc": "Assemble a Integrated Circuit",
+  "advancement.create_dd.inductive_mechanism": "Simplex Saver",
+  "advancement.create_dd.inductive_mechanism.desc": "Assemble a Logistics Mechanism",
+  "advancement.create_dd.sealed_mechanism": "Scuba Pressing",
+  "advancement.create_dd.sealed_mechanism.desc": "Assemble a Sealed Mechanism",
+  "advancement.create_dd.infernal_mechanism": "Firey Device!",
+  "advancement.create_dd.infernal_mechanism.desc": "Assemble A Infernal Mechanism",
+  "advancement.create_dd.overburden_casing": "Bury a friend",
+  "advancement.create_dd.overburden_casing.desc": "Apply Lapis Sheets onto Andesite Casing",
+  "advancement.create_dd.lapis_alloy": "Dirt Proof Rock!",
+  "advancement.create_dd.lapis_alloy.desc": "Obtain some Lapis Alloy",
+  "advancement.create_dd.tin_ingot": "The Tin Man!",
+  "advancement.create_dd.tin_ingot.desc": "Smelt an Tin Ingot",
+  "advancement.create_dd.deforester_saw": "TIMBER!!!",
+  "advancement.create_dd.deforester_saw.desc": "Obtain the Deforester.. Saw?",
+  "advancement.create_dd.ember_alloy": "Smokey Alloy",
+  "advancement.create_dd.ember_alloy.desc": "Obtain some Ember Alloy",
+  "advancement.create_dd.hydraulic_press": "Heavy Duty Snowball Smasher!",
+  "advancement.create_dd.hydraulic_press.desc": "Have the ability to Bulk Process some sheets in a Hydraulic Press!",
+  "advancement.create_dd.industrial_casing": "The Industrial Age",
+  "advancement.create_dd.industrial_casing.desc": "Apply Industrial Iron Sheet onto a Zinc Casing!",
+  "advancement.create_dd.industrial_fan": "Wind Maker 2.0",
+  "advancement.create_dd.industrial_fan.desc": "Upgrade version to the Encased fan, even capable of generating rpm facing a heat source downwards and having a strong redstone signal!",
+  "advancement.create_dd.industrial_iron_ingot": "The Cooler Iron",
+  "advancement.create_dd.industrial_iron_ingot.desc": "Ability to dupe Cast Iron Recipes like Anvils & Mechanical Drills!",
+  "advancement.create_dd.kinetic_motor": "Kinetic Energy",
+  "advancement.create_dd.kinetic_motor.desc": "Obtain Kinetic Motor & Harness Free Power but its Weaker then Water Wheels",
+  "advancement.create_dd.mithril_casing": "The Mythical Magic",
+  "advancement.create_dd.mithril_casing.desc": "Apply Mithril Sheets onto Steel Blocks",
+  "advancement.create_dd.mithril_ingot": "This is a Myth?",
+  "advancement.create_dd.mithril_ingot.desc": "Acquire Mithril Ingots",
+  "advancement.create_dd.forest_ravager": "BEGONE FOREST!!!",
+  "advancement.create_dd.forest_ravager.desc": "Obtain a Mythical Forest Ravager",
+  "advancement.create_dd.smoked_planks": "Scary Spruce",
+  "advancement.create_dd.smoked_planks.desc": "Obtain some Smoked Planks",
+  "advancement.create_dd.polished_spectral_ruby": "Lunar Diamonds",
+  "advancement.create_dd.polished_spectral_ruby.desc": "Polish some Spectral Rubies",
+  "advancement.create_dd.steel_casing": "The Steel Age",
+  "advancement.create_dd.steel_casing.desc": "Apply Steel Ingots onto any Stone Types",
+  "advancement.create_dd.steel_ingot": "God Damn the Steel is Thick",
+  "advancement.create_dd.steel_ingot.desc": "Smash some Industrial Iron into Steel!",
 
 
   "create.recipe.also_mystery_conversion": "Mysterious Conversion",
@@ -473,7 +479,7 @@
   "item.create_dd.shadow_steel.tooltip.summary": "A Chromatic material forged _in the Abyss Darkness_.",
   "item.create_dd.refined_radiance.tooltip": "REFINED RADIANCE",
   "item.create_dd.refined_radiance.tooltip.summary": "A Chromatic material forged _in the Cleansed Luminosity_.",
-  "item.create_dd.overcharge_alloy.tooltip": "OVERCHARGED ALLOY",
+  "item.create_dd.overcharge_alloy.tooltip": "OVERCHARGE ALLOY",
   "item.create_dd.overcharge_alloy.tooltip.summary": "A Chromatic material forged _in the Immense Energetic Force_.",
 
   "item.create_dd.forest_ravager.tooltip": "MYTHICAL FOREST RAVAGER",

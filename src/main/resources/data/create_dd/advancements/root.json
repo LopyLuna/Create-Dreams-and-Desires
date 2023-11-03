@@ -1,14 +1,14 @@
 {
   "display": {
     "icon": {
-      "item": "create_dd:mithril_ingot"
+      "item": "create_dd:spectral_ruby"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo Create: Dreams n' Desires!"
+      "translate": "advancement.create_dd.root"
     },
-    "description": {
+     "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo where dreams become realities"
+      "translate": "advancement.create_dd.root.desc"
     },
     "frame": "task",
     "show_toast": false,

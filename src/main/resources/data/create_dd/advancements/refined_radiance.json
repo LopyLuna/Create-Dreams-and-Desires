@@ -7,7 +7,8 @@
     "title": {
       "translate": "advancement.create_dd.refined_radiance"
     },
-    "description": {
+     "description": {
+      "color": "#DBA213",
       "translate": "advancement.create_dd.refined_radiance.desc"
     },
     "frame": "goal",

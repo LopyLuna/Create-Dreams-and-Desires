@@ -1,15 +1,15 @@
 {
-  "parent": "create_dd:raw_tin",
+  "parent": "create_dd:root",
   "display": {
     "icon": {
       "item": "create_dd:tin_ingot"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo Tin in it's ingot form!"
+      "translate": "advancement.create_dd.tin_ingot"
     },
-    "description": {
+     "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo Upon smelting raw tin, you will get tin ingots"
+      "translate": "advancement.create_dd.tin_ingot.desc"
     },
     "frame": "task",
     "show_toast": true,

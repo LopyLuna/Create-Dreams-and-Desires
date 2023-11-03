@@ -5,11 +5,11 @@
       "item": "create_dd:smoked_planks"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo Slow cooked wood"
+      "translate": "advancement.create_dd.smoked_planks"
     },
-    "description": {
+     "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo just mix some wood in a heated blaze burner"
+      "translate": "advancement.create_dd.smoked_planks.desc"
     },
     "frame": "task",
     "show_toast": true,

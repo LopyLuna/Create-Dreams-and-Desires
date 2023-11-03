@@ -5,11 +5,11 @@
       "item": "create_dd:lapis_alloy"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo A sturdier rock!"
+      "translate": "advancement.create_dd.lapis_alloy"
     },
-    "description": {
+     "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo This is like the andesite alloy but it has different uses"
+      "translate": "advancement.create_dd.lapis_alloy.desc"
     },
     "frame": "task",
     "show_toast": true,

@@ -5,11 +5,11 @@
       "item": "create_dd:deforester_saw"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo We all die together"
+      "translate": "advancement.create_dd.deforester_saw"
     },
-    "description": {
+     "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo Chop down trees at ease"
+      "translate": "advancement.create_dd.deforester_saw.desc"
     },
     "frame": "task",
     "show_toast": true,

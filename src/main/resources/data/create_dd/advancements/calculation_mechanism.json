@@ -5,11 +5,11 @@
       "item": "create_dd:calculation_mechanism"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo 1+1=3"
+      "translate": "advancement.create_dd.calculation_mechanism"
     },
-    "description": {
+     "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo This can be used to make cheaper stuff from the create mod"
+      "translate": "advancement.create_dd.calculation_mechanism.desc"
     },
     "frame": "goal",
     "show_toast": true,

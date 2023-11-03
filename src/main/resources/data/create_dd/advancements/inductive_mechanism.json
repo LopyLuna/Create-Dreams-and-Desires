@@ -5,11 +5,11 @@
       "item": "create_dd:inductive_mechanism"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo Your first mechanism!"
+      "translate": "advancement.create_dd.inductive_mechanism"
     },
-    "description": {
+     "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo This is quite simple to craft, automating it is another thing"
+      "translate": "advancement.create_dd.inductive_mechanism.desc"
     },
     "frame": "goal",
     "show_toast": true,

@@ -5,11 +5,11 @@
       "item": "create_dd:steel_casing"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo The Steel Age"
+      "translate": "advancement.create_dd.steel_casing"
     },
-    "description": {
+     "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo Use the steel ingot into any sort of stone"
+      "translate": "advancement.create_dd.steel_casing.desc"
     },
     "frame": "task",
     "show_toast": true,

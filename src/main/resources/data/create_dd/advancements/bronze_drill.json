@@ -5,11 +5,12 @@
       "item": "create_dd:bronze_drill"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo This is not a drill."
+      "translate": "advancement.create_dd.bronze_drill"
     },
-    "description": {
+      "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo The bronze drill is a faster and better version of the mechanical Drill"
+      "color": "#DBA213",
+      "translate": "advancement.create_dd.bronze_drill.desc"
     },
     "frame": "task",
     "show_toast": true,

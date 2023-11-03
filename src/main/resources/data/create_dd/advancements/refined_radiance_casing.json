@@ -7,7 +7,8 @@
     "title": {
       "translate": "advancement.create_dd.refined_radiance_casing"
     },
-    "description": {
+     "description": {
+      "color": "#DBA213",
       "translate": "advancement.create_dd.refined_radiance_casing.desc"
     },
     "frame": "task",

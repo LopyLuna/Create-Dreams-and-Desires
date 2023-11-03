@@ -5,11 +5,11 @@
       "item": "create_dd:mithril_ingot"
     },
     "title": {
-      "translate": "advancement.create_dd.ayo Isn't this a Terraria reference?"
+      "translate": "advancement.create_dd.mithril_ingot"
     },
-    "description": {
+     "description": {
       "color": "#DBA213",
-      "translate": "advancement.create_dd.ayo Mix up a whole lotta things to make this endgame alloy"
+      "translate": "advancement.create_dd.mithril_ingot.desc"
     },
     "frame": "task",
     "show_toast": true,
