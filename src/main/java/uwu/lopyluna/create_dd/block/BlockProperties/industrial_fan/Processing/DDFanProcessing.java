@@ -1,13 +1,12 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing;
 
-import com.simibubi.create.content.kinetics.belt.behaviour.TransportedItemStackHandlerBehaviour;
-import com.simibubi.create.content.kinetics.belt.transport.TransportedItemStack;
-import com.simibubi.create.content.kinetics.fan.processing.FanProcessingType;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import uwu.lopyluna.create_dd.access.DDTransportedItemStack;
+import uwu.lopyluna.create_dd.access.DDTransportedItemStackHandlerBehaviour;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,10 +50,10 @@ public class DDFanProcessing {
         return true;
     }
 
-    public static TransportedItemStackHandlerBehaviour.TransportedResult applyProcessing(TransportedItemStack transported, Level world, InterfaceIndustrialProcessingType type) {
-        TransportedItemStackHandlerBehaviour.TransportedResult ignore = TransportedItemStackHandlerBehaviour.TransportedResult.doNothing();
+    public static DDTransportedItemStackHandlerBehaviour.TransportedResult applyProcessing(DDTransportedItemStack transported, Level world, InterfaceIndustrialProcessingType type) {
+        DDTransportedItemStackHandlerBehaviour.TransportedResult ignore = DDTransportedItemStackHandlerBehaviour.TransportedResult.doNothing();
         if (transported.processedBy != type) {
-            transported.processedBy = (FanProcessingType) type;
+            transported.processedBy = type;
             int timeModifierForStackSize = ((transported.stack.getCount() - 1) / 16) + 1;
             int processingTime =
                     (int) (AllConfigs.server().kinetics.fanProcessingTime.get() * timeModifierForStackSize) + 1;
@@ -72,13 +71,13 @@ public class DDFanProcessing {
         if (stacks == null)
             return ignore;
 
-        List<TransportedItemStack> transportedStacks = new ArrayList<>();
+        List<DDTransportedItemStack> transportedStacks = new ArrayList<>();
         for (ItemStack additional : stacks) {
-            TransportedItemStack newTransported = transported.getSimilar();
+            DDTransportedItemStack newTransported = transported.getSimilar();
             newTransported.stack = additional.copy();
             transportedStacks.add(newTransported);
         }
-        return TransportedItemStackHandlerBehaviour.TransportedResult.convertTo(transportedStacks);
+        return DDTransportedItemStackHandlerBehaviour.TransportedResult.convertTo(transportedStacks);
     }
 
     private static int decrementProcessingTime(ItemEntity entity, InterfaceIndustrialProcessingType type) {

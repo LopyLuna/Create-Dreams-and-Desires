@@ -2,7 +2,6 @@ package uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan;
 
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.copycat.CopycatBlock;
-import com.simibubi.create.content.kinetics.belt.behaviour.TransportedItemStackHandlerBehaviour;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.utility.Iterate;
@@ -28,6 +27,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.DistExecutor;
 import org.apache.commons.lang3.tuple.Pair;
 import uwu.lopyluna.create_dd.access.DDServerPlayer;
+import uwu.lopyluna.create_dd.access.DDTransportedItemStack;
+import uwu.lopyluna.create_dd.access.DDTransportedItemStackHandlerBehaviour;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing.DDFanProcessing;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing.IndustrialTypeFanProcessing;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing.InterfaceIndustrialProcessingType;
@@ -36,6 +37,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.rando.DDAirFl
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
 
 public class IndustrialAirCurrent {
     public final IndustrialAirCurrentSource source;
@@ -45,7 +47,7 @@ public class IndustrialAirCurrent {
     public boolean pushing;
     public float maxDistance;
 
-    protected List<Pair<TransportedItemStackHandlerBehaviour, InterfaceIndustrialProcessingType>> affectedItemHandlers =
+    protected List<Pair<DDTransportedItemStackHandlerBehaviour, InterfaceIndustrialProcessingType>> affectedItemHandlers =
             new ArrayList<>();
     protected List<Entity> caughtEntities = new ArrayList<>();
 
@@ -133,17 +135,17 @@ public class IndustrialAirCurrent {
     }
 
     public void tickAffectedHandlers() {
-        for (Pair<TransportedItemStackHandlerBehaviour, InterfaceIndustrialProcessingType> pair : affectedItemHandlers) {
-            TransportedItemStackHandlerBehaviour handler = pair.getKey();
+        for (Pair<DDTransportedItemStackHandlerBehaviour, InterfaceIndustrialProcessingType> pair : affectedItemHandlers) {
+            DDTransportedItemStackHandlerBehaviour handler = pair.getKey();
             Level world = handler.getWorld();
             InterfaceIndustrialProcessingType processingType = pair.getRight();
 
-            handler.handleProcessingOnAllItems(transported -> {
+            handler.DDhandleProcessingOnAllItems((Function<DDTransportedItemStack, DDTransportedItemStackHandlerBehaviour.TransportedResult>) transported -> {
                 if (world.isClientSide) {
                     processingType.spawnProcessingParticles(world, handler.getWorldPositionOf(transported));
-                    return TransportedItemStackHandlerBehaviour.TransportedResult.doNothing();
+                    return DDTransportedItemStackHandlerBehaviour.TransportedResult.doNothing();
                 }
-                TransportedItemStackHandlerBehaviour.TransportedResult applyProcessing = DDFanProcessing.applyProcessing(transported, world, processingType);
+                DDTransportedItemStackHandlerBehaviour.TransportedResult applyProcessing = DDFanProcessing.applyProcessing(transported, world, processingType);
                 if (!applyProcessing.doesNothing() && source instanceof IndustrialFanBlockEntity fan)
                     fan.award(AllAdvancements.FAN_PROCESSING);
                 return applyProcessing;
@@ -313,8 +315,8 @@ public class IndustrialAirCurrent {
             for (int offset : Iterate.zeroAndOne) {
                 BlockPos pos = start.relative(direction, i)
                         .below(offset);
-                TransportedItemStackHandlerBehaviour behaviour =
-                        BlockEntityBehaviour.get(world, pos, TransportedItemStackHandlerBehaviour.TYPE);
+                DDTransportedItemStackHandlerBehaviour behaviour =
+                        BlockEntityBehaviour.get(world, pos, DDTransportedItemStackHandlerBehaviour.TYPE);
                 if (behaviour != null) {
                     InterfaceIndustrialProcessingType type = InterfaceIndustrialProcessingType.getAt(world, pos);
                     if (type == IndustrialTypeFanProcessing.NONE)

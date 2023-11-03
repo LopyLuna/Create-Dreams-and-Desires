@@ -11,12 +11,10 @@ import java.util.Random;
 
 public class DDTransportedItemStack extends TransportedItemStack {
 
-    public InterfaceIndustrialProcessingType processedBy;
-
-    private static final Random R = new Random();
+    private static Random R = new Random();
 
     public ItemStack stack;
-    public float beltPosition;
+    public static float beltPosition;
     public float sideOffset;
     public int angle;
     public int insertedAt;
@@ -27,6 +25,7 @@ public class DDTransportedItemStack extends TransportedItemStack {
     public float prevBeltPosition;
     public float prevSideOffset;
 
+    public InterfaceIndustrialProcessingType processedBy;
     public int processingTime;
 
     public DDTransportedItemStack(ItemStack stack) {
@@ -42,8 +41,9 @@ public class DDTransportedItemStack extends TransportedItemStack {
         return (angle - 180) / (360 * 3f);
     }
 
-    public int compareTo(DDTransportedItemStack o) {
-        return Float.compare(o.beltPosition, beltPosition);
+    @Override
+    public int compareTo(TransportedItemStack o) {
+        return beltPosition < DDTransportedItemStack.beltPosition ? 1 : beltPosition > DDTransportedItemStack.beltPosition ? -1 : 0;
     }
 
     public DDTransportedItemStack getSimilar() {
@@ -76,9 +76,9 @@ public class DDTransportedItemStack extends TransportedItemStack {
         nbt.putInt("Angle", angle);
         nbt.putInt("InDirection", insertedFrom.get3DDataValue());
         if (locked)
-            nbt.putBoolean("Locked", true);
+            nbt.putBoolean("Locked", locked);
         if (lockedExternally)
-            nbt.putBoolean("LockedExternally", true);
+            nbt.putBoolean("LockedExternally", lockedExternally);
         return nbt;
     }
 
@@ -95,4 +95,5 @@ public class DDTransportedItemStack extends TransportedItemStack {
         stack.lockedExternally = nbt.getBoolean("LockedExternally");
         return stack;
     }
+
 }
