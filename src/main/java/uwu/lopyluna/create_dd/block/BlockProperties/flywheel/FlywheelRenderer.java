@@ -1,0 +1,130 @@
+package uwu.lopyluna.create_dd.block.BlockProperties.flywheel;
+
+
+import com.jozufozu.flywheel.backend.Backend;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.simibubi.create.AllPartialModels;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
+import com.simibubi.create.foundation.render.CachedBufferer;
+import com.simibubi.create.foundation.render.SuperByteBuffer;
+import com.simibubi.create.foundation.utility.AngleHelper;
+
+import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
+import net.minecraft.core.Direction.AxisDirection;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
+
+import static com.simibubi.create.content.kinetics.base.HorizontalKineticBlock.HORIZONTAL_FACING;
+
+public class FlywheelRenderer extends KineticBlockEntityRenderer {
+
+    public FlywheelRenderer(BlockEntityRendererProvider.Context context) {
+        super(context);
+    }
+
+    @Override
+    protected void renderSafe(KineticBlockEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer,
+                              int light, int overlay) {
+        super.renderSafe(te, partialTicks, ms, buffer, light, overlay);
+
+        if (Backend.canUseInstancing(te.getLevel())) return;
+
+        BlockState blockState = te.getBlockState();
+        FlywheelBlockEntity wte = (FlywheelBlockEntity) te;
+
+        float speed = wte.visualSpeed.getValue(partialTicks) * 3 / 10f;
+        float angle = wte.angle + speed * partialTicks;
+
+        VertexConsumer vb = buffer.getBuffer(RenderType.solid());
+
+        if (FlywheelBlock.isConnected(blockState)) {
+            Direction connection = FlywheelBlock.getConnection(blockState);
+            light = LevelRenderer.getLightColor(te.getLevel(), blockState, te.getBlockPos()
+                    .relative(connection));
+            float rotation =
+                    connection.getAxis() == Axis.X ^ connection.getAxisDirection() == AxisDirection.NEGATIVE ? -angle
+                            : angle;
+            boolean flip = blockState.getValue(FlywheelBlock.CONNECTION) == FlywheelBlock.ConnectionState.LEFT;
+
+            transformConnector(
+                    rotateToFacing(CachedBufferer.partial(DDBlockPartialModel.FLYWHEEL_UPPER_ROTATING, blockState), connection), true, true,
+                    rotation, flip).light(light)
+                    .renderInto(ms, vb);
+            transformConnector(
+                    rotateToFacing(CachedBufferer.partial(DDBlockPartialModel.FLYWHEEL_LOWER_ROTATING, blockState), connection), false, true,
+                    rotation, flip).light(light)
+                    .renderInto(ms, vb);
+
+            transformConnector(rotateToFacing(CachedBufferer.partial(DDBlockPartialModel.FLYWHEEL_UPPER_SLIDING, blockState), connection),
+                    true, false, rotation, flip).light(light)
+                    .renderInto(ms, vb);
+            transformConnector(rotateToFacing(CachedBufferer.partial(DDBlockPartialModel.FLYWHEEL_LOWER_SLIDING, blockState), connection),
+                    false, false, rotation, flip).light(light)
+                    .renderInto(ms, vb);
+        }
+
+        renderFlywheel(te, ms, light, blockState, angle, vb);
+    }
+
+    private void renderFlywheel(KineticBlockEntity te, PoseStack ms, int light, BlockState blockState, float angle, VertexConsumer vb) {
+        BlockState referenceState = blockState.rotate(Rotation.CLOCKWISE_90);
+        Direction facing = referenceState.getValue(BlockStateProperties.HORIZONTAL_FACING);
+        SuperByteBuffer wheel = CachedBufferer.partialFacing(DDBlockPartialModel.FLYWHEEL, referenceState, facing);
+        kineticRotationTransform(wheel, te, blockState.getValue(HORIZONTAL_FACING)
+                .getAxis(), AngleHelper.rad(angle), light);
+        wheel.renderInto(ms, vb);
+    }
+
+    @Override
+    protected SuperByteBuffer getRotatedModel(KineticBlockEntity te, BlockState state) {
+        return CachedBufferer.partialFacing(AllPartialModels.SHAFT_HALF, state, state
+                .getValue(BlockStateProperties.HORIZONTAL_FACING)
+                .getOpposite());
+    }
+
+    protected SuperByteBuffer transformConnector(SuperByteBuffer buffer, boolean upper, boolean rotating, float angle,
+                                                 boolean flip) {
+
+        float shift = upper ? 1 / 4f : -1 / 8f;
+        float offset = upper ? 1 / 4f : 1 / 4f;
+        float radians = (float) (angle / 180 * Math.PI);
+        float shifting = Mth.sin(radians) * shift + offset;
+
+        float maxAngle = upper ? -5 : -15;
+        float minAngle = upper ? -45 : 5;
+        float barAngle = 0;
+
+        if (rotating)
+            barAngle = Mth.lerp((Mth.sin((float) (radians + Math.PI / 2)) + 1) / 2, minAngle, maxAngle);
+
+        float pivotX = (upper ? 8f : 3f) / 16;
+        float pivotY = (upper ? 8f : 2f) / 16;
+        float pivotZ = (upper ? 23f : 21.5f) / 16f;
+
+        buffer.translate(pivotX, pivotY, pivotZ + shifting);
+        if (rotating)
+            buffer.rotate(Direction.EAST, AngleHelper.rad(barAngle));
+        buffer.translate(-pivotX, -pivotY, -pivotZ);
+
+        if (flip && !upper)
+            buffer.translate(9 / 16f, 0, 0);
+
+        return buffer;
+    }
+
+    protected SuperByteBuffer rotateToFacing(SuperByteBuffer buffer, Direction facing) {
+        buffer.rotateCentered(Direction.UP, AngleHelper.rad(AngleHelper.horizontalAngle(facing)));
+        return buffer;
+    }
+
+}

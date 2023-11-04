@@ -1,6 +1,5 @@
 package uwu.lopyluna.create_dd.block;
 
-import com.simibubi.create.Create;
 import com.simibubi.create.content.kinetics.base.HalfShaftInstance;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.ShaftInstance;
@@ -17,6 +16,12 @@ import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillInstance;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.EngineInstance;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FlyWheelInstance;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FlywheelBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FlywheelRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine.EngineRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine.FurnaceEngineBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialFanBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialFanRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialFanInstance;
@@ -48,6 +53,20 @@ import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 
 
 public class DDBlockEntityTypes {
+
+    public static final BlockEntityEntry<FurnaceEngineBlockEntity> FURNACE_ENGINE = REGISTRATE
+            .blockEntity("furnace_engine", FurnaceEngineBlockEntity::new)
+            .instance(() -> EngineInstance::new, false)
+            .validBlocks(DDBlocks.FURNACE_ENGINE)
+            .renderer(() -> EngineRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<FlywheelBlockEntity> FLYWHEEL = REGISTRATE
+            .blockEntity("flywheel", FlywheelBlockEntity::new)
+            .instance(() -> FlyWheelInstance::new, false)
+            .validBlocks(DDBlocks.FLYWHEEL)
+            .renderer(() -> FlywheelRenderer::new)
+            .register();
 
     public static final BlockEntityEntry<BronzeSawBlockEntity> BRONZE_SAW = REGISTRATE
             .blockEntity("bronze_saw", BronzeSawBlockEntity::new)
@@ -166,7 +185,7 @@ public class DDBlockEntityTypes {
                     .renderer(() -> PotatoTurretRenderer::new)
                     .register();
     
-    public static final BlockEntityEntry<CogCrankBlockEntity> cogCrank = Create.REGISTRATE
+    public static final BlockEntityEntry<CogCrankBlockEntity> cogCrank = REGISTRATE
             .blockEntity("cog_crank", CogCrankBlockEntity::new)
             .instance(() -> CogCrankInstance::new)
             .validBlocks(DDBlocks.cogCrank)

@@ -33,6 +33,9 @@ import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.Accelerato
 import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillMovementBehaviour;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FlywheelBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FlywheelGenerator;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine.FurnaceEngineBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawMovementBehaviour;
@@ -545,6 +548,29 @@ public class DDBlocks {
             .transform(BlockStressDefaults.setCapacity(16))
             .simpleItem()
             .register();
+
+    public static final BlockEntry<FurnaceEngineBlock> FURNACE_ENGINE =
+            REGISTRATE.block("furnace_engine", FurnaceEngineBlock::new)
+            .initialProperties(SharedProperties::softMetal)
+            .transform(pickaxeOnly())
+            .tag(AllTags.AllBlockTags.BRITTLE.tag)
+            .blockstate(BlockStateGen.horizontalBlockProvider(true))
+            .transform(BlockStressDefaults.setCapacity(1024.0))
+            .item()
+            .transform(customItemModel())
+            .register();
+
+    public static final BlockEntry<FlywheelBlock> FLYWHEEL =
+            REGISTRATE.block("flywheel", FlywheelBlock::new)
+            .initialProperties(SharedProperties::softMetal)
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .transform(axeOrPickaxe())
+            .transform(BlockStressDefaults.setNoImpact())
+            .blockstate(new FlywheelGenerator()::generate)
+            .item()
+            .transform(customItemModel())
+            .register();
+
 
     public static final BlockEntry<PotatoTurretBlock> POTATO_TURRET =
             REGISTRATE.block("potato_turret", PotatoTurretBlock::new)
