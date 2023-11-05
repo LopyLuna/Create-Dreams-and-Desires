@@ -23,6 +23,8 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
+import java.util.Objects;
+
 public class FlywheelBlock extends HorizontalKineticBlock implements IBE<FlywheelBlockEntity> {
 
     public static final EnumProperty<ConnectionState> CONNECTION = EnumProperty.create("connection", ConnectionState.class);
@@ -39,10 +41,12 @@ public class FlywheelBlock extends HorizontalKineticBlock implements IBE<Flywhee
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        Direction preferred = getPreferredHorizontalFacing(context);
-        if (preferred != null)
-            return defaultBlockState().setValue(HORIZONTAL_FACING, preferred.getOpposite());
-        return this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection());
+        Direction facing = Objects.requireNonNull(context.getPlayer()).getDirection();
+
+        if (context.getPlayer() != null && context.getPlayer().isShiftKeyDown()) {
+            return defaultBlockState().setValue(HORIZONTAL_FACING, facing);
+        }
+        return this.defaultBlockState().setValue(HORIZONTAL_FACING, facing.getOpposite());
     }
 
     public static boolean isConnected(BlockState state) {

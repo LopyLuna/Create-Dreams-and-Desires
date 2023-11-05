@@ -32,7 +32,8 @@ public class FurnaceEngineBlockEntity extends EngineBlockEntity {
 
         appliedCapacity = (float) (active ? BlockStressValues.getCapacity(DDBlocks.FURNACE_ENGINE.get())
                 : 0);
-        appliedSpeed = active ? 16 * modifier : 0;;
+        appliedSpeed = active ? 24 * modifier : 0;
+
         refreshWheelSpeed();
     }
 

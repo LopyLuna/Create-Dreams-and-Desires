@@ -5,13 +5,10 @@ import java.util.Map;
 import java.util.function.Function;
 
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.holdersets.ICustomHolderSet;
 
 /**
  * Example:

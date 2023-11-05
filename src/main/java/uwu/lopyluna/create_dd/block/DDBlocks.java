@@ -555,7 +555,7 @@ public class DDBlocks {
             .transform(pickaxeOnly())
             .tag(AllTags.AllBlockTags.BRITTLE.tag)
             .blockstate(BlockStateGen.horizontalBlockProvider(true))
-            .transform(BlockStressDefaults.setCapacity(1024.0))
+            .transform(BlockStressDefaults.setCapacity(384.0))
             .item()
             .transform(customItemModel())
             .register();

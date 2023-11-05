@@ -77,15 +77,14 @@ public class FlywheelBlockEntity extends GeneratingKineticBlockEntity {
         public void tick() {
                 super.tick();
 
-                assert level != null;
-                if (!level.isClientSide)
+                if (level.isClientSide) {
+                        float targetSpeed = isVirtual() ? speed : getGeneratedSpeed();
+                        visualSpeed.updateChaseTarget(targetSpeed);
+                        visualSpeed.tickChaser();
+                        angle += visualSpeed.getValue() * 3 / 10f;
+                        angle %= 360;
                         return;
-
-                float targetSpeed = isVirtual() ? speed : getGeneratedSpeed();
-                visualSpeed.updateChaseTarget(targetSpeed);
-                visualSpeed.tickChaser();
-                angle += visualSpeed.getValue() * 3 / 10f;
-                angle %= 360;
+                }
 
                 /*
                  * After getting moved by pistons the generatedSpeed attribute reads 16 but the

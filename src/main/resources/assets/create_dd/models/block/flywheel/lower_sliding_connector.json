@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "create:block/steam_engine_wheel",
-		"particle": "create:block/steam_engine_wheel"
+		"0": "create_dd:block/furnace_engine/steam_engine_wheel",
+		"particle": "create_dd:block/furnace_engine/steam_engine_wheel"
 	},
 	"elements": [
 		{
@@ -23,6 +23,8 @@
 		{
 			"name": "transmission",
 			"origin": [-8, 8, 8],
+			"color": 0,
+			"nbt": "{}",
 			"children": [0]
 		}
 	]
