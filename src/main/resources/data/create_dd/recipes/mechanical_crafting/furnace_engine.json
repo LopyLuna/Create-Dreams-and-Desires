@@ -1,0 +1,30 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "ECA",
+    "EDB",
+    "ECA"
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:ingots/industrial_iron"
+    },
+    "B": {
+      "item": "create_dd:infernal_mechanism"
+    },
+    "C": {
+      "tag": "forge:plates/steel"
+    },
+    "D": {
+      "tag": "create:casing/steel"
+    },
+    "E": {
+      "tag": "forge:ingots/strong_bronze"
+    }
+  },
+  "result": {
+    "item": "create_dd:furnace_engine",
+    "count": 1
+  },
+  "acceptMirrored": true
+}

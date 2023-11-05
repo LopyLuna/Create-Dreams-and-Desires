@@ -1,0 +1,24 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    " AAA",
+    "BADA",
+    " AAA"
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:ingots/brass"
+    },
+    "B": {
+      "item": "create_dd:integrated_mechanism"
+    },
+    "D": {
+      "tag": "create:casing/steel"
+    }
+  },
+  "result": {
+    "item": "create_dd:flywheel",
+    "count": 1
+  },
+  "acceptMirrored": true
+}

@@ -168,8 +168,9 @@
   "block.create_dd.hydraulic_casing": "Hydraulic Casing",
   "block.create_dd.industrial_casing": "Industrial Casing",
   "block.create_dd.overburden_casing": "Overburden Casing",
-
   "block.create_dd.steel_casing": "Steel Casing",
+  "block.create_dd.brick_casing": "Brick Casing",
+  "block.create_dd.nether_brick_casing": "Nether Brick Casing",
 
   "block.create_dd.asphalt_block": "Asphalt Block",
 
@@ -182,9 +183,15 @@
   "block.create_dd.chromatic_block": "Block of Chromatic Compound",
   "block.create_dd.refined_radiance_block": "Block of Refined Radiance",
   "block.create_dd.shadow_steel_block": "Block of Shadow Steel",
+  "block.create_dd.overcharged_block": "Block of Overcharge Alloy",
+  "block.create_dd.blaze_gold_block": "Block of Blaze Brass",
+  "block.create_dd.stargaze_singularity_block": "Block of Stargaze Singularity",
 
   "block.create_dd.shadow_steel_casing": "Shadow Casing",
   "block.create_dd.refined_radiance_casing": "Radiant Casing",
+  "block.create_dd.overcharged_casing": "Overcharge Casing",
+  "block.create_dd.blaze_gold_casing": "Blaze Brass Casing",
+  "block.create_dd.stargaze_singularity_casing": "Stargaze Singularity Casing",
 
   "block.create_dd.rose_log": "Rose Log",
   "block.create_dd.smoked_log": "Smoked Log",
@@ -235,9 +242,13 @@
   "block.create_dd.mithril_scaffolding": "Mithril Scaffolding",
   "block.create_dd.mossy_andesite_scaffolding": "Mossy Andesite Scaffolding",
   "block.create_dd.zinc_scaffolding": "Zinc Scaffolding",
+  "block.create_dd.tin_scaffolding": "Tin Scaffolding",
+  "block.create_dd.steel_scaffolding": "Steel Scaffolding",
   "block.create_dd.bronze_scaffolding": "Bronze Scaffolding",
   "block.create_dd.shadow_steel_scaffolding": "§eShadow Scaffolding",
   "block.create_dd.refined_radiance_scaffolding": "§eRadiant Scaffolding",
+  "block.create_dd.blaze_gold_scaffolding": "§eBlaze Brass Scaffolding",
+  "block.create_dd.stargaze_singularity_scaffolding": "§eStargaze Singularity Scaffolding",
 
   "block.create_dd.copycat_block": "Copycat Block",
   "block.create_dd.copycat_slab": "Copycat Slab",
@@ -253,6 +264,8 @@
   "block.create_dd.secondary_encased_chain_drive": "Secondary Encased Chain Drive",
   "block.create_dd.secondary_adjustable_chain_gearshift": "Secondary Adjustable Chain Gearshift",
   "block.create_dd.cog_crank": "Cog Crank",
+  "block.create_dd.furnace_engine": "Flywheel Engine",
+  "block.create_dd.flywheel": "Flywheel Component",
 
   "block.create_dd.kinetic_motor": "Kinetic Motor",
   "block.create_dd.accelerator_motor": "Accelerator Motor",
