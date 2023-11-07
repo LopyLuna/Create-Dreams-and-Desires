@@ -3,6 +3,9 @@
   "values": [
     "create_dd:refined_radiance_block",
     "create_dd:refined_radiance_scaffolding",
-    "create_dd:refined_radiance_casing"
+    "create_dd:refined_radiance_casing",
+    "create_dd:stargaze_singularity_block",
+    "create_dd:stargaze_singularity_scaffolding",
+    "create_dd:stargaze_singularity_casing"
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/scaffold/block",
+  "textures": {
+    "top": "create_dd:block/scaffold/overcharged_scaffold_frame",
+    "inside": "create_dd:block/scaffold/overcharged_scaffold_inside",
+    "side": "create_dd:block/scaffold/overcharged_scaffold",
+    "casing": "create_dd:block/overcharged_casing",
+    "particle": "create_dd:block/scaffold/overcharged_scaffold"
+  }
+}

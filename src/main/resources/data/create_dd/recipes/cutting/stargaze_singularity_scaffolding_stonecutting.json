@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "create_dd:stargaze_singularity"
+  },
+  "result": "create_dd:stargaze_singularity_scaffolding",
+  "count": 4
+}

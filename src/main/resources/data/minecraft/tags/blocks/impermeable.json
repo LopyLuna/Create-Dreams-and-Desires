@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:vertical_framed_split_glass",
+    "create_dd:horizontal_framed_split_glass",
+    "create_dd:framed_split_glass",
+    "create_dd:ornate_iron_glass"
+  ]
+}

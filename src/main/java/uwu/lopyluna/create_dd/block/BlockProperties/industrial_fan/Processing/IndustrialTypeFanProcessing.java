@@ -220,12 +220,13 @@ public class IndustrialTypeFanProcessing {
 
             if (!entity.fireImmune()) {
                 entity.setSecondsOnFire(10);
-                entity.hurt(LAVA_DAMAGE_SOURCE, 8);
+                entity.hurt(LAVA_DAMAGE_SOURCE, 10);
             }
 
             if (entity instanceof LivingEntity livingEntity) {
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 1, false, false));
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 10, 1, false, false));
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 2, false, false));
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20, 1, false, false));
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 30, 0, false, false));
             }
         }
     }
@@ -692,16 +693,15 @@ public class IndustrialTypeFanProcessing {
             }
 
             if (entity instanceof EnderMan || entity.getType() == EntityType.BLAZE) {
-                entity.hurt(DamageSource.FREEZE, 5);
+                entity.hurt(DamageSource.FREEZE, 8);
             }
 
             if (entity instanceof LivingEntity livingEntity) {
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 30, 0, false, false));
-                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 1, false, false));
+                livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 7, false, false));
             }
 
             if (entity instanceof SnowGolem snowgolem) {
-                snowgolem.heal(2);
+                snowgolem.heal(4);
             }
 
             if (entity instanceof Stray stray) {

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "create_dd:blaze_gold_block"
+    }
+  ],
+  "result": {
+    "item": "create_dd:blaze_gold",
+    "count": 9
+  }
+}

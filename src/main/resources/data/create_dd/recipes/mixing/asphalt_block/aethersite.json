@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "create_dd:cut_aethersite"
+    },
+    {
+      "item": "create_dd:cut_aethersite"
+    },
+    {
+      "item": "create_dd:cut_aethersite"
+    },
+    {
+      "item": "create_dd:cut_aethersite"
+    },
+    {
+      "item": "create_dd:asphalt_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:aethersite_asphalt_block",
+      "count": 4
+    }
+  ],
+  "heatRequirement": "heated"
+}

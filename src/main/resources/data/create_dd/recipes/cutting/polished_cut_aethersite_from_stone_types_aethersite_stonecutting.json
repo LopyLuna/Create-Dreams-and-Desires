@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "create_dd:stone_types/aethersite"
+  },
+  "result": "create_dd:polished_cut_aethersite",
+  "count": 1
+}

@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "amount": 250,
+      "fluid": "create_dd:glowberry_milkshake",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:glowberry_milkshake"
+    }
+  ]
+}

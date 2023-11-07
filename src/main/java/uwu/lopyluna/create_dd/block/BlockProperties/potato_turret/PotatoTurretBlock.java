@@ -6,6 +6,9 @@ import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -14,10 +17,21 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
 public class PotatoTurretBlock extends HorizontalKineticBlock implements IBE<PotatoTurretBlockEntity>, IWrenchable, ICogWheel {
-    public PotatoTurretBlock(Properties properties) {
+    public PotatoTurretBlock(Properties properties, boolean visible) {
         super(properties);
+        this.visible = visible;
+    }
+    private boolean visible;
+
+    public PotatoTurretBlock(Properties p_i48440_1_) {
+        this(p_i48440_1_, false);
     }
 
+    @Override
+    public void fillItemCategory(CreativeModeTab pCategory, NonNullList<ItemStack> pItems) {
+        if (visible)
+            super.fillItemCategory(pCategory, pItems);
+    }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {

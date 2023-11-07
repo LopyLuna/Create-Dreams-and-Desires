@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "create_dd:rubber"
+    }
+  },
+  "result": {
+    "item": "create:belt_connector",
+    "count": 4
+  }
+}

@@ -24,6 +24,12 @@
     "create_dd:flowing_hot_chocolate",
     "create_dd:hot_chocolate",
     "create_dd:flowing_chocolate_milkshake",
-    "create_dd:chocolate_milkshake"
+    "create_dd:chocolate_milkshake",
+    "create_dd:flowing_chromatic_waste",
+    "create_dd:chromatic_waste",
+    "create_dd:flowing_sap",
+    "create_dd:sap",
+    "create_dd:flowing_shimmer",
+    "create_dd:shimmer"
   ]
 }

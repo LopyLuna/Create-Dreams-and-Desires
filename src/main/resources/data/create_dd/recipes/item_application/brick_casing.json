@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "minecraft:netherrack"
+    },
+    {
+      "tag": "forge:ingots/nether_brick"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:brick_casing"
+    }
+  ]
+}

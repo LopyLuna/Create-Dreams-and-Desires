@@ -1,7 +1,7 @@
 {
   "type": "create:sequenced_assembly",
   "ingredient": {
-    "item": "minecraft:dried_kelp"
+    "item": "create_dd:rubber"
   },
   "transitionalItem": {
     "item": "create_dd:incomplete_sealed_mechanism"

@@ -1,0 +1,20 @@
+{
+  "conditions": [{
+    "type": "forge:mod_loaded",
+    "modid": "createaddition"
+  }],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CCC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "create_dd:overcharge_alloy"
+    }
+  },
+  "result": {
+    "item": "create_dd:overcharged_alloy_block"
+  }
+}

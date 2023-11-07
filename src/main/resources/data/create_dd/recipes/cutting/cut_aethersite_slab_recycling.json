@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "create_dd:cut_aethersite_slab"
+    },
+    {
+      "item": "create_dd:cut_aethersite_slab"
+    }
+  ],
+  "result": {
+    "item": "create_dd:cut_aethersite"
+  }
+}

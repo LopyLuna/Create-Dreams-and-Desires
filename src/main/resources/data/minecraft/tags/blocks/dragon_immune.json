@@ -3,6 +3,9 @@
   "values": [
     "create_dd:shadow_steel_block",
     "create_dd:shadow_steel_scaffolding",
-    "create_dd:shadow_steel_casing"
+    "create_dd:shadow_steel_casing",
+    "create_dd:stargaze_singularity_block",
+    "create_dd:stargaze_singularity_scaffolding",
+    "create_dd:stargaze_singularity_casing"
   ]
 }

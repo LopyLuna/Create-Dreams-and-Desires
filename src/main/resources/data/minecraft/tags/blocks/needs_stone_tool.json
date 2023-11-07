@@ -6,6 +6,8 @@
     "create_dd:tin_block",
     "create_dd:raw_tin_block",
     "create_dd:lapis_alloy_block",
-    "#create_dd:spirit_woodset"
+    "#create_dd:spirit_woodset",
+    "create_dd:nether_brick_casing",
+    "create_dd:brick_casing"
   ]
 }

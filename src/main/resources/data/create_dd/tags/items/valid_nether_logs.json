@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:warped_stem",
+    "minecraft:stripped_warped_stem",
+    "minecraft:warped_hyphae",
+    "minecraft:stripped_warped_hyphae",
+    "minecraft:crimson_stem",
+    "minecraft:stripped_crimson_stem",
+    "minecraft:crimson_hyphae",
+    "minecraft:stripped_crimson_hyphae",
+    "create_dd:spirit_log",
+    "create_dd:stripped_spirit_log",
+    "create_dd:spirit_wood",
+    "create_dd:stripped_spirit_wood"
+  ]
+}

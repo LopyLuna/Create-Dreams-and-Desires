@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:cut_aethersite",
+    "create_dd:cut_aethersite_stairs",
+    "create_dd:cut_aethersite_wall",
+    "create_dd:polished_cut_aethersite",
+    "create_dd:polished_cut_aethersite_stairs",
+    "create_dd:polished_cut_aethersite_wall",
+    "create_dd:cut_aethersite_bricks",
+    "create_dd:cut_aethersite_brick_stairs",
+    "create_dd:cut_aethersite_brick_wall",
+    "create_dd:small_aethersite_bricks",
+    "create_dd:small_aethersite_brick_stairs",
+    "create_dd:small_aethersite_brick_wall",
+    "create_dd:layered_aethersite",
+    "create_dd:aethersite_pillar",
+    "create_dd:aethersite"
+  ]
+}

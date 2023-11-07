@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "create_dd:small_aethersite_bricks"
+    }
+  },
+  "result": {
+    "item": "create_dd:small_aethersite_brick_wall",
+    "count": 6
+  }
+}

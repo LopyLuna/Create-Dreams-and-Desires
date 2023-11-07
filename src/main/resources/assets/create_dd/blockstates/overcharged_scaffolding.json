@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=false": {
+      "model": "create_dd:block/overcharged_scaffold"
+    },
+    "bottom=true": {
+      "model": "create_dd:block/overcharged_scaffold_horizontal"
+    }
+  }
+}

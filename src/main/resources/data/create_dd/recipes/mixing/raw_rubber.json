@@ -1,0 +1,15 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "fluid": "create_dd:sap",
+      "amount": 1000
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:raw_rubber",
+      "count": 2
+    }
+  ]
+}

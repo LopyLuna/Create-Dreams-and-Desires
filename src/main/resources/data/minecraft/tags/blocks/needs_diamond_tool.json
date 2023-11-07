@@ -3,6 +3,8 @@
   "values": [
     "create_dd:chromatic_block",
     "create_dd:refined_radiance_block",
-    "create_dd:shadow_steel_block"
+    "create_dd:shadow_steel_block",
+    "create_dd:stargaze_singularity_casing",
+    "create_dd:netherite_casing"
   ]
 }

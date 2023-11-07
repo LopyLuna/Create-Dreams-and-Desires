@@ -1,0 +1,12 @@
+{
+  "conditions": [{
+    "type": "forge:mod_loaded",
+    "modid": "createaddition"
+  }],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "create_dd:overcharge_alloy"
+  },
+  "result": "create_dd:overcharged_scaffolding",
+  "count": 2
+}

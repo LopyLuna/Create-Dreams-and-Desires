@@ -1,0 +1,42 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "GHA",
+    "FIB",
+    "EDC"
+  ],
+  "key": {
+    "A": {
+      "item": "create_dd:chocolate_milkshake_bucket"
+    },
+    "B": {
+      "item": "create_dd:sap_bucket"
+    },
+    "C": {
+      "item": "create_dd:caramel_milkshake_bucket"
+    },
+    "D": {
+      "item": "create_dd:chromatic_waste_bucket"
+    },
+    "E": {
+      "item": "create_dd:strawberry_milkshake_bucket"
+    },
+    "F": {
+      "item": "create_dd:glowberry_milkshake_bucket"
+    },
+    "G": {
+      "item": "create_dd:vanilla_milkshake_bucket"
+    },
+    "H": {
+      "item": "create_dd:hot_chocolate_bucket"
+    },
+    "I": {
+      "item": "create_dd:experience_mass"
+    }
+  },
+  "result": {
+    "item": "create_dd:shimmer_bucket",
+    "count": 1
+  },
+  "acceptMirrored": false
+}

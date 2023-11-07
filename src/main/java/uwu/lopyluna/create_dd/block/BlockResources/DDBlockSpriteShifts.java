@@ -53,11 +53,13 @@ public class DDBlockSpriteShifts {
     STEEL_SCAFFOLD = horizontal("steel_scaffold"),
     ZINC_SCAFFOLD = horizontal("zinc_scaffold"),
     TIN_SCAFFOLD = horizontal("tin_scaffold"),
+    NETHERITE_SCAFFOLD = horizontal("netherite_scaffold"),
     MOSSY_ANDESITE_SCAFFOLD = horizontal("mossy_andesite_scaffold"),
     HYDRAULIC_SCAFFOLD = horizontal("hydraulic_scaffold"),
     INDUSTRIAL_SCAFFOLD = horizontal("industrial_scaffold"),
     STARGAZE_SINGULARITY_SCAFFOLD = horizontal("stargaze_singularity_scaffold"),
     BLAZE_GOLD_SCAFFOLD = horizontal("blaze_gold_scaffold"),
+    OVERCHARGED_SCAFFOLD = horizontal("overcharged_scaffold"),
     OVERBURDEN_SCAFFOLD = horizontal("overburden_scaffold"),
     SHADOW_STEEL_SCAFFOLD = horizontal("shadow_steel_scaffold"),
     REFINED_RADIANCE_SCAFFOLD = horizontal("refined_radiance_scaffold");
@@ -70,12 +72,14 @@ public class DDBlockSpriteShifts {
     STEEL_SCAFFOLD_INSIDE = horizontal("steel_scaffold_inside"),
     ZINC_SCAFFOLD_INSIDE = horizontal("zinc_scaffold_inside"),
     TIN_SCAFFOLD_INSIDE = horizontal("tin_scaffold_inside"),
+    NETHERITE_SCAFFOLD_INSIDE = horizontal("netherite_scaffold_inside"),
     MOSSY_ANDESITE_SCAFFOLD_INSIDE = horizontal("mossy_andesite_scaffold_inside"),
     HYDRAULIC_SCAFFOLD_INSIDE = horizontal("hydraulic_scaffold_inside"),
     INDUSTRIAL_SCAFFOLD_INSIDE = horizontal("industrial_scaffold_inside"),
     OVERBURDEN_SCAFFOLD_INSIDE = horizontal("overburden_scaffold_inside"),
     STARGAZE_SINGULARITY_SCAFFOLD_INSIDE = horizontal("stargaze_singularity_scaffold_inside"),
     BLAZE_GOLD_SCAFFOLD_INSIDE = horizontal("blaze_gold_scaffold_inside"),
+    OVERCHARGED_SCAFFOLD_INSIDE = horizontal("overcharged_scaffold_inside"),
     SHADOW_STEEL_SCAFFOLD_INSIDE = horizontal("shadow_steel_scaffold_inside"),
     REFINED_RADIANCE_SCAFFOLD_INSIDE = horizontal("refined_radiance_scaffold_inside");
 

@@ -1,7 +1,7 @@
 {
   "parent": "create_dd:item/forest_ravager/core_glow/core_glow",
   "loader": "forge:obj",
-  "flip-v": true,
+  "flip_v": true,
   "model": "create_dd:models/item/forest_ravager/core_glow/core_glow.obj",
   "display": {
     "thirdperson_righthand": {

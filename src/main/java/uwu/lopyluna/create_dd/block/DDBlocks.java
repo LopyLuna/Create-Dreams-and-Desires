@@ -347,7 +347,7 @@ public class DDBlocks {
             .properties(p -> p.sound(SoundType.MUD_BRICKS))
             .register();
 
-    public static final BlockEntry<CasingBlock> nether_brick_casing = REGISTRATE.block("nether_brick_casing", CasingBlock::new)
+    public static final BlockEntry<CasingBlock> nether_brick_casing = REGISTRATE.block("brick_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.NETHER_BRICK_CASING))
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .properties(p -> p.sound(SoundType.NETHER_BRICKS))
@@ -433,9 +433,9 @@ public class DDBlocks {
     public static final BlockEntry<BlazeGoldBlockcasing> blaze_gold_casing = REGISTRATE.block("blaze_gold_casing", BlazeGoldBlockcasing::new)
             .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.BLAZE_GOLD_CASING))
             .properties(p -> p.color(MaterialColor.COLOR_BLACK))
-            .properties(p -> p.sound(new ForgeSoundType(1f, 1.2f, () -> SoundEvents.NETHERITE_BLOCK_BREAK,
-                    () -> SoundEvents.NETHERITE_BLOCK_STEP, () -> SoundEvents.NETHERITE_BLOCK_PLACE,
-                    () -> SoundEvents.NETHERITE_BLOCK_HIT, () -> SoundEvents.NETHERITE_BLOCK_FALL)))
+            .properties(p -> p.sound(new ForgeSoundType(1f, 1.1f, () -> DDSoundEvents.magical_metal_break.get(),
+                    () -> DDSoundEvents.magical_metal_step.get(), () -> DDSoundEvents.magical_metal_place.get(),
+                    () -> DDSoundEvents.magical_metal_hit.get(), () -> DDSoundEvents.magical_metal_fall.get())))
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(5f,24f))
             .item()
@@ -552,10 +552,11 @@ public class DDBlocks {
     public static final BlockEntry<FurnaceEngineBlock> FURNACE_ENGINE =
             REGISTRATE.block("furnace_engine", FurnaceEngineBlock::new)
             .initialProperties(SharedProperties::softMetal)
-            .transform(pickaxeOnly())
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .transform(axeOrPickaxe())
             .tag(AllTags.AllBlockTags.BRITTLE.tag)
             .blockstate(BlockStateGen.horizontalBlockProvider(true))
-            .transform(BlockStressDefaults.setCapacity(384.0))
+            .transform(BlockStressDefaults.setCapacity(341.5))
             .item()
             .transform(customItemModel())
             .register();
@@ -564,6 +565,7 @@ public class DDBlocks {
             REGISTRATE.block("flywheel", FlywheelBlock::new)
             .initialProperties(SharedProperties::softMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
             .transform(axeOrPickaxe())
             .transform(BlockStressDefaults.setNoImpact())
             .blockstate(new FlywheelGenerator()::generate)
@@ -860,14 +862,26 @@ public class DDBlocks {
     public static final BlockEntry<MetalScaffoldingBlock> STARGAZE_SINGULARITY_SCAFFOLD =
             REGISTRATE.block("stargaze_singularity_scaffolding", MetalScaffoldingBlock::new)
                     .transform(BuilderTransformers.scaffold("stargaze_singularity",
-                            () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/stargaze_singularity")), MaterialColor.SNOW,
+                            () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/stargaze_singularity")), MaterialColor.TERRACOTTA_BLACK,
                             DDBlockSpriteShifts.STARGAZE_SINGULARITY_SCAFFOLD, DDBlockSpriteShifts.STARGAZE_SINGULARITY_SCAFFOLD_INSIDE, DDBlockSpriteShifts.STARGAZE_SINGULARITY_CASING))
                     .register();
     public static final BlockEntry<MetalScaffoldingBlock> BLAZE_GOLD_SCAFFOLD =
             REGISTRATE.block("blaze_gold_scaffolding", MetalScaffoldingBlock::new)
                     .transform(BuilderTransformers.scaffold("blaze_gold",
-                            () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/blaze_gold")), MaterialColor.SNOW,
+                            () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/blaze_gold")), MaterialColor.COLOR_RED,
                             DDBlockSpriteShifts.BLAZE_GOLD_SCAFFOLD, DDBlockSpriteShifts.BLAZE_GOLD_SCAFFOLD_INSIDE, DDBlockSpriteShifts.BLAZE_GOLD_CASING))
+                    .register();
+    public static final BlockEntry<OverchargedScaffoldingBlock> OVERCHARGED_SCAFFOLD =
+            REGISTRATE.block("overcharged_scaffolding", OverchargedScaffoldingBlock::new)
+                    .transform(BuilderTransformers.scaffold("overcharge",
+                            () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/overcharge")), MaterialColor.COLOR_LIGHT_BLUE,
+                            DDBlockSpriteShifts.OVERCHARGED_SCAFFOLD, DDBlockSpriteShifts.OVERCHARGED_SCAFFOLD_INSIDE, DDBlockSpriteShifts.OVERCHARGED_CASING))
+                    .register();
+    public static final BlockEntry<MetalScaffoldingBlock> NETHERITE_SCAFFOLD =
+            REGISTRATE.block("netherite_scaffolding", MetalScaffoldingBlock::new)
+                    .transform(BuilderTransformers.scaffold("netherite",
+                            () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/netherite")), MaterialColor.COLOR_LIGHT_BLUE,
+                            DDBlockSpriteShifts.NETHERITE_SCAFFOLD, DDBlockSpriteShifts.NETHERITE_SCAFFOLD_INSIDE, DDBlockSpriteShifts.NETHERITE_CASING))
                     .register();
 
     public static final BlockEntry<BlockcopycatBlock> COPYCAT_BlOCK =
@@ -1481,6 +1495,19 @@ public class DDBlocks {
                 .simpleItem()
                 .register();
 
+    public static final BlockEntry<Block> aethersite_asphalt_block = REGISTRATE.block("aethersite_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_BLUE))
+            .properties(p -> p.sound(new ForgeSoundType(0.8f, 1.5f, () -> DDSoundEvents.ore_stone_break.get(),
+                    () -> DDSoundEvents.ore_stone_step.get(), () -> DDSoundEvents.ore_stone_place.get(),
+                    () -> DDSoundEvents.ore_stone_hit.get(), () -> DDSoundEvents.ore_stone_fall.get())))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+            .simpleItem()
+            .register();
+
     public static final BlockEntry<Block> scorchia_asphalt_block = REGISTRATE.block("scorchia_asphalt_block", Block::new)
             .properties(p -> p.destroyTime(1.25f)
                     .speedFactor(1.2F)
@@ -1612,6 +1639,16 @@ public class DDBlocks {
             .properties(p -> p.destroyTime(1.25f)
                     .color(MaterialColor.TERRACOTTA_BLUE))
             .properties(p -> p.sound(new ForgeSoundType(0.8f, 0.85f, () -> DDSoundEvents.ore_stone_break.get(),
+                    () -> DDSoundEvents.ore_stone_step.get(), () -> DDSoundEvents.ore_stone_place.get(),
+                    () -> DDSoundEvents.ore_stone_hit.get(), () -> DDSoundEvents.ore_stone_fall.get())))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> aethersite_mossy_bricks = REGISTRATE.block("aethersite_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .color(MaterialColor.TERRACOTTA_BLUE))
+            .properties(p -> p.sound(new ForgeSoundType(0.8f, 1.5f, () -> DDSoundEvents.ore_stone_break.get(),
                     () -> DDSoundEvents.ore_stone_step.get(), () -> DDSoundEvents.ore_stone_place.get(),
                     () -> DDSoundEvents.ore_stone_hit.get(), () -> DDSoundEvents.ore_stone_fall.get())))
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)

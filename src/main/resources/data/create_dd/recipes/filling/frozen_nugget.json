@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "create_dd:compound_base"
+    },
+    {
+      "amount": 1,
+      "fluid": "create_dd:shimmer",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:frozen_nugget"
+    }
+  ]
+}

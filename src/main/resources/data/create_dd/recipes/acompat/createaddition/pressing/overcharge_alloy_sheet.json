@@ -1,0 +1,17 @@
+{
+  "conditions": [{
+    "type": "forge:mod_loaded",
+    "modid": "createaddition"
+  }],
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "create_dd:overcharge_alloy"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:overcharge_alloy_sheet"
+    }
+  ]
+}

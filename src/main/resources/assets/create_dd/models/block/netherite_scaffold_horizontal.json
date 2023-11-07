@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/scaffold/block_horizontal",
+  "textures": {
+    "top": "create_dd:block/scaffold/netherite_scaffold_frame",
+    "inside": "create_dd:block/scaffold/netherite_scaffold_inside",
+    "side": "create_dd:block/scaffold/netherite_scaffold",
+    "casing": "create_dd:block/netherite_casing",
+    "particle": "create_dd:block/scaffold/netherite_scaffold"
+  }
+}

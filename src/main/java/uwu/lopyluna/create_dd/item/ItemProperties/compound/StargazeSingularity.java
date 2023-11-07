@@ -1,16 +1,13 @@
 package uwu.lopyluna.create_dd.item.ItemProperties.compound;
 
 import com.simibubi.create.foundation.utility.VecHelper;
-import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.fml.ModList;
 
 public class StargazeSingularity extends NoGravMagical {
 
@@ -36,7 +33,7 @@ public class StargazeSingularity extends NoGravMagical {
             }
 
             if (entity.isSilent() && !persistentData.getBoolean("PlayEffects")) {
-                Vec3 basemotion = new Vec3(0, 1, 0);
+                Vec3 basemotion = new Vec3(0, -2, 0);
                 world.addParticle(ParticleTypes.FLASH, pos.x, pos.y, pos.z, 0, 0.025F, 0);
                 for (int i = 0; i < 20; i++) {
                     Vec3 motion = VecHelper.offsetRandomly(basemotion, world.random, 1);
@@ -64,8 +61,7 @@ public class StargazeSingularity extends NoGravMagical {
     @Override
     protected void onCreated(ItemEntity entity, CompoundTag persistentData) {
         super.onCreated(entity, persistentData);
-        entity.setDeltaMovement(entity.getDeltaMovement()
-                .add(0, .25f, 0));
+        entity.setDeltaMovement(entity.getDeltaMovement().multiply(0.8, 0.75, 0.8));
     }
 
     @Override

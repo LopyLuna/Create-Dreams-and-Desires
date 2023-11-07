@@ -14,6 +14,7 @@ import uwu.lopyluna.create_dd.creative.DDItemTab;
 import uwu.lopyluna.create_dd.item.ItemProperties.ItemDisabled;
 import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem1;
 import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem2;
+import uwu.lopyluna.create_dd.item.ItemProperties.UnchargedStargazeSingularity;
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.*;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemOne;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemTwo;
@@ -83,6 +84,7 @@ public class DDItems {
             vanilla_orchid = i("vanilla_orchid");
 
     public static final ItemEntry<SequencedAssemblyItem>
+            incomplete_stargaze_singularity = sequencedIngredient("incomplete_stargaze_singularity"),
             incomplete_integrated_circuit = sequencedIngredient("incomplete_integrated_circuit"),
             incomplete_integrated_mechanism = sequencedIngredient("incomplete_integrated_mechanism"),
             incomplete_abstruse_mechanism = sequencedIngredient("incomplete_abstruse_mechanism"),
@@ -121,6 +123,13 @@ public class DDItems {
 
     public static final ItemEntry<RefinedRadiance> REFINED_RADIANCE_SHEET =
             REGISTRATE.item("refined_radiance_sheet", RefinedRadiance::new)
+                    .properties(p -> p.stacksTo(16)
+                            .rarity(Rarity.UNCOMMON)
+                            .fireResistant())
+                    .register();
+
+    public static final ItemEntry<UnchargedStargazeSingularity> FALLEN_STARGAZE_SINGULARITY =
+            REGISTRATE.item("fallen_stargaze_singularity", UnchargedStargazeSingularity::new)
                     .properties(p -> p.stacksTo(16)
                             .rarity(Rarity.UNCOMMON)
                             .fireResistant())

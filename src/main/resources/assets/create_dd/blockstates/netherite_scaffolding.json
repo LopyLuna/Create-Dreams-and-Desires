@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=false": {
+      "model": "create_dd:block/netherite_scaffold"
+    },
+    "bottom=true": {
+      "model": "create_dd:block/netherite_scaffold_horizontal"
+    }
+  }
+}

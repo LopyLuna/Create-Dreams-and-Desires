@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "create_dd:polished_cut_aethersite"
+    }
+  },
+  "result": {
+    "item": "create_dd:polished_cut_aethersite_wall",
+    "count": 6
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "forge:ingots/steel"
+  },
+  "result": "create_dd:steel_scaffolding",
+  "count": 2
+}

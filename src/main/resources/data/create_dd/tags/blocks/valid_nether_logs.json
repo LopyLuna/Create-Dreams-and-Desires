@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:warped_stem",
+    "create_dd:stripped_warped_stem",
+    "create_dd:warped_hyphae",
+    "create_dd:stripped_warped_hyphae",
+    "create_dd:crimson_stem",
+    "create_dd:stripped_crimson_stem",
+    "create_dd:crimson_hyphae",
+    "create_dd:stripped_crimson_hyphae",
+    "create_dd:spirit_log",
+    "create_dd:stripped_spirit_log",
+    "create_dd:spirit_wood",
+    "create_dd:stripped_spirit_wood"
+  ]
+}

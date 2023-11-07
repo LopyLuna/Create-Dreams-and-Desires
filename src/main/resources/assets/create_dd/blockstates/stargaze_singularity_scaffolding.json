@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=false": {
+      "model": "create_dd:block/stargaze_singularity_scaffold"
+    },
+    "bottom=true": {
+      "model": "create_dd:block/stargaze_singularity_scaffold_horizontal"
+    }
+  }
+}

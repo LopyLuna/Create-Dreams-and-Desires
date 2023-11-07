@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "side": "create_dd:block/palettes/stone_types/brick/aethersite_cut_brick",
+    "bottom": "create_dd:block/palettes/stone_types/brick/aethersite_cut_brick",
+    "top": "create_dd:block/palettes/stone_types/brick/aethersite_cut_brick"
+  }
+}

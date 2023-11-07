@@ -26,7 +26,7 @@ public class MysteriousConversion extends MysteriousItemConversionCategory {
         if (ModList.get().isLoaded("createaddition")) {
             RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.OVERCHARGE_ALLOY.asStack()));}
         RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.BLAZE_GOLD.asStack()));
-        RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.STARGAZE_SINGULARITY.asStack()));
+        RECIPES.add(ConversionRecipe.create(DDItems.FALLEN_STARGAZE_SINGULARITY.asStack(), DDItems.STARGAZE_SINGULARITY.asStack()));
 
 
     }

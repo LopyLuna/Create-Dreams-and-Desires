@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/scaffold/block_horizontal",
+  "textures": {
+    "top": "create_dd:block/scaffold/steel_scaffold_frame",
+    "inside": "create_dd:block/scaffold/steel_scaffold_inside",
+    "side": "create_dd:block/scaffold/steel_scaffold",
+    "casing": "create_dd:block/steel_casing",
+    "particle": "create_dd:block/scaffold/steel_scaffold"
+  }
+}

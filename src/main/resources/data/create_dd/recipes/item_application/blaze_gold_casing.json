@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "create_dd:industrial_iron_block"
+    },
+    {
+      "item": "create_dd:blaze_gold"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:blaze_gold_casing"
+    }
+  ]
+}

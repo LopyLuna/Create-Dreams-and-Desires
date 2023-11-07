@@ -1,5 +1,5 @@
 {
-  "parent": "create_dd:calculation_mechanism",
+  "parent": "create_dd:integrated_circuit",
   "display": {
     "icon": {
       "item": "create_dd:integrated_mechanism"

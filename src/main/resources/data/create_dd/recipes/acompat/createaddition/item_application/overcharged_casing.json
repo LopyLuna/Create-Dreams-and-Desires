@@ -1,0 +1,20 @@
+{
+  "conditions": [{
+    "type": "forge:mod_loaded",
+    "modid": "createaddition"
+  }],
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "create_dd:industrial_iron_block"
+    },
+    {
+      "item": "create_dd:overcharge_alloy"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:overcharged_casing"
+    }
+  ]
+}

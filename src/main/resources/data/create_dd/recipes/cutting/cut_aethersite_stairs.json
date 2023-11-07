@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "cut_aethersite_stairs",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "create_dd:cut_aethersite"
+    }
+  },
+  "result": {
+    "item": "create_dd:cut_aethersite_stairs",
+    "count": 4
+  }
+}

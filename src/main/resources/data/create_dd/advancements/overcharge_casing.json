@@ -1,4 +1,8 @@
 {
+  "conditions": [{
+    "type": "forge:mod_loaded",
+    "modid": "createaddition"
+  }],
   "parent": "create_dd:overcharge_alloy",
   "display": {
     "icon": {

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "create_dd:cut_aethersite_bricks"
+    },
+    [
+      {
+        "item": "minecraft:vine"
+      },
+      {
+        "item": "minecraft:moss_block"
+      }
+    ]
+  ],
+  "result": {
+    "item": "create_dd:aethersite_mossy_bricks",
+    "count": 1
+  }
+}

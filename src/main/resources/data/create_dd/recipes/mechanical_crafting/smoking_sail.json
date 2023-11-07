@@ -10,7 +10,7 @@
       "item": "create:white_sail"
     },
     "B": {
-      "tag": "forge:plates/andesite_alloy"
+      "item": "create_dd:rubber"
     },
     "D": {
       "item": "minecraft:campfire"

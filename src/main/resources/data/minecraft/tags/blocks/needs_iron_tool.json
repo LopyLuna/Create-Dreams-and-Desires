@@ -5,6 +5,8 @@
     "create_dd:mithril_block",
     "create_dd:steel_block",
     "create_dd:mithril_casing",
-    "create_dd:industrial_iron_block"
+    "create_dd:industrial_iron_block",
+    "create_dd:blaze_gold_casing",
+    "create_dd:overcharged_casing"
   ]
 }

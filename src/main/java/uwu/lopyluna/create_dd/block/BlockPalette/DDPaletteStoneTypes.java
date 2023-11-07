@@ -22,6 +22,13 @@ import static uwu.lopyluna.create_dd.block.BlockPalette.gen.DDPaletteBlockPatter
 
 public enum DDPaletteStoneTypes {
 
+    aethersite(STANDARD_RANGE, r -> r.paletteStoneBlock("aethersite", () -> Blocks.DEEPSLATE, true, false)
+            .properties(p -> p.color(MaterialColor.COLOR_PINK))
+            .properties(p -> p.sound(new ForgeSoundType(0.8f, 1.5f, () -> DDSoundEvents.ore_stone_break.get(),
+                    () -> DDSoundEvents.ore_stone_step.get(), () -> DDSoundEvents.ore_stone_place.get(),
+                    () -> DDSoundEvents.ore_stone_hit.get(), () -> DDSoundEvents.ore_stone_fall.get())))
+            .register()),
+
     potassic(STANDARD_RANGE, r -> r.paletteStoneBlock("potassic", () -> Blocks.DEEPSLATE, true, false)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BLUE))
             .properties(p -> p.sound(new ForgeSoundType(0.8f, 0.85f, () -> DDSoundEvents.ore_stone_break.get(),

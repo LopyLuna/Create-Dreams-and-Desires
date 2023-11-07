@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "create_dd:block/palettes/stone_types/layered/aethersite_cut_layered",
+    "end": "create_dd:block/palettes/stone_types/cap/aethersite_cut_cap"
+  }
+}

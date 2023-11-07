@@ -1,0 +1,116 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "create_dd:compound_base"
+  },
+  "transitionalItem": {
+    "item": "create_dd:incomplete_stargaze_singularity"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        },
+        {
+          "item": "create_dd:refined_radiance"
+        }
+      ],
+      "results": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        },
+        {
+          "item": "create_dd:shadow_steel"
+        }
+      ],
+      "results": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        },
+        {
+          "item": "create_dd:blaze_gold"
+        }
+      ],
+      "results": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        },
+        {
+          "item": "create_dd:mithril_ingot"
+        }
+      ],
+      "results": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        },
+        {
+          "item": "create_dd:experience_mass"
+        }
+      ],
+      "results": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        }
+      ]
+    },
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        },
+        {
+          "amount": 1000,
+          "fluid": "create_dd:shimmer",
+          "nbt": {}
+        }
+      ],
+      "results": [
+        {
+          "item": "create_dd:incomplete_stargaze_singularity"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:fallen_stargaze_singularity",
+      "chance": 100.0
+    }
+  ],
+  "loops": 1
+}

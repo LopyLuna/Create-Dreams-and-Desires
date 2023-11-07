@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "create_dd:block/palettes/stone_types/brick/aethersite_cut_brick"
+  }
+}

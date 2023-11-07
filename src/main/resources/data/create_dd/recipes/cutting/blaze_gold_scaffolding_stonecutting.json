@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "create_dd:blaze_gold"
+  },
+  "result": "create_dd:blaze_gold_scaffolding",
+  "count": 2
+}

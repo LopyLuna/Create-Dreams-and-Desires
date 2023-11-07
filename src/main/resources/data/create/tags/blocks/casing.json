@@ -9,6 +9,15 @@
     "create_dd:overburden_casing",
     "create_dd:shadow_steel_casing",
     "create_dd:refined_radiance_casing",
-    "create_dd:steel_casing"
+    "create_dd:steel_casing",
+
+    "create_dd:stargaze_singularity_casing",
+    "create_dd:blaze_gold_casing",
+    "create_dd:overcharged_casing",
+    "create_dd:nether_brick_casing",
+    "create_dd:brick_casing",
+    "create_dd:tin_casing",
+    "create_dd:netherite_casing"
+
   ]
 }

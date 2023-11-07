@@ -9,6 +9,12 @@
     "create_dd:zinc_scaffolding",
     "create_dd:bronze_scaffolding",
     "create_dd:shadow_steel_scaffolding",
-    "create_dd:refined_radiance_scaffolding"
+    "create_dd:refined_radiance_scaffolding",
+    "create_dd:stargaze_singularity_scaffolding",
+    "create_dd:blaze_gold_scaffolding",
+    "create_dd:overcharged_scaffolding",
+    "create_dd:netherite_scaffolding",
+    "create_dd:steel_scaffolding",
+    "create_dd:tin_scaffolding"
   ]
 }

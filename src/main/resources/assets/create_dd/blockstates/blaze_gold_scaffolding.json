@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=false": {
+      "model": "create_dd:block/blaze_gold_scaffold"
+    },
+    "bottom=true": {
+      "model": "create_dd:block/blaze_gold_scaffold_horizontal"
+    }
+  }
+}
