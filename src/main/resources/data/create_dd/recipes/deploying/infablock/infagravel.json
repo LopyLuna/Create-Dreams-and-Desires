@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "item": "create_dd:stargaze_singularity"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:infagravel"
+    }
+  ]
+}

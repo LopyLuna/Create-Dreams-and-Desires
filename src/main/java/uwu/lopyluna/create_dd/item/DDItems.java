@@ -9,11 +9,14 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SimpleFoiledItem;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import uwu.lopyluna.create_dd.creative.DDItemTab;
 import uwu.lopyluna.create_dd.item.ItemProperties.ItemDisabled;
 import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem1;
 import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem2;
+import uwu.lopyluna.create_dd.item.ItemProperties.StargazeInfiniteBlock;
 import uwu.lopyluna.create_dd.item.ItemProperties.UnchargedStargazeSingularity;
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.*;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemOne;
@@ -92,6 +95,29 @@ public class DDItems {
             incomplete_inductive_mechanism = sequencedIngredient("incomplete_inductive_mechanism"),
             incomplete_infernal_mechanism = sequencedIngredient("incomplete_infernal_mechanism"),
             incomplete_sealed_mechanism = sequencedIngredient("incomplete_sealed_mechanism");
+
+    public static final ItemEntry<StargazeInfiniteBlock>
+            INFA_STONE = infablock("STONE", Blocks.STONE),
+            INFA_GRANITE = infablock("GRANITE", Blocks.GRANITE),
+            INFA_DIORITE = infablock("DIORITE", Blocks.DIORITE),
+            INFA_ANDESITE = infablock("ANDESITE", Blocks.ANDESITE),
+            INFA_COBBLED_DEEPSLATE = infablock("COBBLED_DEEPSLATE", Blocks.COBBLED_DEEPSLATE),
+            INFA_CALCITE = infablock("CALCITE", Blocks.CALCITE),
+            INFA_TUFF = infablock("TUFF", Blocks.TUFF),
+            INFA_DRIPSTONE_BLOCK = infablock("DRIPSTONE_BLOCK", Blocks.DRIPSTONE_BLOCK),
+            INFA_DIRT = infablock("DIRT", Blocks.DIRT),
+            INFA_COARSE_DIRT = infablock("COARSE_DIRT", Blocks.COARSE_DIRT),
+            INFA_MUD = infablock("MUD", Blocks.MUD),
+            INFA_COBBLESTONE = infablock("COBBLESTONE", Blocks.COBBLESTONE),
+            INFA_SAND = infablock("SAND", Blocks.SAND),
+            INFA_RED_SAND = infablock("RED_SAND", Blocks.RED_SAND),
+            INFA_GRAVEL = infablock("GRAVEL", Blocks.GRAVEL),
+            INFA_OBSIDIAN = infablock("OBSIDIAN", Blocks.OBSIDIAN),
+            INFA_SOUL_SAND = infablock("SOUL_SAND", Blocks.SOUL_SAND),
+            INFA_END_STONE = infablock("END_STONE", Blocks.END_STONE),
+            INFA_NETHERRACK = infablock("NETHERRACK", Blocks.NETHERRACK),
+            INFA_MAGMA_BLOCK = infablock("MAGMA_BLOCK", Blocks.MAGMA_BLOCK),
+            INFA_MOSS_BLOCK = infablock("MOSS_BLOCK", Blocks.MOSS_BLOCK);
 
     public static final ItemEntry<ChromaticCompound> CHROMATIC_COMPOUND =
             REGISTRATE.item("chromatic_compound", ChromaticCompound::new)
@@ -239,7 +265,6 @@ public class DDItems {
             .register();
 
 
-
     public static final ItemEntry<SequencedCraftingItem1>
             incomplete_crafted_inductive_mechanism1 = craftingIngredient1("crafting_inductive_mechanism1"),
             incomplete_crafted_kinetic_mechanism1 = craftingIngredient1("crafting_kinetic_mechanism1")
@@ -254,6 +279,15 @@ public class DDItems {
         return REGISTRATE.item(name, Item::new)
                 .register();
     }
+
+    private static ItemEntry<StargazeInfiniteBlock> infablock(String name, Block block) {
+        return REGISTRATE.item("infa" + name.toLowerCase(), p -> new StargazeInfiniteBlock(block, p))
+                .properties(p -> p.stacksTo(1)
+                        .rarity(Rarity.EPIC)
+                        .fireResistant())
+                .register();
+    }
+
     private static ItemEntry<SimpleFoiledItem> foilIngredient(String name) {
         return REGISTRATE.item(name, SimpleFoiledItem::new)
                 .register();

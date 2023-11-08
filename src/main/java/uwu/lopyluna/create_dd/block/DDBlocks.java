@@ -347,7 +347,7 @@ public class DDBlocks {
             .properties(p -> p.sound(SoundType.MUD_BRICKS))
             .register();
 
-    public static final BlockEntry<CasingBlock> nether_brick_casing = REGISTRATE.block("brick_casing", CasingBlock::new)
+    public static final BlockEntry<CasingBlock> nether_brick_casing = REGISTRATE.block("nether_brick_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.NETHER_BRICK_CASING))
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .properties(p -> p.sound(SoundType.NETHER_BRICKS))
