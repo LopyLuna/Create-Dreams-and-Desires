@@ -60,6 +60,8 @@ public static TagKey<Block> forgeBlockTag(String path) {
         limestone_replaceable,
         gabbro_replaceable,
         bronze_drill_immune,
+        bronze_saw_immune,
+        bronze_saw_valid,
         radiant_drill_immune,
         shadow_drill_immune,
 

@@ -1,6 +1,7 @@
 package uwu.lopyluna.create_dd.item.ItemProperties;
 
 import com.simibubi.create.foundation.utility.VecHelper;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -29,10 +30,13 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.Map;
 
-
+@SuppressWarnings({"unused", "inline"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class StargazeInfiniteBlock extends BlockItem {
 
     public StargazeInfiniteBlock(Block pBlock, Properties pProperties) {

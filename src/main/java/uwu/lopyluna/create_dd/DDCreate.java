@@ -44,10 +44,9 @@ public class DDCreate
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(DDCreate.MOD_ID);
 
     static {
-        REGISTRATE.setTooltipModifierFactory(item -> {
-            return new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
-                    .andThen(TooltipModifier.mapNull(KineticStats.create(item)));
-        });
+        REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
+                .andThen(TooltipModifier.mapNull(KineticStats.create(item)))
+        );
     }
 
     public DDCreate()
