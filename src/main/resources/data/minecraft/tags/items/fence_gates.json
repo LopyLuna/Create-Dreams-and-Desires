@@ -3,6 +3,7 @@
   "values": [
     "create_dd:rose_fence_gate",
     "create_dd:smoked_fence_gate",
-    "create_dd:spirit_fence_gate"
+    "create_dd:spirit_fence_gate",
+    "create_dd:rubber_fence_gate"
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "create_dd:block/stripped_rubber_log_x"
+    },
+    "axis=y": {
+      "model": "create_dd:block/stripped_rubber_log_y"
+    },
+    "axis=z": {
+      "model": "create_dd:block/stripped_rubber_log_z"
+    }
+  }
+}

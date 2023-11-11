@@ -2,13 +2,13 @@
   "type": "create:emptying",
   "ingredients": [
     {
-      "item": "minecraft:acacia_log"
+      "item": "minecraft:stripped_acacia_log"
     }
   ],
   "results": [
     {
       "chance": 0.4,
-      "item": "minecraft:acacia_log"
+      "item": "minecraft:stripped_acacia_log"
     },
     {
       "chance": 0.2,

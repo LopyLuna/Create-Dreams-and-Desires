@@ -1,0 +1,7 @@
+{
+  "parent": "create_dd:block/cube_column_uv_locked_x",
+  "textures": {
+    "end": "create_dd:block/stripped_rubber_log_top",
+    "side": "create_dd:block/stripped_rubber_log"
+  }
+}

@@ -2,13 +2,13 @@
   "type": "create:emptying",
   "ingredients": [
     {
-      "item": "minecraft:jungle_log"
+      "item": "minecraft:stripped_jungle_log"
     }
   ],
   "results": [
     {
       "chance": 0.4,
-      "item": "minecraft:jungle_log"
+      "item": "minecraft:stripped_jungle_log"
     },
     {
       "chance": 0.1,

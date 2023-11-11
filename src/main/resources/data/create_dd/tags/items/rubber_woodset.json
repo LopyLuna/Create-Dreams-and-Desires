@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:rubber_log",
+    "create_dd:stripped_rubber_log",
+    "create_dd:rubber_wood",
+    "create_dd:stripped_rubber_wood",
+    "create_dd:rubber_planks",
+
+    "create_dd:rubber_slab",
+    "create_dd:rubber_stairs",
+    "create_dd:rubber_fence",
+    "create_dd:rubber_fence_gate",
+    "create_dd:rubber_door",
+    "create_dd:rubber_trapdoor",
+    "create_dd:rubber_button",
+    "create_dd:rubber_pressure_plate"
+  ]
+}

@@ -3,6 +3,7 @@
   "values": [
     "create_dd:rose_door",
     "create_dd:smoked_door",
-    "create_dd:spirit_door"
+    "create_dd:spirit_door",
+    "create_dd:rubber_door"
   ]
 }

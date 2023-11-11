@@ -1,0 +1,22 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "minecraft:stripped_dark_oak_wood"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.4,
+      "item": "minecraft:stripped_dark_oak_wood"
+    },
+    {
+      "chance": 0.04,
+      "item": "create_dd:crystallized_sap"
+    },
+    {
+      "amount": 15,
+      "fluid": "create_dd:sap"
+    }
+  ]
+}

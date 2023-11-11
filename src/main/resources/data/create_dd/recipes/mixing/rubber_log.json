@@ -1,0 +1,28 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "tag": "create_dd:logs_that_burn"
+    },
+    {
+      "tag": "create_dd:logs_that_burn"
+    },
+    {
+      "tag": "create_dd:logs_that_burn"
+    },
+    {
+      "tag": "create_dd:logs_that_burn"
+    },
+    {
+      "fluidTag": "forge:sap",
+      "amount": 100
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:rubber_log",
+      "count": 4
+    }
+  ],
+  "heatRequirement": "heated"
+}

@@ -19,6 +19,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.grower.OakTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -59,10 +60,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretBl
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlock2;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlockGen;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainGearshiftBlock2;
-import uwu.lopyluna.create_dd.block.BlockProperties.wood.HazardBlock;
-import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssBlock;
-import uwu.lopyluna.create_dd.block.BlockProperties.wood.HotAssRotatedBlockPillar;
-import uwu.lopyluna.create_dd.block.BlockProperties.wood.SpiritLogRotatedBlockPillar;
+import uwu.lopyluna.create_dd.block.BlockProperties.wood.*;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockSpriteShifts;
 import uwu.lopyluna.create_dd.creative.DDItemTab;
 import uwu.lopyluna.create_dd.sounds.DDSoundEvents;
@@ -1029,37 +1027,37 @@ public class DDBlocks {
 
     //ROSE WOODSET
 
-    public static final BlockEntry<HotAssRotatedBlockPillar> rose_log = REGISTRATE.block("rose_log", HotAssRotatedBlockPillar::new)
+    public static final BlockEntry<CanBurnRotatedBlockPillar> rose_log = REGISTRATE.block("rose_log", CanBurnRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.OAK_LOG)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Log")
             .simpleItem()
             .register();
-    public static final BlockEntry<HotAssRotatedBlockPillar> stripped_rose_log = REGISTRATE.block("stripped_rose_log", HotAssRotatedBlockPillar::new)
+    public static final BlockEntry<CanBurnRotatedBlockPillar> stripped_rose_log = REGISTRATE.block("stripped_rose_log", CanBurnRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.STRIPPED_OAK_LOG)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Stripped Rose Log")
             .simpleItem()
             .register();
-    public static final BlockEntry<HotAssRotatedBlockPillar> rose_wood = REGISTRATE.block("rose_wood", HotAssRotatedBlockPillar::new)
+    public static final BlockEntry<CanBurnRotatedBlockPillar> rose_wood = REGISTRATE.block("rose_wood", CanBurnRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.OAK_WOOD)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Wood")
             .simpleItem()
             .register();
-    public static final BlockEntry<HotAssRotatedBlockPillar> stripped_rose_wood = REGISTRATE.block("stripped_rose_wood", HotAssRotatedBlockPillar::new)
+    public static final BlockEntry<CanBurnRotatedBlockPillar> stripped_rose_wood = REGISTRATE.block("stripped_rose_wood", CanBurnRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.STRIPPED_OAK_WOOD)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Stripped Rose Wood")
             .simpleItem()
             .register();
-    public static final BlockEntry<HotAssBlock> rose_planks = REGISTRATE.block("rose_planks", HotAssBlock::new)
+    public static final BlockEntry<CanBurnBlock> rose_planks = REGISTRATE.block("rose_planks", CanBurnBlock::new)
             .initialProperties(() -> Blocks.OAK_PLANKS)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Planks")
             .simpleItem()
             .register();
-    public static final BlockEntry<SlabBlock> rose_slab = REGISTRATE.block("rose_slab", SlabBlock::new)
+    public static final BlockEntry<CanBurnSlabBlock> rose_slab = REGISTRATE.block("rose_slab", CanBurnSlabBlock::new)
             .initialProperties(() -> Blocks.OAK_SLAB)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Slab")
@@ -1071,13 +1069,13 @@ public class DDBlocks {
             .lang("Rose Stairs")
             .simpleItem()
             .register();
-    public static final BlockEntry<FenceBlock> rose_fence = REGISTRATE.block("rose_fence", FenceBlock::new)
+    public static final BlockEntry<CanBurnFenceBlock> rose_fence = REGISTRATE.block("rose_fence", CanBurnFenceBlock::new)
             .initialProperties(() -> Blocks.OAK_FENCE)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Fence")
             .simpleItem()
             .register();
-    public static final BlockEntry<FenceGateBlock> rose_fence_gate = REGISTRATE.block("rose_fence_gate", FenceGateBlock::new)
+    public static final BlockEntry<CanBurnFenceGateBlock> rose_fence_gate = REGISTRATE.block("rose_fence_gate", CanBurnFenceGateBlock::new)
             .initialProperties(() -> Blocks.OAK_FENCE_GATE)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Fence Gate")
@@ -1091,7 +1089,7 @@ public class DDBlocks {
                             .sound(SoundType.WOOD)
                             .noOcclusion())
                     .register();
-    public static final BlockEntry<TrapDoorBlock> rose_trapdoor = REGISTRATE.block("rose_trapdoor", TrapDoorBlock::new)
+    public static final BlockEntry<CanBurnTrapDoorBlock> rose_trapdoor = REGISTRATE.block("rose_trapdoor", CanBurnTrapDoorBlock::new)
             .initialProperties(() -> Blocks.OAK_TRAPDOOR)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED)
                     .noOcclusion())
@@ -1105,7 +1103,7 @@ public class DDBlocks {
             .lang("Rose Button")
             .simpleItem()
             .register();
-    public static final BlockEntry<PressurePlateBlock> rose_pressure_plate = REGISTRATE.block("rose_pressure_plate", p -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, p))
+    public static final BlockEntry<CanBurnPressurePlateBlock> rose_pressure_plate = REGISTRATE.block("rose_pressure_plate", p -> new CanBurnPressurePlateBlock(CanBurnPressurePlateBlock.Sensitivity.EVERYTHING, p))
             .initialProperties(() -> Blocks.OAK_PRESSURE_PLATE)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_RED))
             .lang("Rose Pressure Plate")
@@ -1115,31 +1113,31 @@ public class DDBlocks {
 
     //SMOKED WOODSET
 
-    public static final BlockEntry<HotAssRotatedBlockPillar> smoked_log = REGISTRATE.block("smoked_log", HotAssRotatedBlockPillar::new)
+    public static final BlockEntry<CanBurnRotatedBlockPillar> smoked_log = REGISTRATE.block("smoked_log", CanBurnRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.OAK_LOG)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .lang("Smoked Log")
             .simpleItem()
             .register();
-    public static final BlockEntry<HotAssRotatedBlockPillar> stripped_smoked_log = REGISTRATE.block("stripped_smoked_log", HotAssRotatedBlockPillar::new)
+    public static final BlockEntry<CanBurnRotatedBlockPillar> stripped_smoked_log = REGISTRATE.block("stripped_smoked_log", CanBurnRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.STRIPPED_OAK_LOG)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .lang("Stripped Smoked Log")
             .simpleItem()
             .register();
-    public static final BlockEntry<HotAssRotatedBlockPillar> smoked_wood = REGISTRATE.block("smoked_wood", HotAssRotatedBlockPillar::new)
+    public static final BlockEntry<CanBurnRotatedBlockPillar> smoked_wood = REGISTRATE.block("smoked_wood", CanBurnRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.OAK_WOOD)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .lang("Smoked Wood")
             .simpleItem()
             .register();
-    public static final BlockEntry<HotAssRotatedBlockPillar> stripped_smoked_wood = REGISTRATE.block("stripped_smoked_wood", HotAssRotatedBlockPillar::new)
+    public static final BlockEntry<CanBurnRotatedBlockPillar> stripped_smoked_wood = REGISTRATE.block("stripped_smoked_wood", CanBurnRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.STRIPPED_OAK_WOOD)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .lang("Stripped Smoked Wood")
             .simpleItem()
             .register();
-    public static final BlockEntry<HotAssBlock> smoked_planks = REGISTRATE.block("smoked_planks", HotAssBlock::new)
+    public static final BlockEntry<CanBurnBlock> smoked_planks = REGISTRATE.block("smoked_planks", CanBurnBlock::new)
             .initialProperties(() -> Blocks.OAK_PLANKS)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .lang("Smoked Planks")
@@ -1151,19 +1149,19 @@ public class DDBlocks {
             .lang("Smoked Stairs")
             .simpleItem()
             .register();
-    public static final BlockEntry<SlabBlock> smoked_slab = REGISTRATE.block("smoked_slab", SlabBlock::new)
+    public static final BlockEntry<CanBurnSlabBlock> smoked_slab = REGISTRATE.block("smoked_slab", CanBurnSlabBlock::new)
             .initialProperties(() -> Blocks.OAK_SLAB)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .lang("Smoked Slab")
             .simpleItem()
             .register();
-    public static final BlockEntry<FenceBlock> smoked_fence = REGISTRATE.block("smoked_fence", FenceBlock::new)
+    public static final BlockEntry<CanBurnFenceBlock> smoked_fence = REGISTRATE.block("smoked_fence", CanBurnFenceBlock::new)
             .initialProperties(() -> Blocks.OAK_FENCE)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .lang("Smoked Fence")
             .simpleItem()
             .register();
-    public static final BlockEntry<FenceGateBlock> smoked_fence_gate = REGISTRATE.block("smoked_fence_gate", FenceGateBlock::new)
+    public static final BlockEntry<CanBurnFenceGateBlock> smoked_fence_gate = REGISTRATE.block("smoked_fence_gate", CanBurnFenceGateBlock::new)
             .initialProperties(() -> Blocks.OAK_FENCE_GATE)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .lang("Smoked Fence Gate")
@@ -1177,7 +1175,7 @@ public class DDBlocks {
                             .sound(SoundType.WOOD)
                             .noOcclusion())
                     .register();
-    public static final BlockEntry<TrapDoorBlock> smoked_trapdoor = REGISTRATE.block("smoked_trapdoor", TrapDoorBlock::new)
+    public static final BlockEntry<CanBurnTrapDoorBlock> smoked_trapdoor = REGISTRATE.block("smoked_trapdoor", CanBurnTrapDoorBlock::new)
             .initialProperties(() -> Blocks.OAK_TRAPDOOR)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN)
                     .noOcclusion())
@@ -1191,7 +1189,7 @@ public class DDBlocks {
             .lang("Smoked Button")
             .simpleItem()
             .register();
-    public static final BlockEntry<PressurePlateBlock> smoked_pressure_plate = REGISTRATE.block("smoked_pressure_plate", p -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, p))
+    public static final BlockEntry<CanBurnPressurePlateBlock> smoked_pressure_plate = REGISTRATE.block("smoked_pressure_plate", p -> new CanBurnPressurePlateBlock(CanBurnPressurePlateBlock.Sensitivity.EVERYTHING, p))
             .initialProperties(() -> Blocks.OAK_PRESSURE_PLATE)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
             .lang("Smoked Pressure Plate")
@@ -1200,7 +1198,7 @@ public class DDBlocks {
 
     //SPIRIT WOODSET
 
-    public static final BlockEntry<SpiritLogRotatedBlockPillar> spirit_log = REGISTRATE.block("spirit_log", SpiritLogRotatedBlockPillar::new)
+    public static final BlockEntry<NormalLogRotatedBlockPillar> spirit_log = REGISTRATE.block("spirit_log", NormalLogRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.WARPED_STEM)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
             .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
@@ -1209,7 +1207,7 @@ public class DDBlocks {
             .lang("Spirit Log")
             .simpleItem()
             .register();
-    public static final BlockEntry<SpiritLogRotatedBlockPillar> stripped_spirit_log = REGISTRATE.block("stripped_spirit_log", SpiritLogRotatedBlockPillar::new)
+    public static final BlockEntry<NormalLogRotatedBlockPillar> stripped_spirit_log = REGISTRATE.block("stripped_spirit_log", NormalLogRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.STRIPPED_WARPED_STEM)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
             .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
@@ -1218,7 +1216,7 @@ public class DDBlocks {
             .lang("Stripped Spirit Log")
             .simpleItem()
             .register();
-    public static final BlockEntry<SpiritLogRotatedBlockPillar> spirit_wood = REGISTRATE.block("spirit_wood", SpiritLogRotatedBlockPillar::new)
+    public static final BlockEntry<NormalLogRotatedBlockPillar> spirit_wood = REGISTRATE.block("spirit_wood", NormalLogRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.WARPED_HYPHAE)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
             .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
@@ -1227,7 +1225,7 @@ public class DDBlocks {
             .lang("Spirit Wood")
             .simpleItem()
             .register();
-    public static final BlockEntry<SpiritLogRotatedBlockPillar> stripped_spirit_wood = REGISTRATE.block("stripped_spirit_wood", SpiritLogRotatedBlockPillar::new)
+    public static final BlockEntry<NormalLogRotatedBlockPillar> stripped_spirit_wood = REGISTRATE.block("stripped_spirit_wood", NormalLogRotatedBlockPillar::new)
             .initialProperties(() -> Blocks.STRIPPED_WARPED_HYPHAE)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_PURPLE))
             .properties(p -> p.sound(new ForgeSoundType(1, .7f, () -> SoundEvents.WOOD_BREAK,
@@ -1321,6 +1319,111 @@ public class DDBlocks {
             .simpleItem()
             .register();
 
+    //RUBBER WOODSET
+
+    public static final BlockEntry<SaplingBlock> rubber_sapling = REGISTRATE.block("rubber_sapling", p -> new SaplingBlock(new OakTreeGrower(), p))
+            .initialProperties(() -> Blocks.OAK_SAPLING)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Rubber Sapling")
+            .addLayer(() -> RenderType::cutoutMipped)
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<LeavesBlock> rubber_leaves = REGISTRATE.block("rubber_leaves", LeavesBlock::new)
+            .initialProperties(() -> Blocks.AZALEA_LEAVES)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Rubber Leaves")
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<NormalLogRotatedBlockPillar> rubber_log = REGISTRATE.block("rubber_log", NormalLogRotatedBlockPillar::new)
+            .initialProperties(() -> Blocks.OAK_LOG)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Rubber Log")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<NormalLogRotatedBlockPillar> stripped_rubber_log = REGISTRATE.block("stripped_rubber_log", NormalLogRotatedBlockPillar::new)
+            .initialProperties(() -> Blocks.STRIPPED_OAK_LOG)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Stripped Rubber Log")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<NormalLogRotatedBlockPillar> rubber_wood = REGISTRATE.block("rubber_wood", NormalLogRotatedBlockPillar::new)
+            .initialProperties(() -> Blocks.OAK_WOOD)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Rubber Wood")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<NormalLogRotatedBlockPillar> stripped_rubber_wood = REGISTRATE.block("stripped_rubber_wood", NormalLogRotatedBlockPillar::new)
+            .initialProperties(() -> Blocks.STRIPPED_OAK_WOOD)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Stripped Rubber Wood")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<Block> rubber_planks = REGISTRATE.block("rubber_planks", Block::new)
+            .initialProperties(() -> Blocks.OAK_PLANKS)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Rubber Planks")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<SlabBlock> rubber_slab = REGISTRATE.block("rubber_slab", SlabBlock::new)
+            .initialProperties(() -> Blocks.OAK_SLAB)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Rubber Slab")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<StairBlock> rubber_stairs = REGISTRATE.block("rubber_stairs", p -> new StairBlock(DDBlocks.rubber_planks::getDefaultState, p))
+            .initialProperties(() -> Blocks.OAK_STAIRS)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Rubber Stairs")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<FenceBlock> rubber_fence = REGISTRATE.block("rubber_fence", FenceBlock::new)
+            .initialProperties(() -> Blocks.OAK_FENCE)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Rubber Fence")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<FenceGateBlock> rubber_fence_gate = REGISTRATE.block("rubber_fence_gate", FenceGateBlock::new)
+            .initialProperties(() -> Blocks.OAK_FENCE_GATE)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Rubber Fence Gate")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<DoorBlock> rubber_door =
+            REGISTRATE.block("rubber_door", DoorBlock::new)
+                    .initialProperties(() -> Blocks.OAK_DOOR)
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN)
+                            .sound(SoundType.WOOD)
+                            .noOcclusion())
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .simpleItem()
+                    .register();
+    public static final BlockEntry<TrapDoorBlock> rubber_trapdoor = REGISTRATE.block("rubber_trapdoor", TrapDoorBlock::new)
+            .initialProperties(() -> Blocks.OAK_TRAPDOOR)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN)
+                    .noOcclusion())
+            .addLayer(() -> RenderType::cutoutMipped)
+            .lang("Rubber Trapdoor")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<WoodButtonBlock> rubber_button = REGISTRATE.block("rubber_button", WoodButtonBlock::new)
+            .initialProperties(() -> Blocks.OAK_BUTTON)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Rubber Button")
+            .simpleItem()
+            .register();
+    public static final BlockEntry<PressurePlateBlock> rubber_pressure_plate = REGISTRATE.block("rubber_pressure_plate", p -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, p))
+            .initialProperties(() -> Blocks.OAK_PRESSURE_PLATE)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
+            .lang("Rubber Pressure Plate")
+            .simpleItem()
+            .register();
+
+    
+    
+    
+    
     public static final BlockEntry<Block> asphalt_block = REGISTRATE.block("asphalt_block", Block::new)
             .properties(p -> p.destroyTime(1.25f)
                     .speedFactor(1.2F)

@@ -3,6 +3,7 @@
   "values": [
     "create_dd:rose_pressure_plate",
     "create_dd:smoked_pressure_plate",
-    "create_dd:spirit_pressure_plate"
+    "create_dd:spirit_pressure_plate",
+    "create_dd:rubber_pressure_plate"
   ]
 }

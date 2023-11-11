@@ -1,0 +1,22 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "minecraft:stripped_jungle_wood"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.4,
+      "item": "minecraft:stripped_jungle_wood"
+    },
+    {
+      "chance": 0.1,
+      "item": "create_dd:crystallized_sap"
+    },
+    {
+      "amount": 25,
+      "fluid": "create_dd:sap"
+    }
+  ]
+}

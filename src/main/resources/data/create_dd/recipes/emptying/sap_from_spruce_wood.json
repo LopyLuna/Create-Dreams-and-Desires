@@ -1,0 +1,18 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "minecraft:stripped_spruce_wood"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.4,
+      "item": "minecraft:stripped_spruce_wood"
+    },
+    {
+      "amount": 5,
+      "fluid": "create_dd:sap"
+    }
+  ]
+}

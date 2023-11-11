@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create_dd:stripped_rubber_log"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:rubber_planks",
+      "count": 6
+    }
+  ],
+  "processingTime": 50
+}

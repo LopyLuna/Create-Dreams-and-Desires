@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_pressure_plate",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "create_dd:rubber_planks"
+    }
+  },
+  "result": {
+    "item": "create_dd:rubber_pressure_plate"
+  }
+}

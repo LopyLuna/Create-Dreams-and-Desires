@@ -4,6 +4,7 @@
     "create_dd:rose_slab",
     "create_dd:smoked_slab",
     "create_dd:spirit_slab",
+    "create_dd:rubber_slab",
     "create_dd:polished_cut_potassic_slab",
     "create_dd:small_potassic_brick_slab",
     "create_dd:cut_potassic_brick_slab",
@@ -15,6 +16,10 @@
     "create_dd:small_weathered_limestone_brick_slab",
     "create_dd:cut_weathered_limestone_brick_slab",
     "create_dd:polished_cut_weathered_limestone_slab",
-    "create_dd:cut_weathered_limestone_slab"
+    "create_dd:cut_weathered_limestone_slab",
+    "create_dd:polished_cut_aethersite_slab",
+    "create_dd:small_aethersite_brick_slab",
+    "create_dd:cut_aethersite_brick_slab",
+    "create_dd:cut_aethersite_slab"
   ]
 }

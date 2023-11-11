@@ -22,12 +22,17 @@
     {"id": "everycomp:q/create_dd/hollow_rose_log", "required": false},
     {"id": "everycomp:c/create_dd/rose_window", "required": false},
     {"id": "everycomp:c/create_dd/rose_window_pane", "required": false},
-    "#create_dd:rose_woodset",
-    "#create_dd:smoked_woodset",
-    "#create_dd:spirit_woodset",
+    {"id": "everycomp:q/create_dd/rubber_chest", "required": false},
+    {"id": "everycomp:q/create_dd/rubber_ladder", "required": false},
+    {"id": "everycomp:q/create_dd/rubber_bookshelf", "required": false},
+    {"id": "everycomp:q/create_dd/vertical_rubber_planks", "required": false},
+    {"id": "everycomp:q/create_dd/hollow_rubber_log", "required": false},
+    {"id": "everycomp:c/create_dd/rubber_window", "required": false},
+    {"id": "everycomp:c/create_dd/rubber_window_pane", "required": false},
     "create_dd:industrial_iron_block",
     "#create_dd:rose_woodset",
     "#create_dd:smoked_woodset",
-    "#create_dd:spirit_woodset"
+    "#create_dd:spirit_woodset",
+    "#create_dd:rubber_woodset"
   ]
 }

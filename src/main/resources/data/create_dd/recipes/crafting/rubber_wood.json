@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "create_dd:rubber_log"
+    }
+  },
+  "result": {
+    "item": "create_dd:rubber_wood",
+    "count": 3
+  }
+}

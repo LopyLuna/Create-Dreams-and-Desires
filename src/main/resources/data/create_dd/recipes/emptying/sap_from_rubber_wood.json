@@ -1,0 +1,22 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "create_dd:stripped_rubber_wood"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.25,
+      "item": "create_dd:stripped_rubber_wood"
+    },
+    {
+      "chance": 0.05,
+      "item": "create_dd:crystallized_sap"
+    },
+    {
+      "amount": 75,
+      "fluid": "create_dd:sap"
+    }
+  ]
+}

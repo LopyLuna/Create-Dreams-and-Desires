@@ -29,21 +29,19 @@ public class BronzeSawBlockEntity extends SawBlockEntity {
     protected float getBreakSpeed() {return Math.abs(getSpeed() / 35f);}
 
     @Override
-    public boolean canBreak(BlockState stateToBreak, float blockHardness) {return isSawable(stateToBreak, blockHardness);}
+    public boolean canBreak(BlockState stateToBreak, float blockHardness) {
+        boolean sawable = isSawable(stateToBreak);
+        return super.canBreak(stateToBreak, blockHardness) && sawable;
+    }
 
-    public static boolean isSawable(BlockState stateToBreak, float blockHardness) {
-        Block block = stateToBreak.getBlock();
-        if (!(stateToBreak.getMaterial().isLiquid() ||
-                block instanceof AirBlock ||
-                blockHardness == -1 ||
-                DDTags.AllBlockTags.bronze_drill_immune.matches(stateToBreak)))
-            return false;
+    public static boolean isSawable(BlockState stateToBreak) {
         if (stateToBreak.is(BlockTags.SAPLINGS))
             return false;
         if (TreeCutter.isLog(stateToBreak) || (stateToBreak.is(BlockTags.LEAVES)))
             return true;
         if (TreeCutter.isRoot(stateToBreak))
             return true;
+        Block block = stateToBreak.getBlock();
         if (block instanceof BambooBlock)
             return true;
         if (block instanceof StemGrownBlock)
@@ -60,7 +58,9 @@ public class BronzeSawBlockEntity extends SawBlockEntity {
             return true;
         if (TreeCutter.canDynamicTreeCutFrom(block))
             return true;
-        if (DDTags.AllBlockTags.bronze_saw_valid.matches(stateToBreak))
+        if (stateToBreak.is(DDTags.AllBlockTags.bronze_saw_immune.tag))
+            return false;
+        if (stateToBreak.is(DDTags.AllBlockTags.bronze_saw_valid.tag))
             return true;
         return false;
     }

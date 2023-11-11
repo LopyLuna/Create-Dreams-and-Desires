@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"1": "create_dd:block/rubber_door_side",
+		"particle": "create_dd:block/rubber_door_bottom",
+		"bottom": "create_dd:block/rubber_door_bottom"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [3, 16, 16],
+			"faces": {
+				"north": {"uv": [4, 0, 1, 16], "texture": "#1", "cullface": "north"},
+				"east": {"uv": [16, 0, 0, 16], "texture": "#bottom"},
+				"south": {"uv": [5, 0, 8, 16], "texture": "#1", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#bottom", "cullface": "west"},
+				"down": {"uv": [16, 13, 0, 16], "rotation": 90, "texture": "#bottom", "cullface": "down"}
+			}
+		}
+	]
+}

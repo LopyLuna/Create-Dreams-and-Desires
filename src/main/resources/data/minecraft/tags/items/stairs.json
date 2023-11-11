@@ -4,6 +4,7 @@
     "create_dd:rose_stairs",
     "create_dd:smoked_stairs",
     "create_dd:spirit_stairs",
+    "create_dd:rubber_stairs",
     "create_dd:polished_cut_potassic_stairs",
     "create_dd:small_potassic_brick_stairs",
     "create_dd:cut_potassic_brick_stairs",
@@ -15,6 +16,10 @@
     "create_dd:small_weathered_limestone_brick_stairs",
     "create_dd:cut_weathered_limestone_brick_stairs",
     "create_dd:polished_cut_weathered_limestone_stairs",
-    "create_dd:cut_weathered_limestone_stairs"
+    "create_dd:cut_weathered_limestone_stairs",
+    "create_dd:polished_cut_aethersite_stairs",
+    "create_dd:small_aethersite_brick_stairs",
+    "create_dd:cut_aethersite_brick_stairs",
+    "create_dd:cut_aethersite_stairs"
   ]
 }

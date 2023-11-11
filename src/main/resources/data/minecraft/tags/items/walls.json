@@ -12,6 +12,10 @@
     "create_dd:small_weathered_limestone_brick_wall",
     "create_dd:cut_weathered_limestone_brick_wall",
     "create_dd:polished_cut_weathered_limestone_wall",
-    "create_dd:cut_weathered_limestone_wall"
+    "create_dd:cut_weathered_limestone_wall",
+    "create_dd:polished_cut_aethersite_wall",
+    "create_dd:small_aethersite_brick_wall",
+    "create_dd:cut_aethersite_brick_wall",
+    "create_dd:cut_aethersite_wall"
   ]
 }

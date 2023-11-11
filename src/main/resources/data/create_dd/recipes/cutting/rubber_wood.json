@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create_dd:rubber_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:stripped_rubber_wood"
+    }
+  ],
+  "processingTime": 50
+}

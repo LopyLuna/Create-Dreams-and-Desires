@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create_dd:rubber_log"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:stripped_rubber_log"
+    }
+  ],
+  "processingTime": 50
+}
