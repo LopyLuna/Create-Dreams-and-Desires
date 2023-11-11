@@ -38,7 +38,7 @@ public class HydraulicPressRenderer extends KineticBlockEntityRenderer<Hydraulic
 
         SuperByteBuffer headRender = CachedBufferer.partialFacing(DDBlockPartialModel.HYDRAULIC_PRESS_HEAD, blockState,
                 blockState.getValue(HORIZONTAL_FACING));
-        headRender.translate(4, -renderedHeadOffset, 0)
+        headRender.translate(0, -renderedHeadOffset, 0)
                 .light(light)
                 .renderInto(ms, buffer.getBuffer(RenderType.solid()));
     }
