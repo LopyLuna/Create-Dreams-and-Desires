@@ -3,7 +3,6 @@ package uwu.lopyluna.create_dd.block.BlockProperties.flywheel;
 import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine.EngineBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine.FurnaceEngineBlock;
-import com.simibubi.create.foundation.advancement.AllTriggers;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.utility.Lang;
 

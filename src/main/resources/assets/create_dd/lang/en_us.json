@@ -593,6 +593,20 @@
   "advancement.create_dd.steel_ingot": "God Damn the Steel is Thick",
   "advancement.create_dd.steel_ingot.desc": "Smash some Industrial Iron into Steel!",
 
+  "advancement.create_dd.flywheel": "An Old Heart of an Factory",
+  "advancement.create_dd.flywheel.desc": "Successfully connect a Flywheel Engine to the Flywheel Component.",
+
+  "create_dd.ponder.tag.create_dd": "Create: Dreams n' Desires!",
+  "create_dd.ponder.tag.create_dd.description": "Where Dreams & Desires within the create mod become Realities!",
+
+  "create_dd.ponder.flywheel.header": "Generating Rotational Force using the Flywheel Component",
+  "create_dd.ponder.flywheel.text_1": "Flywheel Components are required for generating rotational force with the Flywheel Engine!",
+  "create_dd.ponder.flywheel.text_2": "The provided Rotational Force has a decently large stress capacity unlike the Steam Engine!",
+
+  "create_dd.ponder.furnace_engine.header": "Generating Rotational Force using the Flywheel Engine",
+  "create_dd.ponder.furnace_engine.text_1": "Flywheel Engines generate Rotational Force while their attached Furnace is running!",
+  "create_dd.ponder.furnace_engine.text_2": "The provided Rotational Force has a decently large stress capacity unlike the Steam Engine!",
+
 
   "create.recipe.also_mystery_conversion": "Mysterious Conversion",
 
@@ -676,8 +690,6 @@
   "block.create_dd.bronze_drill.tooltip.summary": "Acts like a _Mechanical Drill_ but _mines faster_!",
   "block.create_dd.bronze_saw.tooltip": "BRONZE SAW",
   "block.create_dd.bronze_saw.tooltip.summary": "Acts like a _Mechanical Saw_ but _mines faster_ & allows for _Bulk Sawing_!",
-  "block.create_dd.hydraulic_press.tooltip": "HYDRAULIC PRESS",
-  "block.create_dd.hydraulic_press.tooltip.summary": "Acts like a _Mechanical Press_ but allows for _Bulk Pressing_!",
 
   "death.attack.create.fan_super_lava": "%1$s was reduce to ashes by an Industrial Fan",
   "death.attack.create.fan_super_lava.player": "%1$s seethe enough they were thrown into a super smelter by %2$s",

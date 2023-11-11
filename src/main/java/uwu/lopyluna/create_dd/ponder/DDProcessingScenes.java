@@ -1,33 +1,42 @@
 package uwu.lopyluna.create_dd.ponder;
 
-import com.google.common.collect.ImmutableList;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
-import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
 import com.simibubi.create.content.kinetics.press.PressingBehaviour;
-import com.simibubi.create.content.processing.basin.BasinBlockEntity;
-import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
-import com.simibubi.create.foundation.ponder.ElementLink;
-import com.simibubi.create.foundation.ponder.SceneBuilder;
-import com.simibubi.create.foundation.ponder.SceneBuildingUtil;
-import com.simibubi.create.foundation.ponder.Selection;
+import com.simibubi.create.content.kinetics.saw.SawBlockEntity;
+import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
+import com.simibubi.create.foundation.ponder.*;
 import com.simibubi.create.foundation.ponder.element.BeltItemElement;
+import com.simibubi.create.foundation.ponder.element.EntityElement;
 import com.simibubi.create.foundation.ponder.element.InputWindowElement;
 import com.simibubi.create.foundation.ponder.element.WorldSectionElement;
-import com.simibubi.create.foundation.utility.IntAttached;
-import com.simibubi.create.foundation.utility.NBTHelper;
+import com.simibubi.create.foundation.ponder.instruction.EmitParticlesInstruction;
 import com.simibubi.create.foundation.utility.Pointing;
-import com.simibubi.create.infrastructure.ponder.scenes.ProcessingScenes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FurnaceBlock;
 import net.minecraft.world.phys.Vec3;
+import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlockEntity;
 
-public class DDProcessingScenes extends ProcessingScenes {
-    
+public class DDProcessingScenes {
+
+    public static void fan_sails(SceneBuilder scene, SceneBuildingUtil util) {
+        scene.title("fan_sails", "Ability to change fan types!");
+        scene.configureBasePlate(0, 0, 9);
+        scene.world.showSection(util.select.layer(0), Direction.UP);
+        scene.idle(5);
+        scene.world.showSection(util.select.layer(1), Direction.DOWN);
+        scene.idle(5);
+    }
+
     public static void bulk_pressing(SceneBuilder scene, SceneBuildingUtil util) {
-        scene.title("hydraulic_press", "Processing Items with the Hydraulic Press");
+        scene.title("hydraulic_press", "Bulk Processing Items with the Hydraulic Press");
         scene.configureBasePlate(0, 0, 5);
         scene.world.showSection(util.select.layer(0), Direction.UP);
         scene.idle(5);
@@ -58,27 +67,27 @@ public class DDProcessingScenes extends ProcessingScenes {
                 .pointAt(pressSide)
                 .placeNearTarget()
                 .attachKeyFrame()
-                .text("The Hydraulic Press can process items provided beneath it");
+                .text("The Hydraulic Press can bulk process items provided beneath it");
         scene.idle(70);
         scene.overlay.showText(60)
                 .pointAt(pressSide.subtract(0, 2, 0))
                 .placeNearTarget()
                 .text("The Input items can be dropped or placed on a Depot under the Press");
         scene.idle(50);
-        ItemStack copper = new ItemStack(Items.COPPER_INGOT);
+        ItemStack copper = new ItemStack(Items.COPPER_INGOT, 64);
         scene.world.createItemOnBeltLike(depotPos, Direction.NORTH, copper);
         Vec3 depotCenter = util.vector.centerOf(depotPos.south());
         scene.overlay.showControls(new InputWindowElement(depotCenter, Pointing.UP).withItem(copper), 30);
         scene.idle(10);
 
-        Class<MechanicalPressBlockEntity> type = MechanicalPressBlockEntity.class;
+        Class<HydraulicPressBlockEntity> type = HydraulicPressBlockEntity.class;
         scene.world.modifyBlockEntity(pressPos, type, pte -> pte.getPressingBehaviour()
                 .start(PressingBehaviour.Mode.BELT));
         scene.idle(30);
         scene.world.modifyBlockEntity(pressPos, type, pte -> pte.getPressingBehaviour()
                 .makePressingParticleEffect(depotCenter.add(0, 8 / 16f, 0), copper));
         scene.world.removeItemsFromBelt(depotPos);
-        ItemStack sheet = AllItems.COPPER_SHEET.asStack();
+        ItemStack sheet = new ItemStack(AllItems.COPPER_SHEET.asStack().getItem(), 64);
         scene.world.createItemOnBeltLike(depotPos, Direction.UP, sheet);
         scene.idle(10);
         scene.overlay.showControls(new InputWindowElement(depotCenter, Pointing.UP).withItem(sheet), 50);
@@ -110,7 +119,7 @@ public class DDProcessingScenes extends ProcessingScenes {
                 .pointAt(pressSide)
                 .placeNearTarget()
                 .attachKeyFrame()
-                .text("The Press will hold and process them automatically");
+                .text("The Press will hold and bulk process them automatically");
 
         scene.idle(30);
         scene.world.modifyBlockEntity(pressPos, type, pte -> pte.getPressingBehaviour()
@@ -135,105 +144,234 @@ public class DDProcessingScenes extends ProcessingScenes {
 
     }
 
-    public static void bronze_compacting(SceneBuilder scene, SceneBuildingUtil util) {
-        scene.title("hydraulic_press_compacting", "Compacting items with the Hydraulic Press");
+
+    public static void processing(SceneBuilder scene, SceneBuildingUtil util) {
+        scene.title("bronze_saw_processing", "Bulk Processing Items on the Bronze Saw");
         scene.configureBasePlate(0, 0, 5);
-        scene.world.setBlock(util.grid.at(1, 1, 2), AllBlocks.ANDESITE_CASING.getDefaultState(), false);
         scene.world.showSection(util.select.layer(0), Direction.UP);
-        scene.idle(5);
-        scene.world.showSection(util.select.fromTo(1, 4, 3, 1, 1, 5), Direction.DOWN);
-        scene.idle(5);
-        scene.world.showSection(util.select.position(1, 1, 2), Direction.DOWN);
-        scene.idle(5);
-        scene.world.showSection(util.select.position(1, 2, 2), Direction.DOWN);
-        scene.idle(5);
-        scene.world.showSection(util.select.position(1, 4, 2), Direction.SOUTH);
-        scene.idle(5);
-        scene.world.showSection(util.select.fromTo(3, 1, 1, 1, 1, 1), Direction.SOUTH);
-        scene.world.showSection(util.select.fromTo(3, 1, 5, 3, 1, 2), Direction.SOUTH);
-        scene.idle(20);
 
-        BlockPos basin = util.grid.at(1, 2, 2);
-        BlockPos pressPos = util.grid.at(1, 4, 2);
-        Vec3 basinSide = util.vector.blockSurface(basin, Direction.WEST);
+        BlockPos shaftPos = util.grid.at(2, 1, 3);
+        scene.world.setBlock(shaftPos, AllBlocks.SHAFT.getDefaultState()
+                .setValue(ShaftBlock.AXIS, Direction.Axis.Z), false);
 
-        ItemStack copper = new ItemStack(Items.COPPER_INGOT);
-        ItemStack copperBlock = new ItemStack(Items.COPPER_BLOCK);
+        BlockPos sawPos = util.grid.at(2, 1, 2);
+        Selection sawSelect = util.select.position(sawPos);
+        scene.world.modifyBlockEntityNBT(sawSelect, SawBlockEntity.class, nbt -> nbt.putInt("RecipeIndex", 0));
+
+        scene.idle(5);
+        scene.world.showSection(util.select.fromTo(2, 1, 3, 2, 1, 5), Direction.DOWN);
+        scene.idle(10);
+        scene.effects.rotationDirectionIndicator(shaftPos);
+        scene.world.showSection(sawSelect, Direction.DOWN);
+        scene.idle(10);
+        scene.overlay.showText(50)
+                .attachKeyFrame()
+                .text("Upward facing Bronze Saws can bulk process a variety of items")
+                .pointAt(util.vector.blockSurface(sawPos, Direction.WEST))
+                .placeNearTarget();
+        scene.idle(45);
+
+        ItemStack log = new ItemStack(Items.OAK_LOG, 16);
+        ItemStack strippedLog = new ItemStack(Items.STRIPPED_OAK_LOG, 16);
+        ItemStack planks = new ItemStack(Items.OAK_PLANKS, 16);
+
+        Vec3 itemSpawn = util.vector.centerOf(sawPos.above()
+                .west());
+        ElementLink<EntityElement> logItem = scene.world.createItemEntity(itemSpawn, util.vector.of(0, 0, 0), log);
+        scene.idle(12);
+
+        scene.overlay.showControls(new InputWindowElement(itemSpawn, Pointing.DOWN).withItem(log), 20);
+        scene.idle(10);
+
+        scene.world.modifyEntity(logItem, e -> e.setDeltaMovement(util.vector.of(0.05, 0.2, 0)));
+        scene.idle(12);
+
+        scene.world.modifyEntity(logItem, Entity::discard);
+        scene.world.createItemOnBeltLike(sawPos, Direction.WEST, log);
+        scene.idle(60);
+
+        logItem = scene.world.createItemEntity(util.vector.topOf(sawPos)
+                .add(0.5, -.1, 0), util.vector.of(0.05, 0.18, 0), strippedLog);
+        scene.idle(12);
+        scene.overlay.showControls(new InputWindowElement(itemSpawn.add(2, 0, 0), Pointing.DOWN).withItem(strippedLog),
+                20);
+        scene.idle(30);
 
         scene.overlay.showText(60)
-                .pointAt(basinSide)
-                .placeNearTarget()
                 .attachKeyFrame()
-                .text("Pressing items held in a Basin will cause them to be Compacted");
+                .text("The processed item always moves against the rotational input to the saw")
+                .pointAt(util.vector.blockSurface(sawPos, Direction.UP))
+                .placeNearTarget();
+        scene.idle(70);
+
+        scene.world.modifyKineticSpeed(util.select.everywhere(), f -> -2 * f);
+        scene.effects.rotationDirectionIndicator(shaftPos);
+        scene.world.modifyEntity(logItem, e -> e.setDeltaMovement(util.vector.of(-0.05, 0.2, 0)));
+        scene.idle(12);
+
+        scene.world.modifyEntity(logItem, Entity::discard);
+        scene.world.createItemOnBeltLike(sawPos, Direction.EAST, strippedLog);
+        scene.idle(35);
+
+        logItem = scene.world.createItemEntity(util.vector.topOf(sawPos)
+                .add(-0.5, -.1, 0), util.vector.of(-0.05, 0.18, 0), planks);
+        scene.idle(22);
+
+        Selection otherBelt = util.select.fromTo(3, 1, 3, 4, 1, 2);
+        Selection belt = util.select.fromTo(0, 1, 2, 1, 1, 3);
+
+        scene.world.setKineticSpeed(otherBelt, 0);
+        scene.world.setKineticSpeed(belt, 0);
+        scene.world.modifyKineticSpeed(util.select.everywhere(), f -> -f);
+        scene.world.modifyEntity(logItem, Entity::discard);
+        scene.world.setBlock(shaftPos, AllBlocks.COGWHEEL.getDefaultState()
+                .setValue(ShaftBlock.AXIS, Direction.Axis.Z), true);
+        scene.idle(3);
+        scene.addKeyframe();
+
+        scene.world.multiplyKineticSpeed(util.select.everywhere(), .5f);
+
+        ElementLink<WorldSectionElement> beltSection = scene.world.showIndependentSection(belt, Direction.EAST);
+        scene.world.moveSection(beltSection, util.vector.of(0, 100, 0), 0);
+        scene.idle(1);
+        scene.world.removeItemsFromBelt(util.grid.at(1, 1, 2));
+        scene.idle(1);
+        scene.world.setKineticSpeed(belt, -64);
+        scene.idle(1);
+        scene.world.moveSection(beltSection, util.vector.of(0, -100, 0), 0);
+        scene.idle(3);
+
+        ElementLink<WorldSectionElement> otherBeltSection =
+                scene.world.showIndependentSection(otherBelt, Direction.WEST);
+        scene.world.moveSection(otherBeltSection, util.vector.of(0, 100, 0), 0);
+        scene.idle(1);
+        scene.world.removeItemsFromBelt(util.grid.at(3, 1, 2));
+        scene.idle(1);
+        scene.world.setKineticSpeed(otherBelt, -64);
+        scene.idle(1);
+        scene.world.moveSection(otherBeltSection, util.vector.of(0, -100, 0), 0);
+        scene.idle(3);
+
+        ItemStack stone = new ItemStack(Blocks.STONE, 16);
+        BlockPos firstBelt = util.grid.at(0, 1, 2);
+        scene.overlay.showText(60)
+                .text("Saws can work in-line with Mechanical Belts")
+                .pointAt(util.vector.blockSurface(firstBelt, Direction.WEST))
+                .placeNearTarget();
         scene.idle(40);
+        scene.world.createItemOnBelt(firstBelt, Direction.WEST, stone);
 
-        scene.overlay.showControls(new InputWindowElement(util.vector.topOf(basin), Pointing.DOWN).withItem(copper),
-                30);
-        scene.idle(30);
-        Class<MechanicalPressBlockEntity> type = MechanicalPressBlockEntity.class;
-        scene.world.modifyBlockEntity(pressPos, type, pte -> pte.getPressingBehaviour()
-                .start(PressingBehaviour.Mode.BASIN));
-        scene.idle(30);
-        scene.world.modifyBlockEntity(pressPos, type, pte -> pte.getPressingBehaviour()
-                .makeCompactingParticleEffect(util.vector.centerOf(basin), copper));
-        scene.world.modifyBlockEntityNBT(util.select.position(basin), BasinBlockEntity.class, nbt -> {
-            nbt.put("VisualizedItems",
-                    NBTHelper.writeCompoundList(ImmutableList.of(IntAttached.with(1, copperBlock)), ia -> ia.getValue()
-                            .serializeNBT()));
-        });
-        scene.idle(4);
-        scene.world.createItemOnBelt(util.grid.at(1, 1, 1), Direction.UP, copperBlock);
-        scene.idle(30);
-
+        scene.idle(40);
+        Vec3 filter = util.vector.of(2.5, 1 + 13 / 16f, 2 + 5 / 16f);
+        scene.overlay.showFilterSlotInput(filter, Direction.UP, 80);
         scene.overlay.showText(80)
-                .pointAt(basinSide)
-                .placeNearTarget()
                 .attachKeyFrame()
-                .text("Compacting includes any filled 2x2 or 3x3 Crafting Recipe, plus a couple extra ones");
+                .text("When an ingredient has multiple possible outcomes, the filter slot can specify it")
+                .pointAt(filter)
+                .placeNearTarget();
+        scene.idle(90);
 
-        scene.idle(30);
-        ItemStack log = new ItemStack(Items.OAK_LOG);
-        ItemStack bark = new ItemStack(Items.OAK_WOOD);
-
-        scene.overlay.showControls(new InputWindowElement(util.vector.topOf(basin), Pointing.DOWN).withItem(log), 30);
-        scene.idle(30);
-        scene.world.modifyBlockEntity(pressPos, type, pte -> pte.getPressingBehaviour()
-                .start(PressingBehaviour.Mode.BASIN));
-        scene.idle(30);
-        scene.world.modifyBlockEntity(pressPos, type, pte -> pte.getPressingBehaviour()
-                .makeCompactingParticleEffect(util.vector.centerOf(basin), log));
-        scene.world.modifyBlockEntityNBT(util.select.position(basin), BasinBlockEntity.class, nbt -> {
-            nbt.put("VisualizedItems",
-                    NBTHelper.writeCompoundList(ImmutableList.of(IntAttached.with(1, bark)), ia -> ia.getValue()
-                            .serializeNBT()));
-        });
-        scene.idle(4);
-        scene.world.createItemOnBelt(util.grid.at(1, 1, 1), Direction.UP, bark);
-        scene.idle(30);
-
-        scene.rotateCameraY(-30);
+        ItemStack bricks = new ItemStack(Blocks.STONE_BRICKS, 16);
+        scene.overlay.showControls(new InputWindowElement(filter, Pointing.DOWN).withItem(bricks), 30);
+        scene.world.modifyEntities(ItemEntity.class, Entity::discard);
+        scene.idle(7);
+        scene.world.setFilterData(util.select.position(sawPos), SawBlockEntity.class, bricks);
         scene.idle(10);
-        scene.world.setBlock(util.grid.at(1, 1, 2), AllBlocks.BLAZE_BURNER.getDefaultState()
-                .setValue(BlazeBurnerBlock.HEAT_LEVEL, BlazeBurnerBlock.HeatLevel.KINDLED), true);
-        scene.idle(10);
+        scene.world.createItemOnBelt(firstBelt, Direction.WEST, stone);
+        scene.idle(50);
 
-        scene.overlay.showText(80)
-                .pointAt(basinSide.subtract(0, 1, 0))
-                .placeNearTarget()
-                .text("Some of those recipe may require the heat of a Blaze Burner");
-        scene.idle(40);
-
-        scene.rotateCameraY(30);
-
-        scene.idle(60);
-        Vec3 filterPos = util.vector.of(1, 2.75f, 2.5f);
-        scene.overlay.showFilterSlotInput(filterPos, Direction.WEST, 100);
+        scene.markAsFinished();
         scene.overlay.showText(100)
-                .pointAt(filterPos)
-                .placeNearTarget()
-                .attachKeyFrame()
-                .text("The filter slot can be used in case two recipe are conflicting.");
-        scene.idle(80);
+                .text("Without filter, the Saw would cycle through all outcomes instead")
+                .colored(PonderPalette.RED)
+                .pointAt(filter)
+                .placeNearTarget();
+        scene.idle(65);
+        scene.world.modifyEntities(ItemEntity.class, Entity::discard);
     }
-    
+
+
+
+    public static void furnaceEngine(SceneBuilder scene, SceneBuildingUtil util) {
+        furnaceEngine(scene, util, false);
+    }
+
+    public static void flywheel(SceneBuilder scene, SceneBuildingUtil util) {
+        furnaceEngine(scene, util, true);
+    }
+
+    private static void furnaceEngine(SceneBuilder scene, SceneBuildingUtil util, boolean flywheel) {
+        scene.title(flywheel ? "flywheel" : "furnace_engine",
+                "Generating Rotational Force using the " + (flywheel ? "Flywheel Component" : "Flywheel Engine"));
+        scene.configureBasePlate(0, 0, 7);
+        scene.world.showSection(util.select.layer(0), Direction.UP);
+
+        BlockPos furnacePos = util.grid.at(4, 2, 3);
+        BlockPos flywheelbasePos = util.grid.at(4, 1, 3);
+        BlockPos base1 = util.grid.at(3, 1, 2);
+        BlockPos base2 = util.grid.at(5, 1, 2);
+        BlockPos cogPos = util.grid.at(1, 2, 2);
+        BlockPos gaugePos = util.grid.at(1, 2, 1);
+        BlockPos shaftPos = util.grid.at(1, 2, 0);
+
+        scene.idle(5);
+        scene.world.showSection(util.select.fromTo(base1, base2), Direction.DOWN);
+        scene.idle(2);
+        scene.world.showSection(util.select.fromTo(base1.south(1), base2.south(1)), Direction.DOWN);
+        scene.idle(2);
+        Selection furnaceSelect = util.select.position(furnacePos);
+        scene.world.showSection(furnaceSelect, Direction.DOWN);
+        scene.idle(2);
+        scene.world.showSection(util.select.position(furnacePos.west()), Direction.DOWN);
+        scene.idle(8);
+        scene.world.showSection(util.select.position(flywheelbasePos.west(3)), Direction.EAST);
+        scene.idle(2);
+        scene.world.showSection(util.select.position(furnacePos.west(3)), Direction.EAST);
+        scene.idle(8);
+
+        String text = flywheel ? "Flywheel Components are required for generating rotational force with the Flywheel Engine"
+                : "Flywheel Engines generate Rotational Force while their attached Furnace is running";
+        scene.overlay.showText(50)
+                .attachKeyFrame()
+                .placeNearTarget()
+                .pointAt(util.vector.topOf(furnacePos.west(flywheel ? 3 : 1)))
+                .text(text);
+        scene.idle(60);
+
+        scene.addKeyframe();
+        scene.overlay.showControls(
+                new InputWindowElement(util.vector.topOf(furnacePos), Pointing.DOWN).withItem(new ItemStack(Items.OAK_LOG)),
+                30);
+        scene.idle(5);
+        scene.overlay.showControls(new InputWindowElement(util.vector.blockSurface(furnacePos, Direction.NORTH), Pointing.RIGHT)
+                        .withItem(new ItemStack(Items.COAL)), 30);
+        scene.idle(7);
+        scene.world.cycleBlockProperty(furnacePos, FurnaceBlock.LIT);
+        scene.effects.emitParticles(util.vector.of(4.5, 2.2, 2.9), EmitParticlesInstruction.Emitter.simple(ParticleTypes.LAVA, Vec3.ZERO), 4, 1);
+        scene.world.setKineticSpeed(util.select.fromTo(1, 2, 3, 1, 2, 0), 24);
+        scene.idle(40);
+
+        scene.world.showSection(util.select.position(cogPos), Direction.SOUTH);
+        scene.idle(8);
+        scene.effects.rotationSpeedIndicator(cogPos);
+        scene.world.showSection(util.select.position(gaugePos.below(1)), Direction.SOUTH);
+        scene.idle(2);
+        scene.world.showSection(util.select.position(gaugePos), Direction.SOUTH);
+        scene.idle(8);
+        scene.world.showSection(util.select.position(shaftPos), Direction.SOUTH);
+        scene.idle(8);
+        scene.effects.rotationSpeedIndicator(shaftPos);
+
+        scene.overlay.showText(40)
+                .attachKeyFrame()
+                .placeNearTarget()
+                .colored(PonderPalette.GREEN)
+                .pointAt(util.vector.blockSurface(gaugePos, Direction.WEST))
+                .text("The provided Rotational Force has a decently large stress capacity unlike the Steam Engine");
+        scene.idle(20);
+
+
+
+    }
+
 }

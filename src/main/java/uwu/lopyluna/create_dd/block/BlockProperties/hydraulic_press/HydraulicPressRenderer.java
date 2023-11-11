@@ -2,8 +2,7 @@ package uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press;
 
 import com.jozufozu.flywheel.backend.Backend;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
-import com.simibubi.create.content.kinetics.press.MechanicalPressRenderer;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.press.PressingBehaviour;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
@@ -15,13 +14,17 @@ import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING;
 
-public class HydraulicPressRenderer extends MechanicalPressRenderer {
+public class HydraulicPressRenderer extends KineticBlockEntityRenderer<HydraulicPressBlockEntity> {
     public HydraulicPressRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
     }
+    @Override
+    public boolean shouldRenderOffScreen(HydraulicPressBlockEntity be) {
+        return true;
+    }
 
     @Override
-    protected void renderSafe(MechanicalPressBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
+    protected void renderSafe(HydraulicPressBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
                               int light, int overlay) {
         super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
 
@@ -40,8 +43,5 @@ public class HydraulicPressRenderer extends MechanicalPressRenderer {
                 .renderInto(ms, buffer.getBuffer(RenderType.solid()));
     }
 
-    @Override
-    protected BlockState getRenderedBlockState(MechanicalPressBlockEntity be) {
-        return shaft(getRotationAxisOf(be));
-    }
+    protected BlockState getRenderedBlockState(HydraulicPressBlockEntity be) {return shaft(getRotationAxisOf(be));}
 }

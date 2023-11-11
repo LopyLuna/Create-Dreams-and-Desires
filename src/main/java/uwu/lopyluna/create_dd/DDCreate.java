@@ -38,7 +38,6 @@ public class DDCreate
 {
     public static final String NAME = "Create: Dreams n' Desires";
     public static final String MOD_ID = "create_dd";
-    public static final String VERSION = "PREBETA.0.1a";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(DDCreate.MOD_ID);
@@ -86,10 +85,8 @@ public class DDCreate
     }
 
     public static void init(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            DDFluids.registerFluidInteractions();
-            ChromaticFluidInteraction.registerFluidInteractions();
-        });
+        DDFluids.registerFluidInteractions();
+        ChromaticFluidInteraction.registerFluidInteractions();
     }
 
     public static ResourceLocation asResource(String path) {

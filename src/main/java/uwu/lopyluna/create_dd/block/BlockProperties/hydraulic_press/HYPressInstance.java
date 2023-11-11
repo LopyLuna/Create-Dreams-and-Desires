@@ -7,18 +7,16 @@ import com.jozufozu.flywheel.core.materials.oriented.OrientedData;
 import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
 import com.simibubi.create.content.kinetics.base.ShaftInstance;
-import com.simibubi.create.content.kinetics.press.MechanicalPressBlock;
-import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
 import com.simibubi.create.content.kinetics.press.PressingBehaviour;
 import com.simibubi.create.foundation.utility.AngleHelper;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 
-public class HYPressInstance extends ShaftInstance<MechanicalPressBlockEntity> implements DynamicInstance {
+public class HYPressInstance extends ShaftInstance<HydraulicPressBlockEntity> implements DynamicInstance {
 
     private final OrientedData pressHead;
 
-    public HYPressInstance(MaterialManager materialManager, MechanicalPressBlockEntity blockEntity) {
+    public HYPressInstance(MaterialManager materialManager, HydraulicPressBlockEntity blockEntity) {
         super(materialManager, blockEntity);
 
         pressHead = materialManager.defaultSolid()
@@ -27,7 +25,7 @@ public class HYPressInstance extends ShaftInstance<MechanicalPressBlockEntity> i
                 .createInstance();
 
         Quaternion q = Vector3f.YP
-                .rotationDegrees(AngleHelper.horizontalAngle(blockState.getValue(MechanicalPressBlock.HORIZONTAL_FACING)));
+                .rotationDegrees(AngleHelper.horizontalAngle(blockState.getValue(HydraulicPressBlock.HORIZONTAL_FACING)));
 
         pressHead.setRotation(q);
 
@@ -46,7 +44,7 @@ public class HYPressInstance extends ShaftInstance<MechanicalPressBlockEntity> i
                 .nudge(0, -renderedHeadOffset, 0);
     }
 
-    private float getRenderedHeadOffset(MechanicalPressBlockEntity press) {
+    private float getRenderedHeadOffset(HydraulicPressBlockEntity press) {
         PressingBehaviour pressingBehaviour = press.getPressingBehaviour();
         return pressingBehaviour.getRenderedHeadOffset(AnimationTickHolder.getPartialTicks())
                 * pressingBehaviour.mode.headOffset;
@@ -65,3 +63,4 @@ public class HYPressInstance extends ShaftInstance<MechanicalPressBlockEntity> i
         pressHead.delete();
     }
 }
+

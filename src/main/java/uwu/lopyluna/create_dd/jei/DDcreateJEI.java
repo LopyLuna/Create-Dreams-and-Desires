@@ -101,10 +101,6 @@ public class DDcreateJEI implements IModPlugin {
 
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "pressing")).ifPresent(type ->
                 registration.addRecipeCatalyst(new ItemStack(DDBlocks.hydraulic_press.get()), type));
-        registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "automatic_packing")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(DDBlocks.hydraulic_press.get()), type));
-        registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "packing")).ifPresent(type ->
-                registration.addRecipeCatalyst(new ItemStack(DDBlocks.hydraulic_press.get()), type));
 
         registration.getJeiHelpers().getRecipeType(new ResourceLocation("create", "sawing")).ifPresent(type ->
                 registration.addRecipeCatalyst(new ItemStack(DDBlocks.BRONZE_SAW.get()), type));

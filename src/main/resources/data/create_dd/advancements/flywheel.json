@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "item": "create_dd:flywheel"
+    },
+    "title": {
+      "translate": "advancement.create_dd.flywheel"
+    },
+    "description": {
+      "translate": "advancement.create_dd.flywheel.desc",
+      "color": "#DBA213"
+    },
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false
+  },
+  "parent": "create_dd:integrated_mechanism",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "block": "create_dd:furnace_engine"
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "1": {
+      "conditions": {
+        "block": "create_dd:flywheel"
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ],
+    [
+      "1"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

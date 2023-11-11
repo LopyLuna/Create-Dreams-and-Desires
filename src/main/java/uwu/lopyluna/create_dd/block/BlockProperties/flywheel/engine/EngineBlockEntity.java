@@ -2,7 +2,6 @@ package uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine;
 
 import java.util.List;
 
-import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FlywheelBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FlywheelBlockEntity;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;

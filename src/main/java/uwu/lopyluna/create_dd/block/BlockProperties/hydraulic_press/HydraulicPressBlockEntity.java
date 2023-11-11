@@ -1,14 +1,12 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press;
 
+import com.simibubi.create.AllRecipeTypes;
+import com.simibubi.create.content.kinetics.crafter.MechanicalCraftingRecipe;
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
-import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
-import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
-import com.simibubi.create.foundation.item.ItemHelper;
+import com.simibubi.create.infrastructure.config.AllConfigs;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,15 +16,32 @@ public class HydraulicPressBlockEntity extends MechanicalPressBlockEntity {
         super(type, pos, state);
     }
 
+    @Override
+    public boolean tryProcessInBasin(boolean simulate) {
+        return false;
+    }
+
+    @Override
+    protected <C extends Container> boolean matchStaticFilters(Recipe<C> recipe) {
+        return (recipe instanceof CraftingRecipe && !(recipe instanceof MechanicalCraftingRecipe) && canCompress(recipe)
+                && !AllRecipeTypes.shouldIgnoreInAutomation(recipe))
+                || recipe.getType() == AllRecipeTypes.COMPACTING.getType();
+    }
+
     public static <C extends Container> boolean canCompress(Recipe<C> recipe) {
-        if (!(recipe instanceof CraftingRecipe) || !true)
-            return false;
-        NonNullList<Ingredient> ingredients = recipe.getIngredients();
-        return (ingredients.size() == 4 || ingredients.size() == 9) && ItemHelper.matchAllIngredients(ingredients);
+        return false;
+    }
+
+    @Override
+    public void onPressingCompleted() {
+    }
+
+    @Override
+    public void startProcessingBasin() {
     }
 
     @Override
     public boolean canProcessInBulk() {
-        return true;
+        return !AllConfigs.server().recipes.bulkPressing.get();
     }
 }

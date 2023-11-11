@@ -55,9 +55,6 @@
   "block.create_dd.bronze_saw.tooltip": "BRONZE SAW",
   "block.create_dd.bronze_saw.tooltip.summary": "Acts like a _Mechanical Saw_ but _mines faster_ and allows for _Bulk Sawing_!",
 
-  "block.create_dd.hydraulic_press.tooltip": "HYDRAULIC PRESS",
-  "block.create_dd.hydraulic_press.tooltip.summary": "Acts like a _Mechanical Press_ but allows for _Bulk Pressing_!",
-
   "item.create_dd.forest_ravager.tooltip": "MYTHICAL FOREST RAVAGER",
   "item.create_dd.forest_ravager.tooltip.summary": "A Powerful axe that can _Deforest the Entire Land_!",
   "item.create_dd.forest_ravager.tooltip.condition1": "Breaking a Block while Sneaking",
