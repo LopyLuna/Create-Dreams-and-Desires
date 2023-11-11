@@ -2,6 +2,7 @@ package uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan;
 
 import com.simibubi.create.content.kinetics.base.GeneratingKineticBlockEntity;
 import com.simibubi.create.content.logistics.chute.ChuteBlockEntity;
+import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.infrastructure.config.AllConfigs;
@@ -90,12 +91,12 @@ public class IndustrialFanBlockEntity extends GeneratingKineticBlockEntity imple
         BlockState blockState = getBlockState();
         boolean shouldGenerate = DDBlocks.industrial_fan.has(blockState);
 
-        if (shouldGenerate && blockState.getValue(IndustrialFanBlock.FACING) != Direction.DOWN && blockBelowIsHot())
+        if (shouldGenerate && blockState.getValue(IndustrialFanBlock.FACING) != Direction.DOWN && !blockBelowIsHot())
             shouldGenerate = false;
 
         if (shouldGenerate)
             shouldGenerate = level != null
-                    && !blockBelowIsHot()
+                    && blockBelowIsHot()
                     && level.hasSignal(worldPosition, Direction.DOWN)
                     && level.hasNeighborSignal(worldPosition.below())
                     && blockState.getValue(IndustrialFanBlock.FACING) == Direction.DOWN;
@@ -109,7 +110,13 @@ public class IndustrialFanBlockEntity extends GeneratingKineticBlockEntity imple
     public boolean blockBelowIsHot() {
         assert level != null;
         BlockState blockState = level.getBlockState(worldPosition.below());
-        return !DDTags.AllBlockTags.fan_heaters.matches(blockState);
+        if (DDTags.AllBlockTags.fan_heaters.matches(blockState)) {
+            if (blockState.hasProperty(BlazeBurnerBlock.HEAT_LEVEL) && !blockState.getValue(BlazeBurnerBlock.HEAT_LEVEL).isAtLeast(BlazeBurnerBlock.HeatLevel.FADING)) {
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 
     @javax.annotation.Nullable
