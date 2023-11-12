@@ -1,9 +1,12 @@
 package uwu.lopyluna.create_dd.ponder;
 
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.ponder.PonderRegistry;
 import com.simibubi.create.foundation.ponder.PonderTag;
+import net.minecraft.world.item.Items;
 import uwu.lopyluna.create_dd.DDCreate;
+import uwu.lopyluna.create_dd.DDTags;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.item.DDItems;
 
@@ -18,8 +21,20 @@ public class DDPonderTags {
     public static final PonderTag
     CREATEDD = create("create_dd").item(DDItems.spectral_ruby.get())
             .defaultLang("Create: Dreams n' Desires", "Where Dreams & also Desires come true!")
+		.addToIndex(),
+    FAN_HEATER = create("fan_heater").item(AllBlocks.BLAZE_BURNER.get())
+            .defaultLang("Industrial Fan Heaters", "Heater that are valid for the Industrial Fan")
 		.addToIndex();
     public static void register() {
+
+
+        PonderRegistry.TAGS.forTag(FAN_HEATER)
+                .add(Items.LAVA_BUCKET)
+                .add(AllBlocks.BLAZE_BURNER)
+                .add(DDBlocks.superheating_sail)
+        ;
+
+
         PonderRegistry.TAGS.forTag(CREATEDD)
                 .add(DDBlocks.industrial_fan)
                 .add(DDBlocks.hydraulic_press)

@@ -1,17 +1,16 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.cog_crank;
 
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
+import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.content.kinetics.base.IRotate;
-import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.CogwheelBlockItem;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
-import com.simibubi.create.content.kinetics.speedController.SpeedControllerBlock;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.block.ProperWaterloggedBlock;
 import com.simibubi.create.foundation.utility.Couple;
 import com.simibubi.create.infrastructure.config.AllConfigs;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -37,24 +36,33 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.block.DDBlockShapes;
 
-import static com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock.isValidCogwheelPosition;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class CogCrankBlock extends RotatedPillarKineticBlock implements IBE<CogCrankBlockEntity>, ProperWaterloggedBlock, ICogWheel {
+import static com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock.getPreferredAxis;
+import static com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock.isValidCogwheelPosition;
+import static net.minecraft.world.level.block.state.properties.BlockStateProperties.AXIS;
+
+@SuppressWarnings({"deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
+public class CogCrankBlock extends DirectionalKineticBlock
+    implements IBE<CogCrankBlockEntity>, ProperWaterloggedBlock, ICogWheel {
+
     public CogCrankBlock(Properties properties) {
         super(properties);
         registerDefaultState(defaultBlockState().setValue(WATERLOGGED, false));
     }
-    
+
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        return DDBlockShapes.cogCrank.get(state.getValue(AXIS));
+        return DDBlockShapes.cogCrank.get(state.getValue(FACING));
     }
     
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder.add(WATERLOGGED));
     }
-    
+
     public int getRotationSpeed() {
         return 32;
     }
@@ -82,6 +90,7 @@ public class CogCrankBlock extends RotatedPillarKineticBlock implements IBE<CogC
         
         return InteractionResult.SUCCESS;
     }
+
     protected Direction.Axis getAxisForPlacement(BlockPlaceContext context) {
         if (context.getPlayer() != null && context.getPlayer()
                 .isShiftKeyDown())
@@ -89,11 +98,6 @@ public class CogCrankBlock extends RotatedPillarKineticBlock implements IBE<CogC
                     .getAxis();
         
         Level world = context.getLevel();
-        BlockState stateBelow = world.getBlockState(context.getClickedPos()
-                .below());
-        
-        if (AllBlocks.ROTATION_SPEED_CONTROLLER.has(stateBelow) && isLargeCog())
-            return stateBelow.getValue(SpeedControllerBlock.HORIZONTAL_AXIS) == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
         
         BlockPos placedOnPos = context.getClickedPos()
                 .relative(context.getClickedFace()
@@ -104,8 +108,8 @@ public class CogCrankBlock extends RotatedPillarKineticBlock implements IBE<CogC
         if (ICogWheel.isSmallCog(placedAgainst))
             return ((IRotate) block).getRotationAxis(placedAgainst);
         
-        Direction.Axis preferredAxis = getPreferredAxis(context);
-        return preferredAxis != null ? preferredAxis
+        Direction.Axis getPreferredFacing = getPreferredAxis(context);
+        return getPreferredFacing != null ? getPreferredFacing
                 : context.getClickedFace()
                 .getAxis();
     }
@@ -121,7 +125,7 @@ public class CogCrankBlock extends RotatedPillarKineticBlock implements IBE<CogC
     
     @Override
     public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
-        return isValidCogwheelPosition(ICogWheel.isLargeCog(state), worldIn, pos, state.getValue(AXIS));
+        return isValidCogwheelPosition(ICogWheel.isLargeCog(state), worldIn, pos, state.getValue(FACING).getAxis());
     }
     
     @Override
@@ -130,7 +134,7 @@ public class CogCrankBlock extends RotatedPillarKineticBlock implements IBE<CogC
         updateWater(pLevel, pState, pCurrentPos);
         return pState;
     }
-    
+
     @Override
     public FluidState getFluidState(BlockState pState) {
         return fluidState(pState);
@@ -143,14 +147,14 @@ public class CogCrankBlock extends RotatedPillarKineticBlock implements IBE<CogC
     
     @Override
     public Direction.Axis getRotationAxis(BlockState state) {
-        return state.getValue(AXIS);
+        return state.getValue(FACING).getAxis();
     }
-    
+
     @Override
     public Class<CogCrankBlockEntity> getBlockEntityClass() {
         return CogCrankBlockEntity.class;
     }
-    
+
     @Override
     public BlockEntityType<? extends CogCrankBlockEntity> getBlockEntityType() {
         return DDBlockEntityTypes.cogCrank.get();
@@ -160,7 +164,7 @@ public class CogCrankBlock extends RotatedPillarKineticBlock implements IBE<CogC
     public boolean isPathfindable(BlockState state, BlockGetter reader, BlockPos pos, PathComputationType type) {
         return false;
     }
-    
+
     public static Couple<Integer> getSpeedRange() {
         return Couple.create(32, 32);
     }

@@ -1,9 +1,11 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.cog_crank;
 
+import com.jozufozu.flywheel.api.Instancer;
+import com.jozufozu.flywheel.api.Material;
+import com.jozufozu.flywheel.core.materials.model.ModelData;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllSoundEvents;
-import com.simibubi.create.content.kinetics.base.GeneratingKineticBlockEntity;
-import com.simibubi.create.content.kinetics.crafter.MechanicalCrafterBlock;
+import com.simibubi.create.content.kinetics.crank.HandCrankBlockEntity;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
@@ -18,7 +20,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 
-public class CogCrankBlockEntity extends GeneratingKineticBlockEntity {
+public class CogCrankBlockEntity extends HandCrankBlockEntity {
     
     public int inUse;
     public boolean backwards;
@@ -65,43 +67,57 @@ public class CogCrankBlockEntity extends GeneratingKineticBlockEntity {
         compound.putBoolean("Backwards", backwards);
         super.write(compound, clientPacket);
     }
-    
+
     @Override
     protected void read(CompoundTag compound, boolean clientPacket) {
         inUse = compound.getInt("InUse");
         backwards = compound.getBoolean("Backwards");
         super.read(compound, clientPacket);
     }
-    
+
     @Override
     public void tick() {
         super.tick();
-        
+
         float actualSpeed = getSpeed();
         chasingVelocity += ((actualSpeed * 10 / 3f) - chasingVelocity) * .25f;
         independentAngle += chasingVelocity;
-        
+
         if (inUse > 0) {
             inUse--;
-            
+
             if (inUse == 0 && !level.isClientSide) {
                 sequenceContext = null;
                 updateGeneratedRotation();
             }
         }
     }
+
     @OnlyIn(Dist.CLIENT)
     public SuperByteBuffer getRenderedHandle() {
         BlockState blockState = getBlockState();
-        Direction axis = blockState.getOptionalValue(MechanicalCrafterBlock.HORIZONTAL_FACING).orElse(Direction.UP);
-        return CachedBufferer.partialFacing(DDBlockPartialModel.HAND_CRANK_HANDLE, blockState, axis.getOpposite());
+        Direction facing = blockState.getOptionalValue(CogCrankBlock.FACING)
+                .orElse(Direction.UP);
+        return CachedBufferer.partialFacing(DDBlockPartialModel.HAND_CRANK_HANDLE, blockState, facing.getOpposite());
     }
-    
+    @OnlyIn(Dist.CLIENT)
+    public Instancer<ModelData> getRenderedHandleInstance(Material<ModelData> material) {
+        BlockState blockState = getBlockState();
+        Direction facing = blockState.getOptionalValue(CogCrankBlock.FACING)
+                .orElse(Direction.UP);
+        return material.getModel(DDBlockPartialModel.HAND_CRANK_HANDLE, blockState, facing.getOpposite());
+    }
+    @OnlyIn(Dist.CLIENT)
+    public boolean shouldRenderCog() {
+        return true;
+    }
+
+    @Override
     @OnlyIn(Dist.CLIENT)
     public boolean shouldRenderShaft() {
         return false;
     }
-    
+
     @Override
     protected Block getStressConfigKey() {
         return DDBlocks.cogCrank.has(getBlockState()) ? DDBlocks.cogCrank.get()

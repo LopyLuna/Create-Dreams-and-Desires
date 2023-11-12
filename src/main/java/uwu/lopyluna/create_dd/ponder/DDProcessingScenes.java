@@ -26,6 +26,117 @@ import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPre
 
 public class DDProcessingScenes {
 
+
+    public static void Motors(SceneBuilder scene, SceneBuildingUtil util) {
+        scene.title("motors", "Generating Rotational Force using Motors");
+        scene.configureBasePlate(0, 0, 5);
+        scene.world.showSection(util.select.layer(0), Direction.UP);
+        scene.idle(5);
+
+        BlockPos motor = util.grid.at(3, 1, 2);
+        BlockPos speedBox = util.grid.at(1, 1, 2);
+        BlockPos flywheel = util.grid.at(1, 1, 4);
+        BlockPos belt1 = util.grid.at(2, 1, 0);
+        BlockPos belt2 = util.grid.at( 2, 1, 4);
+
+        scene.world.showSection(util.select.position(motor), Direction.DOWN);
+        scene.idle(5);
+        scene.world.showSection(util.select.fromTo(belt1, belt2), Direction.DOWN);
+        scene.idle(5);
+        scene.world.showSection(util.select.position(flywheel), Direction.DOWN);
+        scene.idle(5);
+        scene.world.showSection(util.select.position(speedBox), Direction.DOWN);
+
+        scene.idle(10);
+        scene.effects.rotationSpeedIndicator(motor);
+        scene.overlay.showText(50)
+                .text("Motors are a compact and configurable source of Rotational Force")
+                .placeNearTarget()
+                .pointAt(util.vector.topOf(motor));
+        scene.idle(70);
+
+        Vec3 blockSurface = util.vector.blockSurface(motor, Direction.NORTH)
+                .add(1 / 16f, 0, 3 / 16f);
+        scene.overlay.showFilterSlotInput(blockSurface, Direction.NORTH, 80);
+        scene.overlay.showControls(new InputWindowElement(blockSurface, Pointing.DOWN).rightClick(), 60);
+        scene.idle(20);
+
+        scene.overlay.showText(60)
+                .text("The generated speed can be configured on its input panels")
+                .attachKeyFrame()
+                .placeNearTarget()
+                .pointAt(blockSurface);
+        scene.idle(10);
+        scene.idle(50);
+        scene.world.modifyKineticSpeed(util.select.position(motor), f -> 4 * f);
+        scene.world.modifyKineticSpeed(util.select.position(speedBox), f -> 4 * f);
+        scene.world.modifyKineticSpeed(util.select.position(flywheel), f -> 4 * f);
+        scene.world.modifyKineticSpeed(util.select.fromTo(belt1, belt2), f -> 4 * f);
+        scene.idle(10);
+
+        scene.effects.rotationSpeedIndicator(motor);
+    }
+
+    public static void cogCrank(SceneBuilder scene, SceneBuildingUtil util) {
+        scene.title("cog_crank", "Generating Rotational Force using Cog Cranks");
+        scene.configureBasePlate(0, 0, 5);
+        scene.world.showSection(util.select.layer(0), Direction.UP);
+        scene.idle(5);
+
+        BlockPos gaugePos = util.grid.at(1, 3, 3);
+        BlockPos handlePos = util.grid.at(2, 1, 2);
+
+        scene.world.showSection(util.select.layer(1), Direction.DOWN);
+        scene.idle(10);
+        scene.world.showSection(util.select.layer(2), Direction.DOWN);
+        scene.idle(20);
+
+        Vec3 centerOf = util.vector.centerOf(handlePos);
+        Vec3 sideOf = centerOf.add(-0.5, 0, 0);
+
+        scene.overlay.showText(70)
+                .text("Cog Cranks can be used by players to apply rotational force manually")
+                .placeNearTarget()
+                .pointAt(sideOf);
+        scene.idle(80);
+
+        scene.overlay.showControls(new InputWindowElement(centerOf, Pointing.DOWN).rightClick(), 40);
+        scene.idle(7);
+        scene.world.setKineticSpeed(util.select.everywhere(), 32);
+        scene.world.modifyKineticSpeed(util.select.column(1, 3), f -> f * -2);
+        scene.effects.rotationDirectionIndicator(handlePos);
+        scene.effects.indicateSuccess(gaugePos);
+        scene.idle(10);
+        scene.overlay.showText(50)
+                .text("Hold Right-Click to rotate it Counter-Clockwise")
+                .attachKeyFrame()
+                .placeNearTarget()
+                .pointAt(sideOf);
+
+        scene.idle(35);
+        scene.world.setKineticSpeed(util.select.everywhere(), 0);
+        scene.idle(15);
+
+        scene.overlay.showControls(new InputWindowElement(centerOf, Pointing.DOWN).rightClick()
+                .whileSneaking(), 40);
+        scene.idle(7);
+        scene.world.setKineticSpeed(util.select.everywhere(), -32);
+        scene.world.modifyKineticSpeed(util.select.column(1, 3), f -> f * -2);
+        scene.effects.rotationDirectionIndicator(handlePos);
+        scene.effects.indicateSuccess(gaugePos);
+        scene.idle(10);
+        scene.overlay.showText(90)
+                .text("Sneak and Hold Right-Click to rotate it Clockwise")
+                .attachKeyFrame()
+                .placeNearTarget()
+                .pointAt(sideOf);
+
+        scene.idle(35);
+        scene.world.setKineticSpeed(util.select.everywhere(), 0);
+        scene.idle(45);
+    }
+
+
     public static void fan_sails(SceneBuilder scene, SceneBuildingUtil util) {
         scene.title("fan_sails", "Ability to change fan types!");
         scene.configureBasePlate(0, 0, 9);

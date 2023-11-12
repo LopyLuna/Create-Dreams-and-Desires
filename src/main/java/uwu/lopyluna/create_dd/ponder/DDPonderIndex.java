@@ -8,7 +8,6 @@ import com.simibubi.create.infrastructure.ponder.scenes.BearingScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.KineticsScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.MechanicalDrillScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.MechanicalSawScenes;
-import net.minecraft.world.level.block.Blocks;
 import uwu.lopyluna.create_dd.DDCreate;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 
@@ -20,26 +19,19 @@ public class DDPonderIndex {
     public static final boolean REGISTER_DEBUG_SCENES = false;
 
     public static void register() {
-        HELPER.forComponents(DDBlocks.hydraulic_press)
-                .addStoryBoard("hydraulic_press", DDProcessingScenes::bulk_pressing, AllPonderTags.KINETIC_APPLIANCES);
-        HELPER.forComponents(DDBlocks.BRONZE_SAW)
-                .addStoryBoard("bronze_saw", DDProcessingScenes::processing, AllPonderTags.KINETIC_APPLIANCES);
-        HELPER.forComponents(DDBlocks.FLYWHEEL)
-                .addStoryBoard("furnace_engine", DDProcessingScenes::flywheel);
-        HELPER.forComponents(DDBlocks.FURNACE_ENGINE)
-                .addStoryBoard("furnace_engine", DDProcessingScenes::furnaceEngine);
-        HELPER.forComponents(DDBlocks.blasting_sail)
-                .addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
-        HELPER.forComponents(DDBlocks.smoking_sail)
-                .addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
-        HELPER.forComponents(DDBlocks.haunting_sail)
-                .addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
-        HELPER.forComponents(DDBlocks.splashing_sail)
-                .addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
-        HELPER.forComponents(DDBlocks.superheating_sail)
-                .addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
-        HELPER.forComponents(DDBlocks.freezing_sail)
-                .addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
+        HELPER.forComponents(DDBlocks.hydraulic_press).addStoryBoard("hydraulic_press", DDProcessingScenes::bulk_pressing, AllPonderTags.KINETIC_APPLIANCES);
+        HELPER.forComponents(DDBlocks.BRONZE_SAW).addStoryBoard("bronze_saw", DDProcessingScenes::processing, AllPonderTags.KINETIC_APPLIANCES);
+        HELPER.forComponents(DDBlocks.FLYWHEEL).addStoryBoard("furnace_engine", DDProcessingScenes::flywheel);
+        HELPER.forComponents(DDBlocks.FURNACE_ENGINE).addStoryBoard("furnace_engine", DDProcessingScenes::furnaceEngine);
+        HELPER.forComponents(DDBlocks.blasting_sail).addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
+        HELPER.forComponents(DDBlocks.smoking_sail).addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
+        HELPER.forComponents(DDBlocks.haunting_sail).addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
+        HELPER.forComponents(DDBlocks.splashing_sail).addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
+        HELPER.forComponents(DDBlocks.superheating_sail).addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
+        HELPER.forComponents(DDBlocks.freezing_sail).addStoryBoard("fan_sails", DDProcessingScenes::fan_sails);
+        HELPER.forComponents(DDBlocks.ACCELERATOR_MOTOR).addStoryBoard("accelerator_motor", DDProcessingScenes::Motors, AllPonderTags.KINETIC_SOURCES);
+        HELPER.forComponents(DDBlocks.KINETIC_MOTOR).addStoryBoard("kinetic_motor", DDProcessingScenes::Motors, AllPonderTags.KINETIC_SOURCES);
+        HELPER.forComponents(DDBlocks.cogCrank).addStoryBoard("cog_crank", DDProcessingScenes::cogCrank, AllPonderTags.KINETIC_SOURCES);
 
         ////////////////////// Create = below |||| Create DD = Above
 
@@ -57,7 +49,6 @@ public class DDPonderIndex {
                 .addStoryBoard("mechanical_drill/contraption", MechanicalDrillScenes::contraption, AllPonderTags.CONTRAPTION_ACTOR);
 
         CREATE_HELPER.addStoryBoard(DDBlocks.REVERSED_GEARSHIFT, "gearshift", KineticsScenes::gearshift, AllPonderTags.KINETIC_RELAYS);
-        CREATE_HELPER.addStoryBoard(DDBlocks.cogCrank, "hand_crank", KineticsScenes::handCrank, AllPonderTags.KINETIC_SOURCES);
 
         CREATE_HELPER.forComponents(DDBlocks.blasting_sail)
                 .addStoryBoard("sail", BearingScenes::sail);
