@@ -10,7 +10,9 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
+
 public class CogCrankRenderer extends KineticBlockEntityRenderer<CogCrankBlockEntity> {
+
     public CogCrankRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
     }

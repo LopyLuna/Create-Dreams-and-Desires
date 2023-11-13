@@ -1,11 +1,8 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.cog_crank;
 
-import com.jozufozu.flywheel.api.Instancer;
 import com.jozufozu.flywheel.api.MaterialManager;
 import com.jozufozu.flywheel.api.instance.DynamicInstance;
 import com.jozufozu.flywheel.core.materials.model.ModelData;
-import com.jozufozu.flywheel.util.transform.TransformStack;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.SingleRotatingInstance;
 import com.simibubi.create.content.kinetics.base.flwdata.RotatingData;
@@ -19,45 +16,27 @@ import java.util.function.Supplier;
 public class CogCrankInstance extends SingleRotatingInstance<CogCrankBlockEntity> implements DynamicInstance {
 
     private final ModelData crank;
-    private final Direction facing;
-    
+    private final Direction.Axis Axis;
+    protected RotatingData cog;
+
     public CogCrankInstance(MaterialManager modelManager, CogCrankBlockEntity blockEntity) {
         super(modelManager, blockEntity);
-        facing = blockState.getValue(BlockStateProperties.FACING);
-        Instancer<ModelData> model = blockEntity.getRenderedHandleInstance(getTransformMaterial());
-        crank = model.createInstance();
+        Axis = blockState.getValue(BlockStateProperties.AXIS);
+
+        cog = setup(getRotatingMaterial().getModel(AllPartialModels.SHAFTLESS_COGWHEEL).createInstance());
+        crank = getTransformMaterial().getModel(blockState).createInstance();
         rotateCrank();
-    }
-
-    @Override
-    protected Instancer<RotatingData> getModel() {
-        Direction facing = blockState.getValue(CogCrankBlock.FACING);
-
-        return getRotatingMaterial().getModel(AllPartialModels.SHAFTLESS_COGWHEEL, blockState, facing, rotateToFace(facing));
-    }
-
-    private Supplier<PoseStack> rotateToFace(Direction facing) {
-        return () -> {
-            PoseStack stack = new PoseStack();
-            TransformStack stacker = TransformStack.cast(stack)
-                    .centre();
-
-            if (facing.getAxis() == Direction.Axis.X) stacker.rotateZ(90);
-            else if (facing.getAxis() == Direction.Axis.Z) stacker.rotateX(90);
-
-            stacker.unCentre();
-            return stack;
-        };
     }
 
     public void beginFrame() {
         if (crank == null)
             return;
-        
+
         rotateCrank();
     }
+
     private void rotateCrank() {
-        Direction.Axis axis = facing.getAxis();
+        Direction.Axis axis = Axis;
         float angle = blockEntity.getIndependentAngle(AnimationTickHolder.getPartialTicks());
 
         crank.loadIdentity()
@@ -74,22 +53,31 @@ public class CogCrankInstance extends SingleRotatingInstance<CogCrankBlockEntity
 
     @Override
     public void remove() {
-        if (blockEntity.shouldRenderCog())
+        if (blockEntity.shouldRenderCog()) {
             super.remove();
-        if (crank != null)
-            crank.delete();
+            if (cog != null)
+                cog.delete();
+            if (crank != null)
+                crank.delete();
+        }
     }
     @Override
     public void update() {
-        if (blockEntity.shouldRenderCog())
+        if (blockEntity.shouldRenderCog()) {
             super.update();
+            if (cog != null)
+                updateRotation(cog);
+        }
     }
 
     @Override
     public void updateLight() {
-        if (blockEntity.shouldRenderCog())
+        if (blockEntity.shouldRenderCog()) {
             super.updateLight();
-        if (crank != null)
-            relight(pos, crank);
+            if (cog != null)
+                relight(pos, cog);
+            if (crank != null)
+                relight(pos, crank);
+        }
     }
 }

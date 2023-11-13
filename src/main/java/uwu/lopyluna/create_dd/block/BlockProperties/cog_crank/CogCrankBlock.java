@@ -1,8 +1,8 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.cog_crank;
 
 import com.simibubi.create.AllItems;
-import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.content.kinetics.base.IRotate;
+import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.CogwheelBlockItem;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
@@ -38,15 +38,13 @@ import uwu.lopyluna.create_dd.block.DDBlockShapes;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import static com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock.getPreferredAxis;
 import static com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock.isValidCogwheelPosition;
-import static net.minecraft.world.level.block.state.properties.BlockStateProperties.AXIS;
 
 @SuppressWarnings({"deprecation"})
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class CogCrankBlock extends DirectionalKineticBlock
-    implements IBE<CogCrankBlockEntity>, ProperWaterloggedBlock, ICogWheel {
+public class CogCrankBlock extends RotatedPillarKineticBlock
+implements IBE<CogCrankBlockEntity>, ProperWaterloggedBlock, ICogWheel {
 
     public CogCrankBlock(Properties properties) {
         super(properties);
@@ -55,7 +53,7 @@ public class CogCrankBlock extends DirectionalKineticBlock
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        return DDBlockShapes.cogCrank.get(state.getValue(FACING));
+        return DDBlockShapes.cogCrank.get(state.getValue(AXIS));
     }
     
     @Override
@@ -125,7 +123,7 @@ public class CogCrankBlock extends DirectionalKineticBlock
     
     @Override
     public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
-        return isValidCogwheelPosition(ICogWheel.isLargeCog(state), worldIn, pos, state.getValue(FACING).getAxis());
+        return isValidCogwheelPosition(ICogWheel.isLargeCog(state), worldIn, pos, state.getValue(AXIS));
     }
     
     @Override
@@ -147,7 +145,7 @@ public class CogCrankBlock extends DirectionalKineticBlock
     
     @Override
     public Direction.Axis getRotationAxis(BlockState state) {
-        return state.getValue(FACING).getAxis();
+        return state.getValue(AXIS);
     }
 
     @Override

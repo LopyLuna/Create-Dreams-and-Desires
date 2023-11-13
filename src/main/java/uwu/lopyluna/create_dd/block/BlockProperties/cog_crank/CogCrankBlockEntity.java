@@ -6,6 +6,7 @@ import com.jozufozu.flywheel.core.materials.model.ModelData;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllSoundEvents;
 import com.simibubi.create.content.kinetics.base.GeneratingKineticBlockEntity;
+import com.simibubi.create.content.kinetics.crank.HandCrankBlock;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
@@ -21,12 +22,12 @@ import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 
 public class CogCrankBlockEntity extends GeneratingKineticBlockEntity {
-    
+
     public int inUse;
     public boolean backwards;
     public float independentAngle;
     public float chasingVelocity;
-    
+
     public CogCrankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
@@ -46,7 +47,7 @@ public class CogCrankBlockEntity extends GeneratingKineticBlockEntity {
     public float getIndependentAngle(float partialTicks) {
         return (independentAngle + partialTicks * chasingVelocity) / 360;
     }
-    
+
     @Override
     public float getGeneratedSpeed() {
         Block block = getBlockState().getBlock();
@@ -60,7 +61,7 @@ public class CogCrankBlockEntity extends GeneratingKineticBlockEntity {
     protected boolean clockwise() {
         return backwards;
     }
-    
+
     @Override
     public void write(CompoundTag compound, boolean clientPacket) {
         compound.putInt("InUse", inUse);
@@ -96,18 +97,11 @@ public class CogCrankBlockEntity extends GeneratingKineticBlockEntity {
     @OnlyIn(Dist.CLIENT)
     public SuperByteBuffer getRenderedHandle() {
         BlockState blockState = getBlockState();
-        Direction facing = blockState.getOptionalValue(CogCrankBlock.FACING)
+        Direction facing = blockState.getOptionalValue(HandCrankBlock.FACING)
                 .orElse(Direction.UP);
         return CachedBufferer.partialFacing(DDBlockPartialModel.HAND_CRANK_HANDLE, blockState, facing.getOpposite());
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public Instancer<ModelData> getRenderedHandleInstance(Material<ModelData> material) {
-        BlockState blockState = getBlockState();
-        Direction facing = blockState.getOptionalValue(CogCrankBlock.FACING)
-                .orElse(Direction.UP);
-        return material.getModel(DDBlockPartialModel.HAND_CRANK_HANDLE, blockState, facing.getOpposite());
-    }
     @OnlyIn(Dist.CLIENT)
     public boolean shouldRenderCog() {
         return true;
@@ -118,7 +112,7 @@ public class CogCrankBlockEntity extends GeneratingKineticBlockEntity {
         return DDBlocks.cogCrank.has(getBlockState()) ? DDBlocks.cogCrank.get()
                 : AllBlocks.COPPER_VALVE_HANDLE.get();
     }
-    
+
     @Override
     @OnlyIn(Dist.CLIENT)
     public void tickAudio() {
