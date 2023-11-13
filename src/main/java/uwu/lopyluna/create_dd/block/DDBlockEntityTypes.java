@@ -184,7 +184,7 @@ public class DDBlockEntityTypes {
                     .validBlocks(DDBlocks.POTATO_TURRET)
                     .renderer(() -> PotatoTurretRenderer::new)
                     .register();
-    
+
     public static final BlockEntityEntry<CogCrankBlockEntity> cogCrank = REGISTRATE
             .blockEntity("cog_crank", CogCrankBlockEntity::new)
             .instance(() -> CogCrankInstance::new)
