@@ -33,6 +33,7 @@ import uwu.lopyluna.create_dd.worldgen.WorldgenOreFeatures;
 import uwu.lopyluna.create_dd.worldgen.WorldgenOrePlacedFeatures;
 
 
+@SuppressWarnings({"unused"})
 @Mod(DDCreate.MOD_ID)
 public class DDCreate
 {
