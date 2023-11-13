@@ -5,6 +5,7 @@ import com.jozufozu.flywheel.api.Material;
 import com.jozufozu.flywheel.core.materials.model.ModelData;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllSoundEvents;
+import com.simibubi.create.content.kinetics.base.GeneratingKineticBlockEntity;
 import com.simibubi.create.content.kinetics.crank.HandCrankBlockEntity;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
@@ -20,7 +21,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 
-public class CogCrankBlockEntity extends HandCrankBlockEntity {
+public class CogCrankBlockEntity extends GeneratingKineticBlockEntity {
     
     public int inUse;
     public boolean backwards;
@@ -30,19 +31,19 @@ public class CogCrankBlockEntity extends HandCrankBlockEntity {
     public CogCrankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
-    
+
     public void turn(boolean back) {
         boolean update = false;
-        
+
         if (getGeneratedSpeed() == 0 || back != backwards)
             update = true;
-        
+
         inUse = 10;
         this.backwards = back;
         if (update && !level.isClientSide)
             updateGeneratedRotation();
     }
-    
+
     public float getIndependentAngle(float partialTicks) {
         return (independentAngle + partialTicks * chasingVelocity) / 360;
     }
@@ -56,7 +57,7 @@ public class CogCrankBlockEntity extends HandCrankBlockEntity {
         int speed = (inUse == 0 ? 0 : clockwise() ? -1 : 1) * crank.getRotationSpeed();
         return speed;
     }
-    
+
     protected boolean clockwise() {
         return backwards;
     }
@@ -100,6 +101,7 @@ public class CogCrankBlockEntity extends HandCrankBlockEntity {
                 .orElse(Direction.UP);
         return CachedBufferer.partialFacing(DDBlockPartialModel.HAND_CRANK_HANDLE, blockState, facing.getOpposite());
     }
+
     @OnlyIn(Dist.CLIENT)
     public Instancer<ModelData> getRenderedHandleInstance(Material<ModelData> material) {
         BlockState blockState = getBlockState();
@@ -110,12 +112,6 @@ public class CogCrankBlockEntity extends HandCrankBlockEntity {
     @OnlyIn(Dist.CLIENT)
     public boolean shouldRenderCog() {
         return true;
-    }
-
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public boolean shouldRenderShaft() {
-        return false;
     }
 
     @Override
