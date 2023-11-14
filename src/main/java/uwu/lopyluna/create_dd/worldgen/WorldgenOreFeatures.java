@@ -17,6 +17,7 @@ import uwu.lopyluna.create_dd.DDCreate;
 import uwu.lopyluna.create_dd.DDTags;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.block.BlockPalette.DDPaletteStoneTypes;
+import uwu.lopyluna.create_dd.configs.DDConfigs;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -57,27 +58,27 @@ public class WorldgenOreFeatures {
 
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> stone_blobs = CONFIGURED_FEATURES.register("stone_blobs",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_STONE_BLOBS.get(),48)));
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_STONE_BLOBS.get(),DDConfigs.common().stone_blob_cluster.get())));
 
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> limestone_blobs = CONFIGURED_FEATURES.register("limestone_blobs",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_LIMESTONE_BLOBS.get(),32)));
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_LIMESTONE_BLOBS.get(),DDConfigs.common().limestone_blob_cluster.get())));
 
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> weathered_limestone_blobs = CONFIGURED_FEATURES.register("weathered_limestone_blobs",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_WEATHERED_LIMESTONE_BLOBS.get(),24)));
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_WEATHERED_LIMESTONE_BLOBS.get(),DDConfigs.common().weathered_limestone_blob_cluster.get())));
 
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> gabbro_blobs = CONFIGURED_FEATURES.register("gabbro_blobs",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_GABBRO_BLOBS.get(),48)));
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_GABBRO_BLOBS.get(),DDConfigs.common().gabbro_blob_cluster.get())));
 
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> eroded_limestone_blobs = CONFIGURED_FEATURES.register("eroded_blobs",
-            () -> new ConfiguredFeature<>(Feature.SCATTERED_ORE, new OreConfiguration(OVERWORLD_ERODED_LIMESTONE_BLOBS.get(),12)));
+            () -> new ConfiguredFeature<>(Feature.SCATTERED_ORE, new OreConfiguration(OVERWORLD_ERODED_LIMESTONE_BLOBS.get(),DDConfigs.common().eroded_limestone_blob_cluster.get())));
 
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> tin_ore = CONFIGURED_FEATURES.register("tin_ore",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_TIN_ORES.get(),12)));
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OVERWORLD_TIN_ORES.get(), DDConfigs.common().tin_ore_cluster.get())));
 
     public static void register(IEventBus eventBus) {
         CONFIGURED_FEATURES.register(eventBus);

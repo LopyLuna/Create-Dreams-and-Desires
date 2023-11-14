@@ -1,8 +1,6 @@
 package uwu.lopyluna.create_dd.item.ItemProperties.compound;
 
 import com.simibubi.create.foundation.utility.VecHelper;
-import com.simibubi.create.infrastructure.config.AllConfigs;
-import com.simibubi.create.infrastructure.config.CRecipes;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -26,6 +24,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
+import uwu.lopyluna.create_dd.configs.DDConfigs;
 import uwu.lopyluna.create_dd.item.DDItems;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -42,7 +41,6 @@ public class ChromaticCompound extends Item {
     @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
         Level world = entity.level;
-        CRecipes config = AllConfigs.server().recipes;
 
         double y = entity.getY();
         double yMotion = entity.getDeltaMovement().y;
@@ -50,14 +48,14 @@ public class ChromaticCompound extends Item {
         CompoundTag data = entity.getPersistentData();
 
         // Convert to Shadow steel if in void
-        if (y < minHeight && y - yMotion < -10 + minHeight && config.enableShadowSteelRecipe.get()) {
+        if (y < minHeight && y - yMotion < DDConfigs.server().shadow_steel_min.get() + minHeight && DDConfigs.server().shadow_steel_recipe.get()) {
             ItemStack newStack = DDItems.SHADOW_STEEL.asStack();
             newStack.setCount(stack.getCount());
             data.putBoolean("JustCreated", true);
             entity.setItem(newStack);
         }
 
-        if (!config.enableRefinedRadianceRecipe.get())
+        if (!DDConfigs.server().refined_radiance_recipe.get())
             return false;
 
         // Is inside beacon beam?
@@ -69,10 +67,10 @@ public class ChromaticCompound extends Item {
         BlockPos.MutableBlockPos testPos =
                 new BlockPos.MutableBlockPos(entityX, Math.min(Mth.floor(entity.getY()), localWorldHeight), entityZ);
 
-        while (testPos.getY() > -32) {
+        while (testPos.getY() > DDConfigs.server().refined_radiance_min.get()) {
             testPos.move(Direction.DOWN);
             BlockState state = world.getBlockState(testPos);
-            if (state.getLightBlock(world, testPos) >= 15 && state.getBlock() != Blocks.BEDROCK)
+            if (state.getLightBlock(world, testPos) >= DDConfigs.server().refined_radiance_light_level.get() && state.getBlock() != Blocks.BEDROCK)
                 break;
             if (state.getBlock() == Blocks.BEACON) {
                 BlockEntity be = world.getBlockEntity(testPos);
@@ -103,16 +101,19 @@ public class ChromaticCompound extends Item {
     @Override
     public InteractionResult interactLivingEntity(ItemStack heldItem, Player player, LivingEntity entity,
                                                   InteractionHand hand) {
-        if (!(entity instanceof Blaze))
-            return InteractionResult.PASS;
+        if (DDConfigs.server().blaze_gold_recipe.get()) {
+            if (!(entity instanceof Blaze))
+                return InteractionResult.PASS;
 
-        Level world = player.level;
-        spawnCaptureEffects(world, entity.position());
-        if (world.isClientSide)
+            Level world = player.level;
+            spawnCaptureEffects(world, entity.position());
+            if (world.isClientSide)
+                return InteractionResult.FAIL;
+
+            giveBlazeGoldItemTo(player, heldItem, hand);
+            entity.discard();
             return InteractionResult.FAIL;
-
-        giveBlazeGoldItemTo(player, heldItem, hand);
-        entity.discard();
+        }
         return InteractionResult.FAIL;
     }
 

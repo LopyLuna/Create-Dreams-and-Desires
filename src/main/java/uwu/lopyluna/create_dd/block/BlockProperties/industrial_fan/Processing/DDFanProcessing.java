@@ -56,7 +56,7 @@ public class DDFanProcessing {
             transported.processedBy = type;
             int timeModifierForStackSize = ((transported.stack.getCount() - 1) / 16) + 1;
             int processingTime =
-                    (int) (AllConfigs.server().kinetics.fanProcessingTime.get() * timeModifierForStackSize) + 1;
+                    (int) ((AllConfigs.server().kinetics.fanProcessingTime.get() * timeModifierForStackSize) / 1.25) + 1;
             transported.processingTime = processingTime;
             if (!type.canProcess(transported.stack, world))
                 transported.processingTime = -1;
@@ -96,7 +96,7 @@ public class DDFanProcessing {
             int timeModifierForStackSize = ((entity.getItem()
                     .getCount() - 1) / 16) + 1;
             int processingTime =
-                    (int) (AllConfigs.server().kinetics.fanProcessingTime.get() * timeModifierForStackSize) + 1;
+                    (int) ((AllConfigs.server().kinetics.fanProcessingTime.get() * timeModifierForStackSize) / 1.25) + 1;
             processing.putInt("Time", processingTime);
         }
 

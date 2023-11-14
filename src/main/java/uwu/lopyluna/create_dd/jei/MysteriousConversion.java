@@ -9,6 +9,7 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraftforge.fml.ModList;
+import uwu.lopyluna.create_dd.configs.DDConfigs;
 import uwu.lopyluna.create_dd.item.DDItems;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -21,12 +22,20 @@ public class MysteriousConversion extends MysteriousItemConversionCategory {
     public static final List<ConversionRecipe> RECIPES = new ArrayList<>();
 
     static {
-		RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.SHADOW_STEEL.asStack()));
-		RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.REFINED_RADIANCE.asStack()));
+        if (DDConfigs.server().shadow_steel_recipe.get()) {
+		RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.SHADOW_STEEL.asStack()));}
+
+        if (DDConfigs.server().refined_radiance_recipe.get()) {
+		RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.REFINED_RADIANCE.asStack()));}
+
         if (ModList.get().isLoaded("createaddition")) {
             RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.OVERCHARGE_ALLOY.asStack()));}
-        RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.BLAZE_GOLD.asStack()));
-        RECIPES.add(ConversionRecipe.create(DDItems.FALLEN_STARGAZE_SINGULARITY.asStack(), DDItems.STARGAZE_SINGULARITY.asStack()));
+
+        if (DDConfigs.server().blaze_gold_recipe.get()) {
+        RECIPES.add(ConversionRecipe.create(DDItems.CHROMATIC_COMPOUND.asStack(), DDItems.BLAZE_GOLD.asStack()));}
+
+        if (DDConfigs.server().stargaze_singularity_recipe.get()) {
+        RECIPES.add(ConversionRecipe.create(DDItems.FALLEN_STARGAZE_SINGULARITY.asStack(), DDItems.STARGAZE_SINGULARITY.asStack()));}
 
 
     }

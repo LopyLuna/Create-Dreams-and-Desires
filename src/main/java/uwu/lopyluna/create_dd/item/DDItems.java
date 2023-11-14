@@ -17,7 +17,7 @@ import uwu.lopyluna.create_dd.item.ItemProperties.ItemDisabled;
 import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem1;
 import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.SequencedCraftingItem2;
 import uwu.lopyluna.create_dd.item.ItemProperties.StargazeInfiniteBlock;
-import uwu.lopyluna.create_dd.item.ItemProperties.UnchargedStargazeSingularity;
+import uwu.lopyluna.create_dd.item.ItemProperties.compound.UnchargedStargazeSingularity;
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.*;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemOne;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemTwo;
