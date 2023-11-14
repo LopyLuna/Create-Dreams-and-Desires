@@ -4,10 +4,7 @@ import com.simibubi.create.Create;
 import com.simibubi.create.foundation.ponder.PonderRegistrationHelper;
 import com.simibubi.create.infrastructure.ponder.AllPonderTags;
 import com.simibubi.create.infrastructure.ponder.DebugScenes;
-import com.simibubi.create.infrastructure.ponder.scenes.BearingScenes;
-import com.simibubi.create.infrastructure.ponder.scenes.KineticsScenes;
-import com.simibubi.create.infrastructure.ponder.scenes.MechanicalDrillScenes;
-import com.simibubi.create.infrastructure.ponder.scenes.MechanicalSawScenes;
+import com.simibubi.create.infrastructure.ponder.scenes.*;
 import uwu.lopyluna.create_dd.DDCreate;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 
@@ -32,6 +29,7 @@ public class DDPonderIndex {
         HELPER.forComponents(DDBlocks.ACCELERATOR_MOTOR).addStoryBoard("accelerator_motor", DDProcessingScenes::Motors, AllPonderTags.KINETIC_SOURCES);
         HELPER.forComponents(DDBlocks.KINETIC_MOTOR).addStoryBoard("kinetic_motor", DDProcessingScenes::Motors, AllPonderTags.KINETIC_SOURCES);
         HELPER.forComponents(DDBlocks.cogCrank).addStoryBoard("cog_crank", DDProcessingScenes::cogCrank, AllPonderTags.KINETIC_SOURCES);
+        HELPER.forComponents(DDBlocks.industrial_fan).addStoryBoard("industrial_fan_source", DDProcessingScenes::industrial_fan_source, AllPonderTags.KINETIC_SOURCES);
 
         ////////////////////// Create = below |||| Create DD = Above
 
@@ -47,6 +45,10 @@ public class DDPonderIndex {
         CREATE_HELPER.forComponents(DDBlocks.SHADOW_DRILL)
                 .addStoryBoard("mechanical_drill/breaker", MechanicalDrillScenes::breaker, AllPonderTags.KINETIC_APPLIANCES)
                 .addStoryBoard("mechanical_drill/contraption", MechanicalDrillScenes::contraption, AllPonderTags.CONTRAPTION_ACTOR);
+
+        CREATE_HELPER.forComponents(DDBlocks.industrial_fan)
+                .addStoryBoard("fan/direction", FanScenes::direction, AllPonderTags.KINETIC_APPLIANCES)
+                .addStoryBoard("fan/processing", FanScenes::processing);
 
         CREATE_HELPER.addStoryBoard(DDBlocks.REVERSED_GEARSHIFT, "gearshift", KineticsScenes::gearshift, AllPonderTags.KINETIC_RELAYS);
 

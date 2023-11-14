@@ -34,7 +34,6 @@ public class DDPonderTags {
                 .add(DDBlocks.superheating_sail)
         ;
 
-
         PonderRegistry.TAGS.forTag(CREATEDD)
                 .add(DDBlocks.industrial_fan)
                 .add(DDBlocks.hydraulic_press)
@@ -54,7 +53,6 @@ public class DDPonderTags {
                 .add(DDBlocks.splashing_sail)
                 .add(DDBlocks.superheating_sail)
                 .add(DDBlocks.haunting_sail)
-                .add(DDBlocks.SPECTRAL_RUBY_LAMP)
         ;
 
         PonderRegistry.TAGS.forTag(KINETIC_APPLIANCES)

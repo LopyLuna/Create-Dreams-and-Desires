@@ -19,6 +19,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.grower.AcaciaTreeGrower;
 import net.minecraft.world.level.block.grower.OakTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
@@ -1321,7 +1322,7 @@ public class DDBlocks {
 
     //RUBBER WOODSET
 
-    public static final BlockEntry<SaplingBlock> rubber_sapling = REGISTRATE.block("rubber_sapling", p -> new SaplingBlock(new OakTreeGrower(), p))
+    public static final BlockEntry<SaplingBlock> rubber_sapling = REGISTRATE.block("rubber_sapling", p -> new SaplingBlock(new AcaciaTreeGrower(), p))
             .initialProperties(() -> Blocks.OAK_SAPLING)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_CYAN))
             .lang("Rubber Sapling")

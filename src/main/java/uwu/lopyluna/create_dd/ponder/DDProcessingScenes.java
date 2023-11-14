@@ -26,6 +26,60 @@ import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPre
 
 public class DDProcessingScenes {
 
+    public static void industrial_fan_source(SceneBuilder scene, SceneBuildingUtil util) {
+        scene.title("industrial_fan_source", "Generating Rotational Force using Industrial Fans");
+        scene.configureBasePlate(0, 0, 5);
+        scene.world.showSection(util.select.layer(0), Direction.UP);
+        scene.idle(5);
+
+        BlockPos fan = util.grid.at(2, 2, 2);
+        BlockPos lever = util.grid.at(1, 2, 2);
+        BlockPos burner = util.grid.at(2, 1, 2);
+        BlockPos cog = util.grid.at(3, 2, 2);
+
+        BlockPos pos1 = util.grid.at(3, 1, 0);
+        BlockPos pos2 = util.grid.at( 3, 1, 4);
+
+        scene.world.showSection(util.select.position(burner), Direction.DOWN);
+        scene.idle(10);
+        scene.world.showSection(util.select.position(fan), Direction.DOWN);
+        scene.idle(10);
+
+        scene.addKeyframe();
+        scene.overlay.showText(80)
+                .text("Industrial Fans facing down into a source of heat can provide Rotational Force")
+                .placeNearTarget()
+                .pointAt(util.vector.blockSurface(fan, Direction.WEST));
+        scene.idle(70);
+        scene.addKeyframe();
+
+        scene.world.showSection(util.select.position(lever), Direction.EAST);
+        scene.idle(15);
+
+        scene.world.toggleRedstonePower(util.select.position(lever));
+        scene.effects.indicateRedstone(lever);
+        scene.world.setKineticSpeed(util.select.position(fan), 64);
+        scene.world.setKineticSpeed(util.select.position(cog), 64);
+        scene.world.setKineticSpeed(util.select.fromTo(pos1, pos2), 64);
+        scene.effects.rotationSpeedIndicator(fan);
+        scene.idle(10);
+
+        scene.addKeyframe();
+        scene.overlay.showText(80)
+                .text("When given a Strong Redstone Signal, the Industrial Fans will start providing power")
+                .colored(PonderPalette.RED)
+                .placeNearTarget()
+                .pointAt(util.vector.blockSurface(lever, Direction.EAST));
+        scene.idle(20);
+
+        scene.world.showSection(util.select.position(cog), Direction.WEST);
+        scene.idle(10);
+        scene.world.showSection(util.select.fromTo(pos1, pos2), Direction.WEST);
+        scene.idle(50);
+
+        scene.markAsFinished();
+    }
+
 
     public static void Motors(SceneBuilder scene, SceneBuildingUtil util) {
         scene.title("motors", "Generating Rotational Force using Motors");
@@ -85,10 +139,13 @@ public class DDProcessingScenes {
 
         BlockPos gaugePos = util.grid.at(1, 3, 3);
         BlockPos handlePos = util.grid.at(2, 1, 2);
+        BlockPos pos1 = util.grid.at(1, 1, 3);
 
         scene.world.showSection(util.select.layer(1), Direction.DOWN);
         scene.idle(10);
         scene.world.showSection(util.select.layer(2), Direction.DOWN);
+        scene.idle(10);
+        scene.world.showSection(util.select.layer(3), Direction.DOWN);
         scene.idle(20);
 
         Vec3 centerOf = util.vector.centerOf(handlePos);
@@ -102,8 +159,8 @@ public class DDProcessingScenes {
 
         scene.overlay.showControls(new InputWindowElement(centerOf, Pointing.DOWN).rightClick(), 40);
         scene.idle(7);
-        scene.world.setKineticSpeed(util.select.everywhere(), 32);
-        scene.world.modifyKineticSpeed(util.select.column(1, 3), f -> f * -2);
+        scene.world.setKineticSpeed(util.select.position(handlePos), 32);
+        scene.world.setKineticSpeed(util.select.fromTo(pos1, gaugePos), -16);
         scene.effects.rotationDirectionIndicator(handlePos);
         scene.effects.indicateSuccess(gaugePos);
         scene.idle(10);
@@ -120,8 +177,8 @@ public class DDProcessingScenes {
         scene.overlay.showControls(new InputWindowElement(centerOf, Pointing.DOWN).rightClick()
                 .whileSneaking(), 40);
         scene.idle(7);
-        scene.world.setKineticSpeed(util.select.everywhere(), -32);
-        scene.world.modifyKineticSpeed(util.select.column(1, 3), f -> f * -2);
+        scene.world.setKineticSpeed(util.select.position(handlePos), -32);
+        scene.world.setKineticSpeed(util.select.fromTo(pos1, gaugePos), 16);
         scene.effects.rotationDirectionIndicator(handlePos);
         scene.effects.indicateSuccess(gaugePos);
         scene.idle(10);
@@ -138,7 +195,7 @@ public class DDProcessingScenes {
 
 
     public static void fan_sails(SceneBuilder scene, SceneBuildingUtil util) {
-        scene.title("fan_sails", "Ability to change fan types!");
+        scene.title("fan_sails", "Using Fan Sails for Changing Encased/Industrial Fans Types");
         scene.configureBasePlate(0, 0, 9);
         scene.world.showSection(util.select.layer(0), Direction.UP);
         scene.idle(5);
@@ -322,7 +379,7 @@ public class DDProcessingScenes {
 
         scene.world.modifyEntity(logItem, Entity::discard);
         scene.world.createItemOnBeltLike(sawPos, Direction.EAST, strippedLog);
-        scene.idle(35);
+        scene.idle(60);
 
         logItem = scene.world.createItemEntity(util.vector.topOf(sawPos)
                 .add(-0.5, -.1, 0), util.vector.of(-0.05, 0.18, 0), planks);
@@ -331,10 +388,10 @@ public class DDProcessingScenes {
         Selection otherBelt = util.select.fromTo(3, 1, 3, 4, 1, 2);
         Selection belt = util.select.fromTo(0, 1, 2, 1, 1, 3);
 
+        scene.world.modifyEntity(logItem, Entity::discard);
         scene.world.setKineticSpeed(otherBelt, 0);
         scene.world.setKineticSpeed(belt, 0);
         scene.world.modifyKineticSpeed(util.select.everywhere(), f -> -f);
-        scene.world.modifyEntity(logItem, Entity::discard);
         scene.world.setBlock(shaftPos, AllBlocks.COGWHEEL.getDefaultState()
                 .setValue(ShaftBlock.AXIS, Direction.Axis.Z), true);
         scene.idle(3);

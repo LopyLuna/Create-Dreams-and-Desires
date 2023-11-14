@@ -359,6 +359,8 @@
   "block.create_dd.reversed_gearshift": "Reverse Gearshift",
   "block.create_dd.hydraulic_press": "Hydraulic Press",
   "block.create_dd.bronze_drill": "Bronze Drill",
+  "block.create_dd.radiant_drill": "Radiant Drill",
+  "block.create_dd.shadow_drill": "Shadow Drill",
   "block.create_dd.bronze_saw": "Bronze Saw",
   "block.create_dd.2_blade_fan": "Large Propeller (2)",
   "block.create_dd.4_blade_fan": "Large Propeller (4)",
@@ -599,6 +601,30 @@
   "create_dd.ponder.tag.create_dd": "Create: Dreams n' Desires!",
   "create_dd.ponder.tag.create_dd.description": "Where Dreams & Desires within the create mod become Realities!",
 
+  "create_dd.ponder.industrial_fan_source.header": "Generating Rotational Force using Industrial Fans",
+  "create_dd.ponder.industrial_fan_source.text_1": "Industrial Fans facing down into a source of heat can provide Rotational Force",
+  "create_dd.ponder.industrial_fan_source.text_2": "When given a Strong Redstone Signal, the Industrial Fans will start providing power",
+
+  "create_dd.ponder.bronze_saw_processing.header": "Bulk Processing Items on the Bronze Saw",
+  "create_dd.ponder.bronze_saw_processing.text_1": "Upward facing Bronze Saws can bulk process a variety of items",
+  "create_dd.ponder.bronze_saw_processing.text_2": "The processed item always moves against the rotational input to the saw",
+  "create_dd.ponder.bronze_saw_processing.text_3": "Saws can work in-line with Mechanical Belts",
+  "create_dd.ponder.bronze_saw_processing.text_4": "When an ingredient has multiple possible outcomes, the filter slot can specify it",
+  "create_dd.ponder.bronze_saw_processing.text_5": "Without filter, the Saw would cycle through all outcomes instead",
+
+  "create_dd.ponder.hydraulic_press.header": "Bulk Processing Items with the Hydraulic Press",
+  "create_dd.ponder.hydraulic_press.text_1": "The Hydraulic Press can bulk process items provided beneath it",
+  "create_dd.ponder.hydraulic_press.text_2": "The Input items can be dropped or placed on a Depot under the Press",
+  "create_dd.ponder.hydraulic_press.text_3": "When items are provided on a belt...",
+  "create_dd.ponder.hydraulic_press.text_4": "The Press will hold and bulk process them automatically",
+
+  "create_dd.ponder.motors.header": "Generating Rotational Force using Motors",
+  "create_dd.ponder.motors.text_1": "Motors are a compact and configurable source of Rotational Force",
+  "create_dd.ponder.motors.text_2": "The generated speed can be configured on its input panels",
+
+  "create_dd.ponder.fan_sails.header": "Using Fan Sails for Changing Encased/Industrial Fans Types",
+  "create_dd.ponder.tag.fan_heater": "Industrial Fan Heaters",
+
   "create_dd.ponder.flywheel.header": "Generating Rotational Force using the Flywheel Component",
   "create_dd.ponder.flywheel.text_1": "Flywheel Components are required for generating rotational force with the Flywheel Engine!",
   "create_dd.ponder.flywheel.text_2": "The provided Rotational Force has a decently large stress capacity unlike the Steam Engine!",
@@ -607,6 +633,10 @@
   "create_dd.ponder.furnace_engine.text_1": "Flywheel Engines generate Rotational Force while their attached Furnace is running!",
   "create_dd.ponder.furnace_engine.text_2": "The provided Rotational Force has a decently large stress capacity unlike the Steam Engine!",
 
+  "create_dd.ponder.cog_crank.header": "Generating Rotational Force using Cog Cranks",
+  "create_dd.ponder.cog_crank.text_1": "Cog Cranks can be used by players to apply rotational force manually",
+  "create_dd.ponder.cog_crank.text_2": "Hold Right-Click to rotate it Counter-Clockwise",
+  "create_dd.ponder.cog_crank.text_3": "Sneak and Hold Right-Click to rotate it Clockwise",
 
   "create.recipe.also_mystery_conversion": "Mysterious Conversion",
 
