@@ -33,7 +33,6 @@ import static uwu.lopyluna.create_dd.item.ItemProperties.sawtool.TreeCutter.*;
 @MethodsReturnNonnullByDefault
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class DeforesterItem extends DeforesterAxeItem {
-    public static int maxUses;
     private static boolean deforesting = false; // required as to not run into "recursions" over forge events on tree cutting
     public DeforesterItem(Properties builder) {
         super(BobTiers.Deforester, 5.0F, -3.0F, builder);

@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings({"unused"})
 public class DDFanProcessingTypeRegistry {
     private static final Map<ResourceLocation, InterfaceIndustrialProcessingType> TYPES = new Object2ReferenceOpenHashMap<>();
     private static final Map<InterfaceIndustrialProcessingType, ResourceLocation> IDS = new Reference2ObjectOpenHashMap<>();

@@ -1,11 +1,13 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 import com.jozufozu.flywheel.core.PartialModel;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.utility.Iterate;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
@@ -27,6 +29,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
 
+@SuppressWarnings({"deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public abstract class EngineBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock, IWrenchable {
 
     protected EngineBlock(Properties builder) {

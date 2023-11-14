@@ -1,6 +1,7 @@
 package uwu.lopyluna.create_dd.block.BlockProperties;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -23,7 +24,12 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 
+
+@SuppressWarnings({"deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class SpectralRubyLampBlock extends Block implements IWrenchable {
 
     public static final IntegerProperty POWER = BlockStateProperties.POWER;

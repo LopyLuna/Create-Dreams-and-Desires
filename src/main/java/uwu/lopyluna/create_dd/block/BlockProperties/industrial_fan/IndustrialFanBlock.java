@@ -5,6 +5,7 @@ import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.content.logistics.chute.AbstractChuteBlock;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.utility.worldWrappers.WrappedWorld;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -17,6 +18,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@SuppressWarnings({"unused", "deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class IndustrialFanBlock extends DirectionalKineticBlock implements ICogWheel, IBE<IndustrialFanBlockEntity> {
     public IndustrialFanBlock(Properties properties) {
         super(properties);

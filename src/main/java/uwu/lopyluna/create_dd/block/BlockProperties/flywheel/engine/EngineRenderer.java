@@ -13,6 +13,8 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 
+
+@SuppressWarnings({"unused"})
 public class EngineRenderer<T extends EngineBlockEntity> extends SafeBlockEntityRenderer<T> {
 
     public EngineRenderer(BlockEntityRendererProvider.Context context) {

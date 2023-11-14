@@ -1,6 +1,7 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.magic;
 
 import com.simibubi.create.foundation.utility.VecHelper;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -14,6 +15,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@SuppressWarnings({ "deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class RadiantBlock extends Block {
 
     public RadiantBlock(Properties pProperties) {

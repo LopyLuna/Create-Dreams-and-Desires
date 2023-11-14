@@ -27,6 +27,7 @@ import static uwu.lopyluna.create_dd.block.BlockPalette.gen.DDPaletteBlockPartia
 import static uwu.lopyluna.create_dd.block.BlockPalette.gen.DDPaletteBlockPartial.FOR_POLISHED;
 
 
+@SuppressWarnings({"unused"})
 public class DDPaletteBlockPattern {
 
     public static final DDPaletteBlockPattern

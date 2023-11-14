@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
  * }
  * </pre>
  */
+@SuppressWarnings({"unused"})
 public class FurnaceEngineInteractions {
 
     private static final Map<Holder<Block>, InteractionHandler> HANDLERS = new HashMap<>();

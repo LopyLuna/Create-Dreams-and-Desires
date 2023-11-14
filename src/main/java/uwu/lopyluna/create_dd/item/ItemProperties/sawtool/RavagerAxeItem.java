@@ -1,6 +1,7 @@
 package uwu.lopyluna.create_dd.item.ItemProperties.sawtool;
 
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,11 +22,13 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.item.ItemProperties.BobTiers;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Optional;
 
-import static uwu.lopyluna.create_dd.item.ItemProperties.sawtool.ForestRavagerItem.maxUses;
 
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class RavagerAxeItem extends AxeItem {
     public RavagerAxeItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);

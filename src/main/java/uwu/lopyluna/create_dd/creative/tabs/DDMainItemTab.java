@@ -10,6 +10,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.DDCreate;
 
 import java.util.Collection;
@@ -20,7 +21,7 @@ public abstract class DDMainItemTab extends CreativeModeTab {
     }
 
     @Override
-    public void fillItemList(NonNullList<ItemStack> items) {
+    public void fillItemList(@NotNull NonNullList<ItemStack> items) {
         addItems(items, true);
         addBlocks(items);
         addItems(items, false);

@@ -11,14 +11,10 @@ public class ChromaticFluidInteraction {
 
         FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
                 ForgeMod.WATER_TYPE.get(),
-                fluidState -> {
-                    return Blocks.OBSIDIAN.defaultBlockState();
-                }));
+                fluidState -> Blocks.OBSIDIAN.defaultBlockState()));
 
         FluidInteractionRegistry.addInteraction(DDFluids.CHROMATIC_WASTE.getType(), new FluidInteractionRegistry.InteractionInformation(
                 ForgeMod.LAVA_TYPE.get(),
-                fluidState -> {
-                    return Blocks.CRYING_OBSIDIAN.defaultBlockState();
-                }));
+                fluidState -> Blocks.CRYING_OBSIDIAN.defaultBlockState()));
     }
 }

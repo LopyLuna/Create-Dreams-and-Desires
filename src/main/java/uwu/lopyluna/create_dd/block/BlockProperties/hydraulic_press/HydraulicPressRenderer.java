@@ -12,8 +12,11 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.block.state.BlockState;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING;
 
+@ParametersAreNonnullByDefault
 public class HydraulicPressRenderer extends KineticBlockEntityRenderer<HydraulicPressBlockEntity> {
     public HydraulicPressRenderer(BlockEntityRendererProvider.Context context) {
         super(context);

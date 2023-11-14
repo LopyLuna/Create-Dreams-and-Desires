@@ -27,10 +27,14 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.function.Predicate;
 
 
+@SuppressWarnings({"unused", "deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class FanSailBlock extends WrenchableDirectionalBlock {
     public static @NotNull FanSailBlock sail(Properties properties) {
         return new FanSailBlock(properties);

@@ -9,6 +9,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialAirCurrent;
 
+@SuppressWarnings({"unused"})
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class DDClientEvents extends ClientEvents {
 

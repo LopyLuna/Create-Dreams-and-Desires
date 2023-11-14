@@ -1,11 +1,16 @@
 package uwu.lopyluna.create_dd.block.BlockProperties;
 
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.ModList;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class OverchargedScaffoldingBlock extends MetalScaffoldingBlock {
     public OverchargedScaffoldingBlock(Properties pProperties) {
         super(pProperties);

@@ -6,6 +6,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
+
+@SuppressWarnings({"unused", "deprecation"})
 public class CanBurnBlockStairs extends StairBlock {
 
     public CanBurnBlockStairs(BlockState pBaseState, Properties pProperties) {

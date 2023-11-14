@@ -1,6 +1,5 @@
 package uwu.lopyluna.create_dd.item.ItemProperties.compound;
 
-import com.simibubi.create.content.trains.CubeParticleData;
 import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
@@ -12,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
+import org.jetbrains.annotations.NotNull;
 
 public class OverchargeAlloy extends NoGravMagical {
 
@@ -68,7 +68,7 @@ public class OverchargeAlloy extends NoGravMagical {
     }
 
     @Override
-    public void fillItemCategory(CreativeModeTab p_150895_1_, NonNullList<ItemStack> p_150895_2_) {
+    public void fillItemCategory(@NotNull CreativeModeTab p_150895_1_, @NotNull NonNullList<ItemStack> p_150895_2_) {
         if (!ModList.get().isLoaded("createaddition")) {
             return;
         }

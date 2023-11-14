@@ -5,6 +5,7 @@ import com.simibubi.create.AllShapes;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.utility.worldWrappers.WrappedWorld;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -26,7 +27,12 @@ import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 @EventBusSubscriber
+@SuppressWarnings({"deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class FurnaceEngineBlock extends EngineBlock implements IBE<FurnaceEngineBlockEntity> {
 
     public FurnaceEngineBlock(Properties properties) {

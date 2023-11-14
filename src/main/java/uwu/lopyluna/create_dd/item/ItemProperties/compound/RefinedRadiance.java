@@ -3,6 +3,7 @@ package uwu.lopyluna.create_dd.item.ItemProperties.compound;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public class RefinedRadiance extends NoGravMagical {
 
@@ -11,7 +12,7 @@ public class RefinedRadiance extends NoGravMagical {
     }
 
     @Override
-    public boolean isFoil(ItemStack stack) {
+    public boolean isFoil(@NotNull ItemStack stack) {
         return true;
     }
 

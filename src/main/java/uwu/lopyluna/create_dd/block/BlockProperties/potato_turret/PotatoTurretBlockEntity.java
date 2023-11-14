@@ -1,7 +1,6 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.potato_turret;
 
 import com.simibubi.create.AllEntityTypes;
-import com.simibubi.create.Create;
 import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.content.equipment.potatoCannon.PotatoProjectileEntity;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;

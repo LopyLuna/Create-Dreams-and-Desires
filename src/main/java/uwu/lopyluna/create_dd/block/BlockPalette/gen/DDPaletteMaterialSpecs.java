@@ -7,6 +7,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import uwu.lopyluna.create_dd.DDCreate;
 
 @OnlyIn(Dist.CLIENT)
+@SuppressWarnings({"unused"})
 public class DDPaletteMaterialSpecs extends AllMaterialSpecs {
 
     public static class Locations {

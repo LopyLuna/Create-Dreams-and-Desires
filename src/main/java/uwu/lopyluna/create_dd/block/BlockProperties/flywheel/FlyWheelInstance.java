@@ -26,6 +26,8 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 
+
+@SuppressWarnings({"deprecation"})
 public class FlyWheelInstance extends KineticBlockEntityInstance<FlywheelBlockEntity> implements DynamicInstance {
 
     protected final Direction facing;

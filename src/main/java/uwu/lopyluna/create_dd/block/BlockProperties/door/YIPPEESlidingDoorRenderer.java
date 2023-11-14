@@ -22,6 +22,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Context;
 
+@SuppressWarnings({"unused"})
 public class YIPPEESlidingDoorRenderer extends SafeBlockEntityRenderer<YIPPEESlidingDoorBlockEntity> {
 
     public YIPPEESlidingDoorRenderer(Context context) {}

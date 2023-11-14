@@ -3,6 +3,7 @@ package uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.foundation.block.IBE;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -15,6 +16,11 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@SuppressWarnings({"deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class KineticMotorBlock extends DirectionalKineticBlock implements IBE<KineticMotorBlockEntity> {
     public KineticMotorBlock(Properties properties) {
         super(properties);

@@ -7,6 +7,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.rando.DDParti
 import uwu.lopyluna.create_dd.ponder.DDPonderIndex;
 import uwu.lopyluna.create_dd.ponder.DDPonderTags;
 
+@SuppressWarnings({"unused"})
 public class DDCreateClient {
 
     public static void onCtorClient(IEventBus eventBus, IEventBus forgeEventBus) {

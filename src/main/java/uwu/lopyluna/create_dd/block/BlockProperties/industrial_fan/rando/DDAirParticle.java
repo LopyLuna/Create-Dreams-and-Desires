@@ -2,6 +2,7 @@ package uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.rando;
 
 import com.simibubi.create.Create;
 import com.simibubi.create.foundation.utility.VecHelper;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.renderer.LevelRenderer;
@@ -10,6 +11,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@SuppressWarnings({"deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class DDAirParticle extends SimpleAnimatedParticle {
 
     private float originX, originY, originZ;

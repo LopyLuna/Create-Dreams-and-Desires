@@ -5,6 +5,7 @@ import com.simibubi.create.content.kinetics.base.AbstractEncasedShaftBlock;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftBlockEntity;
 import com.simibubi.create.foundation.block.IBE;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -16,7 +17,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.ticks.TickPriority;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 
+
+@SuppressWarnings({"deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class ReversedGearboxBlock extends AbstractEncasedShaftBlock implements IBE<SplitShaftBlockEntity> {
 
     public ReversedGearboxBlock(Properties properties) {

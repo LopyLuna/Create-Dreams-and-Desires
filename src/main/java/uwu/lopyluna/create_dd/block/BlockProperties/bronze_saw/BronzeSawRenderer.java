@@ -34,6 +34,7 @@ import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.FACING;
 
+@SuppressWarnings({"unused"})
 public class BronzeSawRenderer extends SafeBlockEntityRenderer<BronzeSawBlockEntity> {
 
     public BronzeSawRenderer(BlockEntityRendererProvider.Context context) {

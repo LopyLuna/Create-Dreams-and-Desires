@@ -3,6 +3,7 @@ package uwu.lopyluna.create_dd.item.ItemProperties.compound;
 import com.simibubi.create.foundation.utility.VecHelper;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import com.simibubi.create.infrastructure.config.CRecipes;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -27,7 +28,11 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import uwu.lopyluna.create_dd.item.DDItems;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 
+
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class ChromaticCompound extends Item {
 
     public ChromaticCompound(Item.Properties properties) {

@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings({"unused"})
 public class SequencedCraftingItem2 extends Item {
     public SequencedCraftingItem2(Properties pProperties) {
         super(pProperties.stacksTo(1));

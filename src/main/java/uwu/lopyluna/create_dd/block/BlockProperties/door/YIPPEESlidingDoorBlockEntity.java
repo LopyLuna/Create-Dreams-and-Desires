@@ -14,6 +14,7 @@ import net.minecraft.world.phys.AABB;
 
 import java.util.List;
 
+@SuppressWarnings({"deprecation"})
 public class YIPPEESlidingDoorBlockEntity extends SmartBlockEntity {
 
     LerpedFloat animation;

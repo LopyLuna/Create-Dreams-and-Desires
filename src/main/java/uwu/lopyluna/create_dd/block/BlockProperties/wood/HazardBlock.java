@@ -1,6 +1,7 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.wood;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.CreativeModeTab;
@@ -11,9 +12,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@SuppressWarnings({"unused", "deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class HazardBlock extends Block implements IWrenchable {
 
-    private boolean visible;
+    private final boolean visible;
 
     public static HazardBlock deprecated(Properties p_i48440_1_) {
         return new HazardBlock(p_i48440_1_, false);

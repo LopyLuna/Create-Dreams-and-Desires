@@ -4,6 +4,7 @@ import com.simibubi.create.content.contraptions.ContraptionWorld;
 import com.simibubi.create.content.decoration.slidingDoor.SlidingDoorShapes;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.block.IBE;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -35,7 +36,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
+@SuppressWarnings({"unused", "deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class YIPPEESlidingDoorBlock extends DoorBlock implements IWrenchable, IBE<YIPPEESlidingDoorBlockEntity> {
 
     public static final BooleanProperty VISIBLE = BooleanProperty.create("visible");

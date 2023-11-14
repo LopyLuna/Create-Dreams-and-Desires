@@ -2,6 +2,7 @@ package uwu.lopyluna.create_dd.block.BlockProperties.magic;
 
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.foundation.utility.VecHelper;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
@@ -18,6 +19,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@SuppressWarnings({"deprecation"})
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class OverchargedBlockcasing extends CasingBlock {
 
     public OverchargedBlockcasing(Properties pProperties) {
