@@ -1,14 +1,27 @@
 {
   "variants": {
-    "axis=x": {
+    "facing=west": {
       "model": "create_dd:block/cog_crank/block",
       "x": 90,
       "y": 90
     },
-    "axis=y": {
+    "facing=east": {
+      "model": "create_dd:block/cog_crank/block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=up": {
       "model": "create_dd:block/cog_crank/block"
     },
-    "axis=z": {
+    "facing=down": {
+      "model": "create_dd:block/cog_crank/block"
+    },
+    "facing=north": {
+      "model": "create_dd:block/cog_crank/block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south": {
       "model": "create_dd:block/cog_crank/block",
       "x": 90,
       "y": 180

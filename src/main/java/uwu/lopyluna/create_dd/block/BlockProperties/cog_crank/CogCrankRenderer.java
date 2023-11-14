@@ -16,9 +16,10 @@ public class CogCrankRenderer extends KineticBlockEntityRenderer<CogCrankBlockEn
     public CogCrankRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
     }
+
     @Override
     protected void renderSafe(CogCrankBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
-        int light, int overlay) {
+                              int light, int overlay) {
         if (be.shouldRenderCog())
             super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
 
@@ -30,4 +31,5 @@ public class CogCrankRenderer extends KineticBlockEntityRenderer<CogCrankBlockEn
         kineticRotationTransform(be.getRenderedHandle(), be, facing.getAxis(), be.getIndependentAngle(partialTicks),
                 light).renderInto(ms, buffer.getBuffer(RenderType.solid()));
     }
+
 }

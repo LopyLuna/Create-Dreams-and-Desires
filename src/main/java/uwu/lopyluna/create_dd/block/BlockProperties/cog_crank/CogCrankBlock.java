@@ -1,13 +1,10 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.cog_crank;
 
 import com.simibubi.create.AllItems;
-import com.simibubi.create.content.kinetics.base.IRotate;
-import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
+import com.simibubi.create.content.kinetics.crank.HandCrankBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.CogwheelBlockItem;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
-import com.simibubi.create.foundation.block.IBE;
-import com.simibubi.create.foundation.block.ProperWaterloggedBlock;
 import com.simibubi.create.foundation.utility.Couple;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -26,9 +23,7 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -40,11 +35,10 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import static com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock.isValidCogwheelPosition;
 
-@SuppressWarnings({"deprecation"})
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class CogCrankBlock extends RotatedPillarKineticBlock
-implements IBE<CogCrankBlockEntity>, ProperWaterloggedBlock, ICogWheel {
+public class CogCrankBlock extends HandCrankBlock
+implements ICogWheel {
 
     public CogCrankBlock(Properties properties) {
         super(properties);
@@ -53,12 +47,7 @@ implements IBE<CogCrankBlockEntity>, ProperWaterloggedBlock, ICogWheel {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        return DDBlockShapes.cogCrank.get(state.getValue(AXIS));
-    }
-    
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder.add(WATERLOGGED));
+        return DDBlockShapes.cogCrank.get(state.getValue(FACING).getAxis());
     }
 
     public int getRotationSpeed() {
@@ -89,41 +78,19 @@ implements IBE<CogCrankBlockEntity>, ProperWaterloggedBlock, ICogWheel {
         return InteractionResult.SUCCESS;
     }
 
-    protected Direction.Axis getAxisForPlacement(BlockPlaceContext context) {
-        if (context.getPlayer() != null && context.getPlayer()
-                .isShiftKeyDown())
-            return context.getClickedFace()
-                    .getAxis();
-        
-        Level world = context.getLevel();
-        
-        BlockPos placedOnPos = context.getClickedPos()
-                .relative(context.getClickedFace()
-                        .getOpposite());
-        BlockState placedAgainst = world.getBlockState(placedOnPos);
-        
-        Block block = placedAgainst.getBlock();
-        if (ICogWheel.isSmallCog(placedAgainst))
-            return ((IRotate) block).getRotationAxis(placedAgainst);
-        
-        Direction.Axis getPreferredFacing = getPreferredAxis(context);
-        return getPreferredFacing != null ? getPreferredFacing
-                : context.getClickedFace()
-                .getAxis();
-    }
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        boolean shouldWaterlog = context.getLevel()
-                .getFluidState(context.getClickedPos())
-                .getType() == Fluids.WATER;
-        return this.defaultBlockState()
-                .setValue(AXIS, getAxisForPlacement(context))
-                .setValue(BlockStateProperties.WATERLOGGED, shouldWaterlog);
+        Direction preferred = getPreferredFacing(context);
+        BlockState defaultBlockState = withWater(defaultBlockState(), context);
+        if (preferred == null || (context.getPlayer() != null && context.getPlayer()
+                .isShiftKeyDown()))
+            return defaultBlockState.setValue(FACING, context.getClickedFace());
+        return defaultBlockState.setValue(FACING, preferred.getOpposite());
     }
     
     @Override
     public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
-        return isValidCogwheelPosition(ICogWheel.isLargeCog(state), worldIn, pos, state.getValue(AXIS));
+        return isValidCogwheelPosition(ICogWheel.isLargeCog(state), worldIn, pos, state.getValue(FACING).getAxis());
     }
     
     @Override
@@ -145,12 +112,7 @@ implements IBE<CogCrankBlockEntity>, ProperWaterloggedBlock, ICogWheel {
     
     @Override
     public Direction.Axis getRotationAxis(BlockState state) {
-        return state.getValue(AXIS);
-    }
-
-    @Override
-    public Class<CogCrankBlockEntity> getBlockEntityClass() {
-        return CogCrankBlockEntity.class;
+        return state.getValue(FACING).getAxis();
     }
 
     @Override
