@@ -3,8 +3,8 @@ package uwu.lopyluna.create_dd.item;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.simibubi.create.foundation.data.AssetLookup;
+import com.simibubi.create.foundation.item.CombustibleItem;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -25,15 +25,11 @@ import uwu.lopyluna.create_dd.item.ItemProperties.milkshakes.*;
 import uwu.lopyluna.create_dd.item.ItemProperties.sawtool.DeforesterItem;
 import uwu.lopyluna.create_dd.item.ItemProperties.sawtool.ForestRavagerItem;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
 import static com.simibubi.create.AllTags.AllItemTags.CREATE_INGOTS;
 import static com.simibubi.create.AllTags.forgeItemTag;
 import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 
-@SuppressWarnings({"unused", "inline"})
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
+@SuppressWarnings({"all"})
 public class DDItems {
 
     static {
@@ -71,7 +67,6 @@ public class DDItems {
             sealed_mechanism = ingredient("sealed_mechanism"),
             spectral_ruby = ingredient("spectral_ruby"),
             polished_spectral_ruby = ingredient("polished_spectral_ruby"),
-            coal_piece = taggedIngredient("coal_piece", forgeItemTag("nuggets/coal")),
             diamond_shard = taggedIngredient("diamond_shard", forgeItemTag("nuggets/diamond")),
             compound_base = ingredient("compound_base"),
             crystallized_sap = ingredient("crystallized_sap"),
@@ -118,6 +113,11 @@ public class DDItems {
             INFA_NETHERRACK = infablock("NETHERRACK", Blocks.NETHERRACK),
             INFA_MAGMA_BLOCK = infablock("MAGMA_BLOCK", Blocks.MAGMA_BLOCK),
             INFA_MOSS_BLOCK = infablock("MOSS_BLOCK", Blocks.MOSS_BLOCK);
+
+
+    public static final ItemEntry<CombustibleItem> COAL_PIECE = REGISTRATE.item("coal_piece", CombustibleItem::new)
+            .onRegister(i -> i.setBurnTime(200))
+            .register();
 
     public static final ItemEntry<ChromaticCompound> CHROMATIC_COMPOUND =
             REGISTRATE.item("chromatic_compound", ChromaticCompound::new)
