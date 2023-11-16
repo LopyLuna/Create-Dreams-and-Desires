@@ -29,17 +29,19 @@ import uwu.lopyluna.create_dd.creative.DDItemTab;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.rando.DDParticleTypes;
 import uwu.lopyluna.create_dd.recipe.DDRecipesTypes;
 import uwu.lopyluna.create_dd.sounds.DDSoundEvents;
+import uwu.lopyluna.create_dd.worldgen.DDBuiltinRegistration;
+import uwu.lopyluna.create_dd.worldgen.DDFeatures;
+import uwu.lopyluna.create_dd.worldgen.DDOreFeatureConfigEntries;
+import uwu.lopyluna.create_dd.worldgen.DDPlacementModifiers;
 import uwu.lopyluna.create_dd.worldgen.ponder_dim.PonderPOI;
 import uwu.lopyluna.create_dd.worldgen.ponder_dim.Pondering;
-import uwu.lopyluna.create_dd.worldgen.WorldgenOreFeatures;
-import uwu.lopyluna.create_dd.worldgen.WorldgenOrePlacedFeatures;
 
 
-@SuppressWarnings({"unused"})
+@SuppressWarnings({"all"})
 @Mod(DDCreate.MOD_ID)
 public class DDCreate
 {
-    public static final String NAME = "Create: Dreams n' Desires";
+    public static final String NAME = "Create: Dreams n' Desire's";
     public static final String MOD_ID = "create_dd";
     public static final Logger LOGGER = LogUtils.getLogger();
 
@@ -60,8 +62,6 @@ public class DDCreate
 
         REGISTRATE.registerEventListeners(eventBus);
 
-        DDConfigs.register(modLoadingContext);
-
         DDSoundEvents.register(eventBus);
         DDItemTab.init();
         DDBlockPartialModel.init();
@@ -79,8 +79,13 @@ public class DDCreate
         IndustrialTypeFanProcessing.register();
 
         DDTags.init();
-        WorldgenOreFeatures.register(eventBus);
-        WorldgenOrePlacedFeatures.register(eventBus);
+
+        DDOreFeatureConfigEntries.init();
+        DDFeatures.register(eventBus);
+        DDPlacementModifiers.register(eventBus);
+        DDBuiltinRegistration.register(eventBus);
+
+        DDConfigs.register(modLoadingContext);
 
         eventBus.addListener(DDCreate::init);
 

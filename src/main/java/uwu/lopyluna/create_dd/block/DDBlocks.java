@@ -72,9 +72,7 @@ import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.*;
 import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 
-@SuppressWarnings({"unused", "removal"})
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
+@SuppressWarnings({"all"})
 public class DDBlocks {
     
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, DDCreate.MOD_ID);
@@ -619,7 +617,7 @@ public class DDBlocks {
             .transform(axeOrPickaxe())
             .blockstate(BlockStateGen.horizontalBlockProvider(true))
             .addLayer(() -> RenderType::cutoutMipped)
-            .transform(BlockStressDefaults.setImpact(24.0))
+            .transform(BlockStressDefaults.setImpact(32.0))
             .item(AssemblyOperatorBlockItem::new)
             .transform(customItemModel())
             .register();

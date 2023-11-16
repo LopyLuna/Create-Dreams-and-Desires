@@ -1,12 +1,16 @@
 package uwu.lopyluna.create_dd.configs.server;
 
-import com.simibubi.create.foundation.config.ConfigBase;
+import uwu.lopyluna.create_dd.configs.DDConfigBase;
+import uwu.lopyluna.create_dd.DDCreate;
 
-public class DDServer extends ConfigBase {
+@SuppressWarnings({"all"})
+public class DDServer extends DDConfigBase {
     int maxHeight = 2048;
     int minHeight = -2048;
 
     public final ConfigGroup infrastructure = group(0, "infrastructure", DDServer.Comments.infrastructure);
+    //kienetic group
+    public final DDKinetics kinetics = nested(0, DDKinetics::new, DDServer.Comments.kinetics);
 
     //recipe group
     public final ConfigGroup recipe = group(1, "recipe", DDServer.Comments.recipe);
@@ -19,14 +23,16 @@ public class DDServer extends ConfigBase {
 
     public final ConfigBool refined_radiance_recipe = b(true, "refined_radiance_recipe",
             DDServer.Comments.refined_radiance_recipe);
-    public final ConfigInt refined_radiance_min = i(-32, minHeight, maxHeight, "refined_radiance_min",
+    public final ConfigInt refined_radiance_max_height = i(319, minHeight, maxHeight, "refined_radiance_max_height",
+            DDServer.Comments.refined_radiance_max);
+    public final ConfigInt refined_radiance_min_height = i(-32, minHeight, maxHeight, "refined_radiance_min_height",
             DDServer.Comments.refined_radiance_min);
     public final ConfigInt refined_radiance_light_level = i(15, 0, 15, "refined_radiance_light_level",
             DDServer.Comments.refined_radiance_light_level);
 
     public final ConfigBool shadow_steel_recipe = b(true, "shadow_steel_recipe",
             DDServer.Comments.shadow_steel_recipe);
-    public final ConfigInt shadow_steel_min = i(-10, minHeight, maxHeight, "shadow_steel_min",
+    public final ConfigInt shadow_steel_min_height = i(-10, minHeight, maxHeight, "shadow_steel_min_height",
             DDServer.Comments.shadow_steel_min);
 
 
@@ -48,11 +54,13 @@ public class DDServer extends ConfigBase {
     }
 
     private static class Comments {
-        static String infrastructure = "The Backbone of Create Dream n' Desire's";
+        static String infrastructure = "The Backbone of " + DDCreate.NAME;
         static String recipe = "Recipes";
+        static String kinetics = "Parameters and abilities of " + DDCreate.NAME + " kinetic mechanisms";
         static String compound_recipe = "Compound Recipes";
         static String blaze_gold_recipe = "Blaze Brass Recipe";
         static String refined_radiance_recipe = "Refined Radiance Recipe";
+        static String refined_radiance_max = "Shadow Steel Recipe Require Max Height";
         static String refined_radiance_min = "Shadow Steel Recipe Require Min Height";
         static String refined_radiance_light_level = "Shadow Steel Recipe Require Light Level";
         static String shadow_steel_recipe = "Shadow Steel Recipe";

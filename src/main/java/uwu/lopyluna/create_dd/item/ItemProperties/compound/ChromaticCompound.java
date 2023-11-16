@@ -1,7 +1,6 @@
 package uwu.lopyluna.create_dd.item.ItemProperties.compound;
 
 import com.simibubi.create.foundation.utility.VecHelper;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -27,11 +26,8 @@ import net.minecraft.world.phys.Vec3;
 import uwu.lopyluna.create_dd.configs.DDConfigs;
 import uwu.lopyluna.create_dd.item.DDItems;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 
-
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
+@SuppressWarnings({"all"})
 public class ChromaticCompound extends Item {
 
     public ChromaticCompound(Item.Properties properties) {
@@ -48,7 +44,7 @@ public class ChromaticCompound extends Item {
         CompoundTag data = entity.getPersistentData();
 
         // Convert to Shadow steel if in void
-        if (y < minHeight && y - yMotion < DDConfigs.server().shadow_steel_min.get() + minHeight && DDConfigs.server().shadow_steel_recipe.get()) {
+        if (y < minHeight && y - yMotion < DDConfigs.server().shadow_steel_min_height.get() + minHeight && DDConfigs.server().shadow_steel_recipe.get()) {
             ItemStack newStack = DDItems.SHADOW_STEEL.asStack();
             newStack.setCount(stack.getCount());
             data.putBoolean("JustCreated", true);
@@ -67,7 +63,7 @@ public class ChromaticCompound extends Item {
         BlockPos.MutableBlockPos testPos =
                 new BlockPos.MutableBlockPos(entityX, Math.min(Mth.floor(entity.getY()), localWorldHeight), entityZ);
 
-        while (testPos.getY() > DDConfigs.server().refined_radiance_min.get()) {
+        while (testPos.getY() > DDConfigs.server().refined_radiance_min_height.get() && testPos.getY() < DDConfigs.server().refined_radiance_max_height.get()) {
             testPos.move(Direction.DOWN);
             BlockState state = world.getBlockState(testPos);
             if (state.getLightBlock(world, testPos) >= DDConfigs.server().refined_radiance_light_level.get() && state.getBlock() != Blocks.BEDROCK)
