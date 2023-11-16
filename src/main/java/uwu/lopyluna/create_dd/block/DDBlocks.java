@@ -72,7 +72,7 @@ import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.*;
 import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 
-@SuppressWarnings({"all"})
+@SuppressWarnings({"unused", "removal", "all"})
 public class DDBlocks {
     
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, DDCreate.MOD_ID);

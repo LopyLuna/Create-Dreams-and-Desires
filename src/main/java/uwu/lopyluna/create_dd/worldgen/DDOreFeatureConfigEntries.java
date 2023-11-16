@@ -60,7 +60,7 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_OCEAN =
-            create("striated_ores_OCEAN", 64, 1 / 48f, 40, 90)
+            create("striated_ores_ocean", 64, 1 / 48f, 40, 90)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.WEATHERED_LIMESTONE)
                     .biomeTag(BiomeTags.IS_OCEAN)
