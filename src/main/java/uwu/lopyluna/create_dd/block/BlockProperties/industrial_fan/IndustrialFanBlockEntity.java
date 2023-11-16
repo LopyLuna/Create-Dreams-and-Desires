@@ -5,8 +5,6 @@ import com.simibubi.create.content.logistics.chute.ChuteBlockEntity;
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
-import com.simibubi.create.infrastructure.config.AllConfigs;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -19,10 +17,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import uwu.lopyluna.create_dd.DDTags;
 import uwu.lopyluna.create_dd.block.DDBlocks;
+import uwu.lopyluna.create_dd.configs.DDConfigs;
 
 import java.util.List;
 
-@MethodsReturnNonnullByDefault
+@SuppressWarnings({"all"})
 public class IndustrialFanBlockEntity extends GeneratingKineticBlockEntity implements IndustrialAirCurrentSource {
 
     public IndustrialAirCurrent airCurrent;
@@ -192,7 +191,7 @@ public class IndustrialFanBlockEntity extends GeneratingKineticBlockEntity imple
         boolean server = !level.isClientSide || isVirtual();
 
         if (server && airCurrentUpdateCooldown-- <= 0) {
-            airCurrentUpdateCooldown = AllConfigs.server().kinetics.fanBlockCheckRate.get();
+            airCurrentUpdateCooldown = DDConfigs.server().kinetics.fanBlockCheckRate.get();
             updateAirFlow = true;
         }
 

@@ -6,8 +6,6 @@ import com.simibubi.create.compat.jei.category.*;
 import com.simibubi.create.foundation.config.ConfigBase;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import com.simibubi.create.foundation.utility.Lang;
-import com.simibubi.create.infrastructure.config.AllConfigs;
-import com.simibubi.create.infrastructure.config.CRecipes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
@@ -25,6 +23,8 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
 import uwu.lopyluna.create_dd.DDCreate;
 import uwu.lopyluna.create_dd.block.DDBlocks;
+import uwu.lopyluna.create_dd.configs.DDConfigs;
+import uwu.lopyluna.create_dd.configs.server.DDRecipes;
 import uwu.lopyluna.create_dd.item.DDItems;
 import uwu.lopyluna.create_dd.jei.fan.*;
 import uwu.lopyluna.create_dd.recipe.DDRecipesTypes;
@@ -42,7 +42,7 @@ import java.util.function.Supplier;
 import static com.simibubi.create.compat.jei.CreateJEI.consumeTypedRecipes;
 
 @JeiPlugin
-@SuppressWarnings({"unused", "inline"})
+@SuppressWarnings({"unused", "inline", "all"})
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class DDcreateJEI implements IModPlugin {
@@ -130,7 +130,7 @@ public class DDcreateJEI implements IModPlugin {
 
     private static class CategoryBuilder<T extends Recipe<?>> {
         private final Class<? extends T> recipeClass;
-        private Predicate<CRecipes> predicate = cRecipes -> true;
+        private Predicate<DDRecipes> predicate = cRecipes -> true;
 
         private IDrawable background;
         private IDrawable icon;
@@ -142,12 +142,12 @@ public class DDcreateJEI implements IModPlugin {
             this.recipeClass = recipeClass;
         }
 
-        public CategoryBuilder<T> enableIf(Predicate<CRecipes> predicate) {
+        public CategoryBuilder<T> enableIf(Predicate<DDRecipes> predicate) {
             this.predicate = predicate;
             return this;
         }
 
-        public CategoryBuilder<T> enableWhen(Function<CRecipes, ConfigBase.ConfigBool> configValue) {
+        public CategoryBuilder<T> enableWhen(Function<DDRecipes, ConfigBase.ConfigBool> configValue) {
             predicate = c -> configValue.apply(c).get();
             return this;
         }
@@ -294,7 +294,7 @@ public class DDcreateJEI implements IModPlugin {
 
         public CreateRecipeCategory<T> build(String name, CreateRecipeCategory.Factory<T> factory) {
             Supplier<List<T>> recipesSupplier;
-            if (predicate.test(AllConfigs.server().recipes)) {
+            if (predicate.test(DDConfigs.server().recipes)) {
                 recipesSupplier = () -> {
                     List<T> recipes = new ArrayList<>();
                     for (Consumer<List<T>> consumer : recipeListConsumers)

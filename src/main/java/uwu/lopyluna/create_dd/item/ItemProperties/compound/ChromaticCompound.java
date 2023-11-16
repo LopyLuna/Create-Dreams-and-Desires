@@ -44,14 +44,14 @@ public class ChromaticCompound extends Item {
         CompoundTag data = entity.getPersistentData();
 
         // Convert to Shadow steel if in void
-        if (y < minHeight && y - yMotion < DDConfigs.server().shadow_steel_min_height.get() + minHeight && DDConfigs.server().shadow_steel_recipe.get()) {
+        if (y < minHeight && y - yMotion < DDConfigs.server().recipes.shadow_steel_min_height.get() + minHeight && DDConfigs.server().recipes.shadow_steel_recipe.get()) {
             ItemStack newStack = DDItems.SHADOW_STEEL.asStack();
             newStack.setCount(stack.getCount());
             data.putBoolean("JustCreated", true);
             entity.setItem(newStack);
         }
 
-        if (!DDConfigs.server().refined_radiance_recipe.get())
+        if (!DDConfigs.server().recipes.refined_radiance_recipe.get())
             return false;
 
         // Is inside beacon beam?
@@ -63,10 +63,10 @@ public class ChromaticCompound extends Item {
         BlockPos.MutableBlockPos testPos =
                 new BlockPos.MutableBlockPos(entityX, Math.min(Mth.floor(entity.getY()), localWorldHeight), entityZ);
 
-        while (testPos.getY() > DDConfigs.server().refined_radiance_min_height.get() && testPos.getY() < DDConfigs.server().refined_radiance_max_height.get()) {
+        while (testPos.getY() > DDConfigs.server().recipes.refined_radiance_min_height.get() && testPos.getY() < DDConfigs.server().recipes.refined_radiance_max_height.get()) {
             testPos.move(Direction.DOWN);
             BlockState state = world.getBlockState(testPos);
-            if (state.getLightBlock(world, testPos) >= DDConfigs.server().refined_radiance_light_level.get() && state.getBlock() != Blocks.BEDROCK)
+            if (state.getLightBlock(world, testPos) >= DDConfigs.server().recipes.refined_radiance_light_level.get() && state.getBlock() != Blocks.BEDROCK)
                 break;
             if (state.getBlock() == Blocks.BEACON) {
                 BlockEntity be = world.getBlockEntity(testPos);
@@ -97,7 +97,7 @@ public class ChromaticCompound extends Item {
     @Override
     public InteractionResult interactLivingEntity(ItemStack heldItem, Player player, LivingEntity entity,
                                                   InteractionHand hand) {
-        if (DDConfigs.server().blaze_gold_recipe.get()) {
+        if (DDConfigs.server().recipes.blaze_gold_recipe.get()) {
             if (!(entity instanceof Blaze))
                 return InteractionResult.PASS;
 

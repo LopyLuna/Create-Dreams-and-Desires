@@ -6,7 +6,6 @@ import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.utility.Iterate;
 import com.simibubi.create.foundation.utility.VecHelper;
-import com.simibubi.create.infrastructure.config.AllConfigs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -33,12 +32,14 @@ import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing.DD
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing.IndustrialTypeFanProcessing;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing.InterfaceIndustrialProcessingType;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.rando.DDAirFlowParticleData;
+import uwu.lopyluna.create_dd.configs.DDConfigs;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
 
+@SuppressWarnings({"all"})
 public class IndustrialAirCurrent {
     public final IndustrialAirCurrentSource source;
     public AABB bounds = new AABB(0, 0, 0, 0, 0, 0);
@@ -64,7 +65,7 @@ public class IndustrialAirCurrent {
             Vec3 pos = VecHelper.getCenterOf(source.getAirCurrentPos())
                     .add(Vec3.atLowerCornerOf(direction.getNormal())
                             .scale(offset));
-            if (world.random.nextFloat() < AllConfigs.client().fanParticleDensity.get())
+            if (world.random.nextFloat() < DDConfigs.client().fanParticleDensity.get())
                 world.addParticle(new DDAirFlowParticleData(source.getAirCurrentPos()), pos.x, pos.y, pos.z, 0, 0, 0);
         }
 

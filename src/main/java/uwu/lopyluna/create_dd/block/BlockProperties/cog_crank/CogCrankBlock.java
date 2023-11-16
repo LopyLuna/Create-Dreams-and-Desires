@@ -6,7 +6,6 @@ import com.simibubi.create.content.kinetics.simpleRelays.CogwheelBlockItem;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.utility.Couple;
-import com.simibubi.create.infrastructure.config.AllConfigs;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,6 +27,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.block.DDBlockShapes;
+import uwu.lopyluna.create_dd.configs.DDConfigs;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -67,7 +67,7 @@ implements ICogWheel {
         withBlockEntityDo(worldIn, pos, be -> be.turn(player.isShiftKeyDown()));
         if (!player.getItemInHand(handIn)
                 .is(AllItems.EXTENDO_GRIP.get()))
-            player.causeFoodExhaustion(getRotationSpeed() * AllConfigs.server().kinetics.crankHungerMultiplier.getF());
+            player.causeFoodExhaustion(getRotationSpeed() * DDConfigs.server().kinetics.crankHungerMultiplier.getF());
         
         if (player.getFoodData()
                 .getFoodLevel() == 0)

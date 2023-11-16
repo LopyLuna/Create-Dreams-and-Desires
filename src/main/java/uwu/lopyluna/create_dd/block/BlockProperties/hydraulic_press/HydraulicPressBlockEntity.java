@@ -3,13 +3,13 @@ package uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press;
 import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.content.kinetics.crafter.MechanicalCraftingRecipe;
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
-import com.simibubi.create.infrastructure.config.AllConfigs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import uwu.lopyluna.create_dd.configs.DDConfigs;
 
 public class HydraulicPressBlockEntity extends MechanicalPressBlockEntity {
     public HydraulicPressBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -42,6 +42,6 @@ public class HydraulicPressBlockEntity extends MechanicalPressBlockEntity {
 
     @Override
     public boolean canProcessInBulk() {
-        return !AllConfigs.server().recipes.bulkPressing.get();
+        return DDConfigs.server().recipes.bulkPressing.get();
     }
 }

@@ -3,6 +3,7 @@ package uwu.lopyluna.create_dd.worldgen;
 import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
 import com.simibubi.create.foundation.data.DynamicDataProvider;
 import com.simibubi.create.foundation.utility.Couple;
+import com.simibubi.create.infrastructure.worldgen.AllLayerPatterns;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.data.DataGenerator;
@@ -39,23 +40,25 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_OVERWORLD =
-            create("striated_ores_overworld", 32, 1 / 9f, 40, 90)
+            create("striated_ores_overworld", 32, 1 / 15f, 40, 90)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.CASSITERITE)
                     .biomeTag(BiomeTags.IS_OVERWORLD)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_SAVANNA =
-            create("striated_ores_savanna", 64, 1 / 48f, 40, 90)
+            create("striated_ores_savanna", 64, 1 / 5f, 40, 90)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.GABBRO)
                     .biomeTag(BiomeTags.IS_SAVANNA)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_BADLANDS =
-            create("striated_ores_badlands", 64, 1 / 48f, 40, 90)
+            create("striated_ores_badlands", 64, 1 / 6.5f, 40, 90)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.GABBRO)
+                    .withLayerPattern(DDLayerPatterns.RAW_OCHRESTONE)
+                    .withLayerPattern(AllLayerPatterns.OCHRESTONE)
                     .biomeTag(BiomeTags.IS_BADLANDS)
                     .parent();
 
@@ -67,7 +70,7 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_RAW_ORES_OVERWORLD =
-            create("striated_raw_ores_overworld", 24, 1 / 3f, 20, 90)
+            create("striated_raw_ores_overworld", 24, 1 / 25f, 20, 90)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.RAW_CASSITERITE)
                     .withLayerPattern(DDLayerPatterns.RAW_SCORIA)
