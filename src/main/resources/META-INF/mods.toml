@@ -60,6 +60,6 @@ YIPPEE WASSUP THIS HURTS MY HEAD LMAO
 [[dependencies.create_dd]]
 modId="create"
 mandatory=true
-versionRange="[0.5.1.b,)"
+versionRange="[0.5.1.f,)"
 ordering="NONE"
 side="BOTH"
