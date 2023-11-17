@@ -40,21 +40,21 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_OVERWORLD =
-            create("striated_ores_overworld", 32, 1 / 15f, 40, 90)
+            create("striated_ores_overworld", 32, 1 / 15f, 30, 128)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.CASSITERITE)
                     .biomeTag(BiomeTags.IS_OVERWORLD)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_SAVANNA =
-            create("striated_ores_savanna", 64, 1 / 5f, 40, 90)
+            create("striated_ores_savanna", 64, 1 / 5f, 30, 100)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.GABBRO)
                     .biomeTag(BiomeTags.IS_SAVANNA)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_BADLANDS =
-            create("striated_ores_badlands", 64, 1 / 6.5f, 40, 90)
+            create("striated_ores_badlands", 64, 1 / 6.5f, 30, 120)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.GABBRO)
                     .withLayerPattern(DDLayerPatterns.RAW_OCHRESTONE)
@@ -63,14 +63,14 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_OCEAN =
-            create("striated_ores_ocean", 64, 1 / 48f, 40, 90)
+            create("striated_ores_ocean", 64, 1 / 48f, 20, 80)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.WEATHERED_LIMESTONE)
                     .biomeTag(BiomeTags.IS_OCEAN)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_RAW_ORES_OVERWORLD =
-            create("striated_raw_ores_overworld", 24, 1 / 25f, 20, 90)
+            create("striated_raw_ores_overworld", 24, 1 / 25f, 0, 200)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.RAW_CASSITERITE)
                     .withLayerPattern(DDLayerPatterns.RAW_SCORIA)
