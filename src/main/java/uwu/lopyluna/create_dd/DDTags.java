@@ -14,6 +14,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.Collections;
 
@@ -21,15 +22,13 @@ import static com.simibubi.create.AllTags.NameSpace.MOD;
 
 public class DDTags {
 
-
-
-    public static <T> TagKey<T> optionalTag(IForgeRegistry<T> registry,
-                                            ResourceLocation id) {
+    public static <T extends IForgeRegistryEntry<T>> TagKey<T> optionalTag(IForgeRegistry<T> registry,
+                                                                           ResourceLocation id) {
         return registry.tags()
         .createOptionalTagKey(id, Collections.emptySet());
         }
 
-public static <T> TagKey<T> forgeTag(IForgeRegistry<T> registry, String path) {
+    public static <T extends IForgeRegistryEntry<T>> TagKey<T> forgeTag(IForgeRegistry<T> registry, String path) {
         return optionalTag(registry, new ResourceLocation("forge", path));
         }
 

@@ -4,7 +4,7 @@ import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -20,7 +20,6 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
-import uwu.lopyluna.create_dd.worldgen.ponder_dim.Pondering;
 
 
 public class PonderBoxBlock extends Block implements IBE<PonderBoxBlockEntity>{
@@ -46,7 +45,7 @@ public class PonderBoxBlock extends Block implements IBE<PonderBoxBlockEntity>{
     @NotNull
     @Override
     public InteractionResult use(@NotNull BlockState pState, Level pLevel, @NotNull BlockPos pPos, @NotNull Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult hitResult) {
-        if (pLevel.isClientSide || player.level.dimension() == Pondering.PONDER) return InteractionResult.sidedSuccess(!pLevel.isClientSide);
+        if (pLevel.isClientSide || player.level.dimension() == Level.END) return InteractionResult.sidedSuccess(!pLevel.isClientSide);
 
         BlockEntity entity = pLevel.getBlockEntity(pPos);
         if (entity instanceof PonderBoxBlockEntity) {
@@ -56,7 +55,7 @@ public class PonderBoxBlock extends Block implements IBE<PonderBoxBlockEntity>{
         return InteractionResult.SUCCESS;
     }
 
-    public void animateTick(@NotNull BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+    public void animateTick(@NotNull BlockState pState, Level pLevel, BlockPos pPos, Random pRandom) {
         double d0 = (double)pPos.getX() + pRandom.nextDouble();
         double d1 = (double)pPos.getY() + pRandom.nextDouble();
         double d2 = (double)pPos.getZ() + pRandom.nextDouble();

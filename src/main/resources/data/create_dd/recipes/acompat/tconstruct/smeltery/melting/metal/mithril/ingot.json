@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "tag": "forge:ingots/mithril"
+  },
+  "result": {
+    "fluid": "create_dd:molten_mithril",
+    "amount": 90
+  },
+  "temperature": 1200,
+  "time": 63
+}

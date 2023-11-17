@@ -14,7 +14,7 @@ import static com.simibubi.create.foundation.data.CreateRegistrate.connectedText
 import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
-@SuppressWarnings({"unused", "pure"})
+@SuppressWarnings({"unused", "pure", "all"})
 public class DDPalettesVariant {
 
     public final ImmutableList<BlockEntry<? extends Block>> registeredBlocks;

@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "tag": "forge:storage_blocks/mithril"
+  },
+  "result": {
+    "fluid": "create_dd:molten_mithril",
+    "amount": 810
+  },
+  "temperature": 1200,
+  "time": 190
+}

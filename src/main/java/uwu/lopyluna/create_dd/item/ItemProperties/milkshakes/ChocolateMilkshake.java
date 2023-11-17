@@ -40,7 +40,6 @@ public class ChocolateMilkshake extends Item {
             entity.removeEffect(MobEffects.WEAKNESS);
             entity.removeEffect(MobEffects.UNLUCK);
             entity.removeEffect(MobEffects.HUNGER);
-            entity.removeEffect(MobEffects.DARKNESS);
             entity.removeEffect(MobEffects.LEVITATION);
             entity.removeEffect(MobEffects.DIG_SLOWDOWN);
             entity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);

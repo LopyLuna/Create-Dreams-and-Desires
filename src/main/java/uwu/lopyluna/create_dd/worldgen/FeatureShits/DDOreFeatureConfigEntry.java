@@ -2,34 +2,28 @@ package uwu.lopyluna.create_dd.worldgen.FeatureShits;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.simibubi.create.infrastructure.worldgen.LayerPattern;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import uwu.lopyluna.create_dd.configs.DDConfigBase;
 import com.simibubi.create.foundation.utility.Couple;
-import com.simibubi.create.infrastructure.worldgen.LayerPattern;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import org.jetbrains.annotations.Nullable;
 import uwu.lopyluna.create_dd.worldgen.DDFeatures;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Predicate;
 
 @SuppressWarnings({"all"})
 public class DDOreFeatureConfigEntry extends DDConfigBase {
@@ -44,6 +38,7 @@ public class DDOreFeatureConfigEntry extends DDConfigBase {
     public final ConfigInt minHeight;
     public final ConfigInt maxHeight;
 
+    private DDOreFeatureConfigEntry.BiomeExtension biomeExt;
     private DDOreFeatureConfigEntry.DatagenExtension datagenExt;
 
     public DDOreFeatureConfigEntry(ResourceLocation id, int clusterSize, float frequency, int minHeight, int maxHeight) {
@@ -56,6 +51,13 @@ public class DDOreFeatureConfigEntry extends DDConfigBase {
         this.maxHeight = i(maxHeight, "maxHeight");
 
         ALL.put(id, this);
+    }
+
+    public DDOreFeatureConfigEntry.BiomeExtension biomeExt() {
+        if (biomeExt == null) {
+            biomeExt = new DDOreFeatureConfigEntry.BiomeExtension();
+        }
+        return biomeExt;
     }
 
     @Nullable
@@ -106,28 +108,41 @@ public class DDOreFeatureConfigEntry extends DDConfigBase {
         }
     }
 
-    public abstract class DatagenExtension {
-        public TagKey<Biome> biomeTag;
+    public class BiomeExtension {
+        public ResourceLocation placedFeatureLocation = id;
+        public Predicate<BiomeLoadingEvent> biomePredicate = e -> false;
 
-        public DDOreFeatureConfigEntry.DatagenExtension biomeTag(TagKey<Biome> biomes) {
-            this.biomeTag = biomes;
+        public DDOreFeatureConfigEntry.BiomeExtension feature(ResourceLocation placedFeature) {
+            this.placedFeatureLocation = placedFeature;
             return this;
         }
 
+        public DDOreFeatureConfigEntry.BiomeExtension predicate(Predicate<BiomeLoadingEvent> predicate) {
+            this.biomePredicate = predicate;
+            return this;
+        }
+
+        public void modifyBiomes(BiomeLoadingEvent event, Registry<PlacedFeature> registry) {
+            if (biomePredicate.test(event)) {
+                Optional<Holder<PlacedFeature>> optionalFeature = registry.getHolder(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, placedFeatureLocation));
+                if (optionalFeature.isPresent()) {
+                    event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, optionalFeature.get());
+                }
+            }
+        }
+
+        public DDOreFeatureConfigEntry parent() {
+            return DDOreFeatureConfigEntry.this;
+        }
+    }
+
+    public abstract class DatagenExtension {
         public abstract ConfiguredFeature<?, ?> createConfiguredFeature(RegistryAccess registryAccess);
 
         public PlacedFeature createPlacedFeature(RegistryAccess registryAccess) {
             Registry<ConfiguredFeature<?, ?>> featureRegistry = registryAccess.registryOrThrow(Registry.CONFIGURED_FEATURE_REGISTRY);
-            Holder<ConfiguredFeature<?, ?>> featureHolder = featureRegistry.getOrCreateHolderOrThrow(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, id));
+            Holder<ConfiguredFeature<?, ?>> featureHolder = featureRegistry.getOrCreateHolder(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, id));
             return new PlacedFeature(featureHolder, List.of(new DDConfigDrivenPlacement(DDOreFeatureConfigEntry.this)));
-        }
-
-        public BiomeModifier createBiomeModifier(RegistryAccess registryAccess) {
-            Registry<Biome> biomeRegistry = registryAccess.registryOrThrow(Registry.BIOME_REGISTRY);
-            Registry<PlacedFeature> featureRegistry = registryAccess.registryOrThrow(Registry.PLACED_FEATURE_REGISTRY);
-            HolderSet<Biome> biomes = new HolderSet.Named<>(biomeRegistry, biomeTag);
-            Holder<PlacedFeature> featureHolder = featureRegistry.getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, id));
-            return new ForgeBiomeModifiers.AddFeaturesBiomeModifier(biomes, HolderSet.direct(featureHolder), GenerationStep.Decoration.UNDERGROUND_ORES);
         }
 
         public DDOreFeatureConfigEntry parent() {
@@ -158,12 +173,6 @@ public class DDOreFeatureConfigEntry extends DDConfigBase {
         }
 
         @Override
-        public DDOreFeatureConfigEntry.StandardDatagenExtension biomeTag(TagKey<Biome> biomes) {
-            super.biomeTag(biomes);
-            return this;
-        }
-
-        @Override
         public ConfiguredFeature<?, ?> createConfiguredFeature(RegistryAccess registryAccess) {
             List<OreConfiguration.TargetBlockState> targetStates = new ArrayList<>();
             if (block != null)
@@ -186,12 +195,6 @@ public class DDOreFeatureConfigEntry extends DDConfigBase {
 
         public DDOreFeatureConfigEntry.LayeredDatagenExtension withLayerPattern(NonNullSupplier<LayerPattern> pattern) {
             this.layerPatterns.add(pattern);
-            return this;
-        }
-
-        @Override
-        public DDOreFeatureConfigEntry.LayeredDatagenExtension biomeTag(TagKey<Biome> biomes) {
-            super.biomeTag(biomes);
             return this;
         }
 

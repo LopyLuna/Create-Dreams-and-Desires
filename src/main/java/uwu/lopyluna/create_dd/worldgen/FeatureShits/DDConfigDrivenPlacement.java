@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.levelgen.placement.PlacementContext;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
@@ -31,7 +31,7 @@ public class DDConfigDrivenPlacement extends PlacementModifier {
     }
 
     @Override
-    public Stream<BlockPos> getPositions(PlacementContext context, RandomSource random, BlockPos pos) {
+    public Stream<BlockPos> getPositions(PlacementContext context, Random random, BlockPos pos) {
         int count = getCount(getFrequency(), random);
         if (count == 0) {
             return Stream.empty();
@@ -50,7 +50,7 @@ public class DDConfigDrivenPlacement extends PlacementModifier {
                 });
     }
 
-    public int getCount(float frequency, RandomSource random) {
+    public int getCount(float frequency, Random random) {
         int floored = Mth.floor(frequency);
         return floored + (random.nextFloat() < (frequency - floored) ? 1 : 0);
     }

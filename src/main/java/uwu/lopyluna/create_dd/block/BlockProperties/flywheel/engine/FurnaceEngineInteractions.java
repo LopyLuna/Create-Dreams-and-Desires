@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.registries.IRegistryDelegate;
 
 /**
  * Example:
@@ -24,23 +24,23 @@ import net.minecraft.world.level.block.state.BlockState;
 @SuppressWarnings({"unused"})
 public class FurnaceEngineInteractions {
 
-    private static final Map<Holder<Block>, InteractionHandler> HANDLERS = new HashMap<>();
+    private static final Map<IRegistryDelegate<Block>, InteractionHandler> HANDLERS = new HashMap<>();
     private static final InteractionHandler DEFAULT_HANDLER = new InteractionHandler() {};
 
-    public static void registerHandler(Holder<Block> block, InteractionHandler handler) {
+    public static void registerHandler(IRegistryDelegate<Block> block, InteractionHandler handler) {
         HANDLERS.put(block, handler);
     }
 
-    public static InteractionHandler getHandler(Holder<Block> delegate) {
+    public static InteractionHandler getHandler(IRegistryDelegate<Block> delegate) {
         return HANDLERS.getOrDefault(delegate, DEFAULT_HANDLER);
     }
 
     public static InteractionHandler getHandler(BlockState state) {
-        return getHandler(state.getBlock().defaultBlockState().getBlockHolder());
+        return getHandler(state.getBlock().delegate);
     }
 
     public static void registerDefaults() {
-        registerHandler(Blocks.BLAST_FURNACE.defaultBlockState().getBlockHolder(), InteractionHandler.ofCustomSpeedModifier(state -> 2f));
+        registerHandler(Blocks.BLAST_FURNACE.delegate, InteractionHandler.ofCustomSpeedModifier(state -> 2f));
     }
 
     public interface InteractionHandler {

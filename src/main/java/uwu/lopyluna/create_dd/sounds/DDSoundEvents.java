@@ -30,6 +30,12 @@ public class DDSoundEvents {
     public static RegistryObject<SoundEvent> magical_metal_hit = registerSoundEvent("magical_metal_hit");
     public static RegistryObject<SoundEvent> magical_metal_fall = registerSoundEvent("magical_metal_fall");
 
+    public static RegistryObject<SoundEvent> mud_brick_break = registerSoundEvent("mud_brick_break");
+    public static RegistryObject<SoundEvent> mud_brick_step = registerSoundEvent("mud_brick_step");
+    public static RegistryObject<SoundEvent> mud_brick_place = registerSoundEvent("mud_brick_place");
+    public static RegistryObject<SoundEvent> mud_brick_hit = registerSoundEvent("mud_brick_hit");
+    public static RegistryObject<SoundEvent> mud_brick_fall = registerSoundEvent("mud_brick_fall");
+
     public static RegistryObject<SoundEvent> shimmer_fill = registerSoundEvent("shimmer_fill");
     public static RegistryObject<SoundEvent> shimmer_empty = registerSoundEvent("shimmer_empty");
 

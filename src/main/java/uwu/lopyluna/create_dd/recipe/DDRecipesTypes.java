@@ -32,6 +32,8 @@ public enum DDRecipesTypes implements IRecipeTypeInfo {
     
     private final ResourceLocation id;
     private final RegistryObject<RecipeSerializer<?>> serializerObject;
+    @Nullable
+    private final RegistryObject<RecipeType<?>> typeObject;
     private final Supplier<RecipeType<?>> type;
 
 
@@ -39,12 +41,22 @@ public enum DDRecipesTypes implements IRecipeTypeInfo {
         String name = Lang.asId(name());
         id = DDCreate.asResource(name);
         serializerObject = DDRecipesTypes.Registers.SERIALIZER_REGISTER.register(name, serializerSupplier);
-        @Nullable RegistryObject<RecipeType<?>> typeObject = Registers.TYPE_REGISTER.register(name, () -> RecipeType.simple(id));
+        typeObject = Registers.TYPE_REGISTER.register(name, () -> simpleType(id));
         type = typeObject;
     }
 
     DDRecipesTypes(ProcessingRecipeBuilder.ProcessingRecipeFactory<?> processingFactory) {
         this(() -> new ProcessingRecipeSerializer<>(processingFactory));
+    }
+
+    public static <T extends Recipe<?>> RecipeType<T> simpleType(ResourceLocation id) {
+        String stringId = id.toString();
+        return new RecipeType<T>() {
+            @Override
+            public String toString() {
+                return stringId;
+            }
+        };
     }
 
     public static void register(IEventBus modEventBus) {

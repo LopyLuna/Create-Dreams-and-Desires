@@ -133,8 +133,6 @@ public class BronzeSawBlockEntity extends SawBlockEntity {
             return false;
         if (TreeCutter.isLog(stateToBreak) || (stateToBreak.is(BlockTags.LEAVES)))
             return true;
-        if (TreeCutter.isRoot(stateToBreak))
-            return true;
         Block block = stateToBreak.getBlock();
         if (block instanceof BambooBlock)
             return true;

@@ -4,7 +4,7 @@ import com.simibubi.create.infrastructure.worldgen.LayerPattern;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.BulkSectionAccess;
@@ -23,7 +23,7 @@ public class DDLayeredOreFeature extends DDBaseConfigDrivenOreFeature<DDConfigDr
 
     @Override
     public boolean place(FeaturePlaceContext<DDConfigDrivenLayeredOreFeatureConfiguration> pContext) {
-        RandomSource random = pContext.random();
+        Random random = pContext.random();
         BlockPos blockpos = pContext.origin();
         WorldGenLevel worldgenlevel = pContext.level();
         DDConfigDrivenLayeredOreFeatureConfiguration config = pContext.config();

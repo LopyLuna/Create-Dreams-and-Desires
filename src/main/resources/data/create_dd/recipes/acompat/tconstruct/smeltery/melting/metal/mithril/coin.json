@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/mithril",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:coins/mithril"
+  },
+  "result": {
+    "fluid": "create_dd:molten_mithril",
+    "amount": 30
+  },
+  "temperature": 1200,
+  "time": 42
+}

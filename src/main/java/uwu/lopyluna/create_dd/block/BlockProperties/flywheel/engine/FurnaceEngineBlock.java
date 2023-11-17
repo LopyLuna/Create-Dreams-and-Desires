@@ -76,7 +76,7 @@ public class FurnaceEngineBlock extends EngineBlock implements IBE<FurnaceEngine
             return;
         if (blockItem.getBlock() != DDBlocks.FURNACE_ENGINE.get())
             return;
-        BlockState state = event.getLevel().getBlockState(event.getPos());
+        BlockState state = event.getWorld().getBlockState(event.getPos());
         if (event.getFace().getAxis().isVertical())
             return;
         if (state.getBlock() instanceof AbstractFurnaceBlock)

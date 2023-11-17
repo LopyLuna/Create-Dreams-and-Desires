@@ -102,7 +102,6 @@ public class DDItems {
             INFA_DRIPSTONE_BLOCK = infablock("DRIPSTONE_BLOCK", Blocks.DRIPSTONE_BLOCK),
             INFA_DIRT = infablock("DIRT", Blocks.DIRT),
             INFA_COARSE_DIRT = infablock("COARSE_DIRT", Blocks.COARSE_DIRT),
-            INFA_MUD = infablock("MUD", Blocks.MUD),
             INFA_COBBLESTONE = infablock("COBBLESTONE", Blocks.COBBLESTONE),
             INFA_SAND = infablock("SAND", Blocks.SAND),
             INFA_RED_SAND = infablock("RED_SAND", Blocks.RED_SAND),

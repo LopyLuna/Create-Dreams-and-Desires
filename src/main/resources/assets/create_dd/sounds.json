@@ -109,6 +109,48 @@
     {"name": "create_dd:magical_metal/step4","volume": 0.9}
   ]},
 
+
+  "mud_brick_break": {"subtitle": "subtitles.block.generic.break","sounds": [
+    {"name": "create_dd:mud_brick/break1","volume": 0.9},
+    {"name": "create_dd:mud_brick/break2","volume": 0.9},
+    {"name": "create_dd:mud_brick/break3","volume": 0.9},
+    {"name": "create_dd:mud_brick/break4","volume": 0.9},
+    {"name": "create_dd:mud_brick/break5","volume": 0.9},
+    {"name": "create_dd:mud_brick/break6","volume": 0.9}
+  ]},
+  "mud_brick_step": {"subtitle": "subtitles.block.generic.footsteps","sounds": [
+    {"name": "create_dd:mud_brick/step1","volume": 0.9},
+    {"name": "create_dd:mud_brick/step2","volume": 0.9},
+    {"name": "create_dd:mud_brick/step3","volume": 0.9},
+    {"name": "create_dd:mud_brick/step4","volume": 0.9},
+    {"name": "create_dd:mud_brick/step5","volume": 0.9},
+    {"name": "create_dd:mud_brick/step6","volume": 0.9}
+  ]},
+  "mud_brick_place": {"subtitle": "subtitles.block.generic.place","sounds": [
+    {"name": "create_dd:mud_brick/break1","volume": 0.9},
+    {"name": "create_dd:mud_brick/break2","volume": 0.9},
+    {"name": "create_dd:mud_brick/break3","volume": 0.9},
+    {"name": "create_dd:mud_brick/break4","volume": 0.9},
+    {"name": "create_dd:mud_brick/break5","volume": 0.9},
+    {"name": "create_dd:mud_brick/break6","volume": 0.9}
+  ]},
+  "mud_brick_hit": {"subtitle": "subtitles.block.generic.hit","sounds": [
+    {"name": "create_dd:mud_brick/step1","volume": 0.9},
+    {"name": "create_dd:mud_brick/step2","volume": 0.9},
+    {"name": "create_dd:mud_brick/step3","volume": 0.9},
+    {"name": "create_dd:mud_brick/step4","volume": 0.9},
+    {"name": "create_dd:mud_brick/step5","volume": 0.9},
+    {"name": "create_dd:mud_brick/step6","volume": 0.9}
+  ]},
+  "mud_brick_fall": {"subtitle": "subtitles.block.generic.footsteps","sounds": [
+    {"name": "create_dd:mud_brick/step1","volume": 0.9},
+    {"name": "create_dd:mud_brick/step2","volume": 0.9},
+    {"name": "create_dd:mud_brick/step3","volume": 0.9},
+    {"name": "create_dd:mud_brick/step4","volume": 0.9},
+    {"name": "create_dd:mud_brick/step5","volume": 0.9},
+    {"name": "create_dd:mud_brick/step6","volume": 0.9}
+  ]},
+
   "shimmer_empty": {"subtitle": "subtitles.item.bucket.fill","sounds": [
     {"name": "create_dd:bucket/shimmer_empty1","volume": 0.9},
     {"name": "create_dd:bucket/shimmer_empty2","volume": 0.9}

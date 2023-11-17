@@ -7,7 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
@@ -27,7 +27,7 @@ public class StargazeBlockcasing extends CasingBlock {
     }
 
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRand) {
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random pRand) {
         if (pRand.nextInt(5) != 0)
             return;
         Vec3 vec3 = VecHelper.clampComponentWise(VecHelper.offsetRandomly(Vec3.ZERO, pRand, 1.25f), 1f)
@@ -51,7 +51,7 @@ public class StargazeBlockcasing extends CasingBlock {
         if (!pLevel.isClientSide) {
             BlockPos blockpos = pPos.getBlockPos();
             pLevel.playSound((Player)null, blockpos, SoundEvents.WITHER_AMBIENT, SoundSource.BLOCKS, 0.01F, 0.0F + pLevel.random.nextFloat() * 1.2F);
-            pLevel.playSound((Player)null, blockpos, SoundEvents.ALLAY_AMBIENT_WITHOUT_ITEM, SoundSource.BLOCKS, 0.05F, 0.0F + pLevel.random.nextFloat() * 1.2F);
+            pLevel.playSound((Player)null, blockpos, SoundEvents.SOUL_ESCAPE, SoundSource.BLOCKS, 0.05F, 0.0F + pLevel.random.nextFloat() * 1.2F);
         }
 
         BlockPos blockpos = pPos.getBlockPos();

@@ -8,13 +8,12 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import uwu.lopyluna.create_dd.DDCreate;
 import uwu.lopyluna.create_dd.block.BlockPalette.DDPaletteStoneTypes;
 import uwu.lopyluna.create_dd.block.DDBlocks;
@@ -22,55 +21,89 @@ import uwu.lopyluna.create_dd.worldgen.FeatureShits.DDOreFeatureConfigEntry;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Predicate;
 
 @SuppressWarnings({"all"})
 public class DDOreFeatureConfigEntries {
+    
+    private static final Predicate<BiomeLoadingEvent> OVERWORLD_BIOMES = event -> {
+        Biome.BiomeCategory category = event.getCategory();
+        return category != Biome.BiomeCategory.NETHER && category != Biome.BiomeCategory.THEEND && category != Biome.BiomeCategory.NONE;
+    };
+    private static final Predicate<BiomeLoadingEvent> IS_SAVANNA = event -> {
+        Biome.BiomeCategory category = event.getCategory();
+        return category == Biome.BiomeCategory.SAVANNA;
+    };
+    private static final Predicate<BiomeLoadingEvent> IS_BADLANDS = event -> {
+        Biome.BiomeCategory category = event.getCategory();
+        return category == Biome.BiomeCategory.MESA;
+    };
+    private static final Predicate<BiomeLoadingEvent> IS_OCEAN = event -> {
+        Biome.BiomeCategory category = event.getCategory();
+        return category == Biome.BiomeCategory.OCEAN;
+    };
+    
     public static final DDOreFeatureConfigEntry TIN_ORE =
             create("tin_ore", 10, 10, -45, 128)
+                    .biomeExt()
+                    .predicate(OVERWORLD_BIOMES)
+                    .parent()
                     .standardDatagenExt()
                     .withBlocks(Couple.create(DDBlocks.tin_ore, DDBlocks.deepslate_tin_ore))
-                    .biomeTag(BiomeTags.IS_OVERWORLD)
                     .parent();
 
     public static final DDOreFeatureConfigEntry GABBRO_BLOB =
             create("gabbro_blob", 32, 5, -64, 24)
+                    .biomeExt()
+                    .predicate(OVERWORLD_BIOMES)
+                    .parent()
                     .standardDatagenExt()
                     .withBlocks(Couple.create(AllPaletteStoneTypes.GRANITE.getBaseBlock(), DDPaletteStoneTypes.gabbro.getBaseBlock()))
-                    .biomeTag(BiomeTags.IS_OVERWORLD)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_OVERWORLD =
             create("striated_ores_overworld", 32, 1 / 15f, 40, 90)
+                    .biomeExt()
+                    .predicate(OVERWORLD_BIOMES)
+                    .parent()
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.CASSITERITE)
-                    .biomeTag(BiomeTags.IS_OVERWORLD)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_SAVANNA =
             create("striated_ores_savanna", 64, 1 / 5f, 40, 90)
+                    .biomeExt()
+                    .predicate(IS_SAVANNA)
+                    .parent()
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.GABBRO)
-                    .biomeTag(BiomeTags.IS_SAVANNA)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_BADLANDS =
             create("striated_ores_badlands", 64, 1 / 6.5f, 40, 90)
+                    .biomeExt()
+                    .predicate(IS_BADLANDS)
+                    .parent()
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.GABBRO)
                     .withLayerPattern(DDLayerPatterns.RAW_OCHRESTONE)
                     .withLayerPattern(AllLayerPatterns.OCHRESTONE)
-                    .biomeTag(BiomeTags.IS_BADLANDS)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_OCEAN =
             create("striated_ores_ocean", 64, 1 / 48f, 40, 90)
+                    .biomeExt()
+                    .predicate(IS_OCEAN)
+                    .parent()
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.WEATHERED_LIMESTONE)
-                    .biomeTag(BiomeTags.IS_OCEAN)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_RAW_ORES_OVERWORLD =
             create("striated_raw_ores_overworld", 24, 1 / 25f, 20, 90)
+                    .biomeExt()
+                    .predicate(OVERWORLD_BIOMES)
+                    .parent()
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.RAW_CASSITERITE)
                     .withLayerPattern(DDLayerPatterns.RAW_SCORIA)
@@ -78,7 +111,6 @@ public class DDOreFeatureConfigEntries {
                     .withLayerPattern(DDLayerPatterns.RAW_MAGNETITE)
                     .withLayerPattern(DDLayerPatterns.RAW_MALACHITE)
                     .withLayerPattern(DDLayerPatterns.RAW_OCHRESTONE)
-                    .biomeTag(BiomeTags.IS_OVERWORLD)
                     .parent();
 
     //
@@ -118,7 +150,7 @@ public class DDOreFeatureConfigEntries {
 
         DynamicDataProvider<ConfiguredFeature<?, ?>> configuredFeatureProvider = DynamicDataProvider.create(generator, "Create's Configured Features", registryAccess, Registry.CONFIGURED_FEATURE_REGISTRY, configuredFeatures);
         if (configuredFeatureProvider != null) {
-            generator.addProvider(true, configuredFeatureProvider);
+            generator.addProvider(configuredFeatureProvider);
         }
 
         //
@@ -133,22 +165,7 @@ public class DDOreFeatureConfigEntries {
 
         DynamicDataProvider<PlacedFeature> placedFeatureProvider = DynamicDataProvider.create(generator, "Create's Placed Features", registryAccess, Registry.PLACED_FEATURE_REGISTRY, placedFeatures);
         if (placedFeatureProvider != null) {
-            generator.addProvider(true, placedFeatureProvider);
-        }
-
-        //
-
-        Map<ResourceLocation, BiomeModifier> biomeModifiers = new HashMap<>();
-        for (Map.Entry<ResourceLocation, DDOreFeatureConfigEntry> entry : DDOreFeatureConfigEntry.ALL.entrySet()) {
-            DDOreFeatureConfigEntry.DatagenExtension datagenExt = entry.getValue().datagenExt();
-            if (datagenExt != null) {
-                biomeModifiers.put(entry.getKey(), datagenExt.createBiomeModifier(registryAccess));
-            }
-        }
-
-        DynamicDataProvider<BiomeModifier> biomeModifierProvider = DynamicDataProvider.create(generator, "Create's Biome Modifiers", registryAccess, ForgeRegistries.Keys.BIOME_MODIFIERS, biomeModifiers);
-        if (biomeModifierProvider != null) {
-            generator.addProvider(true, biomeModifierProvider);
+            generator.addProvider(placedFeatureProvider);
         }
     }
 }

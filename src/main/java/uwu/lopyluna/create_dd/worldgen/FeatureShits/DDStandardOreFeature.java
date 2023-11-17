@@ -3,7 +3,7 @@ package uwu.lopyluna.create_dd.worldgen.FeatureShits;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.BulkSectionAccess;
@@ -25,7 +25,7 @@ public class DDStandardOreFeature extends DDBaseConfigDrivenOreFeature<DDConfigD
 
     @Override
     public boolean place(FeaturePlaceContext<DDConfigDrivenOreFeatureConfiguration> pContext) {
-        RandomSource random = pContext.random();
+        Random random = pContext.random();
         BlockPos blockpos = pContext.origin();
         WorldGenLevel worldgenlevel = pContext.level();
         DDConfigDrivenOreFeatureConfiguration oreconfiguration = pContext.config();
@@ -55,7 +55,7 @@ public class DDStandardOreFeature extends DDBaseConfigDrivenOreFeature<DDConfigD
         return false;
     }
 
-    protected boolean doPlace(WorldGenLevel pLevel, RandomSource pRandom, DDConfigDrivenOreFeatureConfiguration pConfig, double pMinX,
+    protected boolean doPlace(WorldGenLevel pLevel, Random pRandom, DDConfigDrivenOreFeatureConfiguration pConfig, double pMinX,
                               double pMaxX, double pMinZ, double pMaxZ, double pMinY, double pMaxY, int pX, int pY, int pZ, int pWidth,
                               int pHeight) {
         int i = 0;

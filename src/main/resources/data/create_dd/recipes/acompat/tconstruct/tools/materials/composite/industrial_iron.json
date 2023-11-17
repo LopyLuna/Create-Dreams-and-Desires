@@ -1,0 +1,10 @@
+{
+  "type": "tconstruct:material_fluid",
+  "input": "tconstruct:iron",
+  "fluid": {
+    "tag": "tconstruct:molten_iron",
+    "amount": 90
+  },
+  "temperature": 900,
+  "output": "create_dd:industrial_iron"
+}

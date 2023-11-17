@@ -21,8 +21,8 @@ import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.block.BlockPalette.DDPaletteBlocks;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
+import uwu.lopyluna.create_dd.compat.CompatibleManager;
 import uwu.lopyluna.create_dd.configs.DDConfigs;
-import uwu.lopyluna.create_dd.fluid.ChromaticFluidInteraction;
 import uwu.lopyluna.create_dd.fluid.DDFluids;
 import uwu.lopyluna.create_dd.item.DDItems;
 import uwu.lopyluna.create_dd.creative.DDItemTab;
@@ -33,8 +33,6 @@ import uwu.lopyluna.create_dd.worldgen.DDBuiltinRegistration;
 import uwu.lopyluna.create_dd.worldgen.DDFeatures;
 import uwu.lopyluna.create_dd.worldgen.DDOreFeatureConfigEntries;
 import uwu.lopyluna.create_dd.worldgen.DDPlacementModifiers;
-import uwu.lopyluna.create_dd.worldgen.ponder_dim.PonderPOI;
-import uwu.lopyluna.create_dd.worldgen.ponder_dim.Pondering;
 
 
 @SuppressWarnings({"all"})
@@ -70,8 +68,7 @@ public class DDCreate
         DDItems.register();
         DDFluids.register();
         DDPaletteBlocks.register();
-        Pondering.register();
-        PonderPOI.register(eventBus);
+        CompatibleManager.visit();
 
         DDParticleTypes.register(eventBus);
         DDRecipesTypes.register(eventBus);
@@ -97,8 +94,6 @@ public class DDCreate
     }
 
     public static void init(final FMLCommonSetupEvent event) {
-        DDFluids.registerFluidInteractions();
-        ChromaticFluidInteraction.registerFluidInteractions();
     }
 
     public static ResourceLocation asResource(String path) {

@@ -90,7 +90,7 @@ public class StargazeInfiniteBlock extends BlockItem {
                         }
                     }
 
-                    level.gameEvent(GameEvent.BLOCK_PLACE, blockpos, GameEvent.Context.of(player, blockstate1));
+                    level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
                     SoundType soundtype = pBlock.getSoundType(level, blockpos, pContext.getPlayer());
                     level.playSound(player, blockpos, this.getPlaceSound(pBlock, level, blockpos, pContext.getPlayer()), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
                     level.playSound(player, blockpos, SoundEvents.EVOKER_CAST_SPELL, SoundSource.BLOCKS, 0.15F + level.random.nextFloat() * 1.05F, 0.75F + level.random.nextFloat() * 1.05F);
@@ -190,8 +190,8 @@ public class StargazeInfiniteBlock extends BlockItem {
     }
 
     @Override
-    public void fillItemCategory(CreativeModeTab pGroup, NonNullList<ItemStack> pItems) {
-        if (this.allowedIn(pGroup)) {
+    public void fillItemCategory(CreativeModeTab pCategory, NonNullList<ItemStack> pItems) {
+        if (this.allowdedIn(pCategory)) {
             pItems.add(new ItemStack(this));
         }
     }

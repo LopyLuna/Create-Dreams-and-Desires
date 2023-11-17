@@ -10,7 +10,7 @@ public class IndustrialAirCurrentSound extends AbstractTickableSoundInstance {
     private float pitch;
 
     public IndustrialAirCurrentSound(SoundEvent p_i46532_1_, float pitch) {
-        super(p_i46532_1_, SoundSource.BLOCKS, SoundInstance.createUnseededRandom());
+        super(p_i46532_1_, SoundSource.BLOCKS);
         this.pitch = pitch;
         volume = 0.01f;
         looping = true;

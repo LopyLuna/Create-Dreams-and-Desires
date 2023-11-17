@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:rods/mithril",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:rods/mithril"
+  },
+  "result": {
+    "fluid": "create_dd:molten_mithril",
+    "amount": 45
+  },
+  "temperature": 1200,
+  "time": 13
+}

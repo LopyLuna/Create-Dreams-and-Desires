@@ -6,11 +6,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import uwu.lopyluna.create_dd.worldgen.ponder_dim.PonderTeleporting;
-import uwu.lopyluna.create_dd.worldgen.ponder_dim.Pondering;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +34,7 @@ public class PonderBoxBlockEntity extends SmartBlockEntity {
 
 
     static void teleportPlayer(BlockPos storedPos, Player player, PonderBoxBlockEntity entity) {
-        ServerLevel serverLevel = Objects.requireNonNull(player.level.getServer()).getLevel(Pondering.PONDER);
+        ServerLevel serverLevel = Objects.requireNonNull(player.level.getServer()).getLevel(Level.END);
 
         if (serverLevel == null) return;
 
@@ -58,7 +57,6 @@ public class PonderBoxBlockEntity extends SmartBlockEntity {
             entity.setChanged();
             storedPos = spawnPosition;
         }
-        player.changeDimension(serverLevel, new PonderTeleporting(storedPos));
     }
 
     private static int scanColumn(ServerLevel destWorld, int x, int z, int targetY) {

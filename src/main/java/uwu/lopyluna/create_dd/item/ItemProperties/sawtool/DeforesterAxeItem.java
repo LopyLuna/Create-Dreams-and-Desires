@@ -72,7 +72,6 @@ public class DeforesterAxeItem extends AxeItem {
                 });
 
             level.setBlock(blockpos, optional3.get(), 11);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, optional3.get()));
             if (!BacktankUtil.canAbsorbDamage(player, getUses)) {
                 itemstack.hurtAndBreak(1, player, (p_150686_) ->
                         p_150686_.broadcastBreakEvent(pContext.getHand()));

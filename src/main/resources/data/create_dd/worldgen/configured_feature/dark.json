@@ -1,9 +1,0 @@
-{
-	"type": "minecraft:fill_layer",
-	"config": {
-		"state": {
-			"Name": "create_dd:pondering_block_dark"
-		},
-		"height": 64
-	}
-}

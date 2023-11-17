@@ -12,22 +12,17 @@ import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.grower.AcaciaTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.util.ForgeSoundType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import uwu.lopyluna.create_dd.DDCreate;
 import uwu.lopyluna.create_dd.DDTags;
 import uwu.lopyluna.create_dd.block.BlockProperties.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlock;
@@ -65,8 +60,6 @@ import uwu.lopyluna.create_dd.block.BlockResources.DDBlockSpriteShifts;
 import uwu.lopyluna.create_dd.creative.DDItemTab;
 import uwu.lopyluna.create_dd.sounds.DDSoundEvents;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
 import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.*;
@@ -74,8 +67,6 @@ import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 
 @SuppressWarnings({"unused", "removal", "all"})
 public class DDBlocks {
-    
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, DDCreate.MOD_ID);
     
     static {
         REGISTRATE.creativeModeTab(() -> DDItemTab.BASE_CREATIVE_TAB);
@@ -340,7 +331,9 @@ public class DDBlocks {
     public static final BlockEntry<CasingBlock> brick_casing = REGISTRATE.block("brick_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.BRICK_CASING))
             .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
-            .properties(p -> p.sound(SoundType.MUD_BRICKS))
+            .properties(p -> p.sound(new ForgeSoundType(1f, 1f, () -> DDSoundEvents.mud_brick_break.get(),
+                    () -> DDSoundEvents.mud_brick_step.get(), () -> DDSoundEvents.mud_brick_place.get(),
+                    () -> DDSoundEvents.mud_brick_hit.get(), () -> DDSoundEvents.mud_brick_fall.get())))
             .register();
 
     public static final BlockEntry<CasingBlock> nether_brick_casing = REGISTRATE.block("nether_brick_casing", CasingBlock::new)

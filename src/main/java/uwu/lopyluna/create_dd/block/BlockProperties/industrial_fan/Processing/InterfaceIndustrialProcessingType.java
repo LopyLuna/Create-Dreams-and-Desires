@@ -3,7 +3,7 @@ package uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -24,7 +24,7 @@ public interface InterfaceIndustrialProcessingType {
 
     void spawnProcessingParticles(Level level, Vec3 pos);
 
-    void morphAirFlow(DDAirFlowParticleAccess particleAccess, RandomSource random);
+    void morphAirFlow(DDAirFlowParticleAccess particleAccess, Random random);
 
     void affectEntity(Entity entity, Level level);
 

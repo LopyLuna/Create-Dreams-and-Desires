@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "tag": "forge:nuggets/mithril"
+  },
+  "result": {
+    "fluid": "create_dd:molten_mithril",
+    "amount": 10
+  },
+  "temperature": 1200,
+  "time": 21
+}

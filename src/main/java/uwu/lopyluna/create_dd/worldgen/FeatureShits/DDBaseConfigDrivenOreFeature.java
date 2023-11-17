@@ -2,7 +2,7 @@ package uwu.lopyluna.create_dd.worldgen.FeatureShits;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
@@ -16,7 +16,7 @@ public abstract class DDBaseConfigDrivenOreFeature<FC extends DDBaseConfigDriven
     }
 
     public boolean canPlaceOre(BlockState pState, Function<BlockPos, BlockState> pAdjacentStateAccessor,
-                               RandomSource pRandom, DDBaseConfigDrivenOreFeatureConfiguration pConfig, OreConfiguration.TargetBlockState pTargetState,
+                               Random pRandom, DDBaseConfigDrivenOreFeatureConfiguration pConfig, OreConfiguration.TargetBlockState pTargetState,
                                BlockPos.MutableBlockPos pMatablePos) {
         if (!pTargetState.target.test(pState, pRandom))
             return false;
@@ -26,7 +26,7 @@ public abstract class DDBaseConfigDrivenOreFeature<FC extends DDBaseConfigDriven
         return !isAdjacentToAir(pAdjacentStateAccessor, pMatablePos);
     }
 
-    protected boolean shouldSkipAirCheck(RandomSource pRandom, float pChance) {
+    protected boolean shouldSkipAirCheck(Random pRandom, float pChance) {
         return pChance <= 0 ? true : pChance >= 1 ? false : pRandom.nextFloat() >= pChance;
     }
 }

@@ -2,11 +2,13 @@ package uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.rando;
 
 import com.simibubi.create.foundation.particle.ICustomParticleData;
 import com.simibubi.create.foundation.utility.Lang;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -32,9 +34,10 @@ public enum DDParticleTypes {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static void registerFactories(RegisterParticleProvidersEvent event) {
+    public static void registerFactories(ParticleFactoryRegisterEvent event) {
+        ParticleEngine particles = Minecraft.getInstance().particleEngine;
         for (DDParticleTypes particle : values())
-            particle.entry.registerFactory(event);
+            particle.entry.registerFactory(particles);
     }
 
     public ParticleType<?> get() {
@@ -60,9 +63,9 @@ public enum DDParticleTypes {
         }
 
         @OnlyIn(Dist.CLIENT)
-        public void registerFactory(RegisterParticleProvidersEvent event) {
+        public void registerFactory(ParticleEngine particles) {
             typeFactory.get()
-                    .register(object.get(), event);
+                    .register(object.get(), particles);
         }
 
     }
