@@ -6,6 +6,7 @@ import com.simibubi.create.foundation.utility.Couple;
 import com.simibubi.create.infrastructure.worldgen.AllLayerPatterns;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
@@ -62,7 +63,7 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_OVERWORLD =
-            create("striated_ores_overworld", 32, 1 / 15f, 40, 90)
+            create("striated_ores_overworld", 32, 1 / 15f, 30, 128)
                     .biomeExt()
                     .predicate(OVERWORLD_BIOMES)
                     .parent()
@@ -71,7 +72,7 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_SAVANNA =
-            create("striated_ores_savanna", 64, 1 / 5f, 40, 90)
+            create("striated_ores_savanna", 64, 1 / 5f, 30, 100)
                     .biomeExt()
                     .predicate(IS_SAVANNA)
                     .parent()
@@ -80,7 +81,7 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_BADLANDS =
-            create("striated_ores_badlands", 64, 1 / 6.5f, 40, 90)
+            create("striated_ores_badlands", 64, 1 / 6.5f, 30, 120)
                     .biomeExt()
                     .predicate(IS_BADLANDS)
                     .parent()
@@ -91,7 +92,7 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_OCEAN =
-            create("striated_ores_ocean", 64, 1 / 48f, 40, 90)
+            create("striated_ores_ocean", 64, 1 / 48f, 20, 80)
                     .biomeExt()
                     .predicate(IS_OCEAN)
                     .parent()
@@ -100,7 +101,7 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_RAW_ORES_OVERWORLD =
-            create("striated_raw_ores_overworld", 24, 1 / 25f, 20, 90)
+            create("striated_raw_ores_overworld", 24, 1 / 25f, 0, 200)
                     .biomeExt()
                     .predicate(OVERWORLD_BIOMES)
                     .parent()
@@ -133,6 +134,12 @@ public class DDOreFeatureConfigEntries {
     }
 
     public static void init() {}
+
+    public static void modifyBiomes(BiomeLoadingEvent event) {
+        for (DDOreFeatureConfigEntry entry : DDOreFeatureConfigEntry.ALL.values()) {
+            entry.biomeExt().modifyBiomes(event, BuiltinRegistries.PLACED_FEATURE);
+        }
+    }
 
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
