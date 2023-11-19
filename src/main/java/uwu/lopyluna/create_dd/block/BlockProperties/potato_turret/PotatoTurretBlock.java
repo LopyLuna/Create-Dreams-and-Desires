@@ -27,11 +27,6 @@ public class PotatoTurretBlock extends HorizontalKineticBlock implements IBE<Pot
         this(p_i48440_1_, false);
     }
 
-    @Override
-    public void fillItemCategory(CreativeModeTab pCategory, NonNullList<ItemStack> pItems) {
-        if (visible)
-            super.fillItemCategory(pCategory, pItems);
-    }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {

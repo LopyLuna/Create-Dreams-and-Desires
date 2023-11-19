@@ -5,10 +5,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.WoodType;
 
 public class CanBurnFenceGateBlock extends FenceGateBlock {
-    public CanBurnFenceGateBlock(Properties pProperties) {
-        super(pProperties);
+
+    public CanBurnFenceGateBlock(Properties pProperties, WoodType pType) {
+        super(pProperties, pType);
     }
 
     @Override

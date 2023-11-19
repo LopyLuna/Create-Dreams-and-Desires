@@ -17,9 +17,4 @@ public class MysteriousCarpetBlock extends CarpetBlock {
         this(properties, false);
     }
 
-    @Override
-    public void fillItemCategory(@NotNull CreativeModeTab pCategory, @NotNull NonNullList<ItemStack> pItems) {
-        if (visible)
-            super.fillItemCategory(pCategory, pItems);
-    }
 }

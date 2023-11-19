@@ -33,7 +33,7 @@ import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 public class DDItems {
 
     static {
-        REGISTRATE.creativeModeTab(() -> DDItemTab.BASE_CREATIVE_TAB);
+        REGISTRATE.setCreativeTab(DDItemTab.BASE_CREATIVE_TAB);
     }
 
     //YIPPEE ITEMS PIPEBOMB YUMMY ac
@@ -78,8 +78,8 @@ public class DDItems {
     ;
     //ac
     public static final ItemEntry<ItemDisabled>
-            abstruse_mechanism = i("abstruse_mechanism"),
-            vanilla_orchid = i("vanilla_orchid");
+            abstruse_mechanism = i("abstruse_mechanism")
+            ;
 
     public static final ItemEntry<SequencedAssemblyItem>
             incomplete_stargaze_singularity = sequencedIngredient("incomplete_stargaze_singularity"),

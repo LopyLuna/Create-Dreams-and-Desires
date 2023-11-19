@@ -14,7 +14,6 @@ public class SequencedCraftingItem1 extends Item {
     }
     public float getProgress(ItemStack stack) {return 0.15f;}
 
-    @Override
     public void fillItemCategory(@NotNull CreativeModeTab p_150895_1_, @NotNull NonNullList<ItemStack> p_150895_2_) {}
 
     @Override

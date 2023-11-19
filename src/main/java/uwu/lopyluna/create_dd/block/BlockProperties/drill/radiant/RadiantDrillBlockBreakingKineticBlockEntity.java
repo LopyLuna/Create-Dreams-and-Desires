@@ -82,7 +82,7 @@ public abstract class RadiantDrillBlockBreakingKineticBlockEntity extends BlockB
     }
 
     public static boolean isBreakable(BlockState stateToBreak, float blockHardness) {
-        return !(stateToBreak.getMaterial().isLiquid() ||
+        return !(stateToBreak.liquid() ||
                 stateToBreak.getBlock() instanceof AirBlock ||
                 blockHardness == -1 ||
                 DDTags.AllBlockTags.radiant_drill_immune.matches(stateToBreak)

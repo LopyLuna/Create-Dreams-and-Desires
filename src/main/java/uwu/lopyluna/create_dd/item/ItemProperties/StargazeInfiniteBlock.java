@@ -151,7 +151,7 @@ public class StargazeInfiniteBlock extends BlockItem {
 
     @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
-        Level world = entity.level;
+        Level world = entity.level();
         Vec3 pos = entity.position();
         CompoundTag persistentData = entity.getPersistentData();
 
@@ -189,12 +189,6 @@ public class StargazeInfiniteBlock extends BlockItem {
         return this.getOrCreateDescriptionId();
     }
 
-    @Override
-    public void fillItemCategory(CreativeModeTab pGroup, NonNullList<ItemStack> pItems) {
-        if (this.allowedIn(pGroup)) {
-            pItems.add(new ItemStack(this));
-        }
-    }
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {

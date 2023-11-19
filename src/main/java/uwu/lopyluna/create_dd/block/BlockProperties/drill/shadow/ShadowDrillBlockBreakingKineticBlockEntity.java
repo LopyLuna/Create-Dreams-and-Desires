@@ -80,7 +80,7 @@ public abstract class ShadowDrillBlockBreakingKineticBlockEntity extends BlockBr
     }
 
     public static boolean isBreakable(BlockState stateToBreak, float blockHardness) {
-        return !(stateToBreak.getMaterial().isLiquid() ||
+        return !(stateToBreak.liquid() ||
                 stateToBreak.getBlock() instanceof AirBlock ||
                 blockHardness == -1 ||
                 DDTags.AllBlockTags.shadow_drill_immune.matches(stateToBreak)

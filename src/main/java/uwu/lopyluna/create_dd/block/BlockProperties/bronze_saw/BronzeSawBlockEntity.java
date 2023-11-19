@@ -36,8 +36,8 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import uwu.lopyluna.create_dd.DDTags;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlock;
@@ -136,7 +136,7 @@ public class BronzeSawBlockEntity extends SawBlockEntity {
         if (TreeCutter.isRoot(stateToBreak))
             return true;
         Block block = stateToBreak.getBlock();
-        if (block instanceof BambooBlock)
+        if (block instanceof BambooStalkBlock)
             return true;
         if (block instanceof StemGrownBlock)
             return true;
@@ -216,7 +216,7 @@ public class BronzeSawBlockEntity extends SawBlockEntity {
             }
         }
 
-        BlockPos nextPos = worldPosition.offset(itemMovement.x, itemMovement.y, itemMovement.z);
+        BlockPos nextPos = worldPosition.offset(BlockPos.containing(itemMovement));
         DirectBeltInputBehaviour behaviour = BlockEntityBehaviour.get(level, nextPos, DirectBeltInputBehaviour.TYPE);
         if (behaviour != null) {
             boolean changed = false;
@@ -269,7 +269,7 @@ public class BronzeSawBlockEntity extends SawBlockEntity {
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && side != Direction.DOWN)
+        if (cap == ForgeCapabilities.ITEM_HANDLER && side != Direction.DOWN)
             return invProvider.cast();
         return super.getCapability(cap, side);
     }
@@ -302,7 +302,7 @@ public class BronzeSawBlockEntity extends SawBlockEntity {
             if (recipe instanceof CuttingRecipe)
                 results = ((CuttingRecipe) recipe).rollResults();
             else if (recipe instanceof StonecutterRecipe || recipe.getType() == woodcuttingRecipeType.get())
-                results.add(recipe.getResultItem()
+                results.add(recipe.getResultItem(level.registryAccess())
                         .copy());
 
             for (int i = 0; i < results.size(); i++) {
@@ -321,7 +321,7 @@ public class BronzeSawBlockEntity extends SawBlockEntity {
         Optional<CuttingRecipe> assemblyRecipe = SequencedAssemblyRecipe.getRecipe(level, inventory.getStackInSlot(0),
                 AllRecipeTypes.CUTTING.getType(), CuttingRecipe.class);
         if (assemblyRecipe.isPresent() && filtering.test(assemblyRecipe.get()
-                .getResultItem()))
+                .getResultItem(level.registryAccess())))
             return ImmutableList.of(assemblyRecipe.get());
 
         Predicate<Recipe<?>> types = RecipeConditions.isOfType(AllRecipeTypes.CUTTING.getType(),

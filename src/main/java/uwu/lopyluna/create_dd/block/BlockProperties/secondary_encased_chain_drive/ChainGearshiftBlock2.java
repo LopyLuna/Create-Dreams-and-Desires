@@ -32,12 +32,6 @@ public class ChainGearshiftBlock2 extends ChainDriveBlock2 {
     }
 
     @Override
-    public void fillItemCategory(CreativeModeTab pCategory, NonNullList<ItemStack> pItems) {
-        if (visible)
-            super.fillItemCategory(pCategory, pItems);
-    }
-
-    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder.add(POWERED));
     }

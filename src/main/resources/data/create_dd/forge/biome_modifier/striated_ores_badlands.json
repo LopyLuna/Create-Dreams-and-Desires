@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_badlands",
+  "features": "create_dd:striated_ores_badlands",
+  "step": "underground_ores"
+}

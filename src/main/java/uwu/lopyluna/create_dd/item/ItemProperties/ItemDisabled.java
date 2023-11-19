@@ -11,7 +11,4 @@ public class ItemDisabled extends Item {
         super(pProperties);
     }
 
-
-    @Override
-    public void fillItemCategory(@NotNull CreativeModeTab p_150895_1_, @NotNull NonNullList<ItemStack> p_150895_2_) {}
 }

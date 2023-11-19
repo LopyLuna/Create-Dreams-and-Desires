@@ -6,6 +6,7 @@ import com.simibubi.create.content.contraptions.mounted.MountedContraption;
 import com.simibubi.create.content.contraptions.render.ContraptionMatrices;
 import com.simibubi.create.content.kinetics.base.BlockBreakingMovementBehaviour;
 import com.simibubi.create.content.trains.entity.CarriageContraption;
+import com.simibubi.create.foundation.damageTypes.CreateDamageSources;
 import com.simibubi.create.foundation.utility.AbstractBlockBreakQueue;
 import com.simibubi.create.foundation.utility.TreeCutter;
 import com.simibubi.create.foundation.utility.VecHelper;
@@ -102,10 +103,9 @@ public class BronzeSawMovementBehaviour extends BlockBreakingMovementBehaviour {
     protected boolean shouldDestroyStartBlock(BlockState stateToBreak) {
         return !TreeCutter.canDynamicTreeCutFrom(stateToBreak.getBlock());
     }
-
     @Override
-    protected DamageSource getDamageSource() {
-        return BronzeSawBlock.damageSourceSaw;
+    protected DamageSource getDamageSource(Level level) {
+        return CreateDamageSources.saw(level);
     }
 
     @Override

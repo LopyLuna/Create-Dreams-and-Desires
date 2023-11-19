@@ -4,12 +4,12 @@ import com.jozufozu.flywheel.api.MaterialManager;
 import com.jozufozu.flywheel.api.instance.DynamicInstance;
 import com.jozufozu.flywheel.core.Materials;
 import com.jozufozu.flywheel.core.materials.oriented.OrientedData;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import com.simibubi.create.content.kinetics.base.ShaftInstance;
 import com.simibubi.create.content.kinetics.press.PressingBehaviour;
 import com.simibubi.create.foundation.utility.AngleHelper;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
+import org.joml.Quaternionf;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 
 public class HYPressInstance extends ShaftInstance<HydraulicPressBlockEntity> implements DynamicInstance {
@@ -24,7 +24,7 @@ public class HYPressInstance extends ShaftInstance<HydraulicPressBlockEntity> im
                 .getModel(DDBlockPartialModel.HYDRAULIC_PRESS_HEAD, blockState)
                 .createInstance();
 
-        Quaternion q = Vector3f.YP
+        Quaternionf q = Axis.YP
                 .rotationDegrees(AngleHelper.horizontalAngle(blockState.getValue(HydraulicPressBlock.HORIZONTAL_FACING)));
 
         pressHead.setRotation(q);

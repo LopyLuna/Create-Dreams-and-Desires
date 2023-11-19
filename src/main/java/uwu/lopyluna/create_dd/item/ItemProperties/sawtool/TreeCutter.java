@@ -171,7 +171,7 @@ public class TreeCutter {
 
     public static boolean isVerticalPlant(BlockState stateAbove) {
         Block block = stateAbove.getBlock();
-        if (block instanceof BambooBlock)
+        if (block instanceof BambooStalkBlock)
             return true;
         if (block instanceof CactusBlock)
             return true;

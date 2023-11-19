@@ -15,7 +15,7 @@ public class UnchargedStargazeSingularity extends Item {
 
     @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
-        Level world = entity.level;
+        Level world = entity.level();
 
 
         double y = entity.getY();

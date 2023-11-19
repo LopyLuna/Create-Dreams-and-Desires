@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_savanna",
+  "features": "create_dd:striated_ores_savanna",
+  "step": "underground_ores"
+}

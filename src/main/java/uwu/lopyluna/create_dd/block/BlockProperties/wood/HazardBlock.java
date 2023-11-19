@@ -34,12 +34,6 @@ public class HazardBlock extends Block implements IWrenchable {
         this.visible = visible;
     }
 
-    @Override
-    public void fillItemCategory(CreativeModeTab pCategory, NonNullList<ItemStack> pItems) {
-        if (visible)
-            super.fillItemCategory(pCategory, pItems);
-    }
-
 
     @Override
     public InteractionResult onWrenched(BlockState state, UseOnContext context) {

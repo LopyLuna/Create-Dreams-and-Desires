@@ -9,7 +9,7 @@ import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 public class DDPaletteBlocks {
 
     static {
-        DDCreate.REGISTRATE.creativeModeTab(() -> AllCreativeModeTabs.PALETTES_CREATIVE_TAB);
+        DDCreate.REGISTRATE.setCreativeTab(AllCreativeModeTabs.PALETTES_CREATIVE_TAB);
     }
 
 

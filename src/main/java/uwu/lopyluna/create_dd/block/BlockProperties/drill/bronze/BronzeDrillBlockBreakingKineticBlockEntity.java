@@ -22,7 +22,7 @@ public class BronzeDrillBlockBreakingKineticBlockEntity extends BlockBreakingKin
     public boolean canBreak(BlockState stateToBreak, float blockHardness) {return isBreakable(stateToBreak, blockHardness);}
 
     public static boolean isBreakable(BlockState stateToBreak, float blockHardness) {
-        return !(stateToBreak.getMaterial().isLiquid() ||
+        return !(stateToBreak.liquid() ||
                 stateToBreak.getBlock() instanceof AirBlock ||
                 blockHardness == -1 ||
                 DDTags.AllBlockTags.bronze_drill_immune.matches(stateToBreak)

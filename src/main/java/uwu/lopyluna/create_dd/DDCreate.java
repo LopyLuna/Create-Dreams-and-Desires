@@ -1,6 +1,7 @@
 package uwu.lopyluna.create_dd;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
@@ -25,13 +26,10 @@ import uwu.lopyluna.create_dd.configs.DDConfigs;
 import uwu.lopyluna.create_dd.fluid.ChromaticFluidInteraction;
 import uwu.lopyluna.create_dd.fluid.DDFluids;
 import uwu.lopyluna.create_dd.item.DDItems;
-import uwu.lopyluna.create_dd.creative.DDItemTab;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.rando.DDParticleTypes;
 import uwu.lopyluna.create_dd.recipe.DDRecipesTypes;
 import uwu.lopyluna.create_dd.sounds.DDSoundEvents;
-import uwu.lopyluna.create_dd.worldgen.DDBuiltinRegistration;
 import uwu.lopyluna.create_dd.worldgen.DDFeatures;
-import uwu.lopyluna.create_dd.worldgen.DDOreFeatureConfigEntries;
 import uwu.lopyluna.create_dd.worldgen.DDPlacementModifiers;
 import uwu.lopyluna.create_dd.worldgen.ponder_dim.PonderPOI;
 import uwu.lopyluna.create_dd.worldgen.ponder_dim.Pondering;
@@ -63,7 +61,8 @@ public class DDCreate
         REGISTRATE.registerEventListeners(eventBus);
 
         DDSoundEvents.register(eventBus);
-        DDItemTab.init();
+        DDTags.init();
+        AllCreativeModeTabs.register(eventBus);
         DDBlockPartialModel.init();
         DDBlockEntityTypes.register();
         DDBlocks.register();
@@ -78,12 +77,9 @@ public class DDCreate
 
         IndustrialTypeFanProcessing.register();
 
-        DDTags.init();
 
-        DDOreFeatureConfigEntries.init();
         DDFeatures.register(eventBus);
         DDPlacementModifiers.register(eventBus);
-        DDBuiltinRegistration.register(eventBus);
 
         DDConfigs.register(modLoadingContext);
 

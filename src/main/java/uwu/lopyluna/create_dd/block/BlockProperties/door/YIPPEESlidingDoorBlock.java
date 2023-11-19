@@ -18,14 +18,12 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DoorBlock;
-import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -37,17 +35,55 @@ import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Supplier;
 
 @SuppressWarnings({"unused", "deprecation"})
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class YIPPEESlidingDoorBlock extends DoorBlock implements IWrenchable, IBE<YIPPEESlidingDoorBlockEntity> {
 
+    public static final Supplier<BlockSetType> SPIRIT_SET_TYPE =
+            () -> new BlockSetType("spirit", true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE,
+                    SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN,
+                    SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
+                    SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+    public static final Supplier<BlockSetType> ROSE_SET_TYPE =
+            () -> new BlockSetType("rose", true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE,
+                    SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN,
+                    SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
+                    SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+    public static final Supplier<BlockSetType> SMOKED_SET_TYPE =
+            () -> new BlockSetType("smoked", true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE,
+                    SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN,
+                    SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
+                    SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+    public static final Supplier<BlockSetType> RUBBER_SET_TYPE =
+            () -> new BlockSetType("rubber", true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE,
+                    SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN,
+                    SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON,
+                    SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+
     public static final BooleanProperty VISIBLE = BooleanProperty.create("visible");
     private boolean folds;
 
-    public YIPPEESlidingDoorBlock(Properties pProperties, boolean folds) {
-        super(pProperties);
+    public static YIPPEESlidingDoorBlock spirit(Properties p_52737_, boolean folds) {
+        return new YIPPEESlidingDoorBlock(p_52737_, SPIRIT_SET_TYPE.get(), folds);
+    }
+
+    public static YIPPEESlidingDoorBlock rose(Properties p_52737_, boolean folds) {
+        return new YIPPEESlidingDoorBlock(p_52737_, ROSE_SET_TYPE.get(), folds);
+    }
+
+    public static YIPPEESlidingDoorBlock smoked(Properties p_52737_, boolean folds) {
+        return new YIPPEESlidingDoorBlock(p_52737_, SMOKED_SET_TYPE.get(), folds);
+    }
+
+    public static YIPPEESlidingDoorBlock rubber(Properties p_52737_, boolean folds) {
+        return new YIPPEESlidingDoorBlock(p_52737_, RUBBER_SET_TYPE.get(), folds);
+    }
+
+    public YIPPEESlidingDoorBlock(Properties p_52737_, BlockSetType type, boolean folds) {
+        super(p_52737_, type);
         this.folds = folds;
     }
 
@@ -131,7 +167,7 @@ public class YIPPEESlidingDoorBlock extends DoorBlock implements IWrenchable, IB
         if (isDoubleDoor(changedState, hinge, facing, otherDoor))
             setOpen(entity, level, otherDoor, otherPos, open);
 
-        this.playSound(level, pos, open);
+        this.playSound(entity, level, pos, open);
         level.gameEvent(entity, open ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
     }
 
@@ -155,7 +191,7 @@ public class YIPPEESlidingDoorBlock extends DoorBlock implements IWrenchable, IB
             changedState = changedState.setValue(VISIBLE, false);
 
         if (isPowered != pState.getValue(OPEN)) {
-            this.playSound(pLevel, pPos, isPowered);
+            this.playSound(null, pLevel, pPos, isPowered);
             pLevel.gameEvent(null, isPowered ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pPos);
 
             DoorHingeSide hinge = changedState.getValue(HINGE);
@@ -210,7 +246,7 @@ public class YIPPEESlidingDoorBlock extends DoorBlock implements IWrenchable, IB
         if (isDoubleDoor(pState, hinge, facing, otherDoor))
             use(otherDoor, pLevel, otherPos, pPlayer, pHand, pHit);
         else if (pState.getValue(OPEN))
-            pLevel.playSound(null, pPos, SoundEvents.WOODEN_DOOR_OPEN, SoundSource.BLOCKS, .5f, 0.75f);
+            pLevel.gameEvent(pPlayer, GameEvent.BLOCK_OPEN, pPos);
 
         return InteractionResult.sidedSuccess(pLevel.isClientSide);
     }
@@ -230,13 +266,10 @@ public class YIPPEESlidingDoorBlock extends DoorBlock implements IWrenchable, IB
         return pState.getValue(VISIBLE) ? RenderShape.MODEL : RenderShape.ENTITYBLOCK_ANIMATED;
     }
 
-    private void playSound(Level pLevel, BlockPos pPos, boolean pIsOpening) {
-        if (pIsOpening)
-            pLevel.playSound(null, pPos, SoundEvents.WOODEN_DOOR_OPEN, SoundSource.BLOCKS, .5f, 0.75f);
-    }
-
-    private int getOpenSound() {
-        return 1005;
+    private void playSound(@Nullable Entity pSource, Level pLevel, BlockPos pPos, boolean pIsOpening) {
+        pLevel.playSound(pSource, pPos, pIsOpening ? SoundEvents.WOODEN_DOOR_OPEN : SoundEvents.WOODEN_DOOR_CLOSE,
+                SoundSource.BLOCKS, 1.0F, pLevel.getRandom()
+                        .nextFloat() * 0.1F + 0.9F);
     }
 
     @Nullable

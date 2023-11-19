@@ -35,7 +35,7 @@ public class PonderBoxBlockEntity extends SmartBlockEntity {
 
 
     static void teleportPlayer(BlockPos storedPos, Player player, PonderBoxBlockEntity entity) {
-        ServerLevel serverLevel = Objects.requireNonNull(player.level.getServer()).getLevel(Pondering.PONDER);
+        ServerLevel serverLevel = Objects.requireNonNull(player.level().getServer()).getLevel(Pondering.PONDER);
 
         if (serverLevel == null) return;
 
@@ -48,7 +48,7 @@ public class PonderBoxBlockEntity extends SmartBlockEntity {
             do {
                 possibleYPosition = scanColumn(serverLevel, pos.getX(), pos.getZ(), pos.getY());
                 if (possibleYPosition == -1) {
-                    incrementColumn(pos, new BlockPos(player.getX(), player.getY(), player.getZ()));
+                    incrementColumn(pos, new BlockPos((int) player.getX(), (int) player.getY(), (int) player.getZ()));
                 } else {
                     spawnPosition.set(pos.getX(), possibleYPosition, pos.getZ());
                 }

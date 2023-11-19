@@ -7,12 +7,8 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
-import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
-import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonnullType;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -134,8 +130,6 @@ public abstract class DDPaletteBlockPartial<B extends Block> {
         @Override
         protected void createRecipes(DDPaletteStoneTypes type, BlockEntry<? extends Block> patternBlock,
                                      DataGenContext<Block, ? extends Block> c, RegistrateRecipeProvider p) {
-            p.stairs(DataIngredient.items(patternBlock), c::get, c.getName(), false);
-            p.stonecutting(DataIngredient.tag(type.materialTag), c::get, 1);
         }
 
     }
@@ -196,20 +190,11 @@ public abstract class DDPaletteBlockPartial<B extends Block> {
         @Override
         protected void createRecipes(DDPaletteStoneTypes type, BlockEntry<? extends Block> patternBlock,
                                      DataGenContext<Block, ? extends Block> c, RegistrateRecipeProvider p) {
-            p.slab(DataIngredient.items(patternBlock), c::get, c.getName(), false);
-            p.stonecutting(DataIngredient.tag(type.materialTag), c::get, 2);
-            DataIngredient ingredient = DataIngredient.items(c.get());
-            ShapelessRecipeBuilder.shapeless(patternBlock.get())
-                    .requires(ingredient)
-                    .requires(ingredient)
-                    .unlockedBy("has_" + c.getName(), ingredient.getCritereon(p))
-                    .save(p, DDCreate.MOD_ID + ":" + c.getName() + "_recycling");
         }
 
         @Override
         protected BlockBuilder<SlabBlock, CreateRegistrate> transformBlock(
                 BlockBuilder<SlabBlock, CreateRegistrate> builder, String variantName, DDPaletteBlockPattern pattern) {
-            builder.loot((lt, block) -> lt.add(block, RegistrateBlockLootTables.createSlabItemTable(block)));
             return super.transformBlock(builder, variantName, pattern);
         }
 
@@ -253,14 +238,6 @@ public abstract class DDPaletteBlockPartial<B extends Block> {
         @Override
         protected void createRecipes(DDPaletteStoneTypes type, BlockEntry<? extends Block> patternBlock,
                                      DataGenContext<Block, ? extends Block> c, RegistrateRecipeProvider p) {
-            p.stonecutting(DataIngredient.tag(type.materialTag), c::get, 1);
-            DataIngredient ingredient = DataIngredient.items(patternBlock);
-            ShapedRecipeBuilder.shaped(c.get(), 6)
-                    .pattern("XXX")
-                    .pattern("XXX")
-                    .define('X', ingredient)
-                    .unlockedBy("has_" + p.safeName(ingredient), ingredient.getCritereon(p))
-                    .save(p, p.safeId(c.get()));
         }
 
     }

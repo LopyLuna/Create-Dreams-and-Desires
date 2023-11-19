@@ -36,7 +36,7 @@ public class ChromaticCompound extends Item {
 
     @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
-        Level world = entity.level;
+        Level world = entity.level();
 
         double y = entity.getY();
         double yMotion = entity.getDeltaMovement().y;
@@ -101,7 +101,7 @@ public class ChromaticCompound extends Item {
             if (!(entity instanceof Blaze))
                 return InteractionResult.PASS;
 
-            Level world = player.level;
+            Level world = player.level();
             spawnCaptureEffects(world, entity.position());
             if (world.isClientSide)
                 return InteractionResult.FAIL;
@@ -140,7 +140,7 @@ public class ChromaticCompound extends Item {
             return;
         }
 
-        BlockPos soundPos = new BlockPos(vec);
+        BlockPos soundPos = BlockPos.containing(vec);
         world.playSound(null, soundPos, SoundEvents.BLAZE_HURT, SoundSource.PLAYERS, .25f, .5f);
         world.playSound(null, soundPos, SoundEvents.BLAZE_DEATH, SoundSource.PLAYERS, .5f, .75f);
         world.playSound(null, soundPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, .5f, .75f);

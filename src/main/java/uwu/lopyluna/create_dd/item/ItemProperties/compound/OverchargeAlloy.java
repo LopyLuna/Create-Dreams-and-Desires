@@ -21,7 +21,7 @@ public class OverchargeAlloy extends NoGravMagical {
 
     @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
-        Level world = entity.level;
+        Level world = entity.level();
         Vec3 pos = entity.position();
         CompoundTag persistentData = entity.getPersistentData();
 
@@ -67,11 +67,9 @@ public class OverchargeAlloy extends NoGravMagical {
                 .getCount() - 10, Mth.clamp(entity.getDeltaMovement().y * 20, 1, 5), 100) / 64f);
     }
 
-    @Override
     public void fillItemCategory(@NotNull CreativeModeTab p_150895_1_, @NotNull NonNullList<ItemStack> p_150895_2_) {
         if (!ModList.get().isLoaded("createaddition")) {
             return;
         }
-        super.fillItemCategory(p_150895_1_, p_150895_2_);
     }
 }

@@ -7,12 +7,12 @@ import com.jozufozu.flywheel.core.materials.model.ModelData;
 import com.jozufozu.flywheel.core.materials.oriented.OrientedData;
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import com.simibubi.create.content.kinetics.base.SingleRotatingInstance;
 import com.simibubi.create.content.kinetics.base.flwdata.RotatingData;
 import com.simibubi.create.foundation.utility.AngleHelper;
 import net.minecraft.core.Direction;
+import org.joml.Quaternionf;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 
 
@@ -54,8 +54,8 @@ public class PotatoTurretInstance extends SingleRotatingInstance<PotatoTurretBlo
 
     private void transformConnector() {
         //float speed = mixer.getRenderedHeadRotationSpeed(AnimationTickHolder.getPartialTicks());
-        Quaternion baseRotation;
-        baseRotation = Vector3f.YP.rotationDegrees(blockEntity.angleY.getValue());
+        Quaternionf baseRotation;
+        baseRotation = Axis.YP.rotationDegrees(blockEntity.angleY.getValue());
 
 
 

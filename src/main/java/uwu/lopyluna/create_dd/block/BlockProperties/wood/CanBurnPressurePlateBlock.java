@@ -5,10 +5,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 
 public class CanBurnPressurePlateBlock extends PressurePlateBlock {
-    public CanBurnPressurePlateBlock(Sensitivity pSensitivity, Properties pProperties) {
-        super(pSensitivity, pProperties);
+
+    public CanBurnPressurePlateBlock(Sensitivity pSensitivity, Properties pProperties, BlockSetType pType) {
+        super(pSensitivity, pProperties, pType);
     }
 
     @Override

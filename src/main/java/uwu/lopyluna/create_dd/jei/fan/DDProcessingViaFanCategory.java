@@ -1,7 +1,7 @@
 package uwu.lopyluna.create_dd.jei.fan;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import com.simibubi.create.compat.jei.category.ProcessingViaFanCategory;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import com.simibubi.create.content.processing.recipe.ProcessingOutput;
@@ -12,6 +12,7 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import uwu.lopyluna.create_dd.block.DDBlocks;
@@ -44,39 +45,41 @@ public abstract class DDProcessingViaFanCategory<T extends Recipe<?>> extends Pr
         builder
                 .addSlot(RecipeIngredientRole.OUTPUT, 141, 48)
                 .setBackground(getRenderedSlot(), -1, -1)
-                .addItemStack(recipe.getResultItem());
+                .addItemStack(getResultItem(recipe));
     }
 
     @Override
-    public void draw(T recipe, IRecipeSlotsView iRecipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
-        renderWidgets(matrixStack, recipe, mouseX, mouseY);
+    public void draw(T recipe, IRecipeSlotsView iRecipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
+        renderWidgets(graphics, recipe, mouseX, mouseY);
+
+        PoseStack matrixStack = graphics.pose();
 
         matrixStack.pushPose();
         translateFan(matrixStack);
-        matrixStack.mulPose(Vector3f.XP.rotationDegrees(-12.5f));
-        matrixStack.mulPose(Vector3f.YP.rotationDegrees(22.5f));
+        matrixStack.mulPose(Axis.XP.rotationDegrees(-12.5f));
+        matrixStack.mulPose(Axis.YP.rotationDegrees(22.5f));
 
         AnimatedKinetics.defaultBlockElement(DDBlockPartialModel.BRONZE_ENCASED_FAN_INNER)
                 .rotateBlock(180, 0, AnimatedKinetics.getCurrentAngle() * 16)
                 .scale(SCALE)
-                .render(matrixStack);
+                .render(graphics);
 
         AnimatedKinetics.defaultBlockElement(DDBlockPartialModel.INDUSTRIAL_FAN_COG)
                 .rotateBlock(180, 0, AnimatedKinetics.getCurrentAngle() * 16)
                 .scale(SCALE)
-                .render(matrixStack);
+                .render(graphics);
 
         AnimatedKinetics.defaultBlockElement(DDBlocks.industrial_fan.getDefaultState())
                 .rotateBlock(0, 180, 0)
                 .atLocal(0, 0, 0)
                 .scale(SCALE)
-                .render(matrixStack);
+                .render(graphics);
 
-        renderAttachedBlock(matrixStack);
+        renderAttachedBlock(graphics);
         matrixStack.popPose();
     }
 
-    protected void renderWidgets(PoseStack matrixStack, T recipe, double mouseX, double mouseY) {
+    protected void renderWidgets(GuiGraphics matrixStack, T recipe, double mouseX, double mouseY) {
         AllGuiTextures.JEI_SHADOW.render(matrixStack, 46, 29);
         getBlockShadow().render(matrixStack, 65, 39);
         AllGuiTextures.JEI_LONG_ARROW.render(matrixStack, 54, 51);
@@ -90,7 +93,7 @@ public abstract class DDProcessingViaFanCategory<T extends Recipe<?>> extends Pr
         matrixStack.translate(56, 33, 0);
     }
 
-    protected abstract void renderAttachedBlock(PoseStack matrixStack);
+    protected abstract void renderAttachedBlock(GuiGraphics matrixStack);
 
     public static abstract class MultiOutput<T extends ProcessingRecipe<?>> extends DDProcessingViaFanCategory<T> {
 
@@ -124,7 +127,7 @@ public abstract class DDProcessingViaFanCategory<T extends Recipe<?>> extends Pr
         }
 
         @Override
-        protected void renderWidgets(PoseStack matrixStack, T recipe, double mouseX, double mouseY) {
+        protected void renderWidgets(GuiGraphics matrixStack, T recipe, double mouseX, double mouseY) {
             int size = recipe.getRollableResultsAsItemStacks().size();
             int xOffsetAmount = 1 - Math.min(3, size);
 

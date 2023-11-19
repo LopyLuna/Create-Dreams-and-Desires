@@ -8,7 +8,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.util.ForgeSoundType;
 import net.minecraftforge.registries.ForgeRegistries;
 import uwu.lopyluna.create_dd.DDCreate;
@@ -23,26 +23,26 @@ import static uwu.lopyluna.create_dd.block.BlockPalette.gen.DDPaletteBlockPatter
 public enum DDPaletteStoneTypes {
 
     aethersite(STANDARD_RANGE, r -> r.paletteStoneBlock("aethersite", () -> Blocks.DEEPSLATE, true, false)
-            .properties(p -> p.color(MaterialColor.COLOR_PINK))
+            .properties(p -> p.mapColor(MapColor.COLOR_PINK))
             .properties(p -> p.sound(new ForgeSoundType(0.8f, 1.5f, () -> DDSoundEvents.ore_stone_break.get(),
                     () -> DDSoundEvents.ore_stone_step.get(), () -> DDSoundEvents.ore_stone_place.get(),
                     () -> DDSoundEvents.ore_stone_hit.get(), () -> DDSoundEvents.ore_stone_fall.get())))
             .register()),
 
     potassic(STANDARD_RANGE, r -> r.paletteStoneBlock("potassic", () -> Blocks.DEEPSLATE, true, false)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_BLUE))
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_BLUE))
             .properties(p -> p.sound(new ForgeSoundType(0.8f, 0.85f, () -> DDSoundEvents.ore_stone_break.get(),
                     () -> DDSoundEvents.ore_stone_step.get(), () -> DDSoundEvents.ore_stone_place.get(),
                     () -> DDSoundEvents.ore_stone_hit.get(), () -> DDSoundEvents.ore_stone_fall.get())))
             .register()),
 
     weathered_limestone(STANDARD_RANGE, r -> r.paletteStoneBlock("weathered_limestone", () -> Blocks.SANDSTONE, true, false)
-            .properties(p -> p.color(MaterialColor.COLOR_LIGHT_GRAY))
+            .properties(p -> p.mapColor(MapColor.COLOR_LIGHT_GRAY))
             .register()),
 
     gabbro(STANDARD_RANGE, r -> r.paletteStoneBlock("gabbro", () -> Blocks.TUFF, true, true)
             .properties(p -> p.destroyTime(1.25f)
-                    .color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
+                    .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
             .register())
 
     ;

@@ -35,7 +35,7 @@ public class HotChocolate extends Item {
             entity.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 60 * 20, 1, false, false, false));
             entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 90 * 20, 1, false, false, false));
             entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 45 * 20, 1, false, false, false));
-            entity.hurt(DamageSource.DRY_OUT, entity.getHealth() * 0.5f);
+            entity.hurt(entity.damageSources().dryOut(), entity.getHealth() * 0.5f);
 
         if (playerentity != null) {
             playerentity.awardStat(Stats.ITEM_USED.get(this));

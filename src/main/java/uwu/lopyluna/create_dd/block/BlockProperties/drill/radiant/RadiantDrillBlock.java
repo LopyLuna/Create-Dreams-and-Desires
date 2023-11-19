@@ -3,22 +3,20 @@ package uwu.lopyluna.create_dd.block.BlockProperties.drill.radiant;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.foundation.block.IBE;
+import com.simibubi.create.foundation.damageTypes.CreateDamageSources;
 import com.simibubi.create.foundation.placement.IPlacementHelper;
 import com.simibubi.create.foundation.placement.PlacementHelpers;
 import com.simibubi.create.foundation.placement.PlacementOffset;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -49,7 +47,6 @@ import java.util.function.Predicate;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class RadiantDrillBlock extends DirectionalKineticBlock implements IBE<RadiantDrillBlockEntity>, SimpleWaterloggedBlock {
-    public static DamageSource damageSourceDrill = new DamageSource("create.mechanical_drill").bypassArmor();
 
     private static final int placementHelperId = PlacementHelpers.register(new RadiantDrillBlock.PlacementHelper());
 
@@ -65,11 +62,6 @@ public class RadiantDrillBlock extends DirectionalKineticBlock implements IBE<Ra
         this(p_i48440_1_, false);
     }
 
-    @Override
-    public void fillItemCategory(CreativeModeTab pCategory, NonNullList<ItemStack> pItems) {
-        if (visible)
-            super.fillItemCategory(pCategory, pItems);
-    }
 
     @Override
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
@@ -81,7 +73,7 @@ public class RadiantDrillBlock extends DirectionalKineticBlock implements IBE<Ra
         withBlockEntityDo(worldIn, pos, be -> {
             if (be.getSpeed() == 0)
                 return;
-            entityIn.hurt(damageSourceDrill, (float) getDamage(be.getSpeed()));
+            entityIn.hurt(CreateDamageSources.drill(worldIn), (float) getDamage(be.getSpeed()));
         });
     }
 
@@ -198,8 +190,7 @@ public class RadiantDrillBlock extends DirectionalKineticBlock implements IBE<Ra
                     state.getValue(FACING)
                             .getAxis(),
                     dir -> world.getBlockState(pos.relative(dir))
-                            .getMaterial()
-                            .isReplaceable());
+                            .canBeReplaced());
 
             if (directions.isEmpty())
                 return PlacementOffset.fail();

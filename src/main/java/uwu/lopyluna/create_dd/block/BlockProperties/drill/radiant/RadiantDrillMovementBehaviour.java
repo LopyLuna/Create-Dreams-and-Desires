@@ -10,6 +10,7 @@ import com.simibubi.create.content.contraptions.render.ContraptionMatrices;
 import com.simibubi.create.content.contraptions.render.ContraptionRenderDispatcher;
 import com.simibubi.create.content.kinetics.base.BlockBreakingMovementBehaviour;
 import com.simibubi.create.content.trains.entity.CarriageContraption;
+import com.simibubi.create.foundation.damageTypes.CreateDamageSources;
 import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.BlockPos;
@@ -147,8 +148,8 @@ public class RadiantDrillMovementBehaviour extends BlockBreakingMovementBehaviou
     }
 
     @Override
-    protected DamageSource getDamageSource() {
-        return RadiantDrillBlock.damageSourceDrill;
+    protected DamageSource getDamageSource(Level level) {
+        return CreateDamageSources.drill(level);
     }
 
     @Override

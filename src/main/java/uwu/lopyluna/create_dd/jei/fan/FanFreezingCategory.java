@@ -3,6 +3,8 @@ package uwu.lopyluna.create_dd.jei.fan;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import com.simibubi.create.foundation.gui.element.GuiGameElement;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.BlockPos;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.recipe.Recipes.FreezingRecipe;
@@ -14,7 +16,7 @@ public class FanFreezingCategory extends DDProcessingViaFanCategory.MultiOutput<
     }
 
     @Override
-    protected void renderAttachedBlock(@NotNull PoseStack matrixStack) {
+    protected void renderAttachedBlock(@NotNull GuiGraphics matrixStack) {
         GuiGameElement.of(DDBlocks.freezing_sail.getDefaultState())
                 .rotateBlock(0, 180, 0)
                 .scale(SCALE)

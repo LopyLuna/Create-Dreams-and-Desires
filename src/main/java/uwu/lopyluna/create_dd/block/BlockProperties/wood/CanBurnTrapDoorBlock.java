@@ -5,10 +5,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 
 public class CanBurnTrapDoorBlock extends TrapDoorBlock {
-    public CanBurnTrapDoorBlock(Properties pProperties) {
-        super(pProperties);
+
+    public CanBurnTrapDoorBlock(Properties pProperties, BlockSetType pType) {
+        super(pProperties, pType);
     }
 
     @Override

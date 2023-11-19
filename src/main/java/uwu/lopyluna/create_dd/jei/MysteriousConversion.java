@@ -8,6 +8,7 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraftforge.fml.ModList;
 import uwu.lopyluna.create_dd.configs.DDConfigs;
 import uwu.lopyluna.create_dd.item.DDItems;
@@ -57,7 +58,7 @@ public class MysteriousConversion extends MysteriousItemConversionCategory {
     }
 
     @Override
-    public void draw(ConversionRecipe recipe, IRecipeSlotsView iRecipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(ConversionRecipe recipe, IRecipeSlotsView iRecipeSlotsView, GuiGraphics matrixStack, double mouseX, double mouseY) {
         AllGuiTextures.JEI_LONG_ARROW.render(matrixStack, 52, 20);
         AllGuiTextures.JEI_QUESTION_MARK.render(matrixStack, 77, 5);
     }

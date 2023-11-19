@@ -35,18 +35,14 @@ public class PonderBoxBlock extends Block implements IBE<PonderBoxBlockEntity>{
     public PonderBoxBlock(Properties pProperties) {
         this(pProperties, false);
     }
-    @Override
-    public void fillItemCategory(@NotNull CreativeModeTab pCategory, @NotNull NonNullList<ItemStack> pItems) {
-        if (visible)
-            super.fillItemCategory(pCategory, pItems);
-    }
+
 
 
     @SuppressWarnings("deprecation")
     @NotNull
     @Override
     public InteractionResult use(@NotNull BlockState pState, Level pLevel, @NotNull BlockPos pPos, @NotNull Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult hitResult) {
-        if (pLevel.isClientSide || player.level.dimension() == Pondering.PONDER) return InteractionResult.sidedSuccess(!pLevel.isClientSide);
+        if (pLevel.isClientSide || player.level().dimension() == Pondering.PONDER) return InteractionResult.sidedSuccess(!pLevel.isClientSide);
 
         BlockEntity entity = pLevel.getBlockEntity(pPos);
         if (entity instanceof PonderBoxBlockEntity) {

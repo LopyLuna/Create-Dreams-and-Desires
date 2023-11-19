@@ -30,12 +30,10 @@ public class OverchargedAlloyBlock extends Block {
         super(pProperties);
     }
 
-    @Override
     public void fillItemCategory(CreativeModeTab p_150895_1_, NonNullList<ItemStack> p_150895_2_) {
         if (!ModList.get().isLoaded("createaddition")) {
             return;
         }
-        super.fillItemCategory(p_150895_1_, p_150895_2_);
     }
 
 
