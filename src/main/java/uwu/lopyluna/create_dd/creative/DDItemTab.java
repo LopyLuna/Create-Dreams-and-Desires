@@ -1,6 +1,5 @@
 package uwu.lopyluna.create_dd.creative;
 
-import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.TagDependentIngredientItem;
 import com.simibubi.create.foundation.utility.Components;
@@ -18,10 +17,12 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import org.apache.commons.lang3.mutable.MutableObject;
 import uwu.lopyluna.create_dd.DDCreate;
+import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.item.DDItems;
 
 import java.util.LinkedList;
@@ -80,6 +81,25 @@ public class DDItemTab {
                 Set<Item> exclusions = new ReferenceOpenHashSet<>();
 
                 List<ItemProviderEntry<?>> simpleExclusions = List.of(
+                        DDItems.incomplete_crafted_inductive_mechanism1,
+                        DDItems.incomplete_crafted_inductive_mechanism2,
+                        DDItems.incomplete_crafted_kinetic_mechanism1,
+                        DDItems.incomplete_crafted_kinetic_mechanism2,
+                        DDItems.incomplete_stargaze_singularity,
+                        DDItems.incomplete_integrated_circuit,
+                        DDItems.incomplete_integrated_mechanism,
+                        DDItems.incomplete_abstruse_mechanism,
+                        DDItems.incomplete_calculation_mechanism,
+                        DDItems.incomplete_inductive_mechanism,
+                        DDItems.incomplete_infernal_mechanism,
+                        DDItems.incomplete_sealed_mechanism,
+                        DDItems.abstruse_mechanism,
+                        DDBlocks.ponder_in_a_box,
+                        DDBlocks.POTATO_TURRET,
+                        DDBlocks.RADIANT_DRILL,
+                        DDBlocks.SHADOW_DRILL,
+                        DDBlocks.secondary_adjustable_chain_gearshift,
+                        DDBlocks.secondary_encased_chain_drive
 
                         //ITEMS LIST
 
@@ -91,6 +111,15 @@ public class DDItemTab {
 
                 );
 
+                List<ItemProviderEntry<?>> craftsAdditionsExclusions = List.of(
+                        DDItems.OVERCHARGE_ALLOY,
+                        DDItems.OVERCHARGE_ALLOY_SHEET,
+                        DDBlocks.OVERCHARGED_SCAFFOLD,
+                        DDBlocks.overcharged_alloy_block,
+                        DDBlocks.overcharged_casing
+
+                );
+
                 for (ItemProviderEntry<?> entry : simpleExclusions) {
                     exclusions.add(entry.asItem());
                 }
@@ -99,6 +128,12 @@ public class DDItemTab {
                     TagDependentIngredientItem item = entry.get();
                     if (item.shouldHide()) {
                         exclusions.add(entry.asItem());
+                    }
+                }
+
+                for (ItemProviderEntry<?> entry : craftsAdditionsExclusions) {
+                    if (!ModList.get().isLoaded("createaddition")) {
+                    exclusions.add(entry.asItem());
                     }
                 }
 

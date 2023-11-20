@@ -1,7 +1,6 @@
 package uwu.lopyluna.create_dd.block.BlockPalette;
 
-import com.simibubi.create.AllCreativeModeTabs;
-import uwu.lopyluna.create_dd.DDCreate;
+import uwu.lopyluna.create_dd.creative.DDItemTab;
 
 import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 
@@ -9,9 +8,8 @@ import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 public class DDPaletteBlocks {
 
     static {
-        DDCreate.REGISTRATE.setCreativeTab(AllCreativeModeTabs.PALETTES_CREATIVE_TAB);
+        REGISTRATE.setCreativeTab(DDItemTab.BASE_CREATIVE_TAB);
     }
-
 
 
 

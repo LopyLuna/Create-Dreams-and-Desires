@@ -24,6 +24,7 @@ import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.block.BlockPalette.DDPaletteBlocks;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 import uwu.lopyluna.create_dd.configs.DDConfigs;
+import uwu.lopyluna.create_dd.creative.DDItemTab;
 import uwu.lopyluna.create_dd.fluid.ChromaticFluidInteraction;
 import uwu.lopyluna.create_dd.fluid.DDFluids;
 import uwu.lopyluna.create_dd.item.DDItems;
@@ -63,7 +64,7 @@ public class DDCreate
 
         DDSoundEvents.register(eventBus);
         DDTags.init();
-        AllCreativeModeTabs.register(eventBus);
+        DDItemTab.register(eventBus);
         DDBlockPartialModel.init();
         DDBlockEntityTypes.register();
         DDBlocks.register();
