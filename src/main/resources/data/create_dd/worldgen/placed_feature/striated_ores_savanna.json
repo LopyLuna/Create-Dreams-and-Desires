@@ -1,0 +1,27 @@
+{
+  "feature": "create_dd:striated_ores_savanna",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 12
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 100
+        },
+        "min_inclusive": {
+          "absolute": -30
+        }
+      }
+    },
+    {
+      "type": "create:config_filter"
+    }
+  ]
+}

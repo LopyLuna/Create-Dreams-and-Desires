@@ -10,6 +10,7 @@ import com.simibubi.create.foundation.item.TooltipModifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -84,6 +85,7 @@ public class DDCreate
         DDConfigs.register(modLoadingContext);
 
         eventBus.addListener(DDCreate::init);
+        eventBus.addListener(EventPriority.LOWEST, DDCreateData::gatherData);
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> DDCreateClient.onCtorClient(eventBus, forgeEventBus));
 

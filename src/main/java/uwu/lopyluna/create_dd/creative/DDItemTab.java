@@ -39,7 +39,7 @@ public class DDItemTab {
     public static final RegistryObject<CreativeModeTab> BASE_CREATIVE_TAB = REGISTER.register("base",
             () -> CreativeModeTab.builder()
                     .title(Components.translatable("itemGroup.create_dd.base"))
-                    .withTabsBefore(AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey())
+                    .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
                     .icon(() -> DDItems.spectral_ruby.asStack())
                     .displayItems(new RegistrateDisplayItemsGenerator(true, DDItemTab.BASE_CREATIVE_TAB))
                     .build());
