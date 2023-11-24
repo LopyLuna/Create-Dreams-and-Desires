@@ -48,8 +48,6 @@ import java.util.function.Consumer;
 
 import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 
-
-@Mod.EventBusSubscriber
 public class DDFluids {
     static String id = DDCreate.MOD_ID;
     static String fd = "fluid/";
@@ -606,79 +604,79 @@ public class DDFluids {
     }
 
 
-    @SubscribeEvent
-    public static void whenFluidsMeet(BlockEvent.FluidPlaceBlockEvent event) {
-        BlockState blockState = event.getOriginalState();
-        FluidState fluidState = blockState.getFluidState();
-        BlockPos pos = event.getPos();
-        LevelAccessor world = event.getLevel();
+    @Mod.EventBusSubscriber
+    public static class DDFluidEvents {
 
-        if (fluidState.isSource() && FluidHelper.isLava(fluidState.getType()))
-            return;
+        @SubscribeEvent
+        public static void whenFluidsMeet(BlockEvent.FluidPlaceBlockEvent event) {
+            BlockState blockState = event.getOriginalState();
+            FluidState fluidState = blockState.getFluidState();
+            BlockPos pos = event.getPos();
+            LevelAccessor world = event.getLevel();
 
-        for (Direction direction : Iterate.directions) {
-            FluidState metFluidState =
-                    fluidState.isSource() ? fluidState : world.getFluidState(pos.relative(direction));
-            if (!metFluidState.is(FluidTags.WATER))
-                continue;
-            BlockState lavaInteraction = DDFluids.getLavaInteraction(metFluidState);
-            if (lavaInteraction == null)
-                continue;
-            event.setNewState(lavaInteraction);
-            break;
+            if (fluidState.isSource() && FluidHelper.isLava(fluidState.getType()))
+                return;
+
+            for (Direction direction : Iterate.directions) {
+                FluidState metFluidState =
+                        fluidState.isSource() ? fluidState : world.getFluidState(pos.relative(direction));
+                if (!metFluidState.is(FluidTags.WATER))
+                    continue;
+                BlockState lavaInteraction = DDFluids.getLavaInteraction(metFluidState);
+                if (lavaInteraction == null)
+                    continue;
+                event.setNewState(lavaInteraction);
+                break;
+            }
+        }
+
+
+        @SubscribeEvent(priority = EventPriority.HIGH)
+        public static void handlePipeFlowCollisionFallback(PipeCollisionEvent.Flow event) {
+            Fluid f1 = event.getFirstFluid();
+            Fluid f2 = event.getSecondFluid();
+
+            if (f1 == Fluids.WATER && f2 == Fluids.LAVA || f2 == Fluids.WATER && f1 == Fluids.LAVA) {
+                event.setState(Blocks.COBBLESTONE.defaultBlockState());
+            } else if (f1 == Fluids.LAVA && FluidHelper.hasBlockState(f2)) {
+                BlockState lavaInteraction = DDFluids.getLavaInteraction(FluidHelper.convertToFlowing(f2).defaultFluidState());
+                if (lavaInteraction != null) {
+                    event.setState(lavaInteraction);
+                }
+            } else if (f2 == Fluids.LAVA && FluidHelper.hasBlockState(f1)) {
+                BlockState lavaInteraction = DDFluids.getLavaInteraction(FluidHelper.convertToFlowing(f1).defaultFluidState());
+                if (lavaInteraction != null) {
+                    event.setState(lavaInteraction);
+                }
+            }
+        }
+
+        @SubscribeEvent(priority = EventPriority.HIGH)
+        public static void handlePipeSpillCollisionFallback(PipeCollisionEvent.Spill event) {
+            Fluid pf = event.getPipeFluid();
+            Fluid wf = event.getWorldFluid();
+
+            if (FluidHelper.isTag(pf, FluidTags.WATER) && wf == Fluids.LAVA) {
+                event.setState(Blocks.OBSIDIAN.defaultBlockState());
+            } else if (pf == Fluids.WATER && wf == Fluids.FLOWING_LAVA) {
+                event.setState(Blocks.COBBLESTONE.defaultBlockState());
+            } else if (pf == Fluids.LAVA && wf == Fluids.WATER) {
+                event.setState(Blocks.STONE.defaultBlockState());
+            } else if (pf == Fluids.LAVA && wf == Fluids.FLOWING_WATER) {
+                event.setState(Blocks.COBBLESTONE.defaultBlockState());
+            }
+
+            if (pf == Fluids.LAVA) {
+                BlockState lavaInteraction = DDFluids.getLavaInteraction(wf.defaultFluidState());
+                if (lavaInteraction != null) {
+                    event.setState(lavaInteraction);
+                }
+            } else if (wf == Fluids.FLOWING_LAVA && FluidHelper.hasBlockState(pf)) {
+                BlockState lavaInteraction = DDFluids.getLavaInteraction(FluidHelper.convertToFlowing(pf).defaultFluidState());
+                if (lavaInteraction != null) {
+                    event.setState(lavaInteraction);
+                }
+            }
         }
     }
-
-
-
-
-
-    @SubscribeEvent(priority = EventPriority.HIGH)
-    public static void handlePipeFlowCollisionFallback(PipeCollisionEvent.Flow event) {
-        Fluid f1 = event.getFirstFluid();
-        Fluid f2 = event.getSecondFluid();
-
-        if (f1 == Fluids.WATER && f2 == Fluids.LAVA || f2 == Fluids.WATER && f1 == Fluids.LAVA) {
-            event.setState(Blocks.COBBLESTONE.defaultBlockState());
-        } else if (f1 == Fluids.LAVA && FluidHelper.hasBlockState(f2)) {
-            BlockState lavaInteraction = DDFluids.getLavaInteraction(FluidHelper.convertToFlowing(f2).defaultFluidState());
-            if (lavaInteraction != null) {
-                event.setState(lavaInteraction);
-            }
-        } else if (f2 == Fluids.LAVA && FluidHelper.hasBlockState(f1)) {
-            BlockState lavaInteraction = DDFluids.getLavaInteraction(FluidHelper.convertToFlowing(f1).defaultFluidState());
-            if (lavaInteraction != null) {
-                event.setState(lavaInteraction);
-            }
-        }
-    }
-
-    @SubscribeEvent(priority = EventPriority.HIGH)
-    public static void handlePipeSpillCollisionFallback(PipeCollisionEvent.Spill event) {
-        Fluid pf = event.getPipeFluid();
-        Fluid wf = event.getWorldFluid();
-
-        if (FluidHelper.isTag(pf, FluidTags.WATER) && wf == Fluids.LAVA) {
-            event.setState(Blocks.OBSIDIAN.defaultBlockState());
-        } else if (pf == Fluids.WATER && wf == Fluids.FLOWING_LAVA) {
-            event.setState(Blocks.COBBLESTONE.defaultBlockState());
-        } else if (pf == Fluids.LAVA && wf == Fluids.WATER) {
-            event.setState(Blocks.STONE.defaultBlockState());
-        } else if (pf == Fluids.LAVA && wf == Fluids.FLOWING_WATER) {
-            event.setState(Blocks.COBBLESTONE.defaultBlockState());
-        }
-
-        if (pf == Fluids.LAVA) {
-            BlockState lavaInteraction = DDFluids.getLavaInteraction(wf.defaultFluidState());
-            if (lavaInteraction != null) {
-                event.setState(lavaInteraction);
-            }
-        } else if (wf == Fluids.FLOWING_LAVA && FluidHelper.hasBlockState(pf)) {
-            BlockState lavaInteraction = DDFluids.getLavaInteraction(FluidHelper.convertToFlowing(pf).defaultFluidState());
-            if (lavaInteraction != null) {
-                event.setState(lavaInteraction);
-            }
-        }
-    }
-
 }
