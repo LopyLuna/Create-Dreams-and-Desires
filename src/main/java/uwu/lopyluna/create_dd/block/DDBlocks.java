@@ -1,6 +1,9 @@
 package uwu.lopyluna.create_dd.block;
 
-import com.simibubi.create.*;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
+import com.simibubi.create.AllSpriteShifts;
+import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.palettes.ConnectedGlassPaneBlock;
@@ -12,7 +15,6 @@ import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.sounds.SoundEvents;
@@ -64,8 +66,6 @@ import uwu.lopyluna.create_dd.block.BlockProperties.wood.*;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockSpriteShifts;
 import uwu.lopyluna.create_dd.creative.DDItemTab;
 import uwu.lopyluna.create_dd.sounds.DDSoundEvents;
-
-import javax.annotation.ParametersAreNonnullByDefault;
 
 import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;

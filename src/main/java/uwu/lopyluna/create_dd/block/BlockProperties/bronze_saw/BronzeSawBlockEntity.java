@@ -50,7 +50,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-@SuppressWarnings({"all"})
+@SuppressWarnings({"all", "removal"})
 public class BronzeSawBlockEntity extends SawBlockEntity {
 
     private static final Object cuttingRecipesKey = new Object();

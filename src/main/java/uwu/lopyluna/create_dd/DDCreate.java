@@ -1,12 +1,16 @@
 package uwu.lopyluna.create_dd;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -15,12 +19,14 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.FlywheelBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine.FurnaceEngineBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing.IndustrialTypeFanProcessing;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.block.BlockPalette.DDPaletteBlocks;
-import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 import uwu.lopyluna.create_dd.configs.DDConfigs;
 import uwu.lopyluna.create_dd.fluid.ChromaticFluidInteraction;
 import uwu.lopyluna.create_dd.fluid.DDFluids;
@@ -47,10 +53,22 @@ public class DDCreate
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(DDCreate.MOD_ID);
 
+    @Nullable
+    public static KineticStats create(Item item) {
+        if (item instanceof BlockItem blockItem) {
+            Block block = blockItem.getBlock();
+            if (block instanceof IRotate || block instanceof FurnaceEngineBlock || block instanceof FlywheelBlock) {
+                return new KineticStats(block);
+            }
+        }
+        return null;
+    }
+
     static {
-        REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
-                .andThen(TooltipModifier.mapNull(KineticStats.create(item)))
-        );
+        REGISTRATE.setTooltipModifierFactory(item -> {
+            return new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
+                    .andThen(TooltipModifier.mapNull(DDCreate.create(item)));
+        });
     }
 
     public DDCreate()
@@ -64,7 +82,6 @@ public class DDCreate
 
         DDSoundEvents.register(eventBus);
         DDItemTab.init();
-        DDBlockPartialModel.init();
         DDBlockEntityTypes.register();
         DDBlocks.register();
         DDItems.register();
