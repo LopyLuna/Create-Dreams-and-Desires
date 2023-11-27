@@ -201,6 +201,19 @@ public class DDProcessingScenes {
         scene.idle(5);
         scene.world.showSection(util.select.layer(1), Direction.DOWN);
         scene.idle(5);
+        scene.idle(20);
+    }
+
+    public static void stone_generation(SceneBuilder scene, SceneBuildingUtil util) {
+        scene.title("stone_generation", "Using Fluids to Generator Stones");
+        scene.configureBasePlate(0, 0, 5);
+        scene.world.showSection(util.select.layer(0), Direction.UP);
+        scene.idle(5);
+        scene.world.showSection(util.select.layer(1), Direction.DOWN);
+        scene.idle(10);
+        scene.rotateCameraY(-90);
+        scene.idle(5);
+        scene.idle(20);
     }
 
     public static void bulk_pressing(SceneBuilder scene, SceneBuildingUtil util) {
