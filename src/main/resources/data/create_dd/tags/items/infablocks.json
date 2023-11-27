@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:infastone",
+    "create_dd:infagranite",
+    "create_dd:infadiorite",
+    "create_dd:infaandesite",
+    "create_dd:infacobbled_deepslate",
+    "create_dd:infacalcite",
+    "create_dd:infatuff",
+    "create_dd:infadripstone_block",
+    "create_dd:infadirt",
+    "create_dd:infacoarse_dirt",
+    "create_dd:infamud",
+    "create_dd:infacobblestone",
+    "create_dd:infasand",
+    "create_dd:infared_sand",
+    "create_dd:infagravel",
+    "create_dd:infaobsidian",
+    "create_dd:infaice",
+    "create_dd:infasnow_block",
+    "create_dd:infasoul_sand",
+    "create_dd:infaend_stone",
+    "create_dd:infanetherrack",
+    "create_dd:infamagma_block",
+    "create_dd:infamoss_block"
+  ]
+}

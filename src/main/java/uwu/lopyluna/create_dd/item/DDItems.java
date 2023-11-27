@@ -108,6 +108,8 @@ public class DDItems {
             INFA_RED_SAND = infablock("RED_SAND", Blocks.RED_SAND),
             INFA_GRAVEL = infablock("GRAVEL", Blocks.GRAVEL),
             INFA_OBSIDIAN = infablock("OBSIDIAN", Blocks.OBSIDIAN),
+            INFA_ICE = infablock("ICE", Blocks.ICE),
+            INFA_SNOW_BLOCK = infablock("SNOW_BLOCK", Blocks.SNOW_BLOCK),
             INFA_SOUL_SAND = infablock("SOUL_SAND", Blocks.SOUL_SAND),
             INFA_END_STONE = infablock("END_STONE", Blocks.END_STONE),
             INFA_NETHERRACK = infablock("NETHERRACK", Blocks.NETHERRACK),

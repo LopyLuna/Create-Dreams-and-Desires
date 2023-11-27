@@ -1,6 +1,5 @@
-package uwu.lopyluna.create_dd.access;
+package uwu.lopyluna.create_dd.events;
 
-import com.simibubi.create.foundation.events.ClientEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
@@ -11,7 +10,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialAir
 
 @SuppressWarnings({"unused"})
 @Mod.EventBusSubscriber(Dist.CLIENT)
-public class DDClientEvents extends ClientEvents {
+public class DDClientEvents {
 
     @SubscribeEvent
     public static void onTick(TickEvent.ClientTickEvent event) {
@@ -23,5 +22,9 @@ public class DDClientEvents extends ClientEvents {
             IndustrialAirCurrent.tickClientPlayerSounds();
         }
 
+    }
+
+    protected static boolean isGameActive() {
+        return !(Minecraft.getInstance().level == null || Minecraft.getInstance().player == null);
     }
 }
