@@ -5,9 +5,7 @@
       "tag": "create_dd:infablocks"
     }
   ],
-  "results": [
-    {
-      "item": "create_dd:fallen_stargaze_singularity"
-    }
-  ]
+  "result": {
+    "item": "create_dd:fallen_stargaze_singularity"
+  }
 }
