@@ -1,12 +1,10 @@
 package uwu.lopyluna.create_dd.ponder;
 
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.ponder.PonderRegistry;
 import com.simibubi.create.foundation.ponder.PonderTag;
 import net.minecraft.world.item.Items;
 import uwu.lopyluna.create_dd.DDCreate;
-import uwu.lopyluna.create_dd.DDTags;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.item.DDItems;
 

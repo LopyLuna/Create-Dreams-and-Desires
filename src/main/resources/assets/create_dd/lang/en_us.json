@@ -63,6 +63,8 @@
   "item.create_dd.infaweathered_limestone":"InfaWeatheredLimestone",
   "item.create_dd.infagabbro": "InfaGabbro",
   "item.create_dd.infaaethersite":"InfaAethersite",
+  "item.create_dd.infaice": "InfaIce",
+  "item.create_dd.infasnow_block": "InfaSnow",
 
   "item.create_dd.compound_base": "Compound Base",
   "item.create_dd.chromatic_compound": "Chromatic Compound",
@@ -663,6 +665,10 @@
   "item.create_dd.refined_radiance.tooltip.summary": "A Chromatic material forged _in the Cleansed Luminosity_.",
   "item.create_dd.overcharge_alloy.tooltip": "OVERCHARGE ALLOY",
   "item.create_dd.overcharge_alloy.tooltip.summary": "A Chromatic material forged _in the Immense Energetic Force_.",
+  "item.create_dd.blaze_gold.tooltip": "BLAZE BRASS",
+  "item.create_dd.blaze_gold.tooltip.summary": "A Chromatic material forged _with an soul of an Infernal Protector_.",
+  "item.create_dd.stargaze_singularity.tooltip": "STARGAZE SINGULARITY",
+  "item.create_dd.stargaze_singularity.tooltip.summary": "A Fallen Chromatic material glazed _high up in the Stars of the night skies_.",
 
   "item.create_dd.forest_ravager.tooltip": "MYTHICAL FOREST RAVAGER",
   "item.create_dd.forest_ravager.tooltip.summary": "A Powerful axe that can _Deforest the Entire Land_!",

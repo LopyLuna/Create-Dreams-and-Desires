@@ -1,0 +1,26 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:acacia_sapling"
+    },
+    {
+      "item": "minecraft:acacia_sapling"
+    },
+    {
+      "item": "minecraft:acacia_sapling"
+    },
+    {
+      "item": "minecraft:acacia_sapling"
+    },
+    {
+      "item": "create_dd:crystallized_sap"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:rubber_sapling"
+    }
+  ],
+  "heatRequirement": "heated"
+}
