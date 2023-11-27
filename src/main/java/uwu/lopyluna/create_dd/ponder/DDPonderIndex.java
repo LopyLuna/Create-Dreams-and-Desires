@@ -31,6 +31,27 @@ public class DDPonderIndex {
         HELPER.forComponents(DDBlocks.cogCrank).addStoryBoard("cog_crank", DDProcessingScenes::cogCrank, AllPonderTags.KINETIC_SOURCES);
         HELPER.forComponents(DDBlocks.industrial_fan).addStoryBoard("industrial_fan_source", DDProcessingScenes::industrial_fan_source, AllPonderTags.KINETIC_SOURCES);
 
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/blue_ice", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/caramel", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/caramel_milkshake", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/chocolate", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/chocolate_milk", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/chromatic_waste", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/condence_milk", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/cream", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/glowberry", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/glowberry_milkshake", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/honey", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/hot_chocolate", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/sap", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/shimmer", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/strawberry", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/strawberry_milkshake", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/vanilla", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/vanilla_milkshake", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/water", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+        HELPER.forComponents(DDBlocks.ponder_stone_generation).addStoryBoard("gen/water_chroma", DDProcessingScenes::stone_generation, DDPonderTags.STONE_GENERATION);
+
         ////////////////////// Create = below |||| Create DD = Above
 
         CREATE_HELPER.forComponents(DDBlocks.BRONZE_SAW)

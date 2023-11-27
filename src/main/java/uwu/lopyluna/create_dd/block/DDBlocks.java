@@ -21,7 +21,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.grower.AcaciaTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -81,6 +80,12 @@ public class DDBlocks {
     static {
         REGISTRATE.creativeModeTab(() -> DDItemTab.BASE_CREATIVE_TAB);
     }
+
+    public static final BlockEntry<Block> ponder_stone_generation =
+            REGISTRATE.block("ponder_stone_generation", Block::new)
+                    .simpleItem()
+                    .register();
+
 
     public static final BlockEntry<Block> mithril_block = REGISTRATE.block("mithril_block", Block::new)
             .initialProperties(SharedProperties::netheriteMetal)

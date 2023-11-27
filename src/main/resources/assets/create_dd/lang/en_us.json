@@ -603,6 +603,11 @@
   "create_dd.ponder.tag.create_dd": "Create: Dreams n' Desires!",
   "create_dd.ponder.tag.create_dd.description": "Where Dreams & Desires within the create mod become Realities!",
 
+  "create_dd.ponder.tag.stone_generation": "Stone Generations",
+  "create_dd.ponder.tag.stone_generation.description": "Stone Generators Fluids",
+  "create_dd.ponder.stone_generation.header": "Using Fluids to Generator Stones",
+  "block.create_dd.ponder_stone_generation": "Ponder Stone Generations",
+
   "create_dd.ponder.industrial_fan_source.header": "Generating Rotational Force using Industrial Fans",
   "create_dd.ponder.industrial_fan_source.text_1": "Industrial Fans facing down into a source of heat can provide Rotational Force",
   "create_dd.ponder.industrial_fan_source.text_2": "When given a Strong Redstone Signal, the Industrial Fans will start providing power",
