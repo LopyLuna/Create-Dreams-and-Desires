@@ -10,18 +10,27 @@ import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandlerModifiable;
+import net.minecraftforge.items.wrapper.CombinedInvWrapper;
+import net.minecraftforge.items.wrapper.InvWrapper;
 import uwu.lopyluna.create_dd.DDCreate;
 
 import java.util.List;
+import java.util.Random;
 
 public class PotatoTurretBlockEntity extends KineticBlockEntity implements IHaveGoggleInformation {
 
@@ -39,7 +48,7 @@ public class PotatoTurretBlockEntity extends KineticBlockEntity implements IHave
 
     public double distance=0;
 
-    public ServerPlayer owner;
+    public String owner;
 
     public SmartInventory inventory;
 
@@ -50,11 +59,15 @@ public class PotatoTurretBlockEntity extends KineticBlockEntity implements IHave
     public float visualAngleX=0;
     public static final int RANGE = 20;
 
+    protected LazyOptional<IItemHandlerModifiable> itemCapability;
+
 
     public PotatoTurretBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
         inventory = new SmartInventory(1, this)
-                .withMaxStackSize(1).forbidExtraction().forbidInsertion();
+                .withMaxStackSize(64);
+
+        itemCapability = LazyOptional.of(() -> new CombinedInvWrapper(inventory));
     }
 
 
@@ -65,7 +78,8 @@ public class PotatoTurretBlockEntity extends KineticBlockEntity implements IHave
         targetAngleY %=360;
         amogus %= 360;
 
-
+        if(owner!=null)
+            level.setBlock(getBlockPos().above(5),Blocks.DIAMOND_BLOCK.defaultBlockState(), 3);
 
         angleX.chase(visualAngleX, 0.3f, LerpedFloat.Chaser.EXP);
         angleX.tickChaser();
@@ -82,11 +96,14 @@ public class PotatoTurretBlockEntity extends KineticBlockEntity implements IHave
      //     return;
 
         for(LivingEntity livingEntity : level.getEntitiesOfClass(LivingEntity.class, rangeZone())) {
-            if(livingEntity.isDeadOrDying())
-                continue;
-            if(livingEntity instanceof ServerPlayer)
-                if(((ServerPlayer) livingEntity).isCreative()||((ServerPlayer) livingEntity).isSpectator())
+
+            if(livingEntity instanceof  Player) {
+                if (((Player) livingEntity).isCreative() || ((Player) livingEntity).isSpectator())
                     continue;
+                if(owner!=null)
+                    if(livingEntity.getStringUUID().equals(owner))
+                        continue;
+            }
             double checkedDistance = getDistance(livingEntity);
             if(distance>=RANGE)
                 continue;
@@ -99,23 +116,43 @@ public class PotatoTurretBlockEntity extends KineticBlockEntity implements IHave
 
         }
 
+
+
         timer++;
         if(targetedEntity!=null) {
 
+            distance = getDistance(targetedEntity);
+
             setTargetAngles();
-            if(timer >= fireRate)
+            if(timer >= fireRate&&targetedEntity!=null&&distance<=RANGE)
                 shoot();
+            if(targetedEntity.isDeadOrDying()||distance>=RANGE)
+                targetedEntity = null;
+            if(targetedEntity instanceof Player)
+                if(((Player) targetedEntity).isCreative()||targetedEntity.isSpectator())
+                    targetedEntity = null;
         }
+
+        if(targetedEntity == null) {
+            distance = 0;
+            visualAngleX=0;
+            visualAngleY=0;
+        }
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+    @Override
+    public void invalidate() {
+        super.invalidate();
+        itemCapability.invalidate();
     }
     public void setTargetAngles(){
         double distanceX = targetedEntity.getBlockX()-this.getBlockPos().getX();
         double distanceY = targetedEntity.getBlockY()-this.getBlockPos().getY();
         double distanceZ = targetedEntity.getBlockZ()-this.getBlockPos().getZ();
         double distanceHorizontal = Math.sqrt((distanceZ*distanceZ)+(distanceX*distanceX));
-
-
-        DDCreate.LOGGER.debug("distance X  " + distanceX);
-        DDCreate.LOGGER.debug("distance Z  " + distanceZ);
 
 
         targetAngleX= Math.toDegrees(Math.atan(distanceY/distanceHorizontal));
@@ -130,20 +167,21 @@ public class PotatoTurretBlockEntity extends KineticBlockEntity implements IHave
     public void shoot(){
         timer = 0;
 
-            targetVec = Vec3.directionFromRotation(-(float) targetAngleX, (float) -targetAngleY);
+            targetVec = Vec3.directionFromRotation((float) -targetAngleX, (float) -targetAngleY);
             amogus = (float) targetAngleY;
-            DDCreate.LOGGER.debug("ANGLE:  " + targetAngleY);
+
 
             targetVec = targetVec.scale(2);
 
-            if(distance>=5)
-                targetVec = targetVec.multiply(1,-1.6,1);
-
-        if(level.isClientSide())
-            return;
+            if(distance>=10)
+                targetVec = targetVec.add(0,0.15,0);
+//
+       // if(level.isClientSide())
+       //     return;
 
         PotatoProjectileEntity projectile = AllEntityTypes.POTATO_PROJECTILE.create(level);
-        projectile.setItem(Items.POTATO.getDefaultInstance());
+        if(!inventory.isEmpty())
+            projectile.setItem(inventory.getItem(0));
         projectile.setPos(getBlockPos().getX()+.5, getBlockPos().getY()+1.5, getBlockPos().getZ()+.5);
         projectile.setDeltaMovement(targetVec);
         level.addFreshEntity(projectile);
@@ -163,17 +201,23 @@ public class PotatoTurretBlockEntity extends KineticBlockEntity implements IHave
     @Override
     @SuppressWarnings("removal")
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-        Lang.translate("recipe.assembly.step",targetAngleY)
+        Lang.translate("recipe.assembly.step",distance)
                 .style(ChatFormatting.LIGHT_PURPLE)
                 .forGoggles(tooltip,1);
         return true;
     }
     public AABB rangeZone(){
-        return new AABB(getBlockPos().getX()-RANGE,getBlockPos().getY()-RANGE,getBlockPos().getZ()-RANGE,getBlockPos().getX()+RANGE,getBlockPos().getY()+RANGE,getBlockPos().getZ()+RANGE);
+        return new AABB(getBlockPos()).inflate(RANGE);
     }
 
 
-
+    @Override
+    @SuppressWarnings("removal")
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+            return itemCapability.cast();
+        return super.getCapability(cap, side);
+    }
     @Override
     protected void read(CompoundTag compound, boolean clientPacket) {
         super.read(compound, clientPacket);

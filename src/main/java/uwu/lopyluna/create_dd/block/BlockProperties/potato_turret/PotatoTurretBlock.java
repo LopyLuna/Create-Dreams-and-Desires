@@ -2,12 +2,16 @@ package uwu.lopyluna.create_dd.block.BlockProperties.potato_turret;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
+import com.simibubi.create.content.kinetics.fan.EncasedFanBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.block.IBE;
+import com.simibubi.create.foundation.utility.worldWrappers.WrappedWorld;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,6 +27,11 @@ public class PotatoTurretBlock extends HorizontalKineticBlock implements IBE<Pot
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction preferred = getPreferredHorizontalFacing(context);
+
+
+
+           // ((PotatoTurretBlockEntity)context.getLevel().getBlockEntity(context.getClickedPos())).owner=context.getPlayer().getStringUUID();
+
         if (preferred != null)
             return defaultBlockState().setValue(HORIZONTAL_FACING, preferred.getOpposite());
         return this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite());
