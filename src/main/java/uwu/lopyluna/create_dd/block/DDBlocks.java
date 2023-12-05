@@ -75,6 +75,11 @@ public class DDBlocks {
         REGISTRATE.creativeModeTab(() -> DDItemTab.BASE_CREATIVE_TAB);
     }
 
+    public static final BlockEntry<Block> ponder_stone_generation =
+            REGISTRATE.block("ponder_stone_generation", Block::new)
+                    .simpleItem()
+                    .register();
+
     public static final BlockEntry<Block> mithril_block = REGISTRATE.block("mithril_block", Block::new)
             .initialProperties(SharedProperties::netheriteMetal)
             .properties(p -> p.color(MaterialColor.WARPED_NYLIUM))
