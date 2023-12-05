@@ -1,0 +1,15 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "fluidTag": "forge:sap",
+      "amount": 1000
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:crystallized_sap",
+      "count": 2
+    }
+  ]
+}

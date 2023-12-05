@@ -62,6 +62,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.wood.*;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockSpriteShifts;
 import uwu.lopyluna.create_dd.creative.DDItemTab;
 import uwu.lopyluna.create_dd.sounds.DDSoundEvents;
+import uwu.lopyluna.create_dd.worldgen.Features.tree.RubberTreeGrower;
 
 import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
@@ -76,6 +77,11 @@ public class DDBlocks {
     static {
         REGISTRATE.setCreativeTab(DDItemTab.BASE_CREATIVE_TAB);
     }
+
+    public static final BlockEntry<Block> ponder_stone_generation =
+            REGISTRATE.block("ponder_stone_generation", Block::new)
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<Block> mithril_block = REGISTRATE.block("mithril_block", Block::new)
             .initialProperties(SharedProperties::netheriteMetal)
@@ -1311,7 +1317,7 @@ public class DDBlocks {
 
     //RUBBER WOODSET
 
-    public static final BlockEntry<SaplingBlock> rubber_sapling = REGISTRATE.block("rubber_sapling", p -> new SaplingBlock(new AcaciaTreeGrower(), p))
+    public static final BlockEntry<SaplingBlock> rubber_sapling = REGISTRATE.block("rubber_sapling", p -> new SaplingBlock(new RubberTreeGrower(), p))
             .initialProperties(() -> Blocks.OAK_SAPLING)
             .properties(p -> p.mapColor(MapColor.TERRACOTTA_CYAN))
             .lang("Rubber Sapling")
@@ -1319,7 +1325,7 @@ public class DDBlocks {
             .simpleItem()
             .register();
 
-    public static final BlockEntry<LeavesBlock> rubber_leaves = REGISTRATE.block("rubber_leaves", LeavesBlock::new)
+    public static final BlockEntry<RubberLeavesBlock> rubber_leaves = REGISTRATE.block("rubber_leaves", RubberLeavesBlock::new)
             .initialProperties(() -> Blocks.AZALEA_LEAVES)
             .properties(p -> p.mapColor(MapColor.TERRACOTTA_CYAN))
             .lang("Rubber Leaves")

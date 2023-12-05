@@ -1,13 +1,13 @@
 package uwu.lopyluna.create_dd.ponder;
 
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllItems;
+import com.simibubi.create.AllFluids;
 import com.simibubi.create.foundation.ponder.PonderRegistry;
 import com.simibubi.create.foundation.ponder.PonderTag;
 import net.minecraft.world.item.Items;
 import uwu.lopyluna.create_dd.DDCreate;
-import uwu.lopyluna.create_dd.DDTags;
 import uwu.lopyluna.create_dd.block.DDBlocks;
+import uwu.lopyluna.create_dd.fluid.DDFluids;
 import uwu.lopyluna.create_dd.item.DDItems;
 
 import static com.simibubi.create.infrastructure.ponder.AllPonderTags.*;
@@ -24,14 +24,41 @@ public class DDPonderTags {
 		.addToIndex(),
     FAN_HEATER = create("fan_heater").item(AllBlocks.BLAZE_BURNER.get())
             .defaultLang("Industrial Fan Heaters", "Heater that are valid for the Industrial Fan")
+		.addToIndex(),
+    STONE_GENERATION = create("stone_generation").item(Items.COBBLESTONE)
+            .defaultLang("Stone Generations", "Stone Generators Fluids")
 		.addToIndex();
     public static void register() {
-
 
         PonderRegistry.TAGS.forTag(FAN_HEATER)
                 .add(Items.LAVA_BUCKET)
                 .add(AllBlocks.BLAZE_BURNER)
                 .add(DDBlocks.superheating_sail)
+        ;
+
+        PonderRegistry.TAGS.forTag(STONE_GENERATION)
+                .add(Items.LAVA_BUCKET)
+                .add(Items.WATER_BUCKET)
+                .add(Items.BLUE_ICE)
+                .add(Items.SOUL_SAND)
+                .add(AllFluids.HONEY.get().getBucket())
+                .add(AllFluids.CHOCOLATE.get().getBucket())
+                .add(DDFluids.CHROMATIC_WASTE.get().getBucket())
+                .add(DDFluids.SAP.get().getBucket())
+                .add(DDFluids.SHIMMER.get().getBucket())
+                .add(DDFluids.VANILLA_MILKSHAKE.get().getBucket())
+                .add(DDFluids.VANILLA.get().getBucket())
+                .add(DDFluids.CARAMEL.get().getBucket())
+                .add(DDFluids.CARAMEL_MILKSHAKE.get().getBucket())
+                .add(DDFluids.CHOCOLATE_MILKSHAKE.get().getBucket())
+                .add(DDFluids.HOT_CHOCOLATE.get().getBucket())
+                .add(DDFluids.GLOWBERRY.get().getBucket())
+                .add(DDFluids.GLOWBERRY_MILKSHAKE.get().getBucket())
+                .add(DDFluids.STRAWBERRY.get().getBucket())
+                .add(DDFluids.STRAWBERRY_MILKSHAKE.get().getBucket())
+                .add(DDFluids.CREAM.get().getBucket())
+                .add(DDFluids.CONDENSE_MILK.get().getBucket())
+                .add(DDBlocks.ponder_stone_generation)
         ;
 
         PonderRegistry.TAGS.forTag(CREATEDD)

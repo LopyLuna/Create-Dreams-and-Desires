@@ -11,6 +11,12 @@
   "item.create_dd.overcharge_alloy.tooltip": "OVERCHARGED ALLOY",
   "item.create_dd.overcharge_alloy.tooltip.summary": "A Chromatic material forged _in the Immense Energetic Force_.",
 
+  "item.create_dd.blaze_gold.tooltip": "BLAZE BRASS",
+  "item.create_dd.blaze_gold.tooltip.summary": "A Chromatic material forged _with a soul of an Infernal Protector_.",
+
+  "item.create_dd.stargaze_singularity.tooltip": "STARGAZE SINGULARITY",
+  "item.create_dd.stargaze_singularity.tooltip.summary": "A Fallen Chromatic material glazed _high up in the Stars of the night skies_.",
+
   "item.create_dd.frozen_nugget.tooltip": "FROZEN NUGGET OF EXPERIENCE",
   "item.create_dd.frozen_nugget.tooltip.summary": "A speck of _frozen inspiration_ from your fantastic inventions.",
 
