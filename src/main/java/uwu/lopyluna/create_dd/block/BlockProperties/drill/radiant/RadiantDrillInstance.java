@@ -19,6 +19,7 @@ public class RadiantDrillInstance extends SingleRotatingInstance<RadiantDrillBlo
     protected Instancer<RotatingData> getModel() {
         BlockState referenceState = blockEntity.getBlockState();
         Direction facing = referenceState.getValue(BlockStateProperties.FACING);
+        getRotatingMaterial().getModel(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, referenceState, facing);
         return getRotatingMaterial().getModel(DDBlockPartialModel.RADIANT_DRILL_HEAD, referenceState, facing);
     }
 }

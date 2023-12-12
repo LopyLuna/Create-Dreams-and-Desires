@@ -39,6 +39,7 @@ public class RadiantDrillActorInstance extends ActorInstance {
             eulerY = facing.toYRot() + ((axis == Direction.Axis.X) ? 180 : 0);
 
         drillHead = material.getModel(DDBlockPartialModel.RADIANT_DRILL_HEAD, state).createInstance();
+        drillHead = material.getModel(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, state).createInstance();
 
         drillHead.setPosition(context.localPos)
                 .setBlockLight(15)

@@ -5,6 +5,7 @@ import com.simibubi.create.content.contraptions.behaviour.MovementContext;
 import com.simibubi.create.content.contraptions.render.ContraptionMatrices;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
+import com.simibubi.create.foundation.render.RenderTypes;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
 import com.simibubi.create.foundation.utility.AngleHelper;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
@@ -25,13 +26,14 @@ public class RadiantDrillRenderer extends KineticBlockEntityRenderer<RadiantDril
 
     @Override
     protected SuperByteBuffer getRotatedModel(RadiantDrillBlockEntity be, BlockState state) {
-        return CachedBufferer.partialFacing(DDBlockPartialModel.RADIANT_DRILL_HEAD, state);
+        CachedBufferer.partialFacing(DDBlockPartialModel.RADIANT_DRILL_HEAD, state);
+        return CachedBufferer.partialFacing(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, state);
     }
 
-    public static void renderInContraption(MovementContext context, VirtualRenderWorld renderWorld,
-                                           ContraptionMatrices matrices, MultiBufferSource buffer) {
+    public static void renderInContraption(MovementContext context, VirtualRenderWorld renderWorld, ContraptionMatrices matrices, MultiBufferSource buffer) {
         BlockState state = context.state;
-        SuperByteBuffer superBuffer = CachedBufferer.partial(DDBlockPartialModel.RADIANT_DRILL_HEAD, state);
+        SuperByteBuffer superBuffer1 = CachedBufferer.partial(DDBlockPartialModel.RADIANT_DRILL_HEAD, state);
+        SuperByteBuffer superBuffer2 = CachedBufferer.partial(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, state);
 
         Direction facing = state.getValue(RadiantDrillBlock.FACING);
 
@@ -41,7 +43,7 @@ public class RadiantDrillRenderer extends KineticBlockEntityRenderer<RadiantDril
         float time = AnimationTickHolder.getRenderTime() / 20;
         float angle = (float) (((time * speed) % 360));
 
-        superBuffer
+        superBuffer1
                 .transform(matrices.getModel())
                 .centre()
                 .rotateY(AngleHelper.horizontalAngle(facing))
@@ -49,7 +51,17 @@ public class RadiantDrillRenderer extends KineticBlockEntityRenderer<RadiantDril
                 .rotateZ(angle)
                 .unCentre()
                 .light(LightTexture.FULL_BRIGHT)
-                .renderInto(matrices.getViewProjection(), buffer.getBuffer(RenderType.translucent()));
+                .renderInto(matrices.getViewProjection(), buffer.getBuffer(RenderType.solid()));
+        superBuffer2
+                .transform(matrices.getModel())
+                .centre()
+                .rotateY(AngleHelper.horizontalAngle(facing))
+                .rotateX(AngleHelper.verticalAngle(facing))
+                .rotateZ(angle)
+                .unCentre()
+                .light(LightTexture.FULL_BRIGHT)
+                .disableDiffuse()
+                .renderInto(matrices.getViewProjection(), buffer.getBuffer(RenderTypes.getAdditive()));
     }
 
 }

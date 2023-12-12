@@ -593,15 +593,15 @@ public class DDBlocks {
 
     public static final BlockEntry<RadiantDrillBlock> RADIANT_DRILL =
             REGISTRATE.block("radiant_drill", RadiantDrillBlock::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(p -> p.color(MaterialColor.PODZOL))
+                    .initialProperties(SharedProperties::stone)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
                     .addLayer(() -> RenderType::translucent)
-            .transform(axeOrPickaxe())
-            .blockstate(BlockStateGen.directionalBlockProvider(true))
-            .transform(BlockStressDefaults.setImpact(16.0))
-            .onRegister(movementBehaviour(new RadiantDrillMovementBehaviour()))
-            .simpleItem()
-            .register();
+                    .transform(axeOrPickaxe())
+                    .blockstate(BlockStateGen.directionalBlockProvider(true))
+                    .transform(BlockStressDefaults.setImpact(16.0))
+                    .onRegister(movementBehaviour(new RadiantDrillMovementBehaviour()))
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<ShadowDrillBlock> SHADOW_DRILL =
             REGISTRATE.block("shadow_drill", ShadowDrillBlock::new)
