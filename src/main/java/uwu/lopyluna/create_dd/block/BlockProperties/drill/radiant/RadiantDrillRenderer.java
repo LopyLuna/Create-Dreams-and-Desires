@@ -1,6 +1,8 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.drill.radiant;
 
+import com.jozufozu.flywheel.backend.Backend;
 import com.jozufozu.flywheel.core.virtual.VirtualRenderWorld;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;
 import com.simibubi.create.content.contraptions.render.ContraptionMatrices;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
@@ -26,42 +28,62 @@ public class RadiantDrillRenderer extends KineticBlockEntityRenderer<RadiantDril
 
     @Override
     protected SuperByteBuffer getRotatedModel(RadiantDrillBlockEntity be, BlockState state) {
-        CachedBufferer.partialFacing(DDBlockPartialModel.RADIANT_DRILL_HEAD, state);
+        return CachedBufferer.partialFacing(DDBlockPartialModel.RADIANT_DRILL_HEAD, state);
+    }
+    protected SuperByteBuffer getRotatedModelGlow(RadiantDrillBlockEntity be, BlockState state) {
         return CachedBufferer.partialFacing(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, state);
+    }
+
+    @Override
+    protected void renderSafe(RadiantDrillBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
+                              int light, int overlay) {
+        super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
+
+        int c = 255;
+
+        if (Backend.canUseInstancing(be.getLevel())) return;
+
+        BlockState state = getRenderedBlockState(be);
+        RenderType type = getRenderType(be, state);
+        if (type != null) {
+            renderRotatingBuffer(be, getRotatedModel(be, state), ms, buffer.getBuffer(RenderType.solid()), LightTexture.FULL_BRIGHT);
+            renderRotatingBuffer(be, getRotatedModelGlow(be, state).color(c, c, c, c).disableDiffuse(), ms, buffer.getBuffer(RenderTypes.getAdditive()), LightTexture.FULL_BRIGHT);
+        }
     }
 
     public static void renderInContraption(MovementContext context, VirtualRenderWorld renderWorld, ContraptionMatrices matrices, MultiBufferSource buffer) {
         BlockState state = context.state;
-        SuperByteBuffer superBuffer1 = CachedBufferer.partial(DDBlockPartialModel.RADIANT_DRILL_HEAD, state);
-        SuperByteBuffer superBuffer2 = CachedBufferer.partial(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, state);
+        SuperByteBuffer drill = CachedBufferer.partial(DDBlockPartialModel.RADIANT_DRILL_HEAD, state);
+        SuperByteBuffer drillg = CachedBufferer.partial(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, state);
+        PoseStack ms = matrices.getViewProjection();
 
         Direction facing = state.getValue(RadiantDrillBlock.FACING);
 
-        float speed = (float) (context.contraption.stalled
-                || !VecHelper.isVecPointingTowards(context.relativeMotion, facing
-                .getOpposite()) ? context.getAnimationSpeed() : 0);
+        float speed = (float) (context.contraption.stalled || !VecHelper.isVecPointingTowards(context.relativeMotion, facing.getOpposite()) ? context.getAnimationSpeed() : 0);
         float time = AnimationTickHolder.getRenderTime() / 20;
         float angle = (float) (((time * speed) % 360));
+        float debugangle1 = (float) (((time * speed * 0.5) % 360));
+        float debugangle2 = (float) (((time * speed * -0.5) % 360));
 
-        superBuffer1
-                .transform(matrices.getModel())
+        ms.pushPose();
+        drill.transform(matrices.getModel())
                 .centre()
                 .rotateY(AngleHelper.horizontalAngle(facing))
                 .rotateX(AngleHelper.verticalAngle(facing))
-                .rotateZ(angle)
+                .rotateZ(debugangle1)
                 .unCentre()
                 .light(LightTexture.FULL_BRIGHT)
-                .renderInto(matrices.getViewProjection(), buffer.getBuffer(RenderType.solid()));
-        superBuffer2
-                .transform(matrices.getModel())
+                .renderInto(ms, buffer.getBuffer(RenderType.solid()));
+        drillg.transform(matrices.getModel())
                 .centre()
                 .rotateY(AngleHelper.horizontalAngle(facing))
                 .rotateX(AngleHelper.verticalAngle(facing))
-                .rotateZ(angle)
+                .rotateZ(debugangle2)
                 .unCentre()
                 .light(LightTexture.FULL_BRIGHT)
                 .disableDiffuse()
-                .renderInto(matrices.getViewProjection(), buffer.getBuffer(RenderTypes.getAdditive()));
+                .renderInto(ms, buffer.getBuffer(RenderTypes.getAdditive()));
+        ms.popPose();
     }
 
 }

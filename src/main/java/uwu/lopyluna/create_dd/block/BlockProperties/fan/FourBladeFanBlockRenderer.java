@@ -31,7 +31,7 @@ public class FourBladeFanBlockRenderer extends KineticBlockEntityRenderer<FourBl
         float speed = be.visualSpeed.getValue(partialTicks) * 3 / 10f;
         float angle = be.angle + speed * partialTicks;
 
-        VertexConsumer vb = buffer.getBuffer(RenderType.solid());
+        VertexConsumer vb = buffer.getBuffer(RenderType.cutout());
         renderFlywheel(be, ms, light, blockState, angle, vb);
     }
 
