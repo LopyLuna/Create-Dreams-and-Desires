@@ -31,7 +31,7 @@ public class RadiantDrillRenderer extends KineticBlockEntityRenderer<RadiantDril
         return CachedBufferer.partialFacing(DDBlockPartialModel.RADIANT_DRILL_HEAD, state);
     }
     protected SuperByteBuffer getRotatedModelGlow(RadiantDrillBlockEntity be, BlockState state) {
-        return CachedBufferer.partialFacing(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, state);
+        return CachedBufferer.partialFacing(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, state).disableDiffuse();
     }
 
     @Override
@@ -39,15 +39,13 @@ public class RadiantDrillRenderer extends KineticBlockEntityRenderer<RadiantDril
                               int light, int overlay) {
         super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
 
-        int c = 255;
-
         if (Backend.canUseInstancing(be.getLevel())) return;
 
         BlockState state = getRenderedBlockState(be);
         RenderType type = getRenderType(be, state);
         if (type != null) {
             renderRotatingBuffer(be, getRotatedModel(be, state), ms, buffer.getBuffer(RenderType.solid()), LightTexture.FULL_BRIGHT);
-            renderRotatingBuffer(be, getRotatedModelGlow(be, state).color(c, c, c, c).disableDiffuse(), ms, buffer.getBuffer(RenderTypes.getAdditive()), LightTexture.FULL_BRIGHT);
+            renderRotatingBuffer(be, getRotatedModelGlow(be, state), ms, buffer.getBuffer(RenderTypes.getAdditive()), LightTexture.FULL_BRIGHT);
         }
     }
 
@@ -62,15 +60,13 @@ public class RadiantDrillRenderer extends KineticBlockEntityRenderer<RadiantDril
         float speed = (float) (context.contraption.stalled || !VecHelper.isVecPointingTowards(context.relativeMotion, facing.getOpposite()) ? context.getAnimationSpeed() : 0);
         float time = AnimationTickHolder.getRenderTime() / 20;
         float angle = (float) (((time * speed) % 360));
-        float debugangle1 = (float) (((time * speed * 0.5) % 360));
-        float debugangle2 = (float) (((time * speed * -0.5) % 360));
 
         ms.pushPose();
         drill.transform(matrices.getModel())
                 .centre()
                 .rotateY(AngleHelper.horizontalAngle(facing))
                 .rotateX(AngleHelper.verticalAngle(facing))
-                .rotateZ(debugangle1)
+                .rotateZ(angle)
                 .unCentre()
                 .light(LightTexture.FULL_BRIGHT)
                 .renderInto(ms, buffer.getBuffer(RenderType.solid()));
@@ -78,7 +74,7 @@ public class RadiantDrillRenderer extends KineticBlockEntityRenderer<RadiantDril
                 .centre()
                 .rotateY(AngleHelper.horizontalAngle(facing))
                 .rotateX(AngleHelper.verticalAngle(facing))
-                .rotateZ(debugangle2)
+                .rotateZ(angle)
                 .unCentre()
                 .light(LightTexture.FULL_BRIGHT)
                 .disableDiffuse()

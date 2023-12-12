@@ -14,16 +14,52 @@ import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 
 public class RadiantDrillInstance extends SingleRotatingInstance<RadiantDrillBlockEntity> {
 
+    protected RotatingData rotatingModel1;
+    protected RotatingData rotatingModel2;
+
     public RadiantDrillInstance(MaterialManager materialManager, RadiantDrillBlockEntity blockEntity) {
         super(materialManager, blockEntity);
     }
 
     @Override
-    protected Instancer<RotatingData> getModel() {
+    public void init() {
+        rotatingModel1 = setup(getModel1().createInstance());
+        rotatingModel2 = setup(getModel2().createInstance());
+    }
+
+    @Override
+    public void update() {
+        updateRotation(rotatingModel1);
+        updateRotation(rotatingModel2);
+    }
+
+    @Override
+    public void updateLight() {
+        relight(pos, rotatingModel1);
+        relight(pos, rotatingModel2);
+    }
+
+    @Override
+    public void remove() {
+        rotatingModel1.delete();
+        rotatingModel2.delete();
+    }
+
+    protected BlockState getRenderedBlockState() {
+        return blockState;
+    }
+
+    protected Instancer<RotatingData> getModel1() {
         BlockState referenceState = blockEntity.getBlockState();
         Direction facing = referenceState.getValue(BlockStateProperties.FACING);
-        getRotatingGlowMaterial().getModel(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, referenceState, facing);
         return getRotatingMaterial().getModel(DDBlockPartialModel.RADIANT_DRILL_HEAD, referenceState, facing);
+
+    }
+    protected Instancer<RotatingData> getModel2() {
+        BlockState referenceState = blockEntity.getBlockState();
+        Direction facing = referenceState.getValue(BlockStateProperties.FACING);
+        return getRotatingGlowMaterial().getModel(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, referenceState, facing);
+
     }
 
     @Override

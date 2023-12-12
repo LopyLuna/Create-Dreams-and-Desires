@@ -27,7 +27,7 @@ public class RadiantDrillActorInstance extends ActorInstance {
 
         Material<ActorData> materialSolid = materialManager.defaultSolid()
                 .material(DDPaletteMaterialSpecs.ACTORS);
-        Material<ActorData> materialTransparent = materialManager.transparent(RenderTypes.getAdditive())
+        Material<ActorData> materialAdditive = materialManager.transparent(RenderTypes.getAdditive())
                 .material(DDPaletteMaterialSpecs.ACTORS);
 
         BlockState state = context.state;
@@ -44,7 +44,7 @@ public class RadiantDrillActorInstance extends ActorInstance {
             eulerY = facing.toYRot() + ((axis == Direction.Axis.X) ? 180 : 0);
 
         drillHead = materialSolid.getModel(DDBlockPartialModel.RADIANT_DRILL_HEAD, state).createInstance();
-        drillHeadGlow = materialTransparent.getModel(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, state).createInstance();
+        drillHeadGlow = materialAdditive.getModel(DDBlockPartialModel.RADIANT_DRILL_HEAD_GLOW, state).createInstance();
 
         drillHead.setPosition(context.localPos)
                 .setBlockLight(LightTexture.FULL_BRIGHT)
