@@ -1,16 +1,15 @@
 {
-  "parent": "create_dd:bronze_casing",
+  "parent": "create_dd:refined_radiance_casing",
   "display": {
     "icon": {
-      "item": "create_dd:bronze_drill"
+      "item": "create_dd:radiant_drill"
     },
     "title": {
-      "translate": "advancement.create_dd.bronze_drill"
+      "translate": "advancement.create_dd.radiant_drill"
     },
       "description": {
       "color": "#DBA213",
-      "color": "#DBA213",
-      "translate": "advancement.create_dd.bronze_drill.desc"
+      "translate": "advancement.create_dd.radiant_drill.desc"
     },
     "frame": "task",
     "show_toast": true,
@@ -24,7 +23,7 @@
         "items": [
           {
             "items": [
-              "create_dd:bronze_drill"
+              "create_dd:radiant_drill"
             ]
           }
         ]

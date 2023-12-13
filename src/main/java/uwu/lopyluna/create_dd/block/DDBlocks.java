@@ -487,93 +487,123 @@ public class DDBlocks {
             .properties(p -> p.strength(1f,5000f))
             .simpleItem()
             .register();
-//ac
+
     //MECHANICAL BLOCKS
 
     public static final BlockEntry<PonderBoxBlock> ponder_in_a_box = REGISTRATE.block("ponder_in_a_box", PonderBoxBlock::new)
-            .initialProperties(SharedProperties::netheriteMetal)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
-            .properties(p -> p.noOcclusion()
-            .noCollission())
-            .properties(p -> p.sound(new ForgeSoundType(1, 1.5f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
-                    () -> SoundEvents.AMETHYST_BLOCK_CHIME, () -> SoundEvents.SMALL_AMETHYST_BUD_PLACE,
-                    () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_BLOCK_CHIME)))
-            .properties(p -> p.strength(50f,5000f))
-            .simpleItem()
-            .register();
+                    .initialProperties(SharedProperties::netheriteMetal)
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
+                    .properties(p -> p.noOcclusion()
+                    .noCollission())
+                    .properties(p -> p.sound(new ForgeSoundType(1, 1.5f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
+                            () -> SoundEvents.AMETHYST_BLOCK_CHIME, () -> SoundEvents.SMALL_AMETHYST_BUD_PLACE,
+                            () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_BLOCK_CHIME)))
+                    .properties(p -> p.strength(50f,5000f))
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<ReversedGearboxBlock> REVERSED_GEARSHIFT =
             REGISTRATE.block("reversed_gearshift", ReversedGearboxBlock::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(BlockBehaviour.Properties::noOcclusion)
-            .properties(p -> p.color(MaterialColor.PODZOL))
-            .addLayer(() -> RenderType::cutoutMipped)
-            .transform(axeOrPickaxe())
-            .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, AssetLookup.forPowered(c, p)))
-            .item()
-            .transform(customItemModel())
-            .register();
+                    .initialProperties(SharedProperties::stone)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .transform(axeOrPickaxe())
+                    .blockstate((c, p) -> BlockStateGen.axisBlock(c, p, AssetLookup.forPowered(c, p)))
+                    .item()
+                    .transform(customItemModel())
+                    .register();
 
     public static final BlockEntry<BronzeSawBlock> BRONZE_SAW =
             REGISTRATE.block("bronze_saw", BronzeSawBlock::new)
-            .initialProperties(SharedProperties::stone)
-            .addLayer(() -> RenderType::cutoutMipped)
-            .properties(p -> p.color(MaterialColor.PODZOL))
-            .transform(axeOrPickaxe())
-            .transform(BlockStressDefaults.setImpact(12.0))
-            .onRegister(movementBehaviour(new BronzeSawMovementBehaviour()))
-            .addLayer(() -> RenderType::cutoutMipped)
-            .simpleItem()
-            .register();
+                    .initialProperties(SharedProperties::stone)
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .transform(axeOrPickaxe())
+                    .transform(BlockStressDefaults.setImpact(12.0))
+                    .onRegister(movementBehaviour(new BronzeSawMovementBehaviour()))
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<BronzeDrillBlock> BRONZE_DRILL =
             REGISTRATE.block("bronze_drill", BronzeDrillBlock::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(p -> p.color(MaterialColor.PODZOL))
-            .transform(axeOrPickaxe())
-            .blockstate(BlockStateGen.directionalBlockProvider(true))
-            .transform(BlockStressDefaults.setImpact(12.0))
-            .onRegister(movementBehaviour(new BronzeDrillMovementBehaviour()))
-            .simpleItem()
-            .register();
+                    .initialProperties(SharedProperties::stone)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .transform(axeOrPickaxe())
+                    .blockstate(BlockStateGen.directionalBlockProvider(true))
+                    .transform(BlockStressDefaults.setImpact(12.0))
+                    .onRegister(movementBehaviour(new BronzeDrillMovementBehaviour()))
+                    .simpleItem()
+                    .register();
+
+    public static final BlockEntry<RadiantDrillBlock> RADIANT_DRILL =
+            REGISTRATE.block("radiant_drill", RadiantDrillBlock::new)
+                    .initialProperties(SharedProperties::stone)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .properties(p -> p.sound(new ForgeSoundType(0.9f, 1.0f, () -> DDSoundEvents.magical_metal_break.get(),
+                            () -> DDSoundEvents.magical_metal_step.get(), () -> DDSoundEvents.magical_metal_place.get(),
+                            () -> DDSoundEvents.magical_metal_hit.get(), () -> DDSoundEvents.magical_metal_fall.get())))
+                    .properties(p -> p.lightLevel($ -> 12))
+                    .addLayer(() -> RenderType::translucent)
+                    .transform(axeOrPickaxe())
+                    .blockstate(BlockStateGen.directionalBlockProvider(true))
+                    .transform(BlockStressDefaults.setImpact(24.0))
+                    .onRegister(movementBehaviour(new RadiantDrillMovementBehaviour()))
+                    .simpleItem()
+                    .register();
+
+    public static final BlockEntry<ShadowDrillBlock> SHADOW_DRILL =
+            REGISTRATE.block("shadow_drill", ShadowDrillBlock::new)
+                    .initialProperties(SharedProperties::stone)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .properties(p -> p.sound(new ForgeSoundType(0.9f, 1.0f, () -> DDSoundEvents.magical_metal_break.get(),
+                            () -> DDSoundEvents.magical_metal_step.get(), () -> DDSoundEvents.magical_metal_place.get(),
+                            () -> DDSoundEvents.magical_metal_hit.get(), () -> DDSoundEvents.magical_metal_fall.get())))
+                    .transform(axeOrPickaxe())
+                    .blockstate(BlockStateGen.directionalBlockProvider(true))
+                    .transform(BlockStressDefaults.setImpact(24.0))
+                    .onRegister(movementBehaviour(new ShadowDrillMovementBehaviour()))
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<IndustrialFanBlock> industrial_fan =
             REGISTRATE.block("industrial_fan", IndustrialFanBlock::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(p -> p.color(MaterialColor.PODZOL)
+                    .initialProperties(SharedProperties::stone)
+                    .properties(p -> p.color(MaterialColor.PODZOL)
                     .sound(SoundType.NETHERITE_BLOCK))
-            .properties(BlockBehaviour.Properties::noOcclusion)
-            .blockstate(BlockStateGen.directionalBlockProvider(true))
-            .addLayer(() -> RenderType::cutoutMipped)
-            .transform(axeOrPickaxe())
-            .transform(BlockStressDefaults.setImpact(4.0))
-            .transform(BlockStressDefaults.setCapacity(16))
-            .simpleItem()
-            .register();
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .blockstate(BlockStateGen.directionalBlockProvider(true))
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .transform(axeOrPickaxe())
+                    .transform(BlockStressDefaults.setImpact(4.0))
+                    .transform(BlockStressDefaults.setCapacity(16))
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<FurnaceEngineBlock> FURNACE_ENGINE =
-            REGISTRATE.block("furnace_engine", FurnaceEngineBlock::new)
-            .initialProperties(SharedProperties::softMetal)
-            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
-            .transform(axeOrPickaxe())
-            .tag(AllTags.AllBlockTags.BRITTLE.tag)
-            .blockstate(BlockStateGen.horizontalBlockProvider(true))
-            .transform(BlockStressDefaults.setCapacity(341.5))
-            .item()
-            .transform(customItemModel())
-            .register();
+                    REGISTRATE.block("furnace_engine", FurnaceEngineBlock::new)
+                    .initialProperties(SharedProperties::softMetal)
+                    .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+                    .transform(axeOrPickaxe())
+                    .tag(AllTags.AllBlockTags.BRITTLE.tag)
+                    .blockstate(BlockStateGen.horizontalBlockProvider(true))
+                    .transform(BlockStressDefaults.setCapacity(341.5))
+                    .item()
+                    .transform(customItemModel())
+                    .register();
 
     public static final BlockEntry<FlywheelBlock> FLYWHEEL =
             REGISTRATE.block("flywheel", FlywheelBlock::new)
-            .initialProperties(SharedProperties::softMetal)
-            .properties(BlockBehaviour.Properties::noOcclusion)
-            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
-            .transform(axeOrPickaxe())
-            .transform(BlockStressDefaults.setNoImpact())
-            .blockstate(new FlywheelGenerator()::generate)
-            .item()
-            .transform(customItemModel())
-            .register();
+                    .initialProperties(SharedProperties::softMetal)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+                    .transform(axeOrPickaxe())
+                    .transform(BlockStressDefaults.setNoImpact())
+                    .blockstate(new FlywheelGenerator()::generate)
+                    .item()
+                    .transform(customItemModel())
+                    .register();
 
 
     public static final BlockEntry<PotatoTurretBlock> POTATO_TURRET =
@@ -591,52 +621,29 @@ public class DDBlocks {
                     .simpleItem()
                     .register();
 
-    public static final BlockEntry<RadiantDrillBlock> RADIANT_DRILL =
-            REGISTRATE.block("radiant_drill", RadiantDrillBlock::new)
-                    .initialProperties(SharedProperties::stone)
-                    .properties(p -> p.color(MaterialColor.PODZOL))
-                    .addLayer(() -> RenderType::translucent)
-                    .transform(axeOrPickaxe())
-                    .blockstate(BlockStateGen.directionalBlockProvider(true))
-                    .transform(BlockStressDefaults.setImpact(16.0))
-                    .onRegister(movementBehaviour(new RadiantDrillMovementBehaviour()))
-                    .simpleItem()
-                    .register();
-
-    public static final BlockEntry<ShadowDrillBlock> SHADOW_DRILL =
-            REGISTRATE.block("shadow_drill", ShadowDrillBlock::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(p -> p.color(MaterialColor.PODZOL))
-            .transform(axeOrPickaxe())
-            .blockstate(BlockStateGen.directionalBlockProvider(true))
-            .transform(BlockStressDefaults.setImpact(16.0))
-            .onRegister(movementBehaviour(new ShadowDrillMovementBehaviour()))
-            .simpleItem()
-            .register();
-
     public static final BlockEntry<HydraulicPressBlock> hydraulic_press =
             REGISTRATE.block("hydraulic_press", HydraulicPressBlock::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(p -> p.color(MaterialColor.PODZOL)
+                    .initialProperties(SharedProperties::stone)
+                    .properties(p -> p.color(MaterialColor.PODZOL)
                     .sound(SoundType.COPPER))
-            .properties(BlockBehaviour.Properties::noOcclusion)
-            .transform(axeOrPickaxe())
-            .blockstate(BlockStateGen.horizontalBlockProvider(true))
-            .addLayer(() -> RenderType::cutoutMipped)
-            .transform(BlockStressDefaults.setImpact(32.0))
-            .item(AssemblyOperatorBlockItem::new)
-            .transform(customItemModel())
-            .register();
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .transform(axeOrPickaxe())
+                    .blockstate(BlockStateGen.horizontalBlockProvider(true))
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .transform(BlockStressDefaults.setImpact(32.0))
+                    .item(AssemblyOperatorBlockItem::new)
+                    .transform(customItemModel())
+                    .register();
 
     public static final BlockEntry<KineticMotorBlock> KINETIC_MOTOR =
             REGISTRATE.block("kinetic_motor", KineticMotorBlock::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(p -> p.color(MaterialColor.DIRT))
-            .transform(pickaxeOnly())
-            .transform(BlockStressDefaults.setCapacity(1.5))
-            .transform(BlockStressDefaults.setGeneratorSpeed(() -> Couple.create(0, 32)))
-            .simpleItem()
-            .register();
+                    .initialProperties(SharedProperties::stone)
+                    .properties(p -> p.color(MaterialColor.DIRT))
+                    .transform(pickaxeOnly())
+                    .transform(BlockStressDefaults.setCapacity(1.5))
+                    .transform(BlockStressDefaults.setGeneratorSpeed(() -> Couple.create(0, 32)))
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<AcceleratorMotorBlock> ACCELERATOR_MOTOR =
             REGISTRATE.block("accelerator_motor", AcceleratorMotorBlock::new)
@@ -649,22 +656,22 @@ public class DDBlocks {
                     .register();
 
     public static final BlockEntry<CogCrankBlock> cogCrank = REGISTRATE.block("cog_crank", CogCrankBlock::new)
-            .initialProperties(SharedProperties::wooden)
-            .properties(p -> p.color(MaterialColor.PODZOL))
-            .transform(axeOrPickaxe())
-            .blockstate(BlockStateGen.axisBlockProvider(true))
-            .transform(BlockStressDefaults.setCapacity(8.0))
-            .transform(BlockStressDefaults.setGeneratorSpeed(CogCrankBlock::getSpeedRange))
-            .tag(AllTags.AllBlockTags.BRITTLE.tag)
-            .recipe((ctx, prov) -> ShapelessRecipeBuilder.shapeless(ctx.getEntry(), 1)
-                    .requires(AllBlocks.HAND_CRANK.get())
-                    .requires(AllBlocks.COGWHEEL.get())
-                    .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
-                    .save(prov))
-            .onRegister(ItemUseOverrides::addBlock)
-            .item()
-            .transform(customItemModel())
-            .register();
+                    .initialProperties(SharedProperties::wooden)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .transform(axeOrPickaxe())
+                    .blockstate(BlockStateGen.axisBlockProvider(true))
+                    .transform(BlockStressDefaults.setCapacity(8.0))
+                    .transform(BlockStressDefaults.setGeneratorSpeed(CogCrankBlock::getSpeedRange))
+                    .tag(AllTags.AllBlockTags.BRITTLE.tag)
+                    .recipe((ctx, prov) -> ShapelessRecipeBuilder.shapeless(ctx.getEntry(), 1)
+                            .requires(AllBlocks.HAND_CRANK.get())
+                            .requires(AllBlocks.COGWHEEL.get())
+                            .unlockedBy("has_item", RegistrateRecipeProvider.has(ctx.get()))
+                            .save(prov))
+                    .onRegister(ItemUseOverrides::addBlock)
+                    .item()
+                    .transform(customItemModel())
+                    .register();
 
     public static final BlockEntry<FanSailBlock> splashing_sail =
             REGISTRATE.block("splashing_sail", FanSailBlock::sail)
@@ -860,6 +867,7 @@ public class DDBlocks {
                     .transform(BuilderTransformers.scaffold("refined_radiance",
                             () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/refined_radiance")), MaterialColor.SNOW,
                             DDBlockSpriteShifts.REFINED_RADIANCE_SCAFFOLD, DDBlockSpriteShifts.REFINED_RADIANCE_SCAFFOLD_INSIDE, DDBlockSpriteShifts.REFINED_RADIANCE_CASING))
+                    .properties(p -> p.lightLevel($ -> 12))
                     .register();
     public static final BlockEntry<MetalScaffoldingBlock> STARGAZE_SINGULARITY_SCAFFOLD =
             REGISTRATE.block("stargaze_singularity_scaffolding", MetalScaffoldingBlock::new)

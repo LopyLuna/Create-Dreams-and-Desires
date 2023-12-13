@@ -61,6 +61,8 @@
 
     "create_dd:hydraulic_press",
     "create_dd:bronze_drill",
+    "create_dd:radiant_drill",
+    "create_dd:shadow_drill",
     "create_dd:bronze_saw",
     "create_dd:2_blade_fan",
     "create_dd:4_blade_fan",

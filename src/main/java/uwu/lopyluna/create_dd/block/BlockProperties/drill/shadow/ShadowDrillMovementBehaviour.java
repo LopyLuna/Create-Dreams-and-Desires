@@ -11,6 +11,7 @@ import com.simibubi.create.content.contraptions.render.ContraptionRenderDispatch
 import com.simibubi.create.content.kinetics.base.BlockBreakingMovementBehaviour;
 import com.simibubi.create.content.trains.entity.CarriageContraption;
 import com.simibubi.create.foundation.utility.VecHelper;
+import com.simibubi.create.infrastructure.config.AllConfigs;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -18,12 +19,16 @@ import net.minecraft.nbt.NbtUtils;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.items.ItemHandlerHelper;
+import uwu.lopyluna.create_dd.DDTags;
 
 import javax.annotation.Nullable;
 
@@ -163,7 +168,28 @@ public class ShadowDrillMovementBehaviour extends BlockBreakingMovementBehaviour
     @Override
     public boolean canBreak(Level world, BlockPos breakingPos, BlockState state) {
         return super.canBreak(world, breakingPos, state) && !state.getCollisionShape(world, breakingPos)
-                .isEmpty() && !AllTags.AllBlockTags.TRACKS.matches(state);
+                .isEmpty() && !AllTags.AllBlockTags.TRACKS.matches(state) && !DDTags.AllBlockTags.shadow_drill_immune.matches(state);
     }
+    @Override
+    public void dropItem(MovementContext context, ItemStack stack) {
+        ItemStack remainder;
+        if (AllConfigs.server().kinetics.moveItemsToStorage.get())
+            remainder = ItemHandlerHelper.insertItem(context.contraption.getSharedInventory(), stack, false);
+        else
+            remainder = stack;
+        if (remainder.isEmpty())
+            return;
 
+        // Actors might void items if their positions is undefined
+        Vec3 vec = context.position;
+        if (vec == null)
+            return;
+
+        ItemEntity itemEntity = new ItemEntity(context.world, vec.x, vec.y, vec.z, remainder);
+        itemEntity.setDefaultPickUpDelay();
+        itemEntity.setDeltaMovement(Vec3.ZERO);
+        itemEntity.setUnlimitedLifetime();
+        itemEntity.setNoGravity(true);
+        context.world.addFreshEntity(itemEntity);
+    }
 }

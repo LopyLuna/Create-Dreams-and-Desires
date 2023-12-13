@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "BAB",
+    " D "
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:ingots/mithril"
+    },
+    "B": {
+      "item": "create_dd:shadow_steel"
+    },
+    "D": {
+      "item": "create_dd:steel_casing"
+    }
+  },
+  "result": {
+    "item": "create_dd:shadow_drill",
+    "count": 1
+  }
+}

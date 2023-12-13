@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "BAB",
+    " D "
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:ingots/mithril"
+    },
+    "B": {
+      "item": "create_dd:refined_radiance"
+    },
+    "D": {
+      "item": "create_dd:steel_casing"
+    }
+  },
+  "result": {
+    "item": "create_dd:radiant_drill",
+    "count": 1
+  }
+}

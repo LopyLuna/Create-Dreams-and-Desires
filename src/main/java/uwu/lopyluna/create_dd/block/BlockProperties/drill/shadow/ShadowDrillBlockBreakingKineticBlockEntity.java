@@ -108,7 +108,7 @@ public abstract class ShadowDrillBlockBreakingKineticBlockEntity extends BlockBr
             ItemEntity itementity = new ItemEntity(level, vec.x, vec.y, vec.z, stack);
             itementity.setDefaultPickUpDelay();
             itementity.setDeltaMovement(Vec3.ZERO);
-            itementity.setInvulnerable(true);
+            itementity.setUnlimitedLifetime();
             itementity.setNoGravity(true);
             level.addFreshEntity(itementity);
 

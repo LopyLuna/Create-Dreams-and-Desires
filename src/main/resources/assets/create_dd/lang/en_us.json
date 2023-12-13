@@ -532,6 +532,8 @@
   "advancement.create_dd.shadow_steel.desc": "Create Shadow Steel, a Ingot of the Abyss.",
   "advancement.create_dd.shadow_steel_casing": "The Dark Magic",
   "advancement.create_dd.shadow_steel_casing.desc": "Apply Shadow Steel to an Obsidian, creating a Casing of the Shadows!",
+  "advancement.create_dd.shadow_drill": "Dark Magic Drill!",
+  "advancement.create_dd.shadow_drill.desc": "The Shadow Drill is a way faster and better version of the most Drills & haves the ability to Silk Touch Blocks!",
   "advancement.create_dd.overcharge_alloy": "Spark of the Imagination!",
   "advancement.create_dd.overcharge_alloy.desc": "(Crafts & Additions Exclusive) Immense power of the Tesla Coil!",
   "advancement.create_dd.overcharged_casing": "The Hex Tech",
@@ -540,6 +542,8 @@
   "advancement.create_dd.refined_radiance.desc": "Create Refined Radiance, a powerful blinding Ingot that shall ward of evil!",
   "advancement.create_dd.refined_radiance_casing": "The Spiritual Magic",
   "advancement.create_dd.refined_radiance_casing.desc": "Apply Refined Radiance to an Light Blessed Block, creating a blinding Bright Casing!",
+  "advancement.create_dd.radiant_drill": "Spiritual Magic Drill!",
+  "advancement.create_dd.radiant_drill.desc": "The Radiant Drill is a way faster and better version of the most Drills & haves the ability to Fortune Blocks!",
   "advancement.create_dd.accelerator_motor": "Rotation Speed Controller Motor?",
   "advancement.create_dd.accelerator_motor.desc": "A Motor that doesn't generate any stress & control the speed up to 256!",
   "advancement.create_dd.bronze_ingot": "Gunmetal Bronze, PEW PEW PEW!",
@@ -729,8 +733,25 @@
 
   "block.create_dd.bronze_drill.tooltip": "BRONZE DRILL",
   "block.create_dd.bronze_drill.tooltip.summary": "Acts like a _Mechanical Drill_ but _mines faster_!",
+  "block.create_dd.bronze_drill.tooltip.condition1": "When Blocks are Broken",
+  "block.create_dd.bronze_drill.tooltip.behaviour1": "Makes _items fire resistant_!",
+
+  "block.create_dd.radiant_drill.tooltip": "RADIANT DRILL",
+  "block.create_dd.radiant_drill.tooltip.summary": "Acts like a _Mechanical Drill_ but _mines way faster_!",
+  "block.create_dd.radiant_drill.tooltip.condition1": "When Blocks are Broken",
+  "block.create_dd.radiant_drill.tooltip.behaviour1": "Applies _Fortune IV_ & makes _items float_ also _never de-spawn_!",
+
+
+  "block.create_dd.shadow_drill.tooltip": "SHADOW DRILL",
+  "block.create_dd.shadow_drill.tooltip.summary": "Acts like a _Mechanical Drill_ but _mines way faster_!",
+  "block.create_dd.shadow_drill.tooltip.condition1": "When Blocks are Broken",
+  "block.create_dd.shadow_drill.tooltip.behaviour1": "Applies _Silk Touch_ & makes _items float_ also _never de-spawn_!",
+
+
   "block.create_dd.bronze_saw.tooltip": "BRONZE SAW",
   "block.create_dd.bronze_saw.tooltip.summary": "Acts like a _Mechanical Saw_ but _mines faster_ & allows for _Bulk Sawing_!",
+
+
 
   "death.attack.create.fan_super_lava": "%1$s was reduce to ashes by an Industrial Fan",
   "death.attack.create.fan_super_lava.player": "%1$s seethe enough they were thrown into a super smelter by %2$s",

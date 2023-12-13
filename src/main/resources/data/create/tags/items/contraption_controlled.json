@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "create_dd:bronze_drill",
+    "create_dd:radiant_drill",
+    "create_dd:shadow_drill",
     "create_dd:bronze_saw"
   ]
 }

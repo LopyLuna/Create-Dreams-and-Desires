@@ -64,7 +64,7 @@ public class ShadowDrillBlock extends DirectionalKineticBlock implements IBE<Sha
     private boolean visible;
 
     public ShadowDrillBlock(Properties p_i48440_1_) {
-        this(p_i48440_1_, false);
+        this(p_i48440_1_, true);
     }
 
     @Override

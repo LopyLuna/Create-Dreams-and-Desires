@@ -62,7 +62,7 @@ public class RadiantDrillBlock extends DirectionalKineticBlock implements IBE<Ra
     private boolean visible;
 
     public RadiantDrillBlock(Properties p_i48440_1_) {
-        this(p_i48440_1_, false);
+        this(p_i48440_1_, true);
     }
 
     @Override
