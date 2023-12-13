@@ -3,7 +3,9 @@ package uwu.lopyluna.create_dd.block.BlockProperties.potato_turret;
 import com.simibubi.create.AllEntityTypes;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
+import com.simibubi.create.content.equipment.potatoCannon.PotatoCannonProjectileType;
 import com.simibubi.create.content.equipment.potatoCannon.PotatoProjectileEntity;
+import com.simibubi.create.content.equipment.potatoCannon.PotatoProjectileTypeManager;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.foundation.item.SmartInventory;
 import com.simibubi.create.foundation.utility.Lang;
@@ -30,6 +32,7 @@ import net.minecraftforge.items.wrapper.InvWrapper;
 import uwu.lopyluna.create_dd.DDCreate;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 public class PotatoTurretBlockEntity extends KineticBlockEntity implements IHaveGoggleInformation {
@@ -70,16 +73,22 @@ public class PotatoTurretBlockEntity extends KineticBlockEntity implements IHave
         itemCapability = LazyOptional.of(() -> new CombinedInvWrapper(inventory));
     }
 
-
+;
     public void tick(){
         super.tick();
+
+        fireRate = (int) (17-(getSpeed()/20));
+
+
 
 
         targetAngleY %=360;
         amogus %= 360;
 
-        if(owner!=null)
-            level.setBlock(getBlockPos().above(5),Blocks.DIAMOND_BLOCK.defaultBlockState(), 3);
+        if(visualAngleX==0)
+            visualAngleX=0.0001f;
+        if(visualAngleY==0)
+            visualAngleY=0.0001f;
 
         angleX.chase(visualAngleX, 0.3f, LerpedFloat.Chaser.EXP);
         angleX.tickChaser();
@@ -165,26 +174,42 @@ public class PotatoTurretBlockEntity extends KineticBlockEntity implements IHave
     }
 
     public void shoot(){
+
+
+
+
+        if(inventory.isEmpty())
+            return;
+
+        Optional<PotatoCannonProjectileType> type = PotatoProjectileTypeManager.getTypeForStack(inventory.getItem(0));
+
+
+        if(!type.isPresent())
+            return;
+
+
         timer = 0;
 
-            targetVec = Vec3.directionFromRotation((float) -targetAngleX, (float) -targetAngleY);
-            amogus = (float) targetAngleY;
+        targetVec = Vec3.directionFromRotation((float) -targetAngleX, (float) -targetAngleY);
+        amogus = (float) targetAngleY;
 
 
-            targetVec = targetVec.scale(2);
+        targetVec = targetVec.scale(2);
 
-            if(distance>=10)
-                targetVec = targetVec.add(0,0.15,0);
+        if(distance>=10)
+            targetVec = targetVec.add(0,0.15,0);
 //
        // if(level.isClientSide())
        //     return;
 
         PotatoProjectileEntity projectile = AllEntityTypes.POTATO_PROJECTILE.create(level);
-        if(!inventory.isEmpty())
-            projectile.setItem(inventory.getItem(0));
+
+        projectile.setItem(inventory.getItem(0));
         projectile.setPos(getBlockPos().getX()+.5, getBlockPos().getY()+1.5, getBlockPos().getZ()+.5);
         projectile.setDeltaMovement(targetVec);
         level.addFreshEntity(projectile);
+
+        inventory.removeItem(0,1);
 
 
 

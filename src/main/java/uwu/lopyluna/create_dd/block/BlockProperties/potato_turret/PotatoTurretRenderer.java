@@ -42,14 +42,14 @@ public class PotatoTurretRenderer extends KineticBlockEntityRenderer<PotatoTurre
 
         CachedBufferer.partial(DDBlockPartialModel.POTATO_TURRET_CONNECTOR, blockState)
                 .centre()
-                .rotateY(be.angleY.getValue())
+                .rotateY(be.angleY.getValue(partialTicks))
                 .light(lightAbove)
                 .renderInto(ms, vb);
 
         CachedBufferer.partial(DDBlockPartialModel.POTATO_TURRET_SINGLE_BARREL, blockState)
                 .centre()
-                .rotateY(be.angleY.getValue())
-                .rotateX(be.angleX.getValue())
+                .rotateY(be.angleY.getValue(partialTicks))
+                .rotateX(be.angleX.getValue(partialTicks))
                 .light(lightAbove)
                 .renderInto(ms, vb);
 
