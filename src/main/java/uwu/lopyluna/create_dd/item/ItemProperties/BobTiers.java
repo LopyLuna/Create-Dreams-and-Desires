@@ -74,4 +74,38 @@ public class BobTiers {
             return Ingredient.of(AllItems.ANDESITE_ALLOY.get());
         }
     };
+
+    public static final Tier Drill = new Tier()
+    {
+        @Override
+        public int getUses() {
+            return 1024;
+        }
+
+        @Override
+        public float getSpeed() {
+            return 8F;
+        }
+
+        @Override
+        public float getAttackDamageBonus() {
+            return 4F;
+        }
+
+        @Override
+        public int getLevel() {
+            return 2;
+        }
+
+        @Override
+        public int getEnchantmentValue() {
+            return 20;
+        }
+
+        @NotNull
+        @Override
+        public Ingredient getRepairIngredient() {
+            return Ingredient.of(AllItems.ANDESITE_ALLOY.get());
+        }
+    };
 }

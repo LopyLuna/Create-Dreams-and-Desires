@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:potassic",
+    "create:asurine",
+    "create:crimsite",
+    "create:ochrum",
+    "create:veridium",
+    "create:scoria",
+    "create:scorchia"
+  ]
+}

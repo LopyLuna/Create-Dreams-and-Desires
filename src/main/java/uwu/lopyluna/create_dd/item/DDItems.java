@@ -19,6 +19,7 @@ import uwu.lopyluna.create_dd.item.ItemProperties.SequencedCraftingItem.Sequence
 import uwu.lopyluna.create_dd.item.ItemProperties.StargazeInfiniteBlock;
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.UnchargedStargazeSingularity;
 import uwu.lopyluna.create_dd.item.ItemProperties.compound.*;
+import uwu.lopyluna.create_dd.item.ItemProperties.drilltool.ExcavationDrillItem;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemOne;
 import uwu.lopyluna.create_dd.item.ItemProperties.exp.ExperienceNuggetItemTwo;
 import uwu.lopyluna.create_dd.item.ItemProperties.milkshakes.*;
@@ -216,6 +217,12 @@ public class DDItems {
 
     public static final ItemEntry<DeforesterItem> deforester_saw =
             REGISTRATE.item("deforester_saw", DeforesterItem::new)
+                    .properties(p -> p.stacksTo(1))
+                    .model(AssetLookup.itemModelWithPartials())
+                    .register();
+
+    public static final ItemEntry<ExcavationDrillItem> excavation_drill =
+            REGISTRATE.item("excavation_drill", ExcavationDrillItem::new)
                     .properties(p -> p.stacksTo(1))
                     .model(AssetLookup.itemModelWithPartials())
                     .register();

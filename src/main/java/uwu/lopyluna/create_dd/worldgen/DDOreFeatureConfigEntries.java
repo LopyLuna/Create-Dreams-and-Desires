@@ -70,7 +70,7 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_RAW_ORES_OVERWORLD =
-            create("striated_raw_ores_overworld", 24, 1 / 25f, 0, 200)
+            create("striated_raw_ores_overworld", 12, 1 / 25f, 0, 200)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.RAW_CASSITERITE)
                     .withLayerPattern(DDLayerPatterns.RAW_SCORIA)
