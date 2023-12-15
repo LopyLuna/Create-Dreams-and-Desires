@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create_dd:item/excavation_drill/item",
+	"textures": {
+		"0": "create_dd:block/potato_turret/beep",
+		"particle": "create_dd:block/potato_turret/beep"
+	},
+	"elements": [
+		{
+			"from": [7.5, 6.25, 1.25],
+			"to": [8.5, 7.25, 2.25],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8.5, 3.5, 12.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		}
+	]
+}

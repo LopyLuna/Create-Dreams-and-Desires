@@ -1,27 +1,23 @@
 package uwu.lopyluna.create_dd.item.ItemProperties.drilltool;
 
-import com.simibubi.create.CreateClient;
 import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import com.simibubi.create.foundation.item.render.SimpleCustomRenderer;
 import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -29,7 +25,6 @@ import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.DDTags;
 import uwu.lopyluna.create_dd.item.DDItems;
 import uwu.lopyluna.create_dd.item.ItemProperties.BobTiers;
-import uwu.lopyluna.create_dd.item.ItemProperties.sawtool.DeforesterRender;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -37,33 +32,41 @@ import java.util.function.Consumer;
 
 import static uwu.lopyluna.create_dd.item.ItemProperties.drilltool.ExcavtionMining.findVein;
 
-
+@SuppressWarnings({"all"})
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ExcavationDrillItem extends BackTankPickaxeItem {
     private static boolean excavating = false;
+    static boolean excavatingDisplay = false;
 
     public ExcavationDrillItem(Properties builder) {
         super(BobTiers.Drill, 3, -3.0F, builder);
     }
+    @Override
+    public float getDestroySpeed(ItemStack pStack, BlockState state) {
+        LocalPlayer player = Minecraft.getInstance().player;
+        assert player != null;
 
-    public float getDestroySpeed(ItemStack pStack, BlockState pState) {
-        if (pState.is(Tags.Blocks.ORES) || pState.is(DDTags.AllBlockTags.ore_stones.tag) || pState.is(DDTags.AllBlockTags.valid_excavation.tag)) {
-            return pState.is(Tags.Blocks.ORES) || pState.is(DDTags.AllBlockTags.ore_stones.tag) || pState.is(DDTags.AllBlockTags.valid_excavation.tag) ? this.speed / 4 : 0.25F;
+        if (state.is(DDTags.AllBlockTags.valid_excavation.tag) && player.isCrouching() && state.is(DDTags.AllBlockTags.drill_mineable.tag)) {
+            excavatingDisplay = true;
+            return state.is(DDTags.AllBlockTags.valid_excavation.tag) && player.isCrouching() && state.is(DDTags.AllBlockTags.drill_mineable.tag) ? this.speed / 4 : 0.25F;
         } else {
-            return pState.is(pState.getBlock()) ? this.speed : 1.0F;
+            excavatingDisplay = false;
+            return state.is(DDTags.AllBlockTags.drill_mineable.tag) ? this.speed : 1.0F;
         }
     }
 
     public static void destroyVein(Level iWorld, BlockState state, BlockPos pos, Player player) {
 
-        if (excavating || !(state.is(Tags.Blocks.ORES) || !(state.is(DDTags.AllBlockTags.ore_stones.tag) || !(state.is(DDTags.AllBlockTags.valid_excavation.tag) || !player.isCrouching()))))
+        if (excavating || !state.is(DDTags.AllBlockTags.valid_excavation.tag) && player.isCrouching())
             return;
 
+        excavatingDisplay = true;
         excavating = true;
         findVein(iWorld, pos).destroyBlocks(iWorld, player, (dropPos, item) -> dropItemFromMineVein(iWorld, pos, dropPos, item));
         excavating = false;
+        excavatingDisplay = false;
     }
 
     @SubscribeEvent

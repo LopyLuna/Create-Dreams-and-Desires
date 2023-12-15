@@ -79,7 +79,7 @@ public class BobTiers {
     {
         @Override
         public int getUses() {
-            return 1024;
+            return 512;
         }
 
         @Override

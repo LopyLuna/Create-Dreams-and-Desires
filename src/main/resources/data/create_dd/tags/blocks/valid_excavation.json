@@ -1,5 +1,10 @@
 {
   "replace": false,
   "values": [
+    "#forge:storage_blocks/raw_copper",
+    "#forge:storage_blocks/raw_gold",
+    "#forge:storage_blocks/raw_iron",
+    "#forge:ores",
+    "#create_dd:ore_stones"
   ]
 }

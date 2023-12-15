@@ -88,6 +88,7 @@
 
   "item.create_dd.forest_ravager": "Mythical Forest Ravager",
   "item.create_dd.deforester_saw": "Deforesting Saw",
+  "item.create_dd.excavation_drill": "Excavation Drill",
   "item.create_dd.vanilla_orchid": "Vanilla Orchid",
   "item.create_dd.integrated_circuit": "Integrated Circuit",
   "item.create_dd.integrated_mechanism": "Integrated Mechanism",
@@ -692,6 +693,13 @@
   "item.create_dd.deforester_saw.tooltip.behaviour1": "Act like the _Mechanical Saw_ that _cuts the Entire Tree down_",
   "item.create_dd.deforester_saw.tooltip.condition2": "While wearing Backtank",
   "item.create_dd.deforester_saw.tooltip.behaviour2": "_No_ _Durability_ will be used. Instead, _Air_ _pressure_ is drained from the Tank",
+
+  "item.create_dd.excavation_drill.tooltip": "EXCAVATION DRILL",
+  "item.create_dd.excavation_drill.tooltip.summary": "A Powerful handheld drill that can _Excavate Entire Vein of Ores_!",
+  "item.create_dd.excavation_drill.tooltip.condition1": "Breaking a Block while Sneaking",
+  "item.create_dd.excavation_drill.tooltip.behaviour1": "_Vein Mines_ while _Looking at Ores_ otherwise it will _Mine a 3x3 Area_",
+  "item.create_dd.excavation_drill.tooltip.condition2": "While wearing Backtank",
+  "item.create_dd.excavation_drill.tooltip.behaviour2": "_No_ _Durability_ will be used. Instead, _Air_ _pressure_ is drained from the Tank",
 
   "item.create_dd.frozen_nugget.tooltip": "FROZEN NUGGET OF EXPERIENCE",
   "item.create_dd.frozen_nugget.tooltip.summary": "A speck of _frozen inspiration_ from your fantastic inventions.",

@@ -56,6 +56,7 @@ public static TagKey<Block> forgeBlockTag(String path) {
     public enum AllBlockTags {
         ore_stones,
         valid_excavation,
+        drill_mineable(NameSpace.MOD, "mineable/excavation_drill"),
 
         potassic_replaceable,
         weathered_limestone_replaceable,

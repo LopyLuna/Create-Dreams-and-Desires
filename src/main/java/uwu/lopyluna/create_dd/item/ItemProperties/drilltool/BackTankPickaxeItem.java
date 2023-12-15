@@ -26,7 +26,7 @@ public class BackTankPickaxeItem extends PickaxeItem {
     @Override
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
         if (!BacktankUtil.canAbsorbDamage(pAttacker, getUses))
-            pStack.hurtAndBreak(1, pAttacker, p -> {
+            pStack.hurtAndBreak(2, pAttacker, p -> {
                 p.broadcastBreakEvent(EquipmentSlot.MAINHAND);
             });
         return true;

@@ -23,6 +23,7 @@ public class ExcavationDrillRender extends CustomRenderedItemModelRenderer {
     protected static final PartialModel COG = new PartialModel(DDCreate.asResource("item/excavation_drill/cog"));
     protected static final PartialModel HEAD = new PartialModel(DDCreate.asResource("item/excavation_drill/head"));
     protected static final PartialModel ON = new PartialModel(DDCreate.asResource("item/excavation_drill/on"));
+    protected static final PartialModel BIG_ON = new PartialModel(DDCreate.asResource("item/excavation_drill/big_on"));
     protected static final PartialModel OFF = new PartialModel(DDCreate.asResource("item/excavation_drill/off"));
 
     private static final Vec3 ROTATION_OFFSET = new Vec3(0, -4 / 16f, 0);
@@ -33,6 +34,8 @@ public class ExcavationDrillRender extends CustomRenderedItemModelRenderer {
         TransformStack stacker = TransformStack.cast(ms);
         int i =  -2;
         boolean active = false;
+        boolean displayActive = false;
+        boolean excavatingDisplay = ExcavationDrillItem.excavatingDisplay;
 
         LocalPlayer player = Minecraft.getInstance().player;
         assert player != null;
@@ -43,16 +46,24 @@ public class ExcavationDrillRender extends CustomRenderedItemModelRenderer {
 
         float boostCog = ((i * -2) + (valid ? (player.attackAnim) / 10f : 0) + 1);
 
+
         //if ( player.isCrouching() || player.isAutoSpinAttack() || player.isUsingItem() ) {} idfk maybe used for later
 
         int maxLight = 0xF000F0;
 
 
         ms.pushPose();
-        if ( player.isCrouching() && validSimple && !validSimpleOffHand )
+        boolean validSomthin = player.isCrouching() && validSimple && !validSimpleOffHand;
+
+        if ( validSimple && excavatingDisplay && !validSimpleOffHand) {
+        renderer.renderSolidGlowing(BIG_ON.get(), maxLight);
+        displayActive = true; } else { displayActive = false; }
+        if ( validSomthin && !excavatingDisplay) {
         renderer.renderSolidGlowing(ON.get(), maxLight);
-        if ( !player.isCrouching() || validSimpleOffHand )
+        displayActive = true; } else { displayActive = false; }
+        if ( !displayActive  && !excavatingDisplay)
         renderer.renderSolidGlowing(OFF.get(), maxLight);
+
         ms.popPose();
 
 
