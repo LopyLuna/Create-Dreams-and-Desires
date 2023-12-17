@@ -116,5 +116,14 @@
   "shimmer_fill": {"subtitle": "subtitles.item.bucket.empty","sounds": [
     {"name": "create_dd:bucket/shimmer_fill1","volume": 0.9},
     {"name": "create_dd:bucket/shimmer_fill2","volume": 0.9}
+  ]},
+
+  "radiant_panel": {"subtitle": "subtitles.block.radiant_panel.ambient","sounds": [
+    {"name": "create_dd:radiant_panel/ambient","volume": 0.9}
+  ]},
+  "shadow_panel": {"subtitle": "subtitles.block.shadow_panel.ambient","sounds": [
+    {"name": "create_dd:shadow_panel/ambient1","volume": 0.9},
+    {"name": "create_dd:shadow_panel/ambient2","volume": 0.9},
+    {"name": "create_dd:shadow_panel/ambient3","volume": 0.9}
   ]}
 }

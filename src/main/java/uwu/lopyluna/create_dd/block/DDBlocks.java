@@ -57,6 +57,10 @@ import uwu.lopyluna.create_dd.block.BlockProperties.fan.TwoBladeFanBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.magic.*;
+import uwu.lopyluna.create_dd.block.BlockProperties.panels.RadiantPanelBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.panels.RadiantPanelBlockEntity;
+import uwu.lopyluna.create_dd.block.BlockProperties.panels.ShadowPanelBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.panels.ShadowPanelBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlock2;
@@ -541,7 +545,7 @@ public class DDBlocks {
 
     public static final BlockEntry<RadiantDrillBlock> RADIANT_DRILL =
             REGISTRATE.block("radiant_drill", RadiantDrillBlock::new)
-                    .initialProperties(SharedProperties::stone)
+                    .initialProperties(SharedProperties::netheriteMetal)
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .properties(p -> p.sound(new ForgeSoundType(0.9f, 1.0f, () -> DDSoundEvents.magical_metal_break.get(),
                             () -> DDSoundEvents.magical_metal_step.get(), () -> DDSoundEvents.magical_metal_place.get(),
@@ -557,7 +561,7 @@ public class DDBlocks {
 
     public static final BlockEntry<ShadowDrillBlock> SHADOW_DRILL =
             REGISTRATE.block("shadow_drill", ShadowDrillBlock::new)
-                    .initialProperties(SharedProperties::stone)
+                    .initialProperties(SharedProperties::netheriteMetal)
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .properties(p -> p.sound(new ForgeSoundType(0.9f, 1.0f, () -> DDSoundEvents.magical_metal_break.get(),
                             () -> DDSoundEvents.magical_metal_step.get(), () -> DDSoundEvents.magical_metal_place.get(),
@@ -580,6 +584,33 @@ public class DDBlocks {
                     .transform(axeOrPickaxe())
                     .transform(BlockStressDefaults.setImpact(4.0))
                     .transform(BlockStressDefaults.setCapacity(16))
+                    .simpleItem()
+                    .register();
+
+    public static final BlockEntry<RadiantPanelBlock> RADIANT_PANEL =
+            REGISTRATE.block("radiant_panel", RadiantPanelBlock::new)
+                    .initialProperties(SharedProperties::netheriteMetal)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .properties(p -> p.sound(new ForgeSoundType(0.9f, 1.0f, () -> DDSoundEvents.magical_metal_break.get(),
+                            () -> DDSoundEvents.magical_metal_step.get(), () -> DDSoundEvents.magical_metal_place.get(),
+                            () -> DDSoundEvents.magical_metal_hit.get(), () -> DDSoundEvents.magical_metal_fall.get())))
+                    .properties(p -> p.lightLevel($ -> RadiantPanelBlockEntity.active ? 15 : RadiantPanelBlockEntity.weak_active ? 12 : 6))
+                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .transform(BlockStressDefaults.setCapacity(12.0F))
+                    .addLayer(() -> RenderType::translucent)
+                    .simpleItem()
+                    .register();
+
+    public static final BlockEntry<ShadowPanelBlock> SHADOW_PANEL =
+            REGISTRATE.block("shadow_panel", ShadowPanelBlock::new)
+                    .initialProperties(SharedProperties::netheriteMetal)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .properties(p -> p.sound(new ForgeSoundType(0.9f, 1.0f, () -> DDSoundEvents.magical_metal_break.get(),
+                            () -> DDSoundEvents.magical_metal_step.get(), () -> DDSoundEvents.magical_metal_place.get(),
+                            () -> DDSoundEvents.magical_metal_hit.get(), () -> DDSoundEvents.magical_metal_fall.get())))
+                    .properties(p -> p.lightLevel($ -> ShadowPanelBlockEntity.active ? 4 : ShadowPanelBlockEntity.weak_active ? 2 : 0))
+                    .properties(p -> p.requiresCorrectToolForDrops())
+                    .transform(BlockStressDefaults.setCapacity(8.0F))
                     .simpleItem()
                     .register();
 

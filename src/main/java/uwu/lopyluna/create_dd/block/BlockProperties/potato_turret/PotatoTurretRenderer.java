@@ -13,7 +13,6 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.block.state.BlockState;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 
-
 public class PotatoTurretRenderer extends KineticBlockEntityRenderer<PotatoTurretBlockEntity> {
     public PotatoTurretRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
@@ -38,14 +37,14 @@ public class PotatoTurretRenderer extends KineticBlockEntityRenderer<PotatoTurre
 
         CachedBufferer.partial(DDBlockPartialModel.POTATO_TURRET_CONNECTOR, blockState)
                 .centre()
-                .rotateY(be.angleY.getValue())
+                .rotateY(be.angleY.getValue(partialTicks))
                 .light(lightAbove)
                 .renderInto(ms, vb);
 
         CachedBufferer.partial(DDBlockPartialModel.POTATO_TURRET_SINGLE_BARREL, blockState)
                 .centre()
-                .rotateY(be.angleY.getValue())
-                .rotateX(be.angleX.getValue())
+                .rotateY(be.angleY.getValue(partialTicks))
+                .rotateX(be.angleX.getValue(partialTicks))
                 .light(lightAbove)
                 .renderInto(ms, vb);
 

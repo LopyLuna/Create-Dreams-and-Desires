@@ -24,7 +24,7 @@ public class PotatoTurretBlock extends HorizontalKineticBlock implements IBE<Pot
     private boolean visible;
 
     public PotatoTurretBlock(Properties p_i48440_1_) {
-        this(p_i48440_1_, false);
+        this(p_i48440_1_, true);
     }
 
     @Override
@@ -36,6 +36,11 @@ public class PotatoTurretBlock extends HorizontalKineticBlock implements IBE<Pot
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction preferred = getPreferredHorizontalFacing(context);
+
+
+
+        // ((PotatoTurretBlockEntity)context.getLevel().getBlockEntity(context.getClickedPos())).owner=context.getPlayer().getStringUUID();
+
         if (preferred != null)
             return defaultBlockState().setValue(HORIZONTAL_FACING, preferred.getOpposite());
         return this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite());

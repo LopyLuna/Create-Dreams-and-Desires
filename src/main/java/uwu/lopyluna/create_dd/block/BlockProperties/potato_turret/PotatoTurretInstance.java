@@ -5,6 +5,7 @@ import com.jozufozu.flywheel.api.MaterialManager;
 import com.jozufozu.flywheel.api.instance.DynamicInstance;
 import com.jozufozu.flywheel.core.materials.model.ModelData;
 import com.jozufozu.flywheel.core.materials.oriented.OrientedData;
+import com.jozufozu.flywheel.util.AnimationTickHolder;
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Quaternion;
@@ -53,9 +54,9 @@ public class PotatoTurretInstance extends SingleRotatingInstance<PotatoTurretBlo
     }
 
     private void transformConnector() {
-        //float speed = mixer.getRenderedHeadRotationSpeed(AnimationTickHolder.getPartialTicks());
+
         Quaternion baseRotation;
-        baseRotation = Vector3f.YP.rotationDegrees(blockEntity.angleY.getValue());
+        baseRotation = Vector3f.YP.rotationDegrees(blockEntity.angleY.getValue(AnimationTickHolder.getPartialTicks()));
 
 
 
@@ -74,9 +75,10 @@ public class PotatoTurretInstance extends SingleRotatingInstance<PotatoTurretBlo
         msr.translate(getInstancePosition());
         msr.centre()
                 .translateY(1)
-                .rotate(Direction.UP, AngleHelper.rad(blockEntity.angleY.getValue()))
+
+                .rotate(Direction.UP, AngleHelper.rad(blockEntity.angleY.getValue(AnimationTickHolder.getPartialTicks())))
                 .translateZ(0.4)
-                .rotate(Direction.WEST, AngleHelper.rad(-blockEntity.angleX.getValue()))
+                .rotate(Direction.WEST, AngleHelper.rad(-blockEntity.angleX.getValue(AnimationTickHolder.getPartialTicks())))
                 .translateZ(-0.4)
 
 

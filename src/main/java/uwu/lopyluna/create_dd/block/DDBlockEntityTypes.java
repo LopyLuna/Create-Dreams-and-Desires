@@ -42,6 +42,7 @@ import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPre
 import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPressRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.panels.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxRenderer;
 import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretBlockEntity;
@@ -53,6 +54,19 @@ import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 
 
 public class DDBlockEntityTypes {
+
+    public static final BlockEntityEntry<ShadowPanelBlockEntity> SHADOW_PANEL = REGISTRATE
+            .blockEntity("shadow_panel", ShadowPanelBlockEntity::new)
+            .instance(() -> ShadowCogInstance::new, false)
+            .validBlocks(DDBlocks.SHADOW_PANEL)
+            .register();
+
+    public static final BlockEntityEntry<RadiantPanelBlockEntity> RADIANT_PANEL = REGISTRATE
+            .blockEntity("radiant_panel", RadiantPanelBlockEntity::new)
+            .instance(() -> RadiantCogInstance::new, false)
+            .validBlocks(DDBlocks.RADIANT_PANEL)
+            .renderer(() -> RadiantPanelRenderer::new)
+            .register();
 
     public static final BlockEntityEntry<FurnaceEngineBlockEntity> FURNACE_ENGINE = REGISTRATE
             .blockEntity("furnace_engine", FurnaceEngineBlockEntity::new)

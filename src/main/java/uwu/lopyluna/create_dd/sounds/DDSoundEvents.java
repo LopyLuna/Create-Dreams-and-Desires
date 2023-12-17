@@ -33,6 +33,9 @@ public class DDSoundEvents {
     public static RegistryObject<SoundEvent> shimmer_fill = registerSoundEvent("shimmer_fill");
     public static RegistryObject<SoundEvent> shimmer_empty = registerSoundEvent("shimmer_empty");
 
+    public static RegistryObject<SoundEvent> radiant_panel = registerSoundEvent("radiant_panel"); //5
+    public static RegistryObject<SoundEvent> shadow_panel = registerSoundEvent("shadow_panel"); // 6
+
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(DDCreate.MOD_ID, name)));
     }

@@ -35,6 +35,12 @@ authors="LopyLuna" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 YIPPEE WASSUP THIS HURTS MY HEAD LMAO
+
+
+I suggest installing this
+
+Curseforge: https://www.curseforge.com/minecraft/mc-mods/detected-setblock-be-gone
+Modrinth: NA
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.create_dd]] #optional
@@ -63,3 +69,10 @@ mandatory=true
 versionRange="[0.5.1.f,)"
 ordering="NONE"
 side="BOTH"
+
+[[dependencies.create_dd]]
+modId="dsbg"
+mandatory=false
+versionRange="[1.0,)"
+ordering="NONE"
+side="CLIENT"
