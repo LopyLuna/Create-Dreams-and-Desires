@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "create_dd:forest_ravager",
+    "create_dd:deforester_saw",
+    "create_dd:excavation_drill"
+  ]
+}
