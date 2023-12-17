@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "create_dd:stargaze_singularity"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_dd:stargaze_singularity_sheet"
+    }
+  ]
+}
