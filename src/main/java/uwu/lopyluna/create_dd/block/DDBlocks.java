@@ -32,6 +32,7 @@ import uwu.lopyluna.create_dd.DDCreate;
 import uwu.lopyluna.create_dd.DDTags;
 import uwu.lopyluna.create_dd.block.BlockProperties.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawGenerator;
 import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillMovementBehaviour;
@@ -520,6 +521,7 @@ public class DDBlocks {
                     .addLayer(() -> RenderType::cutoutMipped)
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(axeOrPickaxe())
+                    .blockstate(new BronzeSawGenerator()::generate)
                     .transform(BlockStressDefaults.setImpact(12.0))
                     .onRegister(movementBehaviour(new BronzeSawMovementBehaviour()))
                     .addLayer(() -> RenderType::cutoutMipped)

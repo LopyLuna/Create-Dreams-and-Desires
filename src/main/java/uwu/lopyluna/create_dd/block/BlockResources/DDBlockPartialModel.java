@@ -10,14 +10,16 @@ import java.util.Map;
 
 public class DDBlockPartialModel {
 
-
     public static final PartialModel
             BRONZE_SAW_BLADE_HORIZONTAL_ACTIVE = block("bronze_saw/blade_horizontal_active"),
             BRONZE_SAW_BLADE_HORIZONTAL_INACTIVE = block("bronze_saw/blade_horizontal_inactive"),
             BRONZE_SAW_BLADE_HORIZONTAL_REVERSED = block("bronze_saw/blade_horizontal_reversed"),
             BRONZE_SAW_BLADE_VERTICAL_ACTIVE = block("bronze_saw/blade_vertical_active"),
             BRONZE_SAW_BLADE_VERTICAL_INACTIVE = block("bronze_saw/blade_vertical_inactive"),
-            BRONZE_SAW_BLADE_VERTICAL_REVERSED = block("bronze_saw/blade_vertical_reversed"),
+            BRONZE_SAW_BLADE_VERTICAL_REVERSED = block("bronze_saw/blade_vertical_reversed");
+
+
+    public static final PartialModel
             RADIANT_DRILL_HEAD = block("radiant_drill/head"),
             RADIANT_DRILL_HEAD_GLOW = block("radiant_drill/head_glow"),
             SHADOW_DRILL_HEAD = block("shadow_drill/head"),
@@ -50,6 +52,10 @@ public class DDBlockPartialModel {
 
     private static PartialModel block(String path) {
         return new PartialModel(DDCreate.asResource("block/" + path));
+    }
+
+    private static PartialModel entity(String path) {
+        return new PartialModel(DDCreate.asResource("entity/" + path));
     }
 
     public static void init() {

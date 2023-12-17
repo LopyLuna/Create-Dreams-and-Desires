@@ -23,6 +23,7 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import uwu.lopyluna.create_dd.block.BlockProperties.flywheel.engine.FurnaceEngineBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.Processing.IndustrialTypeFanProcessing;
+import uwu.lopyluna.create_dd.block.BlockResources.DDBlockPartialModel;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.block.BlockPalette.DDPaletteBlocks;
@@ -81,6 +82,7 @@ public class DDCreate
 
         DDSoundEvents.register(eventBus);
         DDItemTab.init();
+        DDBlockPartialModel.init();
         DDBlockEntityTypes.register();
         DDBlocks.register();
         DDItems.register();

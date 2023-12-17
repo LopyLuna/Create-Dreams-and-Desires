@@ -79,7 +79,7 @@ public class BronzeSawBlock extends SawBlock {
 
         @Override
         public Predicate<BlockState> getStatePredicate() {
-            return state -> DDBlocks.BRONZE_SAW.has(state);
+            return DDBlocks.BRONZE_SAW::has;
         }
 
         @Override

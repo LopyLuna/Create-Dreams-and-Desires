@@ -3,8 +3,8 @@
 		"gearbox_top": "create_dd:block/bronze_gearbox_top",
 		"gearbox": "create_dd:block/bronze_gearbox",
 		"andesite_casing_short": "create_dd:block/bronze_casing_short",
-		"particle": "create_dd:block/mechanical_saw_top",
-		"mechanical_saw_top": "create_dd:block/mechanical_saw_top"
+		"particle": "create_dd:block/bronze_saw_top",
+		"mechanical_saw_top": "create_dd:block/bronze_saw_top"
 	},
 	"elements": [
 		{

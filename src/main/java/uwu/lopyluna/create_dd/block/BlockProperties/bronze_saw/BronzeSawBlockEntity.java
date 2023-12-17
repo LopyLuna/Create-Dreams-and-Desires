@@ -6,7 +6,6 @@ import com.simibubi.create.AllSoundEvents;
 import com.simibubi.create.content.kinetics.belt.behaviour.DirectBeltInputBehaviour;
 import com.simibubi.create.content.kinetics.saw.CuttingRecipe;
 import com.simibubi.create.content.kinetics.saw.SawBlockEntity;
-import com.simibubi.create.content.kinetics.saw.SawFilterSlot;
 import com.simibubi.create.content.processing.recipe.ProcessingInventory;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipe;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
@@ -277,7 +276,7 @@ public class BronzeSawBlockEntity extends SawBlockEntity {
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
         super.addBehaviours(behaviours);
-        filtering = new FilteringBehaviour(this, new SawFilterSlot()).forRecipes();
+        filtering = new FilteringBehaviour(this, new BronzeSawFilterSlot()).forRecipes();
         behaviours.add(filtering);
         behaviours.add(new DirectBeltInputBehaviour(this).allowingBeltFunnelsWhen(this::canProcess));
         registerAwardables(behaviours, AllAdvancements.SAW_PROCESSING);
