@@ -39,22 +39,29 @@ public class DDOreFeatureConfigEntries {
                     .biomeTag(BiomeTags.IS_OVERWORLD)
                     .parent();
 
+    public static final DDOreFeatureConfigEntry DOLOMITE_BLOB =
+            create("dolomite_blob", 32, 5, -64, 24)
+                    .standardDatagenExt()
+                    .withBlocks(Couple.create(AllPaletteStoneTypes.DIORITE.getBaseBlock(), DDPaletteStoneTypes.dolomite.getBaseBlock()))
+                    .biomeTag(BiomeTags.IS_OVERWORLD)
+                    .parent();
+
     public static final DDOreFeatureConfigEntry STRIATED_ORES_OVERWORLD =
-            create("striated_ores_overworld", 32, 1 / 15f, 30, 128)
+            create("striated_ores_overworld", 24, 1 / 15f, 30, 128)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.CASSITERITE)
                     .biomeTag(BiomeTags.IS_OVERWORLD)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_SAVANNA =
-            create("striated_ores_savanna", 64, 1 / 5f, 30, 100)
+            create("striated_ores_savanna", 48, 1 / 5f, 30, 100)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.GABBRO)
                     .biomeTag(BiomeTags.IS_SAVANNA)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_BADLANDS =
-            create("striated_ores_badlands", 64, 1 / 6.5f, 30, 120)
+            create("striated_ores_badlands", 12, 1 / 3.5f, 30, 120)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.GABBRO)
                     .withLayerPattern(DDLayerPatterns.RAW_OCHRESTONE)
@@ -63,14 +70,15 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_OCEAN =
-            create("striated_ores_ocean", 64, 1 / 48f, 20, 80)
+            create("striated_ores_ocean", 48, 1 / 48f, 20, 80)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.WEATHERED_LIMESTONE)
+                    .withLayerPattern(DDLayerPatterns.DOLOMITE)
                     .biomeTag(BiomeTags.IS_OCEAN)
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_RAW_ORES_OVERWORLD =
-            create("striated_raw_ores_overworld", 12, 1 / 25f, 0, 200)
+            create("striated_raw_ores_overworld", 2, 0.5f / 2f, 0, 300)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.RAW_CASSITERITE)
                     .withLayerPattern(DDLayerPatterns.RAW_SCORIA)

@@ -22,8 +22,10 @@ public class RadiantPanelBlockEntity extends GeneratingKineticBlockEntity {
 
     float x = 0;
     float y = 0;
-    boolean yB = true;
+    float yI = 0;
+    float yT = 0;
     float z = 0;
+    boolean yB = false;
 
     public float Generator() {
         assert level != null;
@@ -59,14 +61,17 @@ public class RadiantPanelBlockEntity extends GeneratingKineticBlockEntity {
             updateGeneratedRotation();
             i = 0;
         }
-        if ( y < 20 || yB) {
+
+        yB = yT == 1;
+
+        if (yB) {
             y = y - 1;
-            if (y > 0) {
-                yB = false;
-            }
         } else {
             y = y + 1;
         }
+
+        if ( yI > 20) {yT = yT + 1;yI = 0;} else {yI = yI + 1;}
+        if (yT == 2) {yT = 0;}
 
         i2 = i2 + 1;
 

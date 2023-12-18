@@ -20,6 +20,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -32,6 +33,9 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 
@@ -48,6 +52,9 @@ public class ShadowPanelBlock extends KineticBlock implements IBE<ShadowPanelBlo
         super(properties);
         registerDefaultState(super.defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, false));
     }
+
+
+    @NotNull @Override public VoxelShape getShape(BlockState state, BlockGetter p_220053_2_, BlockPos p_220053_3_, CollisionContext p_220053_4_) {return Block.box(0, 0, 0, 16, 13, 16);}
 
     @Override public Class<ShadowPanelBlockEntity> getBlockEntityClass() {return ShadowPanelBlockEntity.class;}
 
@@ -121,6 +128,8 @@ public class ShadowPanelBlock extends KineticBlock implements IBE<ShadowPanelBlo
                     pRand.nextGaussian() * 0.05D, pRand.nextGaussian() * 0.05D);
         }
     }
+
+    public static int getLight() {return ShadowPanelBlockEntity.active ? 4 : ShadowPanelBlockEntity.weak_active ? 2 : 0;}
 
     //I know this looks ass lmao
 }

@@ -43,6 +43,11 @@ public enum DDPaletteStoneTypes {
     gabbro(STANDARD_RANGE, r -> r.paletteStoneBlock("gabbro", () -> Blocks.TUFF, true, true)
             .properties(p -> p.destroyTime(1.25f)
                     .color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
+            .register()),
+
+    dolomite(STANDARD_RANGE, r -> r.paletteStoneBlock("dolomite", () -> Blocks.TUFF, true, true)
+            .properties(p -> p.destroyTime(1.25f)
+            .color(MaterialColor.TERRACOTTA_WHITE))
             .register())
 
     ;

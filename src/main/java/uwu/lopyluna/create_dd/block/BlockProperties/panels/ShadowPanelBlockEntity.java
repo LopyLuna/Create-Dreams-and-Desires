@@ -19,6 +19,13 @@ public class ShadowPanelBlockEntity extends GeneratingKineticBlockEntity {
     public static boolean active = false;
     public static boolean weak_active = false;
 
+    float x = 0;
+    float y = 0;
+    float yI = 0;
+    float yT = 0;
+    float z = 0;
+    boolean yB = false;
+
     public float Generator() {
 
         assert level != null;
@@ -55,13 +62,24 @@ public class ShadowPanelBlockEntity extends GeneratingKineticBlockEntity {
             i = 0;
         }
 
+        yB = yT == 1;
+
+        if (yB) {
+            y = y - 1;
+        } else {
+            y = y + 1;
+        }
+
+        if ( yI > 20) {yT = yT + 1;yI = 0;} else {yI = yI + 1;}
+        if (yT == 2) {yT = 0;}
+
         i2 = i2 + 1;
         if (!level.isClientSide && i2 > (20 * 5) && active && !weak_active) {
-            level.playSound((Player)null, getBlockPos(), DDSoundEvents.shadow_panel.get(), SoundSource.AMBIENT, 1.0F, 1.0F + level.random.nextFloat() * 1.2F);
+            level.playSound((Player)null, getBlockPos(), DDSoundEvents.shadow_panel.get(), SoundSource.AMBIENT, 0.5F, 1.0F + level.random.nextFloat() * 1.2F);
             i2 = 0;
         }
         if (!level.isClientSide && i2 > (20 * 5) && weak_active && !active) {
-            level.playSound((Player)null, getBlockPos(), DDSoundEvents.shadow_panel.get(), SoundSource.AMBIENT, 0.5F, 1.0F + level.random.nextFloat() * 1.2F);
+            level.playSound((Player)null, getBlockPos(), DDSoundEvents.shadow_panel.get(), SoundSource.AMBIENT, 0.25F, 1.0F + level.random.nextFloat() * 1.2F);
             i2 = 0;
         }
     }

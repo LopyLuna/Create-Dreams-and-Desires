@@ -57,13 +57,14 @@ public class DDBlockEntityTypes {
 
     public static final BlockEntityEntry<ShadowPanelBlockEntity> SHADOW_PANEL = REGISTRATE
             .blockEntity("shadow_panel", ShadowPanelBlockEntity::new)
-            .instance(() -> ShadowCogInstance::new, false)
+            .instance(() -> ShadowInstance::new, false)
             .validBlocks(DDBlocks.SHADOW_PANEL)
+            .renderer(() -> ShadowPanelRenderer::new)
             .register();
 
     public static final BlockEntityEntry<RadiantPanelBlockEntity> RADIANT_PANEL = REGISTRATE
             .blockEntity("radiant_panel", RadiantPanelBlockEntity::new)
-            .instance(() -> RadiantCogInstance::new, false)
+            .instance(() -> RadiantInstance::new, false)
             .validBlocks(DDBlocks.RADIANT_PANEL)
             .renderer(() -> RadiantPanelRenderer::new)
             .register();

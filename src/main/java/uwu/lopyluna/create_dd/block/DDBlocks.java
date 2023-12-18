@@ -58,7 +58,6 @@ import uwu.lopyluna.create_dd.block.BlockProperties.hydraulic_press.HydraulicPre
 import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.magic.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.panels.RadiantPanelBlock;
-import uwu.lopyluna.create_dd.block.BlockProperties.panels.RadiantPanelBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.panels.ShadowPanelBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.panels.ShadowPanelBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlock;
@@ -594,7 +593,7 @@ public class DDBlocks {
                     .properties(p -> p.sound(new ForgeSoundType(0.9f, 1.0f, () -> DDSoundEvents.magical_metal_break.get(),
                             () -> DDSoundEvents.magical_metal_step.get(), () -> DDSoundEvents.magical_metal_place.get(),
                             () -> DDSoundEvents.magical_metal_hit.get(), () -> DDSoundEvents.magical_metal_fall.get())))
-                    .properties(p -> p.lightLevel($ -> RadiantPanelBlockEntity.active ? 15 : RadiantPanelBlockEntity.weak_active ? 12 : 6))
+                    .properties(p -> p.lightLevel($ -> RadiantPanelBlock.getLight()))
                     .properties(p -> p.requiresCorrectToolForDrops())
                     .transform(BlockStressDefaults.setCapacity(12.0F))
                     .addLayer(() -> RenderType::translucent)
@@ -608,7 +607,7 @@ public class DDBlocks {
                     .properties(p -> p.sound(new ForgeSoundType(0.9f, 1.0f, () -> DDSoundEvents.magical_metal_break.get(),
                             () -> DDSoundEvents.magical_metal_step.get(), () -> DDSoundEvents.magical_metal_place.get(),
                             () -> DDSoundEvents.magical_metal_hit.get(), () -> DDSoundEvents.magical_metal_fall.get())))
-                    .properties(p -> p.lightLevel($ -> ShadowPanelBlockEntity.active ? 4 : ShadowPanelBlockEntity.weak_active ? 2 : 0))
+                    .properties(p -> p.lightLevel($ -> ShadowPanelBlock.getLight()))
                     .properties(p -> p.requiresCorrectToolForDrops())
                     .transform(BlockStressDefaults.setCapacity(8.0F))
                     .simpleItem()
@@ -1600,6 +1599,16 @@ public class DDBlocks {
             .simpleItem()
             .register();
 
+    public static final BlockEntry<Block> dolomite_asphalt_block = REGISTRATE.block("dolomite_asphalt_block", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .speedFactor(1.2F)
+                    .jumpFactor(1.2F)
+                    .friction(0.6F)
+                    .color(MaterialColor.TERRACOTTA_WHITE))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
+            .simpleItem()
+            .register();
+
     public static final BlockEntry<Block> granite_asphalt_block = REGISTRATE.block("granite_asphalt_block", Block::new)
             .properties(p -> p.destroyTime(1.25f)
                     .speedFactor(1.2F)
@@ -1758,6 +1767,13 @@ public class DDBlocks {
     public static final BlockEntry<Block> gabbro_mossy_bricks = REGISTRATE.block("gabbro_mossy_bricks", Block::new)
             .properties(p -> p.destroyTime(1.25f)
                     .color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
+            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> dolomite_mossy_bricks = REGISTRATE.block("dolomite_mossy_bricks", Block::new)
+            .properties(p -> p.destroyTime(1.25f)
+                    .color(MaterialColor.TERRACOTTA_WHITE))
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.TUFF))
             .simpleItem()
             .register();

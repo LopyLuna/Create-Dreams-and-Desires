@@ -1,6 +1,7 @@
 package uwu.lopyluna.create_dd.block.BlockProperties.panels;
 
 import com.google.common.base.Predicates;
+import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
@@ -23,6 +24,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -35,6 +37,9 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.block.DDBlocks;
 import uwu.lopyluna.create_dd.sounds.DDSoundEvents;
@@ -52,6 +57,9 @@ public class RadiantPanelBlock extends KineticBlock implements IBE<RadiantPanelB
         super(properties);
         registerDefaultState(super.defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, false));
     }
+
+
+    @NotNull @Override public VoxelShape getShape(BlockState state, BlockGetter p_220053_2_, BlockPos p_220053_3_, CollisionContext p_220053_4_) {return Block.box(0, 0, 0, 16, 13, 16);}
 
     @Override public Class<RadiantPanelBlockEntity> getBlockEntityClass() {return RadiantPanelBlockEntity.class;}
 
@@ -121,6 +129,8 @@ public class RadiantPanelBlock extends KineticBlock implements IBE<RadiantPanelB
                     pRand.nextGaussian() * 0.1D, pRand.nextGaussian() * 0.05D);
         }
     }
+
+    public static int getLight() {return RadiantPanelBlockEntity.active ? 15 : RadiantPanelBlockEntity.weak_active ? 12 : 6;}
 
     //I know this looks ass lmao
 }
