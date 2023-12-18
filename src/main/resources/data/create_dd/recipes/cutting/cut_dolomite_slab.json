@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "cut_dolomite_slab",
+  "pattern": [
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "create_dd:cut_dolomite"
+    }
+  },
+  "result": {
+    "item": "create_dd:cut_dolomite_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,61 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create:block/block",
+	"textures": {
+		"6": "create_dd:block/radiant_drill/drill_head_glow",
+		"particle": "create_dd:block/refined_radiance_casing"
+	},
+	"elements": [
+		{
+			"from": [-0.25, 10.75, -0.25],
+			"to": [16.25, 13.25, 16.25],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -0.5, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 2], "texture": "#6"},
+				"east": {"uv": [0, 0, 16, 2], "texture": "#6"},
+				"south": {"uv": [0, 0, 16, 2], "texture": "#6"},
+				"west": {"uv": [0, 0, 16, 2], "texture": "#6"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#6"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#6"}
+			}
+		}
+	],
+	"display": {
+		"fixed": {
+			"rotation": [0, 180, 0],
+			"translation": [0, 0, -1.75],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	},
+	"groups": [
+		{
+			"name": "head",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"nbt": "{}",
+			"children": []
+		},
+		{
+			"name": "head_glow",
+			"origin": [8, 8, 7],
+			"color": 0,
+			"nbt": "{}",
+			"children": []
+		},
+		{
+			"name": "casing",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"nbt": "{}",
+			"children": []
+		},
+		{
+			"name": "Cog",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"nbt": "{}",
+			"children": []
+		},
+		0
+	]
+}

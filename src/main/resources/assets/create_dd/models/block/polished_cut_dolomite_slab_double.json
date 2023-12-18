@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "create_dd:block/palettes/stone_types/slab/dolomite_cut_slab",
+    "end": "create_dd:block/palettes/stone_types/polished/dolomite_cut_polished"
+  }
+}
