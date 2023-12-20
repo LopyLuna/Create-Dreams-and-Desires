@@ -10,6 +10,7 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import uwu.lopyluna.create_dd.block.BlockProperties.ReversedGearboxBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorRenderer;
+import uwu.lopyluna.create_dd.block.BlockProperties.bell.BellBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankInstance;
 import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankRenderer;
@@ -54,6 +55,11 @@ import static uwu.lopyluna.create_dd.DDCreate.REGISTRATE;
 
 
 public class DDBlockEntityTypes {
+
+    public static final BlockEntityEntry<BellBlockEntity> BELL = REGISTRATE
+            .blockEntity("bell", BellBlockEntity::new)
+            .validBlocks(DDBlocks.BRONZE_BELL)
+            .register();
 
     public static final BlockEntityEntry<ShadowPanelBlockEntity> SHADOW_PANEL = REGISTRATE
             .blockEntity("shadow_panel", ShadowPanelBlockEntity::new)

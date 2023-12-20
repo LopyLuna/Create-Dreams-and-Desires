@@ -125,5 +125,9 @@
     {"name": "create_dd:shadow_panel/ambient1","volume": 0.9},
     {"name": "create_dd:shadow_panel/ambient2","volume": 0.9},
     {"name": "create_dd:shadow_panel/ambient3","volume": 0.9}
+  ]},
+
+  "bell_ring": {"subtitle": "subtitles.block.bell.ring","sounds": [
+    {"name": "create_dd:bell/ring","volume": 0.9}
   ]}
 }

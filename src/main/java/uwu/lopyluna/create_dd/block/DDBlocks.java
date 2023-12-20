@@ -31,7 +31,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import uwu.lopyluna.create_dd.DDCreate;
 import uwu.lopyluna.create_dd.DDTags;
 import uwu.lopyluna.create_dd.block.BlockProperties.*;
+import uwu.lopyluna.create_dd.block.BlockProperties.bell.BellBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlock;
+import uwu.lopyluna.create_dd.block.BlockProperties.bell.BellBlockStructure;
+import uwu.lopyluna.create_dd.block.BlockProperties.bell.BigBellBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawGenerator;
 import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlock;
@@ -59,7 +62,6 @@ import uwu.lopyluna.create_dd.block.BlockProperties.kinetic_motor.KineticMotorBl
 import uwu.lopyluna.create_dd.block.BlockProperties.magic.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.panels.RadiantPanelBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.panels.ShadowPanelBlock;
-import uwu.lopyluna.create_dd.block.BlockProperties.panels.ShadowPanelBlockEntity;
 import uwu.lopyluna.create_dd.block.BlockProperties.ponder_box.PonderBoxBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.potato_turret.PotatoTurretBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_drive.ChainDriveBlock2;
@@ -504,6 +506,26 @@ public class DDBlocks {
                             () -> SoundEvents.AMETHYST_CLUSTER_STEP, () -> SoundEvents.AMETHYST_BLOCK_CHIME)))
                     .properties(p -> p.strength(50f,5000f))
                     .simpleItem()
+                    .register();
+
+    public static final BlockEntry<BellBlock> BRONZE_BELL =
+            REGISTRATE.block("bronze_bell", BellBlock::new)
+                    .initialProperties(() -> Blocks.BELL)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .properties(p -> p.color(MaterialColor.COLOR_ORANGE))
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .transform(pickaxeOnly())
+                    .item()
+                    .transform(customItemModel())
+                    .register();
+
+    public static final BlockEntry<BellBlockStructure> BRONZE_BELL_STRUCTURE =
+            REGISTRATE.block("bronze_bell_structure", BellBlockStructure::new)
+                    .initialProperties(() -> Blocks.BELL)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .properties(p -> p.color(MaterialColor.COLOR_ORANGE))
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .transform(pickaxeOnly())
                     .register();
 
     public static final BlockEntry<ReversedGearboxBlock> REVERSED_GEARSHIFT =
