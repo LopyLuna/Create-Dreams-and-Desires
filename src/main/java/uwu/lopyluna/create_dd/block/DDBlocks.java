@@ -34,7 +34,6 @@ import uwu.lopyluna.create_dd.block.BlockProperties.*;
 import uwu.lopyluna.create_dd.block.BlockProperties.bell.BellBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.accelerator_motor.AcceleratorMotorBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bell.BellBlockStructure;
-import uwu.lopyluna.create_dd.block.BlockProperties.bell.BigBellBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.bronze_saw.BronzeSawGenerator;
 import uwu.lopyluna.create_dd.block.BlockProperties.cog_crank.CogCrankBlock;
 import uwu.lopyluna.create_dd.block.BlockProperties.drill.bronze.BronzeDrillBlock;
@@ -466,33 +465,33 @@ public class DDBlocks {
             .register();
 
     public static final BlockEntry<CasingBlock> reinforcement_plating = REGISTRATE.block("reinforcement_plating", CasingBlock::new)
-            .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.reinforcement_plating))
-            .initialProperties(SharedProperties::netheriteMetal)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
-            .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
-            .properties(p -> p.strength(24f,32f))
-            .simpleItem()
-            .register();
+                    .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.reinforcement_plating))
+                    .initialProperties(SharedProperties::netheriteMetal)
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
+                    .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+                    .properties(p -> p.strength(24f,32f))
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<Block> pondering_block_light = REGISTRATE.block("pondering_block_light", Block::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
-            .properties(p -> p.sound(new ForgeSoundType(1, 2f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
-                    () -> SoundEvents.SNOW_STEP, () -> SoundEvents.DEEPSLATE_BRICKS_PLACE,
-                    () -> SoundEvents.NETHERITE_BLOCK_HIT, () -> SoundEvents.NETHERITE_BLOCK_FALL)))
-            .properties(p -> p.strength(1f,5000f))
-            .simpleItem()
-            .register();
+                    .initialProperties(SharedProperties::stone)
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
+                    .properties(p -> p.sound(new ForgeSoundType(1, 2f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
+                            () -> SoundEvents.SNOW_STEP, () -> SoundEvents.DEEPSLATE_BRICKS_PLACE,
+                            () -> SoundEvents.NETHERITE_BLOCK_HIT, () -> SoundEvents.NETHERITE_BLOCK_FALL)))
+                    .properties(p -> p.strength(1f,5000f))
+                    .simpleItem()
+                    .register();
 
     public static final BlockEntry<Block> pondering_block_dark = REGISTRATE.block("pondering_block_dark", Block::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
-            .properties(p -> p.sound(new ForgeSoundType(1, 2f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
-                    () -> SoundEvents.SNOW_STEP, () -> SoundEvents.DEEPSLATE_BRICKS_PLACE,
-                    () -> SoundEvents.NETHERITE_BLOCK_HIT, () -> SoundEvents.NETHERITE_BLOCK_FALL)))
-            .properties(p -> p.strength(1f,5000f))
-            .simpleItem()
-            .register();
+                    .initialProperties(SharedProperties::stone)
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_GRAY))
+                    .properties(p -> p.sound(new ForgeSoundType(1, 2f, () -> SoundEvents.AMETHYST_BLOCK_BREAK,
+                            () -> SoundEvents.SNOW_STEP, () -> SoundEvents.DEEPSLATE_BRICKS_PLACE,
+                            () -> SoundEvents.NETHERITE_BLOCK_HIT, () -> SoundEvents.NETHERITE_BLOCK_FALL)))
+                    .properties(p -> p.strength(1f,5000f))
+                    .simpleItem()
+                    .register();
 
     //MECHANICAL BLOCKS
 
