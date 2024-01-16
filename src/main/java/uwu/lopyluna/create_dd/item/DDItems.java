@@ -66,6 +66,7 @@ public class DDItems {
             inductive_mechanism = ingredient("inductive_mechanism"),
             infernal_mechanism = ingredient("infernal_mechanism"),
             sealed_mechanism = ingredient("sealed_mechanism"),
+            abstruse_mechanism = ingredient("abstruse_mechanism"),
             spectral_ruby = ingredient("spectral_ruby"),
             polished_spectral_ruby = ingredient("polished_spectral_ruby"),
             diamond_shard = taggedIngredient("diamond_shard", forgeItemTag("nuggets/diamond")),
@@ -79,7 +80,6 @@ public class DDItems {
     ;
     //ac
     public static final ItemEntry<ItemDisabled>
-            abstruse_mechanism = i("abstruse_mechanism"),
             vanilla_orchid = i("vanilla_orchid");
 
     public static final ItemEntry<SequencedAssemblyItem>
