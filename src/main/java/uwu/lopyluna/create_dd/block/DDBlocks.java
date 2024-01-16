@@ -3,11 +3,7 @@ package uwu.lopyluna.create_dd.block;
 import com.simibubi.create.*;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
-import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
-import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.decoration.palettes.ConnectedGlassPaneBlock;
-import com.simibubi.create.content.fluids.PipeAttachmentModel;
-import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.block.ItemUseOverrides;
@@ -376,21 +372,6 @@ public class DDBlocks {
             .properties(p -> p.requiresCorrectToolForDrops().sound(SoundType.COPPER))
             .lang("Hydraulic Casing")
             .register();
-
-    public static final BlockEntry<DDEncasedPipeBlock> HYDRAULIC_ENCASED_FLUID_PIPE =
-            REGISTRATE.block("hydraulic_encased_fluid_pipe", p -> new DDEncasedPipeBlock(p, DDBlocks.hydraulic_casing::get))
-                    .initialProperties(SharedProperties::copperMetal)
-                    .properties(p -> p.noOcclusion().color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
-                    .transform(axeOrPickaxe())
-                    .blockstate(BlockStateGen.encasedPipe())
-                    .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(DDBlockSpriteShifts.HYDRAULIC_CASING)))
-                    .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, DDBlockSpriteShifts.HYDRAULIC_CASING,
-                            (s, f) -> !s.getValue(EncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(f)))))
-                    .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::new))
-                    .loot((p, b) -> p.dropOther(b, AllBlocks.FLUID_PIPE.get()))
-                    .transform(EncasingRegistry.addVariantTo(AllBlocks.FLUID_PIPE))
-                    .register();
-
 
     public static final BlockEntry<CasingBlock> industrial_casing = REGISTRATE.block("industrial_casing", CasingBlock::new)
             .transform(BuilderTransformers.casing(() -> DDBlockSpriteShifts.INDUSTRIAL_CASING))

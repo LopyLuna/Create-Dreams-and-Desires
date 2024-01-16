@@ -33,14 +33,14 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry GABBRO_BLOB =
-            create("gabbro_blob", 32, 5, -64, 24)
+            create("gabbro_blob", 24, 5, -64, 24)
                     .standardDatagenExt()
                     .withBlocks(Couple.create(AllPaletteStoneTypes.GRANITE.getBaseBlock(), DDPaletteStoneTypes.gabbro.getBaseBlock()))
                     .biomeTag(BiomeTags.IS_OVERWORLD)
                     .parent();
 
     public static final DDOreFeatureConfigEntry DOLOMITE_BLOB =
-            create("dolomite_blob", 32, 5, -64, 24)
+            create("dolomite_blob", 24, 5, -64, 24)
                     .standardDatagenExt()
                     .withBlocks(Couple.create(AllPaletteStoneTypes.DIORITE.getBaseBlock(), DDPaletteStoneTypes.dolomite.getBaseBlock()))
                     .biomeTag(BiomeTags.IS_OVERWORLD)
@@ -61,7 +61,7 @@ public class DDOreFeatureConfigEntries {
                     .parent();
 
     public static final DDOreFeatureConfigEntry STRIATED_ORES_BADLANDS =
-            create("striated_ores_badlands", 12, 1 / 3.5f, 30, 120)
+            create("striated_ores_badlands", 8, 1 / 3.5f, 30, 120)
                     .layeredDatagenExt()
                     .withLayerPattern(DDLayerPatterns.GABBRO)
                     .withLayerPattern(DDLayerPatterns.RAW_OCHRESTONE)

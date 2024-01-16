@@ -216,10 +216,5 @@ public class DDBlockEntityTypes {
             .renderer(() -> CogCrankRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<FluidPipeBlockEntity> ENCASED_FLUID_PIPE = REGISTRATE
-            .blockEntity("encased_fluid_pipe", FluidPipeBlockEntity::new)
-            .validBlocks(DDBlocks.HYDRAULIC_ENCASED_FLUID_PIPE)
-            .register();
-
     public static void register() {}
 }
