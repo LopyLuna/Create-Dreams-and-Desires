@@ -4,14 +4,20 @@ import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class OverchargeAlloy extends NoGravMagical {
 
@@ -73,5 +79,11 @@ public class OverchargeAlloy extends NoGravMagical {
             return;
         }
         super.fillItemCategory(p_150895_1_, p_150895_2_);
+    }
+
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Component.translatable("tooltip.removal.summary"));
     }
 }

@@ -69,6 +69,8 @@ import uwu.lopyluna.create_dd.block.BlockProperties.secondary_encased_chain_driv
 import uwu.lopyluna.create_dd.block.BlockProperties.wood.*;
 import uwu.lopyluna.create_dd.block.BlockResources.DDBlockSpriteShifts;
 import uwu.lopyluna.create_dd.creative.DDItemTab;
+import uwu.lopyluna.create_dd.item.BlockItemProperties.ChromaticBlockItem;
+import uwu.lopyluna.create_dd.item.BlockItemProperties.RemovaAndNonGravitylBlockItem;
 import uwu.lopyluna.create_dd.sounds.DDSoundEvents;
 import uwu.lopyluna.create_dd.worldgen.Features.tree.RubberTreeGrower;
 
@@ -218,7 +220,7 @@ public class DDBlocks {
             .transform(pickaxeOnly())
             .lang("Block of Chromatic Compound")
             .simpleItem()
-            .item()
+            .item(ChromaticBlockItem::new)
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .build()
             .register();
@@ -235,7 +237,7 @@ public class DDBlocks {
             .transform(pickaxeOnly())
             .lang("Block of Refined Radiance")
             .simpleItem()
-            .item()
+            .item(RemovaAndNonGravitylBlockItem::RefinedRadiance)
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .build()
             .register();
@@ -251,7 +253,7 @@ public class DDBlocks {
             .transform(pickaxeOnly())
             .lang("Block of Shadow Steel")
             .simpleItem()
-            .item()
+            .item(RemovaAndNonGravitylBlockItem::ShadowSteel)
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .build()
             .register();
@@ -266,7 +268,7 @@ public class DDBlocks {
             .properties(p -> p.strength(12f,32f))
             .transform(pickaxeOnly())
             .simpleItem()
-            .item()
+            .item(RemovaAndNonGravitylBlockItem::CCA)
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .build()
             .register();
@@ -281,7 +283,7 @@ public class DDBlocks {
             .properties(p -> p.strength(8f,24f))
             .transform(pickaxeOnly())
             .simpleItem()
-            .item()
+            .item(RemovaAndNonGravitylBlockItem::BlazeBrass)
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .build()
             .register();
@@ -296,7 +298,7 @@ public class DDBlocks {
             .properties(p -> p.strength(32f,512f))
             .transform(pickaxeOnly())
             .simpleItem()
-            .item()
+            .item(RemovaAndNonGravitylBlockItem::StargazeSingularity)
             .properties(p -> p.rarity(Rarity.EPIC))
             .build()
             .register();
@@ -404,7 +406,7 @@ public class DDBlocks {
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(8f,24f))
             .lang("Shadow Casing")
-            .item()
+            .item(RemovaAndNonGravitylBlockItem::ShadowSteel)
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .build()
             .register();
@@ -418,7 +420,7 @@ public class DDBlocks {
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(8f,24f))
             .properties(p -> p.lightLevel($ -> 12))
-            .item()
+            .item(RemovaAndNonGravitylBlockItem::RefinedRadiance)
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .build()
             .lang("Radiant Casing")
@@ -432,7 +434,7 @@ public class DDBlocks {
                     () -> DDSoundEvents.magic_casing_hit.get(), () -> DDSoundEvents.magic_casing_fall.get())))
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(6f,32f))
-            .item()
+            .item(RemovaAndNonGravitylBlockItem::CCA)
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .build()
             .register();
@@ -445,7 +447,7 @@ public class DDBlocks {
                     () -> DDSoundEvents.magical_metal_hit.get(), () -> DDSoundEvents.magical_metal_fall.get())))
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(5f,24f))
-            .item()
+            .item(RemovaAndNonGravitylBlockItem::BlazeBrass)
             .properties(p -> p.rarity(Rarity.UNCOMMON))
             .build()
             .register();
@@ -459,7 +461,7 @@ public class DDBlocks {
             .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .properties(p -> p.strength(12f,250f))
             .properties(p -> p.lightLevel($ -> 8))
-            .item()
+            .item(RemovaAndNonGravitylBlockItem::StargazeSingularity)
             .properties(p -> p.rarity(Rarity.EPIC))
             .build()
             .register();
@@ -914,6 +916,8 @@ public class DDBlocks {
                     .transform(BuilderTransformers.scaffold("shadow_steel",
                             () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/shadow_steel")), MaterialColor.COLOR_BLACK,
                             DDBlockSpriteShifts.SHADOW_STEEL_SCAFFOLD, DDBlockSpriteShifts.SHADOW_STEEL_SCAFFOLD_INSIDE, DDBlockSpriteShifts.SHADOW_STEEL_CASING))
+                    .item(RemovaAndNonGravitylBlockItem::ShadowSteelScaffolding)
+                    .build()
                     .register();
     public static final BlockEntry<MetalScaffoldingBlock> RADIANT_SCAFFOLD =
             REGISTRATE.block("refined_radiance_scaffolding", MetalScaffoldingBlock::new)
@@ -921,24 +925,32 @@ public class DDBlocks {
                             () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/refined_radiance")), MaterialColor.SNOW,
                             DDBlockSpriteShifts.REFINED_RADIANCE_SCAFFOLD, DDBlockSpriteShifts.REFINED_RADIANCE_SCAFFOLD_INSIDE, DDBlockSpriteShifts.REFINED_RADIANCE_CASING))
                     .properties(p -> p.lightLevel($ -> 12))
+                    .item(RemovaAndNonGravitylBlockItem::RefinedRadianceScaffolding)
+                    .build()
                     .register();
     public static final BlockEntry<MetalScaffoldingBlock> STARGAZE_SINGULARITY_SCAFFOLD =
             REGISTRATE.block("stargaze_singularity_scaffolding", MetalScaffoldingBlock::new)
                     .transform(BuilderTransformers.scaffold("stargaze_singularity",
                             () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/stargaze_singularity")), MaterialColor.TERRACOTTA_BLACK,
                             DDBlockSpriteShifts.STARGAZE_SINGULARITY_SCAFFOLD, DDBlockSpriteShifts.STARGAZE_SINGULARITY_SCAFFOLD_INSIDE, DDBlockSpriteShifts.STARGAZE_SINGULARITY_CASING))
+                    .item(RemovaAndNonGravitylBlockItem::StargazeSingularityScaffolding)
+                    .build()
                     .register();
     public static final BlockEntry<MetalScaffoldingBlock> BLAZE_GOLD_SCAFFOLD =
             REGISTRATE.block("blaze_gold_scaffolding", MetalScaffoldingBlock::new)
                     .transform(BuilderTransformers.scaffold("blaze_gold",
                             () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/blaze_gold")), MaterialColor.COLOR_RED,
                             DDBlockSpriteShifts.BLAZE_GOLD_SCAFFOLD, DDBlockSpriteShifts.BLAZE_GOLD_SCAFFOLD_INSIDE, DDBlockSpriteShifts.BLAZE_GOLD_CASING))
+                    .item(RemovaAndNonGravitylBlockItem::BlazeBrassScaffolding)
+                    .build()
                     .register();
     public static final BlockEntry<OverchargedScaffoldingBlock> OVERCHARGED_SCAFFOLD =
             REGISTRATE.block("overcharged_scaffolding", OverchargedScaffoldingBlock::new)
                     .transform(BuilderTransformers.scaffold("overcharge",
                             () -> DataIngredient.tag(AllTags.forgeItemTag("ingots/overcharge")), MaterialColor.COLOR_LIGHT_BLUE,
                             DDBlockSpriteShifts.OVERCHARGED_SCAFFOLD, DDBlockSpriteShifts.OVERCHARGED_SCAFFOLD_INSIDE, DDBlockSpriteShifts.OVERCHARGED_CASING))
+                    .item(RemovaAndNonGravitylBlockItem::CCAScaffolding)
+                    .build()
                     .register();
     public static final BlockEntry<MetalScaffoldingBlock> NETHERITE_SCAFFOLD =
             REGISTRATE.block("netherite_scaffolding", MetalScaffoldingBlock::new)

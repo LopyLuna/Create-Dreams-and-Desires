@@ -7,7 +7,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -67,19 +66,13 @@ public class BellBlock extends Block implements IBE<BellBlockEntity> {
         }
     }
 
-    @Override
-    public void fallOn(Level pLevel, BlockState pState, BlockPos pPos, Entity pEntity, float pFallDistance) {
-        super.fallOn(pLevel, pState, pPos, pEntity, 6);
-        pEntity.causeFallDamage(pFallDistance, 1.0F, DamageSource.FALL);
-    }
-
 
     @Override
     public void updateEntityAfterFallOn(BlockGetter blockGetter, Entity pEntity) {
         if (pEntity.fallDistance >= 4) {
             float fallingPitch = pEntity.fallDistance;
-            fallingPitch %= -2;
-            this.ringAfterFallOn(pEntity, fallingPitch);
+            fallingPitch %= -2.0;
+            this.ringAfterFallOn(pEntity, (fallingPitch * 2));
         }
         pEntity.setDeltaMovement(pEntity.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D));
         pEntity.setDeltaMovement(pEntity.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D));

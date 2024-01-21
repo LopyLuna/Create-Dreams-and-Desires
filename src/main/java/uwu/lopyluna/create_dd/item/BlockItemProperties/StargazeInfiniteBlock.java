@@ -1,4 +1,4 @@
-package uwu.lopyluna.create_dd.item.ItemProperties;
+package uwu.lopyluna.create_dd.item.BlockItemProperties;
 
 import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.MethodsReturnNonnullByDefault;
