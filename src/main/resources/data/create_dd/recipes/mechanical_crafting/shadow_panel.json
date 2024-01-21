@@ -1,0 +1,23 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "SSS",
+    "MCM"
+  ],
+  "key": {
+    "S": {
+      "item": "create_dd:shadow_steel_sheet"
+    },
+    "M": {
+      "item": "create_dd:mithril_ingot"
+    },
+    "C": {
+      "item": "create_dd:steel_block"
+    }
+  },
+  "result": {
+    "item": "create_dd:shadow_panel",
+    "count": 1
+  },
+  "acceptMirrored": false
+}

@@ -364,7 +364,10 @@
   "block.create_dd.bronze_drill": "Bronze Drill",
   "block.create_dd.radiant_drill": "Radiant Drill",
   "block.create_dd.shadow_drill": "Shadow Drill",
+  "block.create_dd.radiant_panel": "Radiant Panel",
+  "block.create_dd.shadow_panel": "Shadow Panel",
   "block.create_dd.bronze_saw": "Bronze Saw",
+  "block.create_dd.bronze_bell": "Bronze Bell",
   "block.create_dd.2_blade_fan": "Large Propeller (2)",
   "block.create_dd.4_blade_fan": "Large Propeller (4)",
   "block.create_dd.8_blade_fan": "Large Propeller (8)",
@@ -558,6 +561,8 @@
   "advancement.create_dd.shadow_steel_casing.desc": "Apply Shadow Steel to an Obsidian, creating a Casing of the Shadows!",
   "advancement.create_dd.shadow_drill": "Dark Magic Drill!",
   "advancement.create_dd.shadow_drill.desc": "The Shadow Drill is a way faster and better version of the most Drills & haves the ability to Silk Touch Blocks!",
+  "advancement.create_dd.shadow_panel": "Magical Lunar Panel!",
+  "advancement.create_dd.shadow_panel.desc": "Harvest the Lunar Energy!",
   "advancement.create_dd.overcharge_alloy": "Spark of the Imagination!",
   "advancement.create_dd.overcharge_alloy.desc": "(Crafts & Additions Exclusive) Immense power of the Tesla Coil!",
   "advancement.create_dd.overcharged_casing": "The Hex Tech",
@@ -568,6 +573,8 @@
   "advancement.create_dd.refined_radiance_casing.desc": "Apply Refined Radiance to an Light Blessed Block, creating a blinding Bright Casing!",
   "advancement.create_dd.radiant_drill": "Spiritual Magic Drill!",
   "advancement.create_dd.radiant_drill.desc": "The Radiant Drill is a way faster and better version of the most Drills & haves the ability to Fortune Blocks!",
+  "advancement.create_dd.radiant_panel": "Magical Solar Panel!",
+  "advancement.create_dd.radiant_panel.desc": "Harvest the Solar Energy!",
   "advancement.create_dd.accelerator_motor": "Rotation Speed Controller Motor?",
   "advancement.create_dd.accelerator_motor.desc": "A Motor that doesn't generate any stress & control the speed up to 256!",
   "advancement.create_dd.bronze_ingot": "Gunmetal Bronze, PEW PEW PEW!",
@@ -598,6 +605,8 @@
   "advancement.create_dd.tin_ingot.desc": "Smelt an Tin Ingot",
   "advancement.create_dd.deforester_saw": "TIMBER!!!",
   "advancement.create_dd.deforester_saw.desc": "Obtain the Deforester.. Saw?",
+  "advancement.create_dd.excavation_drill": "DRILL GO BRRRRRRR!!!",
+  "advancement.create_dd.excavation_drill.desc": "Obtain the Excavation Drill!",
   "advancement.create_dd.ember_alloy": "Smokey Alloy",
   "advancement.create_dd.ember_alloy.desc": "Obtain some Ember Alloy",
   "advancement.create_dd.hydraulic_press": "Heavy Duty Snowball Smasher!",
@@ -720,7 +729,7 @@
   "item.create_dd.excavation_drill.tooltip": "EXCAVATION DRILL",
   "item.create_dd.excavation_drill.tooltip.summary": "A Powerful handheld drill that can _Excavate Entire Vein of Ores_!",
   "item.create_dd.excavation_drill.tooltip.condition1": "Breaking a Block while Sneaking",
-  "item.create_dd.excavation_drill.tooltip.behaviour1": "_Vein Mines_ while _Looking at Ores_ otherwise it will _Mine a 3x3 Area_",
+  "item.create_dd.excavation_drill.tooltip.behaviour1": "_Vein Mines_ while _Mining Ores_ §c(otherwise it will _Mine a 3x3 Area_ -Not Implemented yet!-)",
   "item.create_dd.excavation_drill.tooltip.condition2": "While wearing Backtank",
   "item.create_dd.excavation_drill.tooltip.behaviour2": "_No_ _Durability_ will be used. Instead, _Air_ _pressure_ is drained from the Tank",
 
@@ -778,11 +787,15 @@
   "block.create_dd.shadow_drill.tooltip.condition1": "When Blocks are Broken",
   "block.create_dd.shadow_drill.tooltip.behaviour1": "Applies _Silk Touch_ & makes _items float_ also _never de-spawn_!",
 
+  "block.create_dd.bronze_bell.tooltip": "BRONZE BELL",
+  "block.create_dd.bronze_bell.tooltip.summary": "Large _Loud Bell_!",
+  "block.create_dd.bronze_bell.tooltip.condition1": "When R-Clicked while Sneaking",
+  "block.create_dd.bronze_bell.tooltip.behaviour1": "_Changes Pitch_ of the _Bell_ like a _note block_!",
 
   "block.create_dd.bronze_saw.tooltip": "BRONZE SAW",
   "block.create_dd.bronze_saw.tooltip.summary": "Acts like a _Mechanical Saw_ but _mines faster_ & allows for _Bulk Sawing_!",
 
-
+  "subtitles.block.bell.ring": "Bronze Bell rung",
 
   "death.attack.create.fan_super_lava": "%1$s was reduce to ashes by an Industrial Fan",
   "death.attack.create.fan_super_lava.player": "%1$s seethe enough they were thrown into a super smelter by %2$s",

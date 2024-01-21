@@ -49,23 +49,26 @@ public class ExcavationDrillItem extends BackTankPickaxeItem {
 
         if (state.is(DDTags.AllBlockTags.valid_excavation.tag) && player.isCrouching() && state.is(DDTags.AllBlockTags.drill_mineable.tag)) {
             excavatingDisplay = true;
-            return state.is(DDTags.AllBlockTags.valid_excavation.tag) && player.isCrouching() && state.is(DDTags.AllBlockTags.drill_mineable.tag) ? this.speed / 4 : 0.25F;
         } else {
             excavatingDisplay = false;
+        }
+
+        if (state.is(DDTags.AllBlockTags.valid_excavation.tag) && player.isCrouching() && state.is(DDTags.AllBlockTags.drill_mineable.tag)) {
+            return state.is(DDTags.AllBlockTags.valid_excavation.tag) && player.isCrouching() && state.is(DDTags.AllBlockTags.drill_mineable.tag) ? this.speed / 4 : 0.25F;
+        } else {
             return state.is(DDTags.AllBlockTags.drill_mineable.tag) ? this.speed : 1.0F;
         }
     }
 
     public static void destroyVein(Level iWorld, BlockState state, BlockPos pos, Player player) {
 
-        if (excavating || !state.is(DDTags.AllBlockTags.valid_excavation.tag) && player.isCrouching())
+        if (excavating || !state.is(DDTags.AllBlockTags.valid_excavation.tag) || !player.isCrouching() || !(iWorld instanceof  Level))
             return;
+        Level worldIn = (Level) iWorld;
 
-        excavatingDisplay = true;
         excavating = true;
-        findVein(iWorld, pos).destroyBlocks(iWorld, player, (dropPos, item) -> dropItemFromMineVein(iWorld, pos, dropPos, item));
+        findVein(worldIn, pos).destroyBlocks(worldIn, player, (dropPos, item) -> dropItemFromMineVein(worldIn, pos, dropPos, item));
         excavating = false;
-        excavatingDisplay = false;
     }
 
     @SubscribeEvent
@@ -81,6 +84,11 @@ public class ExcavationDrillItem extends BackTankPickaxeItem {
         Vec3 dropPos = VecHelper.getCenterOf(pos);
         ItemEntity entity = new ItemEntity(world, dropPos.x, dropPos.y, dropPos.z, stack);
         world.addFreshEntity(entity);
+    }
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(SimpleCustomRenderer.create(this, new ExcavationDrillRender()));
     }
 
     @Override
@@ -103,9 +111,4 @@ public class ExcavationDrillItem extends BackTankPickaxeItem {
         return BobTiers.Drill.getUses();
     }
 
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(SimpleCustomRenderer.create(this, new ExcavationDrillRender()));
-    }
 }

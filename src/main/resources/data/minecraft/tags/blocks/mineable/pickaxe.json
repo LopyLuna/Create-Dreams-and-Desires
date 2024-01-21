@@ -262,6 +262,10 @@
     "create_dd:overcharged_scaffolding",
     "create_dd:netherite_scaffolding",
     "create_dd:steel_scaffolding",
-    "create_dd:tin_scaffolding"
+    "create_dd:tin_scaffolding",
+
+    "create_dd:bronze_bell",
+    "create_dd:radiant_panel",
+    "create_dd:shadow_panel"
   ]
 }

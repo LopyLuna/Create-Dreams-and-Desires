@@ -42,12 +42,7 @@ public class ExcavationDrillRender extends CustomRenderedItemModelRenderer {
         boolean validSimple = player.getMainHandItem().getItem() == DDItems.excavation_drill.get();
         boolean validSimpleOffHand = player.getOffhandItem().getItem() == DDItems.excavation_drill.get();
 
-
-        //if ( player.isCrouching() || player.isAutoSpinAttack() || player.isUsingItem() ) {} idfk maybe used for later
-
         int maxLight = 0xF000F0;
-
-
 
         float animation = 0.25f;
         boolean leftHand = transformType == ItemTransforms.TransformType.FIRST_PERSON_LEFT_HAND;
@@ -58,10 +53,9 @@ public class ExcavationDrillRender extends CustomRenderedItemModelRenderer {
                     ExcavationDrillRenderHandler.mainHandAnimation);
 
         animation = animation * animation * animation;
-
-
-        ms.pushPose();
         boolean validSomthin = player.isCrouching() && validSimple && !validSimpleOffHand;
+
+        renderer.renderSolid(model.getOriginalModel(), light);
 
         if ( validSimple && excavatingDisplay && !validSimpleOffHand) {
         renderer.renderSolidGlowing(BIG_ON.get(), maxLight);
@@ -72,25 +66,17 @@ public class ExcavationDrillRender extends CustomRenderedItemModelRenderer {
         if ( !displayActive  && !excavatingDisplay)
         renderer.renderSolidGlowing(OFF.get(), maxLight);
 
-        ms.popPose();
-
-
-        ms.pushPose();
-        renderer.renderSolid(ITEM.get(), light);
-        ms.popPose();
 
         // head
-        ms.pushPose();
         float angle = AnimationTickHolder.getRenderTime() * -2;
         if (leftHand || rightHand)
             angle += 360 * animation;
         angle %= 360;
+
         stacker.translate(ROTATION_OFFSET)
                 .rotateZ(angle)
                 .translateBack(ROTATION_OFFSET);
         renderer.renderSolid(COG.get(), light);
         renderer.renderSolid(HEAD.get(), light);
-        ms.popPose();
-
     }
 }

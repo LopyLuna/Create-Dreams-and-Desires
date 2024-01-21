@@ -22,11 +22,16 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import uwu.lopyluna.create_dd.block.DDBlockEntityTypes;
 import uwu.lopyluna.create_dd.sounds.DDSoundEvents;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.stream.Stream;
 
 
 @SuppressWarnings({"all"})
@@ -36,6 +41,13 @@ public class BellBlock extends Block implements IBE<BellBlockEntity> {
 
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final IntegerProperty NOTE = BlockStateProperties.NOTE;
+    public static final VoxelShape SHAPEBOX = Block.box(0, 0, 0, 16, 16, 16);
+
+    public static final VoxelShape SHAPE = Stream.of(
+            Block.box(3, 5, 3, 13, 16, 13),
+            Block.box(2, 0, 2, 14, 5, 14),
+            Block.box(6, 14, 6, 10, 18, 10)
+    ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();;
 
     public static int bellCooldown = 0;
 
@@ -143,4 +155,25 @@ public class BellBlock extends Block implements IBE<BellBlockEntity> {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(POWERED, NOTE);
     }
+
+    @Override
+    public boolean isCollisionShapeFullBlock(BlockState pState, BlockGetter pLevel, BlockPos pPos) {return true;}
+
+    @Override
+    public VoxelShape getInteractionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {return SHAPEBOX;}
+
+    @Override
+    public VoxelShape getBlockSupportShape(BlockState pState, BlockGetter pReader, BlockPos pPos) {return SHAPEBOX;}
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState pState, BlockGetter pGetter, BlockPos pPos, CollisionContext pContext) {return SHAPEBOX;}
+
+    @Override
+    public VoxelShape getShape(BlockState pState, BlockGetter pGetter, BlockPos pPos, CollisionContext pContext) {return SHAPE;}
+
+    @Override
+    public VoxelShape getOcclusionShape(BlockState pState, BlockGetter pGetter, BlockPos pPos) {return SHAPE;}
+
+    @Override
+    public VoxelShape getVisualShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {return SHAPE;}
 }

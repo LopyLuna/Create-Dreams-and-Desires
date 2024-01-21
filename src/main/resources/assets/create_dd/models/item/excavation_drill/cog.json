@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "create_dd:item/excavation_drill/item",
 	"textures": {
-		"cog": "block/stripped_dark_oak_log"
+		"cog": "minecraft:block/stripped_dark_oak_log"
 	},
 	"elements": [
 		{
@@ -65,14 +65,13 @@
 			"from": [8, 4, 8],
 			"to": [8, 4, 8],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, -5, 0]},
-			"color": 0,
 			"faces": {
-				"north": {"uv": [0, 0, 0, 0], "texture": "#missing"},
-				"east": {"uv": [0, 0, 0, 0], "texture": "#missing"},
-				"south": {"uv": [0, 0, 0, 0], "texture": "#missing"},
-				"west": {"uv": [0, 0, 0, 0], "texture": "#missing"},
-				"up": {"uv": [0, 0, 0, 0], "texture": "#missing"},
-				"down": {"uv": [0, 0, 0, 0], "texture": "#missing"}
+				"north": {"uv": [0, 0, 0, 0], "texture": "#cog"},
+				"east": {"uv": [0, 0, 0, 0], "texture": "#cog"},
+				"south": {"uv": [0, 0, 0, 0], "texture": "#cog"},
+				"west": {"uv": [0, 0, 0, 0], "texture": "#cog"},
+				"up": {"uv": [0, 0, 0, 0], "texture": "#cog"},
+				"down": {"uv": [0, 0, 0, 0], "texture": "#cog"}
 			}
 		}
 	]

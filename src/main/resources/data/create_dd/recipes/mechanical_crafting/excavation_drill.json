@@ -1,0 +1,33 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    " AT ",
+    "AIML",
+    " ASL"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "A": {
+      "tag": "forge:ingots/andesite_alloy"
+    },
+    "M": {
+      "item": "create_dd:inductive_mechanism"
+    },
+    "L": {
+      "tag": "forge:ingots/lapis_alloy"
+    },
+    "S": {
+      "tag": "forge:plates/lapis_alloy"
+    },
+    "T": {
+      "tag": "forge:plates/tin"
+    }
+  },
+  "result": {
+    "item": "create_dd:excavation_drill",
+    "count": 1
+  },
+  "acceptMirrored": true
+}

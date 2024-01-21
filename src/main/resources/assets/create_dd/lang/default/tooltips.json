@@ -71,6 +71,11 @@
   "block.create_dd.shadow_drill.tooltip.condition1": "When Blocks are Broken",
   "block.create_dd.shadow_drill.tooltip.behaviour1": "Applies _Silk Touch_ & makes _items float_ also _never de-spawn_!",
 
+  "block.create_dd.bronze_bell.tooltip": "BRONZE BELL",
+  "block.create_dd.bronze_bell.tooltip.summary": "Large _Loud Bell_!",
+  "block.create_dd.bronze_bell.tooltip.condition1": "When R-Clicked while Sneaking",
+  "block.create_dd.bronze_bell.tooltip.behaviour1": "_Changes Pitch_ of the _Bell_ like a _note block_!",
+
   "block.create_dd.bronze_saw.tooltip": "BRONZE SAW",
   "block.create_dd.bronze_saw.tooltip.summary": "Acts like a _Mechanical Saw_ but _mines faster_ and allows for _Bulk Sawing_!",
 

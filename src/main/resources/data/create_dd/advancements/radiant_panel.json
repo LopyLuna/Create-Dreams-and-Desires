@@ -1,0 +1,38 @@
+{
+  "parent": "create_dd:refined_radiance_casing",
+  "display": {
+    "icon": {
+      "item": "create_dd:radiant_panel"
+    },
+    "title": {
+      "translate": "advancement.create_dd.radiant_panel"
+    },
+      "description": {
+      "color": "#DBA213",
+      "translate": "advancement.create_dd.radiant_panel.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create_dd:radiant_panel"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ]
+}

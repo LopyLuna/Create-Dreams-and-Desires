@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "SS"
+  ],
+  "key": {
+    "#": {
+      "item": "create_dd:bronze_block"
+    },
+    "S": {
+      "item": "create_dd:bronze_sheet"
+    }
+  },
+  "result": {
+    "item": "create_dd:bronze_bell",
+    "count": 1
+  }
+}

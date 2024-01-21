@@ -63,6 +63,8 @@
   "item.create_dd.infaweathered_limestone": "InfaWeatheredLimestone",
   "item.create_dd.infagabbro": "InfaGabbro",
   "item.create_dd.infaaethersite": "InfaAethersite",
+  "item.create_dd.infaice": "InfaIce",
+  "item.create_dd.infasnow_block": "InfaSnow",
 
   "item.create_dd.compound_base": "Compound Base",
   "item.create_dd.chromatic_compound": "Compuesto cromático",
@@ -86,6 +88,7 @@
 
   "item.create_dd.forest_ravager": "Devastador del bosque mítico",
   "item.create_dd.deforester_saw": "Deforesting Saw",
+  "item.create_dd.excavation_drill": "Excavation Drill",
   "item.create_dd.vanilla_orchid": "Orquídea vainilla",
   "item.create_dd.integrated_circuit": "Circuito integrado",
   "item.create_dd.integrated_mechanism": "Mecanismo integrado",
@@ -359,7 +362,12 @@
   "block.create_dd.reversed_gearshift": "Reverse Gearshift",
   "block.create_dd.hydraulic_press": "Hydraulic Press",
   "block.create_dd.bronze_drill": "Bronze Drill",
+  "block.create_dd.radiant_drill": "Radiant Drill",
+  "block.create_dd.shadow_drill": "Shadow Drill",
+  "block.create_dd.radiant_panel": "Radiant Panel",
+  "block.create_dd.shadow_panel": "Shadow Panel",
   "block.create_dd.bronze_saw": "Bronze Saw",
+  "block.create_dd.bronze_bell": "Bronze Bell",
   "block.create_dd.2_blade_fan": "Large Propeller (2)",
   "block.create_dd.4_blade_fan": "Large Propeller (4)",
   "block.create_dd.8_blade_fan": "Large Propeller (8)",
@@ -405,6 +413,7 @@
   "block.create_dd.diorite_asphalt_block": "Diorite Asphalt Block",
   "block.create_dd.dripstone_asphalt_block": "Dripstone Asphalt Block",
   "block.create_dd.gabbro_asphalt_block": "Gabbro Asphalt Block",
+  "block.create_dd.dolomite_asphalt_block": "Dolomite Asphalt Block",
   "block.create_dd.granite_asphalt_block": "Granite Asphalt Block",
   "block.create_dd.limestone_asphalt_block": "Limestone Asphalt Block",
   "block.create_dd.ochrum_asphalt_block": "Ochrum Asphalt Block",
@@ -424,6 +433,7 @@
   "block.create_dd.diorite_mossy_bricks": "Mossy Diorite Bricks",
   "block.create_dd.dripstone_mossy_bricks": "Mossy Dripstone Bricks",
   "block.create_dd.gabbro_mossy_bricks": "Mossy Gabbro Bricks",
+  "block.create_dd.dolomite_mossy_bricks": "Mossy Dolomite Bricks",
   "block.create_dd.granite_mossy_bricks": "Mossy Granite Bricks",
   "block.create_dd.limestone_mossy_bricks": "Mossy Limestone Bricks",
   "block.create_dd.ochrum_mossy_bricks": "Mossy Ochrum Bricks",
@@ -455,6 +465,27 @@
   "block.create_dd.small_weathered_limestone_brick_stairs": "Small Weathered Limestone Brick Stairs",
   "block.create_dd.small_weathered_limestone_brick_wall": "Small Weathered Limestone Brick Wall",
   "block.create_dd.small_weathered_limestone_bricks": "Small Weathered Limestone Bricks",
+
+  "block.create_dd.dolomite": "Dolomite",
+
+  "block.create_dd.cut_dolomite": "Cut Dolomite",
+  "block.create_dd.cut_dolomite_brick_slab": "Cut Dolomite Brick Slab",
+  "block.create_dd.cut_dolomite_brick_stairs": "Cut Dolomite Brick Stairs",
+  "block.create_dd.cut_dolomite_brick_wall": "Cut Dolomite Brick Wall",
+  "block.create_dd.cut_dolomite_bricks": "Cut Dolomite Bricks",
+  "block.create_dd.cut_dolomite_slab": "Cut Dolomite Slab",
+  "block.create_dd.cut_dolomite_stairs": "Cut Dolomite Stairs",
+  "block.create_dd.cut_dolomite_wall": "Cut Dolomite Wall",
+  "block.create_dd.layered_dolomite": "Layered Dolomite",
+  "block.create_dd.dolomite_pillar": "Dolomite Pillar",
+  "block.create_dd.polished_cut_dolomite": "Polished Cut Dolomite",
+  "block.create_dd.polished_cut_dolomite_slab": "Polished Cut Dolomite Slab",
+  "block.create_dd.polished_cut_dolomite_stairs": "Polished Cut Dolomite Stairs",
+  "block.create_dd.polished_cut_dolomite_wall": "Polished Cut Dolomite Wall",
+  "block.create_dd.small_dolomite_brick_slab": "Small Dolomite Brick Slab",
+  "block.create_dd.small_dolomite_brick_stairs": "Small Dolomite Brick Stairs",
+  "block.create_dd.small_dolomite_brick_wall": "Small Dolomite Brick Wall",
+  "block.create_dd.small_dolomite_bricks": "Small Dolomite Bricks",
 
   "block.create_dd.gabbro": "Gabbro",
 
@@ -528,6 +559,10 @@
   "advancement.create_dd.shadow_steel.desc": "Create Shadow Steel, a Ingot of the Abyss.",
   "advancement.create_dd.shadow_steel_casing": "The Dark Magic",
   "advancement.create_dd.shadow_steel_casing.desc": "Apply Shadow Steel to an Obsidian, creating a Casing of the Shadows!",
+  "advancement.create_dd.shadow_drill": "Dark Magic Drill!",
+  "advancement.create_dd.shadow_drill.desc": "The Shadow Drill is a way faster and better version of the most Drills & haves the ability to Silk Touch Blocks!",
+  "advancement.create_dd.shadow_panel": "Magical Lunar Panel!",
+  "advancement.create_dd.shadow_panel.desc": "Harvest the Lunar Energy!",
   "advancement.create_dd.overcharge_alloy": "Spark of the Imagination!",
   "advancement.create_dd.overcharge_alloy.desc": "(Crafts & Additions Exclusive) Immense power of the Tesla Coil!",
   "advancement.create_dd.overcharged_casing": "The Hex Tech",
@@ -536,6 +571,10 @@
   "advancement.create_dd.refined_radiance.desc": "Create Refined Radiance, a powerful blinding Ingot that shall ward of evil!",
   "advancement.create_dd.refined_radiance_casing": "The Spiritual Magic",
   "advancement.create_dd.refined_radiance_casing.desc": "Apply Refined Radiance to an Light Blessed Block, creating a blinding Bright Casing!",
+  "advancement.create_dd.radiant_drill": "Spiritual Magic Drill!",
+  "advancement.create_dd.radiant_drill.desc": "The Radiant Drill is a way faster and better version of the most Drills & haves the ability to Fortune Blocks!",
+  "advancement.create_dd.radiant_panel": "Magical Solar Panel!",
+  "advancement.create_dd.radiant_panel.desc": "Harvest the Solar Energy!",
   "advancement.create_dd.accelerator_motor": "Rotation Speed Controller Motor?",
   "advancement.create_dd.accelerator_motor.desc": "A Motor that doesn't generate any stress & control the speed up to 256!",
   "advancement.create_dd.bronze_ingot": "Gunmetal Bronze, PEW PEW PEW!",
@@ -566,6 +605,8 @@
   "advancement.create_dd.tin_ingot.desc": "Smelt an Tin Ingot",
   "advancement.create_dd.deforester_saw": "TIMBER!!!",
   "advancement.create_dd.deforester_saw.desc": "Obtain the Deforester.. Saw?",
+  "advancement.create_dd.excavation_drill": "DRILL GO BRRRRRRR!!!",
+  "advancement.create_dd.excavation_drill.desc": "Obtain the Excavation Drill!",
   "advancement.create_dd.ember_alloy": "Smokey Alloy",
   "advancement.create_dd.ember_alloy.desc": "Obtain some Ember Alloy",
   "advancement.create_dd.hydraulic_press": "Heavy Duty Snowball Smasher!",
@@ -593,6 +634,53 @@
   "advancement.create_dd.steel_ingot": "God Damn the Steel is Thick",
   "advancement.create_dd.steel_ingot.desc": "Smash some Industrial Iron into Steel!",
 
+  "advancement.create_dd.flywheel": "An Old Heart of an Factory",
+  "advancement.create_dd.flywheel.desc": "Successfully connect a Flywheel Engine to the Flywheel Component.",
+
+  "create_dd.ponder.tag.create_dd": "Create: Dreams n' Desires!",
+  "create_dd.ponder.tag.create_dd.description": "Where Dreams & Desires within the create mod become Realities!",
+
+  "create_dd.ponder.tag.stone_generation": "Stone Generations",
+  "create_dd.ponder.tag.stone_generation.description": "Stone Generators Fluids",
+  "create_dd.ponder.stone_generation.header": "Using Fluids to Generator Stones",
+  "block.create_dd.ponder_stone_generation": "Ponder Stone Generations",
+
+  "create_dd.ponder.industrial_fan_source.header": "Generating Rotational Force using Industrial Fans",
+  "create_dd.ponder.industrial_fan_source.text_1": "Industrial Fans facing down into a source of heat can provide Rotational Force",
+  "create_dd.ponder.industrial_fan_source.text_2": "When given a Strong Redstone Signal, the Industrial Fans will start providing power",
+
+  "create_dd.ponder.bronze_saw_processing.header": "Bulk Processing Items on the Bronze Saw",
+  "create_dd.ponder.bronze_saw_processing.text_1": "Upward facing Bronze Saws can bulk process a variety of items",
+  "create_dd.ponder.bronze_saw_processing.text_2": "The processed item always moves against the rotational input to the saw",
+  "create_dd.ponder.bronze_saw_processing.text_3": "Saws can work in-line with Mechanical Belts",
+  "create_dd.ponder.bronze_saw_processing.text_4": "When an ingredient has multiple possible outcomes, the filter slot can specify it",
+  "create_dd.ponder.bronze_saw_processing.text_5": "Without filter, the Saw would cycle through all outcomes instead",
+
+  "create_dd.ponder.hydraulic_press.header": "Bulk Processing Items with the Hydraulic Press",
+  "create_dd.ponder.hydraulic_press.text_1": "The Hydraulic Press can bulk process items provided beneath it",
+  "create_dd.ponder.hydraulic_press.text_2": "The Input items can be dropped or placed on a Depot under the Press",
+  "create_dd.ponder.hydraulic_press.text_3": "When items are provided on a belt...",
+  "create_dd.ponder.hydraulic_press.text_4": "The Press will hold and bulk process them automatically",
+
+  "create_dd.ponder.motors.header": "Generating Rotational Force using Motors",
+  "create_dd.ponder.motors.text_1": "Motors are a compact and configurable source of Rotational Force",
+  "create_dd.ponder.motors.text_2": "The generated speed can be configured on its input panels",
+
+  "create_dd.ponder.fan_sails.header": "Using Fan Sails for Changing Encased/Industrial Fans Types",
+  "create_dd.ponder.tag.fan_heater": "Industrial Fan Heaters",
+
+  "create_dd.ponder.flywheel.header": "Generating Rotational Force using the Flywheel Component",
+  "create_dd.ponder.flywheel.text_1": "Flywheel Components are required for generating rotational force with the Flywheel Engine!",
+  "create_dd.ponder.flywheel.text_2": "The provided Rotational Force has a decently large stress capacity unlike the Steam Engine!",
+
+  "create_dd.ponder.furnace_engine.header": "Generating Rotational Force using the Flywheel Engine",
+  "create_dd.ponder.furnace_engine.text_1": "Flywheel Engines generate Rotational Force while their attached Furnace is running!",
+  "create_dd.ponder.furnace_engine.text_2": "The provided Rotational Force has a decently large stress capacity unlike the Steam Engine!",
+
+  "create_dd.ponder.cog_crank.header": "Generating Rotational Force using Cog Cranks",
+  "create_dd.ponder.cog_crank.text_1": "Cog Cranks can be used by players to apply rotational force manually",
+  "create_dd.ponder.cog_crank.text_2": "Hold Right-Click to rotate it Counter-Clockwise",
+  "create_dd.ponder.cog_crank.text_3": "Sneak and Hold Right-Click to rotate it Clockwise",
 
   "create.recipe.also_mystery_conversion": "Mysterious Conversion",
 
@@ -619,6 +707,10 @@
   "item.create_dd.refined_radiance.tooltip.summary": "A Chromatic material forged _in the Cleansed Luminosity_.",
   "item.create_dd.overcharge_alloy.tooltip": "OVERCHARGE ALLOY",
   "item.create_dd.overcharge_alloy.tooltip.summary": "A Chromatic material forged _in the Immense Energetic Force_.",
+  "item.create_dd.blaze_gold.tooltip": "BLAZE BRASS",
+  "item.create_dd.blaze_gold.tooltip.summary": "A Chromatic material forged _with a soul of an Infernal Protector_.",
+  "item.create_dd.stargaze_singularity.tooltip": "STARGAZE SINGULARITY",
+  "item.create_dd.stargaze_singularity.tooltip.summary": "A Fallen Chromatic material glazed _high up in the Stars of the night skies_.",
 
   "item.create_dd.forest_ravager.tooltip": "MYTHICAL FOREST RAVAGER",
   "item.create_dd.forest_ravager.tooltip.summary": "A Powerful axe that can _Deforest the Entire Land_!",
@@ -633,6 +725,13 @@
   "item.create_dd.deforester_saw.tooltip.behaviour1": "Act like the _Mechanical Saw_ that _cuts the Entire Tree down_",
   "item.create_dd.deforester_saw.tooltip.condition2": "While wearing Backtank",
   "item.create_dd.deforester_saw.tooltip.behaviour2": "_No_ _Durability_ will be used. Instead, _Air_ _pressure_ is drained from the Tank",
+
+  "item.create_dd.excavation_drill.tooltip": "EXCAVATION DRILL",
+  "item.create_dd.excavation_drill.tooltip.summary": "A Powerful handheld drill that can _Excavate Entire Vein of Ores_!",
+  "item.create_dd.excavation_drill.tooltip.condition1": "Breaking a Block while Sneaking",
+  "item.create_dd.excavation_drill.tooltip.behaviour1": "_Vein Mines_ while _Looking at Ores_ otherwise it will _Mine a 3x3 Area_",
+  "item.create_dd.excavation_drill.tooltip.condition2": "While wearing Backtank",
+  "item.create_dd.excavation_drill.tooltip.behaviour2": "_No_ _Durability_ will be used. Instead, _Air_ _pressure_ is drained from the Tank",
 
   "item.create_dd.frozen_nugget.tooltip": "FROZEN NUGGET OF EXPERIENCE",
   "item.create_dd.frozen_nugget.tooltip.summary": "A speck of _frozen inspiration_ from your fantastic inventions.",
@@ -674,10 +773,29 @@
 
   "block.create_dd.bronze_drill.tooltip": "BRONZE DRILL",
   "block.create_dd.bronze_drill.tooltip.summary": "Acts like a _Mechanical Drill_ but _mines faster_!",
+  "block.create_dd.bronze_drill.tooltip.condition1": "When Blocks are Broken",
+  "block.create_dd.bronze_drill.tooltip.behaviour1": "Makes _items fire resistant_!",
+
+  "block.create_dd.radiant_drill.tooltip": "RADIANT DRILL",
+  "block.create_dd.radiant_drill.tooltip.summary": "Acts like a _Mechanical Drill_ but _mines way faster_!",
+  "block.create_dd.radiant_drill.tooltip.condition1": "When Blocks are Broken",
+  "block.create_dd.radiant_drill.tooltip.behaviour1": "Applies _Fortune IV_ & makes _items float_ also _never de-spawn_!",
+
+
+  "block.create_dd.shadow_drill.tooltip": "SHADOW DRILL",
+  "block.create_dd.shadow_drill.tooltip.summary": "Acts like a _Mechanical Drill_ but _mines way faster_!",
+  "block.create_dd.shadow_drill.tooltip.condition1": "When Blocks are Broken",
+  "block.create_dd.shadow_drill.tooltip.behaviour1": "Applies _Silk Touch_ & makes _items float_ also _never de-spawn_!",
+
+  "block.create_dd.bronze_bell.tooltip": "BRONZE BELL",
+  "block.create_dd.bronze_bell.tooltip.summary": "Large Loud Bell!",
+  "block.create_dd.bronze_bell.tooltip.condition1": "When R-Clicked while Sneaking",
+  "block.create_dd.bronze_bell.tooltip.behaviour1": "Changes Pitch of the Bell like a note block!",
+
   "block.create_dd.bronze_saw.tooltip": "BRONZE SAW",
   "block.create_dd.bronze_saw.tooltip.summary": "Acts like a _Mechanical Saw_ but _mines faster_ & allows for _Bulk Sawing_!",
-  "block.create_dd.hydraulic_press.tooltip": "HYDRAULIC PRESS",
-  "block.create_dd.hydraulic_press.tooltip.summary": "Acts like a _Mechanical Press_ but allows for _Bulk Pressing_!",
+
+  "subtitles.block.bell.ring": "Bronze Bell rung",
 
   "death.attack.create.fan_super_lava": "%1$s was reduce to ashes by an Industrial Fan",
   "death.attack.create.fan_super_lava.player": "%1$s seethe enough they were thrown into a super smelter by %2$s",
@@ -687,5 +805,7 @@
   "tetra.material.mithril": "Mithril",
   "tetra.material.mithril.prefix": "Mithril",
 
-  "itemGroup.create_dd.base": "§f\uEFB8"
+  "itemGroup.create_dd.base": "§f\uEFB8",
+  "block.create_dd.hydraulic_press.tooltip": "HYDRAULIC PRESS",
+  "block.create_dd.hydraulic_press.tooltip.summary": "Acts like a _Mechanical Press_ but allows for _Bulk Pressing_!"
 }
