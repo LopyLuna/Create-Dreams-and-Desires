@@ -7,6 +7,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import uwu.lopyluna.create_dd.block.BlockProperties.industrial_fan.IndustrialAirCurrent;
+import uwu.lopyluna.create_dd.item.ItemProperties.drilltool.ExcavationDrillRenderHandler;
 
 @SuppressWarnings({"unused"})
 @Mod.EventBusSubscriber(Dist.CLIENT)
@@ -21,6 +22,8 @@ public class DDClientEvents {
         if (event.phase == TickEvent.Phase.START) {
             IndustrialAirCurrent.tickClientPlayerSounds();
         }
+
+        ExcavationDrillRenderHandler.tick();
 
     }
 

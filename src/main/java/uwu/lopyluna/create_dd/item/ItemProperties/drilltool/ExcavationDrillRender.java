@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import uwu.lopyluna.create_dd.DDCreate;
@@ -32,7 +33,6 @@ public class ExcavationDrillRender extends CustomRenderedItemModelRenderer {
     protected void render(ItemStack stack, CustomRenderedItemModel model, PartialItemModelRenderer renderer, ItemTransforms.TransformType transformType,
                           PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
         TransformStack stacker = TransformStack.cast(ms);
-        int i =  -2;
         boolean active = false;
         boolean displayActive = false;
         boolean excavatingDisplay = ExcavationDrillItem.excavatingDisplay;
@@ -41,15 +41,23 @@ public class ExcavationDrillRender extends CustomRenderedItemModelRenderer {
         assert player != null;
         boolean validSimple = player.getMainHandItem().getItem() == DDItems.excavation_drill.get();
         boolean validSimpleOffHand = player.getOffhandItem().getItem() == DDItems.excavation_drill.get();
-        boolean valid = player.getMainHandItem().getItem() == DDItems.excavation_drill.get() && player.swingTime > 0;
-        if (valid && !active) {i--;if (i >= -16) {if (valid) {i = -16;active = false;} else {active = true;}}} else if (active) {i++;if (i <= 2) {if (!valid) {i = 2;}active = false;}}
-
-        float boostCog = ((i * -2) + (valid ? (player.attackAnim) / 10f : 0) + 1);
 
 
         //if ( player.isCrouching() || player.isAutoSpinAttack() || player.isUsingItem() ) {} idfk maybe used for later
 
         int maxLight = 0xF000F0;
+
+
+
+        float animation = 0.25f;
+        boolean leftHand = transformType == ItemTransforms.TransformType.FIRST_PERSON_LEFT_HAND;
+        boolean rightHand = transformType == ItemTransforms.TransformType.FIRST_PERSON_RIGHT_HAND;
+        if (leftHand || rightHand)
+            animation = Mth.lerp(AnimationTickHolder.getPartialTicks(),
+                    ExcavationDrillRenderHandler.lastMainHandAnimation,
+                    ExcavationDrillRenderHandler.mainHandAnimation);
+
+        animation = animation * animation * animation;
 
 
         ms.pushPose();
@@ -73,7 +81,9 @@ public class ExcavationDrillRender extends CustomRenderedItemModelRenderer {
 
         // head
         ms.pushPose();
-        float angle = AnimationTickHolder.getRenderTime() * boostCog;
+        float angle = AnimationTickHolder.getRenderTime() * -2;
+        if (leftHand || rightHand)
+            angle += 360 * animation;
         angle %= 360;
         stacker.translate(ROTATION_OFFSET)
                 .rotateZ(angle)
