@@ -1,0 +1,7 @@
+{
+	"parent": "create_dd:block/encased_shaft/block",
+	"textures": {
+		"casing": "create_dd:block/andesite_casing",
+		"opening": "create_dd:block/gearbox"
+	}
+}

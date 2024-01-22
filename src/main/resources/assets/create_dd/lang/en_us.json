@@ -184,6 +184,8 @@
   "fluid.create_dd.apple_cider": "Apple Cider",
   "fluid.create_dd.sap": "Sap",
 
+  "block.create.hydraulic_encased_fluid_pipe": "Hydraulic Encased Fluid Pipe",
+
   "block.create_dd.hazard_block": "Hazard Block",
   "block.create_dd.horizontal_hazard_block": "Horizontal Hazard Block",
   "block.create_dd.hazard_block_r": "Hazard Block",
@@ -729,7 +731,7 @@
   "item.create_dd.excavation_drill.tooltip": "EXCAVATION DRILL",
   "item.create_dd.excavation_drill.tooltip.summary": "A Powerful handheld drill that can _Excavate Entire Vein of Ores_!",
   "item.create_dd.excavation_drill.tooltip.condition1": "Breaking a Block while Sneaking",
-  "item.create_dd.excavation_drill.tooltip.behaviour1": "_Vein Mines_ while _Mining Ores_ \n§c(otherwise it will _Mine a 3x3 Area_ \n§c-Not Implemented yet!-)",
+  "item.create_dd.excavation_drill.tooltip.behaviour1": "_Vein Mines_ while _Mining Ores_ §c(otherwise §cit §cwill §cMine §ca §c3x3 §cArea §c-Not §cImplemented §cyet!-)",
   "item.create_dd.excavation_drill.tooltip.condition2": "While wearing Backtank",
   "item.create_dd.excavation_drill.tooltip.behaviour2": "_No_ _Durability_ will be used. Instead, _Air_ _pressure_ is drained from the Tank",
 

@@ -1,5 +1,8 @@
 package uwu.lopyluna.create_dd.block;
 
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.Create;
+import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
 import com.simibubi.create.content.kinetics.base.HalfShaftInstance;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.ShaftInstance;
@@ -211,6 +214,11 @@ public class DDBlockEntityTypes {
             .instance(() -> CogCrankInstance::new)
             .validBlocks(DDBlocks.cogCrank)
             .renderer(() -> CogCrankRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<FluidPipeBlockEntity> ENCASED_FLUID_PIPE = REGISTRATE
+            .blockEntity("encased_fluid_pipe", FluidPipeBlockEntity::new)
+            .validBlocks(DDBlocks.HYDRAULIC_ENCASED_FLUID_PIPE)
             .register();
 
     public static void register() {}

@@ -184,6 +184,8 @@
   "fluid.create_dd.apple_cider": "Apple Cider",
   "fluid.create_dd.sap": "Sap",
 
+  "block.create.hydraulic_encased_fluid_pipe": "Hydraulic Encased Fluid Pipe",
+
   "block.create_dd.hazard_block": "警示方块",
   "block.create_dd.horizontal_hazard_block": "横向警示方块",
   "block.create_dd.hazard_block_r": "警示方块R",
@@ -796,6 +798,8 @@
   "block.create_dd.bronze_saw.tooltip.summary": "Acts like a _Mechanical Saw_ but _mines faster_ & allows for _Bulk Sawing_!",
 
   "subtitles.block.bell.ring": "Bronze Bell rung",
+
+  "tooltip.removal.summary": " §c§l--WARNING-- \n §c§lRemoval may happen and/or \n §c§lMove to a different mod ",
 
   "death.attack.create.fan_super_lava": "%1$s was reduce to ashes by an Industrial Fan",
   "death.attack.create.fan_super_lava.player": "%1$s seethe enough they were thrown into a super smelter by %2$s",

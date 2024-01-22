@@ -96,7 +96,7 @@
   "item.create_dd.excavation_drill.tooltip": "EXCAVATION DRILL",
   "item.create_dd.excavation_drill.tooltip.summary": "A Powerful handheld drill that can _Excavation the Entire Vein of Ores_!",
   "item.create_dd.excavation_drill.tooltip.condition1": "Breaking a Block while Sneaking",
-  "item.create_dd.excavation_drill.tooltip.behaviour1": "Vein Mines Ores while _Looking at Ores_ otherwise it will Mine a 3x3 Area",
+  "item.create_dd.excavation_drill.tooltip.behaviour1": "_Vein Mines_ while _Mining Ores_ §c(otherwise §cit §cwill §cMine §ca §c3x3 §cArea §c-Not §cImplemented §cyet!-)",
   "item.create_dd.excavation_drill.tooltip.condition2": "While wearing Backtank",
   "item.create_dd.excavation_drill.tooltip.behaviour2": "_No_ _Durability_ will be used. Instead, _Air_ _pressure_ is drained from the Tank"
 }

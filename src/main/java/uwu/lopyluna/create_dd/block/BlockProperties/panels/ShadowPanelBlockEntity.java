@@ -36,13 +36,13 @@ public class ShadowPanelBlockEntity extends GeneratingKineticBlockEntity {
 
         boolean night_min_time =
                 dt > DDConfigs.server().kinetics.night_min_time.get() &&
-                        dt < DDConfigs.server().kinetics.night_max_time.get();
+                        dt < DDConfigs.server().kinetics.night_max_time.get() + 5;
         boolean midnight_min_time =
                 dt > DDConfigs.server().kinetics.midnight_min_time.get() &&
-                        dt < DDConfigs.server().kinetics.midnight_max_time.get();
+                        dt < DDConfigs.server().kinetics.midnight_max_time.get() + 5;
         boolean sunrise_max_time =
                 dt > DDConfigs.server().kinetics.sunrise_min_time.get() &&
-                        dt < DDConfigs.server().kinetics.sunrise_max_time.get();
+                        dt < DDConfigs.server().kinetics.sunrise_max_time.get() + 5;
         if (night_min_time) { active = false; weak_active = true;
             return !state.getValue(BlockStateProperties.WATERLOGGED) ? 32 : 16;}
         else if (midnight_min_time) { active = true; weak_active = false;

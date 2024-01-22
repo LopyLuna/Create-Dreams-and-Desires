@@ -1,0 +1,7 @@
+{
+	"parent": "create_dd:block/encased_shaft/block",
+	"textures": {
+		"casing": "create_dd:block/brass_casing",
+		"opening": "create_dd:block/brass_gearbox"
+	}
+}

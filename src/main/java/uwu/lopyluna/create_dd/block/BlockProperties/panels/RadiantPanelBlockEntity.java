@@ -36,13 +36,13 @@ public class RadiantPanelBlockEntity extends GeneratingKineticBlockEntity {
 
         boolean day_time =
                 dt > DDConfigs.server().kinetics.day_min_time.get() &&
-                        dt < DDConfigs.server().kinetics.day_max_time.get();
+                        dt < DDConfigs.server().kinetics.day_max_time.get() + 5;
         boolean noon_time =
                 dt > DDConfigs.server().kinetics.noon_min_time.get() &&
-                        dt < DDConfigs.server().kinetics.noon_max_time.get();
+                        dt < DDConfigs.server().kinetics.noon_max_time.get() + 5;
         boolean sunset_time =
                 dt > DDConfigs.server().kinetics.sunset_min_time.get() &&
-                        dt < DDConfigs.server().kinetics.sunset_max_time.get();
+                        dt < DDConfigs.server().kinetics.sunset_max_time.get() + 5;
         if (day_time) { active = false; weak_active = true;
             return !state.getValue(BlockStateProperties.WATERLOGGED) ? 48 : 24;}
         else if (noon_time) { active = true; weak_active = false;
