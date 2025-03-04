@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create_dd:item/handheld_nozzle/item",
+	"textures": {
+		"1": "create_dd:block/signal_glow",
+		"particle": "create_dd:block/signal_glow"
+	},
+	"elements": [
+		{
+			"from": [6, 7.5, 0.5],
+			"to": [10, 10.5, 3.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -4, -5]},
+			"faces": {
+				"north": {"uv": [15, 3, 11, 0], "texture": "#1"},
+				"east": {"uv": [11, 0, 14, 3], "texture": "#1"},
+				"south": {"uv": [11, 0, 15, 3], "texture": "#1"},
+				"west": {"uv": [12, 0, 15, 3], "texture": "#1"},
+				"up": {"uv": [11, 3, 15, 0], "texture": "#1"}
+			}
+		}
+	]
+}

@@ -1,0 +1,54 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"texture_size": [32, 32],
+	"textures": {
+		"1": "create_dd:block/kinetic_motor",
+		"particle": "create:block/andesite_casing"
+	},
+	"elements": [
+		{
+			"name": "Back",
+			"from": [3, 0.1, 3],
+			"to": [13, 14.1, 8],
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [7, 10, 0, 5], "rotation": 270, "texture": "#1"},
+				"east": {"uv": [7, 5, 0, 7.5], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [7, 7.5, 0, 5], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [5, 0, 10, 2.5], "texture": "#1"},
+				"down": {"uv": [0, 0, 5, 2.5], "rotation": 180, "texture": "#1"}
+			}
+		},
+		{
+			"name": "Back",
+			"from": [3, 0.1, 8],
+			"to": [13, 14.1, 13],
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 8, 8]},
+			"faces": {
+				"east": {"uv": [7, 7.5, 0, 10], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [7, 10, 0, 5], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [7, 10, 0, 7.5], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [5, 2.5, 10, 0], "texture": "#1"},
+				"down": {"uv": [0, 2.5, 5, 0], "rotation": 180, "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"gui": {
+			"rotation": [30, 45, 0],
+			"scale": [0.625, 0.625, 0.625]
+		}
+	},
+	"groups": [
+		{
+			"name": "shaft",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"nbt": "{}",
+			"children": []
+		},
+		0,
+		1
+	]
+}

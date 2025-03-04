@@ -1,0 +1,89 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "create_dd:item/block_zapper_mesh",
+		"particle": "block/obsidian"
+	},
+	"elements": [
+		{
+			"name": "Amplifier Connector",
+			"from": [6.5, 2.125, 1.5],
+			"to": [9.5, 3.125, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.5, 8.125, 8]},
+			"faces": {
+				"north": {"uv": [14, 12, 15, 9], "rotation": 90, "texture": "#0"},
+				"east": {"uv": [8, 12, 16, 13], "rotation": 180, "texture": "#0"},
+				"south": {"uv": [14, 9, 15, 12], "rotation": 90, "texture": "#0"},
+				"west": {"uv": [16, 12, 8, 13], "rotation": 180, "texture": "#0"},
+				"up": {"uv": [15, 9, 7, 12], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [16, 9, 8, 12], "rotation": 90, "texture": "#0"}
+			}
+		},
+		{
+			"name": "Amplifier Connector",
+			"from": [6.5, 3.125, 6.5],
+			"to": [9.5, 4.125, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.5, 8.125, 8]},
+			"faces": {
+				"north": {"uv": [16, 13, 13, 14], "texture": "#0"},
+				"east": {"uv": [15, 13, 16, 16], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [13, 15, 16, 16], "texture": "#0"},
+				"west": {"uv": [13, 16, 14, 13], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [13, 13, 16, 16], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [1, 0, 0],
+			"translation": [0, 4, -2.5],
+			"scale": [0.8, 0.8, 0.8]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [1, 0, 0],
+			"translation": [0, 4, -2.5],
+			"scale": [0.8, 0.8, 0.8]
+		},
+		"firstperson_righthand": {
+			"rotation": [10, 0, 10],
+			"translation": [1, 4, 1]
+		},
+		"firstperson_lefthand": {
+			"rotation": [10, 0, 10],
+			"translation": [1, 4, 1]
+		},
+		"ground": {
+			"rotation": [0, 0, 90],
+			"translation": [-2.25, -1, -0.75],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"gui": {
+			"rotation": [30, 45, 0],
+			"translation": [-0.5, 3.5, 0]
+		},
+		"fixed": {
+			"rotation": [0, 90, 0],
+			"translation": [-1.25, 4.25, -1]
+		}
+	},
+	"groups": [
+		{
+			"name": "placement_handgun",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": []
+		},
+		{
+			"name": "chorus_scope",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": []
+		},
+		{
+			"name": "chorus_amplifier",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

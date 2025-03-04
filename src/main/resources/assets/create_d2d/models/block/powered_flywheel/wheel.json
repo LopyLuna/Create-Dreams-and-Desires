@@ -1,0 +1,8 @@
+{
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"textures": {
+		"0": "create_d2d:block/engine_wheel",
+		"particle": "create_d2d:block/engine_casing"
+	}
+}

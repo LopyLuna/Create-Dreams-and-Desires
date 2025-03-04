@@ -1,0 +1,20 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create:item/handheld_worldshaper/item",
+	"textures": {
+		"2": "block/white_concrete_powder"
+	},
+	"elements": [
+		{
+			"name": "Core",
+			"from": [6.8, 5.125, 0.7],
+			"to": [9.2, 6.125, 10.7],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.5, 8.125, 8]},
+			"faces": {
+				"north": {"uv": [6, 5, 8.4, 6], "texture": "#2"},
+				"east": {"uv": [3, 5, 13, 6], "texture": "#2"},
+				"west": {"uv": [3, 7, 13, 8], "texture": "#2"}
+			}
+		}
+	]
+}

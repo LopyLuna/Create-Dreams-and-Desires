@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create:item/handheld_worldshaper/item",
+	"textures": {
+		"2": "block/white_concrete_powder"
+	},
+	"elements": [
+		{
+			"name": "Amplifier Core",
+			"from": [6.8, 3.125, 3.2],
+			"to": [9.2, 4.125, 8.45],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.5, 8.125, 8.5]},
+			"faces": {
+				"north": {"uv": [6, 5, 8.4, 6], "texture": "#2"},
+				"east": {"uv": [3, 5, 8, 6], "texture": "#2"},
+				"south": {"uv": [0, 0, 2.4, 1], "texture": "#2"},
+				"west": {"uv": [3, 7, 8, 8], "texture": "#2"},
+				"up": {"uv": [0, 0, 2.4, 5], "texture": "#2"},
+				"down": {"uv": [0, 0, 2.4, 5], "texture": "#2"}
+			}
+		}
+	]
+}

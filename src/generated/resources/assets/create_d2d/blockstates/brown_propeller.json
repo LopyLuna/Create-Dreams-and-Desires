@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "create_d2d:block/brown_propeller",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "create_d2d:block/brown_propeller"
+    },
+    "axis=z": {
+      "model": "create_d2d:block/brown_propeller",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

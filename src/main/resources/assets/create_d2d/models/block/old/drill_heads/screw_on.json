@@ -1,0 +1,31 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"10": "create_dd:block/drill_heads/screw_on"
+	},
+	"elements": [
+		{
+			"name": "Core",
+			"from": [6, 6, 9],
+			"to": [10, 10, 25],
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 8]},
+			"faces": {
+				"east": {"uv": [6, 0, 10, 16], "rotation": 270, "texture": "#10"},
+				"south": {"uv": [0, 0, 4, 4], "texture": "#10"},
+				"west": {"uv": [6, 0, 10, 16], "rotation": 90, "texture": "#10"},
+				"up": {"uv": [6, 0, 10, 16], "rotation": 180, "texture": "#10"},
+				"down": {"uv": [6, 0, 10, 16], "texture": "#10"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "head",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"nbt": "{}",
+			"children": [0]
+		}
+	]
+}

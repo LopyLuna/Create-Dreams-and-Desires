@@ -1,0 +1,23 @@
+{
+  "values": [
+    "create_d2d:propeller",
+    "create_d2d:white_propeller",
+    "create_d2d:orange_propeller",
+    "create_d2d:magenta_propeller",
+    "create_d2d:light_blue_propeller",
+    "create_d2d:yellow_propeller",
+    "create_d2d:lime_propeller",
+    "create_d2d:pink_propeller",
+    "create_d2d:gray_propeller",
+    "create_d2d:light_gray_propeller",
+    "create_d2d:cyan_propeller",
+    "create_d2d:purple_propeller",
+    "create_d2d:blue_propeller",
+    "create_d2d:brown_propeller",
+    "create_d2d:green_propeller",
+    "create_d2d:red_propeller",
+    "create_d2d:black_propeller",
+    "create_d2d:stirling_engine",
+    "create_d2d:powered_flywheel"
+  ]
+}

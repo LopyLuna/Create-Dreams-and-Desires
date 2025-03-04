@@ -1,0 +1,6 @@
+{
+  "parent": "create_d2d:block/propeller/item",
+  "textures": {
+    "1": "create_d2d:block/propeller/white"
+  }
+}

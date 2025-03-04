@@ -1,0 +1,70 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "create_dd:item/clockwork_crossbow/attachments"
+	},
+	"elements": [
+		{
+			"from": [9, 5, 8.5],
+			"to": [11, 7, 9],
+			"rotation": {"angle": 0, "axis": "z", "origin": [10, 6, 8.5]},
+			"faces": {
+				"east": {"uv": [10, 0, 12, 1], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [10, 0, 12, 2], "texture": "#1"},
+				"west": {"uv": [10, 0, 12, 1], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [10, 2, 11, 0], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [10, 0, 11, 2], "rotation": 90, "texture": "#1"}
+			}
+		},
+		{
+			"from": [10, 4, 8.5],
+			"to": [12, 6, 9],
+			"rotation": {"angle": 0, "axis": "z", "origin": [11, 5, 8.5]},
+			"faces": {
+				"east": {"uv": [12, 3, 13, 1], "rotation": 180, "texture": "#1"},
+				"south": {"uv": [11, 1, 13, 3], "texture": "#1"},
+				"west": {"uv": [11, 1, 13, 2], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [11, 3, 12, 1], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [11, 2, 13, 3], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-90, 0, -45],
+			"translation": [0, 0.6, -3],
+			"scale": [0.9, 0.9, 0.9]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [-90, 0, 45],
+			"translation": [0, 0.6, -3],
+			"scale": [0.9, 0.9, 0.9]
+		},
+		"firstperson_righthand": {
+			"rotation": [-80, -22.5, -55],
+			"translation": [1.13, 3.2, 0.13],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-80, -22.5, 35],
+			"translation": [1.13, 3.2, 0.13],
+			"scale": [0.68, 0.68, 0.68]
+		}
+	},
+	"groups": [
+		0,
+		1,
+		{
+			"name": "cog1",
+			"origin": [3.5, 2.5, 7.5],
+			"color": 0,
+			"children": []
+		},
+		{
+			"name": "cog2",
+			"origin": [3.5, 2.5, 7.5],
+			"color": 0,
+			"children": []
+		}
+	]
+}

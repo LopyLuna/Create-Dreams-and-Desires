@@ -1,0 +1,6 @@
+{
+	"parent": "create_dd:block/giant_gear/giant_gear",
+	"loader": "forge:obj",
+	"flip_v": true,
+	"model": "create_dd:models/block/giant_gear/giant_gear.obj"
+}

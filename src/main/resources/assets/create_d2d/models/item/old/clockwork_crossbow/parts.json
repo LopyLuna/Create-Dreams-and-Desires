@@ -1,0 +1,80 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "create_dd:item/clockwork_crossbow/attachments"
+	},
+	"elements": [
+		{
+			"from": [5.70711, 4.20711, 5.5],
+			"to": [9.70711, 12.20711, 7.5],
+			"rotation": {"angle": 45, "axis": "z", "origin": [7.70711, 8.20711, 6.5]},
+			"faces": {
+				"north": {"uv": [1, 12, 9, 16], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [1, 13, 9, 11], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [1, 11, 9, 13], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [2, 12, 0, 16], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [10, 12, 8, 16], "rotation": 90, "texture": "#1"}
+			}
+		},
+		{
+			"from": [5, 9, 8.5],
+			"to": [7, 11, 9],
+			"rotation": {"angle": 0, "axis": "z", "origin": [6, 10, 8.5]},
+			"faces": {
+				"east": {"uv": [12, 3, 13, 1], "rotation": 180, "texture": "#1"},
+				"south": {"uv": [11, 1, 13, 3], "texture": "#1"},
+				"west": {"uv": [11, 1, 13, 2], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [11, 3, 12, 1], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [11, 2, 13, 3], "texture": "#1"}
+			}
+		},
+		{
+			"from": [0, 10, 7.5],
+			"to": [6, 16, 7.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 10, 7.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 6, 6], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [0, 0, 6, 6], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-90, 0, -45],
+			"translation": [0, 0.6, -3],
+			"scale": [0.9, 0.9, 0.9]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [-90, 0, 45],
+			"translation": [0, 0.6, -3],
+			"scale": [0.9, 0.9, 0.9]
+		},
+		"firstperson_righthand": {
+			"rotation": [-80, -22.5, -55],
+			"translation": [1.13, 3.2, 0.13],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-80, -22.5, 35],
+			"translation": [1.13, 3.2, 0.13],
+			"scale": [0.68, 0.68, 0.68]
+		}
+	},
+	"groups": [
+		0,
+		1,
+		2,
+		{
+			"name": "cog1",
+			"origin": [3.5, 2.5, 7.5],
+			"color": 0,
+			"children": []
+		},
+		{
+			"name": "cog2",
+			"origin": [3.5, 2.5, 7.5],
+			"color": 0,
+			"children": []
+		}
+	]
+}

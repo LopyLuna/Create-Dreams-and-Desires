@@ -1,0 +1,52 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create:item/handheld_worldshaper/item",
+	"textures": {
+		"2": "create_dd:item/block_zapper_mesh"
+	},
+	"elements": [
+		{
+			"name": "Rod Back Cap",
+			"from": [6, 4.5, 9.125],
+			"to": [10, 6.5, 11.0625],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5.5, 8.125]},
+			"faces": {
+				"north": {"uv": [0, 0, 4, 2], "texture": "#2"},
+				"east": {"uv": [0, 0, 2, 2], "texture": "#2"},
+				"south": {"uv": [0, 0, 4, 1], "texture": "#2"},
+				"west": {"uv": [0, 0, 2, 2], "texture": "#2"},
+				"up": {"uv": [0, 0, 4, 2], "texture": "#2"},
+				"down": {"uv": [0, 0, 4, 2], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Rod Back Cap",
+			"from": [6, 4.5, 2.125],
+			"to": [10, 6.5, 4.0625],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5.5, 1.125]},
+			"faces": {
+				"north": {"uv": [0, 0, 4, 2], "texture": "#2"},
+				"east": {"uv": [0, 0, 2, 2], "texture": "#2"},
+				"south": {"uv": [0, 0, 4, 1], "texture": "#2"},
+				"west": {"uv": [0, 0, 2, 2], "texture": "#2"},
+				"up": {"uv": [0, 0, 4, 2], "texture": "#2"},
+				"down": {"uv": [0, 0, 4, 2], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Rod Back Cap",
+			"from": [6, 3.25, 15],
+			"to": [10, 7.25, 16],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 5.25, 9]},
+			"faces": {
+				"north": {"uv": [12, 4, 16, 8], "texture": "#2"},
+				"east": {"uv": [12, 4, 13, 8], "texture": "#2"},
+				"south": {"uv": [16, 4, 12, 8], "texture": "#2"},
+				"west": {"uv": [15, 4, 16, 8], "texture": "#2"},
+				"up": {"uv": [16, 4, 12, 5], "texture": "#2"},
+				"down": {"uv": [16, 7, 12, 8], "texture": "#2"}
+			}
+		}
+	],
+	"display": {}
+}

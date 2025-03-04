@@ -1,0 +1,56 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "create_dd:item/clockwork_crossbow/attachments"
+	},
+	"elements": [
+		{
+			"from": [4.5901, 13.14645, 8],
+			"to": [13.5901, 14.14645, 8],
+			"rotation": {"angle": 45, "axis": "z", "origin": [13.5, 13.5, 7.625]},
+			"faces": {
+				"north": {"uv": [15, 8, 16, 0], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [15, 0, 16, 1], "texture": "#1"},
+				"south": {"uv": [15, 0, 16, 8], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [15, 8, 16, 9], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-90, 0, -45],
+			"translation": [0, 0.6, -3],
+			"scale": [0.9, 0.9, 0.9]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [-90, 0, 45],
+			"translation": [0, 0.6, -3],
+			"scale": [0.9, 0.9, 0.9]
+		},
+		"firstperson_righthand": {
+			"rotation": [-80, -22.5, -55],
+			"translation": [1.13, 3.2, 0.13],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-80, -22.5, 35],
+			"translation": [1.13, 3.2, 0.13],
+			"scale": [0.68, 0.68, 0.68]
+		}
+	},
+	"groups": [
+		0,
+		{
+			"name": "cog1",
+			"origin": [3.5, 2.5, 7.5],
+			"color": 0,
+			"children": []
+		},
+		{
+			"name": "cog2",
+			"origin": [3.5, 2.5, 7.5],
+			"color": 0,
+			"children": []
+		}
+	]
+}

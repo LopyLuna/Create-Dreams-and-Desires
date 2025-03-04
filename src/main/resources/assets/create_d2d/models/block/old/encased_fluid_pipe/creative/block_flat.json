@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/encased_fluid_pipe/block_flat",
+  "textures": {
+    "0": "create_dd:block/creative_casing",
+    "particle": "create_dd:block/creative_casing"
+  }
+}

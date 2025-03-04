@@ -1,0 +1,92 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"5": "create:block/fluid_tank_inner",
+		"6": "create:block/fluid_tank",
+		"7": "create:block/copper_underside",
+		"8": "create:block/copper_plating",
+		"particle": "create:block/copper_plating"
+	},
+	"elements": [
+		{
+			"name": "Head",
+			"from": [2, -2, 2],
+			"to": [14, 2, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [2, 4, 14, 0], "texture": "#6"},
+				"east": {"uv": [2, 4, 14, 0], "texture": "#6"},
+				"south": {"uv": [2, 4, 14, 0], "texture": "#6"},
+				"west": {"uv": [2, 4, 14, 0], "texture": "#6"},
+				"up": {"uv": [3, 3, 13, 13], "texture": "#7"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#5"}
+			}
+		},
+		{
+			"name": "Pole1Core",
+			"from": [3, 2, 3],
+			"to": [13, 11, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [3, 11, 13, 2], "texture": "#6"},
+				"east": {"uv": [3, 11, 13, 2], "texture": "#6"},
+				"south": {"uv": [3, 11, 13, 2], "texture": "#6"},
+				"west": {"uv": [3, 11, 13, 2], "texture": "#6"}
+			}
+		},
+		{
+			"name": "Pole1Core",
+			"from": [3, 11, 3],
+			"to": [13, 20, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [3, 14, 13, 5], "texture": "#6"},
+				"east": {"uv": [3, 14, 13, 5], "texture": "#6"},
+				"south": {"uv": [3, 14, 13, 5], "texture": "#6"},
+				"west": {"uv": [3, 14, 13, 5], "texture": "#6"},
+				"up": {"uv": [3, 3, 13, 13], "rotation": 180, "texture": "#8"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 225, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"fixed": {
+			"scale": [0.5, 0.5, 0.5]
+		}
+	},
+	"groups": [
+		{
+			"name": "head",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"nbt": "{}",
+			"children": [0, 1, 2]
+		}
+	]
+}

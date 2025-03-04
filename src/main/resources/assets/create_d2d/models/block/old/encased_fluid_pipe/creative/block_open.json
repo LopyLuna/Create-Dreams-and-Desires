@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/encased_fluid_pipe/block_open",
+  "textures": {
+    "0": "create_dd:block/encased_creative_pipe",
+    "particle": "create_dd:block/encased_creative_pipe"
+  }
+}

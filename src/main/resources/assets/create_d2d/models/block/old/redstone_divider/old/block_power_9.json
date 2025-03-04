@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/gearshift/block",
+  "textures": {
+    "0": "create_dd:block/redstone_divider_4",
+    "particle": "create_dd:block/redstone_divider_4"
+  }
+}

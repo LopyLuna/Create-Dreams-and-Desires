@@ -1,0 +1,120 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "create_d2d:block/propeller",
+		"1": "create_d2d:block/kinetic_motor",
+		"particle": "create:block/andesite_block"
+	},
+	"elements": [
+		{
+			"from": [4.5, 7, 10],
+			"to": [10.5, 9, 29],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [7.5, 7, 12]},
+			"faces": {
+				"north": {"uv": [3, 3.5, 6, 2.5], "texture": "#0"},
+				"east": {"uv": [6.5, 0, 7.5, 9.5], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [0, 9.5, 3, 10.5], "texture": "#0"},
+				"west": {"uv": [6.5, 9.5, 7.5, 0], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [3, 0, 6, 9.5], "texture": "#0"},
+				"down": {"uv": [0, 9.5, 3, 0], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5.5, 7, -13],
+			"to": [11.5, 9, 6],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [8.5, 7, 4]},
+			"faces": {
+				"north": {"uv": [0, 9.5, 3, 10.5], "texture": "#0"},
+				"east": {"uv": [6.5, 9.5, 7.5, 0], "rotation": 90, "texture": "#0"},
+				"south": {"uv": [3, 3.5, 6, 2.5], "texture": "#0"},
+				"west": {"uv": [6.5, 0, 7.5, 9.5], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [3, 0, 6, 9.5], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 9.5, 3, 0], "rotation": 180, "texture": "#0"}
+			}
+		},
+		{
+			"from": [-13, 7, 4.5],
+			"to": [6, 9, 10.5],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [4, 7, 7.5]},
+			"faces": {
+				"north": {"uv": [6.5, 9.5, 7.5, 0], "rotation": 90, "texture": "#0"},
+				"east": {"uv": [3, 3.5, 6, 2.5], "texture": "#0"},
+				"south": {"uv": [6.5, 0, 7.5, 9.5], "rotation": 90, "texture": "#0"},
+				"west": {"uv": [0, 9.5, 3, 10.5], "texture": "#0"},
+				"up": {"uv": [3, 0, 6, 9.5], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [0, 9.5, 3, 0], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"from": [10, 7, 5.5],
+			"to": [29, 9, 11.5],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [12, 7, 8.5]},
+			"faces": {
+				"north": {"uv": [6.5, 0, 7.5, 9.5], "rotation": 90, "texture": "#0"},
+				"east": {"uv": [0, 9.5, 3, 10.5], "texture": "#0"},
+				"south": {"uv": [6.5, 9.5, 7.5, 0], "rotation": 90, "texture": "#0"},
+				"west": {"uv": [3, 3.5, 6, 2.5], "texture": "#0"},
+				"up": {"uv": [3, 0, 6, 9.5], "rotation": 270, "texture": "#0"},
+				"down": {"uv": [0, 9.5, 3, 0], "rotation": 90, "texture": "#0"}
+			}
+		},
+		{
+			"from": [3, 8, 3],
+			"to": [13, 11, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 7.5, 7]},
+			"faces": {
+				"north": {"uv": [0, 5, 1.5, 10], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [0, 5, 1.5, 10], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [0, 5, 1.5, 10], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [0, 5, 1.5, 10], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [5, 0, 10, 5], "texture": "#1"}
+			}
+		},
+		{
+			"from": [3, 5, 3],
+			"to": [13, 8, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 4.5, 7]},
+			"faces": {
+				"north": {"uv": [5.5, 5, 7, 10], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [5.5, 5, 7, 10], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [5.5, 5, 7, 10], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [5.5, 5, 7, 10], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [5, 0, 10, 5], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"rotation": [0, 0, 90],
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, 135, 0],
+			"scale": [0.44, 0.44, 0.44]
+		},
+		"fixed": {
+			"rotation": [0, 90, 0],
+			"scale": [0.45, 0.45, 0.45]
+		}
+	}
+}

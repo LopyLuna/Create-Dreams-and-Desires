@@ -1,0 +1,91 @@
+{
+  "creatvedite_break": {"subtitle": "subtitles.block.generic.break","sounds": [
+    {"name": "create_dd:creatvedite/break1","volume": 0.9},
+    {"name": "create_dd:creatvedite/break2","volume": 0.9},
+    {"name": "create_dd:creatvedite/break3","volume": 0.9},
+    {"name": "create_dd:creatvedite/break4","volume": 0.9}
+  ]},
+  "creatvedite_step": {"subtitle": "subtitles.block.generic.footsteps","sounds": [
+    {"name": "create_dd:creatvedite/step1","volume": 0.9},
+    {"name": "create_dd:creatvedite/step2","volume": 0.9},
+    {"name": "create_dd:creatvedite/step3","volume": 0.9},
+    {"name": "create_dd:creatvedite/step4","volume": 0.9}
+  ]},
+  "creatvedite_place": {"subtitle": "subtitles.block.generic.place","sounds": [
+    {"name": "create_dd:creatvedite/place1","volume": 0.9},
+    {"name": "create_dd:creatvedite/place2","volume": 0.9},
+    {"name": "create_dd:creatvedite/place3","volume": 0.9},
+    {"name": "create_dd:creatvedite/place4","volume": 0.9}
+  ]},
+  "creatvedite_hit": {"subtitle": "subtitles.block.generic.hit","sounds": [
+    {"name": "create_dd:creatvedite/step1","volume": 1.0},
+    {"name": "create_dd:creatvedite/step2","volume": 1.0},
+    {"name": "create_dd:creatvedite/step3","volume": 1.0},
+    {"name": "create_dd:creatvedite/step4","volume": 1.0}
+  ]},
+  "creatvedite_fall": {"subtitle": "subtitles.block.generic.footsteps","sounds": [
+    {"name": "create_dd:creatvedite/step1","volume": 0.9},
+    {"name": "create_dd:creatvedite/step2","volume": 0.9},
+    {"name": "create_dd:creatvedite/step3","volume": 0.9},
+    {"name": "create_dd:creatvedite/step4","volume": 0.9}
+  ]},
+  "crackle_break": {"subtitle": "subtitles.block.generic.break","sounds": [
+    {"name": "create_dd:crackle_stone/break1","volume": 0.9},
+    {"name": "create_dd:crackle_stone/break2","volume": 0.9},
+    {"name": "create_dd:crackle_stone/break3","volume": 0.9},
+    {"name": "create_dd:crackle_stone/break4","volume": 0.9},
+    {"name": "create_dd:crackle_stone/break5","volume": 0.9}
+  ]},
+  "crackle_step": {"subtitle": "subtitles.block.generic.footsteps","sounds": [
+    {"name": "create_dd:crackle_stone/step1","volume": 0.9},
+    {"name": "create_dd:crackle_stone/step2","volume": 0.9},
+    {"name": "create_dd:crackle_stone/step3","volume": 0.9},
+    {"name": "create_dd:crackle_stone/step4","volume": 0.9},
+    {"name": "create_dd:crackle_stone/step5","volume": 0.9},
+    {"name": "create_dd:crackle_stone/step6","volume": 0.9}
+  ]},
+  "crackle_place": {"subtitle": "subtitles.block.generic.place","sounds": [
+    {"name": "create_dd:crackle_stone/place1","volume": 0.9},
+    {"name": "create_dd:crackle_stone/place2","volume": 0.9},
+    {"name": "create_dd:crackle_stone/place3","volume": 0.9},
+    {"name": "create_dd:crackle_stone/place4","volume": 0.9},
+    {"name": "create_dd:crackle_stone/place5","volume": 0.9}
+  ]},
+  "crackle_hit": {"subtitle": "subtitles.block.generic.hit","sounds": [
+    {"name": "create_dd:crackle_stone/step1","volume": 1.0},
+    {"name": "create_dd:crackle_stone/step2","volume": 1.0},
+    {"name": "create_dd:crackle_stone/step3","volume": 1.0},
+    {"name": "create_dd:crackle_stone/step4","volume": 1.0},
+    {"name": "create_dd:crackle_stone/step5","volume": 0.9},
+    {"name": "create_dd:crackle_stone/step6","volume": 0.9}
+  ]},
+  "crackle_fall": {"subtitle": "subtitles.block.generic.footsteps","sounds": [
+    {"name": "create_dd:crackle_stone/step1","volume": 0.9},
+    {"name": "create_dd:crackle_stone/step2","volume": 0.9},
+    {"name": "create_dd:crackle_stone/step3","volume": 0.9},
+    {"name": "create_dd:crackle_stone/step4","volume": 0.9},
+    {"name": "create_dd:crackle_stone/step5","volume": 0.9},
+    {"name": "create_dd:crackle_stone/step6","volume": 0.9}
+  ]},
+  "rubber_break": {"subtitle": "subtitles.block.generic.break","sounds": [
+    {"name": "create_dd:rubber/break1","volume": 0.9},
+    {"name": "create_dd:rubber/break2","volume": 0.9},
+    {"name": "create_dd:rubber/break3","volume": 0.9},
+    {"name": "create_dd:rubber/break4","volume": 0.9}
+  ]},
+  "rubber_place": {"subtitle": "subtitles.block.generic.place","sounds": [
+    {"name": "create_dd:rubber/place1","volume": 0.9},
+    {"name": "create_dd:rubber/place2","volume": 0.9},
+    {"name": "create_dd:rubber/place3","volume": 0.9},
+    {"name": "create_dd:rubber/place4","volume": 0.9}
+  ]},
+  "block_zapper_upgrade": {"sounds": [
+    {"name": "create_dd:block_zapper/upgrade1","volume": 0.9},
+    {"name": "create_dd:block_zapper/upgrade2","volume": 0.9},
+    {"name": "create_dd:block_zapper/upgrade3","volume": 0.9},
+    {"name": "create_dd:block_zapper/upgrade4","volume": 0.9}
+  ]},
+  "music_disc.waltz_of_the_flowers": {"sounds": [
+    {"name": "create_dd:disc/waltz_of_the_flowers_by_tchaikovsk","volume": 0.9}
+  ]}
+}
