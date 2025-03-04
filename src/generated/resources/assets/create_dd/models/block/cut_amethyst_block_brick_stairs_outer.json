@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "create_dd:block/palettes/stone_types/brick/amethyst_block_cut_brick",
-    "side": "create_dd:block/palettes/stone_types/brick/amethyst_block_cut_brick",
-    "top": "create_dd:block/palettes/stone_types/brick/amethyst_block_cut_brick"
-  }
-}

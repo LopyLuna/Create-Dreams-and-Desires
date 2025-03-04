@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "create_dd:block/palettes/stone_types/polished/blackstone_cut_polished",
-    "side": "create_dd:block/palettes/stone_types/slab/blackstone_cut_slab",
-    "top": "create_dd:block/palettes/stone_types/polished/blackstone_cut_polished"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "create_dd:block/palettes/stone_types/polished/basalt_cut_polished",
-    "side": "create_dd:block/palettes/stone_types/slab/basalt_cut_slab",
-    "top": "create_dd:block/palettes/stone_types/polished/basalt_cut_polished"
-  }
-}

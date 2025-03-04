@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "tag": "create_dd:dark_metal_decor"
-  },
-  "result": "create_dd:dark_metal_brick_stairs"
-}

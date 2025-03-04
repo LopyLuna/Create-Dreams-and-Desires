@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "tag": "create_dd:stone_types/dolomite"
-  },
-  "result": "create_dd:cut_dolomite_bricks"
-}

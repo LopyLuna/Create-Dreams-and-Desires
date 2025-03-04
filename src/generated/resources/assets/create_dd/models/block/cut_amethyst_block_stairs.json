@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "create_dd:block/palettes/stone_types/cut/amethyst_block_cut",
-    "side": "create_dd:block/palettes/stone_types/cut/amethyst_block_cut",
-    "top": "create_dd:block/palettes/stone_types/cut/amethyst_block_cut"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "tag": "create_dd:stone_types/basalt"
-  },
-  "result": "create_dd:cut_basalt"
-}

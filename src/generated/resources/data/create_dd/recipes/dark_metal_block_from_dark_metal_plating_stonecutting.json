@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "create_dd:dark_metal_plating"
-  },
-  "result": "create_dd:dark_metal_block"
-}

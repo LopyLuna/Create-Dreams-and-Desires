@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "create_dd:block/lime_padded_tiled_rubber"
-  }
-}

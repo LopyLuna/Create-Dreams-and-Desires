@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "create_dd:block/palettes/stone_types/polished/packed_mud_cut_polished",
-    "side": "create_dd:block/palettes/stone_types/slab/packed_mud_cut_slab"
-  }
-}

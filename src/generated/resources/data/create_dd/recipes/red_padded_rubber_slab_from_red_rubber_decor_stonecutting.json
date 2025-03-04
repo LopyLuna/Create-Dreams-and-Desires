@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "tag": "create_dd:red_rubber_decor"
-  },
-  "result": "create_dd:red_padded_rubber_slab"
-}

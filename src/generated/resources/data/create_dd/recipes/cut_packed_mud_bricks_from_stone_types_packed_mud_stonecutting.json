@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "tag": "create_dd:stone_types/packed_mud"
-  },
-  "result": "create_dd:cut_packed_mud_bricks"
-}

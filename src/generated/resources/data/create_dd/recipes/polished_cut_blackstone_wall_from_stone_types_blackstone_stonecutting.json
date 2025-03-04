@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "tag": "create_dd:stone_types/blackstone"
-  },
-  "result": "create_dd:polished_cut_blackstone_wall"
-}

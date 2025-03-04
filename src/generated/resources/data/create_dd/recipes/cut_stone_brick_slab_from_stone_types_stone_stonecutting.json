@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "tag": "create_dd:stone_types/stone"
-  },
-  "result": "create_dd:cut_stone_brick_slab"
-}

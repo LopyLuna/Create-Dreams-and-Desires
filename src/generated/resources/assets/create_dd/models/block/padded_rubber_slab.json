@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "create_dd:block/padded_rubber",
-    "side": "create_dd:block/padded_rubber_slab",
-    "top": "create_dd:block/padded_rubber"
-  }
-}

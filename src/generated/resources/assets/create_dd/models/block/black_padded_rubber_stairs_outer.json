@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "create_dd:block/black_padded_tiled_rubber",
-    "side": "create_dd:block/black_padded_tiled_rubber",
-    "top": "create_dd:block/black_padded_tiled_rubber"
-  }
-}

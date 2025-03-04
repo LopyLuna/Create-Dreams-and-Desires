@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "create_dd:block/pink_padded_rubber",
-    "side": "create_dd:block/pink_padded_rubber_slab",
-    "top": "create_dd:block/pink_padded_rubber"
-  }
-}

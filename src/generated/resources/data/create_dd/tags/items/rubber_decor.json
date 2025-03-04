@@ -1,9 +1,0 @@
-{
-  "values": [
-    "create_dd:padded_rubber",
-    "create_dd:padded_tiled_rubber",
-    "create_dd:padded_mosaic_rubber",
-    "create_dd:padded_rubber_stairs",
-    "create_dd:rubber_block"
-  ]
-}

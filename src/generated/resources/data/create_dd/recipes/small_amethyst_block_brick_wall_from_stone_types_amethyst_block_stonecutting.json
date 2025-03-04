@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "tag": "create_dd:stone_types/amethyst_block"
-  },
-  "result": "create_dd:small_amethyst_block_brick_wall"
-}

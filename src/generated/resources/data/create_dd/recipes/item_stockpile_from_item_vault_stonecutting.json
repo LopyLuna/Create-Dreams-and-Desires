@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "create:item_vault"
-  },
-  "result": "create_dd:item_stockpile"
-}

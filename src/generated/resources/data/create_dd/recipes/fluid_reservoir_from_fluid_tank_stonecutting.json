@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "create:fluid_tank"
-  },
-  "result": "create_dd:fluid_reservoir"
-}

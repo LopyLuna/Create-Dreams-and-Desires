@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "tag": "create_dd:green_rubber_decor"
-  },
-  "result": "create_dd:green_padded_mosaic_rubber"
-}

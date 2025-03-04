@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "tag": "create_dd:light_gray_rubber_decor"
-  },
-  "result": "create_dd:light_gray_padded_rubber_stairs"
-}

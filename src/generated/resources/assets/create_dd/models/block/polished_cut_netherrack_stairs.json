@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "create_dd:block/palettes/stone_types/polished/netherrack_cut_polished",
-    "side": "create_dd:block/palettes/stone_types/polished/netherrack_cut_polished",
-    "top": "create_dd:block/palettes/stone_types/polished/netherrack_cut_polished"
-  }
-}

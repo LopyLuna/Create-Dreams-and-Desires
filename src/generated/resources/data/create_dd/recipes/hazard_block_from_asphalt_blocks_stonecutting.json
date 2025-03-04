@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "tag": "create_dd:asphalt_blocks"
-  },
-  "result": "create_dd:hazard_block"
-}

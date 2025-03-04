@@ -1,0 +1,19 @@
+
+{
+  "required": true,
+  "minVersion": "0.8",
+  "priority": 1500,
+  "package": "dev.lopyluna.create_d2d.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "create_d2d.refmap.json",
+  "mixins": [
+    "AllFluidsMixin",
+    "FurnaceBEAccessor",
+    "FurnaceBlockAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+  ]
+}
