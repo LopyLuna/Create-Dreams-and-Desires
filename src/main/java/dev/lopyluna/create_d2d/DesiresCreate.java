@@ -15,6 +15,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -71,9 +72,16 @@ public class DesiresCreate {
                 event.accept(item);
             }
             for (RegistryEntry<Block, Block> entry : REG.getAll(Registries.BLOCK)) {
-                Item item = entry.get().asItem();
-                if (item == Items.AIR) continue;
-                event.accept(item);
+                var block = entry.get();
+                if (block.asItem() == Items.AIR) continue;
+                if (DesiresBlocks.DYED_PROPELLERS.contains(block)) continue;
+                event.accept(block);
+            }
+            for (RegistryEntry<Fluid, Fluid> entry : REG.getAll(Registries.FLUID)) {
+                var fluid = entry.get();
+                if (fluid.defaultFluidState().isSource()) {
+                    event.accept(fluid.getBucket());
+                }
             }
         }
     }

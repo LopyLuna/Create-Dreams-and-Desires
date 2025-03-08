@@ -15,6 +15,7 @@ public class PropellerBE extends KineticBlockEntity {
     public PropellerBE(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
+
     @Override
     protected AABB createRenderBoundingBox() {
         return super.createRenderBoundingBox().inflate(2);
@@ -31,7 +32,7 @@ public class PropellerBE extends KineticBlockEntity {
     @Override
     public void tick() {
         super.tick();
-        if (level == null || level.isClientSide) return;
+        if (level == null || !level.isClientSide) return;
         float targetSpeed = getSpeed();
         visualSpeed.updateChaseTarget(targetSpeed);
         visualSpeed.tickChaser();

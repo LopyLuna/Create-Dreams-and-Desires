@@ -1,9 +1,14 @@
 package dev.lopyluna.create_d2d.register;
 
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import dev.lopyluna.create_d2d.content.blocks.hydraulic_press.HydraulicPressBE;
+import dev.lopyluna.create_d2d.content.blocks.hydraulic_press.HydraulicPressRenderer;
+import dev.lopyluna.create_d2d.content.blocks.hydraulic_press.HydraulicPressVisual;
 import dev.lopyluna.create_d2d.content.blocks.propeller.PropellerBE;
 import dev.lopyluna.create_d2d.content.blocks.propeller.PropellerRenderer;
 import dev.lopyluna.create_d2d.content.blocks.propeller.PropellerVisual;
+import dev.lopyluna.create_d2d.content.blocks.roll_table.RollTableBE;
+import dev.lopyluna.create_d2d.content.blocks.roll_table.RollTableRenderer;
 import dev.lopyluna.create_d2d.content.blocks.stirling_engine.StirlingEngineBE;
 import dev.lopyluna.create_d2d.content.blocks.stirling_engine.StirlingEngineRenderer;
 import dev.lopyluna.create_d2d.content.blocks.stirling_engine.StirlingEngineVisual;
@@ -14,6 +19,19 @@ import dev.lopyluna.create_d2d.content.blocks.stirling_engine.flywheel.PoweredFl
 import static dev.lopyluna.create_d2d.DesiresCreate.REG;
 
 public class DesiresBETypes {
+
+    public static final BlockEntityEntry<RollTableBE> ROLL_TABLE = REG
+            .blockEntity("roll_table", RollTableBE::new)
+            .validBlocks(DesiresBlocks.ROLL_TABLE)
+            .renderer(() -> RollTableRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<HydraulicPressBE> HYDRAULIC_PRESS = REG
+            .blockEntity("hydraulic_press", HydraulicPressBE::new)
+            .visual(() -> HydraulicPressVisual::new, true)
+            .validBlocks(DesiresBlocks.HYDRAULIC_PRESS)
+            .renderer(() -> HydraulicPressRenderer::new)
+            .register();
 
     public static final BlockEntityEntry<PropellerBE> PROPELLER = REG
             .blockEntity("propeller", PropellerBE::new)

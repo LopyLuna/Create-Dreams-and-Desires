@@ -6,7 +6,6 @@ import com.simibubi.create.content.contraptions.bearing.WindmillBearingBlockEnti
 import com.simibubi.create.content.kinetics.base.GeneratingKineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
-import com.simibubi.create.content.kinetics.steamEngine.SteamEngineValueBox;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
@@ -14,6 +13,7 @@ import com.simibubi.create.foundation.blockEntity.behaviour.scrollValue.ScrollOp
 import com.simibubi.create.foundation.utility.CreateLang;
 import dev.lopyluna.create_d2d.content.blocks.stirling_engine.flywheel.PoweredFlywheelBE;
 import dev.lopyluna.create_d2d.mixins.FurnaceBEAccessor;
+import dev.lopyluna.create_d2d.register.DesiresBlocks;
 import net.createmod.catnip.math.AngleHelper;
 import net.createmod.catnip.platform.CatnipServices;
 import net.minecraft.core.BlockPos;
@@ -52,7 +52,7 @@ public class StirlingEngineBE extends SmartBlockEntity implements IHaveGoggleInf
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
         movementDirection = new ScrollOptionBehaviour<>(WindmillBearingBlockEntity.RotationDirection.class,
-                CreateLang.translateDirect("contraptions.windmill.rotation_direction"), this, new SteamEngineValueBox());
+                CreateLang.translateDirect("contraptions.windmill.rotation_direction"), this, new StirlingEngineValueBox());
         movementDirection.onlyActiveWhen(() -> {
             PoweredFlywheelBE shaft = getFlywheel();
             return shaft == null || !shaft.hasSource();
@@ -69,11 +69,13 @@ public class StirlingEngineBE extends SmartBlockEntity implements IHaveGoggleInf
     @Override
     public void tick() {
         super.tick();
+        if (level == null) return;
+
         AbstractFurnaceBlockEntity furnace = getFurnace();
         PoweredFlywheelBE flywheel = getFlywheel();
 
         if (furnace == null || flywheel == null) {
-            if (level != null && level.isClientSide()) return;
+            if (level.isClientSide()) return;
             if (flywheel == null) return;
             if (!flywheel.getBlockPos().subtract(worldPosition).equals(flywheel.enginePos)) return;
             if (flywheel.engineEfficiency == 0) return;
@@ -88,7 +90,7 @@ public class StirlingEngineBE extends SmartBlockEntity implements IHaveGoggleInf
         boolean verticalTarget = targetAxis == Direction.Axis.Y;
 
         BlockState blockState = getBlockState();
-        if (!(blockState.getBlock() instanceof StirlingEngineBlock)) return;
+        if (!DesiresBlocks.STIRLING_ENGINE.has(blockState)) return;
         Direction facing = StirlingEngineBlock.getFacing(blockState);
         if (facing.getAxis() == Direction.Axis.Y) facing = blockState.getValue(StirlingEngineBlock.FACING);
 
@@ -115,8 +117,7 @@ public class StirlingEngineBE extends SmartBlockEntity implements IHaveGoggleInf
 
         flywheel.update(facing.getOpposite(), worldPosition, conveyedSpeedLevel, efficiency);
 
-        if (level != null && !level.isClientSide)
-            return;
+        if (!level.isClientSide) return;
         CatnipServices.PLATFORM.executeOnClientOnly(() -> this::spawnParticles);
     }
 
@@ -157,72 +158,64 @@ public class StirlingEngineBE extends SmartBlockEntity implements IHaveGoggleInf
     }
 
     public AbstractFurnaceBlockEntity getFurnace() {
-        AbstractFurnaceBlockEntity tank = source.get();
-        if (tank == null || tank.isRemoved()) {
-            if (tank != null) source = new WeakReference<>(null);
+        AbstractFurnaceBlockEntity furnace = source.get();
+        if (furnace == null || furnace.isRemoved()) {
+            if (furnace != null) source = new WeakReference<>(null);
             Direction facing = StirlingEngineBlock.getFacing(getBlockState());
-            if (level != null && level.getBlockEntity(worldPosition.relative(facing.getOpposite())) instanceof AbstractFurnaceBlockEntity tankBe)
-                source = new WeakReference<>(tank = tankBe);
+            if (level != null && level.getBlockEntity(worldPosition.relative(facing.getOpposite())) instanceof AbstractFurnaceBlockEntity furnaceBe)
+                source = new WeakReference<>(furnace = furnaceBe);
         }
-        return tank;
+        return furnace;
     }
 
     @OnlyIn(Dist.CLIENT)
     private void spawnParticles() {
-        Float targetAngle = getTargetAngle();
-        PoweredFlywheelBE ste = target.get();
-        if (ste == null) return;
-        if (!ste.isPoweredBy(worldPosition) || ste.engineEfficiency == 0) return;
-        if (targetAngle == null) return;
-
-        float angle = AngleHelper.deg(targetAngle);
-        angle += (angle < 0) ? -180 + 75 : 360 - 75;
-        angle %= 360;
-
-        PoweredFlywheelBE flywheel = getFlywheel();
-        if (flywheel == null || flywheel.getSpeed() == 0) return;
-
-        if (angle >= 0 && !(prevAngle > 180 && angle < 180)) {
-            prevAngle = angle;
-            return;
+        Float targetAngle = this.getTargetAngle();
+        PoweredFlywheelBE ste = this.target.get();
+        if (ste != null) if (ste.isPoweredBy(this.worldPosition)) if (targetAngle != null) {
+            float angle = AngleHelper.deg((double) targetAngle);
+            angle += angle < 0.0F ? -105.0F : 285.0F;
+            angle %= 360.0F;
+            PoweredFlywheelBE flywheel = this.getFlywheel();
+            if (flywheel != null && flywheel.getSpeed() != 0.0F) {
+                if (!(angle >= 0.0F) || this.prevAngle > 180.0F && angle < 180.0F) {
+                    if (!(angle < 0.0F) || (this.prevAngle < -180.0F && angle > -180.0F)) {
+                        AbstractFurnaceBlockEntity sourceBE = this.source.get();
+                        if (sourceBE != null) {
+                            float volume = 3.0F / 2;
+                            assert this.level != null;
+                            float pitch = 0.28F + this.level.random.nextFloat() * 0.1F;
+                            this.level.playLocalSound(this.worldPosition.getX(), this.worldPosition.getY(), this.worldPosition.getZ(), SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, volume, pitch, false);
+                            AllSoundEvents.STEAM.playAt(this.level, this.worldPosition, volume / 16.0F, 0.25F, false);
+                        }
+                    }
+                }
+                this.prevAngle = angle;
+            }
         }
-        if (angle < 0 && !(prevAngle < -180 && angle > -180)) {
-            prevAngle = angle;
-            return;
-        }
-
-        if (level != null) {
-            float volume = 3.0F / 2;
-            float pitch = 0.28F + this.level.random.nextFloat() * 0.1F;
-            level.playLocalSound(
-                    this.worldPosition.getX(), this.worldPosition.getY(), this.worldPosition.getZ(),
-                    SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS,
-                    volume, pitch, false);
-            AllSoundEvents.STEAM.playAt(this.level, this.worldPosition, volume / 16.0F, 0.25F, false);
-        }
-
-        prevAngle = angle;
     }
 
     @Nullable
     @OnlyIn(Dist.CLIENT)
     public Float getTargetAngle() {
-        BlockState blockState = getBlockState();
-        if (!(blockState.getBlock() instanceof StirlingEngineBlock)) return null;
-
-        Direction facing = StirlingEngineBlock.getFacing(blockState);
-        PoweredFlywheelBE flywheel = getFlywheel();
-        Direction.Axis facingAxis = facing.getAxis();
-
-        if (flywheel == null) return null;
-
-        Direction.Axis axis = KineticBlockEntityRenderer.getRotationAxisOf(flywheel);
-        float angle = KineticBlockEntityRenderer.getAngleForBe(flywheel, flywheel.getBlockPos(), axis);
-
-        if (axis == facingAxis) return null;
-        if (axis.isHorizontal() && (facingAxis == Direction.Axis.X ^ facing.getAxisDirection() == Direction.AxisDirection.POSITIVE)) angle *= -1;
-        if (axis == Direction.Axis.X && facing == Direction.DOWN) angle *= -1;
-        return angle;
+        float angle;
+        BlockState blockState = this.getBlockState();
+        if (DesiresBlocks.STIRLING_ENGINE.has(blockState)) {
+            Direction facing = StirlingEngineBlock.getFacing(blockState);
+            PoweredFlywheelBE flywheel = this.getFlywheel();
+            Direction.Axis facingAxis = facing.getAxis();
+            Direction.Axis axis;
+            if (flywheel != null) {
+                axis = KineticBlockEntityRenderer.getRotationAxisOf(flywheel);
+                angle = KineticBlockEntityRenderer.getAngleForBe(flywheel, flywheel.getBlockPos(), axis);
+                if (axis != facingAxis) {
+                    if (axis.isHorizontal() && facingAxis == Direction.Axis.X ^ facing.getAxisDirection() == Direction.AxisDirection.POSITIVE) angle *= -1.0F;
+                    if (axis == Direction.Axis.X && facing == Direction.DOWN) angle *= -1.0F;
+                    return angle;
+                }
+            }
+        }
+        return null;
     }
 
     @Override

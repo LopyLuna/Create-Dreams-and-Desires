@@ -78,7 +78,7 @@ public class DStress extends ConfigBase {
 
     private static void assertFromCreateD2D(BlockBuilder<?, ?> builder) {
         if (!builder.getOwner().getModid().equals(MOD_ID)) {
-            throw new IllegalStateException("Non-Create Desires 2 Dreams blocks cannot be added to Create Desires 2 Dreams's config.");
+            throw new IllegalStateException("Non-Create Desires 2 Dreams blocks cannot be added to Create Desires 2 Dreams config.");
         }
     }
 

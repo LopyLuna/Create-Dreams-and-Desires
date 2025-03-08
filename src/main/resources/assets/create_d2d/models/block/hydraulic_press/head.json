@@ -1,0 +1,48 @@
+{
+	"credit": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+	"textures": {
+		"4": "create:block/pipes",
+		"6": "create:block/spout",
+		"7": "create:block/engine"
+	},
+	"elements": [
+		{
+			"name": "Head",
+			"from": [3, 0, 3],
+			"to": [13, 4, 13],
+			"faces": {
+				"north": {"uv": [1.5, 2.5, 6.5, 0.5], "rotation": 180, "texture": "#7"},
+				"east": {"uv": [1.5, 2.5, 6.5, 0.5], "rotation": 180, "texture": "#7"},
+				"south": {"uv": [1.5, 2.5, 6.5, 0.5], "rotation": 180, "texture": "#7"},
+				"west": {"uv": [1.5, 2.5, 6.5, 0.5], "rotation": 180, "texture": "#7"},
+				"up": {"uv": [1, 11, 6, 16], "rotation": 180, "texture": "#4"},
+				"down": {"uv": [9.5, 9.5, 14.5, 14.5], "rotation": 180, "texture": "#6"}
+			}
+		},
+		{
+			"name": "Head",
+			"from": [4, 4, 4],
+			"to": [12, 15, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 4, 0]},
+			"faces": {
+				"north": {"uv": [4, 8, 8, 2.5], "rotation": 180, "texture": "#4"},
+				"east": {"uv": [4, 8, 8, 2.5], "rotation": 180, "texture": "#4"},
+				"south": {"uv": [4, 8, 8, 2.5], "rotation": 180, "texture": "#4"},
+				"west": {"uv": [4, 8, 8, 2.5], "rotation": 180, "texture": "#4"}
+			}
+		},
+		{
+			"name": "Head",
+			"from": [4, 15, 4],
+			"to": [12, 31, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 15, 0]},
+			"faces": {
+				"north": {"uv": [4, 8, 8, 0], "rotation": 180, "texture": "#4"},
+				"east": {"uv": [4, 8, 8, 0], "rotation": 180, "texture": "#4"},
+				"south": {"uv": [4, 8, 8, 0], "rotation": 180, "texture": "#4"},
+				"west": {"uv": [4, 8, 8, 0], "rotation": 180, "texture": "#4"},
+				"up": {"uv": [10, 2, 14, 6], "rotation": 180, "texture": "#7"}
+			}
+		}
+	]
+}

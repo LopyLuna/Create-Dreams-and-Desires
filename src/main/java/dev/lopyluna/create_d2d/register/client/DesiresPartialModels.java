@@ -10,6 +10,7 @@ import java.util.Map;
 
 public class DesiresPartialModels {
     public static final PartialModel
+            HYDRAULIC_HEAD = block("hydraulic_press/head"),
             PROPELLER = block("propeller/block"),
             FRAME = block("stirling_engine/frame"),
             ENGINE_PISTON = block("stirling_engine/piston"), ENGINE_LINKAGE = block("stirling_engine/linkage"),
