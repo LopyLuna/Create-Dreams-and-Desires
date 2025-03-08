@@ -28,7 +28,9 @@ import org.jetbrains.annotations.NotNull;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
 public class DnDesireCosmeticLayer extends RenderLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {

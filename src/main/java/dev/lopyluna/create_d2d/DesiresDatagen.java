@@ -3,7 +3,6 @@ package dev.lopyluna.create_d2d;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.simibubi.create.foundation.utility.FilesHelper;
-import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateDataProvider;
 import dev.lopyluna.create_d2d.content.datagen.DatagenTags;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
