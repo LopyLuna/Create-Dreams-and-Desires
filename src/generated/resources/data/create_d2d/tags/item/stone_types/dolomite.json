@@ -1,0 +1,19 @@
+{
+  "values": [
+    "create_d2d:cut_dolomite",
+    "create_d2d:cut_dolomite_stairs",
+    "create_d2d:cut_dolomite_wall",
+    "create_d2d:polished_cut_dolomite",
+    "create_d2d:polished_cut_dolomite_stairs",
+    "create_d2d:polished_cut_dolomite_wall",
+    "create_d2d:cut_dolomite_bricks",
+    "create_d2d:cut_dolomite_brick_stairs",
+    "create_d2d:cut_dolomite_brick_wall",
+    "create_d2d:small_dolomite_bricks",
+    "create_d2d:small_dolomite_brick_stairs",
+    "create_d2d:small_dolomite_brick_wall",
+    "create_d2d:layered_dolomite",
+    "create_d2d:dolomite_pillar",
+    "create_d2d:dolomite"
+  ]
+}

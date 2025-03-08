@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "create_d2d:cut_dolomite_brick_slab"
+    },
+    {
+      "item": "create_d2d:cut_dolomite_brick_slab"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create_d2d:cut_dolomite_bricks"
+  }
+}

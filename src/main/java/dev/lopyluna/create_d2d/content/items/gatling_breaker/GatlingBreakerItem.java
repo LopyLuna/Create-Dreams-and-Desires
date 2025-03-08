@@ -8,8 +8,10 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -19,6 +21,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ClipContext;
@@ -30,11 +33,13 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.util.FakePlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 import java.util.function.Consumer;
 
 @SuppressWarnings("removal")
@@ -47,7 +52,8 @@ public class GatlingBreakerItem extends Item implements CustomArmPoseItem {
     int reloadTick = 0;
 
     public GatlingBreakerItem(Properties properties) {
-        super(properties.durability(2000));
+        super(properties.durability(2000)
+                .component(DataComponents.TOOL, new Tool(List.of(Tool.Rule.deniesDrops(BlockTags.INCORRECT_FOR_NETHERITE_TOOL)), 1.0F, 1)));
     }
 
     @Override
@@ -105,13 +111,12 @@ public class GatlingBreakerItem extends Item implements CustomArmPoseItem {
 
         BlockPos pos = raytrace.getBlockPos();
         BlockState stateReplaced = level.getBlockState(pos);
-        if (stateReplaced.isAir() || !level.isInWorldBounds(pos)) return;
+        var hardness = stateReplaced.getDestroySpeed(level, pos);
+        if (stateReplaced.isAir() || !level.isInWorldBounds(pos) || hardness == -1 || hardness > 50) return;
 
         level.destroyBlock(pos, false);
-        Block.dropResources(stateReplaced, level, pos, level.getBlockEntity(pos), player, stack);
+        if (!stateReplaced.requiresCorrectToolForDrops() || !stateReplaced.is(BlockTags.INCORRECT_FOR_NETHERITE_TOOL)) Block.dropResources(stateReplaced, level, pos, level.getBlockEntity(pos), player, stack);
     }
-
-
 
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
@@ -160,5 +165,10 @@ public class GatlingBreakerItem extends Item implements CustomArmPoseItem {
     @Override
     public boolean canAttackBlock(BlockState state, Level world, BlockPos pos, Player player) {
         return false;
+    }
+
+    @Override
+    public int getEnchantmentValue(ItemStack stack) {
+        return 15;
     }
 }

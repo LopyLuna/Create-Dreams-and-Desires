@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "create_d2d:stone_types/netherrack"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:netherrack"
+  }
+}

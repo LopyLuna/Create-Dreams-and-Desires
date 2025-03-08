@@ -49,6 +49,7 @@ public class DesiresCreate {
         DesiresBlocks.register();
         DesiresBETypes.register();
         DesiresFluids.register();
+        DesiresStoneTypes.register(REG);
 
         DesiresConfigs.register(modLoadingContext, modContainer);
 

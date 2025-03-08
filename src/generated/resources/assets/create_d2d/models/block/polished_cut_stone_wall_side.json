@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side",
+  "textures": {
+    "wall": "create_d2d:block/palettes/stone_types/polished/stone_cut_polished"
+  }
+}

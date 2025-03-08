@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "cut_gabbro_brick_slab",
+  "key": {
+    "X": {
+      "item": "create_d2d:cut_gabbro_bricks"
+    }
+  },
+  "pattern": [
+    "XXX"
+  ],
+  "result": {
+    "count": 6,
+    "id": "create_d2d:cut_gabbro_brick_slab"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "create_d2d:block/palettes/stone_types/polished/weathered_limestone_cut_polished",
+    "side": "create_d2d:block/palettes/stone_types/polished/weathered_limestone_cut_polished",
+    "top": "create_d2d:block/palettes/stone_types/polished/weathered_limestone_cut_polished"
+  }
+}

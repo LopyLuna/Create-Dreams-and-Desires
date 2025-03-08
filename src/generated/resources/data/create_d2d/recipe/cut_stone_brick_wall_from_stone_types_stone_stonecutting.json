@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "create_d2d:stone_types/stone"
+  },
+  "result": {
+    "count": 1,
+    "id": "create_d2d:cut_stone_brick_wall"
+  }
+}

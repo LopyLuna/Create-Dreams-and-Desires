@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "create_d2d:block/polished_cut_basalt_slab"
+    },
+    "type=double": {
+      "model": "create_d2d:block/polished_cut_basalt_slab_double"
+    },
+    "type=top": {
+      "model": "create_d2d:block/polished_cut_basalt_slab_top"
+    }
+  }
+}

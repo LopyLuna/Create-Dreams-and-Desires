@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "create_d2d:block/palettes/stone_types/polished/gabbro_cut_polished"
+  }
+}

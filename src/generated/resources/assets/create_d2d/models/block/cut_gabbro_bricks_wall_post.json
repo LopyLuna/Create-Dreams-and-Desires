@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "create_d2d:block/palettes/stone_types/brick/gabbro_cut_brick"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "polished_cut_basalt_stairs",
+  "key": {
+    "X": {
+      "item": "create_d2d:polished_cut_basalt"
+    }
+  },
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "result": {
+    "count": 4,
+    "id": "create_d2d:polished_cut_basalt_stairs"
+  }
+}

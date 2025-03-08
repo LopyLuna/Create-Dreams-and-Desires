@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "create_d2d:block/cut_amethyst_block_brick_slab"
+    },
+    "type=double": {
+      "model": "create_d2d:block/cut_amethyst_block_bricks"
+    },
+    "type=top": {
+      "model": "create_d2d:block/cut_amethyst_block_brick_slab_top"
+    }
+  }
+}

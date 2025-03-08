@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stone_types_breccia": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#create_d2d:stone_types/breccia"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "create_d2d:cut_breccia_stairs_from_stone_types_breccia_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stone_types_breccia"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "create_d2d:cut_breccia_stairs_from_stone_types_breccia_stonecutting"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cut_blackstone_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "create_d2d:cut_blackstone_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "create_d2d:cut_blackstone_brick_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cut_blackstone_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "create_d2d:cut_blackstone_brick_stairs"
+    ]
+  }
+}

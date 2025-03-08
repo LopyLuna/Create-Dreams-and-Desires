@@ -27,42 +27,27 @@ import java.util.function.Supplier;
 import static dev.lopyluna.create_d2d.DesiresCreate.REG;
 import static dev.lopyluna.create_d2d.DesiresUtils.randomChance;
 import static dev.lopyluna.create_d2d.register.DesiresConfigs.client;
-import static dev.lopyluna.create_d2d.register.DesiresCreativeTabs.BASE_CREATIVE_TAB;
 
+@SuppressWarnings("unused")
 public class DesiresFluids {
-    static {
-        REG.setCreativeTab(BASE_CREATIVE_TAB);
-    }
 
-    public static final FluidEntry<BaseFlowingFluid.Flowing> CHOCOLATE_MILKSHAKE = newFluid("Chocolate Milkshake",
-            0xB2614D, "c")
-            .register();
-    public static final FluidEntry<BaseFlowingFluid.Flowing> VANILLA_MILKSHAKE = newFluid("Vanilla Milkshake",
-            0xEDDABA, "v")
-            .register();
-    public static final FluidEntry<BaseFlowingFluid.Flowing> STRAWBERRY_MILKSHAKE = newFluid("Strawberry Milkshake",
-            0xD57A8B, "s")
-            .register();
-    public static final FluidEntry<BaseFlowingFluid.Flowing> GLOWBERRY_MILKSHAKE = newFluid("Glowberry Milkshake",
-            0xD8A155, "g")
-            .register();
-    public static final FluidEntry<BaseFlowingFluid.Flowing> PUMPKIN_MILKSHAKE = newFluid("Pumpkin Milkshake",
-            0xCB7B38, "p")
-            .register();
-
-    public static final FluidEntry<BaseFlowingFluid.Flowing> SAP = newFluid("Sap",
-            0xC87E50, "")
-            .register();
+    public static final FluidEntry<BaseFlowingFluid.Flowing> CHOCOLATE_MILKSHAKE = newFluid("Chocolate Milkshake", 0xB2614D, "c").register();
+    public static final FluidEntry<BaseFlowingFluid.Flowing> VANILLA_MILKSHAKE = newFluid("Vanilla Milkshake", 0xEDDABA, "v").register();
+    public static final FluidEntry<BaseFlowingFluid.Flowing> STRAWBERRY_MILKSHAKE = newFluid("Strawberry Milkshake", 0xD57A8B, "s").register();
+    public static final FluidEntry<BaseFlowingFluid.Flowing> GLOWBERRY_MILKSHAKE = newFluid("Glowberry Milkshake", 0xD8A155, "g").register();
+    public static final FluidEntry<BaseFlowingFluid.Flowing> PUMPKIN_MILKSHAKE = newFluid("Pumpkin Milkshake", 0xCB7B38, "p").register();
+    public static final FluidEntry<BaseFlowingFluid.Flowing> SAP = newFluid("Sap", 0xC87E50, "").register();
 
     public static FluidBuilder<BaseFlowingFluid.Flowing, CreateRegistrate> newFluid(String name, int hexColor, String type) {
         String id = name.toLowerCase().replace(" ", "_");
-        return REG.standardFluid(id, SolidRenderedPlaceableFluidType.create(hexColor, () -> 1f / 4f * (type.equals("c") ?
-                        client().chocolateTransparencyMultiplier : type.equals("v") ?
-                        client().vanillaTransparencyMultiplier : type.equals("s") ?
-                        client().strawberryTransparencyMultiplier : type.equals("g") ?
-                        client().glowberryTransparencyMultiplier : type.equals("p") ?
-                        client().pumpkinTransparencyMultiplier :
-                        client().sapTransparencyMultiplier).getF()
+        var client = client();
+        return REG.standardFluid(id, SolidRenderedPlaceableFluidType.create(hexColor, () -> 1f / 4f * (
+                type.equals("c") ? client.chocolateTransparencyMultiplier :
+                type.equals("v") ? client.vanillaTransparencyMultiplier :
+                type.equals("s") ? client.strawberryTransparencyMultiplier :
+                type.equals("g") ? client.glowberryTransparencyMultiplier :
+                type.equals("p") ? client.pumpkinTransparencyMultiplier :
+                                   client.sapTransparencyMultiplier).getF()
                 )).lang(name)
                 .properties(b -> b.viscosity(1000)
                         .density(1400))
@@ -79,36 +64,36 @@ public class DesiresFluids {
 
     public static void register() {}
 
-
     public static void registerFluidInteractions() {
         addMilkshakeInteraction(CHOCOLATE_MILKSHAKE.get(), AllPaletteStoneTypes.VERIDIUM.getBaseBlock().get(), AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get());
-        //addMilkshakeInteraction(VANILLA_MILKSHAKE.get(), AllPaletteStoneTypes.ASURINE.getBaseBlock().get(), DesiresPaletteStoneTypes.DOLOMITE.getBaseBlock().get());
+        addMilkshakeInteraction(VANILLA_MILKSHAKE.get(), AllPaletteStoneTypes.ASURINE.getBaseBlock().get(), DesiresStoneTypes.DOLOMITE.getBaseBlock().get());
         addMilkshakeInteraction(STRAWBERRY_MILKSHAKE.get(), AllPaletteStoneTypes.CRIMSITE.getBaseBlock().get(), Blocks.COBBLED_DEEPSLATE);
-        //addMilkshakeInteraction(GLOWBERRY_MILKSHAKE.get(), AllPaletteStoneTypes.OCHRUM.getBaseBlock().get(), DesiresPaletteStoneTypes.GABBRO.getBaseBlock().get());
-        //addMilkshakeInteraction(PUMPKIN_MILKSHAKE.get(), DesiresPaletteStoneTypes.BRECCIA.getBaseBlock().get(), Blocks.DRIPSTONE_BLOCK);
+        addMilkshakeInteraction(GLOWBERRY_MILKSHAKE.get(), AllPaletteStoneTypes.OCHRUM.getBaseBlock().get(), DesiresStoneTypes.GABBRO.getBaseBlock().get());
+        addMilkshakeInteraction(PUMPKIN_MILKSHAKE.get(), DesiresStoneTypes.BRECCIA.getBaseBlock().get(), Blocks.DRIPSTONE_BLOCK);
     }
 
     public static BlockState getLavaInteraction(FluidState fluidState) {
         Fluid fluid = fluidState.getType();
         if (fluid.isSame(CHOCOLATE_MILKSHAKE.get())) return AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get().defaultBlockState();
-        //if (fluid.isSame(VANILLA_MILKSHAKE.get())) return AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get().defaultBlockState();
+        if (fluid.isSame(VANILLA_MILKSHAKE.get())) return DesiresStoneTypes.DOLOMITE.getBaseBlock().get().defaultBlockState();
         if (fluid.isSame(STRAWBERRY_MILKSHAKE.get())) return Blocks.COBBLED_DEEPSLATE.defaultBlockState();
-        //if (fluid.isSame(GLOWBERRY_MILKSHAKE.get())) return AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get().defaultBlockState();
+        if (fluid.isSame(GLOWBERRY_MILKSHAKE.get())) return DesiresStoneTypes.GABBRO.getBaseBlock().get().defaultBlockState();
         if (fluid.isSame(PUMPKIN_MILKSHAKE.get())) return Blocks.DRIPSTONE_BLOCK.defaultBlockState();
         return null;
     }
 
+    @SuppressWarnings("unused")
     public static BlockState getInteractions(FluidState fluidState, Level level, BlockPos pos) {
         if (addMilkshakeFlag(fluidState, CHOCOLATE_MILKSHAKE.get(), level, pos))
             return addMilkshakeStones(AllPaletteStoneTypes.VERIDIUM.getBaseBlock().get(), AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get(), level, pos);
-        //if (addMilkshakeFlag(fluidState, VANILLA_MILKSHAKE.get(), level, pos))
-        //    return addMilkshakeStones(AllPaletteStoneTypes.ASURINE.getBaseBlock().get(), DesiresPaletteStoneTypes.DOLOMITE.getBaseBlock().get(), level, pos);
+        if (addMilkshakeFlag(fluidState, VANILLA_MILKSHAKE.get(), level, pos))
+            return addMilkshakeStones(AllPaletteStoneTypes.ASURINE.getBaseBlock().get(), DesiresStoneTypes.DOLOMITE.getBaseBlock().get(), level, pos);
         if (addMilkshakeFlag(fluidState, STRAWBERRY_MILKSHAKE.get(), level, pos))
             return addMilkshakeStones(AllPaletteStoneTypes.CRIMSITE.getBaseBlock().get(), Blocks.COBBLED_DEEPSLATE, level, pos);
-        //if (addMilkshakeFlag(fluidState, GLOWBERRY_MILKSHAKE.get(), level, pos))
-        //    return addMilkshakeStones(AllPaletteStoneTypes.OCHRUM.getBaseBlock().get(), DesiresPaletteStoneTypes.GABBRO.getBaseBlock().get(), level, pos);
-        //if (addMilkshakeFlag(fluidState, PUMPKIN_MILKSHAKE.get(), level, pos))
-        //    return addMilkshakeStones(DesiresPaletteStoneTypes.BRECCIA.getBaseBlock().get(), Blocks.DRIPSTONE_BLOCK, level, pos);
+        if (addMilkshakeFlag(fluidState, GLOWBERRY_MILKSHAKE.get(), level, pos))
+            return addMilkshakeStones(AllPaletteStoneTypes.OCHRUM.getBaseBlock().get(), DesiresStoneTypes.GABBRO.getBaseBlock().get(), level, pos);
+        if (addMilkshakeFlag(fluidState, PUMPKIN_MILKSHAKE.get(), level, pos))
+            return addMilkshakeStones(DesiresStoneTypes.BRECCIA.getBaseBlock().get(), Blocks.DRIPSTONE_BLOCK, level, pos);
 
         return null;
     }

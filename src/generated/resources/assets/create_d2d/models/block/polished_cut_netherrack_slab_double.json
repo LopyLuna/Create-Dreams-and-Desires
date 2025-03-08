@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "create_d2d:block/palettes/stone_types/polished/netherrack_cut_polished",
+    "side": "create_d2d:block/palettes/stone_types/slab/netherrack_cut_slab"
+  }
+}

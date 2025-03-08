@@ -1,0 +1,19 @@
+{
+  "values": [
+    "create_d2d:cut_weathered_limestone",
+    "create_d2d:cut_weathered_limestone_stairs",
+    "create_d2d:cut_weathered_limestone_wall",
+    "create_d2d:polished_cut_weathered_limestone",
+    "create_d2d:polished_cut_weathered_limestone_stairs",
+    "create_d2d:polished_cut_weathered_limestone_wall",
+    "create_d2d:cut_weathered_limestone_bricks",
+    "create_d2d:cut_weathered_limestone_brick_stairs",
+    "create_d2d:cut_weathered_limestone_brick_wall",
+    "create_d2d:small_weathered_limestone_bricks",
+    "create_d2d:small_weathered_limestone_brick_stairs",
+    "create_d2d:small_weathered_limestone_brick_wall",
+    "create_d2d:layered_weathered_limestone",
+    "create_d2d:weathered_limestone_pillar",
+    "create_d2d:weathered_limestone"
+  ]
+}
