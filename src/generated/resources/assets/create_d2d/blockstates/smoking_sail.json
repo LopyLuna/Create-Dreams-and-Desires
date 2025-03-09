@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "create_d2d:block/smoking_sail",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "create_d2d:block/smoking_sail",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "create_d2d:block/smoking_sail",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "create_d2d:block/smoking_sail",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "create_d2d:block/smoking_sail"
+    },
+    "facing=west": {
+      "model": "create_d2d:block/smoking_sail",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

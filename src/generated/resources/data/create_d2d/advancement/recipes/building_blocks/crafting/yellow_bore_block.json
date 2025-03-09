@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "create_d2d:crafting/yellow_bore_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yellow_bore_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "create_d2d:yellow_bore_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_yellow_bore_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "create_d2d:crafting/yellow_bore_block"
+    ]
+  }
+}

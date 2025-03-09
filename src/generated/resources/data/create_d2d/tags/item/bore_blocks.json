@@ -1,0 +1,21 @@
+{
+  "values": [
+    "create_d2d:bore_block",
+    "create_d2d:white_bore_block",
+    "create_d2d:orange_bore_block",
+    "create_d2d:magenta_bore_block",
+    "create_d2d:light_blue_bore_block",
+    "create_d2d:yellow_bore_block",
+    "create_d2d:lime_bore_block",
+    "create_d2d:pink_bore_block",
+    "create_d2d:gray_bore_block",
+    "create_d2d:light_gray_bore_block",
+    "create_d2d:cyan_bore_block",
+    "create_d2d:purple_bore_block",
+    "create_d2d:blue_bore_block",
+    "create_d2d:brown_bore_block",
+    "create_d2d:green_bore_block",
+    "create_d2d:red_bore_block",
+    "create_d2d:black_bore_block"
+  ]
+}

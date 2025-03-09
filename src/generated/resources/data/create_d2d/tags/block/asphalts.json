@@ -1,0 +1,21 @@
+{
+  "values": [
+    "create_d2d:asphalt",
+    "create_d2d:white_asphalt",
+    "create_d2d:orange_asphalt",
+    "create_d2d:magenta_asphalt",
+    "create_d2d:light_blue_asphalt",
+    "create_d2d:yellow_asphalt",
+    "create_d2d:lime_asphalt",
+    "create_d2d:pink_asphalt",
+    "create_d2d:gray_asphalt",
+    "create_d2d:light_gray_asphalt",
+    "create_d2d:cyan_asphalt",
+    "create_d2d:purple_asphalt",
+    "create_d2d:blue_asphalt",
+    "create_d2d:brown_asphalt",
+    "create_d2d:green_asphalt",
+    "create_d2d:red_asphalt",
+    "create_d2d:black_asphalt"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "C": {
+      "item": "minecraft:lava_bucket"
+    },
+    "R": {
+      "item": "minecraft:black_wool"
+    },
+    "S": {
+      "item": "create:sail_frame"
+    }
+  },
+  "pattern": [
+    "SCS",
+    "CRC",
+    "SCS"
+  ],
+  "result": {
+    "count": 4,
+    "id": "create_d2d:blasting_sail"
+  }
+}

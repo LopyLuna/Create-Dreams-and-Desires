@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "tag": "create_d2d:bore_blocks"
+    },
+    "B": {
+      "tag": "c:dyes/yellow"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 8,
+    "id": "create_d2d:yellow_bore_block"
+  }
+}

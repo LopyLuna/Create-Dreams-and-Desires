@@ -46,7 +46,7 @@ public class GatlingBreakerRenderer extends CustomRenderedItemModelRenderer {
         renderer.renderSolidGlowing(CORE.get(), glowLight);
         renderer.renderGlowing(CORE_GLOW.get(), glowLight);
 
-        float angle = (worldTime * animation) * -25;
+        float angle = worldTime * -25;
         if (mainHand || offHand) angle += 360;
 
         angle %= 360;

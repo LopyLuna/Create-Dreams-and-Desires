@@ -5,9 +5,14 @@ import com.google.gson.JsonObject;
 import com.simibubi.create.foundation.utility.FilesHelper;
 import com.tterrag.registrate.providers.RegistrateDataProvider;
 import dev.lopyluna.create_d2d.content.datagen.DatagenTags;
+import dev.lopyluna.create_d2d.content.datagen.recipes.MechanicalCraftingGen;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
 import static dev.lopyluna.create_d2d.DesiresCreate.MOD_ID;
@@ -17,6 +22,11 @@ public class DesiresDatagen {
     @SuppressWarnings("all")
     public static void gatherData(GatherDataEvent event) {
         addExtraRegistrateData();
+        DataGenerator generator = event.getGenerator();
+        PackOutput output = generator.getPackOutput();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+
+        generator.addProvider(event.includeServer(), new MechanicalCraftingGen(output, lookupProvider));
 
         event.getGenerator().addProvider(true, REG.setDataProvider(new RegistrateDataProvider(REG, MOD_ID, event)));
     }

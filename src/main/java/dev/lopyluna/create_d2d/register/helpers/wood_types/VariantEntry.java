@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Block;
 import static com.simibubi.create.foundation.data.CreateRegistrate.connectedTextures;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 import static dev.lopyluna.create_d2d.DesiresCreate.REG;
+import static dev.lopyluna.create_d2d.register.DesiresTags.ItemTags.PALETTE_BLOCKS;
 
 @SuppressWarnings("removal")
 public class VariantEntry {
@@ -47,7 +48,7 @@ public class VariantEntry {
             TagKey<Item>[] itemTags = pattern.getItemTags();
             if (itemTags != null) itemBuilder.tag(itemTags);
 
-            itemBuilder.tag(paletteStoneVariants.materialTag);
+            itemBuilder.tag(paletteStoneVariants.materialTag, PALETTE_BLOCKS.tag);
 
             if (pattern.isTranslucent()) builder.addLayer(() -> RenderType::translucent);
             pattern.createCTBehaviour(name).ifPresent(b -> builder.onRegister(connectedTextures(b)));
@@ -65,7 +66,11 @@ public class VariantEntry {
         }
 
         REG.addDataGenerator(ProviderType.RECIPE, p -> p.stonecutting(DataIngredient.tag(paletteStoneVariants.materialTag), RecipeCategory.BUILDING_BLOCKS, baseBlock));
-        REG.addDataGenerator(ProviderType.ITEM_TAGS, p -> p.addTag(paletteStoneVariants.materialTag).add(baseBlock.get().asItem()));
+        REG.addDataGenerator(ProviderType.ITEM_TAGS, p -> {
+            var block = baseBlock.get().asItem();
+            p.addTag(paletteStoneVariants.materialTag).add(block);
+            p.addTag(PALETTE_BLOCKS.tag).add(block);
+        });
 
         this.registeredBlocks = registeredBlocks.build();
         this.registeredPartials = registeredPartials.build();

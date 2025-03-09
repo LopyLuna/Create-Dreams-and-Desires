@@ -16,6 +16,10 @@
     "create_d2d:brown_propeller",
     "create_d2d:green_propeller",
     "create_d2d:red_propeller",
-    "create_d2d:black_propeller"
+    "create_d2d:black_propeller",
+    "create_d2d:splashing_sail",
+    "create_d2d:haunting_sail",
+    "create_d2d:smoking_sail",
+    "create_d2d:blasting_sail"
   ]
 }

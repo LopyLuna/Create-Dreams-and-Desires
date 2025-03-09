@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "create_d2d:crafting/yellow_asphalt"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yellow_asphalt": {
+      "conditions": {
+        "items": [
+          {
+            "items": "create_d2d:yellow_asphalt"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_yellow_asphalt"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "create_d2d:crafting/yellow_asphalt"
+    ]
+  }
+}

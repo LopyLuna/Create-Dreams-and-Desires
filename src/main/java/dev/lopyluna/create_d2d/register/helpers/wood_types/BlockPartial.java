@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
+import static dev.lopyluna.create_d2d.register.DesiresTags.ItemTags.PALETTE_BLOCKS;
 
 @SuppressWarnings("all")
 public abstract class BlockPartial<B extends Block> {
@@ -60,6 +61,7 @@ public abstract class BlockPartial<B extends Block> {
                 .transform(b -> transformBlock(b, variantName, pattern));
         ItemBuilder<BlockItem, BlockBuilder<B, CreateRegistrate>> itemBuilder = blockBuilder.item().transform(b -> transformItem(b, variantName, pattern));
         if (canRecycle()) itemBuilder.tag(variant.materialTag);
+        itemBuilder.tag(PALETTE_BLOCKS.tag);
         return itemBuilder.build();
     }
     protected ResourceLocation getTexture(String variantName, BlockPattern pattern, int index) {

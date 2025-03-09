@@ -1,6 +1,7 @@
 package dev.lopyluna.create_d2d.register;
 
 import com.simibubi.create.Create;
+import dev.lopyluna.create_d2d.DesiresCreate;
 import net.createmod.catnip.lang.Lang;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -16,12 +17,16 @@ import net.minecraft.world.level.material.Fluid;
 
 import static dev.lopyluna.create_d2d.DesiresCreate.MOD_ID;
 
+@SuppressWarnings("unused")
 public class DesiresTags {
     public static <T> TagKey<T> optionalTag(Registry<T> registry, ResourceLocation id) {
         return TagKey.create(registry.key(), id);
     }
     public static <T> TagKey<T> commonTag(Registry<T> registry, String path) {
         return optionalTag(registry, ResourceLocation.fromNamespaceAndPath("c", path));
+    }
+    public static <T> TagKey<T> modTag(Registry<T> registry, String path) {
+        return optionalTag(registry, DesiresCreate.loc(path));
     }
     public static TagKey<Block> commonBlockTag(String path) {
         return commonTag(BuiltInRegistries.BLOCK, path);
@@ -31,6 +36,15 @@ public class DesiresTags {
     }
     public static TagKey<Fluid> commonFluidTag(String path) {
         return commonTag(BuiltInRegistries.FLUID, path);
+    }
+    public static TagKey<Block> modBlockTag(String path) {
+        return modTag(BuiltInRegistries.BLOCK, path);
+    }
+    public static TagKey<Item> modItemTag(String path) {
+        return modTag(BuiltInRegistries.ITEM, path);
+    }
+    public static TagKey<Fluid> modFluidTag(String path) {
+        return modTag(BuiltInRegistries.FLUID, path);
     }
 
     public enum NameSpace {
@@ -52,6 +66,7 @@ public class DesiresTags {
     }
 
     public enum BlockTags {
+        DYED_BLOCKS,
         ARTIFICIAL_ORE_GENERATOR,
         ORE_GENERATOR,
         WEAK_FURNACE,
@@ -81,4 +96,31 @@ public class DesiresTags {
         private static void init() {}
     }
 
+    public enum ItemTags {
+        DYED_BLOCKS,
+        PALETTE_BLOCKS
+        ;
+        public final TagKey<Item> tag;
+        public final boolean alwaysDatagen;
+
+        ItemTags() { this(NameSpace.MOD); }
+        ItemTags(NameSpace namespace) { this(namespace, namespace.optionalDefault, namespace.alwaysDatagenDefault); }
+        ItemTags(NameSpace namespace, String path) { this(namespace, path, namespace.optionalDefault, namespace.alwaysDatagenDefault); }
+        ItemTags(NameSpace namespace, boolean optional, boolean alwaysDatagen) { this(namespace, null, optional, alwaysDatagen); }
+        ItemTags(NameSpace namespace, String path, boolean optional, boolean alwaysDatagen) {
+            ResourceLocation id = ResourceLocation.fromNamespaceAndPath(namespace.id, path == null ? Lang.asId(name()) : path);
+            if (optional) tag = optionalTag(BuiltInRegistries.ITEM, id);
+            else tag = net.minecraft.tags.ItemTags.create(id);
+            this.alwaysDatagen = alwaysDatagen;
+        }
+        @SuppressWarnings("deprecation")
+        public boolean matches(Item item) { return item.builtInRegistryHolder().is(tag); }
+        public boolean matches(ItemStack stack) { return stack.is(tag); }
+        private static void init() {}
+    }
+
+    public static void init() {
+        BlockTags.init();
+        ItemTags.init();
+    }
 }

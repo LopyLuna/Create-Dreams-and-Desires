@@ -114,7 +114,8 @@ public class GatlingBreakerItem extends Item implements CustomArmPoseItem {
         if (stateReplaced.isAir() || !level.isInWorldBounds(pos) || hardness == -1 || hardness > 50) return;
 
         level.destroyBlock(pos, false);
-        if (!stateReplaced.requiresCorrectToolForDrops() || !stateReplaced.is(BlockTags.INCORRECT_FOR_NETHERITE_TOOL)) Block.dropResources(stateReplaced, level, pos, level.getBlockEntity(pos), player, stack);
+        if (!stateReplaced.requiresCorrectToolForDrops() || !stateReplaced.is(BlockTags.INCORRECT_FOR_NETHERITE_TOOL))
+            Block.dropResources(stateReplaced, level, player.blockPosition(), level.getBlockEntity(pos), player, stack);
     }
 
     @Override

@@ -26,7 +26,7 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import org.jetbrains.annotations.Nullable;
 
-
+@SuppressWarnings("unused")
 @Mod(DesiresCreate.MOD_ID)
 public class DesiresCreate {
     public static final String NAME = "Create: Desires 2 Dreams";
@@ -45,6 +45,7 @@ public class DesiresCreate {
         REG.registerEventListeners(modEventBus);
 
         DesiresCreativeTabs.register(modEventBus);
+        DesiresTags.init();
         DesiresItems.register();
         DesiresBlocks.register();
         DesiresBETypes.register();
@@ -74,8 +75,10 @@ public class DesiresCreate {
             }
             for (RegistryEntry<Block, Block> entry : REG.getAll(Registries.BLOCK)) {
                 var block = entry.get();
+                var stack = block.asItem().getDefaultInstance();
                 if (block.asItem() == Items.AIR) continue;
-                if (DesiresBlocks.DYED_PROPELLERS.contains(block)) continue;
+                if (DesiresTags.ItemTags.DYED_BLOCKS.matches(stack)) continue;
+                if (stack.is(DesiresTags.ItemTags.PALETTE_BLOCKS.tag)) continue;
                 event.accept(block);
             }
             for (RegistryEntry<Fluid, Fluid> entry : REG.getAll(Registries.FLUID)) {
@@ -83,6 +86,15 @@ public class DesiresCreate {
                 if (fluid.defaultFluidState().isSource()) {
                     event.accept(fluid.getBucket());
                 }
+            }
+        }
+        if (event.getTabKey().equals(DesiresCreativeTabs.PALETTES_CREATIVE_TAB.getKey())) {
+            for (RegistryEntry<Block, Block> entry : REG.getAll(Registries.BLOCK)) {
+                var block = entry.get();
+                var stack = block.asItem().getDefaultInstance();
+                if (block.asItem() == Items.AIR) continue;
+                if (!(stack.is(DesiresTags.ItemTags.PALETTE_BLOCKS.tag) || DesiresTags.ItemTags.DYED_BLOCKS.matches(stack))) continue;
+                event.accept(stack);
             }
         }
     }
@@ -96,7 +108,6 @@ public class DesiresCreate {
     public static ResourceLocation emptyLoc() {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, "empty");
     }
-
 
     @Nullable
     public static KineticStats create(Item item) {
