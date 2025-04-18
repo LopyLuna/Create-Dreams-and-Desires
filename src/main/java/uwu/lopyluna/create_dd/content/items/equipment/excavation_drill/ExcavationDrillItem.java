@@ -32,6 +32,7 @@ import uwu.lopyluna.create_dd.registry.DesiresTags;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -108,7 +109,16 @@ public class ExcavationDrillItem extends BackTankPickaxeItem {
                 return;
             }
 
-            for (BlockPos pos : BoreMining.getBlocksToBeDestroyed(1, initalBlockPos, serverPlayer)) {
+            //=======//
+            //This check is required since .getBlocksToBeDestroyed can return null, which might lead to NullPointerException and crash the game/server.
+            List<BlockPos> positions = BoreMining.getBlocksToBeDestroyed(1, initalBlockPos, serverPlayer);
+
+            if (positions == null) {
+                return;
+            }
+            //=======//
+
+            for (BlockPos pos : positions) {
                 if(pos == initalBlockPos || !(event.getLevel().getBlockState(pos).getDestroySpeed(event.getLevel(), pos) != 0.0F) ||
                         event.getLevel().getBlockState(pos).is(DesiresTags.forgeBlockTag("ores")) ||
                         !DesiresItems.EXCAVATION_DRILL.get().isCorrectToolForDrops(heldItemMainhand, event.getLevel().getBlockState(pos))) {
