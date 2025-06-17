@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "small_breccia_brick_stairs",
+  "key": {
+    "X": {
+      "item": "dndesires:small_breccia_bricks"
+    }
+  },
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "result": {
+    "count": 4,
+    "id": "dndesires:small_breccia_brick_stairs"
+  }
+}

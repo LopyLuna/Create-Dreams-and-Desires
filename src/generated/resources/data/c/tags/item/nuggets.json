@@ -1,7 +1,7 @@
 {
   "values": [
-    "create_d2d:lapis_lazuli_shard",
-    "create_d2d:diamond_shard",
-    "create_d2d:coal_piece"
+    "dndesires:lapis_lazuli_shard",
+    "dndesires:diamond_shard",
+    "dndesires:coal_piece"
   ]
 }

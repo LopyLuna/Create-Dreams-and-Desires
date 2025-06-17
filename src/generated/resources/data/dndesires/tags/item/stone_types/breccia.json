@@ -1,0 +1,19 @@
+{
+  "values": [
+    "dndesires:cut_breccia",
+    "dndesires:cut_breccia_stairs",
+    "dndesires:cut_breccia_wall",
+    "dndesires:polished_cut_breccia",
+    "dndesires:polished_cut_breccia_stairs",
+    "dndesires:polished_cut_breccia_wall",
+    "dndesires:cut_breccia_bricks",
+    "dndesires:cut_breccia_brick_stairs",
+    "dndesires:cut_breccia_brick_wall",
+    "dndesires:small_breccia_bricks",
+    "dndesires:small_breccia_brick_stairs",
+    "dndesires:small_breccia_brick_wall",
+    "dndesires:layered_breccia",
+    "dndesires:breccia_pillar",
+    "dndesires:breccia"
+  ]
+}

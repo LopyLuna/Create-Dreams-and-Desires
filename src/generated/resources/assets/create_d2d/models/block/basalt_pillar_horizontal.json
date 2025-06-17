@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column_horizontal",
-  "textures": {
-    "end": "create_d2d:block/palettes/stone_types/cap/basalt_cut_cap",
-    "side": "create_d2d:block/palettes/stone_types/pillar/basalt_cut_pillar"
-  }
-}

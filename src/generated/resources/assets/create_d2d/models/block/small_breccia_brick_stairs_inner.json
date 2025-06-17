@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "create_d2d:block/palettes/stone_types/small_brick/breccia_cut_small_brick",
-    "side": "create_d2d:block/palettes/stone_types/small_brick/breccia_cut_small_brick",
-    "top": "create_d2d:block/palettes/stone_types/small_brick/breccia_cut_small_brick"
-  }
-}

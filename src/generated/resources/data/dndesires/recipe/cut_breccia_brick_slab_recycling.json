@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "dndesires:cut_breccia_brick_slab"
+    },
+    {
+      "item": "dndesires:cut_breccia_brick_slab"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "dndesires:cut_breccia_bricks"
+  }
+}

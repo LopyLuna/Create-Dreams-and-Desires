@@ -1,6 +1,0 @@
-{
-  "parent": "create:block/white_sail",
-  "textures": {
-    "0": "create_d2d:block/sail/smoking"
-  }
-}

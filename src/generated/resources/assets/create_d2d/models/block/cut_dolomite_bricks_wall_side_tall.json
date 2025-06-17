@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_wall_side_tall",
-  "textures": {
-    "wall": "create_d2d:block/palettes/stone_types/brick/dolomite_cut_brick"
-  }
-}

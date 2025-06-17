@@ -1,0 +1,24 @@
+{
+  "type": "dndesires:hydraulic_compacting",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "item": "create:cinder_flour"
+    },
+    {
+      "item": "create:cinder_flour"
+    },
+    {
+      "item": "dndesires:breccia"
+    },
+    {
+      "item": "dndesires:breccia"
+    }
+  ],
+  "results": [
+    {
+      "count": 4,
+      "id": "minecraft:netherrack"
+    }
+  ]
+}

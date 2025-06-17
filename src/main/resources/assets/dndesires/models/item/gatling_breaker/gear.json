@@ -1,0 +1,66 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "dndesires:item/gatling_breaker/item",
+	"texture_size": [32, 32],
+	"textures": {
+		"11": "create:block/cogwheel"
+	},
+	"elements": [
+		{
+			"name": "Cog",
+			"from": [7, 1, 16],
+			"to": [9, 9, 18],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.5, 7.5, 22]},
+			"faces": {
+				"north": {"uv": [10.5, 0, 11.5, 4], "texture": "#11"},
+				"east": {"uv": [10.5, 0, 11.5, 4], "texture": "#11"},
+				"south": {"uv": [13, 0, 14, 4], "texture": "#11"},
+				"west": {"uv": [10.5, 0, 11.5, 4], "texture": "#11"},
+				"up": {"uv": [5.5, 8, 6.5, 9], "rotation": 180, "texture": "#11"},
+				"down": {"uv": [5.5, 8, 6.5, 9], "rotation": 180, "texture": "#11"}
+			}
+		},
+		{
+			"name": "Cog",
+			"from": [4, 4, 16],
+			"to": [12, 6, 18],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5, 18]},
+			"faces": {
+				"north": {"uv": [13, 0, 14, 4], "rotation": 90, "texture": "#11"},
+				"east": {"uv": [5.5, 8, 6.5, 9], "rotation": 180, "texture": "#11"},
+				"south": {"uv": [13, 0, 14, 4], "rotation": 90, "texture": "#11"},
+				"west": {"uv": [5.5, 8, 6.5, 9], "rotation": 180, "texture": "#11"},
+				"up": {"uv": [13, 0, 14, 4], "rotation": 90, "texture": "#11"},
+				"down": {"uv": [13, 0, 14, 4], "rotation": 90, "texture": "#11"}
+			}
+		},
+		{
+			"name": "Cog",
+			"from": [7, 1, 16],
+			"to": [9, 9, 18],
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 5, 18]},
+			"faces": {
+				"north": {"uv": [10.5, 0, 11.5, 4], "texture": "#11"},
+				"east": {"uv": [10.5, 0, 11.5, 4], "texture": "#11"},
+				"south": {"uv": [13, 0, 14, 4], "texture": "#11"},
+				"west": {"uv": [10.5, 0, 11.5, 4], "texture": "#11"},
+				"up": {"uv": [5.5, 8, 6.5, 9], "rotation": 180, "texture": "#11"},
+				"down": {"uv": [5.5, 8, 6.5, 9], "rotation": 180, "texture": "#11"}
+			}
+		},
+		{
+			"name": "Cog",
+			"from": [7, 1, 16],
+			"to": [9, 9, 18],
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 5, 18]},
+			"faces": {
+				"north": {"uv": [10.5, 0, 11.5, 4], "texture": "#11"},
+				"east": {"uv": [10.5, 0, 11.5, 4], "texture": "#11"},
+				"south": {"uv": [13, 0, 14, 4], "texture": "#11"},
+				"west": {"uv": [10.5, 0, 11.5, 4], "texture": "#11"},
+				"up": {"uv": [5.5, 8, 6.5, 9], "rotation": 180, "texture": "#11"},
+				"down": {"uv": [5.5, 8, 6.5, 9], "rotation": 180, "texture": "#11"}
+			}
+		}
+	]
+}

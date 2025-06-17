@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "create_d2d:block/palettes/stone_types/cap/blackstone_cut_cap",
-    "side": "create_d2d:block/palettes/stone_types/pillar/blackstone_cut_pillar"
-  }
-}

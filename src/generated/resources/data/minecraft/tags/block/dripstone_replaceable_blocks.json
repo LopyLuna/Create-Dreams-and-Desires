@@ -1,8 +1,5 @@
 {
   "values": [
-    "create_d2d:weathered_limestone",
-    "create_d2d:gabbro",
-    "create_d2d:dolomite",
-    "create_d2d:breccia"
+    "dndesires:breccia"
   ]
 }

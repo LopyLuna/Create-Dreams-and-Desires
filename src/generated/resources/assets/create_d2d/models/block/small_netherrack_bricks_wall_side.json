@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_wall_side",
-  "textures": {
-    "wall": "create_d2d:block/palettes/stone_types/small_brick/netherrack_cut_small_brick"
-  }
-}

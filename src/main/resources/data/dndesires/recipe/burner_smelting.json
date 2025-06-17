@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 72000,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "dndesires:burner"
+  },
+  "result": {
+    "id": "dndesires:burner"
+  }
+}

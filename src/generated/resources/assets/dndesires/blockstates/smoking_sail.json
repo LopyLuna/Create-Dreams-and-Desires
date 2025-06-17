@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "dndesires:block/smoking_sail",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "dndesires:block/smoking_sail",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "dndesires:block/smoking_sail",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "dndesires:block/smoking_sail",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "dndesires:block/smoking_sail"
+    },
+    "facing=west": {
+      "model": "dndesires:block/smoking_sail",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

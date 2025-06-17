@@ -1,0 +1,28 @@
+{
+  "type": "dndesires:hydraulic_compacting",
+  "heat_requirement": "superheated",
+  "ingredients": [
+    {
+      "item": "minecraft:sandstone"
+    },
+    {
+      "item": "minecraft:sandstone"
+    },
+    {
+      "type": "fluid_tag",
+      "amount": 500,
+      "fluid_tag": "c:lava"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 100,
+      "fluid": "dndesires:vanilla_milkshake"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "id": "create:asurine"
+    }
+  ]
+}

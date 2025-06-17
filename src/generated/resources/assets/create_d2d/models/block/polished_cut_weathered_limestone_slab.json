@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "create_d2d:block/palettes/stone_types/polished/weathered_limestone_cut_polished",
-    "side": "create_d2d:block/palettes/stone_types/slab/weathered_limestone_cut_slab",
-    "top": "create_d2d:block/palettes/stone_types/polished/weathered_limestone_cut_polished"
-  }
-}

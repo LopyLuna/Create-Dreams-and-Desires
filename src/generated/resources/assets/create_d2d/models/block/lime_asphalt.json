@@ -1,6 +1,0 @@
-{
-  "parent": "create_d2d:block/asphalt",
-  "textures": {
-    "all": "create_d2d:block/asphalt/lime"
-  }
-}

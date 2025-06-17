@@ -1,0 +1,8 @@
+{
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"textures": {
+		"0": "dndesires:block/engine_wheel",
+		"particle": "dndesires:block/engine_casing"
+	}
+}

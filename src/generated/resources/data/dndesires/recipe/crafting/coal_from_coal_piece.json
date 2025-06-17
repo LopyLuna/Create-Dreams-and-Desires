@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "dndesires:coal_piece"
+    },
+    {
+      "item": "dndesires:coal_piece"
+    },
+    {
+      "item": "dndesires:coal_piece"
+    },
+    {
+      "item": "dndesires:coal_piece"
+    },
+    {
+      "item": "dndesires:coal_piece"
+    },
+    {
+      "item": "dndesires:coal_piece"
+    },
+    {
+      "item": "dndesires:coal_piece"
+    },
+    {
+      "item": "dndesires:coal_piece"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:coal"
+  }
+}

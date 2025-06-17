@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "dndesires:block/cut_breccia_slab"
+    },
+    "type=double": {
+      "model": "dndesires:block/cut_breccia"
+    },
+    "type=top": {
+      "model": "dndesires:block/cut_breccia_slab_top"
+    }
+  }
+}

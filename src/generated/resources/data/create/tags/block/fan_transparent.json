@@ -1,8 +1,8 @@
 {
   "values": [
-    "create_d2d:splashing_sail",
-    "create_d2d:haunting_sail",
-    "create_d2d:smoking_sail",
-    "create_d2d:blasting_sail"
+    "dndesires:splashing_sail",
+    "dndesires:haunting_sail",
+    "dndesires:smoking_sail",
+    "dndesires:blasting_sail"
   ]
 }

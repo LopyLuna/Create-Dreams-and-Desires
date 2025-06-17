@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "create_d2d:block/palettes/stone_types/cap/dolomite_cut_cap",
-    "side": "create_d2d:block/palettes/stone_types/pillar/dolomite_cut_pillar"
-  }
-}

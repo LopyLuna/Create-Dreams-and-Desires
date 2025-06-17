@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lapis_lazuli_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "dndesires:lapis_lazuli_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "dndesires:crafting/lapis_lazuli_shard_from_lapis_lazuli"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_lapis_lazuli_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "dndesires:crafting/lapis_lazuli_shard_from_lapis_lazuli"
+    ]
+  }
+}

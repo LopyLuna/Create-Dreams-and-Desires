@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "dndesires:item/vanilla_milkshake_bucket"
+  }
+}

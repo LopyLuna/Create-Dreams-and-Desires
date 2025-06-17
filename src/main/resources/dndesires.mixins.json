@@ -1,0 +1,20 @@
+
+{
+  "required": true,
+  "minVersion": "0.8",
+  "priority": 1500,
+  "package": "dev.lopyluna.dndesires.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "dndesires.refmap.json",
+  "mixins": [
+    "AllFluidsMixin",
+    "FurnaceBEAccessor",
+    "FurnaceBlockAccessor",
+    "RotationPropagatorMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+  ]
+}

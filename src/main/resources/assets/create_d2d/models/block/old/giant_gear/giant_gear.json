@@ -1,8 +1,0 @@
-{
-	"parent": "block/block",
-	"ambientocclusion": false,
-	"textures": {
-		"0": "create_dd:block/giant_gear",
-		"particle": "create:block/brass_block"
-	}
-}

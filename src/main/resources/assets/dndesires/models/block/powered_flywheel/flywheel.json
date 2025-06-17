@@ -1,0 +1,6 @@
+{
+	"parent": "dndesires:block/powered_flywheel/wheel",
+	"loader": "neoforge:obj",
+	"flip_v": true,
+	"model": "dndesires:models/block/powered_flywheel/wheel.obj"
+}

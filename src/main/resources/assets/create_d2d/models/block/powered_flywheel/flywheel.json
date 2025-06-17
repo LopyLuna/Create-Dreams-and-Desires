@@ -1,6 +1,0 @@
-{
-	"parent": "create_d2d:block/powered_flywheel/wheel",
-	"loader": "neoforge:obj",
-	"flip_v": true,
-	"model": "create_d2d:models/block/powered_flywheel/wheel.obj"
-}

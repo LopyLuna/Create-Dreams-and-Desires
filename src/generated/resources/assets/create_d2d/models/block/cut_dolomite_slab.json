@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "create_d2d:block/palettes/stone_types/cut/dolomite_cut",
-    "side": "create_d2d:block/palettes/stone_types/cut/dolomite_cut",
-    "top": "create_d2d:block/palettes/stone_types/cut/dolomite_cut"
-  }
-}

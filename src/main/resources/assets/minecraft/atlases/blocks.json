@@ -1,21 +1,18 @@
 {
   "sources": [
-    { "type": "single", "resource": "create_d2d:fluid/chocolate_milkshake_flow" },
-    { "type": "single", "resource": "create_d2d:fluid/chocolate_milkshake_still" },
+    { "type": "single", "resource": "dndesires:fluid/chocolate_milkshake_flow" },
+    { "type": "single", "resource": "dndesires:fluid/chocolate_milkshake_still" },
 
-    { "type": "single", "resource": "create_d2d:fluid/glowberry_milkshake_flow" },
-    { "type": "single", "resource": "create_d2d:fluid/glowberry_milkshake_still" },
+    { "type": "single", "resource": "dndesires:fluid/glowberry_milkshake_flow" },
+    { "type": "single", "resource": "dndesires:fluid/glowberry_milkshake_still" },
 
-    { "type": "single", "resource": "create_d2d:fluid/pumpkin_milkshake_flow" },
-    { "type": "single", "resource": "create_d2d:fluid/pumpkin_milkshake_still" },
+    { "type": "single", "resource": "dndesires:fluid/pumpkin_milkshake_flow" },
+    { "type": "single", "resource": "dndesires:fluid/pumpkin_milkshake_still" },
 
-    { "type": "single", "resource": "create_d2d:fluid/strawberry_milkshake_flow" },
-    { "type": "single", "resource": "create_d2d:fluid/strawberry_milkshake_still" },
+    { "type": "single", "resource": "dndesires:fluid/strawberry_milkshake_flow" },
+    { "type": "single", "resource": "dndesires:fluid/strawberry_milkshake_still" },
 
-    { "type": "single", "resource": "create_d2d:fluid/vanilla_milkshake_flow" },
-    { "type": "single", "resource": "create_d2d:fluid/vanilla_milkshake_still" },
-
-    { "type": "single", "resource": "create_d2d:fluid/sap_flow" },
-    { "type": "single", "resource": "create_d2d:fluid/sap_still" }
+    { "type": "single", "resource": "dndesires:fluid/vanilla_milkshake_flow" },
+    { "type": "single", "resource": "dndesires:fluid/vanilla_milkshake_still" }
   ]
 }

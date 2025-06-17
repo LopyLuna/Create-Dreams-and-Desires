@@ -1,0 +1,28 @@
+{
+  "type": "dndesires:hydraulic_compacting",
+  "heat_requirement": "superheated",
+  "ingredients": [
+    {
+      "item": "minecraft:cobbled_deepslate"
+    },
+    {
+      "item": "minecraft:cobbled_deepslate"
+    },
+    {
+      "type": "fluid_tag",
+      "amount": 500,
+      "fluid_tag": "c:lava"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 100,
+      "fluid": "dndesires:strawberry_milkshake"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "id": "create:crimsite"
+    }
+  ]
+}

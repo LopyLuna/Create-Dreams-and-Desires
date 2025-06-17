@@ -1,0 +1,32 @@
+{
+  "type": "create:mixing",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "item": "create:scorchia"
+    },
+    {
+      "item": "create:scorchia"
+    },
+    {
+      "item": "minecraft:blackstone"
+    },
+    {
+      "item": "minecraft:blackstone"
+    },
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 50,
+      "fluid": "create:tea"
+    }
+  ],
+  "results": [
+    {
+      "count": 4,
+      "id": "dndesires:asphalt"
+    }
+  ]
+}

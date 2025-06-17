@@ -1,0 +1,18 @@
+{
+  "type": "dndesires:hydraulic_compacting",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "item": "minecraft:bone_block"
+    },
+    {
+      "item": "minecraft:diorite"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "id": "minecraft:calcite"
+    }
+  ]
+}

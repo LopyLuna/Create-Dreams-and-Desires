@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "C": {
+      "item": "minecraft:soul_campfire"
+    },
+    "R": {
+      "item": "minecraft:black_wool"
+    },
+    "S": {
+      "item": "create:sail_frame"
+    }
+  },
+  "pattern": [
+    "SCS",
+    "CRC",
+    "SCS"
+  ],
+  "result": {
+    "count": 4,
+    "id": "dndesires:haunting_sail"
+  }
+}

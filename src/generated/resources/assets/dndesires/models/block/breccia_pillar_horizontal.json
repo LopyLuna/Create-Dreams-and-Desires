@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "dndesires:block/palettes/stone_types/cap/breccia_cut_cap",
+    "side": "dndesires:block/palettes/stone_types/pillar/breccia_cut_pillar"
+  }
+}

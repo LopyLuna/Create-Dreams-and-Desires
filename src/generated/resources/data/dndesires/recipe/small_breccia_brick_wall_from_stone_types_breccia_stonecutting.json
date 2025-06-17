@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "dndesires:stone_types/breccia"
+  },
+  "result": {
+    "count": 1,
+    "id": "dndesires:small_breccia_brick_wall"
+  }
+}

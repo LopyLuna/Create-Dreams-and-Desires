@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "dndesires:block/breccia_natural_0"
+      },
+      {
+        "model": "dndesires:block/breccia_natural_1"
+      },
+      {
+        "model": "dndesires:block/breccia_natural_2"
+      },
+      {
+        "model": "dndesires:block/breccia_natural_3"
+      }
+    ]
+  }
+}

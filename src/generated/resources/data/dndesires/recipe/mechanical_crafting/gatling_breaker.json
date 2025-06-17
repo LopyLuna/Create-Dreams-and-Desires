@@ -1,0 +1,37 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": true,
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "D": {
+      "tag": "c:gems/diamond"
+    },
+    "I": {
+      "tag": "c:plates/iron"
+    },
+    "M": {
+      "item": "create:precision_mechanism"
+    },
+    "N": {
+      "tag": "c:ingots/netherite"
+    },
+    "O": {
+      "tag": "c:obsidians"
+    },
+    "P": {
+      "tag": "c:gems/prismarine"
+    }
+  },
+  "pattern": [
+    "  AIII",
+    "ONMDPP",
+    "OOOA  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "dndesires:gatling_breaker"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side_tall",
+  "textures": {
+    "wall": "dndesires:block/palettes/stone_types/brick/breccia_cut_brick"
+  }
+}

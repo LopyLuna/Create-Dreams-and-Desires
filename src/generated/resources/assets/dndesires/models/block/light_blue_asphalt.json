@@ -1,0 +1,6 @@
+{
+  "parent": "dndesires:block/asphalt",
+  "textures": {
+    "all": "dndesires:block/asphalt/light_blue"
+  }
+}

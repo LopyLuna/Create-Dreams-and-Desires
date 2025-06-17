@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smoking",
+  "category": "misc",
+  "cookingtime": 36000,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "dndesires:burner"
+  },
+  "result": {
+    "id": "dndesires:burner"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    [
+      {
+        "item": "minecraft:dandelion"
+      },
+      {
+        "item": "minecraft:blue_orchid"
+      }
+    ],
+    [
+      {
+        "item": "minecraft:dandelion"
+      },
+      {
+        "item": "minecraft:blue_orchid"
+      }
+    ],
+    {
+      "type": "fluid_tag",
+      "amount": 250,
+      "fluid_tag": "c:milk"
+    }
+  ],
+  "results": [
+    {
+      "amount": 500,
+      "id": "dndesires:vanilla_milkshake"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "dndesires:block/palettes/stone_types/polished/breccia_cut_polished",
+    "side": "dndesires:block/palettes/stone_types/polished/breccia_cut_polished",
+    "top": "dndesires:block/palettes/stone_types/polished/breccia_cut_polished"
+  }
+}

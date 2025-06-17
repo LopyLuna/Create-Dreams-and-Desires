@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "create_d2d:block/palettes/stone_types/brick/breccia_cut_brick",
-    "side": "create_d2d:block/palettes/stone_types/brick/breccia_cut_brick",
-    "top": "create_d2d:block/palettes/stone_types/brick/breccia_cut_brick"
-  }
-}
