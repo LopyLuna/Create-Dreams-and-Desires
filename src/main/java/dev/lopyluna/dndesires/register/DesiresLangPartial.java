@@ -4,11 +4,19 @@ import dev.lopyluna.dndesires.DnDesires;
 
 import static dev.lopyluna.dndesires.DnDesires.REG;
 
+@SuppressWarnings("unused")
 public class DesiresLangPartial {
     public static void addTranslations() {
         REG.addRawLang(recipe("hydraulic_compacting"), "Hydraulic Compacting");
+        REG.addRawLang(recipeFan("dragon_breathing"), "Bulk Dragon Breathing");
+        REG.addRawLang(recipeFan("freezing"), "Bulk Freezing");
+        REG.addRawLang(recipeFan("sanding"), "Bulk Sanding");
+        REG.addRawLang(recipeFan("seething"), "Bulk Seething");
     }
 
+    public static String recipeFan(String type) {
+        return "create.recipe.fan_" + type;
+    }
     public static String recipe(String type) {
         return newLang("", "", "recipe", type);
     }

@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "type": "dndesires:seething",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_lead"
+    }
+  ],
+  "results": [
+    {
+      "id": "thermal:lead_ingot"
+    },
+    {
+      "chance": 0.5,
+      "id": "thermal:lead_ingot"
+    }
+  ]
+}

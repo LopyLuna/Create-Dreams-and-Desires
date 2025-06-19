@@ -1,0 +1,17 @@
+{
+  "type": "dndesires:seething",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_iron"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:iron_ingot"
+    },
+    {
+      "chance": 0.75,
+      "id": "minecraft:iron_ingot"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "create:cogwheel"
+    },
+    "I": {
+      "item": "dndesires:industrial_casing"
+    },
+    "P": {
+      "item": "create:propeller"
+    }
+  },
+  "pattern": [
+    "C",
+    "I",
+    "P"
+  ],
+  "result": {
+    "count": 1,
+    "id": "dndesires:industrial_fan"
+  }
+}

@@ -7,10 +7,13 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "dndesires.refmap.json",
   "mixins": [
+    "AirCurrentClientAccessor",
+    "AirCurrentMixin",
     "AllFluidsMixin",
     "FurnaceBEAccessor",
     "FurnaceBlockAccessor",
-    "RotationPropagatorMixin"
+    "RotationPropagatorMixin",
+    "ServerGamePacketListenerImplAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

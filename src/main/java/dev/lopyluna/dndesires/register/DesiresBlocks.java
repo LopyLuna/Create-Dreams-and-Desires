@@ -5,10 +5,12 @@ import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.Create;
 import com.simibubi.create.api.stress.BlockStressValues;
+import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.block.DyedBlockList;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.BlockStateGen;
+import com.simibubi.create.foundation.data.BuilderTransformers;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
@@ -16,12 +18,13 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.lopyluna.dndesires.DnDesires;
 import dev.lopyluna.dndesires.content.blocks.BoreBlockMovementBehavior;
 import dev.lopyluna.dndesires.content.blocks.FanSailBlock;
-import dev.lopyluna.dndesires.content.blocks.hydraulic_press.HydraulicPressBlock;
-import dev.lopyluna.dndesires.content.blocks.inverse_gearshift.InverseGearshiftBlock;
-import dev.lopyluna.dndesires.content.blocks.omni_speed_controller.OmniSpeedControllerBlock;
-import dev.lopyluna.dndesires.content.blocks.roll_table.RollTableBlock;
-import dev.lopyluna.dndesires.content.blocks.stirling_engine.StirlingEngineBlock;
-import dev.lopyluna.dndesires.content.blocks.stirling_engine.flywheel.PoweredFlywheelBlock;
+import dev.lopyluna.dndesires.content.blocks.kinetics.hydraulic_press.HydraulicPressBlock;
+import dev.lopyluna.dndesires.content.blocks.kinetics.industrial_fan.IndustrialFanBlock;
+import dev.lopyluna.dndesires.content.blocks.kinetics.inverse_gearshift.InverseGearshiftBlock;
+import dev.lopyluna.dndesires.content.blocks.kinetics.omni_speed_controller.OmniSpeedControllerBlock;
+import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.StirlingEngineBlock;
+import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.flywheel.PoweredFlywheelBlock;
+import dev.lopyluna.dndesires.content.blocks.logistics.roll_table.RollTableBlock;
 import dev.lopyluna.dndesires.content.configs.server.kinetics.DStress;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -36,7 +39,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.util.DeferredSoundType;
 
 import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
@@ -44,9 +46,37 @@ import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.*;
 import static com.tterrag.registrate.providers.RegistrateRecipeProvider.has;
 import static dev.lopyluna.dndesires.DnDesires.REG;
+import static dev.lopyluna.dndesires.register.client.DesiresSpriteShifts.omni;
 
 @SuppressWarnings({"removal", "unused"})
 public class DesiresBlocks {
+
+    public static final BlockEntry<CasingBlock> OVERBURDEN_CASING = REG.block("overburden_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> omni("overburden_casing")))
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .transform(pickaxeOnly())
+            .register();
+
+    public static final BlockEntry<CasingBlock> INDUSTRIAL_CASING = REG.block("industrial_casing", CasingBlock::new)
+            .transform(BuilderTransformers.casing(() -> omni("industrial_casing")))
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_CYAN).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .transform(pickaxeOnly())
+            .register();
+
+    public static final BlockEntry<IndustrialFanBlock> INDUSTRIAL_FAN = REG.block("industrial_fan", IndustrialFanBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .addLayer(() -> RenderType::cutoutMipped)
+            .properties(p -> p.noOcclusion().mapColor(MapColor.TERRACOTTA_CYAN).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK))
+            .blockstate(BlockStateGen.directionalBlockProvider(true))
+            .transform(pickaxeOnly())
+            .transform(DStress.setImpact(4))
+            .transform(DStress.setCapacity(16))
+            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
+                    .pattern("C").pattern("I").pattern("P").define('P', AllItems.PROPELLER.get()).define('C', AllBlocks.COGWHEEL.get()).define('I', INDUSTRIAL_CASING.get())
+                    .unlockedBy("has_casing", has(INDUSTRIAL_CASING.get()))
+                    .save(p, DnDesires.loc("crafting/" + c.getName()))).item()
+            .transform(customItemModel())
+            .register();
 
     public static final BlockEntry<OmniSpeedControllerBlock> OMNI_SPEED_CONTROLLER = REG.block("omni_speed_controller", OmniSpeedControllerBlock::new)
             .initialProperties(SharedProperties::stone)
@@ -85,9 +115,8 @@ public class DesiresBlocks {
     public static final BlockEntry<RollTableBlock> ROLL_TABLE = REG.block("roll_table", RollTableBlock::new)
             .initialProperties(SharedProperties::netheriteMetal)
             .transform(pickaxeOnly())
-            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, c.get(), 1)
-                    .pattern("A")
-                    .pattern("B")
+            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
+                    .pattern("A").pattern("B")
                     .define('A', AllItems.IRON_SHEET.get())
                     .define('B', AllBlocks.DEPOT.get())
                     .unlockedBy("has_" + c.getName(), has(c.get()))
@@ -101,10 +130,8 @@ public class DesiresBlocks {
             .properties(p -> p.noOcclusion().mapColor(MapColor.COLOR_ORANGE))
             .transform(pickaxeOnly())
             .transform(DStress.setImpact(16.0))
-            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, c.get(), 1)
-                    .pattern("A")
-                    .pattern("B")
-                    .pattern("C")
+            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
+                    .pattern("A").pattern("B").pattern("C")
                     .define('A', AllBlocks.FLUID_TANK.get())
                     .define('B', AllBlocks.MECHANICAL_PRESS.get())
                     .define('C', Items.COPPER_BLOCK)
@@ -123,10 +150,8 @@ public class DesiresBlocks {
             .tag(AllTags.AllBlockTags.BRITTLE.tag)
             .blockstate(BlockStateGen.horizontalBlockProvider(true))
             .transform(DStress.setCapacity(1024.0))
-            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, c.get(), 1)
-                    .pattern("A")
-                    .pattern("B")
-                    .pattern("C")
+            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
+                    .pattern("A").pattern("B").pattern("C")
                     .define('A', AllItems.BRASS_SHEET.get())
                     .define('B', AllItems.ANDESITE_ALLOY.get())
                     .define('C', AllBlocks.ZINC_BLOCK.get())
@@ -166,7 +191,7 @@ public class DesiresBlocks {
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.destroyTime(1.25f).speedFactor(0.995F).jumpFactor(1.25F).friction(0.5F).mapColor(color.getMapColor()).sound(SoundType.POLISHED_DEEPSLATE))
                 .transform(pickaxeOnly())
-                .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, c.get(), 8)
+                .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 8)
                         .pattern("AAA").pattern("ABA").pattern("AAA").define('A', ASPHALT_BLOCKS).define('B', color.getTag())
                         .unlockedBy("has_" + c.getName(), has(c.get())).save(p, DnDesires.loc("crafting/" + c.getName())))
                 .tag(DesiresTags.BlockTags.DYED_BLOCKS.tag, AllTags.AllBlockTags.WRENCH_PICKUP.tag, DesiresTags.modBlockTag("asphalts"))
@@ -186,7 +211,7 @@ public class DesiresBlocks {
                     () -> SoundEvents.NETHERITE_BLOCK_HIT, () -> SoundEvents.NETHERITE_BLOCK_FALL)))
             .onRegister(movementBehaviour(new BoreBlockMovementBehavior()))
             .transform(pickaxeOnly())
-            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, c.get(), 4)
+            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 4)
                     .pattern("AIA")
                     .pattern("ICI")
                     .pattern("AIA")
@@ -213,10 +238,8 @@ public class DesiresBlocks {
                         () -> SoundEvents.NETHERITE_BLOCK_HIT, () -> SoundEvents.NETHERITE_BLOCK_FALL)))
                 .onRegister(movementBehaviour(new BoreBlockMovementBehavior()))
                 .transform(pickaxeOnly())
-                .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, c.get(), 8)
-                        .pattern("AAA")
-                        .pattern("ABA")
-                        .pattern("AAA")
+                .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 8)
+                        .pattern("AAA").pattern("ABA").pattern("AAA")
                         .define('A', BORE_BLOCKS)
                         .define('B', color.getTag())
                         .unlockedBy("has_" + c.getName(), has(c.get()))
@@ -239,12 +262,11 @@ public class DesiresBlocks {
             .properties(p -> p.sound(SoundType.SCAFFOLDING).noOcclusion())
             .transform(axeOnly())
             .blockstate((c, p) -> {
-                ModelFile model = p.models().withExistingParent(c.getName(), Create.asResource("block/white_sail"))
+                var model = p.models().withExistingParent(c.getName(), Create.asResource("block/white_sail"))
                         .texture("0", p.modLoc("block/sail/splashing"));
                 p.directionalBlock(c.get(), model);
                 p.simpleBlockItem(c.get(), model);
-            })
-            .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+            }).tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
             .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
             .tag(AllTags.AllBlockTags.FAN_PROCESSING_CATALYSTS_SPLASHING.tag)
             .recipe((c, p) -> fanSailCrafting(c.get(), Items.WATER_BUCKET, p, c))
@@ -260,12 +282,11 @@ public class DesiresBlocks {
             .properties(p -> p.lightLevel(s -> 8))
             .transform(axeOnly())
             .blockstate((c, p) -> {
-                ModelFile model = p.models().withExistingParent(c.getName(), Create.asResource("block/white_sail"))
+                var model = p.models().withExistingParent(c.getName(), Create.asResource("block/white_sail"))
                         .texture("0", p.modLoc("block/sail/haunting"));
                 p.directionalBlock(c.get(), model);
                 p.simpleBlockItem(c.get(), model);
-            })
-            .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+            }).tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
             .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
             .tag(AllTags.AllBlockTags.FAN_PROCESSING_CATALYSTS_HAUNTING.tag)
             .recipe((c, p) -> fanSailCrafting(c.get(), Items.SOUL_CAMPFIRE, p, c))
@@ -281,12 +302,11 @@ public class DesiresBlocks {
             .properties(p -> p.lightLevel(s -> 8))
             .transform(axeOnly())
             .blockstate((c, p) -> {
-                ModelFile model = p.models().withExistingParent(c.getName(), Create.asResource("block/white_sail"))
+                var model = p.models().withExistingParent(c.getName(), Create.asResource("block/white_sail"))
                         .texture("0", p.modLoc("block/sail/smoking"));
                 p.directionalBlock(c.get(), model);
                 p.simpleBlockItem(c.get(), model);
-            })
-            .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+            }).tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
             .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
             .tag(AllTags.AllBlockTags.FAN_PROCESSING_CATALYSTS_SMOKING.tag)
             .recipe((c, p) -> fanSailCrafting(c.get(), Items.CAMPFIRE, p, c))
@@ -302,12 +322,11 @@ public class DesiresBlocks {
             .properties(p -> p.lightLevel(s -> 12))
             .transform(axeOnly())
             .blockstate((c, p) -> {
-                ModelFile model = p.models().withExistingParent(c.getName(), Create.asResource("block/white_sail"))
+                var model = p.models().withExistingParent(c.getName(), Create.asResource("block/white_sail"))
                         .texture("0", p.modLoc("block/sail/blasting"));
                 p.directionalBlock(c.get(), model);
                 p.simpleBlockItem(c.get(), model);
-            })
-            .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+            }).tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
             .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
             .tag(AllTags.AllBlockTags.FAN_PROCESSING_CATALYSTS_BLASTING.tag)
             .recipe((c, p) -> fanSailCrafting(c.get(), Items.LAVA_BUCKET, p, c))
@@ -316,73 +335,74 @@ public class DesiresBlocks {
             .build()
             .register();
 
-    //public static final BlockEntry<FanSailBlock> SEETHING_SAIL = REG.block("seething_sail", FanSailBlock::sail)*
-    //        .initialProperties(SharedProperties::wooden)
-    //        .properties(p -> p.mapColor(MapColor.DIRT))
-    //        .properties(p -> p.sound(SoundType.SCAFFOLDING)
-    //                .noOcclusion())
-    //        .properties(p -> p.lightLevel(s -> 15))
-    //        .transform(axeOnly())
-    //        .blockstate(BlockStateGen.directionalBlockProvider(false))
-    //        .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
-    //        .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
-    //        .tag(DesiresTags.AllBlockTags.FAN_PROCESSING_CATALYSTS_SEETHING.tag)
-    //        .recipe((c, p) -> ShapedRecipeBuilder.shaped(c.get(), 4)
-    //                        .pattern("SCS")
-    //                        .pattern("CRC")
-    //                        .pattern("SCS")
-    //                        .define('S', BLASTING_SAIL.get())
-    //                        .define('R', Items.NETHERITE_SCRAP)
-    //                        .define('C', DesiresItems.SEETHING_ABLAZE_ROD.get())
-    //                        .unlockedBy("has_" + getItemName(DesiresItems.SEETHING_ABLAZE_ROD.get()), has(DesiresItems.SEETHING_ABLAZE_ROD.get()))
-    //                        .save(p, DesireUtil.asResource("crafting/fan_catalyst/" + c.getName()))
-    //        )
-    //        .tag(DesiresTags.AllBlockTags.INDUSTRIAL_FAN_HEATER.tag)
-    //        .lang("Seething Catalyst Sail")
-    //        .item()
-    //        .build()
-    //        .register();
+    public static final BlockEntry<FanSailBlock> SEETHING_SAIL = REG.block("seething_sail", FanSailBlock::sail)
+            .initialProperties(SharedProperties::wooden)
+            .properties(p -> p.mapColor(MapColor.DIRT))
+            .properties(p -> p.sound(SoundType.SCAFFOLDING).noOcclusion())
+            .properties(p -> p.lightLevel(s -> 15))
+            .transform(axeOnly())
+            .blockstate((c, p) -> {
+                var model = p.models().withExistingParent(c.getName(), Create.asResource("block/white_sail"))
+                        .texture("0", p.modLoc("block/sail/seething"));
+                p.directionalBlock(c.get(), model);
+                p.simpleBlockItem(c.get(), model);
+            }).tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+            .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
+            .tag(DesiresTags.BlockTags.FAN_PROCESSING_CATALYSTS_SEETHING.tag)
+            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 4)
+                    .pattern("SCS").pattern("CRC").pattern("SCS")
+                    .define('S', BLASTING_SAIL.get()).define('R', DesiresItems.BURNER_STOCK).define('C', AllItems.BLAZE_CAKE.get())
+                    .unlockedBy("has_" + getItemName(AllItems.BLAZE_CAKE.get()), has(AllItems.BLAZE_CAKE.get()))
+                    .save(p, DnDesires.loc("crafting/fan_catalyst/" + c.getName()))
+            ).tag(DesiresTags.BlockTags.INDUSTRIAL_FAN_HEATER.tag)
+            .lang("Seething Catalyst Sail")
+            .item()
+            .build()
+            .register();
 
-    //public static final BlockEntry<FanSailBlock> FREEZING_SAIL = REG.block("freezing_sail", FanSailBlock::sail)*
-    //        .initialProperties(SharedProperties::wooden)
-    //        .properties(p -> p.mapColor(MapColor.DIRT))
-    //        .properties(p -> p.sound(SoundType.SCAFFOLDING)
-    //                .noOcclusion())
-    //        .transform(axeOnly())
-    //        .blockstate(BlockStateGen.directionalBlockProvider(false))
-    //        .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
-    //        .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
-    //        .tag(DesiresTags.AllBlockTags.FAN_PROCESSING_CATALYSTS_FREEZING.tag)
-    //        .recipe((c, p) -> fanSailCrafting(c.get(), Items.POWDER_SNOW_BUCKET, p, c))
-    //        .lang("Freezing Catalyst Sail")
-    //        .item()
-    //        .build()
-    //        .register();
+    public static final BlockEntry<FanSailBlock> FREEZING_SAIL = REG.block("freezing_sail", FanSailBlock::sail)
+            .initialProperties(SharedProperties::wooden)
+            .properties(p -> p.mapColor(MapColor.DIRT))
+            .properties(p -> p.sound(SoundType.SCAFFOLDING).noOcclusion())
+            .transform(axeOnly())
+            .blockstate((c, p) -> {
+                var model = p.models().withExistingParent(c.getName(), Create.asResource("block/white_sail"))
+                        .texture("0", p.modLoc("block/sail/freezing"));
+                p.directionalBlock(c.get(), model);
+                p.simpleBlockItem(c.get(), model);
+            }).tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+            .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
+            .tag(DesiresTags.BlockTags.FAN_PROCESSING_CATALYSTS_FREEZING.tag)
+            .recipe((c, p) -> fanSailCrafting(c.get(), Items.POWDER_SNOW_BUCKET, p, c))
+            .lang("Freezing Catalyst Sail")
+            .item()
+            .build()
+            .register();
 
-    //public static final BlockEntry<FanSailBlock> SANDING_SAIL = REG.block("sanding_sail", FanSailBlock::sail)*
-    //        .initialProperties(SharedProperties::wooden)
-    //        .properties(p -> p.mapColor(MapColor.DIRT))
-    //        .properties(p -> p.sound(SoundType.SCAFFOLDING)
-    //                .noOcclusion())
-    //        .transform(axeOnly())
-    //        .blockstate(BlockStateGen.directionalBlockProvider(false))
-    //        .tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
-    //        .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
-    //        .tag(DesiresTags.AllBlockTags.FAN_PROCESSING_CATALYSTS_SANDING.tag)
-    //        .recipe((c, p) -> fanSailCrafting(c.get(), Items.SAND, p, c))
-    //        .lang("Sanding Catalyst Sail")
-    //        .item()
-    //        .build()
-    //        .register();
+    public static final BlockEntry<FanSailBlock> SANDING_SAIL = REG.block("sanding_sail", FanSailBlock::sail)
+            .initialProperties(SharedProperties::wooden)
+            .properties(p -> p.mapColor(MapColor.DIRT))
+            .properties(p -> p.sound(SoundType.SCAFFOLDING).noOcclusion())
+            .transform(axeOnly())
+            .blockstate((c, p) -> {
+                var model = p.models().withExistingParent(c.getName(), Create.asResource("block/white_sail"))
+                        .texture("0", p.modLoc("block/sail/sanding"));
+                p.directionalBlock(c.get(), model);
+                p.simpleBlockItem(c.get(), model);
+            }).tag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+            .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
+            .tag(DesiresTags.BlockTags.FAN_PROCESSING_CATALYSTS_SANDING.tag)
+            .recipe((c, p) -> fanSailCrafting(c.get(), Items.SAND, p, c))
+            .lang("Sanding Catalyst Sail")
+            .item()
+            .build()
+            .register();
 
     public static void fanSailCrafting(ItemLike itemLike, ItemLike catalyst, RegistrateRecipeProvider pFinishedRecipeConsumer, DataGenContext<Block, FanSailBlock> c) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, itemLike, 4)
-                .pattern("SCS")
-                .pattern("CRC")
-                .pattern("SCS")
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, itemLike, 4)
+                .pattern("SCS").pattern("CRC").pattern("SCS")
                 .define('S', AllBlocks.SAIL_FRAME.get())
-                .define('R', Items.BLACK_WOOL)
-                //.define('R', RUBBER_BLOCK.get())
+                .define('R', AllTags.commonItemTag("storage_blocks/cardboard"))
                 .define('C', catalyst)
                 .unlockedBy("has_" + getItemName(catalyst), has(catalyst))
                 .save(pFinishedRecipeConsumer, DnDesires.loc("crafting/fan_catalyst/" + c.getName()));

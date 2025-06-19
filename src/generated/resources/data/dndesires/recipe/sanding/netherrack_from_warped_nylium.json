@@ -1,0 +1,13 @@
+{
+  "type": "dndesires:sanding",
+  "ingredients": [
+    {
+      "item": "minecraft:warped_nylium"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:netherrack"
+    }
+  ]
+}

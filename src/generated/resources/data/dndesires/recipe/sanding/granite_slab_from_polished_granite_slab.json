@@ -1,0 +1,13 @@
+{
+  "type": "dndesires:sanding",
+  "ingredients": [
+    {
+      "item": "minecraft:polished_granite_slab"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:granite_slab"
+    }
+  ]
+}

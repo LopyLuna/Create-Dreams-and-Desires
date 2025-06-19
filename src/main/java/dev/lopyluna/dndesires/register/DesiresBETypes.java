@@ -3,23 +3,32 @@ package dev.lopyluna.dndesires.register;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftVisual;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import dev.lopyluna.dndesires.content.blocks.hydraulic_press.HydraulicPressBE;
-import dev.lopyluna.dndesires.content.blocks.hydraulic_press.HydraulicPressRenderer;
-import dev.lopyluna.dndesires.content.blocks.hydraulic_press.HydraulicPressVisual;
-import dev.lopyluna.dndesires.content.blocks.inverse_gearshift.InverseGearshiftBE;
-import dev.lopyluna.dndesires.content.blocks.omni_speed_controller.OmniSpeedControllerBE;
-import dev.lopyluna.dndesires.content.blocks.roll_table.RollTableBE;
-import dev.lopyluna.dndesires.content.blocks.roll_table.RollTableRenderer;
-import dev.lopyluna.dndesires.content.blocks.stirling_engine.StirlingEngineBE;
-import dev.lopyluna.dndesires.content.blocks.stirling_engine.StirlingEngineRenderer;
-import dev.lopyluna.dndesires.content.blocks.stirling_engine.StirlingEngineVisual;
-import dev.lopyluna.dndesires.content.blocks.stirling_engine.flywheel.PoweredFlywheelBE;
-import dev.lopyluna.dndesires.content.blocks.stirling_engine.flywheel.PoweredFlywheelRenderer;
-import dev.lopyluna.dndesires.content.blocks.stirling_engine.flywheel.PoweredFlywheelVisual;
+import dev.lopyluna.dndesires.content.blocks.kinetics.hydraulic_press.HydraulicPressBE;
+import dev.lopyluna.dndesires.content.blocks.kinetics.hydraulic_press.HydraulicPressRenderer;
+import dev.lopyluna.dndesires.content.blocks.kinetics.hydraulic_press.HydraulicPressVisual;
+import dev.lopyluna.dndesires.content.blocks.kinetics.industrial_fan.IndustrialFanBE;
+import dev.lopyluna.dndesires.content.blocks.kinetics.industrial_fan.IndustrialFanRenderer;
+import dev.lopyluna.dndesires.content.blocks.kinetics.inverse_gearshift.InverseGearshiftBE;
+import dev.lopyluna.dndesires.content.blocks.kinetics.omni_speed_controller.OmniSpeedControllerBE;
+import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.StirlingEngineBE;
+import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.StirlingEngineRenderer;
+import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.StirlingEngineVisual;
+import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.flywheel.PoweredFlywheelBE;
+import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.flywheel.PoweredFlywheelRenderer;
+import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.flywheel.PoweredFlywheelVisual;
+import dev.lopyluna.dndesires.content.blocks.logistics.roll_table.RollTableBE;
+import dev.lopyluna.dndesires.content.blocks.logistics.roll_table.RollTableRenderer;
 
 import static dev.lopyluna.dndesires.DnDesires.REG;
 
 public class DesiresBETypes {
+
+    public static final BlockEntityEntry<IndustrialFanBE> INDUSTRIAL_FAN = REG
+            .blockEntity("industrial_fan", IndustrialFanBE::new)
+            //.visual(() -> IndustrialFanVisual::new, true)
+            .validBlocks(DesiresBlocks.INDUSTRIAL_FAN)
+            .renderer(() -> IndustrialFanRenderer::new)
+            .register();
 
     public static final BlockEntityEntry<OmniSpeedControllerBE> OMNI_SPEED_CONTROLLER = REG
             .blockEntity("omni_speed_controller", OmniSpeedControllerBE::new)

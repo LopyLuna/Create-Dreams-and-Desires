@@ -1,10 +1,7 @@
 package dev.lopyluna.dndesires.content.datagen;
 
 import com.simibubi.create.api.data.recipe.ProcessingRecipeGen;
-import dev.lopyluna.dndesires.content.datagen.recipes.EmptyingRecipeGen;
-import dev.lopyluna.dndesires.content.datagen.recipes.FillingRecipeGen;
-import dev.lopyluna.dndesires.content.datagen.recipes.HydraulicRecipeGen;
-import dev.lopyluna.dndesires.content.datagen.recipes.MixingRecipeGen;
+import dev.lopyluna.dndesires.content.datagen.recipes.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
@@ -27,12 +24,17 @@ public class DesiresRecipeProvider extends RecipeProvider {
         super(output, registries);
     }
 
-
     public static void registerAllProcessing(DataGenerator gen, PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         GENERATORS.add(new EmptyingRecipeGen(output, registries));
         GENERATORS.add(new FillingRecipeGen(output, registries));
         GENERATORS.add(new MixingRecipeGen(output, registries));
         GENERATORS.add(new HydraulicRecipeGen(output, registries));
+        GENERATORS.add(new ItemApplicationRecipeGen(output, registries));
+
+        GENERATORS.add(new DragonBreathingFanRecipeGen(output, registries));
+        GENERATORS.add(new FreezingFanRecipeGen(output, registries));
+        GENERATORS.add(new SandingFanRecipeGen(output, registries));
+        GENERATORS.add(new SeethingFanRecipeGen(output, registries));
 
         gen.addProvider(true, new DataProvider() {
             @Override

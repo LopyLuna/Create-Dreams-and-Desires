@@ -6,7 +6,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import dev.lopyluna.dndesires.content.blocks.stirling_engine.StirlingEngineBlock;
+import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.StirlingEngineBlock;
 import dev.lopyluna.dndesires.content.utils.DnDesiresRegistry;
 import dev.lopyluna.dndesires.register.*;
 import net.createmod.catnip.lang.FontHelper;
@@ -22,6 +22,7 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.registries.RegisterEvent;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
@@ -61,6 +62,7 @@ public class DnDesires {
 
         modEventBus.addListener(DesiresCreativeTabs::addCreative);
         modEventBus.addListener(DnDesires::init);
+        modEventBus.addListener(DnDesires::onRegister);
         modEventBus.addListener(EventPriority.HIGHEST, DesiresDatagen::gatherDataHighPriority);
         modEventBus.addListener(EventPriority.LOWEST, DesiresDatagen::gatherData);
 
@@ -73,6 +75,11 @@ public class DnDesires {
 
     public static void init(final FMLCommonSetupEvent event) {
         DesiresFluids.registerFluidInteractions();
+    }
+
+    public static void onRegister(final RegisterEvent event) {
+        DesiresFanProcessingTypes.init();
+        DesiresAttributeTypes.init();
     }
 
     public static LangBuilder lang() {

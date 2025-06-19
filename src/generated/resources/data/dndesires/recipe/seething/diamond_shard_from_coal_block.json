@@ -1,0 +1,14 @@
+{
+  "type": "dndesires:seething",
+  "ingredients": [
+    {
+      "item": "minecraft:coal_block"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.25,
+      "id": "dndesires:diamond_shard"
+    }
+  ]
+}

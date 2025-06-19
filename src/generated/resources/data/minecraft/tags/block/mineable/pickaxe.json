@@ -1,5 +1,8 @@
 {
   "values": [
+    "dndesires:overburden_casing",
+    "dndesires:industrial_casing",
+    "dndesires:industrial_fan",
     "dndesires:omni_speed_controller",
     "dndesires:inverse_gearshift",
     "dndesires:roll_table",

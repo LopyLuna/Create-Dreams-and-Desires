@@ -1,0 +1,13 @@
+{
+  "type": "dndesires:sanding",
+  "ingredients": [
+    {
+      "item": "minecraft:weathered_cut_copper_stairs"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:exposed_cut_copper_stairs"
+    }
+  ]
+}

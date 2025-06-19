@@ -1,0 +1,13 @@
+{
+  "type": "dndesires:sanding",
+  "ingredients": [
+    {
+      "item": "minecraft:polished_deepslate_stairs"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:cobbled_deepslate_stairs"
+    }
+  ]
+}

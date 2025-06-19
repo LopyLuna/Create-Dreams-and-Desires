@@ -2,14 +2,18 @@ package dev.lopyluna.dndesires.register;
 
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
+import com.simibubi.create.content.logistics.box.PackageStyles;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.CombustibleItem;
 import com.tterrag.registrate.builders.ItemBuilder;
+import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import dev.lopyluna.dndesires.DnDesires;
 import dev.lopyluna.dndesires.content.items.MilkshakeItem;
 import dev.lopyluna.dndesires.content.items.gatling_breaker.GatlingBreakerItem;
+import dev.lopyluna.dndesires.register.helpers.ItemTransgender;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -47,7 +51,7 @@ public class DesiresItems {
                 ).lang(name);
     }
 
-    public static final ItemEntry<Item> BURNER = REG.item("burner", Item::new)
+    public static final ItemEntry<Item> BURNER_STOCK = REG.item("burner", Item::new)
             .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
                     .pattern("AB")
                     .pattern("BA")
@@ -123,6 +127,20 @@ public class DesiresItems {
                         .save(p, DnDesires.loc("crafting/" + c.getName() + "_from_" + getItemName(output)));
             })
             .register();
+
+    static {
+        @SuppressWarnings("all")
+        var styles = PackageStyles.STYLES;
+        boolean rareCreated = false;
+        boolean normalCreated = false;
+        for (PackageStyles.PackageStyle style : styles) {
+            var packageItem = ItemTransgender.burstPackageItem(style);
+            if (rareCreated && style.rare() || normalCreated && !style.rare()) packageItem.setData(ProviderType.LANG, NonNullBiConsumer.noop());
+            rareCreated |= style.rare();
+            normalCreated |= !style.rare();
+            packageItem.register();
+        }
+    }
 
     protected static String getItemName(ItemLike pItemLike) {
         return BuiltInRegistries.ITEM.getKey(pItemLike.asItem()).getPath();

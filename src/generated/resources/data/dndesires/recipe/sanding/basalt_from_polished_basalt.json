@@ -1,0 +1,13 @@
+{
+  "type": "dndesires:sanding",
+  "ingredients": [
+    {
+      "item": "minecraft:polished_basalt"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:basalt"
+    }
+  ]
+}

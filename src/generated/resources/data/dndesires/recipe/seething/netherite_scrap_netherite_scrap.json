@@ -1,0 +1,17 @@
+{
+  "type": "dndesires:seething",
+  "ingredients": [
+    {
+      "item": "minecraft:ancient_debris"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:netherite_scrap"
+    },
+    {
+      "chance": 0.15,
+      "id": "minecraft:netherite_scrap"
+    }
+  ]
+}

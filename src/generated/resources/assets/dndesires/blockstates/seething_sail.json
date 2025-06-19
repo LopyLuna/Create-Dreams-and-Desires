@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "dndesires:block/seething_sail",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "dndesires:block/seething_sail",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "dndesires:block/seething_sail",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "dndesires:block/seething_sail",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "dndesires:block/seething_sail"
+    },
+    "facing=west": {
+      "model": "dndesires:block/seething_sail",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

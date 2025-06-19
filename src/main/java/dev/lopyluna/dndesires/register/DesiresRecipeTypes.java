@@ -4,13 +4,14 @@ import com.mojang.serialization.Codec;
 import com.simibubi.create.content.processing.recipe.StandardProcessingRecipe;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import dev.lopyluna.dndesires.DnDesires;
-import dev.lopyluna.dndesires.content.recipes.HydraulicRecipe;
+import dev.lopyluna.dndesires.content.recipes.*;
 import net.createmod.catnip.lang.Lang;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -18,11 +19,16 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
 public enum DesiresRecipeTypes implements IRecipeTypeInfo, StringRepresentable {
-    HYDRAULIC_COMPACTING(HydraulicRecipe::new)
+    HYDRAULIC_COMPACTING(HydraulicRecipe::new),
+    DRAGON_BREATHING(DragonBreathingRecipe::new),
+    SANDING(SandingRecipe::new),
+    FREEZING(FreezingRecipe::new),
+    SEETHING(SeethingRecipe::new)
     ;
 
     public final ResourceLocation id;
@@ -83,6 +89,10 @@ public enum DesiresRecipeTypes implements IRecipeTypeInfo, StringRepresentable {
     @Override
     public <I extends RecipeInput, R extends Recipe<I>> RecipeType<R> getType() {
         return (RecipeType<R>) type.get();
+    }
+
+    public <I extends RecipeInput, R extends Recipe<I>> Optional<RecipeHolder<R>> find(I inv, Level level) {
+        return level.getRecipeManager().getRecipeFor(getType(), inv, level);
     }
 
     @Override

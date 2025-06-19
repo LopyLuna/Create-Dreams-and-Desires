@@ -3,6 +3,13 @@
     "dndesires:splashing_sail",
     "dndesires:haunting_sail",
     "dndesires:smoking_sail",
-    "dndesires:blasting_sail"
+    "dndesires:blasting_sail",
+    "dndesires:seething_sail",
+    "dndesires:freezing_sail",
+    "dndesires:sanding_sail",
+    "#dndesires:fan_processing_catalysts/dragon_breathing",
+    "#dndesires:fan_processing_catalysts/sanding",
+    "#dndesires:fan_processing_catalysts/freezing",
+    "#dndesires:fan_processing_catalysts/seething"
   ]
 }

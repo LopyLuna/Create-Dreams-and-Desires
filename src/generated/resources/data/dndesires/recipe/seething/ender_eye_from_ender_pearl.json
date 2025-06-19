@@ -1,0 +1,13 @@
+{
+  "type": "dndesires:seething",
+  "ingredients": [
+    {
+      "item": "minecraft:ender_pearl"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:ender_eye"
+    }
+  ]
+}

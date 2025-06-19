@@ -1,0 +1,13 @@
+{
+  "type": "dndesires:sanding",
+  "ingredients": [
+    {
+      "item": "minecraft:polished_andesite_stairs"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:andesite_stairs"
+    }
+  ]
+}

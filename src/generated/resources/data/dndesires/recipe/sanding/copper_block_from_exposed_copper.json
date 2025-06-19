@@ -1,0 +1,13 @@
+{
+  "type": "dndesires:sanding",
+  "ingredients": [
+    {
+      "item": "minecraft:exposed_copper"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:copper_block"
+    }
+  ]
+}

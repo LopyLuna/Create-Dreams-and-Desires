@@ -1,0 +1,13 @@
+{
+  "type": "dndesires:dragon_breathing",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:dragon_breath"
+    }
+  ]
+}

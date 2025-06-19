@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ic2"
+    }
+  ],
+  "type": "dndesires:seething",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_uranium"
+    }
+  ],
+  "results": [
+    {
+      "id": "ic2:ingot_uranium"
+    },
+    {
+      "chance": 0.25,
+      "id": "ic2:ingot_uranium"
+    }
+  ]
+}

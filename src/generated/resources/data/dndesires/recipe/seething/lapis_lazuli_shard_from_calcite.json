@@ -1,0 +1,14 @@
+{
+  "type": "dndesires:seething",
+  "ingredients": [
+    {
+      "item": "minecraft:calcite"
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.75,
+      "id": "dndesires:lapis_lazuli_shard"
+    }
+  ]
+}
