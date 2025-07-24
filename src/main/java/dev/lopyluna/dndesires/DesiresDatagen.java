@@ -2,9 +2,11 @@ package dev.lopyluna.dndesires;
 
 import com.google.gson.JsonElement;
 import com.simibubi.create.foundation.utility.FilesHelper;
+import com.tterrag.registrate.providers.ProviderType;
 import dev.lopyluna.dndesires.content.datagen.DatagenTags;
 import dev.lopyluna.dndesires.content.datagen.DesiresRecipeProvider;
 import dev.lopyluna.dndesires.content.datagen.recipes.MechanicalCraftingGen;
+import dev.lopyluna.dndesires.register.DesiresSoundEvents;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -29,6 +31,7 @@ public class DesiresDatagen {
         PackOutput output = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        generator.addProvider(event.includeClient(), DesiresSoundEvents.provider(generator));
 
         generator.addProvider(event.includeServer(), new MechanicalCraftingGen(output, lookupProvider));
 
@@ -39,6 +42,13 @@ public class DesiresDatagen {
 
     private static void addExtraRegistrateData() {
         DatagenTags.addGenerators();
+        DnDesires.REG.addDataGenerator(ProviderType.LANG, provider -> {
+            BiConsumer<String, String> langConsumer = provider::add;
+
+            //provideDefaultLang("interface", langConsumer);
+            //provideDefaultLang("tooltips", langConsumer);
+            DesiresSoundEvents.provideLang(langConsumer);
+        });
     }
 
     private static void provideDefaultLang(String fileName, BiConsumer<String, String> consumer) {

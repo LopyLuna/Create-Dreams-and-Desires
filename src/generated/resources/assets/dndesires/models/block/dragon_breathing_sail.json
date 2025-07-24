@@ -1,0 +1,6 @@
+{
+  "parent": "create:block/white_sail",
+  "textures": {
+    "0": "dndesires:block/sail/dragon_breathing"
+  }
+}

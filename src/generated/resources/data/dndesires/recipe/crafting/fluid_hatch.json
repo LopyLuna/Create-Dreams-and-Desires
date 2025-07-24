@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "create:andesite_alloy"
+    },
+    {
+      "item": "minecraft:copper_trapdoor"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "dndesires:fluid_hatch"
+  }
+}

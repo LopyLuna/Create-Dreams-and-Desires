@@ -4,6 +4,15 @@
     "dndesires:vanilla_milkshake",
     "dndesires:strawberry_milkshake",
     "dndesires:glowberry_milkshake",
-    "dndesires:pumpkin_milkshake"
+    "dndesires:pumpkin_milkshake",
+    "minecraft:dragon_breath",
+    "minecraft:powder_snow_bucket",
+    "minecraft:ominous_bottle",
+    "minecraft:experience_bottle",
+    "minecraft:light",
+    "#c:buckets",
+    "#c:buds",
+    "#c:clusters",
+    "#minecraft:candles"
   ]
 }

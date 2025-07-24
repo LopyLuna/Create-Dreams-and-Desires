@@ -2,6 +2,10 @@
   "values": [
     "dndesires:overburden_casing",
     "dndesires:industrial_casing",
+    "dndesires:cog_crank",
+    "dndesires:large_cog_crank",
+    "dndesires:multimeter",
+    "dndesires:omni_gearbox",
     "dndesires:omni_speed_controller",
     "dndesires:inverse_gearshift",
     "dndesires:splashing_sail",
@@ -10,6 +14,7 @@
     "dndesires:blasting_sail",
     "dndesires:seething_sail",
     "dndesires:freezing_sail",
-    "dndesires:sanding_sail"
+    "dndesires:sanding_sail",
+    "dndesires:dragon_breathing_sail"
   ]
 }

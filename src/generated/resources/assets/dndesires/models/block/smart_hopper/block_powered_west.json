@@ -1,0 +1,6 @@
+{
+  "parent": "dndesires:block/smart_hopper/block_west",
+  "textures": {
+    "1": "dndesires:block/smart_hopper_powered"
+  }
+}

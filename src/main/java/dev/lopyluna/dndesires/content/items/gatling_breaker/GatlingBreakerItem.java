@@ -68,7 +68,10 @@ public class GatlingBreakerItem extends Item implements CustomArmPoseItem {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
-        player.startUsingItem(usedHand);
+        if (!player.getCooldowns().isOnCooldown(this)) {
+            player.startUsingItem(usedHand);
+            if (player instanceof ServerPlayer serverPlayer) breakBlock(level, serverPlayer, player.getItemInHand(usedHand), usedHand, usedHand == InteractionHand.MAIN_HAND);
+        }
         return super.use(level, player, usedHand);
     }
 
@@ -121,6 +124,7 @@ public class GatlingBreakerItem extends Item implements CustomArmPoseItem {
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
         super.releaseUsing(stack, level, livingEntity, timeCharged);
+        if (livingEntity instanceof Player player) player.getCooldowns().addCooldown(this, 20);
         tick = 0;
         shooting = false;
     }

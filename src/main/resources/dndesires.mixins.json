@@ -12,6 +12,9 @@
     "AllFluidsMixin",
     "FurnaceBEAccessor",
     "FurnaceBlockAccessor",
+    "GaugeShaperAccessor",
+    "HopperBlockEntityAccessor",
+    "ItemStackHandlerAccessor",
     "RotationPropagatorMixin",
     "ServerGamePacketListenerImplAccessor"
   ],

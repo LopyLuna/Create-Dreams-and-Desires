@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "dndesires:block/large_cog_crank/block",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "dndesires:block/large_cog_crank/block"
+    },
+    "axis=z": {
+      "model": "dndesires:block/large_cog_crank/block",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

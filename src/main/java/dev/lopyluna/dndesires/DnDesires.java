@@ -48,6 +48,7 @@ public class DnDesires {
         REG.registerEventListeners(modEventBus);
         REG.defaultCreativeTab(BASE_TAB, "base_tab");
 
+        DesiresSoundEvents.prepare();
         DesiresLangPartial.addTranslations();
         DesiresTags.init();
         DesiresItems.register();
@@ -57,6 +58,7 @@ public class DnDesires {
         DesiresStoneTypes.register(REG);
         DesiresRotationPropagation.register();
         DesiresRecipeTypes.register(modEventBus);
+        DesiresPackets.register();
 
         DesiresConfigs.register(context, modContainer);
 
@@ -65,6 +67,7 @@ public class DnDesires {
         modEventBus.addListener(DnDesires::onRegister);
         modEventBus.addListener(EventPriority.HIGHEST, DesiresDatagen::gatherDataHighPriority);
         modEventBus.addListener(EventPriority.LOWEST, DesiresDatagen::gatherData);
+        modEventBus.addListener(DesiresSoundEvents::register);
 
         if (ModList.get().isLoaded("capix")) {
             net.yeoxuhang.capix.api.CapixApi.registerCape(MOD_ID, "DnDesires 1mil downloads",

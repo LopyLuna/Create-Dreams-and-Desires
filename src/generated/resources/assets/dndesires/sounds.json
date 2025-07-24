@@ -1,0 +1,19 @@
+{
+  "fluid_hatch": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:block.copper_door.open"
+      }
+    ],
+    "subtitle": "dndesires.subtitle.fluid_hatch"
+  },
+  "fluid_hatch_compounded_1": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:block.copper.place"
+      }
+    ]
+  }
+}

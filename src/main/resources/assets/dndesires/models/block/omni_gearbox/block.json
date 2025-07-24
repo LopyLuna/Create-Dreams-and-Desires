@@ -1,0 +1,24 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"2": "dndesires:block/omni_gearbox",
+		"particle": "dndesires:block/panel"
+	},
+	"elements": [
+		{
+			"name": "Core",
+			"from": [0.95, 1, 0.95],
+			"to": [15.05, 15, 15.05],
+			"faces": {
+				"north": {"uv": [1, 1, 15, 15], "texture": "#2"},
+				"east": {"uv": [1, 1, 15, 15], "texture": "#2"},
+				"south": {"uv": [1, 1, 15, 15], "texture": "#2"},
+				"west": {"uv": [1, 1, 15, 15], "texture": "#2"},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#2"},
+				"down": {"uv": [1, 1, 15, 15], "texture": "#2"}
+			}
+		}
+	]
+}
