@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "dndesires:block/gold_mixer/block"
+    }
+  }
+}

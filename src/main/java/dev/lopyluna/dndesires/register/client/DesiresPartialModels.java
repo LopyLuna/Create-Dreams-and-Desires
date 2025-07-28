@@ -17,6 +17,8 @@ public class DesiresPartialModels {
             SOUTH_PANEL = block("omni_gearbox/panels/south"),
             WEST_PANEL = block("omni_gearbox/panels/west"),
 
+            GOLDEN_MIXER_POLE = block("gold_mixer/pole"),
+            GOLDEN_MIXER_HEAD = block("gold_mixer/head"),
             COG_CRANK_HANDLE = block("cog_crank/handle"),
 
             MULTIMETER_HEAD = block("gauge/multimeter/head"),

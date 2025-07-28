@@ -3,13 +3,13 @@
   "category": "misc",
   "key": {
     "A": {
-      "tag": "c:plates/brass"
+      "item": "create:precision_mechanism"
     },
     "B": {
-      "item": "create:andesite_alloy"
+      "item": "create:brass_casing"
     },
     "C": {
-      "tag": "c:storage_blocks/zinc"
+      "item": "dndesires:gold_whisk"
     }
   },
   "pattern": [
@@ -19,6 +19,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "dndesires:stirling_engine"
+    "id": "dndesires:gold_mixer"
   }
 }

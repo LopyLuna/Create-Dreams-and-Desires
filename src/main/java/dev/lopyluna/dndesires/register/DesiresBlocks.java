@@ -16,6 +16,7 @@ import dev.lopyluna.dndesires.content.blocks.FanSailBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.cog_crank.CogCrankBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.cog_crank.CogCrankItem;
 import dev.lopyluna.dndesires.content.blocks.kinetics.creative_gear_motor.CreativeGearMotorBlock;
+import dev.lopyluna.dndesires.content.blocks.kinetics.golden_mixer.GoldenMixerBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.hydraulic_press.HydraulicPressBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.industrial_fan.IndustrialFanBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.inverse_gearshift.InverseGearshiftBlock;
@@ -280,10 +281,8 @@ public class DesiresBlocks {
             .transform(axeOrPickaxe())
             .blockstate(BlockStateGen.axisBlockProvider(true))
             .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
-                    .pattern(" C ")
                     .pattern("CBC")
-                    .pattern(" C ")
-                    .define('C', AllBlocks.COGWHEEL.get())
+                    .define('C', AllBlocks.LARGE_COGWHEEL.get())
                     .define('B', AllBlocks.ROTATION_SPEED_CONTROLLER.get())
                     .unlockedBy("has_" + c.getName(), has(c.get()))
                     .save(p, DnDesires.loc("crafting/" + c.getName())))
@@ -311,7 +310,7 @@ public class DesiresBlocks {
             .transform(pickaxeOnly())
             .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
                     .pattern("A").pattern("B")
-                    .define('A', AllItems.IRON_SHEET.get())
+                    .define('A', AllTags.commonItemTag("plates/iron"))
                     .define('B', AllBlocks.DEPOT.get())
                     .unlockedBy("has_" + c.getName(), has(c.get()))
                     .save(p, DnDesires.loc("crafting/" + c.getName())))
@@ -337,6 +336,26 @@ public class DesiresBlocks {
             .transform(customItemModel())
             .register();
 
+
+    public static final BlockEntry<GoldenMixerBlock> GOLDEN_MIXER = REG.block("gold_mixer", GoldenMixerBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.noOcclusion().mapColor(MapColor.STONE))
+            .transform(axeOrPickaxe())
+            .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
+            .addLayer(() -> RenderType::cutoutMipped)
+            .transform(DStress.setImpact(8.0))
+            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
+                    .pattern("A").pattern("B").pattern("C")
+                    .define('A', AllItems.PRECISION_MECHANISM.get())
+                    .define('B', AllBlocks.BRASS_CASING.get())
+                    .define('C', DesiresItems.GOLDEN_WHISK.get())
+                    .unlockedBy("has_" + c.getName(), has(c.get()))
+                    .save(p, DnDesires.loc("crafting/" + c.getName())))
+            .item(AssemblyOperatorBlockItem::new)
+            .transform(customItemModel())
+            .lang("Golden Mixer")
+            .register();
+
     public static final BlockEntry<StirlingEngineBlock> STIRLING_ENGINE = REG.block("stirling_engine", StirlingEngineBlock::new)
             .initialProperties(SharedProperties::softMetal)
             .properties(p -> p.noOcclusion().mapColor(MapColor.TERRACOTTA_CYAN).forceSolidOn())
@@ -346,9 +365,9 @@ public class DesiresBlocks {
             .transform(DStress.setCapacity(1024.0))
             .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
                     .pattern("A").pattern("B").pattern("C")
-                    .define('A', AllItems.BRASS_SHEET.get())
+                    .define('A', AllTags.commonItemTag("plates/brass"))
                     .define('B', AllItems.ANDESITE_ALLOY.get())
-                    .define('C', AllBlocks.ZINC_BLOCK.get())
+                    .define('C', AllTags.commonItemTag("storage_blocks/zinc"))
                     .unlockedBy("has_" + c.getName(), has(c.get()))
                     .save(p, DnDesires.loc("crafting/" + c.getName())))
             .onRegister(BlockStressValues.setGeneratorSpeed(32, true))

@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "create:iron_sheet"
+      "tag": "c:plates/iron"
     },
     "B": {
       "item": "create:depot"

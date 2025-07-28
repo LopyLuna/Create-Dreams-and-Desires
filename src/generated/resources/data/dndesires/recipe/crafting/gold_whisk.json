@@ -3,22 +3,19 @@
   "category": "misc",
   "key": {
     "A": {
-      "tag": "c:plates/brass"
-    },
-    "B": {
       "item": "create:andesite_alloy"
     },
-    "C": {
-      "tag": "c:storage_blocks/zinc"
+    "G": {
+      "tag": "c:plates/gold"
     }
   },
   "pattern": [
-    "A",
-    "B",
-    "C"
+    " A ",
+    "GAG",
+    "GGG"
   ],
   "result": {
     "count": 1,
-    "id": "dndesires:stirling_engine"
+    "id": "dndesires:gold_whisk"
   }
 }

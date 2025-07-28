@@ -12,6 +12,9 @@ import dev.lopyluna.dndesires.content.blocks.kinetics.cog_crank.CogCrankRenderer
 import dev.lopyluna.dndesires.content.blocks.kinetics.cog_crank.CogCrankVisual;
 import dev.lopyluna.dndesires.content.blocks.kinetics.creative_gear_motor.CreativeGearMotorBE;
 import dev.lopyluna.dndesires.content.blocks.kinetics.creative_gear_motor.GearMotorRenderer;
+import dev.lopyluna.dndesires.content.blocks.kinetics.golden_mixer.GoldenMixerBE;
+import dev.lopyluna.dndesires.content.blocks.kinetics.golden_mixer.GoldenMixerRenderer;
+import dev.lopyluna.dndesires.content.blocks.kinetics.golden_mixer.GoldenMixerVisual;
 import dev.lopyluna.dndesires.content.blocks.kinetics.hydraulic_press.HydraulicPressBE;
 import dev.lopyluna.dndesires.content.blocks.kinetics.hydraulic_press.HydraulicPressRenderer;
 import dev.lopyluna.dndesires.content.blocks.kinetics.hydraulic_press.HydraulicPressVisual;
@@ -39,6 +42,13 @@ import dev.lopyluna.dndesires.content.blocks.logistics.smart_hopper.SmartHopperB
 import static dev.lopyluna.dndesires.DnDesires.REG;
 
 public class DesiresBETypes {
+
+    public static final BlockEntityEntry<GoldenMixerBE> GOLDEN_MIXER = REG
+            .blockEntity("gold_mixer", GoldenMixerBE::new)
+            .visual(() -> GoldenMixerVisual::new)
+            .validBlocks(DesiresBlocks.GOLDEN_MIXER)
+            .renderer(() -> GoldenMixerRenderer::new)
+            .register();
 
     public static final BlockEntityEntry<CogCrankBE> COG_CRANK = REG
             .blockEntity("cog_crank", CogCrankBE::new)

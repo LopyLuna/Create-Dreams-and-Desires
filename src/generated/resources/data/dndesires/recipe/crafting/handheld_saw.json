@@ -3,22 +3,24 @@
   "category": "misc",
   "key": {
     "A": {
-      "tag": "c:plates/brass"
-    },
-    "B": {
       "item": "create:andesite_alloy"
     },
     "C": {
-      "tag": "c:storage_blocks/zinc"
+      "item": "create:andesite_casing"
+    },
+    "G": {
+      "item": "create:cogwheel"
+    },
+    "S": {
+      "tag": "c:plates/iron"
     }
   },
   "pattern": [
-    "A",
-    "B",
-    "C"
+    "AGS",
+    "CSS"
   ],
   "result": {
     "count": 1,
-    "id": "dndesires:stirling_engine"
+    "id": "dndesires:handheld_saw"
   }
 }

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "dndesires:gold_mixer"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "dndesires:blocks/gold_mixer"
+}

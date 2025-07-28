@@ -8,5 +8,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(value = AirCurrent.Client.class, remap = false)
 public interface AirCurrentClientAccessor {
     @Invoker("enableClientPlayerSound")
-    static void enableClientPlayerSound(Entity e, float maxVolume) {}
+    static void enableClientPlayerSound(Entity e, float maxVolume) {
+        throw new AssertionError();
+    }
 }

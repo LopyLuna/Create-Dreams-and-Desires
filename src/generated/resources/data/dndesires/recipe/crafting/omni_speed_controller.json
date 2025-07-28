@@ -6,13 +6,11 @@
       "item": "create:rotation_speed_controller"
     },
     "C": {
-      "item": "create:cogwheel"
+      "item": "create:large_cogwheel"
     }
   },
   "pattern": [
-    " C ",
-    "CBC",
-    " C "
+    "CBC"
   ],
   "result": {
     "count": 1,

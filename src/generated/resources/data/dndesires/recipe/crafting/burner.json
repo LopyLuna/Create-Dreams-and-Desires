@@ -6,7 +6,7 @@
       "item": "minecraft:netherite_scrap"
     },
     "B": {
-      "item": "create:zinc_ingot"
+      "tag": "c:ingots/zinc"
     }
   },
   "pattern": [

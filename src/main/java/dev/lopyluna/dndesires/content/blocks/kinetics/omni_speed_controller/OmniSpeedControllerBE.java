@@ -1,8 +1,6 @@
 package dev.lopyluna.dndesires.content.blocks.kinetics.omni_speed_controller;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.simibubi.create.compat.computercraft.AbstractComputerBehaviour;
-import com.simibubi.create.compat.computercraft.ComputerCraftProxy;
 import com.simibubi.create.content.kinetics.RotationPropagator;
 import com.simibubi.create.content.kinetics.motor.KineticScrollValueBehaviour;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftBlockEntity;
@@ -28,12 +26,10 @@ public class OmniSpeedControllerBE extends SplitShaftBlockEntity {
     public static final int DEFAULT_SPEED = 16;
 
     public ScrollValueBehaviour targetSpeed;
-    public AbstractComputerBehaviour computerBehaviour;
 
     public OmniSpeedControllerBE(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
-
 
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
@@ -45,7 +41,6 @@ public class OmniSpeedControllerBE extends SplitShaftBlockEntity {
         targetSpeed.value = DEFAULT_SPEED;
         targetSpeed.withCallback(i -> this.updateTargetRotation());
         behaviours.add(targetSpeed);
-        behaviours.add(computerBehaviour = ComputerCraftProxy.behaviour(this));
 
         registerAwardables(behaviours, AllAdvancements.SPEED_CONTROLLER);
     }
@@ -57,12 +52,6 @@ public class OmniSpeedControllerBE extends SplitShaftBlockEntity {
         removeSource();
         attachKinetics();
         if (hasSource() && getSpeed() != 0) award(AllAdvancements.SPEED_CONTROLLER);
-    }
-
-    @Override
-    public void invalidate() {
-        super.invalidate();
-        computerBehaviour.removePeripheral();
     }
 
     @Override

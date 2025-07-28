@@ -10,13 +10,15 @@
     "AirCurrentClientAccessor",
     "AirCurrentMixin",
     "AllFluidsMixin",
+    "AxeItemAccessor",
     "FurnaceBEAccessor",
     "FurnaceBlockAccessor",
     "GaugeShaperAccessor",
     "HopperBlockEntityAccessor",
     "ItemStackHandlerAccessor",
     "RotationPropagatorMixin",
-    "ServerGamePacketListenerImplAccessor"
+    "ServerGamePacketListenerImplAccessor",
+    "TreeAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

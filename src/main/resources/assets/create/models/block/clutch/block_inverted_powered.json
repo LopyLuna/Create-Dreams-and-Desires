@@ -1,7 +1,0 @@
-{
-	"parent": "create:block/clutch/block",
-    "textures": {
-        "0": "create:block/clutch_inverted_on",
-		"particle": "create:block/clutch_inverted_on"
-    }
-}

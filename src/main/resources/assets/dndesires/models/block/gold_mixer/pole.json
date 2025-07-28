@@ -1,0 +1,136 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"textures": {
+		"3": "create:block/factory_panel_packager_mode",
+		"4": "create:block/girder",
+		"8": "create:block/chute_large"
+	},
+	"elements": [
+		{
+			"name": "polebase",
+			"from": [5, 7, 5],
+			"to": [11, 9, 11],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 9, 8]},
+			"faces": {
+				"north": {"uv": [13, 9, 14, 12], "rotation": 90, "texture": "#4"},
+				"east": {"uv": [13, 9, 14, 12], "rotation": 90, "texture": "#4"},
+				"south": {"uv": [13, 9, 14, 12], "rotation": 90, "texture": "#4"},
+				"west": {"uv": [13, 9, 14, 12], "rotation": 90, "texture": "#4"},
+				"up": {"uv": [1, 9, 7, 15], "texture": "#3"},
+				"down": {"uv": [1, 9, 7, 15], "texture": "#3"}
+			}
+		},
+		{
+			"name": "Pole1Core",
+			"from": [5.995, 23, 6],
+			"to": [10.005, 32, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 29, 8]},
+			"faces": {
+				"east": {"uv": [5, 14, 3, 9.5], "rotation": 180, "texture": "#8"},
+				"west": {"uv": [5, 14, 3, 9.5], "rotation": 180, "texture": "#8"},
+				"up": {"uv": [5, 10.5, 3, 12.5], "texture": "#8"}
+			}
+		},
+		{
+			"name": "Pole1Side",
+			"from": [5, 23, 10],
+			"to": [11, 32, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 29, 8]},
+			"faces": {
+				"north": {"uv": [5.5, 14, 2.5, 9.5], "rotation": 180, "texture": "#8"},
+				"east": {"uv": [3, 9.5, 2.5, 14], "texture": "#8"},
+				"south": {"uv": [5.5, 14, 2.5, 9.5], "rotation": 180, "texture": "#8"},
+				"west": {"uv": [5.5, 9.5, 5, 14], "texture": "#8"},
+				"up": {"uv": [2.5, 9.5, 5.5, 10], "texture": "#8"}
+			}
+		},
+		{
+			"name": "Pole1Side",
+			"from": [5, 23, 5],
+			"to": [11, 32, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 29, 8]},
+			"faces": {
+				"north": {"uv": [5.5, 14, 2.5, 9.5], "rotation": 180, "texture": "#8"},
+				"east": {"uv": [5.5, 9.5, 5, 14], "texture": "#8"},
+				"south": {"uv": [5.5, 14, 2.5, 9.5], "rotation": 180, "texture": "#8"},
+				"west": {"uv": [3, 9.5, 2.5, 14], "texture": "#8"},
+				"up": {"uv": [5.5, 9.5, 2.5, 10], "texture": "#8"}
+			}
+		},
+		{
+			"name": "Pole1Side",
+			"from": [5, 20, 5],
+			"to": [11, 23, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 20, 8]},
+			"faces": {
+				"north": {"uv": [2.5, 15, 5.5, 13.5], "rotation": 180, "texture": "#8"},
+				"east": {"uv": [5, 13.5, 5.5, 15], "texture": "#8"},
+				"south": {"uv": [2.5, 15, 5.5, 13.5], "rotation": 180, "texture": "#8"},
+				"west": {"uv": [2.5, 13.5, 3, 15], "texture": "#8"}
+			}
+		},
+		{
+			"name": "Pole1Side",
+			"from": [5, 20, 10],
+			"to": [11, 23, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 20, 8]},
+			"faces": {
+				"north": {"uv": [2.5, 15, 5.5, 13.5], "rotation": 180, "texture": "#8"},
+				"east": {"uv": [2.5, 13.5, 3, 15], "texture": "#8"},
+				"south": {"uv": [2.5, 15, 5.5, 13.5], "rotation": 180, "texture": "#8"},
+				"west": {"uv": [5, 13.5, 5.5, 15], "texture": "#8"}
+			}
+		},
+		{
+			"name": "Pole1Core",
+			"from": [5.995, 20, 6],
+			"to": [10.005, 23, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 20, 8]},
+			"faces": {
+				"east": {"uv": [3, 15, 5, 13.5], "rotation": 180, "texture": "#8"},
+				"west": {"uv": [3, 15, 5, 13.5], "rotation": 180, "texture": "#8"}
+			}
+		},
+		{
+			"name": "Pole1Side",
+			"from": [5, 9, 5],
+			"to": [11, 20, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 16, 8]},
+			"faces": {
+				"north": {"uv": [2.5, 15, 5.5, 9.5], "rotation": 180, "texture": "#8"},
+				"east": {"uv": [5, 9.5, 5.5, 15], "texture": "#8"},
+				"south": {"uv": [2.5, 15, 5.5, 9.5], "rotation": 180, "texture": "#8"},
+				"west": {"uv": [2.5, 9.5, 3, 15], "texture": "#8"},
+				"down": {"uv": [2.5, 14.5, 5.5, 15], "texture": "#8"}
+			}
+		},
+		{
+			"name": "Pole1Side",
+			"from": [5, 9, 10],
+			"to": [11, 20, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 16, 8]},
+			"faces": {
+				"north": {"uv": [2.5, 15, 5.5, 9.5], "rotation": 180, "texture": "#8"},
+				"east": {"uv": [2.5, 9.5, 3, 15], "texture": "#8"},
+				"south": {"uv": [2.5, 15, 5.5, 9.5], "rotation": 180, "texture": "#8"},
+				"west": {"uv": [5, 9.5, 5.5, 15], "texture": "#8"},
+				"down": {"uv": [2.5, 14.5, 5.5, 15], "texture": "#8"}
+			}
+		},
+		{
+			"name": "Pole1Core",
+			"from": [5.995, 9, 6],
+			"to": [10.005, 20, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 16, 8]},
+			"faces": {
+				"east": {"uv": [3, 15, 5, 9.5], "rotation": 180, "texture": "#8"},
+				"west": {"uv": [3, 15, 5, 9.5], "rotation": 180, "texture": "#8"},
+				"down": {"uv": [3, 10.5, 5, 12.5], "texture": "#8"}
+			}
+		}
+	]
+}
