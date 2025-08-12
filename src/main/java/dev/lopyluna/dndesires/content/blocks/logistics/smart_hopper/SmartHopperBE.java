@@ -129,7 +129,7 @@ public class SmartHopperBE extends SmartBlockEntity implements MenuProvider {
     }
 
     protected boolean cantAcceptItem(ItemStack stack, BlockState state) {
-        return ItemHandlerHelper.insertItem(inv, stack.copy(), true) == stack || cantActivate(state) || !filtering.test(stack);
+        return ItemHandlerHelper.insertItem(inv, stack.copy(), true).getCount() == stack.getCount() || cantActivate(state) || !filtering.test(stack);
     }
 
     protected boolean cantActivate(BlockState state) {
