@@ -3,29 +3,10 @@
 	"credit": "Made by LopyLuna",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "create:block/saw_reversed",
-		"24": "dndesires:item/handheld_saw",
-		"particle": "create:block/saw_reversed"
+		"24": "dndesires:item/handheld_drill",
+		"particle": "dndesires:item/handheld_drill"
 	},
 	"elements": [
-		{
-			"from": [4, 8, 0.5],
-			"to": [12, 8, 4.5],
-			"rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 4.875]},
-			"faces": {
-				"up": {"uv": [0, 8, 16, 16], "texture": "#0"},
-				"down": {"uv": [16, 8, 0, 16], "rotation": 180, "texture": "#0"}
-			}
-		},
-		{
-			"from": [4, 8, 4.5],
-			"to": [12, 8, 8.5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 4.125]},
-			"faces": {
-				"up": {"uv": [0, 8, 16, 16], "rotation": 180, "texture": "#0"},
-				"down": {"uv": [16, 8, 0, 16], "texture": "#0"}
-			}
-		},
 		{
 			"from": [6, 5.5, 11.5],
 			"to": [10, 9.5, 19],
@@ -51,22 +32,22 @@
 			}
 		},
 		{
-			"from": [6.5, 6.5, 4.5],
-			"to": [9.5, 9.5, 6.5],
+			"from": [6, 6, 4],
+			"to": [10, 10, 6.5],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.1, 6]},
 			"faces": {
-				"north": {"uv": [1.25, 0.25, 2.75, 1.75], "texture": "#24"},
-				"east": {"uv": [9.5, 0.25, 8.5, 1.75], "texture": "#24"},
-				"south": {"uv": [1.25, 0.25, 2.75, 1.75], "texture": "#24"},
-				"west": {"uv": [8.5, 0.25, 9.5, 1.75], "texture": "#24"},
-				"up": {"uv": [8.5, 2, 9.5, 3.5], "rotation": 90, "texture": "#24"},
-				"down": {"uv": [9.5, 3.5, 8.5, 2], "rotation": 90, "texture": "#24"}
+				"north": {"uv": [10, 0.25, 11.5, 1.75], "texture": "#24"},
+				"east": {"uv": [9.75, 0, 8.5, 2], "texture": "#24"},
+				"south": {"uv": [9.75, 0, 11.75, 2], "texture": "#24"},
+				"west": {"uv": [8.5, 0, 9.75, 2], "texture": "#24"},
+				"up": {"uv": [8.5, 1.75, 9.75, 3.75], "rotation": 90, "texture": "#24"},
+				"down": {"uv": [9.75, 3.75, 8.5, 1.75], "rotation": 90, "texture": "#24"}
 			}
 		},
 		{
-			"from": [6.5, 4, 4],
-			"to": [9.5, 7, 14.5],
-			"rotation": {"angle": -45, "axis": "z", "origin": [8, 5.5, 11.25]},
+			"from": [6.5, 4, 5.5],
+			"to": [9.5, 7, 16],
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 5.5, 12.75]},
 			"faces": {
 				"north": {"uv": [0.25, 6.5, 1.75, 8], "rotation": 90, "texture": "#24"},
 				"east": {"uv": [2, 8, 7.25, 6.5], "texture": "#24"},
@@ -101,7 +82,7 @@
 		},
 		"gui": {
 			"rotation": [-165, 32, -152],
-			"translation": [-1.75, 0, 0],
+			"translation": [-1.5, 0, 0],
 			"scale": [1.25, 1.25, 1.25]
 		},
 		"head": {

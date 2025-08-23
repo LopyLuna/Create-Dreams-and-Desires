@@ -112,6 +112,9 @@ public class DesiresTags {
         WEAK_FURNACE,
         STRONG_FURNACE,
         SUPER_STRONG_FURNACE,
+        MINEABLE_WITH_DRILL,
+        EXCAVATION_DRILL_VEIN_VALID,
+        EXCAVATION_DRILL_VEIN_LARGE,
         ;
         public final TagKey<Block> tag;
         public final boolean alwaysDatagen;

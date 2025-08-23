@@ -16,6 +16,8 @@ import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -41,6 +43,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 @ParametersAreNonnullByDefault
@@ -54,12 +57,11 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
     public void onBlockBreak(ItemStack pStack, LevelAccessor pAccessor, BlockPos pPos, BlockState pState, Player pBreaker) {
         if (!DesiresItems.HANDHELD_SAW.isIn(pStack) || !(pAccessor instanceof Level pLevel)) return;
         var flag = !(pBreaker instanceof FakePlayer);
-        boolean playerHeldShift;
-
-        if (flag) playerHeldShift = pBreaker.isShiftKeyDown();
-        else playerHeldShift = false;
-
-        if (deforesting || !isValidTree(pState) || playerHeldShift) return;
+        if (deforesting || !isValidTree(pState)) return;
+        boolean playerHeldKey;
+        if (flag) playerHeldKey = !pBreaker.getPersistentData().getBoolean("HandheldSawKey");
+        else playerHeldKey = false;
+        if (playerHeldKey) return;
         Vec3 vec = pBreaker.getLookAngle();
 
         deforesting = true;
@@ -86,29 +88,7 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
     }
 
     public @NotNull InteractionResult useOn(UseOnContext context) {
-        var level = context.getLevel();
-        var blockpos = context.getClickedPos();
-        var player = context.getPlayer();
-        if (AxeItemAccessor.playerHasShieldUseIntent(context)) return InteractionResult.PASS;
-        else {
-            var optional = ((AxeItemAccessor) this).evaluateNewBlockState(level, blockpos, player, level.getBlockState(blockpos), context);
-            if (optional.isEmpty()) return InteractionResult.PASS;
-            else {
-                var itemstack = context.getItemInHand();
-                if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockpos, itemstack);
-
-                if (optional != null && optional.isPresent()) {
-                    var state = optional.get();
-                    if (state != null) {
-                        level.setBlock(blockpos, state, 11);
-                        level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, state));
-                    }
-                }
-                if (player != null && !BacktankUtil.canAbsorbDamage(player, maxUses()))
-                    itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
-                return InteractionResult.sidedSuccess(level.isClientSide);
-            }
-        }
+        return axeUseOn(context);
     }
 
     @Override
@@ -179,4 +159,46 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
         consumer.accept(SimpleCustomRenderer.create(this, new HandheldSawRenderer()));
     }
 
+    public InteractionResult axeUseOn(UseOnContext context) {
+        Level level = context.getLevel();
+        BlockPos blockpos = context.getClickedPos();
+        Player player = context.getPlayer();
+        if (AxeItemAccessor.playerHasShieldUseIntent(context)) return InteractionResult.PASS;
+        else {
+            Optional<BlockState> optional = evaluateNewBlockState(level, blockpos, player, level.getBlockState(blockpos), context);
+            if (optional.isEmpty()) return InteractionResult.PASS;
+            else {
+                ItemStack itemstack = context.getItemInHand();
+                if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockpos, itemstack);
+
+                level.setBlock(blockpos, optional.get(), 11);
+                level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, optional.get()));
+                if (player != null) itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
+    }
+
+    private Optional<BlockState> evaluateNewBlockState(Level level, BlockPos pos, @Nullable Player player, BlockState state, UseOnContext p_40529_) {
+        Optional<BlockState> optional = Optional.ofNullable(state.getToolModifiedState(p_40529_, net.neoforged.neoforge.common.ItemAbilities.AXE_STRIP, false));
+        if (optional.isPresent()) {
+            level.playSound(player, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+            return optional;
+        } else {
+            Optional<BlockState> optional1 = Optional.ofNullable(state.getToolModifiedState(p_40529_, net.neoforged.neoforge.common.ItemAbilities.AXE_SCRAPE, false));
+            if (optional1.isPresent()) {
+                level.playSound(player, pos, SoundEvents.AXE_SCRAPE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.levelEvent(player, 3005, pos, 0);
+                return optional1;
+            } else {
+                Optional<BlockState> optional2 = Optional.ofNullable(state.getToolModifiedState(p_40529_, net.neoforged.neoforge.common.ItemAbilities.AXE_WAX_OFF, false));
+                if (optional2.isPresent()) {
+                    level.playSound(player, pos, SoundEvents.AXE_WAX_OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    level.levelEvent(player, 3004, pos, 0);
+                    return optional2;
+                } else return Optional.empty();
+            }
+        }
+    }
 }

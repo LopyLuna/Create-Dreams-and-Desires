@@ -1,4 +1,4 @@
-package dev.lopyluna.dndesires.content.items.handheld_saw;
+package dev.lopyluna.dndesires.content.items.handheld_drill;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -15,13 +15,14 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
-public class HandheldSawRenderer extends CustomRenderedItemModelRenderer {
+public class HandheldDrillRenderer extends CustomRenderedItemModelRenderer {
 
-    protected static final PartialModel COG = PartialModel.of(DnDesires.loc("item/handheld_saw/cog"));
+    protected static final PartialModel COG = PartialModel.of(DnDesires.loc("item/handheld_drill/cog"));
+    protected static final PartialModel DRILL = PartialModel.of(DnDesires.loc("item/handheld_drill/drill"));
 
     LerpedFloat lerpSwing;
 
-    public HandheldSawRenderer() {
+    public HandheldDrillRenderer() {
         lerpSwing = LerpedFloat.linear();
     }
 
@@ -51,6 +52,10 @@ public class HandheldSawRenderer extends CustomRenderedItemModelRenderer {
         ms.pushPose();
         ms.mulPose(Axis.ZP.rotationDegrees(angle));
         renderer.render(COG.get(), light);
+        ms.popPose();
+        ms.pushPose();
+        ms.mulPose(Axis.ZP.rotationDegrees(-angle));
+        renderer.render(DRILL.get(), light);
         ms.popPose();
     }
 }

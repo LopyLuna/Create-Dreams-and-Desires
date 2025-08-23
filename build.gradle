@@ -27,7 +27,7 @@ neoForge {
 
     parchment {
         mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
+        minecraftVersion = project.minecraft_version
     }
 
     runs {
@@ -46,7 +46,10 @@ neoForge {
         }
         data {
             data()
-            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing-mod', 'create'
+            programArguments.addAll '--mod',
+                    project.mod_id, '--all', '--output',
+                    file('src/generated/resources/').getAbsolutePath(), '--existing',
+                    file('src/main/resources/').getAbsolutePath(), '--existing-mod', 'create'
         }
         configureEach {
             systemProperty 'forge.logging.markers', 'REGISTRIES'

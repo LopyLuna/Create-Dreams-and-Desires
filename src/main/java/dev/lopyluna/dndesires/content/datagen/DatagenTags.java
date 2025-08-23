@@ -2,10 +2,12 @@ package dev.lopyluna.dndesires.content.datagen;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllTags;
+import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
 import com.simibubi.create.foundation.data.TagGen;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateTagsProvider;
 import dev.lopyluna.dndesires.register.DesiresBlocks;
+import dev.lopyluna.dndesires.register.DesiresStoneTypes;
 import dev.lopyluna.dndesires.register.DesiresTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -68,6 +70,27 @@ public class DatagenTags {
                 .addTag(DesiresTags.BlockTags.FAN_PROCESSING_CATALYSTS_SANDING.tag)
                 .addTag(DesiresTags.BlockTags.FAN_PROCESSING_CATALYSTS_FREEZING.tag)
                 .addTag(DesiresTags.BlockTags.FAN_PROCESSING_CATALYSTS_SEETHING.tag);
+
+        prov.tag(DesiresTags.BlockTags.MINEABLE_WITH_DRILL.tag)
+                .addTag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .addTag(BlockTags.MINEABLE_WITH_AXE)
+                .addTag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .addTag(BlockTags.MINEABLE_WITH_HOE)
+                .addTag(BlockTags.SWORD_EFFICIENT)
+        ;
+
+        prov.tag(DesiresTags.BlockTags.EXCAVATION_DRILL_VEIN_LARGE.tag)
+                .addTag(DesiresTags.commonBlockTag("ores"))
+        ;
+        prov.tag(DesiresTags.BlockTags.EXCAVATION_DRILL_VEIN_VALID.tag)
+                .add(AllPaletteStoneTypes.ASURINE.baseBlock.get())
+                .add(AllPaletteStoneTypes.CRIMSITE.baseBlock.get())
+                .add(AllPaletteStoneTypes.OCHRUM.baseBlock.get())
+                .add(AllPaletteStoneTypes.VERIDIUM.baseBlock.get())
+                .add(AllPaletteStoneTypes.ASURINE.baseBlock.get())
+                .add(DesiresStoneTypes.BRECCIA.baseBlock.get())
+                .addTag(DesiresTags.commonBlockTag("ores"))
+        ;
 
         for (var tag : DesiresTags.BlockTags.values()) if (tag.alwaysDatagen) prov.getOrCreateRawBuilder(tag.tag);
     }

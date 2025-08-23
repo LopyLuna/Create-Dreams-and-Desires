@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "B": {
+      "tag": "c:ingots/brass"
+    },
+    "C": {
+      "item": "create:brass_casing"
+    },
+    "G": {
+      "item": "create:cogwheel"
+    }
+  },
+  "pattern": [
+    "BGA",
+    "CA "
+  ],
+  "result": {
+    "count": 1,
+    "id": "dndesires:handheld_drill"
+  }
+}

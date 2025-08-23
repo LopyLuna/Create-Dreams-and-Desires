@@ -7,6 +7,7 @@ import dev.lopyluna.dndesires.content.datagen.DatagenTags;
 import dev.lopyluna.dndesires.content.datagen.DesiresRecipeProvider;
 import dev.lopyluna.dndesires.content.datagen.recipes.MechanicalCraftingGen;
 import dev.lopyluna.dndesires.register.DesiresSoundEvents;
+import dev.lopyluna.dndesires.register.client.DesiresKeys;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -45,12 +46,14 @@ public class DesiresDatagen {
         DnDesires.REG.addDataGenerator(ProviderType.LANG, provider -> {
             BiConsumer<String, String> langConsumer = provider::add;
 
-            //provideDefaultLang("interface", langConsumer);
-            //provideDefaultLang("tooltips", langConsumer);
+            //provideDefaultLang("interface", langConsumer);*
+            //provideDefaultLang("tooltips", langConsumer);*
             DesiresSoundEvents.provideLang(langConsumer);
+            DesiresKeys.provideLang(langConsumer);
         });
     }
 
+    @SuppressWarnings("unused")
     private static void provideDefaultLang(String fileName, BiConsumer<String, String> consumer) {
         var path = "assets/"+ MOD_ID +"/lang/default/" + fileName + ".json";
         var jsonElement = FilesHelper.loadJsonResource(path);

@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-26T07:25:22.5910774	Registrate Provider for dndesires [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-08-21T23:06:39.9201698	Registrate Provider for dndesires [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 7f751b6620f887104ca09d709af11dd3cf207ca0 assets/dndesires/blockstates/asphalt.json
 bf955f4e8d3bdcd4d1d4f2932f36a99f02b086ea assets/dndesires/blockstates/black_asphalt.json
 385208c2294cb2d0f93d871041f7135a557d2e3c assets/dndesires/blockstates/black_bore_block.json
@@ -83,8 +83,8 @@ e129e9f325fe1132e0aaf36ce49b37af4fc8ed4f assets/dndesires/blockstates/splashing_
 a4dc5dffac1d59247d24df77fc63f29f708e2c40 assets/dndesires/blockstates/white_bore_block.json
 d1bf78f3e4ed81997f30499bd6936401cac9e582 assets/dndesires/blockstates/yellow_asphalt.json
 9087c96c7332c51a7036f71350f7e9f49bbebac4 assets/dndesires/blockstates/yellow_bore_block.json
-9eb41ba61be47ea613e72ec6a72ac43a8d40fa7e assets/dndesires/lang/en_ud.json
-0014f1125f1eca0ae83af8e0a5bcea68019136af assets/dndesires/lang/en_us.json
+dcd9c2e68fb64d1dd6e6d58a4e4c56ef7bc9626b assets/dndesires/lang/en_ud.json
+3c876091245ea8fdfec74a86572f1ae0e9531c16 assets/dndesires/lang/en_us.json
 9e527063e648ee113258beb6d62e19ef7ef41816 assets/dndesires/models/block/asphalt.json
 5ae2415d9d100ba9a44d65d95b52e92a05361ac6 assets/dndesires/models/block/black_asphalt.json
 439ce6b7481901491ee6a8697d83a27c92167bcd assets/dndesires/models/block/black_bore_block.json
@@ -228,6 +228,7 @@ f66160ffd06ba9c53381b0c88eebe1cd6f276a24 assets/dndesires/models/item/gold_mixer
 5c4142025238e997eff049a68203a54ae3a9d4d6 assets/dndesires/models/item/gray_bore_block.json
 223168cafd862f788661f6fee5b5f705ddc89fe2 assets/dndesires/models/item/green_asphalt.json
 cb3e70b22b0b3ae559e0335ec3f578fe83a5097c assets/dndesires/models/item/green_bore_block.json
+ea4e128f54835b590086587c9a4de8abea7bf905 assets/dndesires/models/item/handheld_drill.json
 dd9bdc5b0e3b074f1073bb0f99dba287142db5e4 assets/dndesires/models/item/handheld_saw.json
 6f10d165d590e5e39e8f2a31bf8f2681a390f44d assets/dndesires/models/item/haunting_sail.json
 4dc479f1e3772e6744031c8fd732caa817d9fa6a assets/dndesires/models/item/hydraulic_press.json
@@ -319,7 +320,7 @@ b6520a2cc2df2b263895675401bf2b6d951ba27a data/c/tags/item/nuggets.json
 536bf63a1a91cc492f08ee94efa609545b8de079 data/c/tags/item/nuggets/coal.json
 70c2a87482a393ba7c47f503cf3043edb8c249fc data/c/tags/item/nuggets/diamond.json
 fe8c335de8efe8cfc0f422cacc50bce313191ac9 data/c/tags/item/nuggets/lapis.json
-8f6c9358d2d394e300229c45b621c142d24ff72f data/c/tags/item/tools.json
+15de301b12ea8b84951e87021b664ccda2b46544 data/c/tags/item/tools.json
 fb0d538ed979718a653f5fee37da4fc0f2c0196b data/dndesires/advancement/recipes/building_blocks/breccia_from_stone_types_breccia_stonecutting.json
 d722b43964b8d53dbc860f21c1f13ec6e77c4f63 data/dndesires/advancement/recipes/building_blocks/breccia_pillar_from_stone_types_breccia_stonecutting.json
 73fb305cb137881112e52916c4a2e552564c3af9 data/dndesires/advancement/recipes/building_blocks/cut_breccia_bricks_from_stone_types_breccia_stonecutting.json
@@ -388,6 +389,7 @@ ff4938bc787079462566eda36eea9564d4d2ce1b data/dndesires/advancement/recipes/misc
 7b5cca8c329ad694faf27eb0a0b206372e0538b9 data/dndesires/advancement/recipes/misc/crafting/gray_bore_block.json
 de4527e4253103dc1f4588e80658e5fe2cd62a3a data/dndesires/advancement/recipes/misc/crafting/green_asphalt.json
 24ff4eb541581cef3e663211102739675cd68c40 data/dndesires/advancement/recipes/misc/crafting/green_bore_block.json
+225edb3856e67350373157e9e7c6629dc39c8498 data/dndesires/advancement/recipes/misc/crafting/handheld_drill.json
 5966b589aa1ecce1cc1acfff8cc61580985d7856 data/dndesires/advancement/recipes/misc/crafting/handheld_saw.json
 17a1d8e0bd18a61dfdff1eb08dad1978e8642849 data/dndesires/advancement/recipes/misc/crafting/hydraulic_press.json
 64bfcca2c5e34d1473805053f3641f59499082ee data/dndesires/advancement/recipes/misc/crafting/industrial_fan.json
@@ -538,6 +540,7 @@ b146eaa9572669f5be138c7185de669065c814d8 data/dndesires/recipe/crafting/frogport
 85bb781df0e811568bad2460e91ececcffd88044 data/dndesires/recipe/crafting/gray_bore_block.json
 cca3ef7f63fe6d8cfb989d553fd14eea9474e76a data/dndesires/recipe/crafting/green_asphalt.json
 270f520b990bea86cb607ea10799c4dce08c38a0 data/dndesires/recipe/crafting/green_bore_block.json
+530a8b7321b1b73f0b4606d5f72f0792439761d9 data/dndesires/recipe/crafting/handheld_drill.json
 137afe867f1d6b018984dbe0a248d83a7edaa159 data/dndesires/recipe/crafting/handheld_saw.json
 3ee9fc03b1403a7ae7fbfe32d2470946111a70e9 data/dndesires/recipe/crafting/hydraulic_press.json
 1857c97db9dbba51e0067d3e8f33912c50ee28df data/dndesires/recipe/crafting/industrial_fan.json
@@ -610,6 +613,8 @@ cb6a3cfa7a66fcb45954b8c97d58e758c3722e30 data/dndesires/recipe/small_breccia_bri
 c1c2cdc05b8f96ccaf7e16f34d80e77b18dba644 data/dndesires/tags/block/artificial_ore_generator.json
 85c15c10830e9fea59ae335956416d54d6847f5d data/dndesires/tags/block/asphalts.json
 20c59d208b7c15ebe475936a3feec6bceed44cc3 data/dndesires/tags/block/dyed_blocks.json
+517625696f89da7636e3126a405201cc977453f0 data/dndesires/tags/block/excavation_drill_vein_large.json
+9eed292f47d8d448694791b028bede25bd1ef9c3 data/dndesires/tags/block/excavation_drill_vein_valid.json
 c52e9fc80c286b282bfdb76d8a5d6a518b5b4f0f data/dndesires/tags/block/fan_catalysts_dragon_support.json
 052c50c03633c1a794219be5062f486d6478f73a data/dndesires/tags/block/fan_processing_catalysts/dragon_breathing.json
 39ccd21a877fc4047be63a9cc5258eaec2ad53b5 data/dndesires/tags/block/fan_processing_catalysts/freezing.json
@@ -617,6 +622,7 @@ c52e9fc80c286b282bfdb76d8a5d6a518b5b4f0f data/dndesires/tags/block/fan_catalysts
 9199ecb9634dc7b4274dd699a49eb10355b03cad data/dndesires/tags/block/fan_processing_catalysts/seething.json
 d2c3282490c277fe7f7ab3d69d463aa867d67ff0 data/dndesires/tags/block/industrial_fan_heater.json
 636205e8f4f879824788cc9cc61dbc08448c1aef data/dndesires/tags/block/industrial_fan_transparent.json
+5a7915b6cd59a7b6a923e3da63dde6a5d1a8b903 data/dndesires/tags/block/mineable_with_drill.json
 cfab2ab481bf476a645d326b87627918009b9e50 data/dndesires/tags/block/ore_generator.json
 137e0e99781f4b4ed4a29c3dd5132f0e72a90c50 data/dndesires/tags/block/strong_furnace.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/dndesires/tags/block/super_strong_furnace.json
@@ -635,10 +641,11 @@ db2e5670da443e336089fa57d4f327421fbed451 data/dndesires/tags/item/bore_blocks.js
 475157daa486f7e15d9884f91e880d99ebfec107 data/minecraft/tags/block/slabs.json
 670ba53f242c11acb40fc3e2ee6664b73b1263bc data/minecraft/tags/block/stairs.json
 d55e8a210788abb978034fd0d1a7658b2d3f4986 data/minecraft/tags/block/walls.json
-8f6c9358d2d394e300229c45b621c142d24ff72f data/minecraft/tags/item/breaks_decorated_pots.json
-8f6c9358d2d394e300229c45b621c142d24ff72f data/minecraft/tags/item/enchantable/durability.json
-8f6c9358d2d394e300229c45b621c142d24ff72f data/minecraft/tags/item/enchantable/mining.json
-8f6c9358d2d394e300229c45b621c142d24ff72f data/minecraft/tags/item/enchantable/mining_loot.json
+15de301b12ea8b84951e87021b664ccda2b46544 data/minecraft/tags/item/breaks_decorated_pots.json
+15de301b12ea8b84951e87021b664ccda2b46544 data/minecraft/tags/item/enchantable/durability.json
+15de301b12ea8b84951e87021b664ccda2b46544 data/minecraft/tags/item/enchantable/mining.json
+15de301b12ea8b84951e87021b664ccda2b46544 data/minecraft/tags/item/enchantable/mining_loot.json
 475157daa486f7e15d9884f91e880d99ebfec107 data/minecraft/tags/item/slabs.json
 670ba53f242c11acb40fc3e2ee6664b73b1263bc data/minecraft/tags/item/stairs.json
 d55e8a210788abb978034fd0d1a7658b2d3f4986 data/minecraft/tags/item/walls.json
+e8f510d715e280ff4d3a178d2768cd2995e0f6a5 data/neoforge/data_maps/item/furnace_fuels.json

@@ -86,7 +86,13 @@ public class SmartHopperBlock extends Block implements IWrenchable, IBE<SmartHop
 
     private void checkPoweredState(Level level, BlockPos pos, BlockState state) {
         var flag = level.hasNeighborSignal(pos);
-        if (flag != state.getValue(POWERED)) level.setBlock(pos, state.setValue(POWERED, flag), 2);
+        if (flag != state.getValue(POWERED)) {
+            level.setBlock(pos, state.setValue(POWERED, flag), 2);
+            if (level.getBlockEntity(pos) instanceof SmartHopperBE be) {
+                be.invVersionTracker.reset();
+                be.notifyUpdate();
+            }
+        }
     }
 
     @Override

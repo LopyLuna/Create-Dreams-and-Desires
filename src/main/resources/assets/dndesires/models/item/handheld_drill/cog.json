@@ -1,0 +1,68 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made by LopyLuna",
+	"parent": "dndesires:item/handheld_drill/item",
+	"texture_size": [32, 32],
+	"textures": {
+		"24": "dndesires:item/handheld_drill",
+		"particle": "dndesires:item/handheld_drill"
+	},
+	"elements": [
+		{
+			"name": "Cog",
+			"from": [7.5, 5.5, 6.5],
+			"to": [8.5, 10.5, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0.25, 13.25, 2.75, 13.75], "rotation": 90, "texture": "#24"},
+				"east": {"uv": [0.25, 14, 2.75, 15.5], "rotation": 270, "texture": "#24"},
+				"south": {"uv": [0.25, 13.25, 2.75, 13.75], "rotation": 270, "texture": "#24"},
+				"west": {"uv": [0.25, 14, 2.75, 15.5], "rotation": 90, "texture": "#24"},
+				"up": {"uv": [1.75, 12.25, 0.25, 12.75], "rotation": 90, "texture": "#24"},
+				"down": {"uv": [0.25, 12.5, 1.75, 13], "rotation": 90, "texture": "#24"}
+			}
+		},
+		{
+			"name": "Cog",
+			"from": [7.5, 5.5, 6.5],
+			"to": [8.5, 10.5, 9.5],
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0.25, 13.25, 2.75, 13.75], "rotation": 90, "texture": "#24"},
+				"east": {"uv": [0.25, 14, 2.75, 15.5], "rotation": 270, "texture": "#24"},
+				"south": {"uv": [0.25, 13.25, 2.75, 13.75], "rotation": 270, "texture": "#24"},
+				"west": {"uv": [0.25, 14, 2.75, 15.5], "rotation": 90, "texture": "#24"},
+				"up": {"uv": [1.75, 12.25, 0.25, 12.75], "rotation": 90, "texture": "#24"},
+				"down": {"uv": [0.25, 12.5, 1.75, 13], "rotation": 90, "texture": "#24"}
+			}
+		},
+		{
+			"name": "Cog",
+			"from": [5.5, 7.5, 6.5],
+			"to": [10.5, 8.5, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0.25, 13.25, 2.75, 13.75], "rotation": 180, "texture": "#24"},
+				"east": {"uv": [0.25, 12.5, 1.75, 13], "texture": "#24"},
+				"south": {"uv": [0.25, 13.25, 2.75, 13.75], "rotation": 180, "texture": "#24"},
+				"west": {"uv": [1.75, 12.25, 0.25, 12.75], "texture": "#24"},
+				"up": {"uv": [0.25, 14, 2.75, 15.5], "rotation": 180, "texture": "#24"},
+				"down": {"uv": [0.25, 14, 2.75, 15.5], "texture": "#24"}
+			}
+		},
+		{
+			"name": "Cog",
+			"from": [5.5, 7.5, 6.5],
+			"to": [10.5, 8.5, 9.5],
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0.25, 13.25, 2.75, 13.75], "rotation": 180, "texture": "#24"},
+				"east": {"uv": [0.25, 12.5, 1.75, 13], "texture": "#24"},
+				"south": {"uv": [0.25, 13.25, 2.75, 13.75], "rotation": 180, "texture": "#24"},
+				"west": {"uv": [1.75, 12.25, 0.25, 12.75], "texture": "#24"},
+				"up": {"uv": [0.25, 14, 2.75, 15.5], "rotation": 180, "texture": "#24"},
+				"down": {"uv": [0.25, 14, 2.75, 15.5], "texture": "#24"}
+			}
+		}
+	]
+}

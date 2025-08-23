@@ -99,7 +99,7 @@ public class SmartHopperBE extends SmartBlockEntity implements MenuProvider {
         if (inv != null) {
             if (level.isClientSide && !isVirtual()) return false;
             if (invVersionTracker.stillWaiting(inv)) return false;
-            var extracted = ItemHelper.extract(this.inv, $ -> true, simulate);
+            var extracted = ItemHelper.extract(this.inv, s -> filtering.test(s), simulate);
             if (extracted.isEmpty()) return false;
             var remainder = ItemHandlerHelper.insertItemStacked(inv, extracted, simulate);
             if (!simulate) insertItem(remainder, false);
@@ -129,7 +129,7 @@ public class SmartHopperBE extends SmartBlockEntity implements MenuProvider {
     }
 
     protected boolean cantAcceptItem(ItemStack stack, BlockState state) {
-        return ItemHandlerHelper.insertItem(inv, stack.copy(), true) == stack || cantActivate(state) || !filtering.test(stack);
+        return ItemStack.isSameItemSameComponents(ItemHandlerHelper.insertItem(inv, stack.copy(), true), stack) || cantActivate(state) || !filtering.test(stack);
     }
 
     protected boolean cantActivate(BlockState state) {
@@ -217,7 +217,7 @@ public class SmartHopperBE extends SmartBlockEntity implements MenuProvider {
         var mode = getExtractionMode();
         int amountExtract = Math.min(count, stack.getCount());
         var extract = extract(stack, state, mode, count, amountExtract);
-        if (extract == stack) return stack;
+        if (ItemStack.isSameItemSameComponents(extract, stack)) return stack;
         if (mode == ItemHelper.ExtractionCountMode.UPTO || !extract.isEmpty()) {
             int newCount = stack.getCount();
             newCount -= amountExtract;

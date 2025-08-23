@@ -6,15 +6,9 @@ import net.minecraft.world.InteractionHand;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.BlockEvent;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
-@EventBusSubscriber(modid = DnDesires.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = DnDesires.MOD_ID)
 public class ServerEvents {
-    @SubscribeEvent
-    public static void onServerStarting(ServerStartingEvent event) {
-        DnDesires.LOGGER.info(DnDesires.NAME + " SERVER SETUP");
-    }
-
     @SubscribeEvent
     public static void onBlockDestroyed(BlockEvent.BreakEvent event) {
         var player = event.getPlayer();

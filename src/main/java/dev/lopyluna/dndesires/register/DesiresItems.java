@@ -6,7 +6,6 @@ import com.simibubi.create.AllTags;
 import com.simibubi.create.content.logistics.box.PackageStyles;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.simibubi.create.foundation.item.CombustibleItem;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.ItemEntry;
@@ -14,6 +13,7 @@ import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import dev.lopyluna.dndesires.DnDesires;
 import dev.lopyluna.dndesires.content.items.MilkshakeItem;
 import dev.lopyluna.dndesires.content.items.gatling_breaker.GatlingBreakerItem;
+import dev.lopyluna.dndesires.content.items.handheld_drill.HandheldDrillItem;
 import dev.lopyluna.dndesires.content.items.handheld_saw.HandheldSawItem;
 import dev.lopyluna.dndesires.register.helpers.ItemTransgender;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -61,6 +61,21 @@ public class DesiresItems {
                     .define('G', AllBlocks.COGWHEEL.get())
                     .define('C', AllBlocks.ANDESITE_CASING.get())
                     .define('S', AllTags.commonItemTag("plates/iron"))
+                    .unlockedBy("has_" + c.getName(), has(c.get()))
+                    .save(p, DnDesires.loc("crafting/" + c.getName())))
+            .tag(ItemTags.MINING_ENCHANTABLE, ItemTags.MINING_LOOT_ENCHANTABLE, ItemTags.DURABILITY_ENCHANTABLE, ItemTags.BREAKS_DECORATED_POTS, Tags.Items.TOOLS)
+            .register();
+
+    public static final ItemEntry<HandheldDrillItem> HANDHELD_DRILL = REG.item("handheld_drill", p -> new HandheldDrillItem(Tiers.DIAMOND, p))
+            .properties(p -> p.attributes(PickaxeItem.createAttributes(Tiers.DIAMOND, 1.0F, 1.0F)))
+            .model(AssetLookup.itemModelWithPartials())
+            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
+                    .pattern("BGA")
+                    .pattern("CA ")
+                    .define('A', AllItems.ANDESITE_ALLOY)
+                    .define('B', AllTags.commonItemTag("ingots/brass"))
+                    .define('G', AllBlocks.COGWHEEL.get())
+                    .define('C', AllBlocks.BRASS_CASING.get())
                     .unlockedBy("has_" + c.getName(), has(c.get()))
                     .save(p, DnDesires.loc("crafting/" + c.getName())))
             .tag(ItemTags.MINING_ENCHANTABLE, ItemTags.MINING_LOOT_ENCHANTABLE, ItemTags.DURABILITY_ENCHANTABLE, ItemTags.BREAKS_DECORATED_POTS, Tags.Items.TOOLS)
@@ -133,8 +148,7 @@ public class DesiresItems {
             })
             .register();
 
-    public static final ItemEntry<CombustibleItem> COAL_PIECE = REG.item("coal_piece", CombustibleItem::new)
-            .onRegister(i -> i.setBurnTime(200))
+    public static final ItemEntry<Item> COAL_PIECE = REG.item("coal_piece", Item::new)
             .model((c, p) -> p.withExistingParent(c.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated")).texture("layer0", DnDesires.loc("item/" + c.getId().getPath())))
             .tag(commonItemTag("nuggets/coal"), commonItemTag("nuggets"))
             .recipe((c, p) -> {
@@ -151,6 +165,7 @@ public class DesiresItems {
                         .unlockedBy("has_" + c.getName(), has(c.get()))
                         .save(p, DnDesires.loc("crafting/" + c.getName() + "_from_" + getItemName(output)));
             })
+            .burnTime(200)
             .register();
 
     static {
