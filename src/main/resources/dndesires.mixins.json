@@ -14,9 +14,6 @@
     "FurnaceBEAccessor",
     "FurnaceBlockAccessor",
     "GaugeShaperAccessor",
-    "HopperBlockEntityAccessor",
-    "ItemStackHandlerAccessor",
-    "RotationPropagatorMixin",
     "ServerGamePacketListenerImplAccessor",
     "TreeAccessor"
   ],

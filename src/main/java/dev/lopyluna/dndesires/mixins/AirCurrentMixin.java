@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(AirCurrent.class)
+@Mixin(value = AirCurrent.class, remap = false)
 public class AirCurrentMixin {
     @WrapOperation(method = "getFlowLimit", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/kinetics/fan/AirCurrent;shouldAlwaysPass(Lnet/minecraft/world/level/block/state/BlockState;)Z"))
     private static boolean getFlowLimit(BlockState state, Operation<Boolean> original, Level level, BlockPos start, float max, Direction facing) {
