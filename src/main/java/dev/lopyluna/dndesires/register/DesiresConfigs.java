@@ -18,6 +18,7 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@SuppressWarnings({"removal", "unused"})
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class DesiresConfigs {
     private static final Map<ModConfig.Type, ConfigBase> CONFIGS = new EnumMap<>(ModConfig.Type.class);

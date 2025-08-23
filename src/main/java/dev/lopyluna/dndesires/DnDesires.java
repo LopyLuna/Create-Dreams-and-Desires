@@ -56,7 +56,6 @@ public class DnDesires {
         DesiresBETypes.register();
         DesiresFluids.register();
         DesiresStoneTypes.register(REG);
-        DesiresRotationPropagation.register();
         DesiresRecipeTypes.register(modEventBus);
         DesiresPackets.register();
 
