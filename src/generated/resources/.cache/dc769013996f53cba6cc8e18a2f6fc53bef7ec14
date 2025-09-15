@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-21T23:06:39.9201698	Registrate Provider for dndesires [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.21.1	2025-09-15T16:45:03.5304265	Registrate Provider for dndesires [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 7f751b6620f887104ca09d709af11dd3cf207ca0 assets/dndesires/blockstates/asphalt.json
 bf955f4e8d3bdcd4d1d4f2932f36a99f02b086ea assets/dndesires/blockstates/black_asphalt.json
 385208c2294cb2d0f93d871041f7135a557d2e3c assets/dndesires/blockstates/black_bore_block.json
@@ -304,6 +304,7 @@ a9e01b7918092ce1817245c31f2c3e68a06cf211 data/create/tags/block/safe_nbt.json
 7aaa0aa327b70cdadeee63813413eb486f4dbed5 data/create/tags/block/windmill_sails.json
 85c15c10830e9fea59ae335956416d54d6847f5d data/create/tags/block/wrench_pickup.json
 f07378e65e353bfac391ed6e90301079c4e444c0 data/create/tags/item/casing.json
+db2e5670da443e336089fa57d4f327421fbed451 data/create/tags/item/contraption_controlled.json
 d4808164d910c7b4ae6bf7ec2e8c644f72bf9a72 data/create/tags/item/packages.json
 2edcb3351c72b8d2020a380c68ca1e87f285a387 data/create/tags/item/upright_on_belt.json
 32d9d2833e7c802518f85d9ad91c2ff4d85d2cdf data/c/tags/fluid/chocolate_milkshakes.json
