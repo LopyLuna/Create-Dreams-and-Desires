@@ -140,7 +140,7 @@ public class GoldenMixerBE extends BasinOperatingBlockEntity {
                     var basin = getBasin();
                     if (basin.isPresent()) {
                         var tanks = basin.get().getTanks();
-                        if ((!tanks.getFirst().isEmpty() || !tanks.getSecond().isEmpty()) && level.random.nextInt((int) speedSpeed) <= 32)
+                        if ((!tanks.getFirst().isEmpty() || !tanks.getSecond().isEmpty()) && level.random.nextInt(Math.abs((int) speedSpeed)) <= 32)
                             level.playSound(null, worldPosition, SoundEvents.BUBBLE_COLUMN_WHIRLPOOL_AMBIENT, SoundSource.BLOCKS, .75f, speed < 65 ? .75f : 1.5f);
                     }
                 } else {
