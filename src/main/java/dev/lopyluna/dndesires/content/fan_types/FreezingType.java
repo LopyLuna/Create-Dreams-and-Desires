@@ -43,7 +43,7 @@ public class FreezingType implements FanProcessingType {
 
     @Override
     public @Nullable List<ItemStack> process(ItemStack stack, Level level) {
-        return DesiresRecipeTypes.FREEZING.find(new SingleRecipeInput(stack), level).map(recipeRecipeHolder -> RecipeApplier.applyRecipeOn(level, stack, recipeRecipeHolder)).orElse(null);
+        return DesiresRecipeTypes.FREEZING.find(new SingleRecipeInput(stack), level).map(recipeRecipeHolder -> RecipeApplier.applyRecipeOn(level, stack, recipeRecipeHolder.value(), true)).orElse(null);
     }
 
     @Override

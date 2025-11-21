@@ -28,7 +28,7 @@ public class HydraulicPressVisual extends ShaftVisual<HydraulicPressBE> implemen
     }
 
     @Override
-    public void beginFrame(Context ctx) {
+    public void beginFrame(SimpleDynamicVisual.Context ctx) {
         transformModels(ctx.partialTick());
     }
 

@@ -58,7 +58,7 @@ public class DragonBreathingType implements FanProcessingType {
 
     @Override
     public @Nullable List<ItemStack> process(ItemStack stack, Level level) {
-        return DesiresRecipeTypes.DRAGON_BREATHING.find(new SingleRecipeInput(stack), level).map(recipeRecipeHolder -> RecipeApplier.applyRecipeOn(level, stack, recipeRecipeHolder)).orElse(null);
+        return DesiresRecipeTypes.DRAGON_BREATHING.find(new SingleRecipeInput(stack), level).map(recipeRecipeHolder -> RecipeApplier.applyRecipeOn(level, stack, recipeRecipeHolder.value(), true)).orElse(null);
     }
 
     @Override

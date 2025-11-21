@@ -2,7 +2,7 @@ package dev.lopyluna.dndesires.content.datagen.recipes.helper;
 
 import com.simibubi.create.api.data.recipe.StandardProcessingRecipeGen;
 import com.simibubi.create.content.processing.recipe.StandardProcessingRecipe;
-import com.simibubi.create.foundation.data.recipe.CompatMetals;
+import com.simibubi.create.foundation.data.recipe.CommonMetal;
 import com.simibubi.create.foundation.data.recipe.Mods;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.createmod.catnip.registry.RegisteredObjectsHelper;
@@ -140,16 +140,16 @@ public abstract class FanProcessingRecipeGen<R extends StandardProcessingRecipe<
         return create(getPath(crushed), b -> b.withItemIngredients(Ingredient.of(crushed.get())).output(main.get(), amount).output(secondaryChance, secondary.get(), secondaryAmount));
     }
 
-    public GeneratedRecipe moddedCrushedOre(CompatMetals metal, Supplier<ItemLike> crushed, String type, float secondaryChance) {
+    public GeneratedRecipe moddedCrushedOre(CommonMetal metal, Supplier<ItemLike> crushed, String type, float secondaryChance) {
         return moddedCrushedOre(metal, crushed, type, 1, type, 1, secondaryChance);
     }
 
-    public GeneratedRecipe moddedCrushedOre(CompatMetals metal, Supplier<ItemLike> crushed, String mainType, String secondaryType, float secondaryChance) {
+    public GeneratedRecipe moddedCrushedOre(CommonMetal metal, Supplier<ItemLike> crushed, String mainType, String secondaryType, float secondaryChance) {
         return moddedCrushedOre(metal, crushed, mainType, 1, secondaryType, 1, secondaryChance);
     }
 
-    public GeneratedRecipe moddedCrushedOre(CompatMetals metal, Supplier<ItemLike> crushed, String mainType, int amount, String secondaryType, int secondaryAmount, float secondaryChance) {
-        for (var mod : metal.getMods()) {
+    public GeneratedRecipe moddedCrushedOre(CommonMetal metal, Supplier<ItemLike> crushed, String mainType, int amount, String secondaryType, int secondaryAmount, float secondaryChance) {
+        for (var mod : metal.mods) {
             var metalName = metal.getName(mod);
             var main = getType(mod, metalName, mainType);
             var secondary = getType(mod, metalName, secondaryType);
@@ -169,8 +169,8 @@ public abstract class FanProcessingRecipeGen<R extends StandardProcessingRecipe<
         };
     }
 
-    public GeneratedRecipe moddedCrushedOre(ItemEntry<? extends Item> crushed, CompatMetals metal, String type, float chance, int amount) {
-        for (var mod : metal.getMods()) {
+    public GeneratedRecipe moddedCrushedOre(ItemEntry<? extends Item> crushed, CommonMetal metal, String type, float chance, int amount) {
+        for (var mod : metal.mods) {
             var metalName = metal.getName(mod);
             var result = getType(mod, metalName, type);
             create(mod.getId() + "/" + crushed.getId().getPath(), b -> b.withItemIngredients(Ingredient.of(crushed::get))

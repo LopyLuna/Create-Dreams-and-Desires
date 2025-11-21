@@ -32,7 +32,7 @@ public class GoldenMixerVisual extends SingleAxisRotatingVisual<GoldenMixerBE> i
     }
 
     @Override
-    public void beginFrame(Context ctx) {
+    public void beginFrame(SimpleDynamicVisual.Context ctx) {
         animate(ctx.partialTick());
     }
 

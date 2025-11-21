@@ -2,7 +2,7 @@ package dev.lopyluna.dndesires.content.blocks.logistics.fluid_hatch;
 
 import com.mojang.serialization.MapCodec;
 import com.simibubi.create.AllShapes;
-import com.simibubi.create.AllTags;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.fluids.tank.CreativeFluidTankBlockEntity;
 import com.simibubi.create.content.fluids.transfer.GenericItemEmptying;
@@ -97,7 +97,7 @@ public class FluidHatchBlock extends HorizontalDirectionalBlock implements IBE<F
         var anyInserted = false;
         var depositItemInHand = !player.isShiftKeyDown();
 
-        if (!depositItemInHand && AllTags.AllItemTags.WRENCH.matches(stack)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        if (!depositItemInHand && AllItems.WRENCH.isIn(stack)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 
         for (int i = 0; i < inventory.items.size(); i++) {
             if (Inventory.isHotbarSlot(i) != depositItemInHand) continue;
