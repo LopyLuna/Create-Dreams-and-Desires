@@ -102,12 +102,14 @@ public class FanSailBlock extends WrenchableDirectionalBlock {
                     || DesiresBlocks.HAUNTING_SAIL.isIn(i)
                     || DesiresBlocks.SMOKING_SAIL.isIn(i)
                     || DesiresBlocks.BLASTING_SAIL.isIn(i)
-                    //|| DesiresBlocks.SEETHING_SAIL.isIn(i)
-                    //|| DesiresBlocks.FREEZING_SAIL.isIn(i)
-                    //|| DesiresBlocks.SANDING_SAIL.isIn(i)
+                    || DesiresBlocks.SEETHING_SAIL.isIn(i)
+                    || DesiresBlocks.FREEZING_SAIL.isIn(i)
+                    || DesiresBlocks.SANDING_SAIL.isIn(i)
+                    || DesiresBlocks.DRAGON_BREATHING_SAIL.isIn(i)
                     || AllBlocks.SAIL.isIn(i)
                     || AllBlocks.SAIL_FRAME.isIn(i);
         }
+
         @Override
         public Predicate<BlockState> getStatePredicate() {
             return s -> s.getBlock() instanceof FanSailBlock;

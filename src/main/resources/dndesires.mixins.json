@@ -11,9 +11,12 @@
     "AirCurrentMixin",
     "AllFluidsMixin",
     "AxeItemAccessor",
+    "DispenserBlockMixin",
     "FurnaceBEAccessor",
     "FurnaceBlockAccessor",
     "GaugeShaperAccessor",
+    "ObserverBlockMixin",
+    "PistonBaseBlockMixin",
     "ServerGamePacketListenerImplAccessor",
     "TreeAccessor"
   ],

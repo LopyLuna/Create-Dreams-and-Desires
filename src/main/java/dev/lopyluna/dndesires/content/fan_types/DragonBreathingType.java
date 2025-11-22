@@ -14,6 +14,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -58,7 +59,10 @@ public class DragonBreathingType implements FanProcessingType {
 
     @Override
     public @Nullable List<ItemStack> process(ItemStack stack, Level level) {
-        return DesiresRecipeTypes.DRAGON_BREATHING.find(new SingleRecipeInput(stack), level).map(recipeRecipeHolder -> RecipeApplier.applyRecipeOn(level, stack, recipeRecipeHolder)).orElse(null);
+        return DesiresRecipeTypes.DRAGON_BREATHING.find(new SingleRecipeInput(stack), level)
+                .map(RecipeHolder::value)
+                .map(r -> RecipeApplier.applyRecipeOn(level, stack, r, true))
+                .orElse(null);
     }
 
     @Override

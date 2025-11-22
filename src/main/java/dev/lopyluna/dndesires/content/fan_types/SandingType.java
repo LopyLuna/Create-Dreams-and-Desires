@@ -11,6 +11,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -39,7 +40,10 @@ public class SandingType implements FanProcessingType {
 
     @Override
     public @Nullable List<ItemStack> process(ItemStack stack, Level level) {
-        return DesiresRecipeTypes.SANDING.find(new SingleRecipeInput(stack), level).map(recipeRecipeHolder -> RecipeApplier.applyRecipeOn(level, stack, recipeRecipeHolder)).orElse(null);
+        return DesiresRecipeTypes.SANDING.find(new SingleRecipeInput(stack), level)
+                .map(RecipeHolder::value)
+                .map(recipeRecipeHolder -> RecipeApplier.applyRecipeOn(level, stack, recipeRecipeHolder, true))
+                .orElse(null);
     }
 
     @Override

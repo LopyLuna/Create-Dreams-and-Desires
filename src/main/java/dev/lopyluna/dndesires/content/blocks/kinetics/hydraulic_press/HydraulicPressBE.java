@@ -213,7 +213,7 @@ public class HydraulicPressBE extends BasinOperatingBlockEntity implements Hydra
         if (simulate) return true;
         if (level == null) return false;
         pressingBehaviour.particleItems.add(input.stack);
-        List<ItemStack> outputs = RecipeApplier.applyRecipeOn(level, canProcessInBulk() ? input.stack : input.stack.copyWithCount(1), recipe.get());
+        List<ItemStack> outputs = RecipeApplier.applyRecipeOn(level, canProcessInBulk() ? input.stack : input.stack.copyWithCount(1), recipe.get().value(), true);
         for (ItemStack created : outputs) if (!created.isEmpty()) {
             onItemPressed();
             break;
@@ -233,10 +233,10 @@ public class HydraulicPressBE extends BasinOperatingBlockEntity implements Hydra
         ItemStack itemCreated = ItemStack.EMPTY;
         pressingBehaviour.particleItems.add(item);
         if (canProcessInBulk() || item.getCount() == 1) {
-            RecipeApplier.applyRecipeOn(itemEntity, recipe.get().value());
+            RecipeApplier.applyRecipeOn(itemEntity, recipe.get().value(), true);
             itemCreated = itemEntity.getItem().copy();
         } else {
-            for (ItemStack result : RecipeApplier.applyRecipeOn(level, item.copyWithCount(1), recipe.get())) {
+            for (ItemStack result : RecipeApplier.applyRecipeOn(level, item.copyWithCount(1), recipe.get().value(), true)) {
                 if (itemCreated.isEmpty()) itemCreated = result.copy();
                 ItemEntity created = new ItemEntity(level, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), result);
                 created.setDefaultPickUpDelay();

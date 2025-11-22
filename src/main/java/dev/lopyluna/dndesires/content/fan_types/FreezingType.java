@@ -15,6 +15,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -43,7 +44,10 @@ public class FreezingType implements FanProcessingType {
 
     @Override
     public @Nullable List<ItemStack> process(ItemStack stack, Level level) {
-        return DesiresRecipeTypes.FREEZING.find(new SingleRecipeInput(stack), level).map(recipeRecipeHolder -> RecipeApplier.applyRecipeOn(level, stack, recipeRecipeHolder)).orElse(null);
+        return DesiresRecipeTypes.FREEZING.find(new SingleRecipeInput(stack), level)
+                .map(RecipeHolder::value)
+                .map(recipeRecipeHolder -> RecipeApplier.applyRecipeOn(level, stack, recipeRecipeHolder, true))
+                .orElse(null);
     }
 
     @Override

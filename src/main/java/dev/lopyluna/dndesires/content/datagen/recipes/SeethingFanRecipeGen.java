@@ -1,7 +1,7 @@
 package dev.lopyluna.dndesires.content.datagen.recipes;
 
 import com.simibubi.create.AllItems;
-import com.simibubi.create.foundation.data.recipe.CompatMetals;
+import com.simibubi.create.foundation.data.recipe.CommonMetal;
 import dev.lopyluna.dndesires.content.datagen.base_gens.SeethingRecipeGen;
 import dev.lopyluna.dndesires.register.DesiresItems;
 import net.minecraft.core.HolderLookup;
@@ -30,15 +30,15 @@ public final class SeethingFanRecipeGen extends SeethingRecipeGen {
     GeneratedRecipe CRUSHED_GOLD = crushedOre(AllItems.CRUSHED_GOLD, Items.GOLD_INGOT, Items.GOLD_INGOT, .5f);
     GeneratedRecipe CRUSHED_IRON = crushedOre(AllItems.CRUSHED_IRON, Items.IRON_INGOT, Items.IRON_INGOT, .75f);
 
-    GeneratedRecipe CRUSHED_OSMIUM = moddedCrushedOre(CompatMetals.OSMIUM, AllItems.CRUSHED_OSMIUM::get, "ingot", .5f);
-    GeneratedRecipe CRUSHED_PLATINUM = moddedCrushedOre(CompatMetals.PLATINUM, AllItems.CRUSHED_PLATINUM::get, "ingot", .25f);
-    GeneratedRecipe CRUSHED_SILVER = moddedCrushedOre(CompatMetals.SILVER, AllItems.CRUSHED_SILVER::get, "ingot", .25f);
-    GeneratedRecipe CRUSHED_TIN = moddedCrushedOre(CompatMetals.TIN, AllItems.CRUSHED_TIN::get, "ingot", .75f);
-    GeneratedRecipe CRUSHED_LEAD = moddedCrushedOre(CompatMetals.LEAD, AllItems.CRUSHED_LEAD::get, "ingot", .5f);
-    GeneratedRecipe CRUSHED_QUICKSILVER = moddedCrushedOre(CompatMetals.QUICKSILVER, AllItems.CRUSHED_QUICKSILVER::get, "ingot", .5f);
-    GeneratedRecipe CRUSHED_BAUXITE = moddedCrushedOre(CompatMetals.ALUMINUM, AllItems.CRUSHED_BAUXITE::get, "ingot", .75f);
-    GeneratedRecipe CRUSHED_URANIUM = moddedCrushedOre(CompatMetals.URANIUM, AllItems.CRUSHED_URANIUM::get, "ingot", .25f);
-    GeneratedRecipe CRUSHED_NICKEL = moddedCrushedOre(CompatMetals.NICKEL, AllItems.CRUSHED_NICKEL::get, "ingot", .5f);
+    GeneratedRecipe CRUSHED_OSMIUM = moddedCrushedOre(CommonMetal.OSMIUM, AllItems.CRUSHED_OSMIUM::get, "ingot", .5f);
+    GeneratedRecipe CRUSHED_PLATINUM = moddedCrushedOre(CommonMetal.PLATINUM, AllItems.CRUSHED_PLATINUM::get, "ingot", .25f);
+    GeneratedRecipe CRUSHED_SILVER = moddedCrushedOre(CommonMetal.SILVER, AllItems.CRUSHED_SILVER::get, "ingot", .25f);
+    GeneratedRecipe CRUSHED_TIN = moddedCrushedOre(CommonMetal.TIN, AllItems.CRUSHED_TIN::get, "ingot", .75f);
+    GeneratedRecipe CRUSHED_LEAD = moddedCrushedOre(CommonMetal.LEAD, AllItems.CRUSHED_LEAD::get, "ingot", .5f);
+    GeneratedRecipe CRUSHED_QUICKSILVER = moddedCrushedOre(CommonMetal.QUICKSILVER, AllItems.CRUSHED_QUICKSILVER::get, "ingot", .5f);
+    GeneratedRecipe CRUSHED_BAUXITE = moddedCrushedOre(CommonMetal.ALUMINUM, AllItems.CRUSHED_BAUXITE::get, "ingot", .75f);
+    GeneratedRecipe CRUSHED_URANIUM = moddedCrushedOre(CommonMetal.URANIUM, AllItems.CRUSHED_URANIUM::get, "ingot", .25f);
+    GeneratedRecipe CRUSHED_NICKEL = moddedCrushedOre(CommonMetal.NICKEL, AllItems.CRUSHED_NICKEL::get, "ingot", .5f);
 
     public SeethingFanRecipeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, MOD_ID);

@@ -1,6 +1,7 @@
 package dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine;
 
 import dev.engine_room.flywheel.api.instance.Instance;
+import dev.engine_room.flywheel.api.visual.DynamicVisual;
 import dev.engine_room.flywheel.api.visualization.VisualizationContext;
 import dev.engine_room.flywheel.lib.instance.InstanceTypes;
 import dev.engine_room.flywheel.lib.instance.TransformedInstance;
@@ -65,7 +66,7 @@ public class StirlingEngineVisual extends AbstractBlockEntityVisual<StirlingEngi
     }
 
     @Override
-    public void beginFrame(Context ctx) {
+    public void beginFrame(DynamicVisual.Context ctx) {
         animate();
     }
 
