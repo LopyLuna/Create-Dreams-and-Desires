@@ -439,6 +439,7 @@ public class DesiresBlocks {
             })
             .item()
             .tag(BORE_BLOCKS)
+            .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
             .build()
             .register();
 
@@ -465,6 +466,7 @@ public class DesiresBlocks {
                 })
                 .item()
                 .tag(DesiresTags.ItemTags.DYED_BLOCKS.tag, BORE_BLOCKS)
+                .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
                 .build()
                 .register();
     });
