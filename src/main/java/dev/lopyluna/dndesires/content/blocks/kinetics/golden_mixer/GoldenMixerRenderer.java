@@ -40,7 +40,7 @@ public class GoldenMixerRenderer extends KineticBlockEntityRenderer<GoldenMixerB
 		standardKineticRotationTransform(superBuffer, be, light).renderInto(ms, vb);
 
 		float renderedHeadOffset = be.getRenderedHeadOffset(partialTicks);
-		float speed = be.getRenderedHeadRotationSpeed(partialTicks);
+		float speed = be.getRenderedHeadRotationSpeed();
 		float time = AnimationTickHolder.getRenderTime(be.getLevel());
 		float angle = ((time * speed * 6 / 10f) % 360) / 180 * (float) Math.PI;
 
