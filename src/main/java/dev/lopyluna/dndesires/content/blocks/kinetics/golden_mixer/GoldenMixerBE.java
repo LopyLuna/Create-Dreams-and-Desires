@@ -45,7 +45,6 @@ import java.util.Optional;
 public class GoldenMixerBE extends BasinOperatingBlockEntity {
     private static final Object shapelessOrMixingRecipesKey = new Object();
 
-    public int counter;
     public int runningTicks;
     public int processingTicks;
     public boolean running;
@@ -75,15 +74,19 @@ public class GoldenMixerBE extends BasinOperatingBlockEntity {
         return offset + 7 / 16f;
     }
 
-    public float getRenderedHeadRotationSpeed() {
-        var speed = getSpeed() * speedMultiplier();
-        if (running) {
-            if (runningTicks < 15) return speed;
-            if (runningTicks <= ticksHigh()) return speed * 2;
-            return speed;
-        }
-        return speed / 2;
-    }
+    public float getRenderedHeadRotationSpeed(float partialTicks) {
+		float speed = getSpeed();
+		if (running) {
+			if (runningTicks < 15) {
+				return speed;
+			}
+			if (runningTicks <= 20) {
+				return speed * 2;
+			}
+			return speed;
+		}
+		return speed / 2;
+	}
 
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
@@ -114,48 +117,66 @@ public class GoldenMixerBE extends BasinOperatingBlockEntity {
     }
 
     @Override
-    public void tick() {
-        super.tick();
-        counter = ++counter % 3;
+	public void tick() {
+		super.tick();
 
-        if (runningTicks >= ticksHigh() * 2) {
-            running = false;
-            runningTicks = 0;
-            basinChecker.scheduleUpdate();
-            return;
-        }
-        var speedSpeed = getSpeed();
-        var speed = Math.abs(speedSpeed * speedMultiplier());
-        if (running && level != null) {
-            if (level.isClientSide && runningTicks == ticksHigh()) renderParticles();
-            if ((!level.isClientSide || isVirtual()) && runningTicks == ticksHigh()) {
-                if (processingTicks < 0) {
-                    var recipeSpeed = 1f;
-                    if (currentRecipe instanceof StandardProcessingRecipe<?> recipe) {
-                        int t = recipe.getProcessingDuration();
-                        if (t != 0) recipeSpeed = t / 100f;
-                    }
-                    processingTicks = Mth.clamp((Mth.log2((int) (512 / speed))) * Mth.ceil(recipeSpeed * 15) + 1, 1, 512);
+		if (runningTicks >= 40) {
+			running = false;
+			runningTicks = 0;
+			basinChecker.scheduleUpdate();
+			return;
+		}
 
-                    var basin = getBasin();
-                    if (basin.isPresent()) {
-                        var tanks = basin.get().getTanks();
-                        if ((!tanks.getFirst().isEmpty() || !tanks.getSecond().isEmpty()) && level.random.nextInt(Math.abs((int) speedSpeed)) <= 32)
-                            level.playSound(null, worldPosition, SoundEvents.BUBBLE_COLUMN_WHIRLPOOL_AMBIENT, SoundSource.BLOCKS, .75f, speed < 65 ? .75f : 1.5f);
-                    }
-                } else {
-                    processingTicks--;
-                    if (processingTicks == 0) {
-                        runningTicks++;
-                        processingTicks = -1;
-                        applyBasinRecipe();
-                        sendData();
-                    }
-                }
-            }
-            if (runningTicks != ticksHigh()) runningTicks++;
-        }
-    }
+		float speed = Math.abs(getSpeed());
+		if (running && level != null) {
+			if (level.isClientSide && runningTicks == 20)
+				renderParticles();
+
+			if (getSpeed() == 0 || !isSpeedRequirementFulfilled()) {
+				if (runningTicks < 20)
+					runningTicks = 40 - runningTicks;
+				else if (runningTicks == 20)
+					runningTicks++;
+			}
+
+			if ((!level.isClientSide || isVirtual()) && runningTicks == 20) {
+				if (processingTicks < 0) {
+					float recipeSpeed = 3;
+					if (currentRecipe instanceof StandardProcessingRecipe) {
+						int t = ((StandardProcessingRecipe<?>) currentRecipe).getProcessingDuration();
+						if (t != 0)
+							recipeSpeed = t / 100f;
+					}
+
+					processingTicks = Mth.clamp((Mth.log2((int) (512 / speed))) * Mth.ceil(recipeSpeed * 15) + 1, 1, 512);
+
+					Optional<BasinBlockEntity> basin = getBasin();
+					if (basin.isPresent()) {
+						Couple<SmartFluidTankBehaviour> tanks = basin.get()
+							.getTanks();
+						if (!tanks.getFirst()
+							.isEmpty()
+							|| !tanks.getSecond()
+							.isEmpty())
+							level.playSound(null, worldPosition, SoundEvents.BUBBLE_COLUMN_WHIRLPOOL_AMBIENT,
+								SoundSource.BLOCKS, .75f, speed < 65 ? .75f : 1.5f);
+					}
+
+				} else {
+					processingTicks--;
+					if (processingTicks == 0) {
+						runningTicks++;
+						processingTicks = -1;
+						applyBasinRecipe();
+						sendData();
+					}
+				}
+			}
+
+			if (runningTicks != 20)
+				runningTicks++;
+		}
+	}
 
     public void renderParticles() {
         var basin = getBasin();
@@ -189,23 +210,34 @@ public class GoldenMixerBE extends BasinOperatingBlockEntity {
     @SuppressWarnings("all")
     @Override
     protected List<Recipe<?>> getMatchingRecipes() {
-        assert level != null;
-        var matchingRecipes = super.getMatchingRecipes();
-        if (!AllConfigs.server().recipes.allowBrewingInMixer.get()) return matchingRecipes;
+        List<Recipe<?>> matchingRecipes = super.getMatchingRecipes();
+        
+        if (!AllConfigs.server().recipes.allowBrewingInMixer.get())
+            return matchingRecipes;
 
         var basin = getBasin();
-        if (basin.isEmpty()) return matchingRecipes;
+        if (basin.isEmpty())
+            return matchingRecipes;
+        
         var basinBlockEntity = basin.get();
-        if (basin.isEmpty()) return matchingRecipes;
+        if (basin.isEmpty())
+            return matchingRecipes;
 
         var availableItems = level.getCapability(Capabilities.ItemHandler.BLOCK, basinBlockEntity.getBlockPos(), null);
-        if (availableItems == null) return matchingRecipes;
+        if (availableItems == null)
+            return matchingRecipes;
+        
         for (int i = 0; i < availableItems.getSlots(); i++) {
-            var stack = availableItems.getStackInSlot(i);
-            if (stack.isEmpty()) continue;
-            var list = PotionMixingRecipes.sortRecipesByItem(level).get(stack.getItem());
-            if (list == null) continue;
-            for (MixingRecipe mixingRecipe : list) if (matchBasinRecipe(mixingRecipe)) matchingRecipes.add(mixingRecipe);
+            ItemStack stack = availableItems.getStackInSlot(i);
+            if (stack.isEmpty())
+                continue;
+            
+            List<MixingRecipe> list = PotionMixingRecipes.sortRecipesByItem(level).get(stack.getItem());
+            if (list == null)
+                continue;
+            for (MixingRecipe mixingRecipe : list)
+                if (matchBasinRecipe(mixingRecipe))
+                    matchingRecipes.add(mixingRecipe);
         }
         return matchingRecipes;
     }
