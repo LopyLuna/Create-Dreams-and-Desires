@@ -1,8 +1,5 @@
 package dev.lopyluna.dndesires.content.blocks.kinetics.golden_mixer;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.AllSoundEvents;
 import com.simibubi.create.content.fluids.FluidFX;
@@ -18,7 +15,6 @@ import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.advancement.CreateAdvancement;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
-import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour.TankSegment;
 import com.simibubi.create.foundation.item.SmartInventory;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 
@@ -27,6 +23,7 @@ import net.createmod.catnip.data.Couple;
 import net.createmod.catnip.math.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
@@ -51,6 +48,8 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 
+import java.util.List;
+import java.util.Optional;
 
 public class GoldenMixerBE extends BasinOperatingBlockEntity {
     private static final Object shapelessOrMixingRecipesKey = new Object();
