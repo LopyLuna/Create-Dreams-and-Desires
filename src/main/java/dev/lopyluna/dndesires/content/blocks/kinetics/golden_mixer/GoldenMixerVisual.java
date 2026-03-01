@@ -38,23 +38,23 @@ public class GoldenMixerVisual extends SingleAxisRotatingVisual<GoldenMixerBE> i
     }
 
     private void animate(float pt) {
-        var renderedHeadOffset = mixer.getRenderedHeadOffset(pt);
+        float renderedHeadOffset = mixer.getRenderedHeadOffset(pt);
         transformPole(renderedHeadOffset);
         transformHead(renderedHeadOffset);
     }
 
     private void transformHead(float renderedHeadOffset) {
-        var speed = mixer.getRenderedHeadRotationSpeed();
+        float speed = mixer.getRenderedHeadRotationSpeed();
         mixerHead.setPosition(getVisualPosition())
-                .nudge(0, -renderedHeadOffset, 0)
-                .setRotationalSpeed(speed * 2 * RotatingInstance.SPEED_MULTIPLIER)
-                .setChanged();
+            .nudge(0, -renderedHeadOffset, 0)
+            .setRotationalSpeed(speed * 2 * RotatingInstance.SPEED_MULTIPLIER)
+            .setChanged();
     }
 
     private void transformPole(float renderedHeadOffset) {
         mixerPole.position(getVisualPosition())
-                .translatePosition(0, -renderedHeadOffset, 0)
-                .setChanged();
+            .translatePosition(0, -renderedHeadOffset, 0)
+            .setChanged();
     }
 
     @Override
