@@ -63,27 +63,27 @@ public class GoldenMixerBE extends BasinOperatingBlockEntity {
     }
 
     public float getRenderedHeadOffset(float partialTicks) {
-        int localTick;
-        var offset = 0f;
-        if (running) {
-            if (runningTicks < ticksHigh()) {
-                localTick = runningTicks;
-                var num = (localTick + partialTicks) / 20f;
-                num = ((2 - Mth.cos((float) (num * Math.PI))) / 2);
-                offset = num - .5f;
-            } else if (runningTicks == ticksHigh()) {
-                offset = 1;
-            } else {
-                localTick = ticksHigh() * 2 - runningTicks;
-                var num = (localTick - partialTicks) / 20f;
-                num = ((2 - Mth.cos((float) (num * Math.PI))) / 2);
-                offset = num - .5f;
-            }
-        }
-        return offset + 7 / 16f;
-    }
+		int localTick;
+		float offset = 0;
+		if (running) {
+			if (runningTicks < 20) {
+				localTick = runningTicks;
+				float num = (localTick + partialTicks) / 20f;
+				num = ((2 - Mth.cos((float) (num * Math.PI))) / 2);
+				offset = num - .5f;
+			} else if (runningTicks <= 20) {
+				offset = 1;
+			} else {
+				localTick = 40 - runningTicks;
+				float num = (localTick - partialTicks) / 20f;
+				num = ((2 - Mth.cos((float) (num * Math.PI))) / 2);
+				offset = num - .5f;
+			}
+		}
+		return offset + 7 / 16f;
+	}
 
-    public float getRenderedHeadRotationSpeed(float partialTicks) {
+	public float getRenderedHeadRotationSpeed(float partialTicks) {
 		float speed = getSpeed();
 		if (running) {
 			if (runningTicks < 15) {
