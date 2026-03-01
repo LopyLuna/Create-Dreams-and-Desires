@@ -146,7 +146,7 @@ public class GoldenMixerBE extends BasinOperatingBlockEntity {
 
 			if ((!level.isClientSide || isVirtual()) && runningTicks == 20) {
 				if (processingTicks < 0) {
-					float recipeSpeed = .25f;
+					float recipeSpeed = .5f;
 					if (currentRecipe instanceof StandardProcessingRecipe) {
 						int t = ((StandardProcessingRecipe<?>) currentRecipe).getProcessingDuration();
 						if (t != 0)
