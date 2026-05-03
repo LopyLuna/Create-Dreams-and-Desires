@@ -15,6 +15,7 @@ import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -38,8 +39,10 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.util.FakePlayer;
 import net.neoforged.neoforge.event.EventHooks;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -214,6 +217,14 @@ public class HandheldDrillItem extends DiggerItem implements CustomArmPoseItem, 
             protected Consumer<BlockPos> makeCallbackFor(Level level, float effectChance, ItemStack toDamage, @Nullable Player player, BiConsumer<BlockPos, ItemStack> drop) {
                 return pos -> {
                     var usedTool = toDamage.copy();
+                    if (level instanceof ServerLevel serverLevel && player != null) {
+                        var state = level.getBlockState(pos);
+                        if (!state.isAir()) {
+                            BlockEvent.BreakEvent ev = new BlockEvent.BreakEvent(serverLevel, pos, state, player);
+                            NeoForge.EVENT_BUS.post(ev);
+                            if (ev.isCanceled()) return;
+                        }
+                    }
                     BlockHelper.destroyBlockAs(level, pos, player, toDamage, effectChance, stack -> drop.accept(pos, stack));
                     if (player != null && toDamage.isEmpty() && !usedTool.isEmpty()) EventHooks.onPlayerDestroyItem(player, usedTool, InteractionHand.MAIN_HAND);
                 };
