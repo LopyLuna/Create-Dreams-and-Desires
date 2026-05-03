@@ -10,6 +10,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
@@ -33,7 +34,9 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.util.FakePlayer;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -116,6 +119,11 @@ public class GatlingBreakerItem extends Item implements CustomArmPoseItem {
         var hardness = stateReplaced.getDestroySpeed(level, pos);
         if (stateReplaced.isAir() || !level.isInWorldBounds(pos) || hardness == -1 || hardness > 50) return;
 
+        if (level instanceof ServerLevel serverLevel) {
+            BlockEvent.BreakEvent ev = new BlockEvent.BreakEvent(serverLevel, pos, stateReplaced, player);
+            NeoForge.EVENT_BUS.post(ev);
+            if (ev.isCanceled()) return;
+        }
         level.destroyBlock(pos, false);
         if (!stateReplaced.requiresCorrectToolForDrops() || !stateReplaced.is(BlockTags.INCORRECT_FOR_NETHERITE_TOOL))
             Block.dropResources(stateReplaced, level, player.blockPosition(), level.getBlockEntity(pos), player, stack);
