@@ -4,6 +4,7 @@
   "minVersion": "0.8",
   "priority": 1500,
   "package": "dev.lopyluna.dndesires.mixins",
+  "plugin": "dev.lopyluna.dndesires.mixins.DesiresMixinPlugin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "dndesires.refmap.json",
   "mixins": [
@@ -17,8 +18,14 @@
     "GaugeShaperAccessor",
     "ObserverBlockMixin",
     "PistonBaseBlockMixin",
+    "PotatoProjectileEntityAccessor",
     "ServerGamePacketListenerImplAccessor",
-    "TreeAccessor"
+    "TreeAccessor",
+    "compat.sable.FanSailBlockMixin",
+    "compat.sable.IndustrialAirCurrentMixin",
+    "compat.sable.IndustrialFanBEMixin",
+    "compat.sable.SmartHopperBEMixin",
+    "compat.sable.SpudSentryBEMixin"
   ],
   "injectors": {
     "defaultRequire": 1

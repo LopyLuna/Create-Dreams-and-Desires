@@ -11,7 +11,8 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.lopyluna.dndesires.DnDesires;
-import dev.lopyluna.dndesires.content.blocks.BoreBlockMovementBehavior;
+import dev.lopyluna.dndesires.content.blocks.logistics.bore_block.BoreBlock;
+import dev.lopyluna.dndesires.content.blocks.logistics.bore_block.BoreBlockMovementBehavior;
 import dev.lopyluna.dndesires.content.blocks.FanSailBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.cog_crank.CogCrankBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.cog_crank.CogCrankItem;
@@ -24,6 +25,7 @@ import dev.lopyluna.dndesires.content.blocks.kinetics.multimeter.MultiMeterBlock
 import dev.lopyluna.dndesires.content.blocks.kinetics.multimeter.MultiMeterGen;
 import dev.lopyluna.dndesires.content.blocks.kinetics.omni_gearbox.OmniGearboxBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.omni_speed_controller.OmniSpeedControllerBlock;
+import dev.lopyluna.dndesires.content.blocks.kinetics.spud_sentry.SpudSentryBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.StirlingEngineBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.flywheel.PoweredFlywheelBlock;
 import dev.lopyluna.dndesires.content.blocks.logistics.fluid_gauge.FluidGaugeBlock;
@@ -318,6 +320,28 @@ public class DesiresBlocks {
             .simpleItem()
             .register();
 
+    public static final BlockEntry<SpudSentryBlock> SPUD_SENTRY = REG.block("spud_sentry", SpudSentryBlock::new)
+            .initialProperties(SharedProperties::copperMetal)
+            .properties(p -> p.noOcclusion().mapColor(MapColor.COLOR_ORANGE))
+            .transform(pickaxeOnly())
+            .transform(DStress.setImpact(16.0))
+            .recipe((c, p) -> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, c.get(), 1)
+                    .pattern("AII")
+                    .pattern("P  ")
+                    .pattern("BC ")
+                    .define('C', AllBlocks.COPPER_CASING.get())
+                    .define('P', AllItems.POTATO_CANNON.get())
+                    .define('A', AllItems.ANDESITE_ALLOY.get())
+                    .define('B', Items.COPPER_BLOCK)
+                    .define('I', Items.COPPER_INGOT)
+                    .unlockedBy("has_" + c.getName(), has(c.get()))
+                    .save(p, DnDesires.loc("crafting/" + c.getName())))
+            .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
+            .addLayer(() -> RenderType::cutoutMipped)
+            .item()
+            .transform(customItemModel())
+            .register();
+
     public static final BlockEntry<HydraulicPressBlock> HYDRAULIC_PRESS = REG.block("hydraulic_press", HydraulicPressBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.noOcclusion().mapColor(MapColor.COLOR_ORANGE))
@@ -417,7 +441,7 @@ public class DesiresBlocks {
 
     public static final TagKey<Item> BORE_BLOCKS = DesiresTags.modItemTag("bore_blocks");
 
-    public static final BlockEntry<Block> BORE_BLOCK = REG.block("bore_block", Block::new)
+    public static final BlockEntry<BoreBlock> BORE_BLOCK = REG.block("bore_block", BoreBlock::new)
             .initialProperties(SharedProperties::netheriteMetal)
             .properties(p -> p.mapColor(MapColor.STONE).sound(new DeferredSoundType(0.9f, 1.25f, () -> SoundEvents.NETHERITE_BLOCK_BREAK,
                     () -> SoundEvents.NETHERITE_BLOCK_STEP, () -> SoundEvents.NETHERITE_BLOCK_PLACE,
@@ -442,9 +466,9 @@ public class DesiresBlocks {
             .build()
             .register();
 
-    public static final DyedBlockList<Block> DYED_BORE_BLOCK = new DyedBlockList<>(color -> {
+    public static final DyedBlockList<BoreBlock> DYED_BORE_BLOCK = new DyedBlockList<>(color -> {
         String colorName = color.getSerializedName();
-        return REG.block(colorName + "_bore_block", Block::new)
+        return REG.block(colorName + "_bore_block", BoreBlock::new)
                 .initialProperties(SharedProperties::netheriteMetal)
                 .properties(p -> p.mapColor(color.getMapColor()).sound(new DeferredSoundType(0.9f, 1.25f, () -> SoundEvents.NETHERITE_BLOCK_BREAK,
                         () -> SoundEvents.NETHERITE_BLOCK_STEP, () -> SoundEvents.NETHERITE_BLOCK_PLACE,

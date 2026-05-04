@@ -83,11 +83,16 @@ public class SmartHopperBE extends SmartBlockEntity implements MenuProvider {
         Predicate<ItemStack> canAccept = s -> !cantAcceptItem(s, state);
         int count = getExtractionAmount();
         var mode = getExtractionMode();
-        if (mode == ItemHelper.ExtractionCountMode.UPTO || !ItemHelper.extract(inv, canAccept, mode, count, true).isEmpty()) {
-            var extracted = ItemHelper.extract(inv, canAccept, mode, count, false);
-            if (!extracted.isEmpty()) {
-                insertItem(extracted, false);
-                return;
+        var extractedSimulated = ItemHelper.extract(inv, canAccept, mode, count, true);
+        if (!extractedSimulated.isEmpty()) {
+            int transferable = getTransferableAmount(extractedSimulated, mode, count);
+            if (transferable > 0) {
+                var extracted = ItemHelper.extract(inv, canAccept, mode, transferable, false);
+                if (!extracted.isEmpty()) {
+                    var remainder = insertItem(extracted, false);
+                    if (!remainder.isEmpty()) ItemHandlerHelper.insertItemStacked(inv, remainder, false);
+                    return;
+                }
             }
         }
         invVersionTracker.awaitNewVersion(inv);
@@ -109,11 +114,19 @@ public class SmartHopperBE extends SmartBlockEntity implements MenuProvider {
         return true;
     }
 
-    public void insertItem(ItemStack stack, boolean simulate) {
-        ItemHandlerHelper.insertItemStacked(inv, stack, simulate);
+    public ItemStack insertItem(ItemStack stack, boolean simulate) {
+        var remainder = ItemHandlerHelper.insertItemStacked(inv, stack, simulate);
         invVersionTracker.reset();
         assert level != null;
         if (!level.isClientSide) notifyUpdate();
+        return remainder;
+    }
+
+    private int getTransferableAmount(ItemStack stack, ItemHelper.ExtractionCountMode mode, int requestedAmount) {
+        var remainder = ItemHandlerHelper.insertItemStacked(inv, stack.copy(), true);
+        int transferable = stack.getCount() - remainder.getCount();
+        if (mode == ItemHelper.ExtractionCountMode.EXACTLY && transferable < requestedAmount) return 0;
+        return transferable;
     }
 
     private @Nullable IItemHandler grabCapability(@NotNull Direction side) {
@@ -129,7 +142,8 @@ public class SmartHopperBE extends SmartBlockEntity implements MenuProvider {
     }
 
     protected boolean cantAcceptItem(ItemStack stack, BlockState state) {
-        return ItemStack.isSameItemSameComponents(ItemHandlerHelper.insertItem(inv, stack.copy(), true), stack) || cantActivate(state) || !filtering.test(stack);
+        var remainder = ItemHandlerHelper.insertItemStacked(inv, stack.copy(), true);
+        return remainder.getCount() == stack.getCount() || cantActivate(state) || !filtering.test(stack);
     }
 
     protected boolean cantActivate(BlockState state) {
@@ -217,15 +231,12 @@ public class SmartHopperBE extends SmartBlockEntity implements MenuProvider {
         var mode = getExtractionMode();
         int amountExtract = Math.min(count, stack.getCount());
         var extract = extract(stack, state, mode, count, amountExtract);
-        if (ItemStack.isSameItemSameComponents(extract, stack)) return stack;
-        if (mode == ItemHelper.ExtractionCountMode.UPTO || !extract.isEmpty()) {
-            int newCount = stack.getCount();
-            newCount -= amountExtract;
-            var leftOver = ItemHandlerHelper.insertItemStacked(inv, extract, false);
-            newCount += leftOver.getCount();
-            return stack.copyWithCount(newCount);
-        }
-        return stack;
+        if (extract.isEmpty()) return stack;
+        int newCount = stack.getCount();
+        newCount -= amountExtract;
+        var leftOver = ItemHandlerHelper.insertItemStacked(inv, extract, false);
+        newCount += leftOver.getCount();
+        return stack.copyWithCount(newCount);
     }
 
     public ItemStack extract(ItemStack itemStack, BlockState state, ItemHelper.ExtractionCountMode mode, int amount, int amountExtract) {

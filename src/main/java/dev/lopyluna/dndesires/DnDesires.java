@@ -6,6 +6,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
+import dev.lopyluna.dndesires.compat.LoadedMods;
 import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.StirlingEngineBlock;
 import dev.lopyluna.dndesires.content.utils.DnDesiresRegistry;
 import dev.lopyluna.dndesires.register.*;
@@ -72,6 +73,10 @@ public class DnDesires {
             net.yeoxuhang.capix.api.CapixApi.registerCape(MOD_ID, "DnDesires 1mil downloads",
                     "https://github.com/LopyLuna/Obelisb/blob/1.21/dndesire_one_mil_cape.png?raw=true",
                     "https://raw.githubusercontent.com/LopyLuna/LunaResources/refs/heads/main/dndesires1mil.txt");
+        }
+        if (ModList.get().isLoaded("sable")) {
+            LoadedMods.SABLE = true;
+            dev.lopyluna.dndesires.compat.sable.DesiresSable.init(modEventBus, modContainer);
         }
     }
 

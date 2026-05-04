@@ -9,9 +9,9 @@
       "item": "minecraft:soul_soil"
     },
     {
-      "type": "fluid_tag",
+      "type": "neoforge:tag",
       "amount": 100,
-      "fluid_tag": "c:lava"
+      "tag": "c:lava"
     }
   ],
   "results": [

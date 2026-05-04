@@ -2,6 +2,7 @@ package dev.lopyluna.dndesires.events;
 
 import dev.lopyluna.dndesires.DnDesires;
 import dev.lopyluna.dndesires.content.blocks.kinetics.hydraulic_press.HydraulicPressBE;
+import dev.lopyluna.dndesires.content.blocks.kinetics.spud_sentry.SpudSentryBE;
 import dev.lopyluna.dndesires.content.blocks.logistics.roll_table.RollTableBE;
 import dev.lopyluna.dndesires.content.blocks.logistics.smart_hopper.SmartHopperBE;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -16,5 +17,6 @@ public class CommonEvents {
         RollTableBE.registerCapabilities(event);
         HydraulicPressBE.registerCapabilities(event);
         SmartHopperBE.registerCapabilities(event);
+        SpudSentryBE.registerCapabilities(event);
     }
 }

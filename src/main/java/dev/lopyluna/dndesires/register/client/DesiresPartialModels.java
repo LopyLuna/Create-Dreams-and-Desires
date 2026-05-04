@@ -21,6 +21,10 @@ public class DesiresPartialModels {
             GOLDEN_MIXER_HEAD = block("gold_mixer/head"),
             COG_CRANK_HANDLE = block("cog_crank/handle"),
 
+            SPUD_BASE = block("spud_sentry/base"),
+            SPUD_CANNON = block("spud_sentry/cannon"),
+            SPUD_GEAR = block("spud_sentry/gear"),
+
             MULTIMETER_HEAD = block("gauge/multimeter/head"),
             GAUGE_NEEDLE = block("fluid_gauge/needle"),
             INDUSTRIAL_FAN_POWER = block("industrial_fan/cog"),

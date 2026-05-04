@@ -26,7 +26,7 @@
       "item": "create:bar_of_chocolate"
     },
     {
-      "type": "fluid_stack",
+      "type": "neoforge:single",
       "amount": 250,
       "fluid": "create:chocolate"
     }

@@ -2,14 +2,14 @@
   "type": "dndesires:hydraulic_compacting",
   "ingredients": [
     {
-      "type": "fluid_tag",
+      "type": "neoforge:tag",
       "amount": 100,
-      "fluid_tag": "c:lava"
+      "tag": "c:lava"
     },
     {
-      "type": "fluid_tag",
+      "type": "neoforge:tag",
       "amount": 500,
-      "fluid_tag": "c:water"
+      "tag": "c:water"
     }
   ],
   "results": [

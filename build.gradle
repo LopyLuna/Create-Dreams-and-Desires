@@ -50,6 +50,7 @@ neoForge {
                     project.mod_id, '--all', '--output',
                     file('src/generated/resources/').getAbsolutePath(), '--existing',
                     file('src/main/resources/').getAbsolutePath(), '--existing-mod', 'create'
+            systemProperty "neoforge.disableModLoading", "true"
         }
         configureEach {
             systemProperty 'forge.logging.markers', 'REGISTRIES'
@@ -82,14 +83,16 @@ repositories {
     maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven" } // NeoForge config api port, needed by ponder
     maven { url = "https://maven.createmod.net" } // Ponder, Flywheel
     maven { url = "https://maven.architectury.dev" } // Arch API
+    maven { url = "https://maven.ryanhcode.dev/releases" } // Sable, Offroad, Simulated, Aeronautics
     mavenLocal()
 }
 
 dependencies {
+    //noinspection VulnerableLibrariesLocal
     implementation "net.neoforged:neoforge:${neo_version}"
 
-    implementation("com.simibubi.create:create-${minecraft_version}:${create_version}") { transitive = false }
-    implementation("net.createmod.ponder:Ponder-NeoForge-${minecraft_version}:${ponder_version}")
+    implementation("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
+    implementation("net.createmod.ponder:ponder-neoforge:${ponder_version}+mc${minecraft_version}")
     compileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${minecraft_version}:${flywheel_version}")
     runtimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
     implementation("com.tterrag.registrate:Registrate:${registrate_version}")
@@ -98,10 +101,15 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     implementation("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
+    compileOnly("dev.ryanhcode.sable:sable-neoforge-${minecraft_version}:${sable_version}")
+    implementation("dev.ryanhcode.offroad:offroad-neoforge-${minecraft_version}:${bundled_version}")
+    implementation("dev.simulated_team.simulated:simulated-neoforge-${minecraft_version}:${bundled_version}")
+    implementation("dev.eriksonn.aeronautics:aeronautics-neoforge-${minecraft_version}:${bundled_version}")
+
     compileOnly("top.theillusivec4.curios:curios-neoforge:${curios_version}+${minecraft_version}:api")
     runtimeOnly("top.theillusivec4.curios:curios-neoforge:${curios_version}+${minecraft_version}")
 
-    implementation("maven.modrinth:sodium:mc${minecraft_version}-${sodium_version}-neoforge")
+    //implementation("maven.modrinth:sodium:mc${minecraft_version}-${sodium_version}-neoforge")
     implementation("maven.modrinth:jade:jBPaSUDN")
 
     //compileOnly("cc.tweaked:cc-tweaked-1.21.1-core-api:1.116.1")

@@ -1,11 +1,13 @@
 package dev.lopyluna.dndesires.events;
 
 import dev.lopyluna.dndesires.DnDesires;
+import dev.lopyluna.dndesires.compat.LoadedMods;
 import dev.lopyluna.dndesires.content.items.HandheldKeyHandlerClient;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
 
 @EventBusSubscriber(modid = DnDesires.MOD_ID, value = Dist.CLIENT)
@@ -17,5 +19,16 @@ public class ClientEvents {
         int key = event.getKey();
         boolean pressed = !(event.getAction() == 0);
         HandheldKeyHandlerClient.onKeyInput(key, pressed);
+    }
+
+    @SubscribeEvent
+    public static void onClientTick(ClientTickEvent.Post event) {
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.isPaused() || mc.level == null || mc.player == null) {
+            if (LoadedMods.SABLE) dev.lopyluna.dndesires.compat.sable.FanSailParticles.clear();
+            return;
+        }
+
+        if (LoadedMods.SABLE) dev.lopyluna.dndesires.compat.sable.FanSailParticles.tick();
     }
 }

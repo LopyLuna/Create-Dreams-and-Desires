@@ -18,7 +18,7 @@
       "item": "minecraft:slime_ball"
     },
     {
-      "type": "fluid_stack",
+      "type": "neoforge:single",
       "amount": 50,
       "fluid": "create:tea"
     }

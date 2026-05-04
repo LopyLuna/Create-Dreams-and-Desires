@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidInteractionRegistry;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -62,57 +63,31 @@ public class DesiresFluids {
         addMilkshakeInteraction(PUMPKIN_MILKSHAKE.get(), DesiresStoneTypes.BRECCIA.getBaseBlock().get(), AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get());
     }
 
-    public static BlockState getLavaInteraction(FluidState fluidState) {
-        Fluid fluid = fluidState.getType();
-        if (fluid.isSame(CHOCOLATE_MILKSHAKE.get())) return Blocks.GRANITE.defaultBlockState();
-        if (fluid.isSame(VANILLA_MILKSHAKE.get())) return Blocks.SANDSTONE.defaultBlockState();
-        if (fluid.isSame(STRAWBERRY_MILKSHAKE.get())) return Blocks.COBBLED_DEEPSLATE.defaultBlockState();
-        if (fluid.isSame(GLOWBERRY_MILKSHAKE.get())) return Blocks.TERRACOTTA.defaultBlockState();
-        if (fluid.isSame(PUMPKIN_MILKSHAKE.get())) return AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get().defaultBlockState();
-        return null;
-    }
-
-    @SuppressWarnings("unused")
-    public static BlockState getInteractions(FluidState fluidState, Level level, BlockPos pos) {
-        if (addMilkshakeFlag(fluidState, CHOCOLATE_MILKSHAKE.get(), level, pos))
-            return addMilkshakeStones(AllPaletteStoneTypes.VERIDIUM.getBaseBlock().get(), Blocks.GRANITE, level, pos);
-        if (addMilkshakeFlag(fluidState, VANILLA_MILKSHAKE.get(), level, pos))
-            return addMilkshakeStones(AllPaletteStoneTypes.ASURINE.getBaseBlock().get(), Blocks.SANDSTONE, level, pos);
-        if (addMilkshakeFlag(fluidState, STRAWBERRY_MILKSHAKE.get(), level, pos))
-            return addMilkshakeStones(AllPaletteStoneTypes.CRIMSITE.getBaseBlock().get(), Blocks.COBBLED_DEEPSLATE, level, pos);
-        if (addMilkshakeFlag(fluidState, GLOWBERRY_MILKSHAKE.get(), level, pos))
-            return addMilkshakeStones(AllPaletteStoneTypes.OCHRUM.getBaseBlock().get(), Blocks.TERRACOTTA, level, pos);
-        if (addMilkshakeFlag(fluidState, PUMPKIN_MILKSHAKE.get(), level, pos))
-            return addMilkshakeStones(DesiresStoneTypes.BRECCIA.getBaseBlock().get(), AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get(), level, pos);
-
+    public static Supplier<BlockState> getLavaInteractions(FluidState fluidState, Level level, BlockPos pos) {
+        var fluid = fluidState.getType();
+        if (fluid.isSame(CHOCOLATE_MILKSHAKE.get()))
+            return () -> addMilkshakeStones(AllPaletteStoneTypes.VERIDIUM.getBaseBlock().get(), Blocks.GRANITE, level, pos);
+        if (fluid.isSame(VANILLA_MILKSHAKE.get()))
+            return () -> addMilkshakeStones(AllPaletteStoneTypes.ASURINE.getBaseBlock().get(), Blocks.SANDSTONE, level, pos);
+        if (fluid.isSame(STRAWBERRY_MILKSHAKE.get()))
+            return () -> addMilkshakeStones(AllPaletteStoneTypes.CRIMSITE.getBaseBlock().get(), Blocks.COBBLED_DEEPSLATE, level, pos);
+        if (fluid.isSame(GLOWBERRY_MILKSHAKE.get()))
+            return () -> addMilkshakeStones(AllPaletteStoneTypes.OCHRUM.getBaseBlock().get(), Blocks.TERRACOTTA, level, pos);
+        if (fluid.isSame(PUMPKIN_MILKSHAKE.get()))
+            return () -> addMilkshakeStones(DesiresStoneTypes.BRECCIA.getBaseBlock().get(), AllPaletteStoneTypes.SCORCHIA.getBaseBlock().get(), level, pos);
         return null;
     }
 
     public static void addMilkshakeInteraction(Fluid fluid, Block stoneBedrock, Block stoneDefault) {
-        FluidInteractionRegistry.addInteraction(NeoForgeMod.LAVA_TYPE.value(), new FluidInteractionRegistry.InteractionInformation(
-                (level, currentPos, relativePos, fluidState) -> level.getFluidState(relativePos).is(fluid) &&
-                        fluidState.isSource(),
-                Blocks.OBSIDIAN.defaultBlockState()
-        ));
-        FluidInteractionRegistry.addInteraction(NeoForgeMod.LAVA_TYPE.value(), new FluidInteractionRegistry.InteractionInformation(
-                (level, currentPos, relativePos, fluidState) -> randomChance(DesiresConfigs.server().chanceForOreStone.get(), level) &&
-                        level.getBlockState(currentPos.below()).is(DesiresTags.BlockTags.ORE_GENERATOR.tag) &&
-                        level.getFluidState(relativePos).is(fluid) &&
-                        !fluidState.isSource(),
-                stoneBedrock.defaultBlockState()
-        ));
-        FluidInteractionRegistry.addInteraction(NeoForgeMod.LAVA_TYPE.value(), new FluidInteractionRegistry.InteractionInformation(
-                (level, currentPos, relativePos, fluidState) -> randomChance(DesiresConfigs.server().chanceForArtificialOreStone.get(), level) &&
-                        level.getBlockState(currentPos.below()).is(DesiresTags.BlockTags.ARTIFICIAL_ORE_GENERATOR.tag) &&
-                        level.getFluidState(relativePos).is(fluid) &&
-                        !fluidState.isSource(),
-                stoneBedrock.defaultBlockState()
-        ));
-        FluidInteractionRegistry.addInteraction(NeoForgeMod.LAVA_TYPE.value(), new FluidInteractionRegistry.InteractionInformation(
-                (level, currentPos, relativePos, fluidState) -> level.getFluidState(relativePos).is(fluid) &&
-                        !fluidState.isSource(),
-                stoneDefault.defaultBlockState()
-        ));
+        FluidInteractionRegistry.HasFluidInteraction hasFluid = (level, currentPos, relativePos, currentState) -> level.getFluidState(relativePos).getFluidType() == fluid.getFluidType();
+        FluidInteractionRegistry.FluidInteraction interaction = (level, currentPos, relativePos, fluidState) -> {
+            var state = addMilkshakeStones(stoneBedrock, stoneDefault, level, currentPos);
+            if (fluidState.isSource()) state = Blocks.OBSIDIAN.defaultBlockState();
+
+            level.setBlockAndUpdate(currentPos, EventHooks.fireFluidPlaceBlockEvent(level, currentPos, currentPos, state));
+            level.levelEvent(1501, currentPos, 0);
+        };
+        FluidInteractionRegistry.addInteraction(NeoForgeMod.LAVA_TYPE.value(), new FluidInteractionRegistry.InteractionInformation(hasFluid, interaction));
     }
     @SuppressWarnings("deprecation")
     public static boolean addMilkshakeFlag(FluidState fluidState, Fluid milkshake, Level level, BlockPos pos) {
@@ -128,9 +103,10 @@ public class DesiresFluids {
     }
 
     public static BlockState addMilkshakeStones(Block stoneBedrock, Block stoneDefault, Level level, BlockPos pos) {
-        if (level.getBlockState(pos.below()).is(DesiresTags.BlockTags.ORE_GENERATOR.tag) && randomChance(DesiresConfigs.server().chanceForOreStone.get(), level))
+        var below = level.getBlockState(pos.below());
+        if (below.is(DesiresTags.BlockTags.ORE_GENERATOR.tag) && randomChance(DesiresConfigs.server().chanceForOreStone.get(), level))
             return stoneBedrock.defaultBlockState();
-        else if (level.getBlockState(pos.below()).is(DesiresTags.BlockTags.ARTIFICIAL_ORE_GENERATOR.tag) && randomChance(DesiresConfigs.server().chanceForArtificialOreStone.get(), level))
+        else if (below.is(DesiresTags.BlockTags.ARTIFICIAL_ORE_GENERATOR.tag) && randomChance(DesiresConfigs.server().chanceForArtificialOreStone.get(), level))
             return stoneBedrock.defaultBlockState();
         return stoneDefault.defaultBlockState();
     }

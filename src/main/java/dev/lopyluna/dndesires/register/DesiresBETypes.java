@@ -26,6 +26,8 @@ import dev.lopyluna.dndesires.content.blocks.kinetics.multimeter.MultiMeterRende
 import dev.lopyluna.dndesires.content.blocks.kinetics.omni_gearbox.OmniGearboxBE;
 import dev.lopyluna.dndesires.content.blocks.kinetics.omni_gearbox.OmniGearboxRenderer;
 import dev.lopyluna.dndesires.content.blocks.kinetics.omni_speed_controller.OmniSpeedControllerBE;
+import dev.lopyluna.dndesires.content.blocks.kinetics.spud_sentry.SpudSentryBE;
+import dev.lopyluna.dndesires.content.blocks.kinetics.spud_sentry.SpudSentryRenderer;
 import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.StirlingEngineBE;
 import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.StirlingEngineRenderer;
 import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.StirlingEngineVisual;
@@ -38,10 +40,18 @@ import dev.lopyluna.dndesires.content.blocks.logistics.fluid_hatch.FluidHatchBE;
 import dev.lopyluna.dndesires.content.blocks.logistics.roll_table.RollTableBE;
 import dev.lopyluna.dndesires.content.blocks.logistics.roll_table.RollTableRenderer;
 import dev.lopyluna.dndesires.content.blocks.logistics.smart_hopper.SmartHopperBE;
+import dev.lopyluna.dndesires.register.client.DesiresPartialModels;
 
 import static dev.lopyluna.dndesires.DnDesires.REG;
 
 public class DesiresBETypes {
+
+    public static final BlockEntityEntry<SpudSentryBE> SPUD_SENTRY = REG
+            .blockEntity("spud_sentry", SpudSentryBE::new)
+            .visual(() -> SingleAxisRotatingVisual.of(DesiresPartialModels.SPUD_GEAR), true)
+            .validBlocks(DesiresBlocks.SPUD_SENTRY)
+            .renderer(() -> SpudSentryRenderer::new)
+            .register();
 
     public static final BlockEntityEntry<GoldenMixerBE> GOLDEN_MIXER = REG
             .blockEntity("gold_mixer", GoldenMixerBE::new)

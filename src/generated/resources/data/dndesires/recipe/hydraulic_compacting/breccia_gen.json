@@ -9,12 +9,12 @@
       "item": "create:scorchia"
     },
     {
-      "type": "fluid_tag",
+      "type": "neoforge:tag",
       "amount": 500,
-      "fluid_tag": "c:lava"
+      "tag": "c:lava"
     },
     {
-      "type": "fluid_stack",
+      "type": "neoforge:single",
       "amount": 100,
       "fluid": "dndesires:pumpkin_milkshake"
     }
