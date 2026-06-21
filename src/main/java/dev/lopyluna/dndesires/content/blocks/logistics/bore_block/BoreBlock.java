@@ -25,7 +25,6 @@ public class BoreBlock extends Block {
         return Shapes.block();
     }
 
-
     @Override
     protected boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction side) {
         return adjacentBlockState.is(this) || super.skipRendering(state, adjacentBlockState, side);

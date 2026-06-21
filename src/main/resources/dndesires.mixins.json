@@ -21,6 +21,7 @@
     "PotatoProjectileEntityAccessor",
     "ServerGamePacketListenerImplAccessor",
     "TreeAccessor",
+    "compat.sable.BoreBlockMixin",
     "compat.sable.FanSailBlockMixin",
     "compat.sable.IndustrialAirCurrentMixin",
     "compat.sable.IndustrialFanBEMixin",
