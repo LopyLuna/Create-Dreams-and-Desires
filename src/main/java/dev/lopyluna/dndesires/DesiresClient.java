@@ -13,8 +13,9 @@ import static dev.lopyluna.dndesires.DnDesires.MOD_ID;
 public class DesiresClient {
 
     public DesiresClient(IEventBus modEventBus) {
+        DesiresPartialModels.init();
         IEventBus neoEventBus = NeoForge.EVENT_BUS;
-        modEventBus.addListener(DesiresClient::clientInit);
+        //modEventBus.addListener(DesiresClient::clientInit);
     }
 
     public static void clientInit(final FMLClientSetupEvent event) {
