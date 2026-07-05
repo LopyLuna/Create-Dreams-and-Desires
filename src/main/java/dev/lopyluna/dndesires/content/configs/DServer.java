@@ -26,6 +26,5 @@ public class DServer extends ConfigBase {
         static String handheldSawAirEfficiencyMultiplier = "Multiplier for how many uses the Handheld Saw gets from a Backtank. Higher values reduce air usage, but air cost cannot go below 1 per use.";
         static String handheldSawConsumesAirPerTreeBlock = "If enabled, the Handheld Saw can consume air for blocks broken during automatic tree cutting. If disabled, only the first manually broken block consumes air.";
         static String handheldSawOnlyLogsConsumeAirWhenDeforesting = "If enabled, only logs and roots consume air during automatic tree cutting. Leaves, vines, and other tree attachments will not consume air. If disabled, every automatically broken tree block can consume air.";
-);
     }
 }
