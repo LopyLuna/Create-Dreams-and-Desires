@@ -116,8 +116,8 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
 
         // Do not consume extra air for blocks broken by the automatic tree-cutting chain.
         // The first manually broken block already paid the air cost.
-            if (deforesting)
-                return true;
+            if (deforesting && !DesiresConfigs.server().handheldSawConsumesAirPerTreeBlock.get())
+            return true;
 
             if (!BacktankUtil.canAbsorbDamage(miningEntity, maxUses())
                 && !level.isClientSide
