@@ -9,7 +9,7 @@ import dev.lopyluna.dndesires.content.items.IOnBlockBreak;
 import dev.lopyluna.dndesires.content.items.TreeOverride;
 import dev.lopyluna.dndesires.mixins.AxeItemAccessor;
 import dev.lopyluna.dndesires.register.DesiresItems;
-import dev.lopyluna.dndesires.register.DesiresConfigs
+import dev.lopyluna.dndesires.register.DesiresConfigs;
 import net.createmod.catnip.math.VecHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.model.HumanoidModel;
