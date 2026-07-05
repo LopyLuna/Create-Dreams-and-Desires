@@ -112,10 +112,15 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
         var tool = stack.get(DataComponents.TOOL);
         if (tool != null) {
+            if (deforesting
+                // Check if the saw is only cutting tree logs and roots, and not count vines, etc.    
+                && !TreeCutter.isLog(state)
+                && !TreeCutter.isRoot(state)
 
-        // Do not consume extra air for blocks broken by the automatic tree-cutting chain.
-        // The first manually broken block already paid the air cost.
-            if (deforesting && !DesiresConfigs.server().handheldSawConsumesAirPerTreeBlock.get()) {
+                // If Enabled in the config do not consume extra air for blocks broken by the automatic tree-cutting chain.
+                // The first manually broken block already paid the air cost.
+
+                && !DesiresConfigs.server().handheldSawConsumesAirPerTreeBlock.get()) {
                 return true;
             }
 
