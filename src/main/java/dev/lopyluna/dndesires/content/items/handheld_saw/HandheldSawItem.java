@@ -16,7 +16,6 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -101,64 +100,29 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
         var tool = stack.get(DataComponents.TOOL);
-        if (tool != null) {
+        if (tool == null)
+            return false;
 
-            if (deforesting) {
+        if (deforesting) {
+            if (!DesiresConfigs.server().handheldSawConsumesAirPerTreeBlock.get())
+                return true;
 
-            // Only the first manually broken block consumes air.
-                if (!DesiresConfigs.server().handheldSawConsumesAirPerTreeBlock.get()) {
-                    return true;
-                }
-
-            // During automatic tree cutting, consume air for logs/roots only.
-            // Leaves, vines, cocoa, bee nests, etc. are skipped.
-                if (DesiresConfigs.server().handheldSawOnlyLogsConsumeAirWhenDeforesting.get()
-                    && !TreeCutter.isLog(state)
-                    && !TreeCutter.isRoot(state)) {
-                    return true;
-                }
-            }
-
-            var backtanksBeforeUse = BacktankUtil.getAllWithAir(miningEntity);
-            ItemStack usedBacktank = backtanksBeforeUse.isEmpty() ? ItemStack.EMPTY : backtanksBeforeUse.getFirst();
-            int airBefore = usedBacktank.isEmpty() ? 0 : BacktankUtil.getAir(usedBacktank);
-            int maxAir = usedBacktank.isEmpty() ? BacktankUtil.maxAirWithoutEnchants() : BacktankUtil.maxAir(usedBacktank);
-
-            boolean absorbedWithAir = BacktankUtil.canAbsorbDamage(miningEntity, maxUses());
-
-            if (!level.isClientSide && miningEntity instanceof Player player) {
-                if (!usedBacktank.isEmpty()) {
-                    int airAfter = BacktankUtil.getAir(usedBacktank);
-                    int airUsed = airBefore - airAfter;
-
-                    player.displayClientMessage(
-                        Component.literal(
-                            "Saw air: " + airAfter + "/" + maxAir +
-                            " used: " + airUsed +
-                            " block: " + state.getBlock().getName().getString() +
-                            " deforesting: " + deforesting
-                        ),
-                        true
-                    );
-                } else {
-                    player.displayClientMessage(
-                        Component.literal("Saw air: no backtank air found"),
-                        true
-                    );
-                }
-            }
-
-            if (!absorbedWithAir
-                && !level.isClientSide
-                && state.getDestroySpeed(level, pos) != 0.0F
-                && tool.damagePerBlock() > 0) {
-                stack.hurtAndBreak(tool.damagePerBlock(), miningEntity, EquipmentSlot.MAINHAND);
-            }
-
-            return true;
+            if (DesiresConfigs.server().handheldSawOnlyLogsConsumeAirWhenDeforesting.get()
+                && !TreeCutter.isLog(state)
+                && !TreeCutter.isRoot(state))
+                return true;
         }
 
-        return false;
+        boolean absorbedWithAir = BacktankUtil.canAbsorbDamage(miningEntity, maxUses());
+
+        if (!absorbedWithAir
+            && !level.isClientSide
+            && state.getDestroySpeed(level, pos) != 0.0F
+            && tool.damagePerBlock() > 0) {
+            stack.hurtAndBreak(tool.damagePerBlock(), miningEntity, EquipmentSlot.MAINHAND);
+        }
+
+        return true;
     }
 
     @Override
