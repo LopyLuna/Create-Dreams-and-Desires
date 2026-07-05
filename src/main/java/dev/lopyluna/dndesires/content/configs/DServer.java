@@ -23,6 +23,6 @@ public class DServer extends ConfigBase {
         static String chanceForOreStone = "Chance for and Ore Stone to spawn when on top of Bedrock while Milkshake Stone Generating";
         static String chanceForArtificialOreStone = "Chance for and Ore Stone to spawn when on top of Artificial Bedrock while Milkshake Stone Generating";
         static String handheldSawAirEfficiencyMultiplier = "Multiplier for how many uses the Handheld Saw gets from a Backtank. Higher values reduce air usage, but air cost cannot go below 1 per use.";
-        static String handheldSawConsumesAirPerTreeBlock = "Should the Handheld Saw use more than the initial braking"
+        static String handheldSawConsumesAirPerTreeBlock = "If enabled, the Handheld Saw consumes air for every block broken during automatic tree cutting. If disabled, it only consumes air for the first manually broken block.";
     }
 }
