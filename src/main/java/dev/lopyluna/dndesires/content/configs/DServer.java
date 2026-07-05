@@ -10,7 +10,8 @@ public class DServer extends ConfigBase {
     public final ConfigInt chanceForOreStone = i(25, 1, 100, "chanceForOreStone", Comments.chanceForOreStone);
     public final ConfigInt chanceForArtificialOreStone = i(5, 0, 100, "chanceForArtificialOreStone", Comments.chanceForArtificialOreStone);
     public final ConfigInt handheldSawAirEfficiencyMultiplier = i(4, 1, 8, "handheldSawAirUsageMultiplier", Comments.handheldSawAirUsageMultiplier);
-
+    public final ConfigBool handheldSawConsumesAirPerTreeBlock = b(false, "handheldSawConsumesAirPerTreeBlock", Comments.handheldSawConsumesAirPerTreeBlock);
+    
     public final DKinetics kinetics = nested(0, DKinetics::new, "Parameters and abilities of Create: Desires 2 Dream's kinetic mechanisms");
 
     @Override
@@ -22,5 +23,6 @@ public class DServer extends ConfigBase {
         static String chanceForOreStone = "Chance for and Ore Stone to spawn when on top of Bedrock while Milkshake Stone Generating";
         static String chanceForArtificialOreStone = "Chance for and Ore Stone to spawn when on top of Artificial Bedrock while Milkshake Stone Generating";
         static String handheldSawAirEfficiencyMultiplier = "Multiplier for how many uses the Handheld Saw gets from a Backtank. Higher values reduce air usage, but air cost cannot go below 1 per use.";
+        static String handheldSawConsumesAirPerTreeBlock = "Should the Handheld Saw use more than the initial braking"
     }
 }
