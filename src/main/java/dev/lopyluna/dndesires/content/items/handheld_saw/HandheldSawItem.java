@@ -97,16 +97,40 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
         if (!BacktankUtil.canAbsorbDamage(attacker, maxUses())) stack.hurtAndBreak(2, attacker, EquipmentSlot.MAINHAND);
     }
 
+    //Original:
+//  @Override
+//  public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
+//      var tool = stack.get(DataComponents.TOOL);
+//        if (tool != null) {
+//          if (!BacktankUtil.canAbsorbDamage(miningEntity, maxUses()) && !level.isClientSide && state.getDestroySpeed(level, pos) != 0.0F && tool.damagePerBlock() > 0)
+//              stack.hurtAndBreak(tool.damagePerBlock(), miningEntity, EquipmentSlot.MAINHAND);
+//          return true;
+//      }
+//      return false;
+//  }
+
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
         var tool = stack.get(DataComponents.TOOL);
         if (tool != null) {
-            if (!BacktankUtil.canAbsorbDamage(miningEntity, maxUses()) && !level.isClientSide && state.getDestroySpeed(level, pos) != 0.0F && tool.damagePerBlock() > 0)
+
+        // Do not consume extra air for blocks broken by the automatic tree-cutting chain.
+        // The first manually broken block already paid the air cost.
+            if (deforesting)
+                return true;
+
+            if (!BacktankUtil.canAbsorbDamage(miningEntity, maxUses())
+                && !level.isClientSide
+                && state.getDestroySpeed(level, pos) != 0.0F
+                && tool.damagePerBlock() > 0) {
                 stack.hurtAndBreak(tool.damagePerBlock(), miningEntity, EquipmentSlot.MAINHAND);
+            }
             return true;
         }
         return false;
     }
+
+
 
     @Override
     public boolean canAttackBlock(BlockState state, Level level, BlockPos pos, Player player) {
@@ -140,7 +164,7 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
         // return AllConfigs.server().equipment.maxPotatoCannonShots.get() * 4;
         
         int baseUses = AllConfigs.server().equipment.maxPotatoCannonShots.get();
-        int multiplier = DesiresConfigs.server().handheldSawAirUsageMultiplier.get();
+        int multiplier = DesiresConfigs.server().handheldSawAirEfficiencyMultiplier.get();
 
         return baseUses * multiplier;
     }
