@@ -133,7 +133,9 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
     }
 
     private static int maxUses() {
-        return AllConfigs.server().equipment.maxPotatoCannonShots.get();
+        // Original = airInBacktank = 900 / maxPotatoCannonShots = 200
+        // return AllConfigs.server().equipment.maxPotatoCannonShots.get();
+        return AllConfigs.server().equipment.maxPotatoCannonShots.get() * 4;
     }
 
     @Override
