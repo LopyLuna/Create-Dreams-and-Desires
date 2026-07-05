@@ -108,7 +108,6 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
 //      }
 //      return false;
 //  }
-
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
         var tool = stack.get(DataComponents.TOOL);
@@ -116,8 +115,9 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
 
         // Do not consume extra air for blocks broken by the automatic tree-cutting chain.
         // The first manually broken block already paid the air cost.
-            if (deforesting && !DesiresConfigs.server().handheldSawConsumesAirPerTreeBlock.get())
-            return true;
+            if (deforesting && !DesiresConfigs.server().handheldSawConsumesAirPerTreeBlock.get()) {
+                return true;
+            }
 
             if (!BacktankUtil.canAbsorbDamage(miningEntity, maxUses())
                 && !level.isClientSide
@@ -129,8 +129,6 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
         }
         return false;
     }
-
-
 
     @Override
     public boolean canAttackBlock(BlockState state, Level level, BlockPos pos, Player player) {
