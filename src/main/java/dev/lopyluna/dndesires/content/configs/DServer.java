@@ -9,7 +9,7 @@ public class DServer extends ConfigBase {
             "server", "Configs for the World");
     public final ConfigInt chanceForOreStone = i(25, 1, 100, "chanceForOreStone", Comments.chanceForOreStone);
     public final ConfigInt chanceForArtificialOreStone = i(5, 0, 100, "chanceForArtificialOreStone", Comments.chanceForArtificialOreStone);
-    public final ConfigInt handheldSawAirEfficiencyMultiplier = i(4, 1, 8, "handheldSawAirUsageMultiplier", Comments.handheldSawAirUsageMultiplier);
+    public final ConfigInt handheldSawAirEfficiencyMultiplier = i(4, 1, 8, "handheldSawAirEfficiencyMultiplier", Comments.handheldSawAirEfficiencyMultiplier);
     public final ConfigBool handheldSawConsumesAirPerTreeBlock = b(false, "handheldSawConsumesAirPerTreeBlock", Comments.handheldSawConsumesAirPerTreeBlock);
     
     public final DKinetics kinetics = nested(0, DKinetics::new, "Parameters and abilities of Create: Desires 2 Dream's kinetic mechanisms");
