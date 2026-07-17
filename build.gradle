@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.78'
+    id 'net.neoforged.moddev' version '2.0.141'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -117,6 +117,9 @@ dependencies {
     //runtimeOnly("cc.tweaked:cc-tweaked-1.21.1-forge:1.116.1")
 
     implementation("maven.modrinth:capix:jf7f0Xii")
+
+    // https://modrinth.com/mod/createaddition/version/neoforge-1.21.1-1.6.0
+    implementation "maven.modrinth:kU1G12Nn:qPr8V4G2"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

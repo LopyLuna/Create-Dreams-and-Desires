@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/wall_inventory",
-  "textures": {
-    "wall": "dndesires:block/palettes/stone_types/cut/breccia_cut"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "dndesires:block/palettes/stone_types/polished/breccia_cut_polished",
-    "side": "dndesires:block/palettes/stone_types/slab/breccia_cut_slab",
-    "top": "dndesires:block/palettes/stone_types/polished/breccia_cut_polished"
-  }
-}

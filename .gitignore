@@ -133,3 +133,5 @@ bin
 .metadata
 .classpath
 .project
+
+/src/generated/

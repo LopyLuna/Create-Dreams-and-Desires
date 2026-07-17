@@ -1,6 +1,0 @@
-{
-  "parent": "dndesires:block/bore_block",
-  "textures": {
-    "all": "dndesires:block/bore_block/white"
-  }
-}

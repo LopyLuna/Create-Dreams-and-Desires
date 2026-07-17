@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "dndesires:block/palettes/stone_types/polished/breccia_cut_polished",
-    "side": "dndesires:block/palettes/stone_types/slab/breccia_cut_slab"
-  }
-}

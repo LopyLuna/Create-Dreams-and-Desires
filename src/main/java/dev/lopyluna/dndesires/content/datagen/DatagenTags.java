@@ -1,5 +1,6 @@
 package dev.lopyluna.dndesires.content.datagen;
 
+import com.mrh0.createaddition.index.CABlocks;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
@@ -54,7 +55,7 @@ public class DatagenTags {
         prov.tag(DesiresTags.BlockTags.FAN_PROCESSING_CATALYSTS_DRAGON_BREATHING.tag).add(Blocks.DRAGON_WALL_HEAD).add(Blocks.DRAGON_EGG);
         prov.tag(DesiresTags.BlockTags.FAN_PROCESSING_CATALYSTS_SANDING.tag).addTag(BlockTags.SAND);
         prov.tag(DesiresTags.BlockTags.FAN_PROCESSING_CATALYSTS_FREEZING.tag).add(Blocks.POWDER_SNOW);
-        prov.tag(DesiresTags.BlockTags.FAN_PROCESSING_CATALYSTS_SEETHING.tag).add(AllBlocks.BLAZE_BURNER.get());
+        prov.tag(DesiresTags.BlockTags.FAN_PROCESSING_CATALYSTS_SEETHING.tag).add(AllBlocks.BLAZE_BURNER.get(), CABlocks.LIQUID_BLAZE_BURNER.get());
 
         prov.tag(DesiresTags.BlockTags.FAN_CATALYSTS_DRAGON_SUPPORT.tag).add(DesiresBlocks.INDUSTRIAL_FAN.get());
 

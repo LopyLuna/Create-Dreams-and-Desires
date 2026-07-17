@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "dndesires:block/palettes/stone_types/small_brick/breccia_cut_small_brick",
-    "side": "dndesires:block/palettes/stone_types/small_brick/breccia_cut_small_brick",
-    "top": "dndesires:block/palettes/stone_types/small_brick/breccia_cut_small_brick"
-  }
-}
