@@ -9,6 +9,7 @@ import dev.lopyluna.dndesires.content.items.IOnBlockBreak;
 import dev.lopyluna.dndesires.content.items.TreeOverride;
 import dev.lopyluna.dndesires.mixins.AxeItemAccessor;
 import dev.lopyluna.dndesires.register.DesiresItems;
+import dev.lopyluna.dndesires.register.DesiresConfigs;
 import net.createmod.catnip.math.VecHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.model.HumanoidModel;
@@ -99,12 +100,29 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
         var tool = stack.get(DataComponents.TOOL);
-        if (tool != null) {
-            if (!BacktankUtil.canAbsorbDamage(miningEntity, maxUses()) && !level.isClientSide && state.getDestroySpeed(level, pos) != 0.0F && tool.damagePerBlock() > 0)
-                stack.hurtAndBreak(tool.damagePerBlock(), miningEntity, EquipmentSlot.MAINHAND);
-            return true;
+        if (tool == null)
+            return false;
+
+        if (deforesting) {
+            if (!DesiresConfigs.server().handheldSawConsumesAirPerTreeBlock.get())
+                return true;
+
+            if (DesiresConfigs.server().handheldSawOnlyLogsConsumeAirWhenDeforesting.get()
+                && !TreeCutter.isLog(state)
+                && !TreeCutter.isRoot(state))
+                return true;
         }
-        return false;
+
+        boolean absorbedWithAir = BacktankUtil.canAbsorbDamage(miningEntity, maxUses());
+
+        if (!absorbedWithAir
+            && !level.isClientSide
+            && state.getDestroySpeed(level, pos) != 0.0F
+            && tool.damagePerBlock() > 0) {
+            stack.hurtAndBreak(tool.damagePerBlock(), miningEntity, EquipmentSlot.MAINHAND);
+        }
+
+        return true;
     }
 
     @Override
@@ -133,7 +151,15 @@ public class HandheldSawItem extends AxeItem implements CustomArmPoseItem, IOnBl
     }
 
     private static int maxUses() {
-        return AllConfigs.server().equipment.maxPotatoCannonShots.get();
+        // Original = airInBacktank = 900 / maxPotatoCannonShots = 200
+        // return AllConfigs.server().equipment.maxPotatoCannonShots.get();
+        // New own made (not tested, 1 Air usage instead of 4
+        // return AllConfigs.server().equipment.maxPotatoCannonShots.get() * 4;
+        
+        int baseUses = AllConfigs.server().equipment.maxPotatoCannonShots.get();
+        int multiplier = DesiresConfigs.server().handheldSawAirEfficiencyMultiplier.get();
+
+        return baseUses * multiplier;
     }
 
     @Override
