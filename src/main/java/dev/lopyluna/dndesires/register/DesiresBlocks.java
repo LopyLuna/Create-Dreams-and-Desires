@@ -11,8 +11,6 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.lopyluna.dndesires.DnDesires;
-import dev.lopyluna.dndesires.content.blocks.logistics.bore_block.BoreBlock;
-import dev.lopyluna.dndesires.content.blocks.logistics.bore_block.BoreBlockMovementBehavior;
 import dev.lopyluna.dndesires.content.blocks.FanSailBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.cog_crank.CogCrankBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.cog_crank.CogCrankItem;
@@ -28,6 +26,8 @@ import dev.lopyluna.dndesires.content.blocks.kinetics.omni_speed_controller.Omni
 import dev.lopyluna.dndesires.content.blocks.kinetics.spud_sentry.SpudSentryBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.StirlingEngineBlock;
 import dev.lopyluna.dndesires.content.blocks.kinetics.stirling_engine.flywheel.PoweredFlywheelBlock;
+import dev.lopyluna.dndesires.content.blocks.logistics.bore_block.BoreBlock;
+import dev.lopyluna.dndesires.content.blocks.logistics.bore_block.BoreBlockMovementBehavior;
 import dev.lopyluna.dndesires.content.blocks.logistics.fluid_gauge.FluidGaugeBlock;
 import dev.lopyluna.dndesires.content.blocks.logistics.fluid_hatch.FluidHatchBlock;
 import dev.lopyluna.dndesires.content.blocks.logistics.roll_table.RollTableBlock;
@@ -49,6 +49,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -441,7 +442,7 @@ public class DesiresBlocks {
 
     public static final TagKey<Item> BORE_BLOCKS = DesiresTags.modItemTag("bore_blocks");
 
-    public static final BlockEntry<BoreBlock> BORE_BLOCK = REG.block("bore_block", BoreBlock::new)
+    public static final BlockEntry<BoreBlock> BORE_BLOCK = REG.block("bore_block", BoreBlock::make)
             .initialProperties(SharedProperties::netheriteMetal)
             .properties(p -> p.mapColor(MapColor.STONE).sound(new DeferredSoundType(0.9f, 1.25f, () -> SoundEvents.NETHERITE_BLOCK_BREAK,
                     () -> SoundEvents.NETHERITE_BLOCK_STEP, () -> SoundEvents.NETHERITE_BLOCK_PLACE,
@@ -468,7 +469,7 @@ public class DesiresBlocks {
 
     public static final DyedBlockList<BoreBlock> DYED_BORE_BLOCK = new DyedBlockList<>(color -> {
         String colorName = color.getSerializedName();
-        return REG.block(colorName + "_bore_block", BoreBlock::new)
+        return REG.block(colorName + "_bore_block", BoreBlock::make)
                 .initialProperties(SharedProperties::netheriteMetal)
                 .properties(p -> p.mapColor(color.getMapColor()).sound(new DeferredSoundType(0.9f, 1.25f, () -> SoundEvents.NETHERITE_BLOCK_BREAK,
                         () -> SoundEvents.NETHERITE_BLOCK_STEP, () -> SoundEvents.NETHERITE_BLOCK_PLACE,
