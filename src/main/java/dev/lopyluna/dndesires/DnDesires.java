@@ -69,11 +69,6 @@ public class DnDesires {
         modEventBus.addListener(EventPriority.LOWEST, DesiresDatagen::gatherData);
         modEventBus.addListener(DesiresSoundEvents::register);
 
-        if (ModList.get().isLoaded("capix")) {
-            net.yeoxuhang.capix.api.CapixApi.registerCape(MOD_ID, "DnDesires 1mil downloads",
-                    "https://github.com/LopyLuna/Obelisb/blob/1.21/dndesire_one_mil_cape.png?raw=true",
-                    "https://raw.githubusercontent.com/LopyLuna/LunaResources/refs/heads/main/dndesires1mil.txt");
-        }
         if (ModList.get().isLoaded("sable")) {
             LoadedMods.SABLE = true;
             dev.lopyluna.dndesires.compat.sable.DesiresSable.init(modEventBus, modContainer);
