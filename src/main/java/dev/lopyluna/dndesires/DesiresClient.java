@@ -3,6 +3,7 @@ package dev.lopyluna.dndesires;
 import dev.lopyluna.dndesires.register.client.DesiresPartialModels;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
@@ -15,6 +16,13 @@ public class DesiresClient {
     public DesiresClient(IEventBus modEventBus) {
         IEventBus neoEventBus = NeoForge.EVENT_BUS;
         modEventBus.addListener(DesiresClient::clientInit);
+
+
+        if (ModList.get().isLoaded("capix")) {
+            net.yeoxuhang.capix.api.CapixApi.registerCape(MOD_ID, "DnDesires 1mil downloads",
+                "https://github.com/LopyLuna/Obelisb/blob/1.21/dndesire_one_mil_cape.png?raw=true",
+                "https://raw.githubusercontent.com/LopyLuna/LunaResources/refs/heads/main/dndesires1mil.txt");
+        }
     }
 
     public static void clientInit(final FMLClientSetupEvent event) {
